@@ -1,0 +1,23 @@
+{
+    "UdoPackage_0":
+    {
+        "Operators": [
+            {
+            "type": "Softmax",
+                "inputs":[
+                    {"name":"Placeholder", "per_core_data_types": {"CPU":"FLOAT_32", "GPU":"FLOAT_32", "DSP":"UINT_8"},
+                        "quantization_mode": "TF"}
+                ],
+                "scalar_params":[
+                    {"name":"axis", "data_type": "UINT_8", "default_value": 3}
+                ],
+                "outputs":[
+                    {"name":"Output", "per_core_data_types": {"CPU":"FLOAT_32", "GPU":"FLOAT_32", "DSP":"UINT_8"},
+                        "quantization_mode": "TF"}
+                ],
+                "core_types": ["CPU", "GPU", "DSP"]
+            }
+        ],
+        "UDO_PACKAGE_NAME": "SoftmaxUdoPackage"
+    }
+}

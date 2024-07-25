@@ -1,0 +1,80 @@
+& "${env:VENV_ROOT}\Scripts\Activate.ps1"
+python -m pip install --upgrade pip
+
+python "${env:QNN_SDK_ROOT}\bin\check-python-dependency"
+
+python3 -m pip show tensorflow
+
+export TENSORFLOW_HOME=<tensorflow-location>/tensorflow/core
+
+& "${env:QNN_SDK_ROOT}/bin/check-windows-dependency.ps1"
+
+ Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy ByPass
+
+& "${env:QNN_SDK_ROOT}\bin\envsetup.ps1"
+
+& "${env:QNN_SDK_ROOT}/bin/envcheck.ps1" -m
+
+pip install tensorflow==2.10.1
+pip install onnx==1.12.0
+pip install onnxruntime==1.17.1
+pip install onnxsim==0.4.36
+pip install tflite==2.3.0
+
+pip install torch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1
+pip install torchvision==0.14.1
+
+
+
+
+
+python -c "import tensorflow"
+python -c "import onnx"
+
+
+
+${env:QNN_SDK_ROOT}/examples/Models/InceptionV3/scripts/setup_inceptionv3.py
+
+ & "${env:QNN_SDK_ROOT}/examples/Models/InceptionV3/scripts/setup_inceptionv3.py"
+
+ Start-Process -FilePath "python" -ArgumentList "${env:QNN_SDK_ROOT}/examples/Models/InceptionV3/scripts/setup_inceptionv3.py -a C:\Users\Andaz-8CBE\assets -d" -NoNewWindow -Wait
+
+ python ${env:QNN_SDK_ROOT}/examples/Models/InceptionV3/scripts/setup_inceptionv3.py -a ~/tmpdir -d
+
+
+
+  python "${env:QNN_SDK_ROOT}/bin/x86_64-windows-msvc/qnn-tensorflow-converter" `
+  --input_network "${env:QNN_SDK_ROOT}/examples/Models/InceptionV3/tensorflow/inception_v3_2016_08_28_frozen.pb" `
+  --input_dim "input" "1,299,299,3" `
+  --out_node "InceptionV3/Predictions/Reshape_1" `
+  --output_path "${env:QNN_SDK_ROOT}/examples/Models/InceptionV3/model/Inception_v3_quantized.cpp" `
+  --input_list "${env:QNN_SDK_ROOT}/examples/Models/InceptionV3/data/cropped/raw_list.txt"
+
+
+  2024-07-21 13:48:32,172 - 235 - INFO - Saving QNN Model...
+2024-07-21 13:48:32,225 - 235 - INFO - Model CPP saved at: C:\Users\Andaz-8CBE\source\repos\HPPCDiags-SST\Studies\ArmNPU\2.22.6.240515/examples/Models/InceptionV3/model/Inception_v3_quantized.cpp
+2024-07-21 13:48:32,225 - 235 - INFO - Model BIN saved at: C:\Users\Andaz-8CBE\source\repos\HPPCDiags-SST\Studies\ArmNPU\2.22.6.240515\examples\Models\InceptionV3\model\Inception_v3_quantized.bin
+2024-07-21 13:48:32,242 - 235 - INFO - Conversion complete!
+
+
+win64
+python "${env:QNN_SDK_ROOT}\bin\x86_64-windows-msvc\qnn-model-lib-generator" `
+    -c .\Inception_v3.cpp `
+    -b .\Inception_v3.bin `
+    -o model_libs `
+    -t windows-aarch64
+
+    0
+arm64
+    python "${env:QNN_SDK_ROOT}\bin\aarch64-windows-msvc\qnn-model-lib-generator" `
+    -c .\Inception_v3_quantized.cpp `
+    -b .\Inception_v3_quantized.bin `
+    -o model_libs `
+    -t windows-x86_64
+
+creates Inception_v3_quantized.dll in C:\tmp\qnn_tmp\model_libs\x64
+
+
+.\qnn-net-run.exe --model .\Inception_v3.dll --input_list .\target_raw_list.txt --backend .\QnnCpu.dll
+
+Could not load backend : .\QnnCpu.dll

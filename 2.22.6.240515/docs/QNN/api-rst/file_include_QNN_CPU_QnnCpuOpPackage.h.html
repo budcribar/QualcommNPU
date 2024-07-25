@@ -1,0 +1,735 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>File QnnCpuOpPackage.h &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>File QnnCpuOpPackage.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="file-qnncpuoppackage-h">
+<span id="file-include-qnn-cpu-qnncpuoppackage-h"></span><h1>File QnnCpuOpPackage.h<a class="headerlink" href="#file-qnncpuoppackage-h" title="Permalink to this heading">¶</a></h1>
+<p>↰ <a class="reference internal" href="dir_include_QNN_CPU.html#dir-include-qnn-cpu"><span class="std std-ref">Parent directory</span></a> (<code class="docutils literal notranslate"><span class="pre">include/QNN/CPU</span></code>)</p>
+<p>CPU Operation Package component API.</p>
+<div class="contents local topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#definition-include-qnn-cpu-qnncpuoppackage-h" id="id1">Definition (<code class="docutils literal notranslate"><span class="pre">include/QNN/CPU/QnnCpuOpPackage.h</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#detailed-description" id="id2">Detailed Description</a></p></li>
+<li><p><a class="reference internal" href="#includes" id="id3">Includes</a></p></li>
+<li><p><a class="reference internal" href="#classes" id="id4">Classes</a></p></li>
+<li><p><a class="reference internal" href="#enums" id="id5">Enums</a></p></li>
+<li><p><a class="reference internal" href="#defines" id="id6">Defines</a></p></li>
+<li><p><a class="reference internal" href="#typedefs" id="id7">Typedefs</a></p></li>
+<li><p><a class="reference internal" href="#variables" id="id8">Variables</a></p></li>
+<li><p><a class="reference internal" href="#full-file-listing" id="id9">Full File Listing</a></p></li>
+</ul>
+</div>
+<div class="section" id="definition-include-qnn-cpu-qnncpuoppackage-h">
+<h2>Definition (<code class="docutils literal notranslate"><span class="pre">include/QNN/CPU/QnnCpuOpPackage.h</span></code>)<a class="headerlink" href="#definition-include-qnn-cpu-qnncpuoppackage-h" title="Permalink to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="program_listing_file_include_QNN_CPU_QnnCpuOpPackage.h.html">Program Listing for File QnnCpuOpPackage.h</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="detailed-description">
+<h2>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><p>Provides interface to interact with OpPackage libraries registered
+with the CPU backend.</p>
+</div></blockquote>
+</div>
+<div class="section" id="includes">
+<h2>Includes<a class="headerlink" href="#includes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CPU/QnnCpuCommon.h</span></code> (<a class="reference internal" href="file_include_QNN_CPU_QnnCpuCommon.h.html#file-include-qnn-cpu-qnncpucommon-h"><span class="std std-ref">File QnnCpuCommon.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QnnGraph.h</span></code> (<a class="reference internal" href="file_include_QNN_QnnGraph.h.html#file-include-qnn-qnngraph-h"><span class="std std-ref">File QnnGraph.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QnnOpPackage.h</span></code> (<a class="reference internal" href="file_include_QNN_QnnOpPackage.h.html#file-include-qnn-qnnoppackage-h"><span class="std std-ref">File QnnOpPackage.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QnnTypes.h</span></code> (<a class="reference internal" href="file_include_QNN_QnnTypes.h.html#file-include-qnn-qnntypes-h"><span class="std std-ref">File QnnTypes.h</span></a>)</p></li>
+</ul>
+</div>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="structQnnCpuOpPackage__GlobalInfra__t.html#exhale-struct-structqnncpuoppackage-globalinfra-t"><span class="std std-ref">Struct QnnCpuOpPackage_GlobalInfra_t</span></a></p></li>
+<li><p><a class="reference internal" href="structQnnCpuOpPackage__Node__t.html#exhale-struct-structqnncpuoppackage-node-t"><span class="std std-ref">Struct QnnCpuOpPackage_Node_t</span></a></p></li>
+<li><p><a class="reference internal" href="structQnnCpuOpPackage__OpImpl__t.html#exhale-struct-structqnncpuoppackage-opimpl-t"><span class="std std-ref">Struct QnnCpuOpPackage_OpImpl_t</span></a></p></li>
+<li><p><a class="reference internal" href="structQnnCpuOpPackage__Param__t.html#exhale-struct-structqnncpuoppackage-param-t"><span class="std std-ref">Struct QnnCpuOpPackage_Param_t</span></a></p></li>
+<li><p><a class="reference internal" href="structQnnCpuOpPackage__Tensor__t.html#exhale-struct-structqnncpuoppackage-tensor-t"><span class="std std-ref">Struct QnnCpuOpPackage_Tensor_t</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="enums">
+<h2>Enums<a class="headerlink" href="#enums" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="enum_QnnCpuOpPackage_8h_1a3c32cf145f05c052eb11a3e7ad169e8c.html#exhale-enum-qnncpuoppackage-8h-1a3c32cf145f05c052eb11a3e7ad169e8c"><span class="std std-ref">Enum QnnCpuOpPackage_DataType_t</span></a></p></li>
+<li><p><a class="reference internal" href="enum_QnnCpuOpPackage_8h_1ab4c6e9b9e2f384163ff37403d133ae51.html#exhale-enum-qnncpuoppackage-8h-1ab4c6e9b9e2f384163ff37403d133ae51"><span class="std std-ref">Enum QnnCpuOpPackage_MsgType_t</span></a></p></li>
+<li><p><a class="reference internal" href="enum_QnnCpuOpPackage_8h_1ac88e6f417c1ff28e987ce87aad70f4a0.html#exhale-enum-qnncpuoppackage-8h-1ac88e6f417c1ff28e987ce87aad70f4a0"><span class="std std-ref">Enum QnnCpuOpPackage_ParamType_t</span></a></p></li>
+<li><p><a class="reference internal" href="enum_QnnCpuOpPackage_8h_1a4ea2324e2b963732c909757de88007e2.html#exhale-enum-qnncpuoppackage-8h-1a4ea2324e2b963732c909757de88007e2"><span class="std std-ref">Enum QnnCpuOpPackage_ProfileType_t</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="defines">
+<h2>Defines<a class="headerlink" href="#defines" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="define_QnnCpuOpPackage_8h_1a71abfc0455d9e936e5b60b87a1849947.html#exhale-define-qnncpuoppackage-8h-1a71abfc0455d9e936e5b60b87a1849947"><span class="std std-ref">Define QNN_CPU_OP_PACKAGE_GLOBAL_INFRA_INIT</span></a></p></li>
+<li><p><a class="reference internal" href="define_QnnCpuOpPackage_8h_1a4c5b09ce8d018d58e4805b72a182ce3e.html#exhale-define-qnncpuoppackage-8h-1a4c5b09ce8d018d58e4805b72a182ce3e"><span class="std std-ref">Define QNN_CPU_OP_PACKAGE_NODE_INIT</span></a></p></li>
+<li><p><a class="reference internal" href="define_QnnCpuOpPackage_8h_1a3bc32b11a59eccb6d165158b4065683d.html#exhale-define-qnncpuoppackage-8h-1a3bc32b11a59eccb6d165158b4065683d"><span class="std std-ref">Define QNN_CPU_OP_PACKAGE_OPIMPL_INIT</span></a></p></li>
+<li><p><a class="reference internal" href="define_QnnCpuOpPackage_8h_1ad0777c5a10b040d6238a3edfe871fa3d.html#exhale-define-qnncpuoppackage-8h-1ad0777c5a10b040d6238a3edfe871fa3d"><span class="std std-ref">Define QNN_CPU_OP_PACKAGE_PARAM_INIT</span></a></p></li>
+<li><p><a class="reference internal" href="define_QnnCpuOpPackage_8h_1ad5a2bd8fa22d3e8a3dd0ed811b131469.html#exhale-define-qnncpuoppackage-8h-1ad5a2bd8fa22d3e8a3dd0ed811b131469"><span class="std std-ref">Define QNN_CPU_OP_PACKAGE_TENSOR_INIT</span></a></p></li>
+<li><p><a class="reference internal" href="define_QnnCpuOpPackage_8h_1a7153a1e4abd35e7c9a3bafaf264f8cba.html#exhale-define-qnncpuoppackage-8h-1a7153a1e4abd35e7c9a3bafaf264f8cba"><span class="std std-ref">Define QNN_CPUOPPACKAGE_TENSOR_DATA_FORMAT_FLAT_BUFFER</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="typedefs">
+<h2>Typedefs<a class="headerlink" href="#typedefs" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="typedef_QnnCpuOpPackage_8h_1a15c71e09cd9a9fb1d9c7d5629e291844.html#exhale-typedef-qnncpuoppackage-8h-1a15c71e09cd9a9fb1d9c7d5629e291844"><span class="std std-ref">Typedef QnnCpuOpPackage_OpImplFn_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_QnnCpuOpPackage_8h_1aa6f6819eb552c7dc5678bc606dda34e6.html#exhale-typedef-qnncpuoppackage-8h-1aa6f6819eb552c7dc5678bc606dda34e6"><span class="std std-ref">Typedef QnnCpuOpPackage_ProfileData_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_QnnCpuOpPackage_8h_1a297115cb803db2626afca10e4d12b090.html#exhale-typedef-qnncpuoppackage-8h-1a297115cb803db2626afca10e4d12b090"><span class="std std-ref">Typedef QnnCpuOpPackage_TensorDataFormat_t</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="variables">
+<h2>Variables<a class="headerlink" href="#variables" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="variable_QnnCpuOpPackage_8h_1a2ed5c6c1a740ff8859cee73f2fcd3f6e.html#exhale-variable-qnncpuoppackage-8h-1a2ed5c6c1a740ff8859cee73f2fcd3f6e"><span class="std std-ref">Variable QnnCpuOpPackage_GraphInfrastructure_t</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="full-file-listing">
+<h2>Full File Listing<a class="headerlink" href="#full-file-listing" title="Permalink to this heading">¶</a></h2>
+<p>CPU Operation Package component API. </p>
+<p><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">   </span><span class="n">Provides</span><span class="w"> </span><span class="n">interface</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">interact</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">OpPackage</span><span class="w"> </span><span class="n">libraries</span><span class="w"> </span><span class="n">registered</span>
+<span class="w">   </span><span class="n">with</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">CPU</span><span class="w"> </span><span class="n">backend</span><span class="p">.</span>
+</pre></div>
+</div>
+ </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_CPUOPPACKAGE_TENSOR_DATA_FORMAT_FLAT_BUFFER">
+<span class="target" id="QnnCpuOpPackage_8h_1a7153a1e4abd35e7c9a3bafaf264f8cba"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CPUOPPACKAGE_TENSOR_DATA_FORMAT_FLAT_BUFFER</span></span></span> <span class="pre">0</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_CPU_OP_PACKAGE_GLOBAL_INFRA_INIT">
+<span class="target" id="QnnCpuOpPackage_8h_1a71abfc0455d9e936e5b60b87a1849947"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CPU_OP_PACKAGE_GLOBAL_INFRA_INIT</span></span></span> <p><span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160; <span class="pre">/*reportMessage*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL</span>&#160;&#160;&#160;&#160; <span class="pre">/*profile*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">}</span></p>
+<br /></dt>
+<dd><p><a class="reference internal" href="#structQnnCpuOpPackage__GlobalInfra__t"><span class="std std-ref">QnnCpuOpPackage_GlobalInfra_t</span></a> initializer macro. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_CPU_OP_PACKAGE_OPIMPL_INIT">
+<span class="target" id="QnnCpuOpPackage_8h_1a3bc32b11a59eccb6d165158b4065683d"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CPU_OP_PACKAGE_OPIMPL_INIT</span></span></span> <p><span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160; <span class="pre">/*kernelFn*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL</span>&#160;&#160;&#160;&#160; <span class="pre">/*userData*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">}</span></p>
+<br /></dt>
+<dd><p><a class="reference internal" href="#structQnnCpuOpPackage__OpImpl__t"><span class="std std-ref">QnnCpuOpPackage_OpImpl_t</span></a> initializer macro. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_CPU_OP_PACKAGE_TENSOR_INIT">
+<span class="target" id="QnnCpuOpPackage_8h_1ad5a2bd8fa22d3e8a3dd0ed811b131469"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CPU_OP_PACKAGE_TENSOR_INIT</span></span></span> &#160; <span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span>
+&#160;&#160;&#160; <a class="reference internal" href="file_include_QNN_QnnTypes.h.html#QnnTypes_8h_1ac4d9c0362819481ebfc1321521f73063"><span class="std std-ref"><span class="pre">QNN_TENSOR_DATA_FORMAT_FLAT_BUFFER</span></span></a><span class="pre">,</span> <span class="pre">/*dataFormat*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span>
+&#160;&#160;&#160; <a class="reference internal" href="enum_QnnCpuOpPackage_8h_1a3c32cf145f05c052eb11a3e7ad169e8c.html#QnnCpuOpPackage_8h_1a3c32cf145f05c052eb11a3e7ad169e8ca4e18b6dcec42069ad7965e7171b90ce2"><span class="std std-ref"><span class="pre">QNN_CPU_DATATYPE_UNDEFINED</span></span></a><p><span class="pre">,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">/*dataType*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">0,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">/*rank*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">/*maxDimensions*/</span>&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">/*currentDimensions*/</span> <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">/*data*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<a class="reference internal" href="file_include_QNN_QnnTypes.h.html#QnnTypes_8h_1af986d56f325b02e06e407173d4d27ce1"><span class="std std-ref"><span class="pre">QNN_QUANTIZE_PARAMS_INIT</span></span></a><p><span class="pre">/*quantizeParams*/</span>&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">}</span></p>
+<br /></dt>
+<dd><p><a class="reference internal" href="#structQnnCpuOpPackage__Tensor__t"><span class="std std-ref">QnnCpuOpPackage_Tensor_t</span></a> initializer macro. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_CPU_OP_PACKAGE_PARAM_INIT">
+<span class="target" id="QnnCpuOpPackage_8h_1ad0777c5a10b040d6238a3edfe871fa3d"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CPU_OP_PACKAGE_PARAM_INIT</span></span></span> &#160; <span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span>
+&#160;&#160;&#160; <a class="reference internal" href="enum_QnnCpuOpPackage_8h_1ac88e6f417c1ff28e987ce87aad70f4a0.html#QnnCpuOpPackage_8h_1ac88e6f417c1ff28e987ce87aad70f4a0aeeb812789a4f7e4a2fd1a8426dab1119"><span class="std std-ref"><span class="pre">QNN_CPU_PARAMTYPE_UNDEFINED</span></span></a><p><span class="pre">,</span> <span class="pre">/*type*/</span> <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">/*name*/</span> <span class="pre">\</span></p>
+<p><span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">0</span> <span class="pre">/*scalarParam*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">}</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">}</span></p>
+<br /></dt>
+<dd><p><a class="reference internal" href="#structQnnCpuOpPackage__Param__t"><span class="std std-ref">QnnCpuOpPackage_Param_t</span></a> initializer macro. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_CPU_OP_PACKAGE_NODE_INIT">
+<span class="target" id="QnnCpuOpPackage_8h_1a4c5b09ce8d018d58e4805b72a182ce3e"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CPU_OP_PACKAGE_NODE_INIT</span></span></span> <p><span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160; <span class="pre">/*name*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160; <span class="pre">/*packageName*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160; <span class="pre">/*typeName*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">0,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">/*numOfParams*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160; <span class="pre">/*params*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">0,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">/*numOfInputs*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160; <span class="pre">/*inputs*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">0,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">/*numOfOutputs*/</span>&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">/*outputs*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">}</span></p>
+<br /></dt>
+<dd><p><a class="reference internal" href="#structQnnCpuOpPackage__Node__t"><span class="std std-ref">QnnCpuOpPackage_Node_t</span></a> initializer macro. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv434QnnCpuOpPackage_TensorDataFormat_t">
+<span id="_CPPv334QnnCpuOpPackage_TensorDataFormat_t"></span><span id="_CPPv234QnnCpuOpPackage_TensorDataFormat_t"></span><span id="QnnCpuOpPackage_TensorDataFormat_t"></span><span class="target" id="QnnCpuOpPackage_8h_1a297115cb803db2626afca10e4d12b090"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnCpuOpPackage_TensorDataFormat_t</span></span></span><a class="headerlink" href="#_CPPv434QnnCpuOpPackage_TensorDataFormat_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A value representing a tensor data format. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv429QnnCpuOpPackage_ProfileData_t">
+<span id="_CPPv329QnnCpuOpPackage_ProfileData_t"></span><span id="_CPPv229QnnCpuOpPackage_ProfileData_t"></span><span id="QnnCpuOpPackage_ProfileData_t"></span><span class="target" id="QnnCpuOpPackage_8h_1aa6f6819eb552c7dc5678bc606dda34e6"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnCpuOpPackage_ProfileData_t</span></span></span><a class="headerlink" href="#_CPPv429QnnCpuOpPackage_ProfileData_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A value representing a profile data in ms. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv426QnnCpuOpPackage_OpImplFn_t">
+<span id="_CPPv326QnnCpuOpPackage_OpImplFn_t"></span><span id="_CPPv226QnnCpuOpPackage_OpImplFn_t"></span><span id="QnnCpuOpPackage_OpImplFn_t"></span><span class="target" id="QnnCpuOpPackage_8h_1a15c71e09cd9a9fb1d9c7d5629e291844"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">QnnCpuOpPackage_OpImplFn_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">opPkgNodeData</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv426QnnCpuOpPackage_OpImplFn_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv427QnnCpuOpPackage_ParamType_t">
+<span id="_CPPv327QnnCpuOpPackage_ParamType_t"></span><span id="_CPPv227QnnCpuOpPackage_ParamType_t"></span><span class="target" id="QnnCpuOpPackage_8h_1ac88e6f417c1ff28e987ce87aad70f4a0"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnCpuOpPackage_ParamType_t</span></span></span><a class="headerlink" href="#_CPPv427QnnCpuOpPackage_ParamType_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An enum to specify a param type. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N27QnnCpuOpPackage_ParamType_t24QNN_CPU_PARAMTYPE_SCALARE">
+<span id="_CPPv3N27QnnCpuOpPackage_ParamType_t24QNN_CPU_PARAMTYPE_SCALARE"></span><span id="_CPPv2N27QnnCpuOpPackage_ParamType_t24QNN_CPU_PARAMTYPE_SCALARE"></span><span class="target" id="QnnCpuOpPackage_8h_1ac88e6f417c1ff28e987ce87aad70f4a0a75119bb9d4d4b61d14d67c08526618be"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CPU_PARAMTYPE_SCALAR</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N27QnnCpuOpPackage_ParamType_t24QNN_CPU_PARAMTYPE_SCALARE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N27QnnCpuOpPackage_ParamType_t24QNN_CPU_PARAMTYPE_TENSORE">
+<span id="_CPPv3N27QnnCpuOpPackage_ParamType_t24QNN_CPU_PARAMTYPE_TENSORE"></span><span id="_CPPv2N27QnnCpuOpPackage_ParamType_t24QNN_CPU_PARAMTYPE_TENSORE"></span><span class="target" id="QnnCpuOpPackage_8h_1ac88e6f417c1ff28e987ce87aad70f4a0afefd9134f043da56a0723a7b2b0e25a4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CPU_PARAMTYPE_TENSOR</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N27QnnCpuOpPackage_ParamType_t24QNN_CPU_PARAMTYPE_TENSORE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N27QnnCpuOpPackage_ParamType_t24QNN_CPU_PARAMTYPE_STRINGE">
+<span id="_CPPv3N27QnnCpuOpPackage_ParamType_t24QNN_CPU_PARAMTYPE_STRINGE"></span><span id="_CPPv2N27QnnCpuOpPackage_ParamType_t24QNN_CPU_PARAMTYPE_STRINGE"></span><span class="target" id="QnnCpuOpPackage_8h_1ac88e6f417c1ff28e987ce87aad70f4a0a7280f63eb9dccc660fc3b01c82d75ba5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CPU_PARAMTYPE_STRING</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">2</span></span><a class="headerlink" href="#_CPPv4N27QnnCpuOpPackage_ParamType_t24QNN_CPU_PARAMTYPE_STRINGE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N27QnnCpuOpPackage_ParamType_t27QNN_CPU_PARAMTYPE_UNDEFINEDE">
+<span id="_CPPv3N27QnnCpuOpPackage_ParamType_t27QNN_CPU_PARAMTYPE_UNDEFINEDE"></span><span id="_CPPv2N27QnnCpuOpPackage_ParamType_t27QNN_CPU_PARAMTYPE_UNDEFINEDE"></span><span class="target" id="QnnCpuOpPackage_8h_1ac88e6f417c1ff28e987ce87aad70f4a0aeeb812789a4f7e4a2fd1a8426dab1119"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CPU_PARAMTYPE_UNDEFINED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0xFFFFFFFF</span></span><a class="headerlink" href="#_CPPv4N27QnnCpuOpPackage_ParamType_t27QNN_CPU_PARAMTYPE_UNDEFINEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv426QnnCpuOpPackage_DataType_t">
+<span id="_CPPv326QnnCpuOpPackage_DataType_t"></span><span id="_CPPv226QnnCpuOpPackage_DataType_t"></span><span class="target" id="QnnCpuOpPackage_8h_1a3c32cf145f05c052eb11a3e7ad169e8c"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnCpuOpPackage_DataType_t</span></span></span><a class="headerlink" href="#_CPPv426QnnCpuOpPackage_DataType_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An enum to specify tensor data type. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N26QnnCpuOpPackage_DataType_t23QNN_CPU_DATATYPE_BOOL_8E">
+<span id="_CPPv3N26QnnCpuOpPackage_DataType_t23QNN_CPU_DATATYPE_BOOL_8E"></span><span id="_CPPv2N26QnnCpuOpPackage_DataType_t23QNN_CPU_DATATYPE_BOOL_8E"></span><span class="target" id="QnnCpuOpPackage_8h_1a3c32cf145f05c052eb11a3e7ad169e8caae33058f1d2a4c3b2b95bb3009c1e1fe"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CPU_DATATYPE_BOOL_8</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0x0508</span></span><a class="headerlink" href="#_CPPv4N26QnnCpuOpPackage_DataType_t23QNN_CPU_DATATYPE_BOOL_8E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N26QnnCpuOpPackage_DataType_t22QNN_CPU_DATATYPE_INT_8E">
+<span id="_CPPv3N26QnnCpuOpPackage_DataType_t22QNN_CPU_DATATYPE_INT_8E"></span><span id="_CPPv2N26QnnCpuOpPackage_DataType_t22QNN_CPU_DATATYPE_INT_8E"></span><span class="target" id="QnnCpuOpPackage_8h_1a3c32cf145f05c052eb11a3e7ad169e8ca35bcd3d2defe1cec4500d28ac347b4c3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CPU_DATATYPE_INT_8</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0x0008</span></span><a class="headerlink" href="#_CPPv4N26QnnCpuOpPackage_DataType_t22QNN_CPU_DATATYPE_INT_8E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N26QnnCpuOpPackage_DataType_t23QNN_CPU_DATATYPE_INT_32E">
+<span id="_CPPv3N26QnnCpuOpPackage_DataType_t23QNN_CPU_DATATYPE_INT_32E"></span><span id="_CPPv2N26QnnCpuOpPackage_DataType_t23QNN_CPU_DATATYPE_INT_32E"></span><span class="target" id="QnnCpuOpPackage_8h_1a3c32cf145f05c052eb11a3e7ad169e8ca6070ba70bbb38e458d01744ed79dbfc3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CPU_DATATYPE_INT_32</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0x0032</span></span><a class="headerlink" href="#_CPPv4N26QnnCpuOpPackage_DataType_t23QNN_CPU_DATATYPE_INT_32E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N26QnnCpuOpPackage_DataType_t23QNN_CPU_DATATYPE_UINT_8E">
+<span id="_CPPv3N26QnnCpuOpPackage_DataType_t23QNN_CPU_DATATYPE_UINT_8E"></span><span id="_CPPv2N26QnnCpuOpPackage_DataType_t23QNN_CPU_DATATYPE_UINT_8E"></span><span class="target" id="QnnCpuOpPackage_8h_1a3c32cf145f05c052eb11a3e7ad169e8cac2ea35c31dad46757c08c6bee4d62db5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CPU_DATATYPE_UINT_8</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0x0108</span></span><a class="headerlink" href="#_CPPv4N26QnnCpuOpPackage_DataType_t23QNN_CPU_DATATYPE_UINT_8E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N26QnnCpuOpPackage_DataType_t24QNN_CPU_DATATYPE_UINT_32E">
+<span id="_CPPv3N26QnnCpuOpPackage_DataType_t24QNN_CPU_DATATYPE_UINT_32E"></span><span id="_CPPv2N26QnnCpuOpPackage_DataType_t24QNN_CPU_DATATYPE_UINT_32E"></span><span class="target" id="QnnCpuOpPackage_8h_1a3c32cf145f05c052eb11a3e7ad169e8ca556697001879064efbf8fca06e0fb4fd"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CPU_DATATYPE_UINT_32</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0x0132</span></span><a class="headerlink" href="#_CPPv4N26QnnCpuOpPackage_DataType_t24QNN_CPU_DATATYPE_UINT_32E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N26QnnCpuOpPackage_DataType_t25QNN_CPU_DATATYPE_FLOAT_32E">
+<span id="_CPPv3N26QnnCpuOpPackage_DataType_t25QNN_CPU_DATATYPE_FLOAT_32E"></span><span id="_CPPv2N26QnnCpuOpPackage_DataType_t25QNN_CPU_DATATYPE_FLOAT_32E"></span><span class="target" id="QnnCpuOpPackage_8h_1a3c32cf145f05c052eb11a3e7ad169e8cae0208c8130b1a01eaa591c62406e2b80"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CPU_DATATYPE_FLOAT_32</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0x0232</span></span><a class="headerlink" href="#_CPPv4N26QnnCpuOpPackage_DataType_t25QNN_CPU_DATATYPE_FLOAT_32E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N26QnnCpuOpPackage_DataType_t26QNN_CPU_DATATYPE_UNDEFINEDE">
+<span id="_CPPv3N26QnnCpuOpPackage_DataType_t26QNN_CPU_DATATYPE_UNDEFINEDE"></span><span id="_CPPv2N26QnnCpuOpPackage_DataType_t26QNN_CPU_DATATYPE_UNDEFINEDE"></span><span class="target" id="QnnCpuOpPackage_8h_1a3c32cf145f05c052eb11a3e7ad169e8ca4e18b6dcec42069ad7965e7171b90ce2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CPU_DATATYPE_UNDEFINED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0x7FFFFFFF</span></span><a class="headerlink" href="#_CPPv4N26QnnCpuOpPackage_DataType_t26QNN_CPU_DATATYPE_UNDEFINEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv425QnnCpuOpPackage_MsgType_t">
+<span id="_CPPv325QnnCpuOpPackage_MsgType_t"></span><span id="_CPPv225QnnCpuOpPackage_MsgType_t"></span><span class="target" id="QnnCpuOpPackage_8h_1ab4c6e9b9e2f384163ff37403d133ae51"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnCpuOpPackage_MsgType_t</span></span></span><a class="headerlink" href="#_CPPv425QnnCpuOpPackage_MsgType_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An enum to specify logging level. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnCpuOpPackage_MsgType_t17QNN_CPU_MSG_ERRORE">
+<span id="_CPPv3N25QnnCpuOpPackage_MsgType_t17QNN_CPU_MSG_ERRORE"></span><span id="_CPPv2N25QnnCpuOpPackage_MsgType_t17QNN_CPU_MSG_ERRORE"></span><span class="target" id="QnnCpuOpPackage_8h_1ab4c6e9b9e2f384163ff37403d133ae51a9ecf6e9540463a50f169ce315c9e811b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CPU_MSG_ERROR</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N25QnnCpuOpPackage_MsgType_t17QNN_CPU_MSG_ERRORE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnCpuOpPackage_MsgType_t17QNN_CPU_MSG_DEBUGE">
+<span id="_CPPv3N25QnnCpuOpPackage_MsgType_t17QNN_CPU_MSG_DEBUGE"></span><span id="_CPPv2N25QnnCpuOpPackage_MsgType_t17QNN_CPU_MSG_DEBUGE"></span><span class="target" id="QnnCpuOpPackage_8h_1ab4c6e9b9e2f384163ff37403d133ae51aeb138092652f4dc9488fcf7cfbc1b1d4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CPU_MSG_DEBUG</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">2</span></span><a class="headerlink" href="#_CPPv4N25QnnCpuOpPackage_MsgType_t17QNN_CPU_MSG_DEBUGE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnCpuOpPackage_MsgType_t15QNN_CPU_MSG_LOWE">
+<span id="_CPPv3N25QnnCpuOpPackage_MsgType_t15QNN_CPU_MSG_LOWE"></span><span id="_CPPv2N25QnnCpuOpPackage_MsgType_t15QNN_CPU_MSG_LOWE"></span><span class="target" id="QnnCpuOpPackage_8h_1ab4c6e9b9e2f384163ff37403d133ae51ac13a594b379c4722afafd4a528d3e76a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CPU_MSG_LOW</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">3</span></span><a class="headerlink" href="#_CPPv4N25QnnCpuOpPackage_MsgType_t15QNN_CPU_MSG_LOWE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnCpuOpPackage_MsgType_t15QNN_CPU_MSG_MEDE">
+<span id="_CPPv3N25QnnCpuOpPackage_MsgType_t15QNN_CPU_MSG_MEDE"></span><span id="_CPPv2N25QnnCpuOpPackage_MsgType_t15QNN_CPU_MSG_MEDE"></span><span class="target" id="QnnCpuOpPackage_8h_1ab4c6e9b9e2f384163ff37403d133ae51ac28610efb451e8be8f93d6a1a7c737ec"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CPU_MSG_MED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">4</span></span><a class="headerlink" href="#_CPPv4N25QnnCpuOpPackage_MsgType_t15QNN_CPU_MSG_MEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnCpuOpPackage_MsgType_t16QNN_CPU_MSG_HIGHE">
+<span id="_CPPv3N25QnnCpuOpPackage_MsgType_t16QNN_CPU_MSG_HIGHE"></span><span id="_CPPv2N25QnnCpuOpPackage_MsgType_t16QNN_CPU_MSG_HIGHE"></span><span class="target" id="QnnCpuOpPackage_8h_1ab4c6e9b9e2f384163ff37403d133ae51a80e344da8dbf95f13a2573895a21d203"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CPU_MSG_HIGH</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">5</span></span><a class="headerlink" href="#_CPPv4N25QnnCpuOpPackage_MsgType_t16QNN_CPU_MSG_HIGHE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnCpuOpPackage_MsgType_t21QNN_CPU_MSG_UNDEFINEDE">
+<span id="_CPPv3N25QnnCpuOpPackage_MsgType_t21QNN_CPU_MSG_UNDEFINEDE"></span><span id="_CPPv2N25QnnCpuOpPackage_MsgType_t21QNN_CPU_MSG_UNDEFINEDE"></span><span class="target" id="QnnCpuOpPackage_8h_1ab4c6e9b9e2f384163ff37403d133ae51aae381f7ad14bbf375ffc64f19742ff7f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CPU_MSG_UNDEFINED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0x7FFFFFFF</span></span><a class="headerlink" href="#_CPPv4N25QnnCpuOpPackage_MsgType_t21QNN_CPU_MSG_UNDEFINEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv429QnnCpuOpPackage_ProfileType_t">
+<span id="_CPPv329QnnCpuOpPackage_ProfileType_t"></span><span id="_CPPv229QnnCpuOpPackage_ProfileType_t"></span><span class="target" id="QnnCpuOpPackage_8h_1a4ea2324e2b963732c909757de88007e2"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnCpuOpPackage_ProfileType_t</span></span></span><a class="headerlink" href="#_CPPv429QnnCpuOpPackage_ProfileType_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An enum to specify the profiling type. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N29QnnCpuOpPackage_ProfileType_t21QNN_CPU_PROFILE_BASICE">
+<span id="_CPPv3N29QnnCpuOpPackage_ProfileType_t21QNN_CPU_PROFILE_BASICE"></span><span id="_CPPv2N29QnnCpuOpPackage_ProfileType_t21QNN_CPU_PROFILE_BASICE"></span><span class="target" id="QnnCpuOpPackage_8h_1a4ea2324e2b963732c909757de88007e2a891c61d3feb815d9c35e2c52203fe9d9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CPU_PROFILE_BASIC</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N29QnnCpuOpPackage_ProfileType_t21QNN_CPU_PROFILE_BASICE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N29QnnCpuOpPackage_ProfileType_t24QNN_CPU_PROFILE_DETAILEDE">
+<span id="_CPPv3N29QnnCpuOpPackage_ProfileType_t24QNN_CPU_PROFILE_DETAILEDE"></span><span id="_CPPv2N29QnnCpuOpPackage_ProfileType_t24QNN_CPU_PROFILE_DETAILEDE"></span><span class="target" id="QnnCpuOpPackage_8h_1a4ea2324e2b963732c909757de88007e2a4dc860c24b15e8b4767e2dbb7aae28b6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CPU_PROFILE_DETAILED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">2</span></span><a class="headerlink" href="#_CPPv4N29QnnCpuOpPackage_ProfileType_t24QNN_CPU_PROFILE_DETAILEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N29QnnCpuOpPackage_ProfileType_t25QNN_CPU_PROFILE_UNDEFINEDE">
+<span id="_CPPv3N29QnnCpuOpPackage_ProfileType_t25QNN_CPU_PROFILE_UNDEFINEDE"></span><span id="_CPPv2N29QnnCpuOpPackage_ProfileType_t25QNN_CPU_PROFILE_UNDEFINEDE"></span><span class="target" id="QnnCpuOpPackage_8h_1a4ea2324e2b963732c909757de88007e2a49f2f06fe255c3b0721e5849927339a2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CPU_PROFILE_UNDEFINED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0x7FFFFFFF</span></span><a class="headerlink" href="#_CPPv4N29QnnCpuOpPackage_ProfileType_t25QNN_CPU_PROFILE_UNDEFINEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-variables">Variables</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp">
+<span class="target" id="QnnCpuOpPackage_8h_1a2ed5c6c1a740ff8859cee73f2fcd3f6e"></span><span class="sig-name descname"><span class="pre">typedef</span> <span class="pre">QnnCpuOpPackage_GraphInfrastructure_t</span></span></dt>
+<dd><p>Graph infrastructure. </p>
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv429QnnCpuOpPackage_GlobalInfra_t">
+<span id="_CPPv329QnnCpuOpPackage_GlobalInfra_t"></span><span id="_CPPv229QnnCpuOpPackage_GlobalInfra_t"></span><span id="QnnCpuOpPackage_GlobalInfra_t"></span><span class="target" id="structQnnCpuOpPackage__GlobalInfra__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnCpuOpPackage_GlobalInfra_t</span></span></span><a class="headerlink" href="#_CPPv429QnnCpuOpPackage_GlobalInfra_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnCpuOpPackage.h&gt;</em></div>
+<p>A struct which defines the Global infrastructure. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N29QnnCpuOpPackage_GlobalInfra_t13reportMessageE">
+<span id="_CPPv3N29QnnCpuOpPackage_GlobalInfra_t13reportMessageE"></span><span id="_CPPv2N29QnnCpuOpPackage_GlobalInfra_t13reportMessageE"></span><span class="target" id="structQnnCpuOpPackage__GlobalInfra__t_1a4394933d7775f5d6f07e37e86738ee5e"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">reportMessage</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="#_CPPv425QnnCpuOpPackage_MsgType_t" title="QnnCpuOpPackage_MsgType_t"><span class="n"><span class="pre">QnnCpuOpPackage_MsgType_t</span></span></a><span class="w"> </span><span class="n"><span class="pre">msgType</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">msg</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N29QnnCpuOpPackage_GlobalInfra_t13reportMessageE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N29QnnCpuOpPackage_GlobalInfra_t7profileE">
+<span id="_CPPv3N29QnnCpuOpPackage_GlobalInfra_t7profileE"></span><span id="_CPPv2N29QnnCpuOpPackage_GlobalInfra_t7profileE"></span><span class="target" id="structQnnCpuOpPackage__GlobalInfra__t_1a4eed8efb31c4f0a8622f7f2d29d1a062"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">profile</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="#_CPPv429QnnCpuOpPackage_ProfileType_t" title="QnnCpuOpPackage_ProfileType_t"><span class="n"><span class="pre">QnnCpuOpPackage_ProfileType_t</span></span></a><span class="w"> </span><span class="n"><span class="pre">profileType</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="typedef_QnnCpuOpPackage_8h_1aa6f6819eb552c7dc5678bc606dda34e6.html#_CPPv429QnnCpuOpPackage_ProfileData_t" title="QnnCpuOpPackage_ProfileData_t"><span class="n"><span class="pre">QnnCpuOpPackage_ProfileData_t</span></span></a><span class="w"> </span><span class="n"><span class="pre">timeInMsec</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N29QnnCpuOpPackage_GlobalInfra_t7profileE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv424QnnCpuOpPackage_OpImpl_t">
+<span id="_CPPv324QnnCpuOpPackage_OpImpl_t"></span><span id="_CPPv224QnnCpuOpPackage_OpImpl_t"></span><span id="QnnCpuOpPackage_OpImpl_t"></span><span class="target" id="structQnnCpuOpPackage__OpImpl__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnCpuOpPackage_OpImpl_t</span></span></span><a class="headerlink" href="#_CPPv424QnnCpuOpPackage_OpImpl_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnCpuOpPackage.h&gt;</em></div>
+<p>A struct which defines the OpImpl definition. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24QnnCpuOpPackage_OpImpl_t8opImplFnE">
+<span id="_CPPv3N24QnnCpuOpPackage_OpImpl_t8opImplFnE"></span><span id="_CPPv2N24QnnCpuOpPackage_OpImpl_t8opImplFnE"></span><span id="QnnCpuOpPackage_OpImpl_t::opImplFn__QnnCpuOpPackage_OpImplFn_t"></span><span class="target" id="structQnnCpuOpPackage__OpImpl__t_1a5506c2042b992821bb70559688343cee"></span><a class="reference internal" href="typedef_QnnCpuOpPackage_8h_1a15c71e09cd9a9fb1d9c7d5629e291844.html#_CPPv426QnnCpuOpPackage_OpImplFn_t" title="QnnCpuOpPackage_OpImplFn_t"><span class="n"><span class="pre">QnnCpuOpPackage_OpImplFn_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opImplFn</span></span></span><a class="headerlink" href="#_CPPv4N24QnnCpuOpPackage_OpImpl_t8opImplFnE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24QnnCpuOpPackage_OpImpl_t8userDataE">
+<span id="_CPPv3N24QnnCpuOpPackage_OpImpl_t8userDataE"></span><span id="_CPPv2N24QnnCpuOpPackage_OpImpl_t8userDataE"></span><span id="QnnCpuOpPackage_OpImpl_t::userData__voidP"></span><span class="target" id="structQnnCpuOpPackage__OpImpl__t_1af28dffbb47515013b1f63bb0b4e21e43"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">userData</span></span></span><a class="headerlink" href="#_CPPv4N24QnnCpuOpPackage_OpImpl_t8userDataE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv424QnnCpuOpPackage_Tensor_t">
+<span id="_CPPv324QnnCpuOpPackage_Tensor_t"></span><span id="_CPPv224QnnCpuOpPackage_Tensor_t"></span><span id="QnnCpuOpPackage_Tensor_t"></span><span class="target" id="structQnnCpuOpPackage__Tensor__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnCpuOpPackage_Tensor_t</span></span></span><a class="headerlink" href="#_CPPv424QnnCpuOpPackage_Tensor_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnCpuOpPackage.h&gt;</em></div>
+<p>A struct which describes the properties of a tensor. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24QnnCpuOpPackage_Tensor_t10dataFormatE">
+<span id="_CPPv3N24QnnCpuOpPackage_Tensor_t10dataFormatE"></span><span id="_CPPv2N24QnnCpuOpPackage_Tensor_t10dataFormatE"></span><span id="QnnCpuOpPackage_Tensor_t::dataFormat__QnnCpuOpPackage_TensorDataFormat_t"></span><span class="target" id="structQnnCpuOpPackage__Tensor__t_1a7fab7357cea292ac8017f028608e55e1"></span><a class="reference internal" href="typedef_QnnCpuOpPackage_8h_1a297115cb803db2626afca10e4d12b090.html#_CPPv434QnnCpuOpPackage_TensorDataFormat_t" title="QnnCpuOpPackage_TensorDataFormat_t"><span class="n"><span class="pre">QnnCpuOpPackage_TensorDataFormat_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dataFormat</span></span></span><a class="headerlink" href="#_CPPv4N24QnnCpuOpPackage_Tensor_t10dataFormatE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24QnnCpuOpPackage_Tensor_t8dataTypeE">
+<span id="_CPPv3N24QnnCpuOpPackage_Tensor_t8dataTypeE"></span><span id="_CPPv2N24QnnCpuOpPackage_Tensor_t8dataTypeE"></span><span id="QnnCpuOpPackage_Tensor_t::dataType__QnnCpuOpPackage_DataType_t"></span><span class="target" id="structQnnCpuOpPackage__Tensor__t_1a47c7e9fd83bfb4a7502a40ca06e7a2ff"></span><a class="reference internal" href="#_CPPv426QnnCpuOpPackage_DataType_t" title="QnnCpuOpPackage_DataType_t"><span class="n"><span class="pre">QnnCpuOpPackage_DataType_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dataType</span></span></span><a class="headerlink" href="#_CPPv4N24QnnCpuOpPackage_Tensor_t8dataTypeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24QnnCpuOpPackage_Tensor_t4rankE">
+<span id="_CPPv3N24QnnCpuOpPackage_Tensor_t4rankE"></span><span id="_CPPv2N24QnnCpuOpPackage_Tensor_t4rankE"></span><span id="QnnCpuOpPackage_Tensor_t::rank__uint32_t"></span><span class="target" id="structQnnCpuOpPackage__Tensor__t_1a50b20f783816aadd9d7ae47da50f029e"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rank</span></span></span><a class="headerlink" href="#_CPPv4N24QnnCpuOpPackage_Tensor_t4rankE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24QnnCpuOpPackage_Tensor_t13maxDimensionsE">
+<span id="_CPPv3N24QnnCpuOpPackage_Tensor_t13maxDimensionsE"></span><span id="_CPPv2N24QnnCpuOpPackage_Tensor_t13maxDimensionsE"></span><span id="QnnCpuOpPackage_Tensor_t::maxDimensions__uint32_tP"></span><span class="target" id="structQnnCpuOpPackage__Tensor__t_1a8aa9411354ce16e3a413e39dd619217f"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">maxDimensions</span></span></span><a class="headerlink" href="#_CPPv4N24QnnCpuOpPackage_Tensor_t13maxDimensionsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24QnnCpuOpPackage_Tensor_t17currentDimensionsE">
+<span id="_CPPv3N24QnnCpuOpPackage_Tensor_t17currentDimensionsE"></span><span id="_CPPv2N24QnnCpuOpPackage_Tensor_t17currentDimensionsE"></span><span id="QnnCpuOpPackage_Tensor_t::currentDimensions__uint32_tP"></span><span class="target" id="structQnnCpuOpPackage__Tensor__t_1a14c272fd2c94162ee7e3f6a221409143"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">currentDimensions</span></span></span><a class="headerlink" href="#_CPPv4N24QnnCpuOpPackage_Tensor_t17currentDimensionsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24QnnCpuOpPackage_Tensor_t4dataE">
+<span id="_CPPv3N24QnnCpuOpPackage_Tensor_t4dataE"></span><span id="_CPPv2N24QnnCpuOpPackage_Tensor_t4dataE"></span><span id="QnnCpuOpPackage_Tensor_t::data__voidP"></span><span class="target" id="structQnnCpuOpPackage__Tensor__t_1ac520af2868fd373445e8022dd90fcefa"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">data</span></span></span><a class="headerlink" href="#_CPPv4N24QnnCpuOpPackage_Tensor_t4dataE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24QnnCpuOpPackage_Tensor_t14quantizeParamsE">
+<span id="_CPPv3N24QnnCpuOpPackage_Tensor_t14quantizeParamsE"></span><span id="_CPPv2N24QnnCpuOpPackage_Tensor_t14quantizeParamsE"></span><span id="QnnCpuOpPackage_Tensor_t::quantizeParams__Qnn_QuantizeParams_t"></span><span class="target" id="structQnnCpuOpPackage__Tensor__t_1a3708286209cc41a60b0e8b954ffe4964"></span><a class="reference internal" href="structQnn__QuantizeParams__t.html#_CPPv420Qnn_QuantizeParams_t" title="Qnn_QuantizeParams_t"><span class="n"><span class="pre">Qnn_QuantizeParams_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">quantizeParams</span></span></span><a class="headerlink" href="#_CPPv4N24QnnCpuOpPackage_Tensor_t14quantizeParamsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv423QnnCpuOpPackage_Param_t">
+<span id="_CPPv323QnnCpuOpPackage_Param_t"></span><span id="_CPPv223QnnCpuOpPackage_Param_t"></span><span id="QnnCpuOpPackage_Param_t"></span><span class="target" id="structQnnCpuOpPackage__Param__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnCpuOpPackage_Param_t</span></span></span><a class="headerlink" href="#_CPPv423QnnCpuOpPackage_Param_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnCpuOpPackage.h&gt;</em></div>
+<p>A struct which describes the parameters of a node. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23QnnCpuOpPackage_Param_t4typeE">
+<span id="_CPPv3N23QnnCpuOpPackage_Param_t4typeE"></span><span id="_CPPv2N23QnnCpuOpPackage_Param_t4typeE"></span><span id="QnnCpuOpPackage_Param_t::type__QnnCpuOpPackage_ParamType_t"></span><span class="target" id="structQnnCpuOpPackage__Param__t_1af1b1b256238a843dc14d5226fa219b5a"></span><a class="reference internal" href="#_CPPv427QnnCpuOpPackage_ParamType_t" title="QnnCpuOpPackage_ParamType_t"><span class="n"><span class="pre">QnnCpuOpPackage_ParamType_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">type</span></span></span><a class="headerlink" href="#_CPPv4N23QnnCpuOpPackage_Param_t4typeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23QnnCpuOpPackage_Param_t4nameE">
+<span id="_CPPv3N23QnnCpuOpPackage_Param_t4nameE"></span><span id="_CPPv2N23QnnCpuOpPackage_Param_t4nameE"></span><span id="QnnCpuOpPackage_Param_t::name__cCP"></span><span class="target" id="structQnnCpuOpPackage__Param__t_1a040329745215651f70c5739b74164a65"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">name</span></span></span><a class="headerlink" href="#_CPPv4N23QnnCpuOpPackage_Param_t4nameE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23QnnCpuOpPackage_Param_t11scalarParamE">
+<span id="_CPPv3N23QnnCpuOpPackage_Param_t11scalarParamE"></span><span id="_CPPv2N23QnnCpuOpPackage_Param_t11scalarParamE"></span><span id="QnnCpuOpPackage_Param_t::scalarParam__double"></span><span class="target" id="structQnnCpuOpPackage__Param__t_1a71ba28b3e7e4b050db9b455917b33799"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">scalarParam</span></span></span><a class="headerlink" href="#_CPPv4N23QnnCpuOpPackage_Param_t11scalarParamE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23QnnCpuOpPackage_Param_t6stringE">
+<span id="_CPPv3N23QnnCpuOpPackage_Param_t6stringE"></span><span id="_CPPv2N23QnnCpuOpPackage_Param_t6stringE"></span><span id="QnnCpuOpPackage_Param_t::string__cCP"></span><span class="target" id="structQnnCpuOpPackage__Param__t_1a741bbc738483d36ba5c30d5b093f90bf"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">string</span></span></span><a class="headerlink" href="#_CPPv4N23QnnCpuOpPackage_Param_t6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23QnnCpuOpPackage_Param_t11tensorParamE">
+<span id="_CPPv3N23QnnCpuOpPackage_Param_t11tensorParamE"></span><span id="_CPPv2N23QnnCpuOpPackage_Param_t11tensorParamE"></span><span id="QnnCpuOpPackage_Param_t::tensorParam__QnnCpuOpPackage_Tensor_tP"></span><span class="target" id="structQnnCpuOpPackage__Param__t_1afe93cfe97ef4a51fcd3d2c8437873c81"></span><a class="reference internal" href="structQnnCpuOpPackage__Tensor__t.html#_CPPv424QnnCpuOpPackage_Tensor_t" title="QnnCpuOpPackage_Tensor_t"><span class="n"><span class="pre">QnnCpuOpPackage_Tensor_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">tensorParam</span></span></span><a class="headerlink" href="#_CPPv4N23QnnCpuOpPackage_Param_t11tensorParamE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23QnnCpuOpPackage_Param_tUt1_1E">
+<span id="_CPPv3N23QnnCpuOpPackage_Param_tUt1_1E"></span><span class="target" id="structQnnCpuOpPackage__Param__t_1a0544efd173054ad490a78067339d4955"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><a class="reference internal" href="structQnnCpuOpPackage__Param__t.html#_CPPv423QnnCpuOpPackage_Param_t" title="QnnCpuOpPackage_Param_t"><span class="n"><span class="pre">QnnCpuOpPackage_Param_t</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">[anonymous]</span></span></span><a class="headerlink" href="#_CPPv4N23QnnCpuOpPackage_Param_tUt1_1E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv422QnnCpuOpPackage_Node_t">
+<span id="_CPPv322QnnCpuOpPackage_Node_t"></span><span id="_CPPv222QnnCpuOpPackage_Node_t"></span><span id="QnnCpuOpPackage_Node_t"></span><span class="target" id="structQnnCpuOpPackage__Node__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnCpuOpPackage_Node_t</span></span></span><a class="headerlink" href="#_CPPv422QnnCpuOpPackage_Node_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnCpuOpPackage.h&gt;</em></div>
+<p>A struct which describes the node. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22QnnCpuOpPackage_Node_t4nameE">
+<span id="_CPPv3N22QnnCpuOpPackage_Node_t4nameE"></span><span id="_CPPv2N22QnnCpuOpPackage_Node_t4nameE"></span><span id="QnnCpuOpPackage_Node_t::name__cCP"></span><span class="target" id="structQnnCpuOpPackage__Node__t_1a751bbf92ec77214283965882ec8ea89a"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">name</span></span></span><a class="headerlink" href="#_CPPv4N22QnnCpuOpPackage_Node_t4nameE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22QnnCpuOpPackage_Node_t11packageNameE">
+<span id="_CPPv3N22QnnCpuOpPackage_Node_t11packageNameE"></span><span id="_CPPv2N22QnnCpuOpPackage_Node_t11packageNameE"></span><span id="QnnCpuOpPackage_Node_t::packageName__cCP"></span><span class="target" id="structQnnCpuOpPackage__Node__t_1a8079b25b1fa6376f2b58b60fcfceb2e8"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">packageName</span></span></span><a class="headerlink" href="#_CPPv4N22QnnCpuOpPackage_Node_t11packageNameE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22QnnCpuOpPackage_Node_t8typeNameE">
+<span id="_CPPv3N22QnnCpuOpPackage_Node_t8typeNameE"></span><span id="_CPPv2N22QnnCpuOpPackage_Node_t8typeNameE"></span><span id="QnnCpuOpPackage_Node_t::typeName__cCP"></span><span class="target" id="structQnnCpuOpPackage__Node__t_1ad34a8549f8affb84b23317ef5dee3995"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">typeName</span></span></span><a class="headerlink" href="#_CPPv4N22QnnCpuOpPackage_Node_t8typeNameE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22QnnCpuOpPackage_Node_t11numOfParamsE">
+<span id="_CPPv3N22QnnCpuOpPackage_Node_t11numOfParamsE"></span><span id="_CPPv2N22QnnCpuOpPackage_Node_t11numOfParamsE"></span><span id="QnnCpuOpPackage_Node_t::numOfParams__uint32_t"></span><span class="target" id="structQnnCpuOpPackage__Node__t_1a1b5e23c204d6f48a0f948e623d557f52"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">numOfParams</span></span></span><a class="headerlink" href="#_CPPv4N22QnnCpuOpPackage_Node_t11numOfParamsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22QnnCpuOpPackage_Node_t6paramsE">
+<span id="_CPPv3N22QnnCpuOpPackage_Node_t6paramsE"></span><span id="_CPPv2N22QnnCpuOpPackage_Node_t6paramsE"></span><span id="QnnCpuOpPackage_Node_t::params__QnnCpuOpPackage_Param_tPP"></span><span class="target" id="structQnnCpuOpPackage__Node__t_1a59ca1b3e2342de17b3bb5afb577b6388"></span><a class="reference internal" href="structQnnCpuOpPackage__Param__t.html#_CPPv423QnnCpuOpPackage_Param_t" title="QnnCpuOpPackage_Param_t"><span class="n"><span class="pre">QnnCpuOpPackage_Param_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">params</span></span></span><a class="headerlink" href="#_CPPv4N22QnnCpuOpPackage_Node_t6paramsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22QnnCpuOpPackage_Node_t11numOfInputsE">
+<span id="_CPPv3N22QnnCpuOpPackage_Node_t11numOfInputsE"></span><span id="_CPPv2N22QnnCpuOpPackage_Node_t11numOfInputsE"></span><span id="QnnCpuOpPackage_Node_t::numOfInputs__uint32_t"></span><span class="target" id="structQnnCpuOpPackage__Node__t_1a721f3bd5e209078a0e113a8127eef9c7"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">numOfInputs</span></span></span><a class="headerlink" href="#_CPPv4N22QnnCpuOpPackage_Node_t11numOfInputsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22QnnCpuOpPackage_Node_t6inputsE">
+<span id="_CPPv3N22QnnCpuOpPackage_Node_t6inputsE"></span><span id="_CPPv2N22QnnCpuOpPackage_Node_t6inputsE"></span><span id="QnnCpuOpPackage_Node_t::inputs__QnnCpuOpPackage_Tensor_tPP"></span><span class="target" id="structQnnCpuOpPackage__Node__t_1ae33e3b266388bb955bbbe6541a141ec6"></span><a class="reference internal" href="structQnnCpuOpPackage__Tensor__t.html#_CPPv424QnnCpuOpPackage_Tensor_t" title="QnnCpuOpPackage_Tensor_t"><span class="n"><span class="pre">QnnCpuOpPackage_Tensor_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">inputs</span></span></span><a class="headerlink" href="#_CPPv4N22QnnCpuOpPackage_Node_t6inputsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22QnnCpuOpPackage_Node_t12numOfOutputsE">
+<span id="_CPPv3N22QnnCpuOpPackage_Node_t12numOfOutputsE"></span><span id="_CPPv2N22QnnCpuOpPackage_Node_t12numOfOutputsE"></span><span id="QnnCpuOpPackage_Node_t::numOfOutputs__uint32_t"></span><span class="target" id="structQnnCpuOpPackage__Node__t_1adc2e1613c1ebedcd57611d05f520b8af"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">numOfOutputs</span></span></span><a class="headerlink" href="#_CPPv4N22QnnCpuOpPackage_Node_t12numOfOutputsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22QnnCpuOpPackage_Node_t7outputsE">
+<span id="_CPPv3N22QnnCpuOpPackage_Node_t7outputsE"></span><span id="_CPPv2N22QnnCpuOpPackage_Node_t7outputsE"></span><span id="QnnCpuOpPackage_Node_t::outputs__QnnCpuOpPackage_Tensor_tPP"></span><span class="target" id="structQnnCpuOpPackage__Node__t_1a74b0203c36febd7aab079f80627423d2"></span><a class="reference internal" href="structQnnCpuOpPackage__Tensor__t.html#_CPPv424QnnCpuOpPackage_Tensor_t" title="QnnCpuOpPackage_Tensor_t"><span class="n"><span class="pre">QnnCpuOpPackage_Tensor_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">outputs</span></span></span><a class="headerlink" href="#_CPPv4N22QnnCpuOpPackage_Node_t7outputsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

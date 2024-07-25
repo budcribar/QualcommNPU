@@ -1,0 +1,467 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>PSNPE Android Tutorial &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="DSP Runtime Environment" href="dsp_runtime.html" />
+    <link rel="prev" title="PSNPE C++ Tutorial" href="tutorial_psnpe_cplus_plus_tutorial.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup1.html">Network Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="usergroup6.html">Tutorials and Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial_setup.html">Tutorials Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snpe2_migration_guidelines.html">SNPE1 to SNPE2 Migration Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup7.html">Running Nets</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="usergroup8.html">Code Examples</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="cplus_plus_tutorial.html">C++ Tutorial - Build the Sample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="c_tutorial.html">C Tutorial - Build the Sample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="c_api_guidelines.html">C API Guidelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="android_tutorial.html">Android Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="build_samplecode_windows.html">Windows Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_inceptionv3_udo.html">UDO Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_inceptionv3_udo_dsp.html">UDO DSP tutorial for Quantized DLC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_inceptionv3_udo_dsp_win.html">UDO DSP tutorial on Windows for Quantized DLC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_onnx_udo_weights.html">UDO Tutorial With Weights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_psnpe_introduction.html">PSNPE Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_psnpe_c_tutorial.html">PSNPE C Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_psnpe_cplus_plus_tutorial.html">PSNPE C++ Tutorial</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">PSNPE Android Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dsp_runtime.html">DSP Runtime Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="network_resize.html">Network Resizing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="input_batch.html">Input Image Batch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="init_caching.html">Init Caching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup9.html">Application Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="usergroup6.html">Tutorials and Examples</a> &raquo;</li>
+        
+          <li><a href="usergroup8.html">Code Examples</a> &raquo;</li>
+        
+      <li>PSNPE Android Tutorial</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="psnpe-android-tutorial">
+<h1>PSNPE Android Tutorial<a class="headerlink" href="#psnpe-android-tutorial" title="Permalink to this heading">¶</a></h1>
+<p class="rubric" id="prerequisites">Prerequisites</p>
+<ul class="simple">
+<li><p>The Qualcomm® Neural Processing SDK has been set up following the <a class="reference external" href="setup.html">|Qualcomm(R)| Neural Processing SDK Setup</a>.</p></li>
+<li><p>The <a class="reference external" href="tutorial_setup.html">Tutorials Setup</a> has been completed.</p></li>
+</ul>
+<p class="rubric" id="introduction">Introduction</p>
+<p>This tutorial walks through the process of integrating PSNPE <a class="reference external" href="tools.html#snpe-parallel-run">snpe-parallel-run</a>
+Java APIs within an Android application. The PSNPE Java APIs are made available as an Android Archive (AAR)
+file which application developers include as a dependency of their applications.</p>
+<p class="rubric" id="gradle-project-dependency">Gradle project dependency</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>allprojects {
+    repositories {
+        jcenter()
+        flatDir {
+            // Marks the directory as a repository for
+            // dependencies. Place the psnpe-release.aar
+            // in the directory below.
+            dirs &#39;libs&#39;
+        }
+    }
+}
+...
+dependencies {
+    // This adds the |Qualcomm(R)| Neural Processing SDK including PSNPE as a project dependency
+    compile(name: &#39;psnpe-release&#39;, ext:&#39;aar&#39;)
+    ...
+}
+</pre></div>
+</div>
+<p class="rubric" id="psnpe-java-api-overview">PSNPE Java API Overview</p>
+<p>Once the dependency of PSNPE is added, the PSNPE classes under the <strong>com.qualcomm.qti.psnpe</strong>
+package will be available in the application classpath. Application will firstly create an
+object of PSNPE, then use that object to call validation APIs.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>//PSNPE manager class is for creating, executing and releasing psnpe instance.
+import com.qualcomm.qti.psnpe.PSNPEManager;
+//This class is for PSNPE configuration.
+import com.qualcomm.qti.psnpe.PSNPEConfig;
+//Interface for registeration of callback functions.
+import com.qualcomm.qti.psnpe.PSNPEManagerListener;
+</pre></div>
+</div>
+<p>Most applications could follow below steps with a model in format of DLC:</p>
+<ol class="arabic simple">
+<li><p>Initialize the environment</p></li>
+<li><p>Set the builder configuration list</p></li>
+<li><p>Load input data</p></li>
+<li><p>Execute the object with multiple runtimes</p></li>
+<li><p>Process the network output</p></li>
+</ol>
+<p>The following sections describe how to implement each step described above.</p>
+<p class="rubric" id="configuring-a-neural-network">Configuring a Neural Network</p>
+<p>The excerpt of code below shows how to set paths of native libraries and configuration file.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>PSNPEManager.init(nativeLibPath,  runtimeConfigPath + &quot;/model_configs.json&quot;)
+</pre></div>
+</div>
+<p>The configuration file should be named as “model_configs.json” and follow below format:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>//the example of json file
+{
+  &quot;models&quot;: [
+    {
+      &quot;name&quot;: &quot;&lt;Model Name&gt;&quot;,
+      &quot;modelFile&quot;: &quot;&lt;Path of DLC on device, e.g:
+                     /storage/emulated/0/Android/data/com.qualcomm.qti.psnpedemo/files/models/classification/inceptionv3.dlc&gt;&quot;,
+      &quot;executeMode&quot;: &quot;&lt;Choose implementation type for psnpe: sync, outputAsync, inputOutputAsync&gt;&quot;,
+      &quot;enableInitCache&quot;: &quot;&lt;Set to true to enable init cache&gt;&quot;,
+      &quot;platformOptions&quot;: &quot;&lt;List of supported platform options. For example: &#39;unsignedPD:ON&#39;&gt;&quot;,
+      &quot;bulkSize&quot;: &lt;No. of images in once time&gt;,
+      &quot;buildConfig&quot;: [
+        {
+          &quot;runtime&quot;: &quot;&lt;Run psnpe with the following runtime options: CPU, GPU,GPU_s, GPU_FP16, DSP, AIP, AIP_ACT16&gt;&quot;,
+          &quot;batch&quot;: &lt;No. of dynamic setting the model batch&gt;,
+          &quot;userBufferMode&quot;: &quot;&lt;Choose Buffer Types from the following options: float, TF8. TF8 is considered by default.&gt;&quot;,
+          &quot;performanceProfile&quot;: &quot;&lt;Choose profiling level from the following options: default, balanced, high_performance,
+                                  power_saver, system_settings, burst, sustained_high_performance, low_power_saver, high_power_saver, extreme_power_saver, low_balanced&gt;&quot;,
+          &quot;enableCPUFallback&quot;: &quot;&lt;Set to true to enable CPU fallback&gt;&quot;
+        }
+      ]
+    }
+  ]
+}
+</pre></div>
+</div>
+<p>The excerpt code below shows how to use PSNPEManager to build a neural network.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>PSNPEManager.buildFromFile(modelInfo.getModelName())
+</pre></div>
+</div>
+<p class="rubric" id="synchronous-mode">Synchronous Mode</p>
+<p>In synchronous mode, input data loading, neural network propagation and output
+postprocessing are processed sequentially. The code excerpt below shows how to
+load input data and propagate neural network in synchronous mode.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>// handleSize is the number of input images.
+for(int i=0; i&lt;handleSize; i++) {
+    File image = imagesList[index++];
+    //image preprocessing
+    float[] data = imagePreprocessor.preProcessData(image);
+    //load data into float buffer.
+    if (!PSNPEManager.loadData(data, i)) {
+        PSNPEManager.release();
+        ...
+        return false;
+    }
+    ...
+}
+// propagate in synchronous mode
+if (!PSNPEManager.executeSync()) {
+    PSNPEManager.release();
+    return false;
+}
+</pre></div>
+</div>
+<p>The code excerpt below shows how to get output in synchronous mode.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>//get output result
+for(int i = 0; i &lt; imageNum; i++) {
+    /* output:
+     * &lt;image1&gt;&lt;image2&gt;...&lt;imageBulkSize&gt;
+     * split output and handle one by one.
+     */
+    Map&lt;String, float []&gt; outputMap = PSNPEManager.getOutputSync(i); //the index &#39;i&#39;
+    String[] outputNames = PSNPEManager.getOutputTensorNames();
+    float[] output = outputMap.get(outputNames[0]);
+    ...
+}
+</pre></div>
+</div>
+<p class="rubric" id="output-asynchronous-mode">Output Asynchronous Mode</p>
+<p>In output asynchronous mode, input data loading is same as
+<a class="reference external" href="tutorial_psnpe_android_tutorial.html#synchronous-mode">Synchronous Mode</a>,
+but a different Java API shown in below code excerpt is for neural network execution in output asynchronous mode.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>PSNPEManager.executeOutputAsync();
+</pre></div>
+</div>
+<p>Callback function is used to get the output data asynchronously.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>imageMap = new HashMap&lt;&gt;();
+listener = new PSNPEManagerListener() {
+    @Override
+    public void getOutputCallback(int index, Map&lt;String, float[]&gt; data, int errorCode) {
+        resultPostProcessor.addToProcessList(imageMap.get(index), data);
+    }
+    @Override
+    public void onInferenceDone() {
+        ... //the signal after finishing the inference.
+    }
+    @Override
+    public void onOutputProcessDone() {
+        ... //the signal after outputting last one data.
+    }
+};
+PSNPEManager.registerPSNPEManagerListener(listener);
+</pre></div>
+</div>
+<p class="rubric" id="inputoutput-asynchronous-mode">Input/Output Asynchronous Mode</p>
+<p>In input/output asynchronous mode, all of input data loading, neural network propagation and output postprocessing are processed asynchronously.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>for(int i = 0; i &lt; imagesList.length; i++) {
+    ...
+    List&lt;String&gt; file = new ArrayList&lt;String&gt;();
+    file.add(files.get(i));
+    ...
+    PSNPEManager.executeInputOutputAsync(file, i, imagesList.length);
+}
+</pre></div>
+</div>
+<p>Callback function of loading input data.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>@Override
+public float[] IOAsyncInputCallback(String s) {
+    File file = new File(s);
+    float[] data = imagePreprocessor.preProcessData(file);
+    return data;
+}
+</pre></div>
+</div>
+<p class="rubric" id="android-sample-application">Android Sample Application</p>
+<p>The Qualcomm® Neural Processing Android SDK includes a sample PSNPE application that showcases the PSNPE features. This application source code is in:</p>
+<ul class="simple">
+<li><p>$SNPE_ROOT/examples/SNPE/android/psnpe-demo</p></li>
+</ul>
+<p>Here are the screenshots of the sample:</p>
+<div class="docutils container">
+<div class="figure align-default">
+<img alt="../images/psnpe_root_sample_images.png" src="../images/psnpe_root_sample_images.png" />
+</div>
+</div>
+<p>Note that PSNPE provides the following AAR file which include necessary binaries:</p>
+<ul class="simple">
+<li><p><strong>psnpe-release.aar</strong>: Native binaries compiled with clang using libc++ STL.
+Available at $SNPE_ROOT/lib/android/snpe-release.aar</p></li>
+</ul>
+<p>Please set environment variable to this PSNPE_AAR file.</p>
+<p>To build and run this sample, include the PSNPE AAR as described above and build with the following commands, in addition, you need to refer to <a class="reference external" href="tools.html#model-conversion">model-conversion</a> and prepare the DLC file in advance:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>export PSNPE_AAR=psnpe-release.aar
+cd $SNPE_ROOT/examples/SNPE/android/psnpe-demo
+cp $SNPE_ROOT/lib/android/$PSNPE_AAR app/libs/psnpe-release.aar
+adb push psnpe-demo/resources/model_configs.json /storage/emulated/0/Android/data/com.qualcomm.qti.psnpedemo/files/configs/
+adb push models/classification/inceptionv3.dlc /storage/emulated/0/Android/data/com.qualcomm.qti.psnpedemo/files/models/classification/
+adb push images /storage/emulated/0/Android/data/com.qualcomm.qti.psnpedemo/files/datasets/classificationData/images
+adb push labels.txt /storage/emulated/0/Android/data/com.qualcomm.qti.psnpedemo/files/datasets/classificationData/
+adb push imagenet_slim_labels.txt /storage/emulated/0/Android/data/com.qualcomm.qti.psnpedemo/files/datasets/classificationData/
+</pre></div>
+</div>
+<p><strong>Note</strong>:</p>
+<ul class="simple">
+<li><p>If building produces the error <strong>gradle build failure due to “SDK location not found”</strong>,
+set the environment variable ANDROID_HOME to point to your sdk location.</p></li>
+<li><p>Building the sample code with gradle requires Java 8.</p></li>
+<li><p>To run the sample APK, push DLC model, JSON file, and images with its label file into the related paths.</p></li>
+</ul>
+<p>After the build successfully completes, the output APK can be found in the application build folder:</p>
+<ul class="simple">
+<li><p>$SNPE_ROOT/examples/SNPE/android/psnpe-demo/app/build/outputs/apk/debug</p></li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="dsp_runtime.html" class="btn btn-neutral float-right" title="DSP Runtime Environment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="tutorial_psnpe_cplus_plus_tutorial.html" class="btn btn-neutral float-left" title="PSNPE C++ Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

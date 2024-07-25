@@ -1,0 +1,886 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Linting Profile &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="MobilenetSSD Benchmarking" href="benchmark_mobilenet_ssd.html" />
+    <link rel="prev" title="Benchmarking" href="benchmarking.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup1.html">Network Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup6.html">Tutorials and Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="usergroup10.html">Benchmarking and Accuracy</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="benchmarking.html">Benchmarking</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Linting Profile</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="benchmark_mobilenet_ssd.html">MobilenetSSD Benchmarking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="accuracy.html">Inference Accuracy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="usergroup10.html">Benchmarking and Accuracy</a> &raquo;</li>
+        
+          <li><a href="benchmarking.html">Benchmarking</a> &raquo;</li>
+        
+      <li>Linting Profile</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="linting-profile">
+<h1>Linting Profile<a class="headerlink" href="#linting-profile" title="Permalink to this heading">¶</a></h1>
+<div class="ui-resizable side-nav-resizable docutils container" id="side-nav">
+<div class="docutils container" id="nav-tree">
+<div class="docutils container" id="nav-tree-contents">
+</div>
+</div>
+</div>
+<div class="docutils container" id="doc-content">
+<div class="header docutils container">
+</div>
+<div class="contents docutils container">
+<div class="textblock docutils container">
+<p class="rubric" id="brief">Brief</p>
+<p>Linting mode is a performance profiling configuration for ops running on the HTP backend.
+Detailed profiling report provides per op profiling result by cycle counts instead of time
+in microsecs. There is no direct conversion method from cycle count to microsecs because of
+the parallelized execution of Ops. Hence it is recommended to use the per op cycle timings
+as a reference to compare/measure the relative performance to know which of them are using
+lower/higher cycles to finish the execution. Assuming the HTP backend prerequisite is met,
+Linting mode is activated by including <code class="docutils literal notranslate"><span class="pre">--profiling_level=linting</span></code> while running snpe-net-run
+or by using the <code class="docutils literal notranslate"><span class="pre">Snpe_SNPEBuilder_SetProfilingLevel</span></code> API header to set the profiling level to
+<code class="docutils literal notranslate"><span class="pre">SNPE_PROFILING_LEVEL_LINTING</span></code>.</p>
+<p class="rubric" id="linting-profile-metrics">Linting Profile Metrics</p>
+<p>On the main thread, each op has to wait for some cycles since the execution of the
+last op before the start of its own execution. This wait period can be attributed
+to various factors such as scheduling or waiting for some background HVX or DMA
+activity to finish. Linting profiling provides the following diagnostic entries per
+HTP op:</p>
+<ul class="simple">
+<li><p><strong>Wait:</strong> The “Wait” entry is a foreground execution descriptor that denotes the
+number of cycles spent actually executing the op on the main thread since the previous
+op that ran on the main thread.</p></li>
+<li><p><strong>Overlap:</strong> The “Overlap” entry is a background execution descriptor that denotes the
+number of cycles spent on at least one background op while this op is executing on the
+main thread.</p></li>
+<li><p><strong>Overlap (wait):</strong> The “Overlap (wait)” entry is a background execution descriptor. It
+is similar to the “Wait” entry with the exception that the cycles reported in this entry
+correspond to the “Wait” period (i.e. cycles spent on at least one background op while
+the main thread was waiting).</p></li>
+<li><p><strong>Resources</strong> The “Resources” entry lists the different resources used by the given op.
+Namely some combination of HVX, HMX, and DMA.</p></li>
+</ul>
+<p>Background ops that are being waited on by main thread ops are not considered as background
+activity and as such do not contribute to the counts reported by the overlap entries. Each
+of the overlap entries also has up to 10 indented lines following it indicating the names
+of the ops that contributed to the respective overlap cycle count. Please refer to the
+<a class="reference internal" href="#model-optimization-example"><span class="std std-ref">model optimization example</span></a> below to see samples of how
+snpe-diagview displays the aforementioned Linting profile metrics.</p>
+<p class="rubric" id="chrometrace">Chrometrace</p>
+<p>Like its sibling profiling levels, Linting profile metrics are averaged across all inputs used
+during inference and can be viewed using the snpe-diagview tool. However, one advantage of
+Linting profile is the ability to export chrometrace JSON files, which can be used to visualize
+the op foreground and background execution and overlaps detailed by the Linting profile metrics.</p>
+<p class="rubric" id="model-optimization-example">Model Optimization Example</p>
+<p>In this section, we walk through an example of how we can use Linting mode and chrometraces to
+address a bottleneck in a simple network. <a class="reference internal" href="#linting-profiling-showcase-model-original1-figure"><span class="std std-ref">Showcase Model 1</span></a>
+diagram illustrates a model with two branches each performing a couple of convolutions before
+their results are used in a sub operation.</p>
+<p class="centered" id="linting-profiling-showcase-model-original1-figure">
+<strong><strong>Showcase Model 1</strong></strong></p><div class="figure align-center">
+<img alt="Linting Profiling Showcase Model 1" src="../images/linting_profiling_showcase_model_original_1.png" />
+</div>
+<p>The linting profiling output by snpe-diagview for this model is given below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+
+<span class="n">Per</span><span class="o">-</span><span class="n">Graph</span> <span class="n">Execution</span> <span class="n">Times</span><span class="p">:</span>
+<span class="o">---------------</span>
+<span class="n">HTP</span> <span class="n">Subnet</span> <span class="mi">0</span><span class="p">:</span> <span class="mi">4327266</span> <span class="n">cycles</span>
+
+<span class="n">Layer</span> <span class="n">Times</span><span class="p">:</span>
+<span class="o">---------------</span>
+  <span class="mi">0</span><span class="p">:</span> <span class="n">Input</span> <span class="n">OpId_2</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Resources</span><span class="p">:</span>
+  <span class="mi">1</span><span class="p">:</span> <span class="n">OpId_0</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">8036</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">629</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">4770</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">565</span> <span class="n">cycles</span>
+    <span class="n">Resources</span><span class="p">:</span>
+  <span class="mi">2</span><span class="p">:</span> <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">147075</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">32</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">85292</span> <span class="n">cycles</span>
+      <span class="n">model_sub_sub</span><span class="p">:</span><span class="n">OpId_57</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_58</span>
+      <span class="n">model_tf_op_layer_stride_stride</span><span class="p">:</span><span class="n">OpId_24</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">32</span> <span class="n">cycles</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+    <span class="n">Resources</span><span class="p">:</span> <span class="n">HVX</span><span class="p">,</span> <span class="n">HMX</span><span class="p">,</span> <span class="n">DMA</span>
+  <span class="mi">3</span><span class="p">:</span> <span class="n">model_tf_op_layer_stride_stride</span><span class="p">:</span><span class="n">OpId_24</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">146494</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">70807</span> <span class="n">cycles</span>
+      <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_58</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+      <span class="n">model_tf_op_layer_stride_stride</span><span class="p">:</span><span class="n">OpId_24</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Resources</span><span class="p">:</span> <span class="n">HVX</span>
+  <span class="mi">4</span><span class="p">:</span> <span class="n">model_convLeft1_Conv2D</span><span class="p">:</span><span class="n">OpId_34</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">288249</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">425</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">195988</span> <span class="n">cycles</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_58</span>
+      <span class="n">model_tf_op_layer_stride_stride</span><span class="p">:</span><span class="n">OpId_24</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">304</span> <span class="n">cycles</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_58</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+    <span class="n">Resources</span><span class="p">:</span> <span class="n">HMX</span><span class="p">,</span> <span class="n">DMA</span>
+  <span class="mi">5</span><span class="p">:</span> <span class="n">model_convRight1_Conv2D</span><span class="p">:</span><span class="n">OpId_41</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">220391</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">803</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">135268</span> <span class="n">cycles</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_58</span>
+      <span class="n">model_tf_op_layer_stride_stride</span><span class="p">:</span><span class="n">OpId_24</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">557</span> <span class="n">cycles</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_tf_op_layer_stride_stride</span><span class="p">:</span><span class="n">OpId_24</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+    <span class="n">Resources</span><span class="p">:</span> <span class="n">HMX</span><span class="p">,</span> <span class="n">DMA</span>
+  <span class="mi">6</span><span class="p">:</span> <span class="n">model_convRight2_Conv2D</span><span class="p">:</span><span class="n">OpId_48</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">181016</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">1090</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">69323</span> <span class="n">cycles</span>
+      <span class="n">model_sub_sub</span><span class="p">:</span><span class="n">OpId_57</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_58</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">489</span> <span class="n">cycles</span>
+      <span class="n">model_sub_sub</span><span class="p">:</span><span class="n">OpId_57</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_58</span>
+    <span class="n">Resources</span><span class="p">:</span> <span class="n">HMX</span><span class="p">,</span> <span class="n">DMA</span>
+  <span class="mi">7</span><span class="p">:</span> <span class="n">model_convLeft2_Conv2D</span><span class="p">:</span><span class="n">OpId_55</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">233736</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">1059</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">93020</span> <span class="n">cycles</span>
+      <span class="n">model_sub_sub</span><span class="p">:</span><span class="n">OpId_57</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_58</span>
+      <span class="n">model_tf_op_layer_stride_stride</span><span class="p">:</span><span class="n">OpId_24</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">464</span> <span class="n">cycles</span>
+      <span class="n">model_sub_sub</span><span class="p">:</span><span class="n">OpId_57</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_58</span>
+    <span class="n">Resources</span><span class="p">:</span> <span class="n">HMX</span><span class="p">,</span> <span class="n">DMA</span>
+  <span class="mi">8</span><span class="p">:</span> <span class="n">model_sub_sub</span><span class="p">:</span><span class="n">OpId_57</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">2165162</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">465046</span> <span class="n">cycles</span>
+      <span class="n">model_sub_sub</span><span class="p">:</span><span class="n">OpId_57</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_58</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+      <span class="n">model_tf_op_layer_stride_stride</span><span class="p">:</span><span class="n">OpId_24</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Resources</span><span class="p">:</span> <span class="n">HVX</span>
+  <span class="mi">9</span><span class="p">:</span> <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_58</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">525971</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">481468</span> <span class="n">cycles</span>
+      <span class="n">model_tf_op_layer_stride_stride</span><span class="p">:</span><span class="n">OpId_24</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_58</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Resources</span><span class="p">:</span> <span class="n">HVX</span>
+  <span class="mi">10</span><span class="p">:</span> <span class="n">Output</span> <span class="n">OpId_3</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">407091</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">115120</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Resources</span><span class="p">:</span> <span class="n">HVX</span>
+</pre></div>
+</div>
+<p>The linting profiling chrometrace output for this model is given below:</p>
+<p class="centered" id="linting-profiling-showcase-model-original1-chrometrace-figure">
+<strong><strong>Showcase Model 1 Chrometrace</strong></strong></p><div class="figure align-center">
+<img alt="Linting Profiling Showcase Model 1 Chrometrace" src="../images/linting_profiling_showcase_model_original_1_chrometrace.png" />
+</div>
+<p>From the output, it is evident that the sub op (OpId_57) is the most significant contributor
+to the total execution time - around 50%. This op also does not have significant parallel op
+execution - its Overlap time is 465046 cycles which is about 21.5% of its total execution time -
+indicating that this op is a good bottleneck to optimize. We can design an equvalent model as
+shown in the <a class="reference internal" href="#linting-profiling-showcase-model-optimized1-figure"><span class="std std-ref">Showcase Model 1 Optimized</span></a>
+diagram merging the two branches and replacing the sub op with a convolution with weights manually
+designed such that it performs the same task as a sub op.</p>
+<p class="centered" id="linting-profiling-showcase-model-optimized1-figure">
+<strong><strong>Showcase Model 1 Optimized</strong></strong></p><div class="figure align-center">
+<img alt="Linting Profiling Showcase Model 1 Optimized" src="../images/linting_profiling_showcase_model_optimized_1.png" />
+</div>
+<p>The linting profiling output for this optimized model is given below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+
+<span class="n">Per</span><span class="o">-</span><span class="n">Graph</span> <span class="n">Execution</span> <span class="n">Times</span><span class="p">:</span>
+<span class="o">---------------</span>
+<span class="n">HTP</span> <span class="n">Subnet</span> <span class="mi">0</span><span class="p">:</span> <span class="mi">1374349</span> <span class="n">cycles</span>
+
+<span class="n">Layer</span> <span class="n">Times</span><span class="p">:</span>
+<span class="o">---------------</span>
+  <span class="mi">0</span><span class="p">:</span> <span class="n">Input</span> <span class="n">OpId_2</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Resources</span><span class="p">:</span>
+  <span class="mi">1</span><span class="p">:</span> <span class="n">OpId_0</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">3500</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">1284</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">3221</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">1268</span> <span class="n">cycles</span>
+    <span class="n">Resources</span><span class="p">:</span>
+  <span class="mi">2</span><span class="p">:</span> <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">487448</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">32</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">475888</span> <span class="n">cycles</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_50</span>
+      <span class="n">model_tf_op_layer_stride_1_stride_1</span><span class="p">:</span><span class="n">OpId_24</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">32</span> <span class="n">cycles</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+    <span class="n">Resources</span><span class="p">:</span> <span class="n">HVX</span><span class="p">,</span> <span class="n">HMX</span><span class="p">,</span> <span class="n">DMA</span>
+  <span class="mi">3</span><span class="p">:</span> <span class="n">model_tf_op_layer_stride_1_stride_1</span><span class="p">:</span><span class="n">OpId_24</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">10422</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">10075</span> <span class="n">cycles</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+      <span class="n">model_tf_op_layer_stride_1_stride_1</span><span class="p">:</span><span class="n">OpId_24</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Resources</span><span class="p">:</span> <span class="n">HVX</span>
+  <span class="mi">4</span><span class="p">:</span> <span class="n">model_convCombined1_Conv2D</span><span class="p">:</span><span class="n">OpId_34</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">337711</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">82</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">307394</span> <span class="n">cycles</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_tf_op_layer_stride_1_stride_1</span><span class="p">:</span><span class="n">OpId_24</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">50</span> <span class="n">cycles</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+    <span class="n">Resources</span><span class="p">:</span> <span class="n">HMX</span><span class="p">,</span> <span class="n">DMA</span>
+  <span class="mi">5</span><span class="p">:</span> <span class="n">model_convCombined2_Conv2D</span><span class="p">:</span><span class="n">OpId_41</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">295022</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">1184</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">286062</span> <span class="n">cycles</span>
+      <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_50</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+      <span class="n">model_tf_op_layer_stride_1_stride_1</span><span class="p">:</span><span class="n">OpId_24</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">1140</span> <span class="n">cycles</span>
+      <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_50</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+      <span class="n">model_tf_op_layer_stride_1_stride_1</span><span class="p">:</span><span class="n">OpId_24</span>
+    <span class="n">Resources</span><span class="p">:</span> <span class="n">HMX</span><span class="p">,</span> <span class="n">DMA</span>
+  <span class="mi">6</span><span class="p">:</span> <span class="n">model_subConv_Conv2D</span><span class="p">:</span><span class="n">OpId_48</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">48720</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">1186</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">46686</span> <span class="n">cycles</span>
+      <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_50</span>
+      <span class="n">model_tf_op_layer_stride_1_stride_1</span><span class="p">:</span><span class="n">OpId_24</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">1142</span> <span class="n">cycles</span>
+      <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_50</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+    <span class="n">Resources</span><span class="p">:</span> <span class="n">HMX</span><span class="p">,</span> <span class="n">DMA</span>
+  <span class="mi">7</span><span class="p">:</span> <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_50</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">110698</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">108524</span> <span class="n">cycles</span>
+      <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_50</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+      <span class="n">model_tf_op_layer_stride_1_stride_1</span><span class="p">:</span><span class="n">OpId_24</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Resources</span><span class="p">:</span> <span class="n">HVX</span>
+  <span class="mi">8</span><span class="p">:</span> <span class="n">Output</span> <span class="n">OpId_3</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">77054</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">75438</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Resources</span><span class="p">:</span> <span class="n">HVX</span>
+</pre></div>
+</div>
+<p>The total execution time decreases significantly as a result of removing the sub op. All the ops
+now have a significant amount of parallel op execution, as evidenced by their respective Overlap
+time numbers, indicating good optimization.
+<a class="reference internal" href="#linting-profiling-showcase-model-original2-figure"><span class="std std-ref">Showcase Model 2</span></a> diagram illustrates a model
+that is similar to the one in the <a class="reference internal" href="#linting-profiling-showcase-model-original1-figure"><span class="std std-ref">Showcase Model 1</span></a>
+diagram. The difference is that there is a div op in place of the problematic sub op.</p>
+<p class="centered" id="linting-profiling-showcase-model-original2-figure">
+<strong><strong>Showcase Model 2</strong></strong></p><div class="figure align-center">
+<img alt="Linting Profiling Showcase Model 2" src="../images/linting_profiling_showcase_model_original_2.png" />
+</div>
+<p>The linting profiling output for this model is given below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+
+<span class="n">Per</span><span class="o">-</span><span class="n">Graph</span> <span class="n">Execution</span> <span class="n">Times</span><span class="p">:</span>
+<span class="o">---------------</span>
+<span class="n">HTP</span> <span class="n">Subnet</span> <span class="mi">0</span><span class="p">:</span> <span class="mi">7866535</span> <span class="n">cycles</span>
+
+<span class="n">Layer</span> <span class="n">Times</span><span class="p">:</span>
+<span class="o">---------------</span>
+  <span class="mi">0</span><span class="p">:</span> <span class="n">Input</span> <span class="n">OpId_2</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Resources</span><span class="p">:</span>
+  <span class="mi">1</span><span class="p">:</span> <span class="n">OpId_0</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">8657</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">782</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">5155</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">717</span> <span class="n">cycles</span>
+    <span class="n">Resources</span><span class="p">:</span>
+  <span class="mi">2</span><span class="p">:</span> <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">148293</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">34</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">86500</span> <span class="n">cycles</span>
+      <span class="n">model_tf_op_layer_RealDiv_RealDiv</span><span class="p">:</span><span class="n">OpId_57</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_58</span>
+      <span class="n">model_tf_op_layer_stride_stride</span><span class="p">:</span><span class="n">OpId_24</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">34</span> <span class="n">cycles</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+    <span class="n">Resources</span><span class="p">:</span> <span class="n">HVX</span><span class="p">,</span> <span class="n">HMX</span><span class="p">,</span> <span class="n">DMA</span>
+  <span class="mi">3</span><span class="p">:</span> <span class="n">model_tf_op_layer_stride_stride</span><span class="p">:</span><span class="n">OpId_24</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">145084</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">70877</span> <span class="n">cycles</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+      <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_58</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_tf_op_layer_stride_stride</span><span class="p">:</span><span class="n">OpId_24</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Resources</span><span class="p">:</span> <span class="n">HVX</span>
+  <span class="mi">4</span><span class="p">:</span> <span class="n">model_convLeft1_Conv2D</span><span class="p">:</span><span class="n">OpId_34</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">285476</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">431</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">196212</span> <span class="n">cycles</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_tf_op_layer_stride_stride</span><span class="p">:</span><span class="n">OpId_24</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">318</span> <span class="n">cycles</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_tf_op_layer_stride_stride</span><span class="p">:</span><span class="n">OpId_24</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+    <span class="n">Resources</span><span class="p">:</span> <span class="n">HMX</span><span class="p">,</span> <span class="n">DMA</span>
+  <span class="mi">5</span><span class="p">:</span> <span class="n">model_convRight1_Conv2D</span><span class="p">:</span><span class="n">OpId_41</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">219298</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">804</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">134711</span> <span class="n">cycles</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_tf_op_layer_stride_stride</span><span class="p">:</span><span class="n">OpId_24</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">558</span> <span class="n">cycles</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_tf_op_layer_stride_stride</span><span class="p">:</span><span class="n">OpId_24</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+    <span class="n">Resources</span><span class="p">:</span> <span class="n">HMX</span><span class="p">,</span> <span class="n">DMA</span>
+  <span class="mi">6</span><span class="p">:</span> <span class="n">model_convRight2_Conv2D</span><span class="p">:</span><span class="n">OpId_48</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">181198</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">1083</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">68306</span> <span class="n">cycles</span>
+      <span class="n">model_tf_op_layer_RealDiv_RealDiv</span><span class="p">:</span><span class="n">OpId_57</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_tf_op_layer_stride_stride</span><span class="p">:</span><span class="n">OpId_24</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">476</span> <span class="n">cycles</span>
+      <span class="n">model_tf_op_layer_RealDiv_RealDiv</span><span class="p">:</span><span class="n">OpId_57</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+    <span class="n">Resources</span><span class="p">:</span> <span class="n">HMX</span><span class="p">,</span> <span class="n">DMA</span>
+  <span class="mi">7</span><span class="p">:</span> <span class="n">model_convLeft2_Conv2D</span><span class="p">:</span><span class="n">OpId_55</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">233731</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">1055</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">91960</span> <span class="n">cycles</span>
+      <span class="n">model_tf_op_layer_RealDiv_RealDiv</span><span class="p">:</span><span class="n">OpId_57</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_58</span>
+      <span class="n">model_tf_op_layer_stride_stride</span><span class="p">:</span><span class="n">OpId_24</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">447</span> <span class="n">cycles</span>
+      <span class="n">model_tf_op_layer_RealDiv_RealDiv</span><span class="p">:</span><span class="n">OpId_57</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+    <span class="n">Resources</span><span class="p">:</span> <span class="n">HMX</span><span class="p">,</span> <span class="n">DMA</span>
+  <span class="mi">8</span><span class="p">:</span> <span class="n">model_tf_op_layer_RealDiv_RealDiv</span><span class="p">:</span><span class="n">OpId_57</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">5344081</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">528123</span> <span class="n">cycles</span>
+      <span class="n">model_tf_op_layer_RealDiv_RealDiv</span><span class="p">:</span><span class="n">OpId_57</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_58</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+      <span class="n">model_tf_op_layer_stride_stride</span><span class="p">:</span><span class="n">OpId_24</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Resources</span><span class="p">:</span> <span class="n">HVX</span>
+  <span class="mi">9</span><span class="p">:</span> <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_58</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">525199</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">481084</span> <span class="n">cycles</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+      <span class="n">model_tf_op_layer_stride_stride</span><span class="p">:</span><span class="n">OpId_24</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_58</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Resources</span><span class="p">:</span> <span class="n">HVX</span>
+  <span class="mi">10</span><span class="p">:</span> <span class="n">Output</span> <span class="n">OpId_3</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">771320</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">115729</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Resources</span><span class="p">:</span> <span class="n">HVX</span>
+</pre></div>
+</div>
+<p>Again, the bottleneck for this graph can be identified by examining the main and background utilization
+of each op. In this case, the div op is the major contributor to the overall graph execution time with it
+taking up 5344081 cycles - about 68% of the total execution time. Only about 10% of this op’s execution
+has some parallel background activity which again indicates a good potential for performance gain through
+optimization. Replacing the div op with a mul op is a suggested optimization strategy found in the best
+practices guidelines. The linting profiler output for the graph optimized with a mult op instead of a div
+op is given below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+
+<span class="n">Per</span><span class="o">-</span><span class="n">Graph</span> <span class="n">Execution</span> <span class="n">Times</span><span class="p">:</span>
+<span class="o">---------------</span>
+<span class="n">HTP</span> <span class="n">Subnet</span> <span class="mi">0</span><span class="p">:</span> <span class="mi">2741387</span> <span class="n">cycles</span>
+
+<span class="n">Layer</span> <span class="n">Times</span><span class="p">:</span>
+<span class="o">---------------</span>
+  <span class="mi">0</span><span class="p">:</span> <span class="n">Input</span> <span class="n">OpId_2</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Resources</span><span class="p">:</span>
+  <span class="mi">1</span><span class="p">:</span> <span class="n">OpId_0</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">8067</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">735</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">4781</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">669</span> <span class="n">cycles</span>
+    <span class="n">Resources</span><span class="p">:</span>
+  <span class="mi">2</span><span class="p">:</span> <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">147478</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">32</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">86319</span> <span class="n">cycles</span>
+      <span class="n">model_multiply_mul</span><span class="p">:</span><span class="n">OpId_57</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_58</span>
+      <span class="n">model_tf_op_layer_stride_stride</span><span class="p">:</span><span class="n">OpId_24</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">32</span> <span class="n">cycles</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+    <span class="n">Resources</span><span class="p">:</span> <span class="n">HVX</span><span class="p">,</span> <span class="n">HMX</span><span class="p">,</span> <span class="n">DMA</span>
+  <span class="mi">3</span><span class="p">:</span> <span class="n">model_tf_op_layer_stride_stride</span><span class="p">:</span><span class="n">OpId_24</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">145396</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">70208</span> <span class="n">cycles</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+      <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_58</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_tf_op_layer_stride_stride</span><span class="p">:</span><span class="n">OpId_24</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Resources</span><span class="p">:</span> <span class="n">HVX</span>
+  <span class="mi">4</span><span class="p">:</span> <span class="n">model_convLeft1_Conv2D</span><span class="p">:</span><span class="n">OpId_34</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">287130</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">430</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">198222</span> <span class="n">cycles</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_58</span>
+      <span class="n">model_tf_op_layer_stride_stride</span><span class="p">:</span><span class="n">OpId_24</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">308</span> <span class="n">cycles</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_58</span>
+      <span class="n">model_tf_op_layer_stride_stride</span><span class="p">:</span><span class="n">OpId_24</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+    <span class="n">Resources</span><span class="p">:</span> <span class="n">HMX</span><span class="p">,</span> <span class="n">DMA</span>
+  <span class="mi">5</span><span class="p">:</span> <span class="n">model_convRight1_Conv2D</span><span class="p">:</span><span class="n">OpId_41</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">219409</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">806</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">135286</span> <span class="n">cycles</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_58</span>
+      <span class="n">model_tf_op_layer_stride_stride</span><span class="p">:</span><span class="n">OpId_24</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">558</span> <span class="n">cycles</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_tf_op_layer_stride_stride</span><span class="p">:</span><span class="n">OpId_24</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+    <span class="n">Resources</span><span class="p">:</span> <span class="n">HMX</span><span class="p">,</span> <span class="n">DMA</span>
+  <span class="mi">6</span><span class="p">:</span> <span class="n">model_convRight2_Conv2D</span><span class="p">:</span><span class="n">OpId_48</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">181465</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">1068</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">69160</span> <span class="n">cycles</span>
+      <span class="n">model_multiply_mul</span><span class="p">:</span><span class="n">OpId_57</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_58</span>
+      <span class="n">model_tf_op_layer_stride_stride</span><span class="p">:</span><span class="n">OpId_24</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">467</span> <span class="n">cycles</span>
+      <span class="n">model_multiply_mul</span><span class="p">:</span><span class="n">OpId_57</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_58</span>
+    <span class="n">Resources</span><span class="p">:</span> <span class="n">HMX</span><span class="p">,</span> <span class="n">DMA</span>
+  <span class="mi">7</span><span class="p">:</span> <span class="n">model_convLeft2_Conv2D</span><span class="p">:</span><span class="n">OpId_55</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">233619</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">1055</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">92740</span> <span class="n">cycles</span>
+      <span class="n">model_multiply_mul</span><span class="p">:</span><span class="n">OpId_57</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_58</span>
+      <span class="n">model_tf_op_layer_stride_stride</span><span class="p">:</span><span class="n">OpId_24</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">445</span> <span class="n">cycles</span>
+      <span class="n">model_multiply_mul</span><span class="p">:</span><span class="n">OpId_57</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_58</span>
+    <span class="n">Resources</span><span class="p">:</span> <span class="n">HMX</span><span class="p">,</span> <span class="n">DMA</span>
+  <span class="mi">8</span><span class="p">:</span> <span class="n">model_multiply_mul</span><span class="p">:</span><span class="n">OpId_57</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">737978</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">437784</span> <span class="n">cycles</span>
+      <span class="n">model_multiply_mul</span><span class="p">:</span><span class="n">OpId_57</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_58</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+      <span class="n">model_tf_op_layer_stride_stride</span><span class="p">:</span><span class="n">OpId_24</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Resources</span><span class="p">:</span> <span class="n">HVX</span>
+  <span class="mi">9</span><span class="p">:</span> <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_58</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">527450</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">481714</span> <span class="n">cycles</span>
+      <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+      <span class="n">model_tf_op_layer_stride_stride</span><span class="p">:</span><span class="n">OpId_24</span>
+      <span class="n">Output</span> <span class="n">OpId_3</span>
+      <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_58</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Resources</span><span class="p">:</span> <span class="n">HVX</span>
+  <span class="mi">10</span><span class="p">:</span> <span class="n">Output</span> <span class="n">OpId_3</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">249264</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+    <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">117890</span> <span class="n">cycles</span>
+    <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+    <span class="n">Resources</span><span class="p">:</span> <span class="n">HVX</span>
+</pre></div>
+</div>
+<p>There is a noticeable reduction in the total graph execute time and the ops also have better background
+utilization indicating better optimization than before.
+Next, <a class="reference internal" href="#linting-profiling-showcase-model-original3-figure"><span class="std std-ref">Showcase Model 3</span></a> diagram illustrates a model that is
+similar to the one in <a class="reference internal" href="#linting-profiling-showcase-model-optimized1-figure"><span class="std std-ref">Showcase Model 1 Optimized</span></a>
+diagram. The difference is that the ReLU ops have been replaced with PReLU ops.</p>
+<p class="centered" id="linting-profiling-showcase-model-original3-figure">
+<strong><strong>Showcase Model 3</strong></strong></p><div class="figure align-center">
+<img alt="Linting Profiling Showcase Model 3" src="../images/linting_profiling_showcase_model_original_3.png" />
+</div>
+<p>The linting profiler output for this model is given below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+
+<span class="n">Per</span><span class="o">-</span><span class="n">Graph</span> <span class="n">Execution</span> <span class="n">Times</span><span class="p">:</span>
+<span class="o">---------------</span>
+<span class="n">HTP</span> <span class="n">Subnet</span> <span class="mi">0</span><span class="p">:</span> <span class="mi">2789467</span> <span class="n">cycles</span>
+
+<span class="n">Layer</span> <span class="n">Times</span><span class="p">:</span>
+<span class="o">---------------</span>
+<span class="mi">0</span><span class="p">:</span> <span class="n">Input</span> <span class="n">OpId_2</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+  <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+  <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+  <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+  <span class="n">Resources</span><span class="p">:</span>
+<span class="mi">1</span><span class="p">:</span> <span class="n">OpId_0</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">3411</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+  <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">1226</span> <span class="n">cycles</span>
+  <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">3173</span> <span class="n">cycles</span>
+  <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">1194</span> <span class="n">cycles</span>
+  <span class="n">Resources</span><span class="p">:</span>
+<span class="mi">2</span><span class="p">:</span> <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">589431</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+  <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">957</span> <span class="n">cycles</span>
+  <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">41199</span> <span class="n">cycles</span>
+    <span class="n">Output</span> <span class="n">OpId_3</span>
+    <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_54</span>
+    <span class="n">model_preluCombined1_add</span><span class="p">:</span><span class="n">OpId_37</span>
+    <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+  <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">72</span> <span class="n">cycles</span>
+    <span class="n">Output</span> <span class="n">OpId_3</span>
+    <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+  <span class="n">Resources</span><span class="p">:</span> <span class="n">HVX</span><span class="p">,</span> <span class="n">HMX</span><span class="p">,</span> <span class="n">DMA</span>
+<span class="mi">3</span><span class="p">:</span> <span class="n">model_tf_op_layer_stride_1_stride_1</span><span class="p">:</span><span class="n">OpId_24</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+  <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+  <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+  <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+  <span class="n">Resources</span><span class="p">:</span>
+<span class="mi">4</span><span class="p">:</span> <span class="n">model_convCombined1_Conv2D</span><span class="p">:</span><span class="n">OpId_34</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">165119</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+  <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">1089</span> <span class="n">cycles</span>
+  <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">155164</span> <span class="n">cycles</span>
+    <span class="n">model_preluCombined1_add</span><span class="p">:</span><span class="n">OpId_37</span>
+    <span class="n">Output</span> <span class="n">OpId_3</span>
+    <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_54</span>
+    <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+  <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">977</span> <span class="n">cycles</span>
+    <span class="n">model_preluCombined1_add</span><span class="p">:</span><span class="n">OpId_37</span>
+    <span class="n">Output</span> <span class="n">OpId_3</span>
+    <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_54</span>
+    <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+  <span class="n">Resources</span><span class="p">:</span> <span class="n">HMX</span><span class="p">,</span> <span class="n">DMA</span>
+<span class="mi">5</span><span class="p">:</span> <span class="n">model_preluCombined1_add</span><span class="p">:</span><span class="n">OpId_37</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">27315</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+  <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+  <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">9431</span> <span class="n">cycles</span>
+    <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+  <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+  <span class="n">Resources</span><span class="p">:</span> <span class="n">HVX</span>
+<span class="mi">6</span><span class="p">:</span> <span class="n">model_convCombined2_Conv2D</span><span class="p">:</span><span class="n">OpId_43</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">805490</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+  <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">81</span> <span class="n">cycles</span>
+  <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">251743</span> <span class="n">cycles</span>
+    <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_54</span>
+    <span class="n">Output</span> <span class="n">OpId_3</span>
+    <span class="n">model_preluCombined1_add</span><span class="p">:</span><span class="n">OpId_37</span>
+    <span class="n">model_preluCombined2_add</span><span class="p">:</span><span class="n">OpId_46</span>
+    <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+  <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">62</span> <span class="n">cycles</span>
+    <span class="n">Output</span> <span class="n">OpId_3</span>
+    <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+  <span class="n">Resources</span><span class="p">:</span> <span class="n">HMX</span><span class="p">,</span> <span class="n">DMA</span>
+<span class="mi">7</span><span class="p">:</span> <span class="n">model_preluCombined2_add</span><span class="p">:</span><span class="n">OpId_46</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+  <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+  <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+  <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+  <span class="n">Resources</span><span class="p">:</span> <span class="n">HVX</span>
+<span class="mi">8</span><span class="p">:</span> <span class="n">model_subConv_Conv2D</span><span class="p">:</span><span class="n">OpId_52</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">666721</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+  <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">34</span> <span class="n">cycles</span>
+  <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">180805</span> <span class="n">cycles</span>
+    <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_54</span>
+    <span class="n">Output</span> <span class="n">OpId_3</span>
+    <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+    <span class="n">model_preluCombined2_add</span><span class="p">:</span><span class="n">OpId_46</span>
+  <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">13</span> <span class="n">cycles</span>
+    <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+  <span class="n">Resources</span><span class="p">:</span> <span class="n">HMX</span><span class="p">,</span> <span class="n">DMA</span>
+<span class="mi">9</span><span class="p">:</span> <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_54</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">62806</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+  <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+  <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">57481</span> <span class="n">cycles</span>
+    <span class="n">model_add_add</span><span class="p">:</span><span class="n">OpId_54</span>
+    <span class="n">Output</span> <span class="n">OpId_3</span>
+    <span class="n">model_preluCombined1_add</span><span class="p">:</span><span class="n">OpId_37</span>
+    <span class="n">model_preluCombined2_add</span><span class="p">:</span><span class="n">OpId_46</span>
+    <span class="n">model_convStart_Conv2D</span><span class="p">:</span><span class="n">OpId_21</span>
+  <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+  <span class="n">Resources</span><span class="p">:</span> <span class="n">HVX</span>
+<span class="mi">10</span><span class="p">:</span> <span class="n">Output</span> <span class="n">OpId_3</span> <span class="p">(</span><span class="n">cycles</span><span class="p">)</span> <span class="p">:</span> <span class="mi">465781</span> <span class="n">cycles</span> <span class="p">:</span> <span class="n">DSP</span>
+  <span class="n">Wait</span> <span class="p">(</span><span class="n">Scheduler</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+  <span class="n">Overlap</span> <span class="n">time</span><span class="p">:</span> <span class="mi">430560</span> <span class="n">cycles</span>
+  <span class="n">Overlap</span> <span class="p">(</span><span class="n">wait</span><span class="p">)</span> <span class="n">time</span><span class="p">:</span> <span class="mi">0</span> <span class="n">cycles</span>
+  <span class="n">Resources</span><span class="p">:</span> <span class="n">HVX</span>
+</pre></div>
+</div>
+<p>The usual sign indicating bottlenecks is present here as well. There are multiple ops with low parallel
+execution. PReLU ops are some of the background ops that executed for these ops and the best practices
+guidelines suggest that PReLU ops should be replaced with ReLU ops. Changing the graph by replacing the
+PReLU ops with ReLU gives us the same model as the one shown in the
+<a class="reference internal" href="#linting-profiling-showcase-model-optimized1-figure"><span class="std std-ref">Showcase Model 1 Optimized</span></a> diagram which is
+much better optimized as explained before.</p>
+<p class="rubric" id="caveats">Caveats</p>
+<p>Since Linting profile is only available for HTP, non-HTP subnets will silently fall back to
+the next most descriptive profiling level, Detailed, while HTP subnets will be executed with
+Linting mode enabled as requested by the user. Additionally, for multi-subnet networks with a
+combination of HTP and non-HTP subnets, snpe-diagview will generate separate chrometraces only
+for each HTP subnet. For example, when running inference (with Linting profiling enabled) on
+a network with 3 HTP subnets and 2 non-HTP subnets, snpe-diagview is expected to produce 3
+chrometraces when invoked with <code class="docutils literal notranslate"><span class="pre">--chrometrace</span></code>.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="benchmark_mobilenet_ssd.html" class="btn btn-neutral float-right" title="MobilenetSSD Benchmarking" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="benchmarking.html" class="btn btn-neutral float-left" title="Benchmarking" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

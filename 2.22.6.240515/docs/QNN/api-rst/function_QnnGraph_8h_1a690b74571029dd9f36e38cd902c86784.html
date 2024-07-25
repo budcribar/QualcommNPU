@@ -1,0 +1,299 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Function QnnGraph_executeAsync &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Function QnnGraph_executeAsync</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="function-qnngraph-executeasync">
+<span id="exhale-function-qnngraph-8h-1a690b74571029dd9f36e38cd902c86784"></span><h1>Function QnnGraph_executeAsync<a class="headerlink" href="#function-qnngraph-executeasync" title="Permalink to this heading">¶</a></h1>
+<ul class="simple">
+<li><p>Defined in <a class="reference internal" href="file_include_QNN_QnnGraph.h.html#file-include-qnn-qnngraph-h"><span class="std std-ref">File QnnGraph.h</span></a></p></li>
+</ul>
+<div class="section" id="function-documentation">
+<h2>Function Documentation<a class="headerlink" href="#function-documentation" title="Permalink to this heading">¶</a></h2>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421QnnGraph_executeAsync17Qnn_GraphHandle_tPK12Qnn_Tensor_t8uint32_tP12Qnn_Tensor_t8uint32_t19Qnn_ProfileHandle_t18Qnn_SignalHandle_t14Qnn_NotifyFn_tPv">
+<span id="_CPPv321QnnGraph_executeAsync17Qnn_GraphHandle_tPK12Qnn_Tensor_t8uint32_tP12Qnn_Tensor_t8uint32_t19Qnn_ProfileHandle_t18Qnn_SignalHandle_t14Qnn_NotifyFn_tPv"></span><span id="_CPPv221QnnGraph_executeAsync17Qnn_GraphHandle_tPK12Qnn_Tensor_t8uint32_tP12Qnn_Tensor_t8uint32_t19Qnn_ProfileHandle_t18Qnn_SignalHandle_t14Qnn_NotifyFn_tPv"></span><span id="QnnGraph_executeAsync__Qnn_GraphHandle_t.Qnn_Tensor_tCP.uint32_t.Qnn_Tensor_tP.uint32_t.Qnn_ProfileHandle_t.Qnn_SignalHandle_t.Qnn_NotifyFn_t.voidP"></span><span class="target" id="QnnGraph_8h_1a690b74571029dd9f36e38cd902c86784"></span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGraph_executeAsync</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_QnnCommon_8h_1aac60af5d8bde388852ae15bd89fbcd3c.html#_CPPv417Qnn_GraphHandle_t" title="Qnn_GraphHandle_t"><span class="n"><span class="pre">Qnn_GraphHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">graphHandle</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="structQnn__Tensor__t.html#_CPPv412Qnn_Tensor_t" title="Qnn_Tensor_t"><span class="n"><span class="pre">Qnn_Tensor_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">inputs</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">numInputs</span></span>, <a class="reference internal" href="structQnn__Tensor__t.html#_CPPv412Qnn_Tensor_t" title="Qnn_Tensor_t"><span class="n"><span class="pre">Qnn_Tensor_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">outputs</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">numOutputs</span></span>, <a class="reference internal" href="typedef_QnnCommon_8h_1a3d859a5097d3fe96b8d5bad77bf0afd5.html#_CPPv419Qnn_ProfileHandle_t" title="Qnn_ProfileHandle_t"><span class="n"><span class="pre">Qnn_ProfileHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">profileHandle</span></span>, <a class="reference internal" href="typedef_QnnCommon_8h_1a57c5e514635d2d61c8c396974da8999a.html#_CPPv418Qnn_SignalHandle_t" title="Qnn_SignalHandle_t"><span class="n"><span class="pre">Qnn_SignalHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">signalHandle</span></span>, <a class="reference internal" href="typedef_QnnGraph_8h_1a7962dbaaab857587b6b0b15a9d3b87e0.html#_CPPv414Qnn_NotifyFn_t" title="Qnn_NotifyFn_t"><span class="n"><span class="pre">Qnn_NotifyFn_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">notifyFn</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">notifyParam</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421QnnGraph_executeAsync17Qnn_GraphHandle_tPK12Qnn_Tensor_t8uint32_tP12Qnn_Tensor_t8uint32_t19Qnn_ProfileHandle_t18Qnn_SignalHandle_t14Qnn_NotifyFn_tPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Asynchronously execute a finalized graph. Graphs will be enqueued for execution in FIFO order. There is no guarantee that graphs will finish execution in the same order they were enqueued. If the the execution queue is full, this function will block until space is available. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graphHandle</strong> – <strong>[in]</strong> Handle of finalized graph to execute.</p></li>
+<li><p><strong>inputs</strong> – <strong>[in]</strong> Array of input tensors with which to populate graph inputs.</p></li>
+<li><p><strong>numInputs</strong> – <strong>[in]</strong> Number of input tensors.</p></li>
+<li><p><strong>outputs</strong> – <strong>[out]</strong> Array of tensors which the graph will populate with output values.</p></li>
+<li><p><strong>numOutputs</strong> – <strong>[in]</strong> Number of output tensors.</p></li>
+<li><p><strong>profileHandle</strong> – <strong>[in]</strong> The profile handle on which metrics is populated and can be queried. Use NULL handle to disable profile collection. A handle being reused would reset and is populated with values from the enqueued execute call. Profile handle management/reuse across asynchronous calls is client’s responsibility. Behavior is undefined if same profile handle is used by two enqueued execute instances at the same time. This handle must be NULL when a continuous profile handle has been configured via the QNN_GRAPH_CONFIG_OPTION_PROFILE_HANDLE option</p></li>
+<li><p><strong>signalHandle</strong> – <strong>[in]</strong> Signal object which may be used to control the execution of this call. NULL indicates execution should proceed as normal. All pending executions in the queue are affected by Signal control. Instance executing when Signal control is issued may not be affected. The signal object, if not NULL, is considered to be in-use for the duration of the call. For timeout signals, the timeout duration applies from the QnnGraph_executeAsync call until the callback is called. The same Qnn_GraphHandle_t can be used for multiple calls to QnnGraph_executeAsync, however, different Qnn_SignalHandle_t must be supplied.</p></li>
+<li><p><strong>notifyFn</strong> – <strong>[in]</strong> Pointer to notification function, called when execution is finished. NULL indicates no notification is requested. <em>notifyFn</em> will be called in context of backend owned thread, with priority equal or lower than client’s calling thread. Please note that a failed call to QnnGraph_executeAsync does not call the notification function.</p></li>
+<li><p><strong>notifyParam</strong> – <strong>[in]</strong> Client-supplied data object which will be passed back via <em>notifyFn</em> and can be used to identify asynchronous execution instance. Can be NULL.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code:<ul class="simple">
+<li><p>QNN_SUCCESS: the graph was successfully executed</p></li>
+<li><p>QNN_GRAPH_ERROR_INVALID_HANDLE: <em>graph</em> is not a valid handle</p></li>
+<li><p>QNN_GRAPH_ERROR_GRAPH_NOT_FINALIZED: graph was not finalized</p></li>
+<li><p>QNN_GRAPH_ERROR_SUBGRAPH: cannot execute a subgraph</p></li>
+<li><p>QNN_GRAPH_ERROR_INVALID_ARGUMENT:<ul>
+<li><p><em>inputs</em> or <em>outputs</em> is NULL or ill-formed OR</p></li>
+<li><p><em>inputs</em> is NOT NULL and <em>numInputs</em> is 0 OR</p></li>
+<li><p><em>outputs</em> is NOT NULL and <em>numOutputs</em> is 0 OR</p></li>
+<li><p><em>profile</em> handle is invalid OR</p></li>
+<li><p>continuous graph profiling is enabled and the per-API handle is not NULL.</p></li>
+</ul>
+</p></li>
+<li><p>QNN_GRAPH_ERROR_INVALID_TENSOR: one or more tensors in <em>inputs</em> or <em>outputs</em> is invalid or not recognized by graph</p></li>
+<li><p>QNN_GRAPH_ERROR_UNSUPPORTED_FEATURE: asynchronous graph execution is not supported on this backend or some API feature is not supported yet, e.g. signal, profile, or batch multiplier</p></li>
+<li><p>QNN_GRAPH_ERROR_SIGNAL_IN_USE: the supplied control signal is already in-use by another call.</p></li>
+<li><p>QNN_GRAPH_ERROR_ABORTED: the call is aborted before completion due to user cancellation</p></li>
+<li><p>QNN_GRAPH_ERROR_TIMED_OUT: the call is aborted before completion due to a timeout</p></li>
+<li><p>QNN_GRAPH_ERROR_DISABLED: the graph was not enabled when the context was deserialized</p></li>
+<li><p>QNN_GRAPH_ERROR_DYNAMIC_TENSOR_SHAPE: An error occurred that is related to dynamic tensor shape. For example, a tensor maximum dimension was exceeded.</p></li>
+<li><p>QNN_GRAPH_ERROR_TENSOR_SPARSITY: An error occurred that is related to tensor sparsity. For example, the maximum number of specified elements was exceeded.</p></li>
+<li><p>QNN_GRAPH_ERROR_EARLY_TERMINATION: Graph execution terminated early due to defined op behavior.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Tensors in <em>inputs</em> and <em>outputs</em> must carry the same ID that was assigned when they were created. Values for all other attributes in <a class="reference internal" href="file_include_QNN_QnnTypes.h.html#structQnn__Tensor__t"><span class="std std-ref">Qnn_Tensor_t</span></a> are assumed from the point at which they were registered with a backend at the time of tensor creation, with the following exceptions:<ul class="simple">
+<li><p>Tensor data provided by client in structs such as <em>clientBuf</em> can be changed between invocations to execute().</p></li>
+<li><p>Batch multiple: An <em>inputs</em> or <em>outputs</em> tensor <em>dimensions</em> field, if non-null, should match the values provided at tensor creation, with the following exception. The batch dimension, as determined by the op definition, can be an integer multiple of the respective dimension provided at tensor creation. All <em>inputs</em> and <em>outputs</em> tensors must have the same batch multiple.</p></li>
+<li><p>Dynamic output dimensions: An <em>outputs</em> tensor <a class="reference internal" href="file_include_QNN_QnnTypes.h.html#structQnn__TensorV1__t"><span class="std std-ref">Qnn_TensorV1_t</span></a> <em>dimensions</em> field, if non-null, can vary after graph execution. As determined by the op definition, non-batch dimensions may be less than the respective dimension at tensor creation.</p></li>
+<li><p>Dynamic dimensions: If an <em>inputs</em> tensor was created with a non-null <a class="reference internal" href="file_include_QNN_QnnTypes.h.html#structQnn__TensorV2__t"><span class="std std-ref">Qnn_TensorV2_t</span></a> <em>isDynamicDimensions</em> field, the corresponding dynamic dimensions must be provided by the caller. If an <em>outputs</em> tensor was created with a non-null <a class="reference internal" href="file_include_QNN_QnnTypes.h.html#structQnn__TensorV2__t"><span class="std std-ref">Qnn_TensorV2_t</span></a> <em>isDynamicDimensions</em> field, the <em>dimensions</em> must be non-null and the output dimensions will be written by the backend. In a scenario where maximum dimensions will be exceeded, the backend will generate an error code indicating loss of data and will fill the tensor with as much data as possible.</p></li>
+<li><p>Other fields like <em>dataType</em> can also be permitted to change between invocations to <a class="reference internal" href="file_include_QNN_QnnGraph.h.html#QnnGraph_8h_1a3ea05f42a9295f9a74a2e3a0cdd64228"><span class="std std-ref">QnnGraph_execute()</span></a>/QnnGraph_executeAsync() for certain ops that perform data type conversions.</p></li>
+<li><p>Some backends may be able to execute a graph with no <em>inputs</em> provided the graph has no application-writable tensors.</p></li>
+<li><p>Graph I/O Tensors marked optional (i.e. omitted or marked as type=QNN_TENSOR_TYPE_NULL during <a class="reference internal" href="file_include_QNN_QnnGraph.h.html#QnnGraph_8h_1a1c6363e459cb7092356572f5af1c952b"><span class="std std-ref">QnnGraph_addNode()</span></a>) cannot be supplied to <a class="reference internal" href="file_include_QNN_QnnGraph.h.html#QnnGraph_8h_1a3ea05f42a9295f9a74a2e3a0cdd64228"><span class="std std-ref">QnnGraph_execute()</span></a>/QnnGraph_executeAsync(). Clients mark tensors to be of type QNN_TENSOR_TYPE_NULL to indicate that they must be ignored when constructing a node that lists them as optional.</p></li>
+<li><p>Mixing different tensor versions in the same graph (e.g. <a class="reference internal" href="file_include_QNN_QnnTypes.h.html#structQnn__TensorV1__t"><span class="std std-ref">Qnn_TensorV1_t</span></a> and <a class="reference internal" href="file_include_QNN_QnnTypes.h.html#structQnn__TensorV2__t"><span class="std std-ref">Qnn_TensorV2_t</span></a>) may result in performance degradation.</p></li>
+</ul>
+</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If there are simultaneous calls to <a class="reference internal" href="file_include_QNN_QnnGraph.h.html#QnnGraph_8h_1a3ea05f42a9295f9a74a2e3a0cdd64228"><span class="std std-ref">QnnGraph_execute()</span></a> and <a class="reference internal" href="file_include_QNN_QnnGraph.h.html#QnnGraph_8h_1a690b74571029dd9f36e38cd902c86784"><span class="std std-ref">QnnGraph_executeAsync()</span></a>, the priority for enqueuing or executing is equal. Both functions will add to the same queue, the only difference in behavior is whether the function returns when the execution is enqueued, or when the execution finishes.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use corresponding API through <a class="reference internal" href="file_include_QNN_QnnInterface.h.html#structQnnInterface__t"><span class="std std-ref">QnnInterface_t</span></a>. </p>
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

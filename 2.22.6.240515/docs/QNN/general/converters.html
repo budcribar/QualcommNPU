@@ -1,0 +1,1151 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Converters &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Quantization" href="quantization.html" />
+    <link rel="prev" title="Tools" href="tools.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Converters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tools-utility-api">Tools Utility API</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tensorflow-conversion">Tensorflow Conversion</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pattern-matching">Pattern Matching</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#additional-required-parameters">Additional Required Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#notes-on-tensorflow-2-x-support">Notes on Tensorflow 2.x Support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tflite-conversion">TFLite Conversion</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Additional Required Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pytorch-conversion">PyTorch Conversion</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Additional Required Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#onnx-conversion">Onnx Conversion</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#custom-operation-output-shape-and-datatype-inference">Custom Operation Output Shape and Datatype Inference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#custom-i-o">Custom I/O</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#custom-i-o-configuration-file">Custom I/O Configuration File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#custom-io-config-template-file">Custom IO Config Template File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#supported-use-cases">Supported Use Cases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#limitations">Limitations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#preserve-i-o">Preserve I/O</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usage-in-qnn-pytorch-converter">Usage in qnn-pytorch-converter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usage-with-other-converter-options">Usage with other converter options</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#common-parameters">Common Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#qairt-converter">Qairt Converter</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basic-conversion">Basic Conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#input-output-layouts">Input/Output Layouts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#input-output-customization-using-yaml">Input/Output Customization using YAML</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qat-encodings">QAT encodings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#quantization-overrides">Quantization Overrides</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fp16-conversion">FP16 Conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dryrun">DryRun</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#faqs">FAQs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Converters</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="converters">
+<h1>Converters<a class="headerlink" href="#converters" title="Permalink to this heading">¶</a></h1>
+<p>This page describes the general conversion process, the expected inputs and generated outputs, and provides examples of usage.</p>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#overview" id="id18">Overview</a></p>
+<ul>
+<li><p><a class="reference internal" href="#tools-utility-api" id="id19">Tools Utility API</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#tensorflow-conversion" id="id20">Tensorflow Conversion</a></p>
+<ul>
+<li><p><a class="reference internal" href="#pattern-matching" id="id21">Pattern Matching</a></p></li>
+<li><p><a class="reference internal" href="#additional-required-parameters" id="id22">Additional Required Parameters</a></p></li>
+<li><p><a class="reference internal" href="#notes-on-tensorflow-2-x-support" id="id23">Notes on Tensorflow 2.x Support</a></p></li>
+<li><p><a class="reference internal" href="#example" id="id24">Example</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#tflite-conversion" id="id25">TFLite Conversion</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id1" id="id26">Additional Required Parameters</a></p></li>
+<li><p><a class="reference internal" href="#id2" id="id27">Example</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#pytorch-conversion" id="id28">PyTorch Conversion</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id3" id="id29">Additional Required Parameters</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id30">Example</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#onnx-conversion" id="id31">Onnx Conversion</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id5" id="id32">Example</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#custom-operation-output-shape-and-datatype-inference" id="id33">Custom Operation Output Shape and Datatype Inference</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id6" id="id34">Example</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#custom-i-o" id="id35">Custom I/O</a></p>
+<ul>
+<li><p><a class="reference internal" href="#introduction" id="id36">Introduction</a></p></li>
+<li><p><a class="reference internal" href="#custom-i-o-configuration-file" id="id37">Custom I/O Configuration File</a></p></li>
+<li><p><a class="reference internal" href="#id7" id="id38">Example</a></p></li>
+<li><p><a class="reference internal" href="#usage" id="id39">Usage</a></p></li>
+<li><p><a class="reference internal" href="#custom-io-config-template-file" id="id40">Custom IO Config Template File</a></p></li>
+<li><p><a class="reference internal" href="#supported-use-cases" id="id41">Supported Use Cases</a></p></li>
+<li><p><a class="reference internal" href="#limitations" id="id42">Limitations</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#preserve-i-o" id="id43">Preserve I/O</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id8" id="id44">Introduction</a></p></li>
+<li><p><a class="reference internal" href="#id9" id="id45">Usage</a></p></li>
+<li><p><a class="reference internal" href="#usage-in-qnn-pytorch-converter" id="id46">Usage in qnn-pytorch-converter</a></p></li>
+<li><p><a class="reference internal" href="#usage-with-other-converter-options" id="id47">Usage with other converter options</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#common-parameters" id="id48">Common Parameters</a></p></li>
+<li><p><a class="reference internal" href="#qairt-converter" id="id49">Qairt Converter</a></p>
+<ul>
+<li><p><a class="reference internal" href="#basic-conversion" id="id50">Basic Conversion</a></p></li>
+<li><p><a class="reference internal" href="#input-output-layouts" id="id51">Input/Output Layouts</a></p></li>
+<li><p><a class="reference internal" href="#input-output-customization-using-yaml" id="id52">Input/Output Customization using YAML</a></p></li>
+<li><p><a class="reference internal" href="#qat-encodings" id="id53">QAT encodings</a></p></li>
+<li><p><a class="reference internal" href="#quantization-overrides" id="id54">Quantization Overrides</a></p></li>
+<li><p><a class="reference internal" href="#fp16-conversion" id="id55">FP16 Conversion</a></p></li>
+<li><p><a class="reference internal" href="#dryrun" id="id56">DryRun</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#faqs" id="id57">FAQs</a></p></li>
+</ul>
+</div>
+<div class="section" id="overview">
+<h2><a class="toc-backref" href="#id18">Overview</a><a class="headerlink" href="#overview" title="Permalink to this heading">¶</a></h2>
+<p>Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> currently supports converters for four frameworks: Tensorflow, TFLite, PyTorch, and Onnx. Each converter, at a minimum, requires the original framework model as input
+to generate a Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> Model. For additional required inputs please refer to the framework specific sections below.</p>
+<p>The flow for each converter is the same:</p>
+<p class="centered" id="converter-workflow-figure">
+<strong><strong>Converter Workflow</strong></strong></p><div class="figure align-default">
+<img alt="../_static/resources/qnn_converter_callflow.png" src="../_static/resources/qnn_converter_callflow.png" />
+</div>
+<p>There are four main parts to each converter:</p>
+<ol class="arabic simple">
+<li><p>The front end translation which handles converting the original framework model into the common intermediate represention (IR)</p></li>
+<li><p>The common IR code which contains graph and IR operation definitions as well as various graph optimizations that can be applied to translated graphs.</p></li>
+<li><p>Quantizer, which is optionally invoked to quantize the model prior to the final lowering to QNN. See <a class="reference internal" href="quantization.html"><span class="doc">Quantization</span></a> for more information.</p></li>
+<li><p>The Qnn converter backend which is responsible for lowering the IR into the final QnnModel API calls.</p></li>
+</ol>
+<p>All the converters share the same IR code and QNN converter backend. The output for each converter is the same,
+a <em>model.cpp</em> or <em>model.cpp/model.bin</em> which contains the final converted QNN graph. The converted <em>model.cpp</em> contains two functions: <code class="docutils literal notranslate"><span class="pre">QnnModel_composeGraphs</span></code> and <code class="docutils literal notranslate"><span class="pre">QnnModel_freeGraphsInfo</span></code>. These two functions leverage the
+<a class="reference internal" href="#tools-utility-api">Tools Utility API</a> described below. Additionally, <em>model_net.json</em> is saved which is a json format variant to <em>model.cpp</em>.</p>
+<details>
+<summary><a>QNN Model JSON Format</a></summary><br /><div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>All QNN enum/macro values are resolved in fields.</p></li>
+<li><p>All input/output tensors are stored in “tensors” config section and the tensor names are later used for defining a node inputs/outputs. The only tensor defined in the node config is a tensor parameter.</p></li>
+<li><p>Static input tensor data is not stored in the JSON.</p></li>
+</ul>
+</div>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span>{
+  &quot;model.cpp&quot;: &quot;&lt;CPP filename goes here&gt;&quot;,
+  &quot;model.bin&quot;: &quot;&lt;BIN filename goes here if applicable else NA&gt;&quot;,
+  &quot;coverter_command&quot;: &quot;&lt;command line used goes here&gt;&quot;,
+  &quot;copyright_str&quot;: &quot;&lt;copyright str goes here if applicable else &quot;&quot;&gt;&quot;,
+  &quot;op_types&quot;: [&quot;list of unique op types found in graph&quot;]
+  &quot;Total parameters&quot;: &quot;total parameter count in graph ( value in MB assuming single precision float)&quot;,
+  &quot;Total MACs per inference&quot;: &quot;total multiply and accumulates in graph count in M),
+  &quot;graph&quot;: {
+     &quot;tensors&quot;: {
+       &quot;&lt;tensor_name&gt;: {
+         &quot;id&quot;: &lt;generated_id&gt;,
+         &quot;type&quot;: &lt;tensor_type&gt;,
+         &quot;dataFormat&quot;: &lt;tensor_memory_layout&gt;,
+         &quot;data_type&quot;: &lt;tensor_data_type&gt;,
+         &quot;quant_params&quot;: {
+           &quot;definition&quot;: &lt;enum_value&gt;,
+           &quot;encoding&quot;: &lt;enum_value&gt;,
+           &quot;scale_offset&quot;: {
+             &quot;offset&quot;: &lt;val&gt;,
+             &quot;scale&quot;:  &lt;val&gt;
+           }
+         }
+         &quot;current_dims&quot;: &lt;list_val&gt;,
+         &quot;max_dims&quot;: &lt;list_val&gt;,
+         &quot;params_count&quot;: &lt;val&gt; (&quot;parameter count for node, along with value/total percentage. (only where applicable)&quot;)
+       },
+       &quot;&lt;tensor_name_with_axis_scale_offset_variant&gt;: {
+         &quot;id&quot;: &lt;generated_id&gt;,
+         &quot;type&quot;: &lt;tensor_type&gt;,
+         &quot;dataFormat&quot;: &lt;tensor_memory_layout&gt;,
+         &quot;data_type&quot;: &lt;tensor_data_type&gt;,
+         &quot;quant_params&quot;: {
+           &quot;definition&quot;: &lt;enum_value&gt;,
+           &quot;encoding&quot;: &lt;enum_value&gt;,
+           &quot;axis_scale_offset&quot;: {
+             &quot;axis&quot;: &lt;val&gt;,
+             &quot;num_scale_offsets&quot;: &lt;val&gt;,
+             &quot;scale_offsets&quot;: [
+               {
+                 &quot;scale&quot;: &lt;val&gt;,
+                 &quot;offset&quot;: &lt;val&gt;
+               },
+               ...
+             ]
+           }
+         }
+         &quot;current_dims&quot;: &lt;list_val&gt;,
+         &quot;max_dims&quot;: &lt;list_val&gt;
+        },
+       ...
+    }
+    &quot;nodes&quot;: {
+       &quot;&lt;node_name&gt;: {
+         &quot;package&quot;: &lt;str_val&gt;,
+         &quot;type&quot;: &lt;str_val&gt;,
+         &quot;tensor_params&quot;: {
+           &quot;&lt;param_name&gt;&quot;: {
+             &quot;&lt;tensor_name_*&gt;: {
+                 &quot;id&quot;: &lt;generated_id&gt;,
+                 &quot;type&quot;: &lt;tensor_type&gt;,
+                 &quot;dataFormat&quot;: &lt;tensor_memory_layout&gt;,
+                 &quot;data_type&quot;: &lt;tensor_data_type&gt;,
+                 &quot;quant_params&quot;: {
+                    &quot;definition&quot;: &lt;enum_value&gt;,
+                    &quot;encoding&quot;: &lt;enum_value&gt;,
+                    &quot;scale_offset&quot;: {
+                      &quot;offset&quot;: &lt;val&gt;,
+                      &quot;scale&quot;:  &lt;val&gt;
+                    }
+                 &quot;current_dims&quot;: &lt;list_val&gt;,
+                 &quot;max_dims&quot;: &lt;list_val&gt;,
+                 &quot;data&quot;: &lt;list_val&gt;
+               }
+           }
+           ...
+         },
+         &quot;scalar_params&quot;: {
+           &quot;param_name&quot;: {
+              &quot;param_data_type&quot;: &lt;val&gt;
+            }
+           ...
+         },
+         &quot;input_names&quot;: &lt;list_str_val&gt;,
+         &quot;output_names&quot;: &lt;list_str_val&gt;,
+         &quot;macs_per_inference&quot;: &lt;val&gt; (&quot;multiply and accumulate value for node, along with value/total percentage. (only where applicable)&quot;)
+       }
+       ...
+    }
+  }
+}
+</pre></div>
+</div>
+</details><br /><div class="section" id="tools-utility-api">
+<h3><a class="toc-backref" href="#id19">Tools Utility API</a><a class="headerlink" href="#tools-utility-api" title="Permalink to this heading">¶</a></h3>
+<p>The tools Utility API contains helper modules to generate QNN API calls. The APIs are light-weight wrappers on-top of the
+core QNN API and are intended to mitigate repetitive steps for creating QNN graphs.</p>
+<ul>
+<li><p>Tools Utility C++ API:</p>
+<blockquote>
+<div><div class="toctree-wrapper compound">
+</div>
+</div></blockquote>
+</li>
+<li><p>QNN Core C API Reference: <a class="reference internal" href="api.html#c"><span class="std std-ref">C</span></a></p></li>
+</ul>
+<p class="centered" id="qnn-model-classes-figure">
+<strong><strong>QNN Model Classes</strong></strong></p><div class="figure align-default">
+<img alt="../_static/resources/qnn_model_classes.png" src="../_static/resources/qnn_model_classes.png" />
+</div>
+<ul class="simple">
+<li><p><strong>QnnModel</strong>: This class is analogous to a QnnGraph and its tensors inside a given context. The context shall be provided at initialization
+and a new QnnGraph will be created within it. For more details on these class APIs please see
+<span class="xref std std-ref">QnnModel.hpp</span>,
+<span class="xref std std-ref">QnnWrapperUtils.hpp</span></p></li>
+<li><p><strong>GraphConfigInfo</strong>: This structure is used to pass a list of QNN graph configurations(if applicable) from the client. Refer to <a class="reference internal" href="../api-rst/file_include_QNN_QnnGraph.h.html#file-include-qnn-qnngraph-h"><span class="std std-ref">QnnGraph API</span></a>
+for details on available graph config options.</p></li>
+<li><p><strong>GraphInfo</strong>: This structure is used to communicate constructed graph along with its input and output tensors to the client.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QnnModel_composeGraphs</span></code>: is responsible for constructing QNN graph on the provided QNN backend using the QnnModel class. It will return the
+constructed graph via graphsInfo.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QnnModel_freeGraphsInfo</span></code>: should only be called once the graph is no longer being used.</p></li>
+</ul>
+<p>For more information on integrating the model into an application see <a class="reference internal" href="overview.html#integration-workflow"><span class="std std-ref">Integration Workflow</span></a></p>
+</div>
+</div>
+<div class="section" id="tensorflow-conversion">
+<h2><a class="toc-backref" href="#id20">Tensorflow Conversion</a><a class="headerlink" href="#tensorflow-conversion" title="Permalink to this heading">¶</a></h2>
+<p>QNN, like many other neural network runtime engines, supports both low level operations (like an elementwise multiply) as well as high level operations (like Prelu).
+TensorFlow on the other hand, generally supports high level operations by representing them as subgraphs of low level operations. To reconcile these differences the
+converter must sometimes pattern match subgraphs of small operations into larger “layer-like” operations that can be leveraged in QNN.</p>
+<div class="section" id="pattern-matching">
+<h3><a class="toc-backref" href="#id21">Pattern Matching</a><a class="headerlink" href="#pattern-matching" title="Permalink to this heading">¶</a></h3>
+<p>The following are a few examples of pattern matching that occurs in the QNN Tensorflow converter. In each case the pattern generally
+consists of any operations that fall in between the layer input and output, with additional parameters like weights and biases being absorbed into
+the final IR op.</p>
+<div class="figure align-default" id="tf-labels-figure">
+<img alt="../_static/resources/node_labels.png" src="../_static/resources/node_labels.png" />
+</div>
+<p>Convolution example:</p>
+<div class="figure align-default" id="tf-conv-figure">
+<img alt="../_static/resources/node_conv1.png" src="../_static/resources/node_conv1.png" />
+</div>
+<p>Prelu example:</p>
+<div class="figure align-default" id="tf-prelu-figure">
+<img alt="../_static/resources/node_prelu.png" src="../_static/resources/node_prelu.png" />
+</div>
+<p>The important thing to remember is that these patterns are hard coded in the converter. Changes to the model that affect the connectivity
+and order of the operations in these patterns is also likely to break the conversion as the converter will not be able to identify and
+map the subgraph to the appropriate layer.</p>
+<p>The TF converter also supports propagating quantization aware trained (QAT) model parameters to the final QNN model. This happens automatically during
+conversion when quantization is invoked. Note that the placement of quantization nodes also determines whether or not they will be propagated.
+Inserting quantization nodes inside a pattern will cause the pattern matching to break and conversion to fail. The safe place to insert nodes is after “layer-like” layers
+to capture activation information for a layer. In addition, quantization nodes inserted after weights and biases can capture the quantization information
+for static parameters.</p>
+<p>An example of inserting a quantization node after a Convolution:</p>
+<div class="figure align-default" id="tf-quant-act-figure">
+<img alt="../_static/resources/qnn_tf_quant_act.png" src="../_static/resources/qnn_tf_quant_act.png" />
+</div>
+<p>See <a class="reference internal" href="quantization.html"><span class="doc">Quantization</span></a> for more information on initiating quantization as part of the conversion process.</p>
+</div>
+<div class="section" id="additional-required-parameters">
+<h3><a class="toc-backref" href="#id22">Additional Required Parameters</a><a class="headerlink" href="#additional-required-parameters" title="Permalink to this heading">¶</a></h3>
+<p>As Tensorflow graphs often include extraneous nodes that are not required for general inference it is required that the input nodes and dimensions
+be provided along with the final output nodes required for inference. The converter will then prune unnecessary nodes from the graph ensuring a
+more compact and efficient graph.</p>
+<p>To specify graph’s inputs to the converter pass the following on the command line:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">input_dim</span><span class="w"> </span><span class="o">&lt;</span><span class="n">input_name</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">comma</span><span class="w"> </span><span class="n">separated</span><span class="w"> </span><span class="n">dims</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>To specify the graph’s output nodes simply pass:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">out_node</span><span class="w"> </span><span class="o">&lt;</span><span class="n">output_name</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Tensorflow also has multiple input formats, but only frozen graphs (.pb files) or .meta files are supported. Saved training sessions
+are not supported by the converter.</p>
+</div>
+<div class="section" id="notes-on-tensorflow-2-x-support">
+<h3><a class="toc-backref" href="#id23">Notes on Tensorflow 2.x Support</a><a class="headerlink" href="#notes-on-tensorflow-2-x-support" title="Permalink to this heading">¶</a></h3>
+<p>The qnn-tensorflow-converter has been updated to support conversion of Tensorflow 2.3 models. Note that while some TF 1.x models may
+convert using Tensorflow 2.3 as the conversion framework it is generally recommended to use the same TF version for conversion as
+was used for training the model. Some older 1.x models may not convert at all using TF 2.3 and a TF 1.x instance may be required for
+successful conversion.</p>
+<p>Note that some options have been updated or added to support Tensorflow 2.x models. The first is a change to support the
+SavedModel format. Users can provide the directory to the SavedModel files by passing it to the same input_network option:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">input_network</span><span class="w"> </span><span class="o">&lt;</span><span class="n">SavedModel</span><span class="w"> </span><span class="n">path</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Users can optionally pass saved_model_tag to indicate the tag and associated MetaGraph from the SavedModel. Default is “serve”</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">saved_model_tag</span><span class="w"> </span><span class="o">&lt;</span><span class="n">tag</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Lastly a user can select the input and output of the model by using the signature key. Default value is ‘serving default’</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">saved_model_signature_key</span><span class="w"> </span><span class="o">&lt;</span><span class="n">signature_key</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="example">
+<h3><a class="toc-backref" href="#id24">Example</a><a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h3>
+<p>The following is an example of an SSD model which requires one image input, but has 4 output nodes.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">qnn</span><span class="o">-</span><span class="n">tensorflow</span><span class="o">-</span><span class="n">converter</span><span class="w"> </span><span class="o">--</span><span class="n">input_network</span><span class="w"> </span><span class="n">frozen_graph</span><span class="p">.</span><span class="n">pb</span><span class="w"> </span><span class="o">--</span><span class="n">input_dim</span><span class="w"> </span><span class="n">Preprocessor</span><span class="o">/</span><span class="n">sub</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">300</span><span class="p">,</span><span class="mi">300</span><span class="p">,</span><span class="mi">3</span><span class="w"> </span><span class="o">--</span><span class="n">output_path</span><span class="w"> </span><span class="n">ssd_model</span><span class="p">.</span><span class="n">cpp</span><span class="w"> </span><span class="o">--</span><span class="n">out_node</span><span class="w"> </span><span class="n">detection_scores</span><span class="w"> </span><span class="o">--</span><span class="n">out_node</span><span class="w"> </span><span class="n">detection_boxes</span><span class="w"> </span><span class="o">--</span><span class="n">out_node</span><span class="w"> </span><span class="n">detection_classes</span><span class="w"> </span><span class="o">--</span><span class="n">out_node</span><span class="w"> </span><span class="n">Postprocessor</span><span class="o">/</span><span class="n">BatchMultiClassNonMaxSuppression</span><span class="o">/</span><span class="n">map</span><span class="o">/</span><span class="n">TensorArrayStack_2</span><span class="o">/</span><span class="n">TensorArrayGatherV3</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="s">&quot;qti.aisw&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="tflite-conversion">
+<h2><a class="toc-backref" href="#id25">TFLite Conversion</a><a class="headerlink" href="#tflite-conversion" title="Permalink to this heading">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">qnn-tflite-converter</span></code> converts a TFLite model to an equivalent QNN representation. It takes as input a .tflite model.</p>
+<div class="section" id="id1">
+<h3><a class="toc-backref" href="#id26">Additional Required Parameters</a><a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
+<p>TFlite converter needs the names and dimensions of the input nodes to be provided at commandline for the conversion.
+Each input must be passed individually using the same argument.</p>
+<p>To specify graph’s inputs to the converter pass the following on the command line:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">input_dim</span><span class="w"> </span><span class="o">&lt;</span><span class="n">input_name_1</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">comma</span><span class="w"> </span><span class="n">separated</span><span class="w"> </span><span class="n">dims</span><span class="o">&gt;</span><span class="w"> </span><span class="o">--</span><span class="n">input_dim</span><span class="w"> </span><span class="o">&lt;</span><span class="n">input_name_2</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">comma</span><span class="w"> </span><span class="n">separated</span><span class="w"> </span><span class="n">dims</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3><a class="toc-backref" href="#id27">Example</a><a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
+<p>The following is an example of converting an Inception_v3 model which requires one image input</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">qnn</span><span class="o">-</span><span class="n">tflite</span><span class="o">-</span><span class="n">converter</span><span class="w"> </span><span class="o">--</span><span class="n">input_network</span><span class="w"> </span><span class="n">model</span><span class="p">.</span><span class="n">tflite</span><span class="w"> </span><span class="o">--</span><span class="n">input_dim</span><span class="w"> </span><span class="s">&quot;input&quot;</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">299</span><span class="p">,</span><span class="mi">299</span><span class="p">,</span><span class="mi">3</span><span class="w"> </span><span class="o">--</span><span class="n">output_path</span><span class="w"> </span><span class="n">model</span><span class="p">.</span><span class="n">cpp</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="pytorch-conversion">
+<h2><a class="toc-backref" href="#id28">PyTorch Conversion</a><a class="headerlink" href="#pytorch-conversion" title="Permalink to this heading">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">qnn-pytorch-converter</span></code> converts a PyTorch model to an equivalent QNN representation. It takes as input a TorchScript model (.pt).</p>
+<div class="section" id="id3">
+<h3><a class="toc-backref" href="#id29">Additional Required Parameters</a><a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h3>
+<p>PyTorch converter needs the names and dimensions of the input nodes to be provided at commandline for the conversion.
+Each input must be passed individually using the same argument.</p>
+<p>To specify graph’s inputs to the converter pass the following on the command line:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">input_dim</span><span class="w"> </span><span class="o">&lt;</span><span class="n">input_name_1</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">comma</span><span class="w"> </span><span class="n">separated</span><span class="w"> </span><span class="n">dims</span><span class="o">&gt;</span><span class="w"> </span><span class="o">--</span><span class="n">input_dim</span><span class="w"> </span><span class="o">&lt;</span><span class="n">input_name_2</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">comma</span><span class="w"> </span><span class="n">separated</span><span class="w"> </span><span class="n">dims</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3><a class="toc-backref" href="#id30">Example</a><a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h3>
+<p>The following is an example of converting an Inception_v3 model which requires one image input</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">qnn</span><span class="o">-</span><span class="n">pytorch</span><span class="o">-</span><span class="n">converter</span><span class="w"> </span><span class="o">--</span><span class="n">input_network</span><span class="w"> </span><span class="n">model</span><span class="p">.</span><span class="n">pt</span><span class="w"> </span><span class="o">--</span><span class="n">input_dim</span><span class="w"> </span><span class="s">&quot;input&quot;</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">299</span><span class="p">,</span><span class="mi">299</span><span class="w"> </span><span class="o">--</span><span class="n">output_path</span><span class="w"> </span><span class="n">model</span><span class="p">.</span><span class="n">cpp</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="onnx-conversion">
+<h2><a class="toc-backref" href="#id31">Onnx Conversion</a><a class="headerlink" href="#onnx-conversion" title="Permalink to this heading">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">qnn-onnx-converter</span></code> converts a serialized ONNX model to an equivalent QNN representation. By default, it also runs
+onnx-simplifier if available in user environment(see <a class="reference internal" href="setup.html"><span class="doc">Setup</span></a>). Additionally, onnx-simplifier is only
+run by default if user has not provided quantization overrides/custom ops as the simplification process could possibly
+squash layers preventing the custom ops or quantization overrides from being used. If the model contains ONNX functions,
+converter always does inlining of function nodes.
+Note: If conversion fails, the onnx converter supports an additional option “–dry_run” which will dump detailed
+information about unsupported ops and associated parameters.</p>
+<div class="section" id="id5">
+<h3><a class="toc-backref" href="#id32">Example</a><a class="headerlink" href="#id5" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">qnn</span><span class="o">-</span><span class="n">onnx</span><span class="o">-</span><span class="n">converter</span><span class="w"> </span><span class="o">--</span><span class="n">input_network</span><span class="w"> </span><span class="n">model</span><span class="p">.</span><span class="n">onnx</span><span class="w"> </span><span class="o">--</span><span class="n">output_path</span><span class="w"> </span><span class="n">model</span><span class="p">.</span><span class="n">cpp</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="custom-operation-output-shape-and-datatype-inference">
+<h2><a class="toc-backref" href="#id33">Custom Operation Output Shape and Datatype Inference</a><a class="headerlink" href="#custom-operation-output-shape-and-datatype-inference" title="Permalink to this heading">¶</a></h2>
+<p>QNN converter requires output shapes and datatypes for all operations to be present in the model for successful conversion. Output shapes and
+datatypes for custom operations can be inferred from the model if present in the model or inferred using the framework’s shape inference script.
+When the output shapes and datatypes of a custom operation are not present in the model or cannot be inferred from the framework’s shape inference
+script, the logic to infer custom operation output shapes and datatypes can be provided to the converter through a shared library compiled with
+<a class="reference internal" href="converter_op_package_gen_example.html"><span class="doc">Convter Op Package Generation</span></a>. The compiled library can be provided with the
+<code class="docutils literal notranslate"><span class="pre">--converter_op_package_lib</span></code> or <code class="docutils literal notranslate"><span class="pre">-cpl</span></code> option followed by the absolute path to the compiled library. The converter takes the library,
+infers the output shapes and datatypes of the custom operations needed for successful model conversion. Multiple libraries must be comma separated.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">--converter_op_package_lib</span></code> or <code class="docutils literal notranslate"><span class="pre">-cpl</span></code> is an optional argument and should be used when the output shapes and/or output datatypes for custom operations
+are not present in the model or cannot be inferred from the framework’s shape inference script.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When the output datatypes are present in the model and the <code class="docutils literal notranslate"><span class="pre">--converter_op_package_lib</span></code> with the logic to populate the output datatypes is passed,
+output datatypes inferred from the library will be given priority and override the output datatypes inferred from the model.</p>
+</div>
+<div class="section" id="id6">
+<h3><a class="toc-backref" href="#id34">Example</a><a class="headerlink" href="#id6" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">qnn</span><span class="o">-</span><span class="n">onnx</span><span class="o">-</span><span class="n">converter</span><span class="w"> </span><span class="o">--</span><span class="n">input_network</span><span class="w"> </span><span class="n">model</span><span class="p">.</span><span class="n">onnx</span><span class="w"> </span><span class="o">--</span><span class="n">converter_op_package_lib</span><span class="w"> </span><span class="n">libExampleLibrary</span><span class="p">.</span><span class="n">so</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>See <a class="reference internal" href="converter_op_package_gen_example.html"><span class="doc">Convter Op Package Generation</span></a> for library generation and compilation instructions.</p></li>
+<li><p>Custom operation output shape inference is only supported for ONNX and PyTorch converters.</p></li>
+<li><p>Tensorflow and TFLite converters do not support custom operation output shape inference.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="custom-i-o">
+<h2><a class="toc-backref" href="#id35">Custom I/O</a><a class="headerlink" href="#custom-i-o" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="introduction">
+<h3><a class="toc-backref" href="#id36">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h3>
+<p>Custom I/O feature allows users to provide the desired layout and datatype for the inputs and outputs while loading a network.
+Instead of compiling the network for the inputs and outputs specified in the model, the network is compiled for the inputs and outputs described in custom configuration.
+This feature is used when the user intends to pre-process (on GPU/CDSP or any other method) or offline process (like allowed by ML commons) the input data and avoid some steps in the input processing.
+Users can avoid redundant transposes and data-type conversions if they have knowledge of the input pre-processing steps. Similarly, on the post-processing side, if the model output is to be fed to a next stage in a pipeline, the desired format and type can be configured as the output of current stage.</p>
+<p>In this section, the term “Model I/O” refers to the input and output datatypes and formats of the original model.
+The term “Custom I/O” refers to the input and output datatypes and formats desired by the user.</p>
+</div>
+<div class="section" id="custom-i-o-configuration-file">
+<h3><a class="toc-backref" href="#id37">Custom I/O Configuration File</a><a class="headerlink" href="#custom-i-o-configuration-file" title="Permalink to this heading">¶</a></h3>
+<p>Custom I/O can be applied using a configuration yaml file that contains the following fields for each input and output that needs to be modified.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>IOName: Name of the input or output present in the model that needs to be loaded as per the custom requirement.</p></li>
+<li><p>Layout: Layout field (optional) has two sub fields: Model and Custom. Model and Custom fields support valid QNN Layout. Accepted values are: NCDHW, NDHWC, NCHW, NHWC, NFC, NCF, NTF, TNF, NF, NC, F, NONTRIVIAL, where, N = Batch, C = Channels, D = Depth, H = Height, W = Width, F = Feature, T = Time</p>
+<ul>
+<li><p>Model: Specify the layout of the buffer in the original model. This is equivalent to the –input_layout option and both cannot be used together.</p></li>
+<li><p>Custom: Specify the custom layout desired for the buffer. This field needs to be filled by the user.</p></li>
+</ul>
+</li>
+<li><p>Datatype: Datatype field (optional) supports float32, float16 and uint8 datatypes.</p></li>
+<li><p>QuantParam: QuantParam field (optional) has three sub fields: Type, Scale and Offset.</p>
+<ul>
+<li><p>Type: Set to QNN_DEFINITION_DEFINED (default) if the scale and offset are provided by the user else set to QNN_DEFINITION_UNDEFINED.</p></li>
+<li><p>Scale: Float value for the scale of the buffer as desired by the user.</p></li>
+<li><p>Offset: Integer value for the offset as desired by the user.</p></li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id7">
+<h3><a class="toc-backref" href="#id38">Example</a><a class="headerlink" href="#id7" title="Permalink to this heading">¶</a></h3>
+<p>Consider a ONNX model with the original model I/O and custom I/O configuration as shown in the table below:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Input/Output Name</p></th>
+<th class="head"><p>Model I/O</p></th>
+<th class="head"><p>Custom I/O</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>‘input_0’</p></td>
+<td><p>float NCHW</p></td>
+<td><p>int8 NHWC</p></td>
+</tr>
+<tr class="row-odd"><td><p>‘output_0’</p></td>
+<td><p>float NHWC</p></td>
+<td><p>float NCHW</p></td>
+</tr>
+</tbody>
+</table>
+<p>Then, the content of custom I/O configuration yaml file that should be provided is</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="w"> </span><span class="n">IOName</span><span class="o">:</span><span class="w"> </span><span class="n">input_0</span>
+<span class="w">  </span><span class="nl">Layout</span><span class="p">:</span>
+<span class="w">    </span><span class="nl">Model</span><span class="p">:</span><span class="w"> </span><span class="n">NCHW</span>
+<span class="w">    </span><span class="nl">Custom</span><span class="p">:</span><span class="w"> </span><span class="n">NCHW</span>
+<span class="w">  </span><span class="nl">Datatype</span><span class="p">:</span><span class="w"> </span><span class="n">uint8</span>
+<span class="w">  </span><span class="nl">QuantParam</span><span class="p">:</span>
+<span class="w">    </span><span class="nl">Type</span><span class="p">:</span>
+<span class="w">       </span><span class="n">QNN_DEFINITION_DEFINED</span>
+<span class="w">    </span><span class="nl">Scale</span><span class="p">:</span>
+<span class="w">       </span><span class="mf">0.12</span>
+<span class="w">    </span><span class="nl">Offset</span><span class="p">:</span>
+<span class="w">       </span><span class="mi">2</span>
+
+<span class="o">-</span><span class="w"> </span><span class="n">IOName</span><span class="o">:</span><span class="w"> </span><span class="n">output_0</span>
+<span class="w">  </span><span class="nl">Layout</span><span class="p">:</span>
+<span class="w">    </span><span class="nl">Model</span><span class="p">:</span><span class="w"> </span><span class="n">NHWC</span>
+<span class="w">    </span><span class="nl">Custom</span><span class="p">:</span><span class="w"> </span><span class="n">NCHW</span>
+</pre></div>
+</div>
+<p>Note:</p>
+<ul class="simple">
+<li><p>If no change is required for an input or output, it can be skipped in the configuration file.</p></li>
+<li><p>Datatype can be modified using custom I/O feature only if the model input or output datatype is float, float16, int8 or uint8. For other datatypes, ‘Datatype’ field should be skipped in the configuration file.</p></li>
+</ul>
+</div>
+<div class="section" id="usage">
+<h3><a class="toc-backref" href="#id39">Usage</a><a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h3>
+<p>The custom IO config YAMl file can be provided using the <code class="docutils literal notranslate"><span class="pre">--custom_io</span></code> option of <code class="docutils literal notranslate"><span class="pre">qnn-onnx-converter</span></code>. Sample usage is as follows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">onnx</span><span class="o">-</span><span class="n">converter</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">custom_io</span><span class="w"> </span><span class="o">&lt;</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">YAML</span><span class="o">/</span><span class="n">file</span><span class="o">&gt;</span><span class="w"> </span><span class="p">....</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="custom-io-config-template-file">
+<h3><a class="toc-backref" href="#id40">Custom IO Config Template File</a><a class="headerlink" href="#custom-io-config-template-file" title="Permalink to this heading">¶</a></h3>
+<p>The Custom IO Configuration file filled with default values can be obtained using the <code class="docutils literal notranslate"><span class="pre">--dump_custom_io_config_template</span></code> option of <code class="docutils literal notranslate"><span class="pre">qnn-onnx-converter</span></code>.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">onnx</span><span class="o">-</span><span class="n">converter</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">input_network</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">model</span><span class="p">.</span><span class="n">onnx</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">dump_custom_io_config_template</span><span class="w"> </span><span class="o">&lt;</span><span class="n">output_folder</span><span class="o">&gt;/</span><span class="n">config</span><span class="p">.</span><span class="n">yaml</span>
+</pre></div>
+</div>
+<p>The dumped template file has an entry for each input and output of the model provided. Each field in the template file is filled with the default value obtained from the model for that particular input or output.
+The template file also has comments describing each field for the user.</p>
+</div>
+<div class="section" id="supported-use-cases">
+<h3><a class="toc-backref" href="#id41">Supported Use Cases</a><a class="headerlink" href="#supported-use-cases" title="Permalink to this heading">¶</a></h3>
+<ol class="arabic">
+<li><p>Layout conversions of the input and output buffers of the model. Valid layout conversions are inter-conversions between:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>NCDHW and NDHWC</p></li>
+<li><p>NHWC and NCHW</p></li>
+<li><p>NFC and NCF</p></li>
+<li><p>NTF and TNF</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Passing quantized inputs of datatype uint8 or int8 to a non-quantized model. In this case, users must provide the scale and offset for the quantized inputs.</p></li>
+<li><p>Users can provide custom scale and offset for the inputs and outputs of a quantized model. The scale and offset generated by the quantizer are overrriden by those provided by the user in the YAML file.</p></li>
+</ol>
+<p>The user may use the <code class="docutils literal notranslate"><span class="pre">--input_data_type</span></code> and <code class="docutils literal notranslate"><span class="pre">--output_data_type</span></code> options of <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code> to provide float or uint8_t type data to model inputs/outputs. Users may pass and get int8/uint8 data to the model using the <code class="docutils literal notranslate"><span class="pre">native</span></code> option. By default, <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code> assumes the data to be of type float32 and performs the quantization at input and dequatization at output in case of quantized models.</p>
+</div>
+<div class="section" id="limitations">
+<h3><a class="toc-backref" href="#id42">Limitations</a><a class="headerlink" href="#limitations" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Custom IO only supports providing the following datatypes: float32, float16, uint8, int8.</p></li>
+<li><p>If the user needs to pass quantized inputs (i.e. of type int8 or uint8) to a non-quantized model, the scale and offset must be provided by the user in the YAML file. Not providing the scale and offset in this case would throw an error.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="preserve-i-o">
+<h2><a class="toc-backref" href="#id43">Preserve I/O</a><a class="headerlink" href="#preserve-i-o" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id8">
+<h3><a class="toc-backref" href="#id44">Introduction</a><a class="headerlink" href="#id8" title="Permalink to this heading">¶</a></h3>
+<p>Preserve I/O feature allows users to retain the layout and datatype of the inputs and outputs as present in the original ONNX model.
+This feature allows the user to avoid any pre- or post-processing steps to transform the data to the layout and datatype due to the default behavior of QNN converters at the input and output of the model.</p>
+</div>
+<div class="section" id="id9">
+<h3><a class="toc-backref" href="#id45">Usage</a><a class="headerlink" href="#id9" title="Permalink to this heading">¶</a></h3>
+<p>The different ways of using this option are as follows:</p>
+<ol class="arabic simple">
+<li><p>The user may choose to preserve layouts and datatypes for all IO tensors by just passing the <code class="docutils literal notranslate"><span class="pre">--preserve_io</span></code> option as follows:</p></li>
+</ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">onnx</span><span class="o">-</span><span class="n">converter</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">preserve_io</span><span class="w"> </span><span class="p">....</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>The user may choose to preserve the only layout or datatype for all the inputs and outputs of the graph as follows:</p></li>
+</ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">onnx</span><span class="o">-</span><span class="n">converter</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">preserve_io</span><span class="w"> </span><span class="n">layout</span><span class="w"> </span><span class="p">....</span>
+
+<span class="n">or</span><span class="p">,</span>
+
+<span class="n">$</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">onnx</span><span class="o">-</span><span class="n">converter</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">preserve_io</span><span class="w"> </span><span class="n">datatype</span><span class="p">....</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>The user may choose to preserve the layout or datatype for only a few inputs and outputs of the graph as follows:</p></li>
+</ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">onnx</span><span class="o">-</span><span class="n">converter</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">preserve_io</span><span class="w"> </span><span class="n">layout</span><span class="w"> </span><span class="o">&lt;</span><span class="n">space</span><span class="w"> </span><span class="n">separated</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">names</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">inputs</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">outputs</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">graph</span><span class="o">&gt;</span><span class="p">....</span>
+
+<span class="n">or</span><span class="p">,</span>
+
+<span class="n">$</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">onnx</span><span class="o">-</span><span class="n">converter</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">preserve_io</span><span class="w"> </span><span class="n">datatype</span><span class="w"> </span><span class="o">&lt;</span><span class="n">space</span><span class="w"> </span><span class="n">separated</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">names</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">inputs</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">outputs</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">graph</span><span class="o">&gt;</span><span class="p">....</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>The user can pass a combination of <code class="docutils literal notranslate"><span class="pre">--preserve_io</span> <span class="pre">layout</span></code> and <code class="docutils literal notranslate"><span class="pre">--preserve_io</span> <span class="pre">datatype</span></code> as follows:</p></li>
+</ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">onnx</span><span class="o">-</span><span class="n">converter</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">preserve_io</span><span class="w"> </span><span class="n">layout</span><span class="w"> </span><span class="o">&lt;</span><span class="n">space</span><span class="w"> </span><span class="n">separated</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">names</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">inputs</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">outputs</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">graph</span><span class="o">&gt;</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">preserve_io</span><span class="w"> </span><span class="n">datatype</span><span class="w"> </span><span class="o">&lt;</span><span class="n">space</span><span class="w"> </span><span class="n">separated</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">names</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">inputs</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">outputs</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">graph</span><span class="o">&gt;</span><span class="w"> </span><span class="p">....</span>
+</pre></div>
+</div>
+<p>Passing just <code class="docutils literal notranslate"><span class="pre">--preserve_io</span> <span class="pre">layout</span></code> and <code class="docutils literal notranslate"><span class="pre">--preserve_io</span> <span class="pre">datatype</span></code> together is valid and equivalent to passing <code class="docutils literal notranslate"><span class="pre">--preserve_io</span></code> only.
+Usage in point 3 cannot be combined with usage in point 1 or point 2 and will result in an error if used together.</p>
+</div>
+<div class="section" id="usage-in-qnn-pytorch-converter">
+<h3><a class="toc-backref" href="#id46">Usage in qnn-pytorch-converter</a><a class="headerlink" href="#usage-in-qnn-pytorch-converter" title="Permalink to this heading">¶</a></h3>
+<p>In PyTorch models there may be no tensor names. Input tensor names are named by passing <code class="docutils literal notranslate"><span class="pre">-d</span></code>, but output names in converter are named by
+internal logic. To preserve layout or datatype for only the specified output tensor user can do as follows:</p>
+<ol class="arabic simple">
+<li><p>Run a 1st pass of the Converter and use the generated CPP/JSON file to fetch the APP_READ type tensor names.</p></li>
+<li><p>Run a 2nd Converter for preserve layout or datatype for only the specified IO tensor with their names:</p></li>
+</ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">onnx</span><span class="o">-</span><span class="n">converter</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">preserve_io</span><span class="w"> </span><span class="n">layout</span><span class="w"> </span><span class="o">&lt;</span><span class="n">space</span><span class="w"> </span><span class="n">separated</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">names</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">inputs</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">outputs</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">graph</span><span class="o">&gt;</span><span class="p">....</span>
+
+<span class="n">or</span><span class="p">,</span>
+
+<span class="n">$</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">onnx</span><span class="o">-</span><span class="n">converter</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">preserve_io</span><span class="w"> </span><span class="n">datatype</span><span class="w"> </span><span class="o">&lt;</span><span class="n">space</span><span class="w"> </span><span class="n">separated</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">names</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">inputs</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">outputs</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">graph</span><span class="o">&gt;</span><span class="p">....</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="usage-with-other-converter-options">
+<h3><a class="toc-backref" href="#id47">Usage with other converter options</a><a class="headerlink" href="#usage-with-other-converter-options" title="Permalink to this heading">¶</a></h3>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--keep_int64_inputs</span></code> need not be passed if preserve IO is used to preserve the datatype of such inputs.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--use_native_input_files</span></code> is set to True in case of quantization if preserve IO is used to preserve the datatypes.</p></li>
+<li><p>The layout specified using <code class="docutils literal notranslate"><span class="pre">--input_layout</span></code> is honored.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">--input_dtype</span></code> with preserve IO may result in an error in case of datatype mismatch for any IO tensor.</p></li>
+<li><p>The layouts and datatypes specified using <code class="docutils literal notranslate"><span class="pre">--custom_io</span></code> get higher precedence over <code class="docutils literal notranslate"><span class="pre">--preserve_io</span></code>.</p></li>
+</ol>
+<p>Since preserve IO retains the datatypes of IO tensors in the original model, the user must use <code class="docutils literal notranslate"><span class="pre">--use_native_input_files</span></code> or <code class="docutils literal notranslate"><span class="pre">--native_input_tensor_names</span></code> with <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code>.</p>
+</div>
+</div>
+<div class="section" id="common-parameters">
+<h2><a class="toc-backref" href="#id48">Common Parameters</a><a class="headerlink" href="#common-parameters" title="Permalink to this heading">¶</a></h2>
+<p>There are a number of common parameters that can be passed to all the converters. These are described here:
+<a class="reference internal" href="tools.html"><span class="doc">Tools</span></a></p>
+<p>In addition, quantization parameters are also specified at conversion time. For more information refer to the tools document above and to:
+<a class="reference internal" href="quantization.html"><span class="doc">Quantization</span></a></p>
+</div>
+<div class="section" id="qairt-converter">
+<h2><a class="toc-backref" href="#id49">Qairt Converter</a><a class="headerlink" href="#qairt-converter" title="Permalink to this heading">¶</a></h2>
+<p>The 2.21 release introduces a new conversion tool, using a new prefix <code class="docutils literal notranslate"><span class="pre">qairt</span></code> for <code class="docutils literal notranslate"><span class="pre">Qualcomm</span> <span class="pre">AI</span> <span class="pre">Runtime</span></code>. This new prefix
+communicates that this converter can be used with both the <code class="docutils literal notranslate"><span class="pre">Qualcomm</span> <span class="pre">Neural</span> <span class="pre">Processing</span> <span class="pre">SDK</span></code> API as well as the <code class="docutils literal notranslate"><span class="pre">Qualcomm</span> <span class="pre">AI</span> <span class="pre">Engine</span> <span class="pre">Direct</span></code>
+API.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This tool is still in a Beta release status.</p>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">qairt-converter</span></code> tool converts a model from one of ONNX/TensorFlow/TFLite/PyTorch framework to a DLC.
+The DLC contains the model in a Qualcomm graph format to support inference on Qualcomm HW.
+The converter automatically detects the proper framework based on the source model extension.</p>
+<p>Supported frameworks and file types are:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 53%" />
+<col style="width: 47%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Framework</p></th>
+<th class="head"><p>File Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Onnx</p></td>
+<td><p><a href="#id10"><span class="problematic" id="id11">*</span></a>.onnx</p></td>
+</tr>
+<tr class="row-odd"><td><p>TensorFlow</p></td>
+<td><p><a href="#id12"><span class="problematic" id="id13">*</span></a>.pb</p></td>
+</tr>
+<tr class="row-even"><td><p>TFLite</p></td>
+<td><p><a href="#id14"><span class="problematic" id="id15">*</span></a>.tflite</p></td>
+</tr>
+<tr class="row-odd"><td><p>PyTorch</p></td>
+<td><p><a href="#id16"><span class="problematic" id="id17">*</span></a>.pt</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="basic-conversion">
+<h3><a class="toc-backref" href="#id50">Basic Conversion</a><a class="headerlink" href="#basic-conversion" title="Permalink to this heading">¶</a></h3>
+<p>Basic conversion has only one required argument <code class="docutils literal notranslate"><span class="pre">--input_network</span></code>. Some frameworks may require additional arguments
+that are otherwise listed as optional. Please check the help text for more details.</p>
+<ol class="loweralpha simple">
+<li><p>Onnx Conversion</p></li>
+</ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">qairt</span><span class="o">-</span><span class="n">converter</span><span class="w"> </span><span class="o">--</span><span class="n">input_network</span><span class="w"> </span><span class="n">model</span><span class="p">.</span><span class="n">onnx</span>
+</pre></div>
+</div>
+<ol class="loweralpha simple" start="2">
+<li><p>Tensorflow Conversion</p></li>
+</ol>
+<p>Tensorflow requires <code class="docutils literal notranslate"><span class="pre">--desired_input_shape</span></code> and <code class="docutils literal notranslate"><span class="pre">--out_tensor_node</span></code>.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">qairt</span><span class="o">-</span><span class="n">converter</span><span class="w"> </span>\
+<span class="w">     </span><span class="o">--</span><span class="n">input_network</span><span class="w"> </span><span class="n">inception_v3_2016_08_28_frozen</span><span class="p">.</span><span class="n">pb</span><span class="w"> </span>\
+<span class="w">     </span><span class="o">--</span><span class="n">desired_input_shape</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">299</span><span class="p">,</span><span class="mi">299</span><span class="p">,</span><span class="mi">3</span><span class="w"> </span>\
+<span class="w">     </span><span class="o">--</span><span class="n">out_tensor_node</span><span class="w"> </span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">Predictions</span><span class="o">/</span><span class="n">Reshape_1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="input-output-layouts">
+<h3><a class="toc-backref" href="#id51">Input/Output Layouts</a><a class="headerlink" href="#input-output-layouts" title="Permalink to this heading">¶</a></h3>
+<p>The default input and output layouts in the converted graph are the same as per the source model. This behavior differs
+from the legacy converter which would modify the input and (optionally) the output layout to the spatial first format.
+An example single layer Onnx model (spatial last) is shown below.</p>
+<div class="figure align-default" id="qairt-single-layers-argmax-layout">
+<img alt="../_static/resources/qairt-conversion-layout-comparison.png" src="../_static/resources/qairt-conversion-layout-comparison.png" />
+</div>
+</div>
+<div class="section" id="input-output-customization-using-yaml">
+<h3><a class="toc-backref" href="#id52">Input/Output Customization using YAML</a><a class="headerlink" href="#input-output-customization-using-yaml" title="Permalink to this heading">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This feature will allow specification of the desired input/output tensor layout in the converted model.</p>
+</div>
+<p>Users can provide a yaml configuration file to simplify using different input and output configurations over the command
+line. All configurations in the yaml are optional. If an option is provided in the yaml configuration and an equivalent
+option is provided on the command line, the command line option takes priority. The yaml configuration schema is shown below.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Input</span><span class="w"> </span><span class="n">Tensor</span><span class="w"> </span><span class="n">Configuration</span><span class="o">:</span>
+<span class="w">  </span><span class="cp"># Input 1</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="n">Name</span><span class="o">:</span>
+<span class="w">    </span><span class="n">Src</span><span class="w"> </span><span class="n">Model</span><span class="w"> </span><span class="n">Parameters</span><span class="o">:</span>
+<span class="w">        </span><span class="nl">DataType</span><span class="p">:</span>
+<span class="w">        </span><span class="nl">Layout</span><span class="p">:</span>
+<span class="w">    </span><span class="n">Desired</span><span class="w"> </span><span class="n">Model</span><span class="w"> </span><span class="n">Parameters</span><span class="o">:</span>
+<span class="w">        </span><span class="nl">DataType</span><span class="p">:</span>
+<span class="w">        </span><span class="nl">Layout</span><span class="p">:</span>
+<span class="w">        </span><span class="nl">Shape</span><span class="p">:</span>
+<span class="w">        </span><span class="n">Color</span><span class="w"> </span><span class="n">Conversion</span><span class="o">:</span>
+<span class="w">        </span><span class="nl">QuantParams</span><span class="p">:</span>
+<span class="w">          </span><span class="nl">Scale</span><span class="p">:</span>
+<span class="w">          </span><span class="nl">Offset</span><span class="p">:</span>
+
+<span class="n">Output</span><span class="w"> </span><span class="n">Tensor</span><span class="w"> </span><span class="n">Configuration</span><span class="o">:</span>
+<span class="w">  </span><span class="cp"># Output 1</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="n">Name</span><span class="o">:</span>
+<span class="w">    </span><span class="n">Src</span><span class="w"> </span><span class="n">Model</span><span class="w"> </span><span class="n">Parameters</span><span class="o">:</span>
+<span class="w">        </span><span class="nl">DataType</span><span class="p">:</span>
+<span class="w">        </span><span class="nl">Layout</span><span class="p">:</span>
+<span class="w">    </span><span class="n">Desired</span><span class="w"> </span><span class="n">Model</span><span class="w"> </span><span class="n">Parameters</span><span class="o">:</span>
+<span class="w">        </span><span class="nl">DType</span><span class="p">:</span>
+<span class="w">        </span><span class="nl">Layout</span><span class="p">:</span>
+<span class="w">        </span><span class="nl">QuantParams</span><span class="p">:</span>
+<span class="w">          </span><span class="nl">Scale</span><span class="p">:</span>
+<span class="w">          </span><span class="nl">Offset</span><span class="p">:</span>
+</pre></div>
+</div>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Name:</span></code> Name of the input or output tensor present in the model that needs to be customized</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Src</span> <span class="pre">Model</span> <span class="pre">Parameters</span></code></p>
+<p>These are mandatory if a certain equivalent desired configuration is specified.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">DataType:</span></code> DataType of the tensor in source model.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Layout:</span></code> Layout of the tensor in source model. Accepted values are:</p>
+<ul class="simple">
+<li><p>NCDHW</p></li>
+<li><p>NDHWC</p></li>
+<li><p>NCHW</p></li>
+<li><p>NHWC</p></li>
+<li><p>NFC</p></li>
+<li><p>NCF</p></li>
+<li><p>NTF</p></li>
+<li><p>TNF</p></li>
+<li><p>NF</p></li>
+<li><p>NC</p></li>
+<li><p>F</p></li>
+</ul>
+<p>where</p>
+<ul class="simple">
+<li><p>N = Batch</p></li>
+<li><p>C = Channels</p></li>
+<li><p>D = Depth</p></li>
+<li><p>H = Height</p></li>
+<li><p>W = Width</p></li>
+<li><p>F = Feature</p></li>
+<li><p>T = Time</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Desired</span> <span class="pre">Model</span> <span class="pre">Parameters</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DataType:</span></code> Desired datatype of the tensor in converted model. Supports float32, float16, uint8, int8 datatypes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Layout:</span></code> Desired layout of the tensor in converted model. Supports the same values as source layout.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Shape:</span></code> Shape/Dimension of the tensor in converted model. Supports comma separated dimension value (a,b,c,d)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Color</span> <span class="pre">Conversion:</span></code> Color encoding of the tensor in converted model. Supports BGR, RGB, RGBA, ARGB32, NV21, NV12</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QuantParams:</span></code> Used when the desired model datatype is a quantized datatype; has two sub fields (Scale and Offset).</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Scale:</span></code> Float value for the scale of the buffer as desired by the user.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Offset:</span></code> Integer value for the offset as desired by the user.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>The IO configuration file can be obtained using the <code class="docutils literal notranslate"><span class="pre">--dump_io_config_template</span></code> option of <code class="docutils literal notranslate"><span class="pre">qairt-converter</span></code>.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">qairt</span><span class="o">-</span><span class="n">converter</span><span class="w"> </span>\
+<span class="w">      </span><span class="o">--</span><span class="n">input_network</span><span class="w"> </span><span class="n">model</span><span class="p">.</span><span class="n">onnx</span><span class="w"> </span>\
+<span class="w">      </span><span class="o">--</span><span class="n">dump_io_config_template</span><span class="w"> </span><span class="o">&lt;</span><span class="n">output_folder</span><span class="o">&gt;/</span><span class="n">io_config</span><span class="p">.</span><span class="n">yaml</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="qat-encodings">
+<h3><a class="toc-backref" href="#id53">QAT encodings</a><a class="headerlink" href="#qat-encodings" title="Permalink to this heading">¶</a></h3>
+<p>QAT encodings are quantization-aware training encodings which are present in the source graph. They can be present
+in the following form in the source graph.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>FakeQuant Nodes: There can be FakeQuant nodes in the source network.</p></li>
+<li><p>Tensor output encodings: Quantization overrides can be associated with the output tensors in the source network.</p></li>
+<li><p>Quant-Dequant Nodes: There can be Quant-Dequant nodes present in the source network.</p></li>
+</ul>
+</div></blockquote>
+<p>For all the above cases, the FakeQuant and Quant-Dequant nodes are removed and the quantization overrides are cached
+in the float DLC generated from the <code class="docutils literal notranslate"><span class="pre">qairt-converter</span></code> tool. These can then be used with the <code class="docutils literal notranslate"><span class="pre">qairt-quantizer</span></code> tool.</p>
+</div>
+<div class="section" id="quantization-overrides">
+<h3><a class="toc-backref" href="#id54">Quantization Overrides</a><a class="headerlink" href="#quantization-overrides" title="Permalink to this heading">¶</a></h3>
+<p>Provide quantization overrides to <code class="docutils literal notranslate"><span class="pre">qairt-converter</span></code> with a JSON file containing the parameters to use for quantization by
+using the <code class="docutils literal notranslate"><span class="pre">--quantization_overrides</span></code> option, e.g., <code class="docutils literal notranslate"><span class="pre">--quantization_overrides</span> <span class="pre">&lt;overrides.json&gt;</span></code> These will be cached with
+the float DLC generated by <code class="docutils literal notranslate"><span class="pre">qairt-converter</span></code> and can be used with the <code class="docutils literal notranslate"><span class="pre">qairt-quantizer</span></code> tool.</p>
+<p>These will override any quantization data carried from conversion ,e.g., TF fake quantization, or calculated during the normal
+quantization process. For more details refer to <a class="reference internal" href="quantization.html#quantization-overrides"><span class="std std-ref">Quantization Overrides</span></a>.</p>
+</div>
+<div class="section" id="fp16-conversion">
+<h3><a class="toc-backref" href="#id55">FP16 Conversion</a><a class="headerlink" href="#fp16-conversion" title="Permalink to this heading">¶</a></h3>
+<p>Users also have the ability to generate a float16 graph where all float32 tensors are converted to float16 by passing
+the <code class="docutils literal notranslate"><span class="pre">--float_bitwidth</span> <span class="pre">16</span></code> flag to the <code class="docutils literal notranslate"><span class="pre">qairt-converter</span></code> tool.
+To generate a float16 graph with the bias still in float32, an additional <code class="docutils literal notranslate"><span class="pre">--float_bias_bitwidth</span> <span class="pre">32</span></code> flag can be
+passed.</p>
+</div>
+<div class="section" id="dryrun">
+<h3><a class="toc-backref" href="#id56">DryRun</a><a class="headerlink" href="#dryrun" title="Permalink to this heading">¶</a></h3>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">--dry_run</span></code> option to evaluate the model without actually converting any ops. This returns unsupported ops/attributes
+and unused inputs/outputs.</p>
+</div>
+</div>
+<div class="section" id="faqs">
+<h2><a class="toc-backref" href="#id57">FAQs</a><a class="headerlink" href="#faqs" title="Permalink to this heading">¶</a></h2>
+<ul>
+<li><p>How is QAIRT Converter different from Legacy Converters?</p>
+<ul>
+<li><p>Single converter vs independent framework converters</p>
+<p>The qairt-converter is a single converter tool supporting conversion for all supported frameworks based
+on the model extension while legacy converters had different framework specific tools.</p>
+</li>
+<li><p>Changed some optional arguments as default behavior</p>
+<p>The default input and output layouts in the Converted graph will be same as in the Source graph. The legacy ONNX and
+Pytorch converters may not always retain the input and output layouts from Source graph.</p>
+</li>
+<li><p>Removed deprecated arguments</p>
+<p>Deprecated arguments on the legacy converters are not enabled on the new converter.</p>
+</li>
+<li><p>Renamed some arguments for clarity</p>
+<p>The –input_encoding argument is renamed to –input_color_encoding. Framework-specific arguments have the
+framework name present. eg- –define_symbol is renamed to –onnx_define_symbol, –show_unconsumed_nodes is
+renamed to –tf_show_unconsumed_nodes, –signature_name is renamed to –tflite_signature_name.</p>
+</li>
+<li><p>DLC as the Converter output file format</p>
+<p>The QAIRT Converter uses DLC as output format. The .cpp/.bin &amp; .json format used by <code class="docutils literal notranslate"><span class="pre">qnn-&lt;framework&gt;-converter</span></code>
+Converter are not supported by QAIRT Converter.  In order to generate the .cpp/.bin and .json output, continue to use
+the legacy converter.</p>
+</li>
+<li><p>Quantizer functionality is separated from Conversion functionality</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">qnn-&lt;framework&gt;-converter</span></code> invokes the quantizer as part of the converter tool when <code class="docutils literal notranslate"><span class="pre">--input_list</span></code> or <code class="docutils literal notranslate"><span class="pre">--float_fallback</span></code>
+is passed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">qairt-quantizer</span></code> however is a standalone tool for quantization like <code class="docutils literal notranslate"><span class="pre">snpe-dlc-quant</span></code>.</p></li>
+<li><p>Please refer to <a class="reference external" href="tools.html#qairt-quantizer">qairt-quantizer</a> for more information and usage details.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Will the Converted model be any different with QAIRT converter compared to Legacy Converter?</p>
+<ul class="simple">
+<li><p>The result of the QAIRT Converter will be different from the result of Legacy Converters in terms of the input/output layout.</p></li>
+<li><p>Legacy converters will by default modify the input tensors to Spatial First (e.g. NHWC) layout. This means for Frameworks
+like ONNX, where the predominant layout is Spatial Last (e.g. NCHW), the input/output layout is different between the
+source model and the converted model.</p></li>
+<li><p>Since QAIRT Converter preserves the source layouts be default, the QAIRT-converted graphs in case of many ONNX/Pytorch
+models will be different from the Legacy-converted graphs.</p></li>
+<li><p>The QAIRT Converter will be enhanced in a future release to support the same layouts as the legacy converters.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="quantization.html" class="btn btn-neutral float-right" title="Quantization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="tools.html" class="btn btn-neutral float-left" title="Tools" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

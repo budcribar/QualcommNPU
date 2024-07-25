@@ -1,0 +1,434 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Tutorial - Running Inference Using the Qualcomm® AI Engine Direct Delegate &mdash; Qualcomm® AI Engine Direct Delegate</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tutorial - Skip Delegation Ops Using the Qualcomm® AI Engine Direct Delegate" href="tutorial_skip_node.html" />
+    <link rel="prev" title="Tutorials" href="tutorials.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Qualcomm® AI Engine Direct Delegate
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qnn_libs.html">Qualcomm® AI Engine Direct Backend Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Acceleration Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom_op.html">Custom Operator Support</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Tutorial - Running Inference Using the Qualcomm® AI Engine Direct Delegate</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-the-inception-v3-quant-model">Running the inception_v3_quant Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-profile-result-from-inference">Get Profile Result from Inference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#view-profiling-result-by-qtld-profile-viewer">View Profiling Result by qtld-profile-viewer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_skip_node.html">Tutorial - Skip Delegation Ops Using the Qualcomm® AI Engine Direct Delegate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_benchmark_model.html">Tutorial - Benchmarking the Qualcomm® AI Engine Direct Delegate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_htp_shared_memory.html">Tutorial - Running Inference Using Shared Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_mix_precision.html">Tutorial - Use Mix-Precision Model with Qualcomm® AI Engine Direct Delegate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_qtld_profiler.html">Tutorial - Profile Custom Models using Qualcomm® AI Engine Direct Delegate</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_version_history.html">API Version History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Qualcomm® AI Engine Direct Delegate</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="tutorials.html">Tutorials</a> &raquo;</li>
+        
+      <li>Tutorial - Running Inference Using the Qualcomm® AI Engine Direct Delegate</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tutorial-running-inference-using-the-qualcomm-r-ai-engine-direct-delegate">
+<h1>Tutorial - Running Inference Using the Qualcomm® AI Engine Direct Delegate<a class="headerlink" href="#tutorial-running-inference-using-the-qualcomm-r-ai-engine-direct-delegate" title="Permalink to this heading">¶</a></h1>
+<p>This tutorial demonstrates how to run the TFLite <em>inception_v3_quant</em> model
+using the Qualcomm® AI Engine Direct Delegate on the HTP backend.</p>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">¶</a></h2>
+<p>The following list of prerequisites must be met before starting this tutorial:</p>
+<ol class="arabic simple">
+<li><p>Finished the Setup from QNN, notice this is different from the Delegate Setup Section.
+The QNN Setup Section can be accessed through $QNN_SDK_ROOT/docs/QNN/index.html.
+After open up the index.html, users should see the Setup Section for QNN on the left side.</p></li>
+<li><p>A Qualcomm device with an ADB connection.</p></li>
+<li><p>Read the <a class="reference internal" href="overview.html"><span class="doc">Overview</span></a> and <a class="reference internal" href="setup.html"><span class="doc">Setup</span></a> pages to
+understand the different components of the Qualcomm® AI Engine Direct Delegate.</p></li>
+<li><p>A python3 environment with the <em>numpy</em> package installed.</p></li>
+<li><p>Set the environment variable <cite>TENSORFLOW_HOME</cite> to point to the location where TensorFlow package is installed.
+TensorFlow 2.10.1 has been tested and is compatible with this tutorial.</p></li>
+</ol>
+</div>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">¶</a></h2>
+<p>In this tutorial, the <em>inception_v3_quant</em> model will be used to run inference
+with the delegate. The Qualcomm® AI Engine Direct Delegate comes with some artifacts for this model
+under <code class="docutils literal notranslate"><span class="pre">$QNN_SDK_ROOT/examples/Models/InceptionV3</span></code>.</p>
+<p>First, to get the the model file and images, run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python3<span class="w"> </span><span class="nv">$QNN_SDK_ROOT</span>/examples/Models/InceptionV3/scripts/setup_inceptionv3.py<span class="w"> </span>-a<span class="w"> </span>~/tmpdir<span class="w"> </span>-d
+</pre></div>
+</div>
+<p>Notice the following directories under this path:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">data/cropped</span></code>: the jpg and the preprocessed versions of the images.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data/target_raw_list.txt</span></code>: The list of paths of the preprocessed images.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tensorflow/inception_v3_2016_08_28_frozen_opt.pb</span></code>: the jpg and the preprocessed versions of the images.</p></li>
+</ul>
+<p>Follow the instructions below to convert inception_v3_2016_08_28_frozen_opt.pb into inception_v3_quant.tflite.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python3<span class="w"> </span><span class="nv">$QNN_SDK_ROOT</span>/examples/QNN/TFLiteDelegate/Models/InceptionV3Quant/scripts/convert_inceptionv3_tflite.py
+</pre></div>
+</div>
+<p>The output <em>inception_v3_quant.tflite</em> is located at $QNN_SDK_ROOT/examples/QNN/TFLiteDelegate/Models/InceptionV3Quant.
+This is the model that will be used to run inference with.</p>
+<p>Next, push the model, croped, and target_raw_list.txt to the device using adb.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>adb<span class="w"> </span>shell<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/data/local/tmp/qnn_delegate/inception_v3_quant
+$<span class="w"> </span>adb<span class="w"> </span>push<span class="w"> </span><span class="nv">$QNN_SDK_ROOT</span>/examples/QNN/TFLiteDelegate/Models/InceptionV3Quant/inception_v3_quant.tflite<span class="w"> </span>/data/local/tmp/qnn_delegate/inception_v3_quant/
+$<span class="w"> </span>adb<span class="w"> </span>push<span class="w"> </span><span class="nv">$QNN_SDK_ROOT</span>/examples/Models/InceptionV3/data/cropped<span class="w"> </span>/data/local/tmp/qnn_delegate/inception_v3_quant/
+$<span class="w"> </span>adb<span class="w"> </span>push<span class="w"> </span><span class="nv">$QNN_SDK_ROOT</span>/examples/Models/InceptionV3/data/target_raw_list.txt<span class="w"> </span>/data/local/tmp/qnn_delegate/inception_v3_quant/
+</pre></div>
+</div>
+<p>This tutorial will use the <a class="reference internal" href="tools.html#qtld-net-run"><span class="std std-ref">qtld-net-run</span></a> application to run inference
+through the delegate. Push this application and the Qualcomm® AI Engine Direct Delegate to the
+device.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>adb<span class="w"> </span>push<span class="w"> </span><span class="nv">$QNN_SDK_ROOT</span>/bin/aarch64-android/qtld-net-run<span class="w"> </span>/data/local/tmp/qnn_delegate/
+</pre></div>
+</div>
+<p>Finally, push the Qualcomm® AI Engine Direct HTP backend libraries to the device.
+Notice that for the HTP and DSP backend, there are two libraries that need to be pushed,
+the Stub library that will run on the CPU and the Skel library that will run on
+the HTP or DSP.</p>
+<p>Here is an example for the HTP backend.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>adb<span class="w"> </span>push<span class="w"> </span><span class="nv">$QNN_SDK_ROOT</span>/lib/aarch64-android/libQnnSystem.so<span class="w"> </span>/data/local/tmp/qnn_delegate/
+$<span class="w"> </span>adb<span class="w"> </span>push<span class="w"> </span><span class="nv">$QNN_SDK_ROOT</span>/lib/aarch64-android/libQnnHtp.so<span class="w"> </span>/data/local/tmp/qnn_delegate/
+$<span class="w"> </span>adb<span class="w"> </span>push<span class="w"> </span><span class="nv">$QNN_SDK_ROOT</span>/lib/aarch64-android/libQnnHtpPrepare.so<span class="w"> </span>/data/local/tmp/qnn_delegate/
+$<span class="w"> </span>adb<span class="w"> </span>push<span class="w"> </span><span class="nv">$QNN_SDK_ROOT</span>/lib/aarch64-android/libQnnHtpV68Stub.so<span class="w"> </span>/data/local/tmp/qnn_delegate/
+$<span class="w"> </span>adb<span class="w"> </span>push<span class="w"> </span><span class="nv">$QNN_SDK_ROOT</span>/lib/aarch64-android/libQnnHtpV69Stub.so<span class="w"> </span>/data/local/tmp/qnn_delegate/
+$<span class="w"> </span>adb<span class="w"> </span>push<span class="w"> </span><span class="nv">$QNN_SDK_ROOT</span>/lib/aarch64-android/libQnnHtpV73Stub.so<span class="w"> </span>/data/local/tmp/qnn_delegate/
+$<span class="w"> </span>adb<span class="w"> </span>push<span class="w"> </span><span class="nv">$QNN_SDK_ROOT</span>/lib/hexagon-v68/unsigned/libQnnHtpV68Skel.so<span class="w"> </span>/data/local/tmp/qnn_delegate/
+$<span class="w"> </span>adb<span class="w"> </span>push<span class="w"> </span><span class="nv">$QNN_SDK_ROOT</span>/lib/hexagon-v69/unsigned/libQnnHtpV69Skel.so<span class="w"> </span>/data/local/tmp/qnn_delegate/
+$<span class="w"> </span>adb<span class="w"> </span>push<span class="w"> </span><span class="nv">$QNN_SDK_ROOT</span>/lib/hexagon-v73/unsigned/libQnnHtpV73Skel.so<span class="w"> </span>/data/local/tmp/qnn_delegate/
+</pre></div>
+</div>
+</div>
+<div class="section" id="running-the-inception-v3-quant-model">
+<h2>Running the inception_v3_quant Model<a class="headerlink" href="#running-the-inception-v3-quant-model" title="Permalink to this heading">¶</a></h2>
+<p>Now that all artifacts are on the device, inference can be run on the
+<cite>inception_v3_quant</cite> model using the qtld-net-run application.</p>
+<p>Run the following command to execute inference with qtld-net-run. Checkout the
+<a class="reference internal" href="tools.html#qtld-net-run"><span class="std std-ref">qtld-net-run</span></a> page for a reference on all the supported command line
+options.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>adb<span class="w"> </span>shell<span class="w"> </span><span class="s1">&#39;export LD_LIBRARY_PATH=/data/local/tmp/qnn_delegate/:$LD_LIBRARY_PATH &amp;&amp;</span>
+<span class="s1">             export ADSP_LIBRARY_PATH=&quot;/data/local/tmp/qnn_delegate/&quot; &amp;&amp;</span>
+<span class="s1">             cd /data/local/tmp/qnn_delegate/inception_v3_quant/ &amp;&amp;</span>
+<span class="s1">             /data/local/tmp/qnn_delegate/qtld-net-run \</span>
+<span class="s1">             --model inception_v3_quant.tflite \</span>
+<span class="s1">             --input target_raw_list.txt \</span>
+<span class="s1">             --output output \</span>
+<span class="s1">             --backend htp&#39;</span>
+</pre></div>
+</div>
+<p>The output should look something like the following. If there are any errors
+revisit the instructions above.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>TFLite model: [inception_v3_quant.tflite]
+Input list file: [target_raw_list.txt]
+Total number of inferences: [4]
+Using QNN Backend: [htp]
+Loaded model successfully.
+
+INFO: Initialized TensorFlow Lite runtime.
+INFO: TfLiteQnnDelegate delegate: 128 nodes delegated out of 128 nodes with 1 partitions.
+
+=== Pre-invoke Interpreter State ===
+Line 720: Allocated 1 input tensor(s)
+Line 730: Allocated 1 output tensor(s)
+
+=== Invoking Interpreter ===
+Line 894: About to fout.write() output tensors with 4004 bytes
+=== Invoking Interpreter ===
+Line 894: About to fout.write() output tensors with 4004 bytes
+=== Invoking Interpreter ===
+Line 894: About to fout.write() output tensors with 4004 bytes
+=== Invoking Interpreter ===
+Line 894: About to fout.write() output tensors with 4004 bytes
+</pre></div>
+</div>
+<p>Notice the line <em>X nodes delegated out of Y nodes with N partitions</em>. This is an
+info log from the TFLite framework stating how many nodes in the graph were
+successfully delegated to the Qualcomm® AI Engine Direct Delegate. If the Qualcomm® AI Engine Direct Delegate does not support
+an operator in the model, it will not be delegated but will instead fall back to
+other supported runtimes, creating multiple partitions.</p>
+<p>After qtld-net-run has completed running, the output results can be pulled from
+the disk and inspected.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span><span class="nv">$QNN_SDK_ROOT</span>/examples/QNN/TFLiteDelegate/Models/InceptionV3Quant
+$<span class="w"> </span>adb<span class="w"> </span>pull<span class="w"> </span>/data/local/tmp/qnn_delegate/inception_v3_quant/output<span class="w"> </span>./
+</pre></div>
+</div>
+<p>Notice under the output folder, there are four result folders, representing the
+output of each input image.</p>
+<p>QNN has provided a program, <cite>show_inceptionv3_classifications.py</cite>, to view the results.
+Under $QNN_SDK_ROOT/examples/Models/InceptionV3/scripts, launch the script file <cite>convert_output.sh</cite> to convert
+the output directory into <cite>show_inceptionv3_classifications.py</cite> readable format.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>./scripts/convert_output.sh
+</pre></div>
+</div>
+<p>The converted output will be stored inside the folder <cite>output_android</cite>.
+Next, execute <cite>show_inceptionv3_classifications.py</cite> with the following:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python3<span class="w"> </span><span class="nv">$QNN_SDK_ROOT</span>/examples/Models/InceptionV3/scripts/show_inceptionv3_classifications.py<span class="w"> </span><span class="se">\</span>
+<span class="w">            </span>-i<span class="w"> </span><span class="nv">$QNN_SDK_ROOT</span>/examples/Models/InceptionV3/data/cropped/raw_list.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">            </span>-o<span class="w"> </span><span class="nv">$QNN_SDK_ROOT</span>/examples/QNN/TFLiteDelegate/Models/InceptionV3Quant/output_android/<span class="w"> </span><span class="se">\</span>
+<span class="w">            </span>-l<span class="w"> </span><span class="nv">$QNN_SDK_ROOT</span>/examples/Models/InceptionV3/data/imagenet_slim_labels.txt
+</pre></div>
+</div>
+<p>The classification result should be similar:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span>/examples/Models/InceptionV3/data/cropped/trash_bin.raw<span class="w">   </span><span class="m">0</span>.695312<span class="w"> </span><span class="m">413</span><span class="w"> </span>ashcan
+<span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span>/examples/Models/InceptionV3/data/cropped/plastic_cup.raw<span class="w"> </span><span class="m">0</span>.996094<span class="w"> </span><span class="m">648</span><span class="w"> </span>measuring<span class="w"> </span>cup
+<span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span>/examples/Models/InceptionV3/data/cropped/notice_sign.raw<span class="w"> </span><span class="m">0</span>.175781<span class="w"> </span><span class="m">459</span><span class="w"> </span>brass
+<span class="si">${</span><span class="nv">QNN_SDK_ROOT</span><span class="si">}</span>/examples/Models/InceptionV3/data/cropped/chairs.raw<span class="w">      </span><span class="m">0</span>.410156<span class="w"> </span><span class="m">832</span><span class="w"> </span>studio<span class="w"> </span>couch
+</pre></div>
+</div>
+<p>Congratulations, you have just ran your first inference with the Qualcomm® AI Engine Direct Delegate!</p>
+</div>
+<div class="section" id="get-profile-result-from-inference">
+<h2>Get Profile Result from Inference<a class="headerlink" href="#get-profile-result-from-inference" title="Permalink to this heading">¶</a></h2>
+<p>Run the following command to profile the <em>inception_v3_quant</em> model.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>adb<span class="w"> </span>shell<span class="w"> </span><span class="s1">&#39;export LD_LIBRARY_PATH=/data/local/tmp/qnn_delegate/:$LD_LIBRARY_PATH &amp;&amp;</span>
+<span class="s1">             export ADSP_LIBRARY_PATH=&quot;/data/local/tmp/qnn_delegate/&quot; &amp;&amp;</span>
+<span class="s1">             cd /data/local/tmp/qnn_delegate/inception_v3_quant/ &amp;&amp;</span>
+<span class="s1">             /data/local/tmp/qnn_delegate/qtld-net-run \</span>
+<span class="s1">             --model inception_v3_quant.tflite \</span>
+<span class="s1">             --input target_raw_list.txt \</span>
+<span class="s1">             --output output \</span>
+<span class="s1">             --profiling 2 \</span>
+<span class="s1">             --profiling_output_dir profile_results \</span>
+<span class="s1">             --backend htp&#39;</span>
+</pre></div>
+</div>
+<p>In order to enable per-operator profiling measurements, use
+<code class="docutils literal notranslate"><span class="pre">profiling</span> <span class="pre">2</span></code>. See <a class="reference internal" href="tools.html#qtld-net-run"><span class="std std-ref">qtld-net-run</span></a> for more information.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The profiling behavior of Qualcomm® AI Engine Direct Delegate subject to change in near future. Please use with cautions.</p>
+</div>
+</div>
+<div class="section" id="view-profiling-result-by-qtld-profile-viewer">
+<h2>View Profiling Result by qtld-profile-viewer<a class="headerlink" href="#view-profiling-result-by-qtld-profile-viewer" title="Permalink to this heading">¶</a></h2>
+<p>After qtld-net-run has completed running, the profiling output results can be pulled from
+the device.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>adb<span class="w"> </span>pull<span class="w"> </span>/data/local/tmp/qnn_delegate/inception_v3_quant/profile_results/qnn_delegate_profiling_result.bin<span class="w"> </span>./
+</pre></div>
+</div>
+<p>The binary file can be convert into a .txt file by the following command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nv">$QNN_SDK_ROOT</span>/bin/aarch64-android/qtld-profile-viewer<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--input_profile_data<span class="w"> </span>qnn_delegate_profiling_result.bin<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--topK<span class="w"> </span>&lt;topK&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--output<span class="w"> </span>./profiling_output.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--num_warmup<span class="w"> </span><span class="m">1</span>
+</pre></div>
+</div>
+<p>Note that the options is described as below.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--input_profile_data</span></code>: A binary input file that contains the profiling result.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--topK</span></code>: Only used in detailed profiling mode. Number of events to be printed under Top by Computation Time section. Default is 5.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--output</span></code>: An output txt file contains human readable profiling result. If it is not specified, the profiling output will show in standard output.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--num_warmup</span></code>: Number of initialization/execution to be counted as warmups. Default is 1.</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="tutorial_skip_node.html" class="btn btn-neutral float-right" title="Tutorial - Skip Delegation Ops Using the Qualcomm® AI Engine Direct Delegate" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="tutorials.html" class="btn btn-neutral float-left" title="Tutorials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

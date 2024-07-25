@@ -1,0 +1,487 @@
+diff --git a/source/view.js b/source/view.js
+index 73fd573..a49a713 100644
+--- a/source/view.js
++++ b/source/view.js
+@@ -15,6 +15,7 @@ var d3 = d3 || require('d3');
+ var sidebar = sidebar || require('./view-sidebar');
+ var grapher = grapher || require('./view-grapher');
+ 
++
+ view.View = class {
+ 
+     constructor(host, id) {
+@@ -29,16 +30,20 @@ view.View = class {
+             this._showNames = false;
+             this._showHorizontal = false;
+             this._searchText = '';
++            this._errorIndex = -1;
++            this._errorNodeList=[];
+             this._modelFactoryService = new view.ModelFactoryService(this._host);
+             this._getElementById('zoom-in-button').addEventListener('click', () => {
+-                this.zoomIn();
++               this.zoomIn();
+             });
++
+             this._getElementById('zoom-out-button').addEventListener('click', () => {
+                 this.zoomOut();
+             });
+             this._getElementById('sidebar').addEventListener('mousewheel', (e) => {
+                 this._preventZoom(e);
+             });
++
+             this._host.document.addEventListener('keydown', () => {
+                 this.clearSelection();
+             });
+@@ -422,14 +427,16 @@ view.View = class {
+         return this._modelFactoryService.accept(file);
+     }
+ 
+-    open(context) {
++    //changed added csv and binFile
++    open(context,csv,binFile,verifierThreshold) {
+         this._host.event('Model', 'Open', 'Size', context.stream.length);
+         this._sidebar.close();
+         return this._timeout(2).then(() => {
+-            return this._modelFactoryService.open(context).then((model) => {
++            return this._modelFactoryService.open(context,csv,binFile,verifierThreshold).then((model) => { //changed added csv and binFile
+                 const format = model.format;
+                 if (format) {
+                     this._host.event('Model', 'Format', format + (model.producer ? ' (' + model.producer + ')' : ''));
++
+                 }
+                 return this._timeout(20).then(() => {
+                     const graph = model.graphs.length > 0 ? model.graphs[0] : null;
+@@ -473,6 +480,23 @@ view.View = class {
+                 this._model = model;
+                 this._activeGraph = graph;
+                 this.show('default');
++                //Find all error nodes
++                this._errorNodeList=[];
++                for(const node of graph.nodes){
++                    if(node.match && node.match.hasOwnProperty("accuracy") && node.match.hasOwnProperty("performance")){
++                        if(node.match.accuracy || node.match.performance == "warn"){
++                            this._errorNodeList.push(node);
++                        }
++                    }
++                }
++                if( this._errorNodeList.length > 0){
++                    this._getElementById('next').style.visibility = "visible";
++                    this._getElementById('prev').style.visibility = "visible";
++                }else{
++                    this._getElementById('next').style.visibility = "hidden";
++                    this._getElementById('prev').style.visibility = "hidden";
++                }
++
+                 return this._model;
+             }).catch((error) => {
+                 return this.renderGraph(this._model, this._activeGraph).then(() => {
+@@ -524,7 +548,6 @@ view.View = class {
+                 if (nodes.length > 1500) {
+                     options.ranker = 'longest-path';
+                 }
+-
+                 const viewGraph = new view.Graph(this, groups, options);
+ 
+                 const clusters = new Set();
+@@ -613,14 +636,12 @@ view.View = class {
+                         }
+                     }
+                 }
+-
+                 for (const input of graph.inputs) {
+                     const viewInput = viewGraph.createInput(input);
+                     for (const argument of input.arguments) {
+                         viewGraph.createArgument(argument).from(viewInput);
+                     }
+                 }
+-
+                 for (const output of graph.outputs) {
+                     const viewOutput = viewGraph.createOutput(output);
+                     for (const argument of output.arguments) {
+@@ -694,7 +715,7 @@ view.View = class {
+                                 let x = xs[0];
+                                 const y = ys[0];
+                                 if (ys.every(y => y === ys[0])) {
+-                                    x = xs.reduce((a,b) => { return a + b; }) / xs.length;
++                                    x = xs.reduce((a, b) => a + b, 0) / xs.length;
+                                 }
+                                 const sx = (svgSize.width / (this._showHorizontal ? 4 : 2)) - x;
+                                 const sy = (svgSize.height / (this._showHorizontal ? 2 : 4)) - y;
+@@ -737,7 +758,7 @@ view.View = class {
+                                 let x = xs[0];
+                                 const y = ys[0];
+                                 if (ys.every(y => y === ys[0])) {
+-                                    x = xs.reduce((a,b) => { return a + b; }) / xs.length;
++                                    x = xs.reduce((a, b) => a + b, 0) / xs.length;
+                                 }
+                                 // const canvasRect = graphElement.getBoundingClientRect();
+                                 const graphRect = graphElement.getBoundingClientRect();
+@@ -867,6 +888,57 @@ view.View = class {
+         }
+     }
+ 
++    showNextErrorNode() {
++        if (this._model && this._errorNodeList.length > 0) {
++            this._errorIndex++;
++            if(this._errorIndex >= this._errorNodeList.length){
++                this._errorIndex = 0;
++            }
++            let errorNode =  this._errorNodeList[this._errorIndex];
++            const selection = [];
++            if(errorNode){
++                const id= "node-name-"+ errorNode.name;
++                const nodesElement = this._getElementById('nodes');
++                let nodeElement = nodesElement.firstChild;
++                while (nodeElement) {
++                    if (nodeElement.id == id) {
++                        selection.push(nodeElement);
++                    }
++                    nodeElement = nodeElement.nextSibling;
++                }
++
++                this.select(selection);
++            }
++
++        }
++    }
++
++    showPrevErrorNode() {
++        if (this._model && this._errorNodeList.length > 0) {
++            this._errorIndex--;
++            if(this._errorIndex < 0){
++                this._errorIndex = this._errorNodeList.length - 1;
++            }
++            let errorNode =  this._errorNodeList[this._errorIndex];
++            const selection = [];
++            if(errorNode){
++                const id= "node-name-"+ errorNode.name;
++                const nodesElement = this._getElementById('nodes');
++                let nodeElement = nodesElement.firstChild;
++                while (nodeElement) {
++                    if (nodeElement.id == id) {
++                        selection.push(nodeElement);
++                    }
++                    nodeElement = nodeElement.nextSibling;
++                }
++                this.select(selection);
++
++            }
++
++        }
++    }
++
++
+     showNodeProperties(node, input) {
+         if (node) {
+             const nodeSidebar = new sidebar.NodeSidebar(this._host, node);
+@@ -994,15 +1066,35 @@ view.Node = class extends grapher.Node {
+     }
+ 
+     _add(node) {
+-
+         const header =  this.header();
+         const styles = [ 'node-item-type' ];
+         const metadata = node.metadata;
++        //changed added code: node.match returns true if the percent error of the node is greater than the threshold
++        const match = node.match;
+         const category = metadata && metadata.category ? metadata.category : '';
++        console.log(category);
++        console.log(styles);
+         if (category) {
+             styles.push('node-item-type-' + category.toLowerCase());
+         }
+-        const type = node.type;
++        // changed added code: if the node is above the threshold then make the node outline red
++
++        if(match && match.hasOwnProperty("performance") && match.hasOwnProperty("accuracy")){
++            let outlineSuffix='';
++            if(match.performance == "info" ){
++                outlineSuffix += '-perf-info';
++            }else if( match.performance == "warn"){
++                outlineSuffix += '-perf-warn';
++            }
++            if(match.accuracy){
++              outlineSuffix += '-acc-warn';
++            }
++            if(outlineSuffix != ''){
++                styles.push('node-item-type' + outlineSuffix);
++            }
++        }
++
++       const type = node.type;
+         if (typeof type !== 'string' || !type.split) { // #416
+             const format = this.context.view.model && this.context.view.model.format ? this.context.view.model.format : '?';
+             throw new view.Error("Unknown node type '" + JSON.stringify(type) + "' in format '" + format + "'.");
+@@ -1430,7 +1522,10 @@ view.ModelFactoryService = class {
+     constructor(host) {
+         this._host = host;
+         this._extensions = [];
+-        this.register('./pytorch', [ '.pt', '.pth', '.pt1', '.pyt', '.pkl', '.h5', '.t7', '.model', '.dms', '.tar', '.ckpt', '.chkpt', '.tckpt', '.bin', '.pb', '.zip', '.nn', '.torchmodel' ]);
++        //changed added .qnn model to
++        this.register('./qnn',['.json']);
++        this.register('./relay',['.json']);
++        this.register('./pytorch', [ '.pt', '.pth', '.pt1', '.pyt', '.pkl', '.pickle', '.h5', '.t7', '.model', '.dms', '.tar', '.ckpt', '.chkpt', '.tckpt', '.bin', '.pb', '.zip', '.nn', '.torchmodel' ]);
+         this.register('./onnx', [ '.onnx', '.pb', '.pbtxt', '.prototxt', '.model', '.pt', '.pth', '.pkl' ]);
+         this.register('./mxnet', [ '.json', '.params' ]);
+         this.register('./coreml', [ '.mlmodel' ]);
+@@ -1469,6 +1564,7 @@ view.ModelFactoryService = class {
+         this.register('./dl4j', [ '.zip' ]);
+         this.register('./mlnet', [ '.zip' ]);
+         this.register('./acuity', [ '.json' ]);
++        this.register('./imgdnn', [ '.dnn', 'params', '.json' ]);
+     }
+ 
+     register(id, extensions) {
+@@ -1477,12 +1573,14 @@ view.ModelFactoryService = class {
+         }
+     }
+ 
+-    open(context) {
++    //changed added csv and binFile
++    open(context,csv,binFile,verifierThreshold) {
+         return this._openSignature(context).then((context) => {
+             const entries = this._openArchive(context);
+             const modelContext = new view.ModelContext(context, entries);
+-            return this._openContext(modelContext).then((model) => {
++            return this._openContext(modelContext,csv,binFile,verifierThreshold).then((model) => { //changed added csv and binFile
+                 if (model) {
++                    console.log("MODEL"+modelContext);
+                     return model;
+                 }
+                 if (entries.size > 0) {
+@@ -1501,9 +1599,7 @@ view.ModelFactoryService = class {
+     _unsupported(context) {
+         const identifier = context.identifier;
+         const extension = identifier.split('.').pop().toLowerCase();
+-        for (const format of new Map([ [ 'Zip', zip ], [ 'tar', tar ] ])) {
+-            const name = format[0];
+-            const module = format[1];
++        for (const module of [ zip, tar, gzip ]) {
+             let archive = null;
+             try {
+                 archive = module.Archive.open(context.stream);
+@@ -1512,7 +1608,7 @@ view.ModelFactoryService = class {
+                 // continue regardless of error
+             }
+             if (archive) {
+-                throw new view.Error("Invalid file content. File contains " + name + " archive in '" + identifier + "'.", true);
++                throw new view.Error("Archive contains no model files in '" + identifier + "'.", true);
+             }
+         }
+         const knownUnsupportedIdentifiers = new Set([
+@@ -1603,30 +1699,13 @@ view.ModelFactoryService = class {
+     _openArchive(context) {
+         const entries = new Map();
+         let stream = context.stream;
+-        let extension;
+-        let identifier = context.identifier;
++        const identifier = context.identifier;
+         try {
+-            extension = identifier.split('.').pop().toLowerCase();
+-            const gzipArchive = gzip.Archive.open(stream);
+-            if (gzipArchive) {
+-                const entries = gzipArchive.entries;
+-                if (entries.length === 1) {
+-                    const entry = entries[0];
+-                    if (entry.name) {
+-                        identifier = entry.name;
+-                    }
+-                    else {
+-                        identifier = identifier.substring(0, identifier.lastIndexOf('.'));
+-                        switch (extension) {
+-                            case 'tgz':
+-                            case 'tar': {
+-                                if (identifier.split('.').pop().toLowerCase() !== 'tar') {
+-                                    identifier += '.tar';
+-                                }
+-                                break;
+-                            }
+-                        }
+-                    }
++            const archive = gzip.Archive.open(stream);
++            if (archive) {
++                entries.set('gzip', archive.entries);
++                if (archive.entries.length === 1) {
++                    const entry = archive.entries[0];
+                     stream = entry.stream;
+                 }
+             }
+@@ -1635,7 +1714,6 @@ view.ModelFactoryService = class {
+             const message = error && error.message ? error.message : error.toString();
+             throw new view.ArchiveError(message.replace(/\.$/, '') + " in '" + identifier + "'.");
+         }
+-
+         try {
+             const formats = new Map([ [ 'zip', zip ], [ 'tar', tar ] ]);
+             for (const pair of formats) {
+@@ -1644,6 +1722,7 @@ view.ModelFactoryService = class {
+                 const archive = module.Archive.open(stream);
+                 if (archive) {
+                     entries.set(format, archive.entries);
++                    entries.delete('gzip');
+                     break;
+                 }
+             }
+@@ -1654,8 +1733,8 @@ view.ModelFactoryService = class {
+         }
+         return entries;
+     }
+-
+-    _openContext(context) {
++     //changed added csv and binFile
++    _openContext(context,csv,binFile,verifierThreshold) {
+         const modules = this._filter(context).filter((module) => module && module.length > 0);
+         const errors = [];
+         let match = false;
+@@ -1671,7 +1750,7 @@ view.ModelFactoryService = class {
+                         return nextModule();
+                     }
+                     match = true;
+-                    return modelFactory.open(context).then((model) => {
++                    return modelFactory.open(context,csv,binFile,verifierThreshold).then((model) => { //changed added csv and binFile
+                         return model;
+                     }).catch((error) => {
+                         const text = " in '" + context.identifier + "'.";
+@@ -1706,6 +1785,64 @@ view.ModelFactoryService = class {
+                 const folder = rotate(map).filter(equals).map(at(0)).join('/');
+                 return folder.length === 0 ? folder : folder + '/';
+             };
++            const filter = (queue) => {
++                let matches = [];
++                const nextEntry = () => {
++                    if (queue.length > 0) {
++                        const entry = queue.shift();
++                        const context = new view.ModelContext(new view.ArchiveContext(this._host, null, folder, entry.name, entry.stream));
++                        let modules = this._filter(context);
++                        const nextModule = () => {
++                            if (modules.length > 0) {
++                                const id = modules.shift();
++                                return this._host.require(id).then((module) => {
++                                    if (!module.ModelFactory) {
++                                        throw new view.ArchiveError("Failed to load module '" + id + "'.", null);
++                                    }
++                                    const factory = new module.ModelFactory();
++                                    if (factory.match(context)) {
++                                        matches.push(entry);
++                                        modules = [];
++                                    }
++                                    return nextModule();
++                                });
++                            }
++                            else {
++                                return nextEntry();
++                            }
++                        };
++                        return nextModule();
++                    }
++                    else {
++                        if (matches.length === 0) {
++                            return Promise.resolve(null);
++                        }
++                        // MXNet
++                        if (matches.length === 2 &&
++                            matches.some((e) => e.name.toLowerCase().endsWith('.params')) &&
++                            matches.some((e) => e.name.toLowerCase().endsWith('-symbol.json'))) {
++                            matches = matches.filter((e) => e.name.toLowerCase().endsWith('.params'));
++                        }
++                        // TensorFlow.js
++                        if (matches.length > 0 &&
++                            matches.some((e) => e.name.toLowerCase().endsWith('.bin')) &&
++                            matches.some((e) => e.name.toLowerCase().endsWith('.json'))) {
++                            matches = matches.filter((e) => e.name.toLowerCase().endsWith('.json'));
++                        }
++                        // TensorFlow Bundle
++                        if (matches.length > 1 &&
++                            matches.some((e) => e.name.toLowerCase().endsWith('.data-00000-of-00001'))) {
++                            matches = matches.filter((e) => !e.name.toLowerCase().endsWith('.data-00000-of-00001'));
++                        }
++                        if (matches.length > 1) {
++                            return Promise.reject(new view.ArchiveError('Archive contains multiple model files.'));
++                        }
++                        const match = matches.shift();
++                        return Promise.resolve(new view.ModelContext(new view.ArchiveContext(this._host, entries, folder, match.name, match.stream)));
++                    }
++                };
++                return nextEntry();
++            };
+             const files = entries.filter((entry) => {
+                 if (entry.name.endsWith('/')) {
+                     return false;
+@@ -1719,63 +1856,14 @@ view.ModelFactoryService = class {
+                 return true;
+             });
+             const folder = rootFolder(files.map((entry) => entry.name));
+-            let matches = [];
+             const queue = files.slice(0).filter((entry) => entry.name.substring(folder.length).indexOf('/') < 0);
+-            const nextEntry = () => {
+-                if (queue.length > 0) {
+-                    const entry = queue.shift();
+-                    const context = new view.ModelContext(new view.ArchiveContext(this._host, null, folder, entry.name, entry.stream));
+-                    let modules = this._filter(context);
+-                    const nextModule = () => {
+-                        if (modules.length > 0) {
+-                            const id = modules.shift();
+-                            return this._host.require(id).then((module) => {
+-                                if (!module.ModelFactory) {
+-                                    throw new view.ArchiveError("Failed to load module '" + id + "'.", null);
+-                                }
+-                                const factory = new module.ModelFactory();
+-                                if (factory.match(context)) {
+-                                    matches.push(entry);
+-                                    modules = [];
+-                                }
+-                                return nextModule();
+-                            });
+-                        }
+-                        else {
+-                            return nextEntry();
+-                        }
+-                    };
+-                    return nextModule();
+-                }
+-                else {
+-                    if (matches.length === 0) {
+-                        return Promise.resolve(null);
+-                    }
+-                    // MXNet
+-                    if (matches.length === 2 &&
+-                        matches.some((e) => e.name.toLowerCase().endsWith('.params')) &&
+-                        matches.some((e) => e.name.toLowerCase().endsWith('-symbol.json'))) {
+-                        matches = matches.filter((e) => e.name.toLowerCase().endsWith('.params'));
+-                    }
+-                    // TensorFlow.js
+-                    if (matches.length > 0 &&
+-                        matches.some((e) => e.name.toLowerCase().endsWith('.bin')) &&
+-                        matches.some((e) => e.name.toLowerCase().endsWith('.json'))) {
+-                        matches = matches.filter((e) => e.name.toLowerCase().endsWith('.json'));
+-                    }
+-                    // TensorFlow Bundle
+-                    if (matches.length > 1 &&
+-                        matches.some((e) => e.name.toLowerCase().endsWith('.data-00000-of-00001'))) {
+-                        matches = matches.filter((e) => !e.name.toLowerCase().endsWith('.data-00000-of-00001'));
+-                    }
+-                    if (matches.length > 1) {
+-                        return Promise.reject(new view.ArchiveError('Archive contains multiple model files.'));
+-                    }
+-                    const match = matches.shift();
+-                    return Promise.resolve(new view.ModelContext(new view.ArchiveContext(this._host, entries, folder, match.name, match.stream)));
++            return filter(queue).then((context) => {
++                if (context) {
++                    return Promise.resolve(context);
+                 }
+-            };
+-            return nextEntry();
++                const queue = files.slice(0).filter((entry) => entry.name.substring(folder.length).indexOf('/') >= 0);
++                return filter(queue);
++            });
+         }
+         catch (error) {
+             return Promise.reject(new view.ArchiveError(error.message));
+@@ -1796,6 +1884,7 @@ view.ModelFactoryService = class {
+             identifier.endsWith('.tar') ||
+             identifier.endsWith('.tar.gz') ||
+             identifier.endsWith('.tgz') ||
++            identifier.endsWith('.gz') ||
+             identifier.endsWith('.mar') ||
+             identifier.endsWith('.model')) {
+             this._host.event('File', 'Accept', extension, 1);

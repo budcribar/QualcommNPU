@@ -1,0 +1,778 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Acceleration Support &mdash; Qualcomm® AI Engine Direct Delegate</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tools" href="tools.html" />
+    <link rel="prev" title="Qualcomm® AI Engine Direct Backend Library" href="qnn_libs.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Qualcomm® AI Engine Direct Delegate
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qnn_libs.html">Qualcomm® AI Engine Direct Backend Library</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Acceleration Support</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#gpu">GPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#htp">HTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dsp">DSP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#supported-operators">Supported Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#operator-restrictions">Operator Restrictions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom_op.html">Custom Operator Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_version_history.html">API Version History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Qualcomm® AI Engine Direct Delegate</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Acceleration Support</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="acceleration-support">
+<h1>Acceleration Support<a class="headerlink" href="#acceleration-support" title="Permalink to this heading">¶</a></h1>
+<p>Qualcomm® AI Engine Direct Delegate provides acceleration on Qualcomm platforms using the Qualcomm® AI Engine Direct
+SDK. The following sections describe the operators and features Qualcomm® AI Engine Direct Delegate
+supports.</p>
+<div class="section" id="gpu">
+<h2>GPU<a class="headerlink" href="#gpu" title="Permalink to this heading">¶</a></h2>
+<p>In general, Qualcomm® AI Engine Direct GPU backend supports float32 and float16 operators and
+activations. There is an option to set the activation and operator compute
+precisions used by the accelerator core,
+see the <code class="xref c c-struct docutils literal notranslate"><span class="pre">TfLiteQnnDelegateGpuBackendOptions</span></code> structure.
+For TFLite operator support, see <a class="reference internal" href="#supported-operators">Supported Operators</a>. The library for
+this backend is <em>libQnnGpu.so</em>.</p>
+<p>There is one option to set the accelerator’s performance mode, see
+<code class="xref c c-struct docutils literal notranslate"><span class="pre">TfLiteQnnDelegateGpuBackendOptions</span></code> for all the options enums.
+The order of performance level of each mode is (from high to low):
+High &gt; Normal &gt; Low, and Default mode is aligned with GPU backend default setting.</p>
+</div>
+<div class="section" id="htp">
+<h2>HTP<a class="headerlink" href="#htp" title="Permalink to this heading">¶</a></h2>
+<p>In general, Qualcomm® AI Engine Direct HTP backend supports quantized 8 bits fixed-points activations and
+operators. For TFLite operator support, see <a class="reference internal" href="#supported-operators">Supported Operators</a>, in
+addition to that, the following table lists op restrictions. The libraries for
+this backend are <em>libQnnHtp.so</em>, <em>libQnnHtpPrepare.so</em>, <em>libQnnHtp*Stub.so</em> and <em>libQnnHtp*Skel.so</em>.</p>
+<p>There is one option to set the accelerator’s performance mode, see
+<code class="xref c c-struct docutils literal notranslate"><span class="pre">TfLiteQnnDelegateHtpBackendOptions</span></code> for all the options enums.
+When performance_mode is used, the delegate will vote for the provided
+performance level at initialization. Users can change that on-the-fly by C-APIs.
+See <a class="reference internal" href="c_interface.html"><span class="doc">c_interface</span></a>. Or, Delegate also support another strategy
+called <code class="docutils literal notranslate"><span class="pre">kHtpPerfCtrlAuto</span></code>, which vote automatically during inference and then
+return back to relaxed vote after the inference has completed.
+The order of performance level of each mode is (from high to low):
+Burst &gt; Sustained High Performance &gt; High Performance &gt; Balanced &gt; Low Balanced
+&gt; High Power Saver &gt; Power Saver &gt; Low Power Saver.
+In case of power consumption, it’s of the opposite order. One exception from
+this order is Default mode, it basically means no input vote from client and
+HTP will vote for the optimal modes itself automatically.</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Performance mode</p></th>
+<th class="head"><p>Corner on up vote</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Default</p></td>
+<td><ul class="simple">
+<li><p>Doesn’t perform any specific voting.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Sustained High Performance</p></td>
+<td><ul class="simple">
+<li><p>Sustained the TURBO corner vote.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Burst</p></td>
+<td><ul class="simple">
+<li><p>Vote for TURBO Plus corner vote.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>High Performance</p></td>
+<td><ul class="simple">
+<li><p>Vote for TURBO corner vote.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Power Saver</p></td>
+<td><ul class="simple">
+<li><p>Vote for SVS corner vote.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Low Power Saver</p></td>
+<td><ul class="simple">
+<li><p>Vote for SVS2 corner vote.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>High Power Saver</p></td>
+<td><ul class="simple">
+<li><p>Vote for SVS Plus corner vote.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Low Balance</p></td>
+<td><ul class="simple">
+<li><p>Vote for NORMINAL corner vote.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Balance</p></td>
+<td><ul class="simple">
+<li><p>Vote for NORMINAL Plus corner vote.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>On certain SoCs, the Qualcomm® AI Engine Direct HTP backend supports 16-bit floating point precision.
+This can be enabled by setting the
+<code class="xref c c-member docutils literal notranslate"><span class="pre">TfLiteQnnDelegateHtpBackendOptions.precision</span></code> option to
+<code class="xref c c-enumerator docutils literal notranslate"><span class="pre">TfLiteQnnDelegateHtpPrecision.kHtpFp16</span></code>. This requires the
+.tflite model to have tensors with floating point precision. Note that fp32 models
+can still be delegated, but the underlying math is in 16-bit precision.</p>
+<p>Note that <cite>kHtpFp16</cite> is only supported by a limited set of chips. At this moment,
+SnapDragon 8 Gen 1 or newer SnapDragon 8 generations can support <cite>kHtpFp16</cite>.</p>
+</div>
+<div class="section" id="dsp">
+<h2>DSP<a class="headerlink" href="#dsp" title="Permalink to this heading">¶</a></h2>
+<p>The Qualcomm® AI Engine Direct DSP backend supports legacy chipsets with the Hexagon DSP hardware, as
+opposed to the newer HTP hardware. The DSP backend only supports
+quantized uint8 activations and operators. Qualcomm® AI Engine Direct Delegate supports the V66
+generation of the Qualcomm® AI Engine Direct DSP only. For TFLite
+operator support, see <a class="reference internal" href="#supported-operators">Supported Operators</a>. The libraries for this backend are <em>libQnnDspV66Stub.so</em> and
+<em>libQnnDspV66Skel.so</em>.</p>
+<p>For dsp_performance_mode, it’s the same voting options and performance order as
+htp_performance_mode, see <a class="reference internal" href="#htp">HTP</a>.</p>
+<p>Note that DSP backend returns per operator profiling events in cycles,
+whereas the other backends may display the units as time measurements
+(microseconds).</p>
+</div>
+<div class="section" id="supported-operators">
+<h2>Supported Operators<a class="headerlink" href="#supported-operators" title="Permalink to this heading">¶</a></h2>
+<p>The following table shows the supported TFLite operators. See
+<a class="reference internal" href="#operator-restrictions">Operator Restrictions</a> for limitations and restrictions of operators supported
+by this delegate.</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Operators</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Abs</p></td>
+</tr>
+<tr class="row-odd"><td><p>Add</p></td>
+</tr>
+<tr class="row-even"><td><p>ArgMax</p></td>
+</tr>
+<tr class="row-odd"><td><p>ArgMin</p></td>
+</tr>
+<tr class="row-even"><td><p>AveragePool2d</p></td>
+</tr>
+<tr class="row-odd"><td><p>BatchToSpace</p></td>
+</tr>
+<tr class="row-even"><td><p>Cast</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ceil</p></td>
+</tr>
+<tr class="row-even"><td><p>Concatenation</p></td>
+</tr>
+<tr class="row-odd"><td><p>Conv2d</p></td>
+</tr>
+<tr class="row-even"><td><p>Cos</p></td>
+</tr>
+<tr class="row-odd"><td><p>Conv3d</p></td>
+</tr>
+<tr class="row-even"><td><p>Cumsum</p></td>
+</tr>
+<tr class="row-odd"><td><p>DepthToSpace</p></td>
+</tr>
+<tr class="row-even"><td><p>DepthwiseConv2d</p></td>
+</tr>
+<tr class="row-odd"><td><p>Dequantize</p></td>
+</tr>
+<tr class="row-even"><td><p>DetectionPostprocess</p></td>
+</tr>
+<tr class="row-odd"><td><p>Div</p></td>
+</tr>
+<tr class="row-even"><td><p>Elu</p></td>
+</tr>
+<tr class="row-odd"><td><p>Exp</p></td>
+</tr>
+<tr class="row-even"><td><p>ExpandDims</p></td>
+</tr>
+<tr class="row-odd"><td><p>Equal</p></td>
+</tr>
+<tr class="row-even"><td><p>Floor</p></td>
+</tr>
+<tr class="row-odd"><td><p>FullyConnected</p></td>
+</tr>
+<tr class="row-even"><td><p>Gather</p></td>
+</tr>
+<tr class="row-odd"><td><p>GatherNd</p></td>
+</tr>
+<tr class="row-even"><td><p>Gelu</p></td>
+</tr>
+<tr class="row-odd"><td><p>Greater</p></td>
+</tr>
+<tr class="row-even"><td><p>GreaterEqual</p></td>
+</tr>
+<tr class="row-odd"><td><p>HardSwish</p></td>
+</tr>
+<tr class="row-even"><td><p>L2Normalization</p></td>
+</tr>
+<tr class="row-odd"><td><p>L2Pool2d</p></td>
+</tr>
+<tr class="row-even"><td><p>LeakyRelu</p></td>
+</tr>
+<tr class="row-odd"><td><p>Less</p></td>
+</tr>
+<tr class="row-even"><td><p>LessEqual</p></td>
+</tr>
+<tr class="row-odd"><td><p>LocalResponseNormalization</p></td>
+</tr>
+<tr class="row-even"><td><p>Log</p></td>
+</tr>
+<tr class="row-odd"><td><p>LogicalAnd</p></td>
+</tr>
+<tr class="row-even"><td><p>LogicalNot</p></td>
+</tr>
+<tr class="row-odd"><td><p>LogicalOr</p></td>
+</tr>
+<tr class="row-even"><td><p>Logistic</p></td>
+</tr>
+<tr class="row-odd"><td><p>LogSoftmax</p></td>
+</tr>
+<tr class="row-even"><td><p>Lstm</p></td>
+</tr>
+<tr class="row-odd"><td><p>BatchMatMul</p></td>
+</tr>
+<tr class="row-even"><td><p>MaxPool2d</p></td>
+</tr>
+<tr class="row-odd"><td><p>Maximum</p></td>
+</tr>
+<tr class="row-even"><td><p>Mean</p></td>
+</tr>
+<tr class="row-odd"><td><p>Minimum</p></td>
+</tr>
+<tr class="row-even"><td><p>MirrorPad</p></td>
+</tr>
+<tr class="row-odd"><td><p>Mul</p></td>
+</tr>
+<tr class="row-even"><td><p>Neg</p></td>
+</tr>
+<tr class="row-odd"><td><p>NotEqual</p></td>
+</tr>
+<tr class="row-even"><td><p>OneHot</p></td>
+</tr>
+<tr class="row-odd"><td><p>Pack</p></td>
+</tr>
+<tr class="row-even"><td><p>Pad</p></td>
+</tr>
+<tr class="row-odd"><td><p>Pow</p></td>
+</tr>
+<tr class="row-even"><td><p>Prelu</p></td>
+</tr>
+<tr class="row-odd"><td><p>Quantize</p></td>
+</tr>
+<tr class="row-even"><td><p>ReduceMax</p></td>
+</tr>
+<tr class="row-odd"><td><p>ReduceMin</p></td>
+</tr>
+<tr class="row-even"><td><p>ReduceProd</p></td>
+</tr>
+<tr class="row-odd"><td><p>Relu</p></td>
+</tr>
+<tr class="row-even"><td><p>Relu6</p></td>
+</tr>
+<tr class="row-odd"><td><p>ReluN1To1</p></td>
+</tr>
+<tr class="row-even"><td><p>Reshape</p></td>
+</tr>
+<tr class="row-odd"><td><p>ResizeBilinear</p></td>
+</tr>
+<tr class="row-even"><td><p>ResizeNearestNeighbor</p></td>
+</tr>
+<tr class="row-odd"><td><p>ReverseV2</p></td>
+</tr>
+<tr class="row-even"><td><p>Round</p></td>
+</tr>
+<tr class="row-odd"><td><p>Rsqrt</p></td>
+</tr>
+<tr class="row-even"><td><p>ScatterNd</p></td>
+</tr>
+<tr class="row-odd"><td><p>SegmentSum</p></td>
+</tr>
+<tr class="row-even"><td><p>Select</p></td>
+</tr>
+<tr class="row-odd"><td><p>SelectV2</p></td>
+</tr>
+<tr class="row-even"><td><p>Sin</p></td>
+</tr>
+<tr class="row-odd"><td><p>Slice</p></td>
+</tr>
+<tr class="row-even"><td><p>Softmax</p></td>
+</tr>
+<tr class="row-odd"><td><p>SpaceToBatch</p></td>
+</tr>
+<tr class="row-even"><td><p>SpaceToDepth</p></td>
+</tr>
+<tr class="row-odd"><td><p>Split</p></td>
+</tr>
+<tr class="row-even"><td><p>SplitV</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sqrt</p></td>
+</tr>
+<tr class="row-even"><td><p>SquaredDifference</p></td>
+</tr>
+<tr class="row-odd"><td><p>Squeeze</p></td>
+</tr>
+<tr class="row-even"><td><p>StridedSlice</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sub</p></td>
+</tr>
+<tr class="row-even"><td><p>Sum</p></td>
+</tr>
+<tr class="row-odd"><td><p>Tanh</p></td>
+</tr>
+<tr class="row-even"><td><p>Tile</p></td>
+</tr>
+<tr class="row-odd"><td><p>Transpose</p></td>
+</tr>
+<tr class="row-even"><td><p>TransposeConv</p></td>
+</tr>
+<tr class="row-odd"><td><p>TransposeConv3d</p></td>
+</tr>
+<tr class="row-even"><td><p>Unpack</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="operator-restrictions">
+<h2>Operator Restrictions<a class="headerlink" href="#operator-restrictions" title="Permalink to this heading">¶</a></h2>
+<p>The following table lists any operator restrictions imposed by the delegate.
+All other operator restrictions are determined at runtime by the Qualcomm® AI Engine Direct backend.
+See the Qualcomm® AI Engine Direct SDK documentation for backend specific limitations and restrictions.</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Operators</p></th>
+<th class="head"><p>Restriction</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>AddN</p></td>
+<td><ul class="simple">
+<li><p>Inputs can only be float32 or int32</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>ArgMax</p></td>
+<td><ul class="simple">
+<li><p>axis tensor must be constant</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>ArgMin</p></td>
+<td><ul class="simple">
+<li><p>axis tensor must be constant</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Atan2</p></td>
+<td><ul class="simple">
+<li><p>Only supported by HTPFP16, input[0] and input[1] data type must match</p></li>
+<li><p>y, in[0]: float32</p></li>
+<li><p>x, in[1]: float32</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>BatchToSpace</p></td>
+<td><ul class="simple">
+<li><p>block shape tensor must be constant</p></li>
+<li><p>crops tensor must be constant</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Ceil</p></td>
+<td><ul class="simple">
+<li><p>in[0]: only can be supported by HTPFP16 backend currently</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Cos</p></td>
+<td><ul class="simple">
+<li><p>in[0]: supports float32</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Conv3d</p></td>
+<td><ul class="simple">
+<li><p>only can be supported by HTPFP16 backend currently</p></li>
+<li><p>input, in[0]: float32</p></li>
+<li><p>filter, in[1]: float32</p></li>
+<li><p>bias, in[2]: same as input type</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Cumsum</p></td>
+<td><ul class="simple">
+<li><p>only supported by HTP backend currently</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Elu</p></td>
+<td><ul class="simple">
+<li><p>alpha=1, in[0]: only float32 and int8 supported</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>ExpandDims</p></td>
+<td><ul class="simple">
+<li><p>axis tensor must be constant</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>GatherNd</p></td>
+<td><ul class="simple">
+<li><p>only supported by HTP/DSP backends currently</p></li>
+<li><p>params, in[0]: int32/uint8/int8</p></li>
+<li><p>indices, in[1]: int32</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>L2pool2d</p></td>
+<td><ul class="simple">
+<li><p>in[0] only float32 supported</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>LeakyRelu</p></td>
+<td><ul class="simple">
+<li><p>alpha range must be in [0, 1]</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Mean</p></td>
+<td><ul class="simple">
+<li><p>axis tensor must be constant</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>OneHot</p></td>
+<td><ul class="simple">
+<li><p>Only supported by HTP/HTPFP16 backend currently</p></li>
+<li><p>in[0]: int32, must be in range [0, depth-1]</p></li>
+<li><p>out[0], on_value, off_value: float32, uint8/int8 must be quantized</p></li>
+<li><p>depth, on_value, off_value must be static tensor</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Pad</p></td>
+<td><ul class="simple">
+<li><p>paddings tensor must be constant</p></li>
+<li><p>constant values tensor must be constant</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>PadV2</p></td>
+<td><ul class="simple">
+<li><p>paddings tensor must be constant</p></li>
+<li><p>constant values tensor must be constant</p></li>
+<li><p>in[0]: supports uint8, int8</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Relu_0_to_1</p></td>
+<td><ul class="simple">
+<li><p>in[0]: supports uint8, int8, and float32</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>ReverseV2</p></td>
+<td><ul class="simple">
+<li><p>axis must be INT32 constant tensor with only 1 element.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Round</p></td>
+<td><ul class="simple">
+<li><p>input, in[0]: float32(limited by tflite op model), support by gpu/gpu16</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>ScatterNd</p></td>
+<td><ul class="simple">
+<li><p>only supported by HTP/HTPFP16 currently</p></li>
+<li><p>indices, in[0]: int32</p></li>
+<li><p>updates, in[1]: Float32/uint32</p></li>
+<li><p>shape, in[2]: int32, must be static(constant)</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>SegmentSum</p></td>
+<td><ul class="simple">
+<li><p>only supported by HTP/HTPFP16 currently</p></li>
+<li><p>input, in[0]: float32/int32, must be static(constant)</p></li>
+<li><p>segment id, in[1]: int32, must be an 1D tensor and static(constant)</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Slice</p></td>
+<td><ul class="simple">
+<li><p>begin and size tensors must be constant</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>SpaceToBatch</p></td>
+<td><ul class="simple">
+<li><p>block shape tensor must be constant</p></li>
+<li><p>paddings tensor must be constant</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Split</p></td>
+<td><ul class="simple">
+<li><p>axis tensor must be constant</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>StridedSlice</p></td>
+<td><ul class="simple">
+<li><p>begin, end, and strides tensors must be constant</p></li>
+<li><p>ellipsis is not supported</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Sum</p></td>
+<td><ul class="simple">
+<li><p>axis tensor must be constant</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Tile</p></td>
+<td><ul class="simple">
+<li><p>axis tensor must be constant</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Transpose</p></td>
+<td><ul class="simple">
+<li><p>axis tensor must be constant</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>TransposeConv3d</p></td>
+<td><ul class="simple">
+<li><p>only can be supported by HTPFP16 backend currently</p></li>
+<li><p>filter, in[1]: must be constant</p></li>
+<li><p>bias, in[2]: must be given</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="tools.html" class="btn btn-neutral float-right" title="Tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="qnn_libs.html" class="btn btn-neutral float-left" title="Qualcomm® AI Engine Direct Backend Library" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

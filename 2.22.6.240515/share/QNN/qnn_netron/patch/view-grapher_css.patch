@@ -1,0 +1,34 @@
+diff --git a/source/view-grapher.css b/source/view-grapher.css
+index 72ed8a2..b97d0e6 100644
+--- a/source/view-grapher.css
++++ b/source/view-grapher.css
+@@ -23,6 +23,12 @@
+ .node-item-type-control path { fill: #eee; }
+ .node-item-type-control text { fill: #000; }
+ .node-item-type-control:hover path { fill: #fff; }
++/*added*/
++.node-item-type-perf-info path { filter:drop-shadow(-3px -3px 0px lightblue)}
++.node-item-type-perf-warn path {filter:drop-shadow(-3px -3px 0px orange)}
++.node-item-type-acc-warn path { filter:drop-shadow(-3px -3px 0px red) }
++.node-item-type-perf-info-acc-warn path {filter:drop-shadow(-3px -3px 0px lightblue) drop-shadow(-4px -4px 0px red) }/*for both performance and accuracy warn */
++.node-item-type-perf-warn-acc-warn path {filter:drop-shadow(-3px -3px 0px orange) drop-shadow(-4px -4px 0px red) }/*for both performance and accuracy warn */
+ 
+ .node-item-type-layer path { fill: rgb(51, 85, 136); }
+ .node-item-type-wrapper path { fill: rgb(238, 238, 238); }
+@@ -92,7 +98,7 @@
+     .node-item-function text { fill: #dfdfdfdf; }
+     .node-item-function:hover { cursor: hand; }
+     .node-item-function:hover path { fill: #666666; }
+-    
++
+     .node-item-type path { fill: #303030; }
+     .node-item-type text { fill: #dfdfdf; }
+     .node-item-type:hover { cursor: hand; }
+@@ -121,7 +127,6 @@
+ 
+     .node-item-type-layer path { fill: rgba(51, 85, 136, 0.7); }
+     .node-item-type-activation path { fill: rgba(75, 27, 22, 0.7); }
+-    .node-item-type-activation path { fill: rgba(75, 27, 22, 0.7); }
+     .node-item-type-pool path { fill: rgba(51, 85, 51, 0.7); }
+     .node-item-type-pool path { fill: rgba(51, 85, 51, 0.7); }
+     .node-item-type-normalization path { fill: rgba(51, 85, 68, 0.7); }

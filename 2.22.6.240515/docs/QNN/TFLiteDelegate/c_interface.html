@@ -1,0 +1,1399 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>C Interface &mdash; Qualcomm® AI Engine Direct Delegate</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Java Interface" href="java_interface.html" />
+    <link rel="prev" title="API" href="api.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Qualcomm® AI Engine Direct Delegate
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qnn_libs.html">Qualcomm® AI Engine Direct Backend Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Acceleration Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom_op.html">Custom Operator Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_version_history.html">API Version History</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="api.html#qualcomm-r-ai-engine-direct-delegate-c-interface">Qualcomm® AI Engine Direct Delegate C Interface</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">C Interface</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#qualcomm-r-ai-engine-direct-delegate-java-interface">Qualcomm® AI Engine Direct Delegate Java Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#external-delegate-interface">External Delegate Interface</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Qualcomm® AI Engine Direct Delegate</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="api.html">API</a> &raquo;</li>
+        
+      <li>C Interface</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="c-interface">
+<h1>C Interface<a class="headerlink" href="#c-interface" title="Permalink to this heading">¶</a></h1>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_DELEGATE_CAPI_EXPORT">
+<span class="target" id="QnnTFLiteDelegate_8h_1ad22948fb636e4164fb93973d1872d65c"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_DELEGATE_CAPI_EXPORT</span></span></span><a class="headerlink" href="#c.QNN_DELEGATE_CAPI_EXPORT" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_DELEGATE_API_VERSION_MAJOR">
+<span class="target" id="QnnTFLiteDelegate_8h_1adeb04768cc5c663e57781deabb5ad957"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_DELEGATE_API_VERSION_MAJOR</span></span></span><a class="headerlink" href="#c.QNN_DELEGATE_API_VERSION_MAJOR" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_DELEGATE_API_VERSION_MINOR">
+<span class="target" id="QnnTFLiteDelegate_8h_1af0b95a97e9650ed64a1180913e65b389"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_DELEGATE_API_VERSION_MINOR</span></span></span><a class="headerlink" href="#c.QNN_DELEGATE_API_VERSION_MINOR" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_DELEGATE_API_VERSION_PATCH">
+<span class="target" id="QnnTFLiteDelegate_8h_1a8a764e95ced885bd804a27e1f2559262"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_DELEGATE_API_VERSION_PATCH</span></span></span><a class="headerlink" href="#c.QNN_DELEGATE_API_VERSION_PATCH" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_DELEGATE_GPU_OPTION_INIT">
+<span class="target" id="QnnTFLiteDelegate_8h_1a3dcafb726c87ef9b054e6b7198ec034c"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_DELEGATE_GPU_OPTION_INIT</span></span></span><a class="headerlink" href="#c.QNN_DELEGATE_GPU_OPTION_INIT" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_DELEGATE_HTP_OPTION_INIT">
+<span class="target" id="QnnTFLiteDelegate_8h_1a503a3519f72be7e625cdad848d17b0fc"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_DELEGATE_HTP_OPTION_INIT</span></span></span><a class="headerlink" href="#c.QNN_DELEGATE_HTP_OPTION_INIT" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_DELEGATE_DSP_OPTION_INIT">
+<span class="target" id="QnnTFLiteDelegate_8h_1a0dcb9d180422756898d1275293abbe18"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_DELEGATE_DSP_OPTION_INIT</span></span></span><a class="headerlink" href="#c.QNN_DELEGATE_DSP_OPTION_INIT" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_DELEGATE_OP_PACKAGE_OPTION_INIT">
+<span class="target" id="QnnTFLiteDelegate_8h_1adf140c8aa39c2f3a32f3e7725d1a0a5b"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_DELEGATE_OP_PACKAGE_OPTION_INIT</span></span></span><a class="headerlink" href="#c.QNN_DELEGATE_OP_PACKAGE_OPTION_INIT" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_DELEGATE_SKIP_OPTION_INIT">
+<span class="target" id="QnnTFLiteDelegate_8h_1a97356899c1a8005298e1ab6842b5334a"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_DELEGATE_SKIP_OPTION_INIT</span></span></span><a class="headerlink" href="#c.QNN_DELEGATE_SKIP_OPTION_INIT" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_DELEGATE_OPTION_INIT">
+<span class="target" id="QnnTFLiteDelegate_8h_1a36dba5409e3ecf25e1b85e992ef3b58a"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_DELEGATE_OPTION_INIT</span></span></span><a class="headerlink" href="#c.QNN_DELEGATE_OPTION_INIT" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.TfLiteQnnDelegateCapabilitySupported">
+<span class="target" id="QnnTFLiteDelegate_8h_1a7085c109fb7328c6de8dee6fdb9f86af"></span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateCapabilitySupported</span></span></span><a class="headerlink" href="#c.TfLiteQnnDelegateCapabilitySupported" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return by <a class="reference internal" href="#QnnTFLiteDelegate_8h_1a6b809f15ebc457f9b1e39b1d35d9358b"><span class="std std-ref">TfLiteQnnDelegateHasCapability()</span></a> if the capability is supported. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.TfLiteQnnDelegateCapabilityNotSupported">
+<span class="target" id="QnnTFLiteDelegate_8h_1abfdb3027a0208deb0ed3afee2050bd88"></span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateCapabilityNotSupported</span></span></span><a class="headerlink" href="#c.TfLiteQnnDelegateCapabilityNotSupported" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return by <a class="reference internal" href="#QnnTFLiteDelegate_8h_1a6b809f15ebc457f9b1e39b1d35d9358b"><span class="std std-ref">TfLiteQnnDelegateHasCapability()</span></a> if the capability is not supported. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp">
+<span class="target" id="QnnTFLiteDelegate_8h_1a0cc4727c1f23917bbf0e8c811b39a14a"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv428TfLiteQnnDelegateBackendType" title="TfLiteQnnDelegateBackendType"><span class="n"><span class="pre">TfLiteQnnDelegateBackendType</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateBackendType</span></span></span><br /></dt>
+<dd><p>The QNN backend used to delegate the model’s nodes. Each backend has its own set of supported ops and tensor types. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp">
+<span class="target" id="QnnTFLiteDelegate_8h_1a5dffc97bd0a55a4cd63e838a2abe70b8"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv425TfLiteQnnDelegateLogLevel" title="TfLiteQnnDelegateLogLevel"><span class="n"><span class="pre">TfLiteQnnDelegateLogLevel</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateLogLevel</span></span></span><br /></dt>
+<dd><p>Logging level of the delegate and QNN backend. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp">
+<span class="target" id="QnnTFLiteDelegate_8h_1a72e293463d6fabd84a60a0e210f9b496"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv430TfLiteQnnDelegateGraphPriority" title="TfLiteQnnDelegateGraphPriority"><span class="n"><span class="pre">TfLiteQnnDelegateGraphPriority</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateGraphPriority</span></span></span><br /></dt>
+<dd><p>Options to set Graph Priority. This is directly mapped to Qnn_Priority_t. Please refer to QNN SDK for additional information. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp">
+<span class="target" id="QnnTFLiteDelegate_8h_1a8aaffcaf94fc085899524cc023ea1ad0"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv433TfLiteQnnDelegateProfilingOptions" title="TfLiteQnnDelegateProfilingOptions"><span class="n"><span class="pre">TfLiteQnnDelegateProfilingOptions</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateProfilingOptions</span></span></span><br /></dt>
+<dd><p>Options to profile the QNN Delegate execution. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp">
+<span class="target" id="QnnTFLiteDelegate_8h_1a0200ce3af2c52bb70a22789275ec6cb6"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv429TfLiteQnnDelegateGpuPrecision" title="TfLiteQnnDelegateGpuPrecision"><span class="n"><span class="pre">TfLiteQnnDelegateGpuPrecision</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateGpuPrecision</span></span></span><br /></dt>
+<dd><p>Defines the optimization levels of the graph tensors that are not input nor output tensors. This enum controls the trade-off between performance and accuracy. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp">
+<span class="target" id="QnnTFLiteDelegate_8h_1aed18d9f1b47f45aea1f9df7484499863"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv435TfLiteQnnDelegateGpuPerformanceMode" title="TfLiteQnnDelegateGpuPerformanceMode"><span class="n"><span class="pre">TfLiteQnnDelegateGpuPerformanceMode</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateGpuPerformanceMode</span></span></span><br /></dt>
+<dd><p>Defines performance modes available for GPU backend. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp">
+<span class="target" id="QnnTFLiteDelegate_8h_1aaa81373cfb558138ff77e7181b6d8f87"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv435TfLiteQnnDelegateHtpPerformanceMode" title="TfLiteQnnDelegateHtpPerformanceMode"><span class="n"><span class="pre">TfLiteQnnDelegateHtpPerformanceMode</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateHtpPerformanceMode</span></span></span><br /></dt>
+<dd><p>Defines performance modes available for HTP backend. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp">
+<span class="target" id="QnnTFLiteDelegate_8h_1a225524f0d2f3f31affd23483c1262688"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv435TfLiteQnnDelegateDspPerformanceMode" title="TfLiteQnnDelegateDspPerformanceMode"><span class="n"><span class="pre">TfLiteQnnDelegateDspPerformanceMode</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateDspPerformanceMode</span></span></span><br /></dt>
+<dd><p>Defines performance modes available for DSP backend. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp">
+<span class="target" id="QnnTFLiteDelegate_8h_1a2d3fe43817efffe4b4203fcf0c4fd7d0"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv436TfLiteQnnDelegateHtpPerfCtrlStrategy" title="TfLiteQnnDelegateHtpPerfCtrlStrategy"><span class="n"><span class="pre">TfLiteQnnDelegateHtpPerfCtrlStrategy</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateHtpPerfCtrlStrategy</span></span></span><br /></dt>
+<dd><p>Defines performance control strategy</p>
+<p><strong>Manual</strong>: The performance mode is voted as the backend is initialized, and released at the moment of the backend is destroyed.</p>
+<p>Users can control the vote/release of the performance mode by <a class="reference internal" href="#QnnTFLiteDelegate_8h_1a2783ba4dedc253b69ae859478f725f78"><span class="std std-ref">TfLiteQnnDelegateSetPerf()</span></a>.</p>
+<p>Note that this is the default strategy.</p>
+<p>For example, users can vote before inference starts, and release after all invocations are complete.</p>
+<p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">TfLiteQnnDelegateSetPerf</span><span class="p">(</span><span class="n">delegate</span><span class="p">,</span><span class="w"> </span><span class="n">kPerformanceVote</span><span class="p">);</span>
+<span class="c1">// invoke inferences...</span>
+<span class="n">TfLiteQnnDelegateSetPerf</span><span class="p">(</span><span class="n">delegate</span><span class="p">,</span><span class="w"> </span><span class="n">kPerformanceRelease</span><span class="p">);</span>
+</pre></div>
+</div>
+</p>
+<p><strong>AUTO</strong>: QNN Delegate votes before starting inference, and releases after an idle interval. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp">
+<span class="target" id="QnnTFLiteDelegate_8h_1a678e1ef131814e03c3d28c7d1a4ad9f5"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv436TfLiteQnnDelegateDspPerfCtrlStrategy" title="TfLiteQnnDelegateDspPerfCtrlStrategy"><span class="n"><span class="pre">TfLiteQnnDelegateDspPerfCtrlStrategy</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateDspPerfCtrlStrategy</span></span></span><br /></dt>
+<dd><p>Defines DSP performance control strategy. Similar to HTP cases. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp">
+<span class="target" id="QnnTFLiteDelegate_8h_1ac02d75240cd259a1c997cca8ea17e3e2"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv429TfLiteQnnDelegateDspPdSession" title="TfLiteQnnDelegateDspPdSession"><span class="n"><span class="pre">TfLiteQnnDelegateDspPdSession</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateDspPdSession</span></span></span><br /></dt>
+<dd><p>Defines pd sessions available for DSP backend. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp">
+<span class="target" id="QnnTFLiteDelegate_8h_1ae214c5c97387c8ceb426a288b8a88114"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv428TfLiteQnnDelegateDspEncoding" title="TfLiteQnnDelegateDspEncoding"><span class="n"><span class="pre">TfLiteQnnDelegateDspEncoding</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateDspEncoding</span></span></span><br /></dt>
+<dd><p>Defines encoding for DSP backend. Dynamic encoding is more precise but sacrifices a bit of performance. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp">
+<span class="target" id="QnnTFLiteDelegate_8h_1a016059a126485ee4c45861335d030734"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv429TfLiteQnnDelegateHtpPdSession" title="TfLiteQnnDelegateHtpPdSession"><span class="n"><span class="pre">TfLiteQnnDelegateHtpPdSession</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateHtpPdSession</span></span></span><br /></dt>
+<dd><p>Defines pd sessions available for HTP backend. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp">
+<span class="target" id="QnnTFLiteDelegate_8h_1af989a24414f1d08327fbf4cb70542073"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv429TfLiteQnnDelegateHtpPrecision" title="TfLiteQnnDelegateHtpPrecision"><span class="n"><span class="pre">TfLiteQnnDelegateHtpPrecision</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateHtpPrecision</span></span></span><br /></dt>
+<dd><p>Defines the optimization levels of the graph tensors that are not input nor output tensors. This enum controls the trade-off between performance and accuracy. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp">
+<span class="target" id="QnnTFLiteDelegate_8h_1a2dc39b3fe5dcbb87fd51f1af2be6fb72"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv440TfLiteQnnDelegateHtpOptimizationStrategy" title="TfLiteQnnDelegateHtpOptimizationStrategy"><span class="n"><span class="pre">TfLiteQnnDelegateHtpOptimizationStrategy</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateHtpOptimizationStrategy</span></span></span><br /></dt>
+<dd><p>Defines the optimization strategy used by the HTP backend. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp">
+<span class="target" id="QnnTFLiteDelegate_8h_1a40404f24c66c52ecc36e3b0a2882400f"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv434TfLiteQnnDelegatePerformanceAction" title="TfLiteQnnDelegatePerformanceAction"><span class="n"><span class="pre">TfLiteQnnDelegatePerformanceAction</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegatePerformanceAction</span></span></span><br /></dt>
+<dd><p>Defines the performance action used by <a class="reference internal" href="#QnnTFLiteDelegate_8h_1a2783ba4dedc253b69ae859478f725f78"><span class="std std-ref">TfLiteQnnDelegateSetPerf()</span></a> </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv433TfLiteQnnDelegateCapabilityStatus">
+<span id="_CPPv333TfLiteQnnDelegateCapabilityStatus"></span><span id="_CPPv233TfLiteQnnDelegateCapabilityStatus"></span><span id="TfLiteQnnDelegateCapabilityStatus"></span><span class="target" id="QnnTFLiteDelegate_8h_1a25ae62bdc9231c04ecfb0fa63d37d21d"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateCapabilityStatus</span></span></span><a class="headerlink" href="#_CPPv433TfLiteQnnDelegateCapabilityStatus" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp">
+<span class="target" id="QnnTFLiteDelegate_8h_1a7ef0a146052d2bc8651fcb3937458ac5"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv427TfLiteQnnDelegateCapability" title="TfLiteQnnDelegateCapability"><span class="n"><span class="pre">TfLiteQnnDelegateCapability</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateCapability</span></span></span><br /></dt>
+<dd><p>Defines possible QNN Delegate capabilities. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv428TfLiteQnnDelegateBackendType">
+<span id="_CPPv328TfLiteQnnDelegateBackendType"></span><span id="_CPPv228TfLiteQnnDelegateBackendType"></span><span class="target" id="QnnTFLiteDelegate_8h_1a65d87d490f916ffb8c5f3cd8284b2110"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateBackendType</span></span></span><a class="headerlink" href="#_CPPv428TfLiteQnnDelegateBackendType" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The QNN backend used to delegate the model’s nodes. Each backend has its own set of supported ops and tensor types. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N28TfLiteQnnDelegateBackendType17kUndefinedBackendE">
+<span id="_CPPv3N28TfLiteQnnDelegateBackendType17kUndefinedBackendE"></span><span id="_CPPv2N28TfLiteQnnDelegateBackendType17kUndefinedBackendE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a65d87d490f916ffb8c5f3cd8284b2110ac01bd4cc059820620b0cbb8c02d177a0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kUndefinedBackend</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N28TfLiteQnnDelegateBackendType17kUndefinedBackendE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N28TfLiteQnnDelegateBackendType11kGpuBackendE">
+<span id="_CPPv3N28TfLiteQnnDelegateBackendType11kGpuBackendE"></span><span id="_CPPv2N28TfLiteQnnDelegateBackendType11kGpuBackendE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a65d87d490f916ffb8c5f3cd8284b2110a3c75ba974d54f4388f1baa0b2acbaa50"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kGpuBackend</span></span></span><a class="headerlink" href="#_CPPv4N28TfLiteQnnDelegateBackendType11kGpuBackendE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Backend for Adreno<sup>TM</sup> GPU hardware accelerator. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N28TfLiteQnnDelegateBackendType11kHtpBackendE">
+<span id="_CPPv3N28TfLiteQnnDelegateBackendType11kHtpBackendE"></span><span id="_CPPv2N28TfLiteQnnDelegateBackendType11kHtpBackendE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a65d87d490f916ffb8c5f3cd8284b2110a13319060934416099c1cd45e053f8ff4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kHtpBackend</span></span></span><a class="headerlink" href="#_CPPv4N28TfLiteQnnDelegateBackendType11kHtpBackendE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Backend for Hexagon HTP hardware accelerator. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N28TfLiteQnnDelegateBackendType11kDspBackendE">
+<span id="_CPPv3N28TfLiteQnnDelegateBackendType11kDspBackendE"></span><span id="_CPPv2N28TfLiteQnnDelegateBackendType11kDspBackendE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a65d87d490f916ffb8c5f3cd8284b2110a45017ddfa4c9381bc53abebd908731df"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kDspBackend</span></span></span><a class="headerlink" href="#_CPPv4N28TfLiteQnnDelegateBackendType11kDspBackendE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Backend for Hexagon DSP hardware accelerator. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv425TfLiteQnnDelegateLogLevel">
+<span id="_CPPv325TfLiteQnnDelegateLogLevel"></span><span id="_CPPv225TfLiteQnnDelegateLogLevel"></span><span class="target" id="QnnTFLiteDelegate_8h_1a98034eda2b371b5260d32624917ddb7e"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateLogLevel</span></span></span><a class="headerlink" href="#_CPPv425TfLiteQnnDelegateLogLevel" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Logging level of the delegate and QNN backend. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25TfLiteQnnDelegateLogLevel7kLogOffE">
+<span id="_CPPv3N25TfLiteQnnDelegateLogLevel7kLogOffE"></span><span id="_CPPv2N25TfLiteQnnDelegateLogLevel7kLogOffE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a98034eda2b371b5260d32624917ddb7ea31d251432248b8be8ef530b51bedbb71"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kLogOff</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N25TfLiteQnnDelegateLogLevel7kLogOffE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25TfLiteQnnDelegateLogLevel14kLogLevelErrorE">
+<span id="_CPPv3N25TfLiteQnnDelegateLogLevel14kLogLevelErrorE"></span><span id="_CPPv2N25TfLiteQnnDelegateLogLevel14kLogLevelErrorE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a98034eda2b371b5260d32624917ddb7eabd7709bdb15cb6af6c0deaddc581e769"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kLogLevelError</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N25TfLiteQnnDelegateLogLevel14kLogLevelErrorE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25TfLiteQnnDelegateLogLevel13kLogLevelWarnE">
+<span id="_CPPv3N25TfLiteQnnDelegateLogLevel13kLogLevelWarnE"></span><span id="_CPPv2N25TfLiteQnnDelegateLogLevel13kLogLevelWarnE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a98034eda2b371b5260d32624917ddb7eaa1472fcc1b367484457985649393ca92"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kLogLevelWarn</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">2</span></span><a class="headerlink" href="#_CPPv4N25TfLiteQnnDelegateLogLevel13kLogLevelWarnE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25TfLiteQnnDelegateLogLevel13kLogLevelInfoE">
+<span id="_CPPv3N25TfLiteQnnDelegateLogLevel13kLogLevelInfoE"></span><span id="_CPPv2N25TfLiteQnnDelegateLogLevel13kLogLevelInfoE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a98034eda2b371b5260d32624917ddb7ea407a207057113bdbf53c0fa100c9d8b3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kLogLevelInfo</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">3</span></span><a class="headerlink" href="#_CPPv4N25TfLiteQnnDelegateLogLevel13kLogLevelInfoE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25TfLiteQnnDelegateLogLevel16kLogLevelVerboseE">
+<span id="_CPPv3N25TfLiteQnnDelegateLogLevel16kLogLevelVerboseE"></span><span id="_CPPv2N25TfLiteQnnDelegateLogLevel16kLogLevelVerboseE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a98034eda2b371b5260d32624917ddb7ea6e6be8d1266bf09edc76dc18051b83d4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kLogLevelVerbose</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">4</span></span><a class="headerlink" href="#_CPPv4N25TfLiteQnnDelegateLogLevel16kLogLevelVerboseE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25TfLiteQnnDelegateLogLevel14kLogLevelDebugE">
+<span id="_CPPv3N25TfLiteQnnDelegateLogLevel14kLogLevelDebugE"></span><span id="_CPPv2N25TfLiteQnnDelegateLogLevel14kLogLevelDebugE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a98034eda2b371b5260d32624917ddb7eacba07dfdc44e191de73178072c1c0cd3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kLogLevelDebug</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">5</span></span><a class="headerlink" href="#_CPPv4N25TfLiteQnnDelegateLogLevel14kLogLevelDebugE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv430TfLiteQnnDelegateGraphPriority">
+<span id="_CPPv330TfLiteQnnDelegateGraphPriority"></span><span id="_CPPv230TfLiteQnnDelegateGraphPriority"></span><span class="target" id="QnnTFLiteDelegate_8h_1a8453025efc589782de662ffe54c54c3d"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateGraphPriority</span></span></span><a class="headerlink" href="#_CPPv430TfLiteQnnDelegateGraphPriority" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Options to set Graph Priority. This is directly mapped to Qnn_Priority_t. Please refer to QNN SDK for additional information. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30TfLiteQnnDelegateGraphPriority19kQnnPriorityDefaultE">
+<span id="_CPPv3N30TfLiteQnnDelegateGraphPriority19kQnnPriorityDefaultE"></span><span id="_CPPv2N30TfLiteQnnDelegateGraphPriority19kQnnPriorityDefaultE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a8453025efc589782de662ffe54c54c3da7f9cc709ad10f04f1e0d8e6ea4c4c8d6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kQnnPriorityDefault</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N30TfLiteQnnDelegateGraphPriority19kQnnPriorityDefaultE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30TfLiteQnnDelegateGraphPriority15kQnnPriorityLowE">
+<span id="_CPPv3N30TfLiteQnnDelegateGraphPriority15kQnnPriorityLowE"></span><span id="_CPPv2N30TfLiteQnnDelegateGraphPriority15kQnnPriorityLowE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a8453025efc589782de662ffe54c54c3da770a2ff40dd5e5315cf28891ec2175eb"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kQnnPriorityLow</span></span></span><a class="headerlink" href="#_CPPv4N30TfLiteQnnDelegateGraphPriority15kQnnPriorityLowE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30TfLiteQnnDelegateGraphPriority18kQnnPriorityNormalE">
+<span id="_CPPv3N30TfLiteQnnDelegateGraphPriority18kQnnPriorityNormalE"></span><span id="_CPPv2N30TfLiteQnnDelegateGraphPriority18kQnnPriorityNormalE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a8453025efc589782de662ffe54c54c3da1c69253ffbb8027ce9e2ed9a2435173a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kQnnPriorityNormal</span></span></span><a class="headerlink" href="#_CPPv4N30TfLiteQnnDelegateGraphPriority18kQnnPriorityNormalE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30TfLiteQnnDelegateGraphPriority22kQnnPriorityNormalHighE">
+<span id="_CPPv3N30TfLiteQnnDelegateGraphPriority22kQnnPriorityNormalHighE"></span><span id="_CPPv2N30TfLiteQnnDelegateGraphPriority22kQnnPriorityNormalHighE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a8453025efc589782de662ffe54c54c3da765da10ab9d77931ee55400a2e879d12"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kQnnPriorityNormalHigh</span></span></span><a class="headerlink" href="#_CPPv4N30TfLiteQnnDelegateGraphPriority22kQnnPriorityNormalHighE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30TfLiteQnnDelegateGraphPriority16kQnnPriorityHighE">
+<span id="_CPPv3N30TfLiteQnnDelegateGraphPriority16kQnnPriorityHighE"></span><span id="_CPPv2N30TfLiteQnnDelegateGraphPriority16kQnnPriorityHighE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a8453025efc589782de662ffe54c54c3da1cef7ec95c260f0886e5f9332b7956f4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kQnnPriorityHigh</span></span></span><a class="headerlink" href="#_CPPv4N30TfLiteQnnDelegateGraphPriority16kQnnPriorityHighE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N30TfLiteQnnDelegateGraphPriority21kQnnPriorityUndefinedE">
+<span id="_CPPv3N30TfLiteQnnDelegateGraphPriority21kQnnPriorityUndefinedE"></span><span id="_CPPv2N30TfLiteQnnDelegateGraphPriority21kQnnPriorityUndefinedE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a8453025efc589782de662ffe54c54c3da4bdf369acc992be0ef4bc8f4e75ba736"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kQnnPriorityUndefined</span></span></span><a class="headerlink" href="#_CPPv4N30TfLiteQnnDelegateGraphPriority21kQnnPriorityUndefinedE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv433TfLiteQnnDelegateProfilingOptions">
+<span id="_CPPv333TfLiteQnnDelegateProfilingOptions"></span><span id="_CPPv233TfLiteQnnDelegateProfilingOptions"></span><span class="target" id="QnnTFLiteDelegate_8h_1ae9ba865477b791adff010190bba7052a"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateProfilingOptions</span></span></span><a class="headerlink" href="#_CPPv433TfLiteQnnDelegateProfilingOptions" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Options to profile the QNN Delegate execution. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N33TfLiteQnnDelegateProfilingOptions13kProfilingOffE">
+<span id="_CPPv3N33TfLiteQnnDelegateProfilingOptions13kProfilingOffE"></span><span id="_CPPv2N33TfLiteQnnDelegateProfilingOptions13kProfilingOffE"></span><span class="target" id="QnnTFLiteDelegate_8h_1ae9ba865477b791adff010190bba7052aae8896738fa36928dd3ccf4883f941cf9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kProfilingOff</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N33TfLiteQnnDelegateProfilingOptions13kProfilingOffE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N33TfLiteQnnDelegateProfilingOptions15kBasicProfilingE">
+<span id="_CPPv3N33TfLiteQnnDelegateProfilingOptions15kBasicProfilingE"></span><span id="_CPPv2N33TfLiteQnnDelegateProfilingOptions15kBasicProfilingE"></span><span class="target" id="QnnTFLiteDelegate_8h_1ae9ba865477b791adff010190bba7052aa2f8e7321111b6aaf57a6d20fa152629f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kBasicProfiling</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N33TfLiteQnnDelegateProfilingOptions15kBasicProfilingE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N33TfLiteQnnDelegateProfilingOptions15kPerOpProfilingE">
+<span id="_CPPv3N33TfLiteQnnDelegateProfilingOptions15kPerOpProfilingE"></span><span id="_CPPv2N33TfLiteQnnDelegateProfilingOptions15kPerOpProfilingE"></span><span class="target" id="QnnTFLiteDelegate_8h_1ae9ba865477b791adff010190bba7052aae7b87fcaa4bd2b406206e56c6566ca7a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kPerOpProfiling</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">2</span></span><a class="headerlink" href="#_CPPv4N33TfLiteQnnDelegateProfilingOptions15kPerOpProfilingE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv429TfLiteQnnDelegateGpuPrecision">
+<span id="_CPPv329TfLiteQnnDelegateGpuPrecision"></span><span id="_CPPv229TfLiteQnnDelegateGpuPrecision"></span><span class="target" id="QnnTFLiteDelegate_8h_1ab5e6a08beec9f90e845d77c44d6ac87e"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateGpuPrecision</span></span></span><a class="headerlink" href="#_CPPv429TfLiteQnnDelegateGpuPrecision" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Defines the optimization levels of the graph tensors that are not input nor output tensors. This enum controls the trade-off between performance and accuracy. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N29TfLiteQnnDelegateGpuPrecision16kGpuUserProvidedE">
+<span id="_CPPv3N29TfLiteQnnDelegateGpuPrecision16kGpuUserProvidedE"></span><span id="_CPPv2N29TfLiteQnnDelegateGpuPrecision16kGpuUserProvidedE"></span><span class="target" id="QnnTFLiteDelegate_8h_1ab5e6a08beec9f90e845d77c44d6ac87ea130256cd4a5f9b64ed694082b5765d10"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kGpuUserProvided</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N29TfLiteQnnDelegateGpuPrecision16kGpuUserProvidedE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N29TfLiteQnnDelegateGpuPrecision8kGpuFp32E">
+<span id="_CPPv3N29TfLiteQnnDelegateGpuPrecision8kGpuFp32E"></span><span id="_CPPv2N29TfLiteQnnDelegateGpuPrecision8kGpuFp32E"></span><span class="target" id="QnnTFLiteDelegate_8h_1ab5e6a08beec9f90e845d77c44d6ac87eaa7d0a1113ceb74142c524a32fcff2d8e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kGpuFp32</span></span></span><a class="headerlink" href="#_CPPv4N29TfLiteQnnDelegateGpuPrecision8kGpuFp32E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N29TfLiteQnnDelegateGpuPrecision8kGpuFp16E">
+<span id="_CPPv3N29TfLiteQnnDelegateGpuPrecision8kGpuFp16E"></span><span id="_CPPv2N29TfLiteQnnDelegateGpuPrecision8kGpuFp16E"></span><span class="target" id="QnnTFLiteDelegate_8h_1ab5e6a08beec9f90e845d77c44d6ac87ea8317f42cacc7aaf63b53773a6e606e3f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kGpuFp16</span></span></span><a class="headerlink" href="#_CPPv4N29TfLiteQnnDelegateGpuPrecision8kGpuFp16E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N29TfLiteQnnDelegateGpuPrecision10kGpuHybridE">
+<span id="_CPPv3N29TfLiteQnnDelegateGpuPrecision10kGpuHybridE"></span><span id="_CPPv2N29TfLiteQnnDelegateGpuPrecision10kGpuHybridE"></span><span class="target" id="QnnTFLiteDelegate_8h_1ab5e6a08beec9f90e845d77c44d6ac87ea48813afa7522ed2305468cbb3be7ece6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kGpuHybrid</span></span></span><a class="headerlink" href="#_CPPv4N29TfLiteQnnDelegateGpuPrecision10kGpuHybridE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv435TfLiteQnnDelegateGpuPerformanceMode">
+<span id="_CPPv335TfLiteQnnDelegateGpuPerformanceMode"></span><span id="_CPPv235TfLiteQnnDelegateGpuPerformanceMode"></span><span class="target" id="QnnTFLiteDelegate_8h_1a4b395ac50b8e45e75f0be571915387ba"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateGpuPerformanceMode</span></span></span><a class="headerlink" href="#_CPPv435TfLiteQnnDelegateGpuPerformanceMode" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Defines performance modes available for GPU backend. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N35TfLiteQnnDelegateGpuPerformanceMode11kGpuDefaultE">
+<span id="_CPPv3N35TfLiteQnnDelegateGpuPerformanceMode11kGpuDefaultE"></span><span id="_CPPv2N35TfLiteQnnDelegateGpuPerformanceMode11kGpuDefaultE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a4b395ac50b8e45e75f0be571915387baa9befb2c7509d348261178c711649bed8"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kGpuDefault</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N35TfLiteQnnDelegateGpuPerformanceMode11kGpuDefaultE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N35TfLiteQnnDelegateGpuPerformanceMode8kGpuHighE">
+<span id="_CPPv3N35TfLiteQnnDelegateGpuPerformanceMode8kGpuHighE"></span><span id="_CPPv2N35TfLiteQnnDelegateGpuPerformanceMode8kGpuHighE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a4b395ac50b8e45e75f0be571915387baa17690de4c9544340709c89c17597e08e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kGpuHigh</span></span></span><a class="headerlink" href="#_CPPv4N35TfLiteQnnDelegateGpuPerformanceMode8kGpuHighE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N35TfLiteQnnDelegateGpuPerformanceMode10kGpuNormalE">
+<span id="_CPPv3N35TfLiteQnnDelegateGpuPerformanceMode10kGpuNormalE"></span><span id="_CPPv2N35TfLiteQnnDelegateGpuPerformanceMode10kGpuNormalE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a4b395ac50b8e45e75f0be571915387baa63a8fb84bd68788a9755ff9f4c21db22"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kGpuNormal</span></span></span><a class="headerlink" href="#_CPPv4N35TfLiteQnnDelegateGpuPerformanceMode10kGpuNormalE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N35TfLiteQnnDelegateGpuPerformanceMode7kGpuLowE">
+<span id="_CPPv3N35TfLiteQnnDelegateGpuPerformanceMode7kGpuLowE"></span><span id="_CPPv2N35TfLiteQnnDelegateGpuPerformanceMode7kGpuLowE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a4b395ac50b8e45e75f0be571915387baa1765f6f8eb70ce5baeddd260a746d785"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kGpuLow</span></span></span><a class="headerlink" href="#_CPPv4N35TfLiteQnnDelegateGpuPerformanceMode7kGpuLowE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv435TfLiteQnnDelegateHtpPerformanceMode">
+<span id="_CPPv335TfLiteQnnDelegateHtpPerformanceMode"></span><span id="_CPPv235TfLiteQnnDelegateHtpPerformanceMode"></span><span class="target" id="QnnTFLiteDelegate_8h_1aa5ff506decce630c216a8a1539d5c734"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateHtpPerformanceMode</span></span></span><a class="headerlink" href="#_CPPv435TfLiteQnnDelegateHtpPerformanceMode" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Defines performance modes available for HTP backend. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N35TfLiteQnnDelegateHtpPerformanceMode11kHtpDefaultE">
+<span id="_CPPv3N35TfLiteQnnDelegateHtpPerformanceMode11kHtpDefaultE"></span><span id="_CPPv2N35TfLiteQnnDelegateHtpPerformanceMode11kHtpDefaultE"></span><span class="target" id="QnnTFLiteDelegate_8h_1aa5ff506decce630c216a8a1539d5c734a686992e4348aad07fc86dbb483a97120"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kHtpDefault</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N35TfLiteQnnDelegateHtpPerformanceMode11kHtpDefaultE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N35TfLiteQnnDelegateHtpPerformanceMode28kHtpSustainedHighPerformanceE">
+<span id="_CPPv3N35TfLiteQnnDelegateHtpPerformanceMode28kHtpSustainedHighPerformanceE"></span><span id="_CPPv2N35TfLiteQnnDelegateHtpPerformanceMode28kHtpSustainedHighPerformanceE"></span><span class="target" id="QnnTFLiteDelegate_8h_1aa5ff506decce630c216a8a1539d5c734a83daef7b5c7ffbc25e24fc7a983b09ab"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kHtpSustainedHighPerformance</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N35TfLiteQnnDelegateHtpPerformanceMode28kHtpSustainedHighPerformanceE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N35TfLiteQnnDelegateHtpPerformanceMode9kHtpBurstE">
+<span id="_CPPv3N35TfLiteQnnDelegateHtpPerformanceMode9kHtpBurstE"></span><span id="_CPPv2N35TfLiteQnnDelegateHtpPerformanceMode9kHtpBurstE"></span><span class="target" id="QnnTFLiteDelegate_8h_1aa5ff506decce630c216a8a1539d5c734a0280cb2b3bfe530b94b01e91ce98f45b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kHtpBurst</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">2</span></span><a class="headerlink" href="#_CPPv4N35TfLiteQnnDelegateHtpPerformanceMode9kHtpBurstE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N35TfLiteQnnDelegateHtpPerformanceMode19kHtpHighPerformanceE">
+<span id="_CPPv3N35TfLiteQnnDelegateHtpPerformanceMode19kHtpHighPerformanceE"></span><span id="_CPPv2N35TfLiteQnnDelegateHtpPerformanceMode19kHtpHighPerformanceE"></span><span class="target" id="QnnTFLiteDelegate_8h_1aa5ff506decce630c216a8a1539d5c734a8541c85c0a3b4cc31a292cf2244e988f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kHtpHighPerformance</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">3</span></span><a class="headerlink" href="#_CPPv4N35TfLiteQnnDelegateHtpPerformanceMode19kHtpHighPerformanceE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N35TfLiteQnnDelegateHtpPerformanceMode14kHtpPowerSaverE">
+<span id="_CPPv3N35TfLiteQnnDelegateHtpPerformanceMode14kHtpPowerSaverE"></span><span id="_CPPv2N35TfLiteQnnDelegateHtpPerformanceMode14kHtpPowerSaverE"></span><span class="target" id="QnnTFLiteDelegate_8h_1aa5ff506decce630c216a8a1539d5c734a085a1c4358ba77a05639b7e90e3de5ef"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kHtpPowerSaver</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">4</span></span><a class="headerlink" href="#_CPPv4N35TfLiteQnnDelegateHtpPerformanceMode14kHtpPowerSaverE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N35TfLiteQnnDelegateHtpPerformanceMode17kHtpLowPowerSaverE">
+<span id="_CPPv3N35TfLiteQnnDelegateHtpPerformanceMode17kHtpLowPowerSaverE"></span><span id="_CPPv2N35TfLiteQnnDelegateHtpPerformanceMode17kHtpLowPowerSaverE"></span><span class="target" id="QnnTFLiteDelegate_8h_1aa5ff506decce630c216a8a1539d5c734aba9497ba8141437d4b9a0012ea329082"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kHtpLowPowerSaver</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">5</span></span><a class="headerlink" href="#_CPPv4N35TfLiteQnnDelegateHtpPerformanceMode17kHtpLowPowerSaverE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N35TfLiteQnnDelegateHtpPerformanceMode18kHtpHighPowerSaverE">
+<span id="_CPPv3N35TfLiteQnnDelegateHtpPerformanceMode18kHtpHighPowerSaverE"></span><span id="_CPPv2N35TfLiteQnnDelegateHtpPerformanceMode18kHtpHighPowerSaverE"></span><span class="target" id="QnnTFLiteDelegate_8h_1aa5ff506decce630c216a8a1539d5c734a40b7b82e63a9d0522c8c0845c72fb67b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kHtpHighPowerSaver</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">6</span></span><a class="headerlink" href="#_CPPv4N35TfLiteQnnDelegateHtpPerformanceMode18kHtpHighPowerSaverE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N35TfLiteQnnDelegateHtpPerformanceMode15kHtpLowBalancedE">
+<span id="_CPPv3N35TfLiteQnnDelegateHtpPerformanceMode15kHtpLowBalancedE"></span><span id="_CPPv2N35TfLiteQnnDelegateHtpPerformanceMode15kHtpLowBalancedE"></span><span class="target" id="QnnTFLiteDelegate_8h_1aa5ff506decce630c216a8a1539d5c734a0c8adee69b9789a716a492f703081c31"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kHtpLowBalanced</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">7</span></span><a class="headerlink" href="#_CPPv4N35TfLiteQnnDelegateHtpPerformanceMode15kHtpLowBalancedE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N35TfLiteQnnDelegateHtpPerformanceMode12kHtpBalancedE">
+<span id="_CPPv3N35TfLiteQnnDelegateHtpPerformanceMode12kHtpBalancedE"></span><span id="_CPPv2N35TfLiteQnnDelegateHtpPerformanceMode12kHtpBalancedE"></span><span class="target" id="QnnTFLiteDelegate_8h_1aa5ff506decce630c216a8a1539d5c734a5020a018f701a051960eb175dee8db08"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kHtpBalanced</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">8</span></span><a class="headerlink" href="#_CPPv4N35TfLiteQnnDelegateHtpPerformanceMode12kHtpBalancedE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv435TfLiteQnnDelegateDspPerformanceMode">
+<span id="_CPPv335TfLiteQnnDelegateDspPerformanceMode"></span><span id="_CPPv235TfLiteQnnDelegateDspPerformanceMode"></span><span class="target" id="QnnTFLiteDelegate_8h_1a4abf6471a7905bbe48dd1258942d54d5"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateDspPerformanceMode</span></span></span><a class="headerlink" href="#_CPPv435TfLiteQnnDelegateDspPerformanceMode" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Defines performance modes available for DSP backend. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N35TfLiteQnnDelegateDspPerformanceMode11kDspDefaultE">
+<span id="_CPPv3N35TfLiteQnnDelegateDspPerformanceMode11kDspDefaultE"></span><span id="_CPPv2N35TfLiteQnnDelegateDspPerformanceMode11kDspDefaultE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a4abf6471a7905bbe48dd1258942d54d5aeefdfaa03eda1af50d06c37444a85cbc"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kDspDefault</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N35TfLiteQnnDelegateDspPerformanceMode11kDspDefaultE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N35TfLiteQnnDelegateDspPerformanceMode28kDspSustainedHighPerformanceE">
+<span id="_CPPv3N35TfLiteQnnDelegateDspPerformanceMode28kDspSustainedHighPerformanceE"></span><span id="_CPPv2N35TfLiteQnnDelegateDspPerformanceMode28kDspSustainedHighPerformanceE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a4abf6471a7905bbe48dd1258942d54d5ad0f7a700cb4e467c9a13d9f8c8e6d7dc"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kDspSustainedHighPerformance</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N35TfLiteQnnDelegateDspPerformanceMode28kDspSustainedHighPerformanceE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N35TfLiteQnnDelegateDspPerformanceMode9kDspBurstE">
+<span id="_CPPv3N35TfLiteQnnDelegateDspPerformanceMode9kDspBurstE"></span><span id="_CPPv2N35TfLiteQnnDelegateDspPerformanceMode9kDspBurstE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a4abf6471a7905bbe48dd1258942d54d5a7755b96dd74e989a137bec9ec83691e3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kDspBurst</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">2</span></span><a class="headerlink" href="#_CPPv4N35TfLiteQnnDelegateDspPerformanceMode9kDspBurstE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N35TfLiteQnnDelegateDspPerformanceMode19kDspHighPerformanceE">
+<span id="_CPPv3N35TfLiteQnnDelegateDspPerformanceMode19kDspHighPerformanceE"></span><span id="_CPPv2N35TfLiteQnnDelegateDspPerformanceMode19kDspHighPerformanceE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a4abf6471a7905bbe48dd1258942d54d5a26729cb83aa2c834a09ffd00dc8b292f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kDspHighPerformance</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">3</span></span><a class="headerlink" href="#_CPPv4N35TfLiteQnnDelegateDspPerformanceMode19kDspHighPerformanceE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N35TfLiteQnnDelegateDspPerformanceMode14kDspPowerSaverE">
+<span id="_CPPv3N35TfLiteQnnDelegateDspPerformanceMode14kDspPowerSaverE"></span><span id="_CPPv2N35TfLiteQnnDelegateDspPerformanceMode14kDspPowerSaverE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a4abf6471a7905bbe48dd1258942d54d5acf94bf5a2d40286336112c43dc20c708"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kDspPowerSaver</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">4</span></span><a class="headerlink" href="#_CPPv4N35TfLiteQnnDelegateDspPerformanceMode14kDspPowerSaverE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N35TfLiteQnnDelegateDspPerformanceMode17kDspLowPowerSaverE">
+<span id="_CPPv3N35TfLiteQnnDelegateDspPerformanceMode17kDspLowPowerSaverE"></span><span id="_CPPv2N35TfLiteQnnDelegateDspPerformanceMode17kDspLowPowerSaverE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a4abf6471a7905bbe48dd1258942d54d5a0856d833a345f3899eae0ba35617498b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kDspLowPowerSaver</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">5</span></span><a class="headerlink" href="#_CPPv4N35TfLiteQnnDelegateDspPerformanceMode17kDspLowPowerSaverE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N35TfLiteQnnDelegateDspPerformanceMode18kDspHighPowerSaverE">
+<span id="_CPPv3N35TfLiteQnnDelegateDspPerformanceMode18kDspHighPowerSaverE"></span><span id="_CPPv2N35TfLiteQnnDelegateDspPerformanceMode18kDspHighPowerSaverE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a4abf6471a7905bbe48dd1258942d54d5a715afd5c72597d625d7388de11fc3efc"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kDspHighPowerSaver</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">6</span></span><a class="headerlink" href="#_CPPv4N35TfLiteQnnDelegateDspPerformanceMode18kDspHighPowerSaverE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N35TfLiteQnnDelegateDspPerformanceMode15kDspLowBalancedE">
+<span id="_CPPv3N35TfLiteQnnDelegateDspPerformanceMode15kDspLowBalancedE"></span><span id="_CPPv2N35TfLiteQnnDelegateDspPerformanceMode15kDspLowBalancedE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a4abf6471a7905bbe48dd1258942d54d5a68427efab244791fb35eaa729d4b5681"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kDspLowBalanced</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">7</span></span><a class="headerlink" href="#_CPPv4N35TfLiteQnnDelegateDspPerformanceMode15kDspLowBalancedE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N35TfLiteQnnDelegateDspPerformanceMode12kDspBalancedE">
+<span id="_CPPv3N35TfLiteQnnDelegateDspPerformanceMode12kDspBalancedE"></span><span id="_CPPv2N35TfLiteQnnDelegateDspPerformanceMode12kDspBalancedE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a4abf6471a7905bbe48dd1258942d54d5a91bd5c04f48288a2104862925097800c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kDspBalanced</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">8</span></span><a class="headerlink" href="#_CPPv4N35TfLiteQnnDelegateDspPerformanceMode12kDspBalancedE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv436TfLiteQnnDelegateHtpPerfCtrlStrategy">
+<span id="_CPPv336TfLiteQnnDelegateHtpPerfCtrlStrategy"></span><span id="_CPPv236TfLiteQnnDelegateHtpPerfCtrlStrategy"></span><span class="target" id="QnnTFLiteDelegate_8h_1ad070a6439f1d5bb22830262006d178d3"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateHtpPerfCtrlStrategy</span></span></span><a class="headerlink" href="#_CPPv436TfLiteQnnDelegateHtpPerfCtrlStrategy" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Defines performance control strategy</p>
+<p><strong>Manual</strong>: The performance mode is voted as the backend is initialized, and released at the moment of the backend is destroyed.</p>
+<p>Users can control the vote/release of the performance mode by <a class="reference internal" href="#QnnTFLiteDelegate_8h_1a2783ba4dedc253b69ae859478f725f78"><span class="std std-ref">TfLiteQnnDelegateSetPerf()</span></a>.</p>
+<p>Note that this is the default strategy.</p>
+<p>For example, users can vote before inference starts, and release after all invocations are complete.</p>
+<p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">TfLiteQnnDelegateSetPerf</span><span class="p">(</span><span class="n">delegate</span><span class="p">,</span><span class="w"> </span><span class="n">kPerformanceVote</span><span class="p">);</span>
+<span class="c1">// invoke inferences...</span>
+<span class="n">TfLiteQnnDelegateSetPerf</span><span class="p">(</span><span class="n">delegate</span><span class="p">,</span><span class="w"> </span><span class="n">kPerformanceRelease</span><span class="p">);</span>
+</pre></div>
+</div>
+</p>
+<p><strong>AUTO</strong>: QNN Delegate votes before starting inference, and releases after an idle interval. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N36TfLiteQnnDelegateHtpPerfCtrlStrategy18kHtpPerfCtrlManualE">
+<span id="_CPPv3N36TfLiteQnnDelegateHtpPerfCtrlStrategy18kHtpPerfCtrlManualE"></span><span id="_CPPv2N36TfLiteQnnDelegateHtpPerfCtrlStrategy18kHtpPerfCtrlManualE"></span><span class="target" id="QnnTFLiteDelegate_8h_1ad070a6439f1d5bb22830262006d178d3a243d35d2cb5e4381038017265e0b183b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kHtpPerfCtrlManual</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N36TfLiteQnnDelegateHtpPerfCtrlStrategy18kHtpPerfCtrlManualE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N36TfLiteQnnDelegateHtpPerfCtrlStrategy16kHtpPerfCtrlAutoE">
+<span id="_CPPv3N36TfLiteQnnDelegateHtpPerfCtrlStrategy16kHtpPerfCtrlAutoE"></span><span id="_CPPv2N36TfLiteQnnDelegateHtpPerfCtrlStrategy16kHtpPerfCtrlAutoE"></span><span class="target" id="QnnTFLiteDelegate_8h_1ad070a6439f1d5bb22830262006d178d3abbbbb7bfaf695e488ddb2c89fe9c139b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kHtpPerfCtrlAuto</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N36TfLiteQnnDelegateHtpPerfCtrlStrategy16kHtpPerfCtrlAutoE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv436TfLiteQnnDelegateDspPerfCtrlStrategy">
+<span id="_CPPv336TfLiteQnnDelegateDspPerfCtrlStrategy"></span><span id="_CPPv236TfLiteQnnDelegateDspPerfCtrlStrategy"></span><span class="target" id="QnnTFLiteDelegate_8h_1a6996a7800d50aa6ab3e5c72fee24c29a"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateDspPerfCtrlStrategy</span></span></span><a class="headerlink" href="#_CPPv436TfLiteQnnDelegateDspPerfCtrlStrategy" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Defines DSP performance control strategy. Similar to HTP cases. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N36TfLiteQnnDelegateDspPerfCtrlStrategy18kDspPerfCtrlManualE">
+<span id="_CPPv3N36TfLiteQnnDelegateDspPerfCtrlStrategy18kDspPerfCtrlManualE"></span><span id="_CPPv2N36TfLiteQnnDelegateDspPerfCtrlStrategy18kDspPerfCtrlManualE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a6996a7800d50aa6ab3e5c72fee24c29aa3986c1664fb200ebf09d162fa19a8835"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kDspPerfCtrlManual</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N36TfLiteQnnDelegateDspPerfCtrlStrategy18kDspPerfCtrlManualE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N36TfLiteQnnDelegateDspPerfCtrlStrategy16kDspPerfCtrlAutoE">
+<span id="_CPPv3N36TfLiteQnnDelegateDspPerfCtrlStrategy16kDspPerfCtrlAutoE"></span><span id="_CPPv2N36TfLiteQnnDelegateDspPerfCtrlStrategy16kDspPerfCtrlAutoE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a6996a7800d50aa6ab3e5c72fee24c29aa6fbfd7f85abdbe6f3fbfd92d61aea1ae"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kDspPerfCtrlAuto</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N36TfLiteQnnDelegateDspPerfCtrlStrategy16kDspPerfCtrlAutoE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv429TfLiteQnnDelegateDspPdSession">
+<span id="_CPPv329TfLiteQnnDelegateDspPdSession"></span><span id="_CPPv229TfLiteQnnDelegateDspPdSession"></span><span class="target" id="QnnTFLiteDelegate_8h_1ac708dfad295901173d5588fe88e18e45"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateDspPdSession</span></span></span><a class="headerlink" href="#_CPPv429TfLiteQnnDelegateDspPdSession" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Defines pd sessions available for DSP backend. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N29TfLiteQnnDelegateDspPdSession14kDspUnsignedPdE">
+<span id="_CPPv3N29TfLiteQnnDelegateDspPdSession14kDspUnsignedPdE"></span><span id="_CPPv2N29TfLiteQnnDelegateDspPdSession14kDspUnsignedPdE"></span><span class="target" id="QnnTFLiteDelegate_8h_1ac708dfad295901173d5588fe88e18e45a9b5c880d67dc397c90d7da1826fb1872"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kDspUnsignedPd</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N29TfLiteQnnDelegateDspPdSession14kDspUnsignedPdE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N29TfLiteQnnDelegateDspPdSession12kDspSignedPdE">
+<span id="_CPPv3N29TfLiteQnnDelegateDspPdSession12kDspSignedPdE"></span><span id="_CPPv2N29TfLiteQnnDelegateDspPdSession12kDspSignedPdE"></span><span class="target" id="QnnTFLiteDelegate_8h_1ac708dfad295901173d5588fe88e18e45a81695384e3ce8098f02c16132e71d614"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kDspSignedPd</span></span></span><a class="headerlink" href="#_CPPv4N29TfLiteQnnDelegateDspPdSession12kDspSignedPdE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N29TfLiteQnnDelegateDspPdSession14kDspAdaptivePdE">
+<span id="_CPPv3N29TfLiteQnnDelegateDspPdSession14kDspAdaptivePdE"></span><span id="_CPPv2N29TfLiteQnnDelegateDspPdSession14kDspAdaptivePdE"></span><span class="target" id="QnnTFLiteDelegate_8h_1ac708dfad295901173d5588fe88e18e45aead9be1230ae629470daf1f492975b0b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kDspAdaptivePd</span></span></span><a class="headerlink" href="#_CPPv4N29TfLiteQnnDelegateDspPdSession14kDspAdaptivePdE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv428TfLiteQnnDelegateDspEncoding">
+<span id="_CPPv328TfLiteQnnDelegateDspEncoding"></span><span id="_CPPv228TfLiteQnnDelegateDspEncoding"></span><span class="target" id="QnnTFLiteDelegate_8h_1a195ab240a762d2d182555a140e460e4d"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateDspEncoding</span></span></span><a class="headerlink" href="#_CPPv428TfLiteQnnDelegateDspEncoding" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Defines encoding for DSP backend. Dynamic encoding is more precise but sacrifices a bit of performance. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N28TfLiteQnnDelegateDspEncoding10kDspStaticE">
+<span id="_CPPv3N28TfLiteQnnDelegateDspEncoding10kDspStaticE"></span><span id="_CPPv2N28TfLiteQnnDelegateDspEncoding10kDspStaticE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a195ab240a762d2d182555a140e460e4dafac72823733be0c0f49e2fd85efb3d5b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kDspStatic</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N28TfLiteQnnDelegateDspEncoding10kDspStaticE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N28TfLiteQnnDelegateDspEncoding11kDspDynamicE">
+<span id="_CPPv3N28TfLiteQnnDelegateDspEncoding11kDspDynamicE"></span><span id="_CPPv2N28TfLiteQnnDelegateDspEncoding11kDspDynamicE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a195ab240a762d2d182555a140e460e4daa6434e79848d32aeb094650b591814c0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kDspDynamic</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N28TfLiteQnnDelegateDspEncoding11kDspDynamicE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N28TfLiteQnnDelegateDspEncoding11kDspUnknownE">
+<span id="_CPPv3N28TfLiteQnnDelegateDspEncoding11kDspUnknownE"></span><span id="_CPPv2N28TfLiteQnnDelegateDspEncoding11kDspUnknownE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a195ab240a762d2d182555a140e460e4dabd98672d15f81e52cfc7f0fbf90d1b35"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kDspUnknown</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0x7fffffff</span></span><a class="headerlink" href="#_CPPv4N28TfLiteQnnDelegateDspEncoding11kDspUnknownE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv429TfLiteQnnDelegateHtpPdSession">
+<span id="_CPPv329TfLiteQnnDelegateHtpPdSession"></span><span id="_CPPv229TfLiteQnnDelegateHtpPdSession"></span><span class="target" id="QnnTFLiteDelegate_8h_1a08384bc22ba5867633d08f44fdd0ad98"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateHtpPdSession</span></span></span><a class="headerlink" href="#_CPPv429TfLiteQnnDelegateHtpPdSession" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Defines pd sessions available for HTP backend. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N29TfLiteQnnDelegateHtpPdSession14kHtpUnsignedPdE">
+<span id="_CPPv3N29TfLiteQnnDelegateHtpPdSession14kHtpUnsignedPdE"></span><span id="_CPPv2N29TfLiteQnnDelegateHtpPdSession14kHtpUnsignedPdE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a08384bc22ba5867633d08f44fdd0ad98a41a555c1e552d1698418e25656ea0dbf"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kHtpUnsignedPd</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N29TfLiteQnnDelegateHtpPdSession14kHtpUnsignedPdE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N29TfLiteQnnDelegateHtpPdSession12kHtpSignedPdE">
+<span id="_CPPv3N29TfLiteQnnDelegateHtpPdSession12kHtpSignedPdE"></span><span id="_CPPv2N29TfLiteQnnDelegateHtpPdSession12kHtpSignedPdE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a08384bc22ba5867633d08f44fdd0ad98a2ca9be0587b1a36b6159b4d5ada206f5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kHtpSignedPd</span></span></span><a class="headerlink" href="#_CPPv4N29TfLiteQnnDelegateHtpPdSession12kHtpSignedPdE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv429TfLiteQnnDelegateHtpPrecision">
+<span id="_CPPv329TfLiteQnnDelegateHtpPrecision"></span><span id="_CPPv229TfLiteQnnDelegateHtpPrecision"></span><span class="target" id="QnnTFLiteDelegate_8h_1a00e872617c24879604041abc56ab381e"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateHtpPrecision</span></span></span><a class="headerlink" href="#_CPPv429TfLiteQnnDelegateHtpPrecision" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Defines the optimization levels of the graph tensors that are not input nor output tensors. This enum controls the trade-off between performance and accuracy. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N29TfLiteQnnDelegateHtpPrecision13kHtpQuantizedE">
+<span id="_CPPv3N29TfLiteQnnDelegateHtpPrecision13kHtpQuantizedE"></span><span id="_CPPv2N29TfLiteQnnDelegateHtpPrecision13kHtpQuantizedE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a00e872617c24879604041abc56ab381ead63c6831cc73e1d89e5ab3adad27e20e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kHtpQuantized</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N29TfLiteQnnDelegateHtpPrecision13kHtpQuantizedE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N29TfLiteQnnDelegateHtpPrecision8kHtpFp16E">
+<span id="_CPPv3N29TfLiteQnnDelegateHtpPrecision8kHtpFp16E"></span><span id="_CPPv2N29TfLiteQnnDelegateHtpPrecision8kHtpFp16E"></span><span class="target" id="QnnTFLiteDelegate_8h_1a00e872617c24879604041abc56ab381eaf928c1e498ef659e7b4582fca25aa2fe"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kHtpFp16</span></span></span><a class="headerlink" href="#_CPPv4N29TfLiteQnnDelegateHtpPrecision8kHtpFp16E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv440TfLiteQnnDelegateHtpOptimizationStrategy">
+<span id="_CPPv340TfLiteQnnDelegateHtpOptimizationStrategy"></span><span id="_CPPv240TfLiteQnnDelegateHtpOptimizationStrategy"></span><span class="target" id="QnnTFLiteDelegate_8h_1a8e61dbbf1c8ec8be89f7250f4dc739fd"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateHtpOptimizationStrategy</span></span></span><a class="headerlink" href="#_CPPv440TfLiteQnnDelegateHtpOptimizationStrategy" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Defines the optimization strategy used by the HTP backend. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N40TfLiteQnnDelegateHtpOptimizationStrategy24kHtpOptimizeForInferenceE">
+<span id="_CPPv3N40TfLiteQnnDelegateHtpOptimizationStrategy24kHtpOptimizeForInferenceE"></span><span id="_CPPv2N40TfLiteQnnDelegateHtpOptimizationStrategy24kHtpOptimizeForInferenceE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a8e61dbbf1c8ec8be89f7250f4dc739fda2f33d813c299848888d388f2bca6d3eb"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kHtpOptimizeForInference</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N40TfLiteQnnDelegateHtpOptimizationStrategy24kHtpOptimizeForInferenceE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N40TfLiteQnnDelegateHtpOptimizationStrategy22kHtpOptimizeForPrepareE">
+<span id="_CPPv3N40TfLiteQnnDelegateHtpOptimizationStrategy22kHtpOptimizeForPrepareE"></span><span id="_CPPv2N40TfLiteQnnDelegateHtpOptimizationStrategy22kHtpOptimizeForPrepareE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a8e61dbbf1c8ec8be89f7250f4dc739fda8e8d9d3987e10578505406f0171fe8fa"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kHtpOptimizeForPrepare</span></span></span><a class="headerlink" href="#_CPPv4N40TfLiteQnnDelegateHtpOptimizationStrategy22kHtpOptimizeForPrepareE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv434TfLiteQnnDelegatePerformanceAction">
+<span id="_CPPv334TfLiteQnnDelegatePerformanceAction"></span><span id="_CPPv234TfLiteQnnDelegatePerformanceAction"></span><span class="target" id="QnnTFLiteDelegate_8h_1a6d9d73b798dfd69e81fbc48970aac7dd"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegatePerformanceAction</span></span></span><a class="headerlink" href="#_CPPv434TfLiteQnnDelegatePerformanceAction" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Defines the performance action used by <a class="reference internal" href="#QnnTFLiteDelegate_8h_1a2783ba4dedc253b69ae859478f725f78"><span class="std std-ref">TfLiteQnnDelegateSetPerf()</span></a> </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N34TfLiteQnnDelegatePerformanceAction16kPerformanceVoteE">
+<span id="_CPPv3N34TfLiteQnnDelegatePerformanceAction16kPerformanceVoteE"></span><span id="_CPPv2N34TfLiteQnnDelegatePerformanceAction16kPerformanceVoteE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a6d9d73b798dfd69e81fbc48970aac7ddae57754c95664976e34f59794e7b59ac4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kPerformanceVote</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N34TfLiteQnnDelegatePerformanceAction16kPerformanceVoteE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N34TfLiteQnnDelegatePerformanceAction19kPerformanceReleaseE">
+<span id="_CPPv3N34TfLiteQnnDelegatePerformanceAction19kPerformanceReleaseE"></span><span id="_CPPv2N34TfLiteQnnDelegatePerformanceAction19kPerformanceReleaseE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a6d9d73b798dfd69e81fbc48970aac7dda48c8bf778d3acc8d273d4b5510b5fa02"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kPerformanceRelease</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N34TfLiteQnnDelegatePerformanceAction19kPerformanceReleaseE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv427TfLiteQnnDelegateCapability">
+<span id="_CPPv327TfLiteQnnDelegateCapability"></span><span id="_CPPv227TfLiteQnnDelegateCapability"></span><span class="target" id="QnnTFLiteDelegate_8h_1a78d134280f83db2bddb901e6d988d4a7"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateCapability</span></span></span><a class="headerlink" href="#_CPPv427TfLiteQnnDelegateCapability" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Defines possible QNN Delegate capabilities. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N27TfLiteQnnDelegateCapability19kCapHtpRuntimeQuantE">
+<span id="_CPPv3N27TfLiteQnnDelegateCapability19kCapHtpRuntimeQuantE"></span><span id="_CPPv2N27TfLiteQnnDelegateCapability19kCapHtpRuntimeQuantE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a78d134280f83db2bddb901e6d988d4a7a8d3e21fec837a1f33938d6ea51a7bf95"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kCapHtpRuntimeQuant</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N27TfLiteQnnDelegateCapability19kCapHtpRuntimeQuantE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N27TfLiteQnnDelegateCapability18kCapHtpRuntimeFp16E">
+<span id="_CPPv3N27TfLiteQnnDelegateCapability18kCapHtpRuntimeFp16E"></span><span id="_CPPv2N27TfLiteQnnDelegateCapability18kCapHtpRuntimeFp16E"></span><span class="target" id="QnnTFLiteDelegate_8h_1a78d134280f83db2bddb901e6d988d4a7adf4a2b67f61f702155b619c9189a1ec3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kCapHtpRuntimeFp16</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N27TfLiteQnnDelegateCapability18kCapHtpRuntimeFp16E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N27TfLiteQnnDelegateCapability14kCapGpuRuntimeE">
+<span id="_CPPv3N27TfLiteQnnDelegateCapability14kCapGpuRuntimeE"></span><span id="_CPPv2N27TfLiteQnnDelegateCapability14kCapGpuRuntimeE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a78d134280f83db2bddb901e6d988d4a7a8413deda5135b7ed2d27ba6007827eb1"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kCapGpuRuntime</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">2</span></span><a class="headerlink" href="#_CPPv4N27TfLiteQnnDelegateCapability14kCapGpuRuntimeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N27TfLiteQnnDelegateCapability14kCapDspRuntimeE">
+<span id="_CPPv3N27TfLiteQnnDelegateCapability14kCapDspRuntimeE"></span><span id="_CPPv2N27TfLiteQnnDelegateCapability14kCapDspRuntimeE"></span><span class="target" id="QnnTFLiteDelegate_8h_1a78d134280f83db2bddb901e6d988d4a7a9acf734e35582e14c46a3ba4550afc46"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kCapDspRuntime</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">3</span></span><a class="headerlink" href="#_CPPv4N27TfLiteQnnDelegateCapability14kCapDspRuntimeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv431TfLiteQnnDelegateOptionsDefaultv">
+<span id="_CPPv331TfLiteQnnDelegateOptionsDefaultv"></span><span id="_CPPv231TfLiteQnnDelegateOptionsDefaultv"></span><span id="TfLiteQnnDelegateOptionsDefault"></span><span class="target" id="QnnTFLiteDelegate_8h_1a982d1db799e9a32db656c0e7c3e174ef"></span><a class="reference internal" href="#_CPPv424TfLiteQnnDelegateOptions" title="TfLiteQnnDelegateOptions"><span class="n"><span class="pre">TfLiteQnnDelegateOptions</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateOptionsDefault</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv431TfLiteQnnDelegateOptionsDefaultv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Create the QNN Delegate options structure and populate with default values. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423TfLiteQnnDelegateCreatePK24TfLiteQnnDelegateOptions">
+<span id="_CPPv323TfLiteQnnDelegateCreatePK24TfLiteQnnDelegateOptions"></span><span id="_CPPv223TfLiteQnnDelegateCreatePK24TfLiteQnnDelegateOptions"></span><span id="TfLiteQnnDelegateCreate__TfLiteQnnDelegateOptionsCP"></span><span class="target" id="QnnTFLiteDelegate_8h_1a7f4f6f8e6fd61bdeef5fa956e34d1936"></span><span class="n"><span class="pre">TfLiteDelegate</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateCreate</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv424TfLiteQnnDelegateOptions" title="TfLiteQnnDelegateOptions"><span class="n"><span class="pre">TfLiteQnnDelegateOptions</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">options</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423TfLiteQnnDelegateCreatePK24TfLiteQnnDelegateOptions" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Create the QNN Delegate with the specified options. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423TfLiteQnnDelegateDeleteP14TfLiteDelegate">
+<span id="_CPPv323TfLiteQnnDelegateDeleteP14TfLiteDelegate"></span><span id="_CPPv223TfLiteQnnDelegateDeleteP14TfLiteDelegate"></span><span id="TfLiteQnnDelegateDelete__TfLiteDelegateP"></span><span class="target" id="QnnTFLiteDelegate_8h_1a0050c698036d0ea5e845474c87b0855b"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateDelete</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">TfLiteDelegate</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">delegate</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423TfLiteQnnDelegateDeleteP14TfLiteDelegate" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Delete the QNN Delegate once no longer required.</p>
+<p>Note that this is not a thread-safe function, which might cause unexpected behaviour when using it with <a class="reference internal" href="#QnnTFLiteDelegate_8h_1a2783ba4dedc253b69ae859478f725f78"><span class="std std-ref">TfLiteQnnDelegateSetPerf</span></a>, <a class="reference internal" href="#QnnTFLiteDelegate_8h_1a08c1b117d10f815c3610fed4020811bb"><span class="std std-ref">TfLiteQnnDelegateUpdateHtpPerfMode</span></a>, <a class="reference internal" href="#QnnTFLiteDelegate_8h_1ad5504ae596c6e89533776d0e7c9786cf"><span class="std std-ref">TfLiteQnnDelegateUpdateDspPerfMode</span></a>, or <a class="reference internal" href="#QnnTFLiteDelegate_8h_1a0050c698036d0ea5e845474c87b0855b"><span class="std std-ref">TfLiteQnnDelegateDelete</span></a> at the same time. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv424TfLiteQnnDelegateSetPerfP14TfLiteDelegateK34TfLiteQnnDelegatePerformanceAction">
+<span id="_CPPv324TfLiteQnnDelegateSetPerfP14TfLiteDelegateK34TfLiteQnnDelegatePerformanceAction"></span><span id="_CPPv224TfLiteQnnDelegateSetPerfP14TfLiteDelegateK34TfLiteQnnDelegatePerformanceAction"></span><span id="TfLiteQnnDelegateSetPerf__TfLiteDelegateP.TfLiteQnnDelegatePerformanceActionC"></span><span class="target" id="QnnTFLiteDelegate_8h_1a2783ba4dedc253b69ae859478f725f78"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateSetPerf</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">TfLiteDelegate</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">delegate</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv434TfLiteQnnDelegatePerformanceAction" title="TfLiteQnnDelegatePerformanceAction"><span class="n"><span class="pre">TfLiteQnnDelegatePerformanceAction</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">action</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424TfLiteQnnDelegateSetPerfP14TfLiteDelegateK34TfLiteQnnDelegatePerformanceAction" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Manually vote or release performance mode. “Vote” to request hardware to obey the performance mode setting as soon as possible. “Release” to release the vote. Note that this API only work for HTP/DSP backend with <a class="reference internal" href="#QnnTFLiteDelegate_8h_1ad070a6439f1d5bb22830262006d178d3a243d35d2cb5e4381038017265e0b183b"><span class="std std-ref">kHtpPerfCtrlManual</span></a> or <a class="reference internal" href="#QnnTFLiteDelegate_8h_1a6996a7800d50aa6ab3e5c72fee24c29aa3986c1664fb200ebf09d162fa19a8835"><span class="std std-ref">kDspPerfCtrlManual</span></a>. Return true for success, false for failure. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv430TfLiteQnnDelegateHasCapabilityK27TfLiteQnnDelegateCapability">
+<span id="_CPPv330TfLiteQnnDelegateHasCapabilityK27TfLiteQnnDelegateCapability"></span><span id="_CPPv230TfLiteQnnDelegateHasCapabilityK27TfLiteQnnDelegateCapability"></span><span id="TfLiteQnnDelegateHasCapability__TfLiteQnnDelegateCapabilityC"></span><span class="target" id="QnnTFLiteDelegate_8h_1a6b809f15ebc457f9b1e39b1d35d9358b"></span><a class="reference internal" href="#_CPPv433TfLiteQnnDelegateCapabilityStatus" title="TfLiteQnnDelegateCapabilityStatus"><span class="n"><span class="pre">TfLiteQnnDelegateCapabilityStatus</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateHasCapability</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv427TfLiteQnnDelegateCapability" title="TfLiteQnnDelegateCapability"><span class="n"><span class="pre">TfLiteQnnDelegateCapability</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">cap</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv430TfLiteQnnDelegateHasCapabilityK27TfLiteQnnDelegateCapability" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Detect whether the capability is supported on the platform running QNN Delegate.</p>
+<p>Note that this is an experimental feature. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv434TfLiteQnnDelegateUpdateHtpPerfModeP14TfLiteDelegateK35TfLiteQnnDelegateHtpPerformanceMode">
+<span id="_CPPv334TfLiteQnnDelegateUpdateHtpPerfModeP14TfLiteDelegateK35TfLiteQnnDelegateHtpPerformanceMode"></span><span id="_CPPv234TfLiteQnnDelegateUpdateHtpPerfModeP14TfLiteDelegateK35TfLiteQnnDelegateHtpPerformanceMode"></span><span id="TfLiteQnnDelegateUpdateHtpPerfMode__TfLiteDelegateP.TfLiteQnnDelegateHtpPerformanceModeC"></span><span class="target" id="QnnTFLiteDelegate_8h_1a08c1b117d10f815c3610fed4020811bb"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateUpdateHtpPerfMode</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">TfLiteDelegate</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">delegate</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv435TfLiteQnnDelegateHtpPerformanceMode" title="TfLiteQnnDelegateHtpPerformanceMode"><span class="n"><span class="pre">TfLiteQnnDelegateHtpPerformanceMode</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">mode</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv434TfLiteQnnDelegateUpdateHtpPerfModeP14TfLiteDelegateK35TfLiteQnnDelegateHtpPerformanceMode" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This API changes the performance mode of a created QNN Delegate on HTP backend, returning <code class="docutils literal notranslate"><span class="pre">true</span></code> for the mode set correctly, <code class="docutils literal notranslate"><span class="pre">false</span></code> for any failure.</p>
+<p>It will perform a vote after a successful update. If the strategy of performance controlling is <strong>manual</strong>, the new mode takes effect before this API returns.</p>
+<p>Note that this API cannot be called during graph invocation, and this is an experimental feature. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv434TfLiteQnnDelegateUpdateDspPerfModeP14TfLiteDelegateK35TfLiteQnnDelegateDspPerformanceMode">
+<span id="_CPPv334TfLiteQnnDelegateUpdateDspPerfModeP14TfLiteDelegateK35TfLiteQnnDelegateDspPerformanceMode"></span><span id="_CPPv234TfLiteQnnDelegateUpdateDspPerfModeP14TfLiteDelegateK35TfLiteQnnDelegateDspPerformanceMode"></span><span id="TfLiteQnnDelegateUpdateDspPerfMode__TfLiteDelegateP.TfLiteQnnDelegateDspPerformanceModeC"></span><span class="target" id="QnnTFLiteDelegate_8h_1ad5504ae596c6e89533776d0e7c9786cf"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateUpdateDspPerfMode</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">TfLiteDelegate</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">delegate</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv435TfLiteQnnDelegateDspPerformanceMode" title="TfLiteQnnDelegateDspPerformanceMode"><span class="n"><span class="pre">TfLiteQnnDelegateDspPerformanceMode</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">mode</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv434TfLiteQnnDelegateUpdateDspPerfModeP14TfLiteDelegateK35TfLiteQnnDelegateDspPerformanceMode" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This API changes the performance mode of a created QNN Delegate on DSP backend, returning <code class="docutils literal notranslate"><span class="pre">true</span></code> for the mode set correctly, <code class="docutils literal notranslate"><span class="pre">false</span></code> for any failure. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv430TfLiteQnnDelegateGetApiVersionv">
+<span id="_CPPv330TfLiteQnnDelegateGetApiVersionv"></span><span id="_CPPv230TfLiteQnnDelegateGetApiVersionv"></span><span id="TfLiteQnnDelegateGetApiVersion"></span><span class="target" id="QnnTFLiteDelegate_8h_1acc64f20290713339634db850a187643c"></span><a class="reference internal" href="#_CPPv421QnnDelegateApiVersion" title="QnnDelegateApiVersion"><span class="n"><span class="pre">QnnDelegateApiVersion</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateGetApiVersion</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv430TfLiteQnnDelegateGetApiVersionv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get QNN Delegate API version. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv431TfLiteQnnDelegateAllocCustomMem6size_t6size_t">
+<span id="_CPPv331TfLiteQnnDelegateAllocCustomMem6size_t6size_t"></span><span id="_CPPv231TfLiteQnnDelegateAllocCustomMem6size_t6size_t"></span><span id="TfLiteQnnDelegateAllocCustomMem__s.s"></span><span class="target" id="QnnTFLiteDelegate_8h_1a9174985880106e801dfff8d20ef7a1ab"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateAllocCustomMem</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bytes</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">alignment</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv431TfLiteQnnDelegateAllocCustomMem6size_t6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Allocate specific tensors (usually graph inputs and outputs) on shared memory. Users are responsible to allocate “enough” tensor bytes, and set alignment as kDefaultTensorAlignment. The function returns a valid pointer if allocation is successful.</p>
+<p>Note that this is an experimental feature. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv430TfLiteQnnDelegateFreeCustomMemPv">
+<span id="_CPPv330TfLiteQnnDelegateFreeCustomMemPv"></span><span id="_CPPv230TfLiteQnnDelegateFreeCustomMemPv"></span><span id="TfLiteQnnDelegateFreeCustomMem__voidP"></span><span class="target" id="QnnTFLiteDelegate_8h_1ab9b40af09938af402d96b8bc48ed160f"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateFreeCustomMem</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer_ptr</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv430TfLiteQnnDelegateFreeCustomMemPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Free the allocated shared memory.</p>
+<p>Note that this is an experimental feature. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv435TfLiteQnnDelegateGetProfilingResultP14TfLiteDelegate">
+<span id="_CPPv335TfLiteQnnDelegateGetProfilingResultP14TfLiteDelegate"></span><span id="_CPPv235TfLiteQnnDelegateGetProfilingResultP14TfLiteDelegate"></span><span id="TfLiteQnnDelegateGetProfilingResult__TfLiteDelegateP"></span><span class="target" id="QnnTFLiteDelegate_8h_1a52da24f550a7e322d8c317a5fde83cf8"></span><a class="reference internal" href="#_CPPv432TfLiteQnnDelegateProfilingResult" title="TfLiteQnnDelegateProfilingResult"><span class="n"><span class="pre">TfLiteQnnDelegateProfilingResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateGetProfilingResult</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">TfLiteDelegate</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">delegate</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv435TfLiteQnnDelegateGetProfilingResultP14TfLiteDelegate" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get profiling result. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv437TfLiteQnnDelegateClearProfilingResultP14TfLiteDelegate">
+<span id="_CPPv337TfLiteQnnDelegateClearProfilingResultP14TfLiteDelegate"></span><span id="_CPPv237TfLiteQnnDelegateClearProfilingResultP14TfLiteDelegate"></span><span id="TfLiteQnnDelegateClearProfilingResult__TfLiteDelegateP"></span><span class="target" id="QnnTFLiteDelegate_8h_1a8bf3a09daac739e10f244df1b1beb8a8"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateClearProfilingResult</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">TfLiteDelegate</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">delegate</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv437TfLiteQnnDelegateClearProfilingResultP14TfLiteDelegate" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Free the recorded profiling result. </p>
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv421QnnDelegateApiVersion">
+<span id="_CPPv321QnnDelegateApiVersion"></span><span id="_CPPv221QnnDelegateApiVersion"></span><span id="QnnDelegateApiVersion"></span><span class="target" id="structQnnDelegateApiVersion"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnDelegateApiVersion</span></span></span><a class="headerlink" href="#_CPPv421QnnDelegateApiVersion" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnTFLiteDelegate.h&gt;</em></div>
+<p>A struct which is used to provide a version number using 3 values: major, minor, patch </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21QnnDelegateApiVersion5majorE">
+<span id="_CPPv3N21QnnDelegateApiVersion5majorE"></span><span id="_CPPv2N21QnnDelegateApiVersion5majorE"></span><span id="QnnDelegateApiVersion::major__uint32_t"></span><span class="target" id="structQnnDelegateApiVersion_1a3b4e0315f42c81c0c386356434e97770"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">major</span></span></span><a class="headerlink" href="#_CPPv4N21QnnDelegateApiVersion5majorE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21QnnDelegateApiVersion5minorE">
+<span id="_CPPv3N21QnnDelegateApiVersion5minorE"></span><span id="_CPPv2N21QnnDelegateApiVersion5minorE"></span><span id="QnnDelegateApiVersion::minor__uint32_t"></span><span class="target" id="structQnnDelegateApiVersion_1a0b37c1b0d150e2d39243a8b712ff067c"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">minor</span></span></span><a class="headerlink" href="#_CPPv4N21QnnDelegateApiVersion5minorE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21QnnDelegateApiVersion5patchE">
+<span id="_CPPv3N21QnnDelegateApiVersion5patchE"></span><span id="_CPPv2N21QnnDelegateApiVersion5patchE"></span><span id="QnnDelegateApiVersion::patch__uint32_t"></span><span class="target" id="structQnnDelegateApiVersion_1adbd3b8fcdb0e1070a3b26b53d587b170"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">patch</span></span></span><a class="headerlink" href="#_CPPv4N21QnnDelegateApiVersion5patchE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv434TfLiteQnnDelegateGpuBackendOptions">
+<span id="_CPPv334TfLiteQnnDelegateGpuBackendOptions"></span><span id="_CPPv234TfLiteQnnDelegateGpuBackendOptions"></span><span id="TfLiteQnnDelegateGpuBackendOptions"></span><span class="target" id="structTfLiteQnnDelegateGpuBackendOptions"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateGpuBackendOptions</span></span></span><a class="headerlink" href="#_CPPv434TfLiteQnnDelegateGpuBackendOptions" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnTFLiteDelegate.h&gt;</em></div>
+<p>Specifies the backend options for the GPU backend. To be used when selecting <a class="reference internal" href="#QnnTFLiteDelegate_8h_1a65d87d490f916ffb8c5f3cd8284b2110a3c75ba974d54f4388f1baa0b2acbaa50"><span class="std std-ref">TfLiteQnnDelegateBackendType::kGpuBackend</span></a> for the <a class="reference internal" href="#structTfLiteQnnDelegateOptions_1a9c123140d4503bd3968d4add4e763eb3"><span class="std std-ref">TfLiteQnnDelegateOptions::backend_type</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N34TfLiteQnnDelegateGpuBackendOptions9precisionE">
+<span id="_CPPv3N34TfLiteQnnDelegateGpuBackendOptions9precisionE"></span><span id="_CPPv2N34TfLiteQnnDelegateGpuBackendOptions9precisionE"></span><span id="TfLiteQnnDelegateGpuBackendOptions::precision__TfLiteQnnDelegateGpuPrecision"></span><span class="target" id="structTfLiteQnnDelegateGpuBackendOptions_1a2b4a5008570f79db3788d6671ac1850e"></span><a class="reference internal" href="#_CPPv429TfLiteQnnDelegateGpuPrecision" title="TfLiteQnnDelegateGpuPrecision"><span class="n"><span class="pre">TfLiteQnnDelegateGpuPrecision</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">precision</span></span></span><a class="headerlink" href="#_CPPv4N34TfLiteQnnDelegateGpuBackendOptions9precisionE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The default precision is half float for the best performance. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N34TfLiteQnnDelegateGpuBackendOptions16performance_modeE">
+<span id="_CPPv3N34TfLiteQnnDelegateGpuBackendOptions16performance_modeE"></span><span id="_CPPv2N34TfLiteQnnDelegateGpuBackendOptions16performance_modeE"></span><span id="TfLiteQnnDelegateGpuBackendOptions::performance_mode__TfLiteQnnDelegateGpuPerformanceMode"></span><span class="target" id="structTfLiteQnnDelegateGpuBackendOptions_1a8a997472241cf7a4d8361c858cdd747b"></span><a class="reference internal" href="#_CPPv435TfLiteQnnDelegateGpuPerformanceMode" title="TfLiteQnnDelegateGpuPerformanceMode"><span class="n"><span class="pre">TfLiteQnnDelegateGpuPerformanceMode</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">performance_mode</span></span></span><a class="headerlink" href="#_CPPv4N34TfLiteQnnDelegateGpuBackendOptions16performance_modeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The default performance mode sets high. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N34TfLiteQnnDelegateGpuBackendOptions15kernel_repo_dirE">
+<span id="_CPPv3N34TfLiteQnnDelegateGpuBackendOptions15kernel_repo_dirE"></span><span id="_CPPv2N34TfLiteQnnDelegateGpuBackendOptions15kernel_repo_dirE"></span><span id="TfLiteQnnDelegateGpuBackendOptions::kernel_repo_dir__cCP"></span><span class="target" id="structTfLiteQnnDelegateGpuBackendOptions_1a52c70c784bb8334dab8c02a1f60cdf37"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">kernel_repo_dir</span></span></span><a class="headerlink" href="#_CPPv4N34TfLiteQnnDelegateGpuBackendOptions15kernel_repo_dirE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The QNN GPU backend supports on-disk kernel persistence strategies where compiled GPU kernel binaries are cached to disk and can be shared across models having the same kernels and improve warm init times significantly. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv434TfLiteQnnDelegateHtpBackendOptions">
+<span id="_CPPv334TfLiteQnnDelegateHtpBackendOptions"></span><span id="_CPPv234TfLiteQnnDelegateHtpBackendOptions"></span><span id="TfLiteQnnDelegateHtpBackendOptions"></span><span class="target" id="structTfLiteQnnDelegateHtpBackendOptions"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateHtpBackendOptions</span></span></span><a class="headerlink" href="#_CPPv434TfLiteQnnDelegateHtpBackendOptions" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnTFLiteDelegate.h&gt;</em></div>
+<p>Specifies the backend options for the HTP backend. To be used when selecting <a class="reference internal" href="#QnnTFLiteDelegate_8h_1a65d87d490f916ffb8c5f3cd8284b2110a3c75ba974d54f4388f1baa0b2acbaa50"><span class="std std-ref">TfLiteQnnDelegateBackendType::kGpuBackend</span></a> for the <a class="reference internal" href="#structTfLiteQnnDelegateOptions_1a9c123140d4503bd3968d4add4e763eb3"><span class="std std-ref">TfLiteQnnDelegateOptions::backend_type</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N34TfLiteQnnDelegateHtpBackendOptions16performance_modeE">
+<span id="_CPPv3N34TfLiteQnnDelegateHtpBackendOptions16performance_modeE"></span><span id="_CPPv2N34TfLiteQnnDelegateHtpBackendOptions16performance_modeE"></span><span id="TfLiteQnnDelegateHtpBackendOptions::performance_mode__TfLiteQnnDelegateHtpPerformanceMode"></span><span class="target" id="structTfLiteQnnDelegateHtpBackendOptions_1a6a0b77f8e9e76924708d8fa11feeafc2"></span><a class="reference internal" href="#_CPPv435TfLiteQnnDelegateHtpPerformanceMode" title="TfLiteQnnDelegateHtpPerformanceMode"><span class="n"><span class="pre">TfLiteQnnDelegateHtpPerformanceMode</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">performance_mode</span></span></span><a class="headerlink" href="#_CPPv4N34TfLiteQnnDelegateHtpBackendOptions16performance_modeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The default performance mode sets no configurations on the HTP. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N34TfLiteQnnDelegateHtpBackendOptions18perf_ctrl_strategyE">
+<span id="_CPPv3N34TfLiteQnnDelegateHtpBackendOptions18perf_ctrl_strategyE"></span><span id="_CPPv2N34TfLiteQnnDelegateHtpBackendOptions18perf_ctrl_strategyE"></span><span id="TfLiteQnnDelegateHtpBackendOptions::perf_ctrl_strategy__TfLiteQnnDelegateHtpPerfCtrlStrategy"></span><span class="target" id="structTfLiteQnnDelegateHtpBackendOptions_1a7d870a5b51bb23c62c6c574d0685d54e"></span><a class="reference internal" href="#_CPPv436TfLiteQnnDelegateHtpPerfCtrlStrategy" title="TfLiteQnnDelegateHtpPerfCtrlStrategy"><span class="n"><span class="pre">TfLiteQnnDelegateHtpPerfCtrlStrategy</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">perf_ctrl_strategy</span></span></span><a class="headerlink" href="#_CPPv4N34TfLiteQnnDelegateHtpBackendOptions18perf_ctrl_strategyE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The default performance control strategy is Manual. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N34TfLiteQnnDelegateHtpBackendOptions9precisionE">
+<span id="_CPPv3N34TfLiteQnnDelegateHtpBackendOptions9precisionE"></span><span id="_CPPv2N34TfLiteQnnDelegateHtpBackendOptions9precisionE"></span><span id="TfLiteQnnDelegateHtpBackendOptions::precision__TfLiteQnnDelegateHtpPrecision"></span><span class="target" id="structTfLiteQnnDelegateHtpBackendOptions_1ac624af80c6198f480601416c6bb11afa"></span><a class="reference internal" href="#_CPPv429TfLiteQnnDelegateHtpPrecision" title="TfLiteQnnDelegateHtpPrecision"><span class="n"><span class="pre">TfLiteQnnDelegateHtpPrecision</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">precision</span></span></span><a class="headerlink" href="#_CPPv4N34TfLiteQnnDelegateHtpBackendOptions9precisionE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The default precision mode supports quantized networks. Other precision modes may only be supported on certain SoCs. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N34TfLiteQnnDelegateHtpBackendOptions10pd_sessionE">
+<span id="_CPPv3N34TfLiteQnnDelegateHtpBackendOptions10pd_sessionE"></span><span id="_CPPv2N34TfLiteQnnDelegateHtpBackendOptions10pd_sessionE"></span><span id="TfLiteQnnDelegateHtpBackendOptions::pd_session__TfLiteQnnDelegateHtpPdSession"></span><span class="target" id="structTfLiteQnnDelegateHtpBackendOptions_1adfd3d3224cb95fd2382a8d561a87decd"></span><a class="reference internal" href="#_CPPv429TfLiteQnnDelegateHtpPdSession" title="TfLiteQnnDelegateHtpPdSession"><span class="n"><span class="pre">TfLiteQnnDelegateHtpPdSession</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pd_session</span></span></span><a class="headerlink" href="#_CPPv4N34TfLiteQnnDelegateHtpBackendOptions10pd_sessionE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Signed or unsigned HTP PD session. The default PD session is unsigned. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N34TfLiteQnnDelegateHtpBackendOptions21optimization_strategyE">
+<span id="_CPPv3N34TfLiteQnnDelegateHtpBackendOptions21optimization_strategyE"></span><span id="_CPPv2N34TfLiteQnnDelegateHtpBackendOptions21optimization_strategyE"></span><span id="TfLiteQnnDelegateHtpBackendOptions::optimization_strategy__TfLiteQnnDelegateHtpOptimizationStrategy"></span><span class="target" id="structTfLiteQnnDelegateHtpBackendOptions_1ac634dde69e865711a9e87e84f2028830"></span><a class="reference internal" href="#_CPPv440TfLiteQnnDelegateHtpOptimizationStrategy" title="TfLiteQnnDelegateHtpOptimizationStrategy"><span class="n"><span class="pre">TfLiteQnnDelegateHtpOptimizationStrategy</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">optimization_strategy</span></span></span><a class="headerlink" href="#_CPPv4N34TfLiteQnnDelegateHtpBackendOptions21optimization_strategyE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The default optimization strategy will optimize the graph for inference. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N34TfLiteQnnDelegateHtpBackendOptions10useConvHmxE">
+<span id="_CPPv3N34TfLiteQnnDelegateHtpBackendOptions10useConvHmxE"></span><span id="_CPPv2N34TfLiteQnnDelegateHtpBackendOptions10useConvHmxE"></span><span id="TfLiteQnnDelegateHtpBackendOptions::useConvHmx__b"></span><span class="target" id="structTfLiteQnnDelegateHtpBackendOptions_1a4e98922a791d2a3d93f1238f6ffc33e3"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">useConvHmx</span></span></span><a class="headerlink" href="#_CPPv4N34TfLiteQnnDelegateHtpBackendOptions10useConvHmxE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>When using short conv hmx, one might have better performance, but convolution that have short depth and/or weights that are not symmetric could exhibit inaccurate results. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N34TfLiteQnnDelegateHtpBackendOptions11useFoldReluE">
+<span id="_CPPv3N34TfLiteQnnDelegateHtpBackendOptions11useFoldReluE"></span><span id="_CPPv2N34TfLiteQnnDelegateHtpBackendOptions11useFoldReluE"></span><span id="TfLiteQnnDelegateHtpBackendOptions::useFoldRelu__b"></span><span class="target" id="structTfLiteQnnDelegateHtpBackendOptions_1a4f1c2f4420942c256b9401cedb2d2d90"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">useFoldRelu</span></span></span><a class="headerlink" href="#_CPPv4N34TfLiteQnnDelegateHtpBackendOptions11useFoldReluE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>When using fold relu, one might have better performance. This optimization is correct when quantization ranges for convolution are equal to or are subset of the Relu operation. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N34TfLiteQnnDelegateHtpBackendOptions9vtcm_sizeE">
+<span id="_CPPv3N34TfLiteQnnDelegateHtpBackendOptions9vtcm_sizeE"></span><span id="_CPPv2N34TfLiteQnnDelegateHtpBackendOptions9vtcm_sizeE"></span><span id="TfLiteQnnDelegateHtpBackendOptions::vtcm_size__uint32_t"></span><span class="target" id="structTfLiteQnnDelegateHtpBackendOptions_1ad6b26f243c7546269cc3e2926cfc0a85"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">vtcm_size</span></span></span><a class="headerlink" href="#_CPPv4N34TfLiteQnnDelegateHtpBackendOptions9vtcm_sizeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Option to set VTCM size in MB. This is directly mapped to QNN_HTP_GRAPH_CONFIG_OPTION_VTCM_SIZE under QnnHtpGraph_ConfigOption_t. If VTCM size is set to 0, the default VTCM size will be used. If VTCM size is greater than VTCM size available for this device, it will be set to the maximum VTCM size for this device. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N34TfLiteQnnDelegateHtpBackendOptions15num_hvx_threadsE">
+<span id="_CPPv3N34TfLiteQnnDelegateHtpBackendOptions15num_hvx_threadsE"></span><span id="_CPPv2N34TfLiteQnnDelegateHtpBackendOptions15num_hvx_threadsE"></span><span id="TfLiteQnnDelegateHtpBackendOptions::num_hvx_threads__uint32_t"></span><span class="target" id="structTfLiteQnnDelegateHtpBackendOptions_1afa0741e90e28ee1779671ca21b38e78e"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">num_hvx_threads</span></span></span><a class="headerlink" href="#_CPPv4N34TfLiteQnnDelegateHtpBackendOptions15num_hvx_threadsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Option to set number of HVX threads. This is directly mapped to QNN_HTP_GRAPH_CONFIG_OPTION_NUM_HVX_THREADS under QnnHtpGraph_ConfigOption_t. If this this option is set to 0, the default number of HVX threads will be used. If input exceeds the max number of HVX threads, the maximum number of threads supported will be used. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv434TfLiteQnnDelegateDspBackendOptions">
+<span id="_CPPv334TfLiteQnnDelegateDspBackendOptions"></span><span id="_CPPv234TfLiteQnnDelegateDspBackendOptions"></span><span id="TfLiteQnnDelegateDspBackendOptions"></span><span class="target" id="structTfLiteQnnDelegateDspBackendOptions"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateDspBackendOptions</span></span></span><a class="headerlink" href="#_CPPv434TfLiteQnnDelegateDspBackendOptions" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnTFLiteDelegate.h&gt;</em></div>
+<p>Specifies the backend options for the DSP backend. To be used when selecting kDspBackend as the &lt;backend_type&gt;. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N34TfLiteQnnDelegateDspBackendOptions16performance_modeE">
+<span id="_CPPv3N34TfLiteQnnDelegateDspBackendOptions16performance_modeE"></span><span id="_CPPv2N34TfLiteQnnDelegateDspBackendOptions16performance_modeE"></span><span id="TfLiteQnnDelegateDspBackendOptions::performance_mode__TfLiteQnnDelegateDspPerformanceMode"></span><span class="target" id="structTfLiteQnnDelegateDspBackendOptions_1a27cd6391871de72e5b6fec64b3ab8ad2"></span><a class="reference internal" href="#_CPPv435TfLiteQnnDelegateDspPerformanceMode" title="TfLiteQnnDelegateDspPerformanceMode"><span class="n"><span class="pre">TfLiteQnnDelegateDspPerformanceMode</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">performance_mode</span></span></span><a class="headerlink" href="#_CPPv4N34TfLiteQnnDelegateDspBackendOptions16performance_modeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The default performance mode sets no configurations on the DSP. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N34TfLiteQnnDelegateDspBackendOptions18perf_ctrl_strategyE">
+<span id="_CPPv3N34TfLiteQnnDelegateDspBackendOptions18perf_ctrl_strategyE"></span><span id="_CPPv2N34TfLiteQnnDelegateDspBackendOptions18perf_ctrl_strategyE"></span><span id="TfLiteQnnDelegateDspBackendOptions::perf_ctrl_strategy__TfLiteQnnDelegateDspPerfCtrlStrategy"></span><span class="target" id="structTfLiteQnnDelegateDspBackendOptions_1a88a3375042db0a3118385ba1f615e19e"></span><a class="reference internal" href="#_CPPv436TfLiteQnnDelegateDspPerfCtrlStrategy" title="TfLiteQnnDelegateDspPerfCtrlStrategy"><span class="n"><span class="pre">TfLiteQnnDelegateDspPerfCtrlStrategy</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">perf_ctrl_strategy</span></span></span><a class="headerlink" href="#_CPPv4N34TfLiteQnnDelegateDspBackendOptions18perf_ctrl_strategyE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The default performance control strategy is Manual. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N34TfLiteQnnDelegateDspBackendOptions10pd_sessionE">
+<span id="_CPPv3N34TfLiteQnnDelegateDspBackendOptions10pd_sessionE"></span><span id="_CPPv2N34TfLiteQnnDelegateDspBackendOptions10pd_sessionE"></span><span id="TfLiteQnnDelegateDspBackendOptions::pd_session__TfLiteQnnDelegateDspPdSession"></span><span class="target" id="structTfLiteQnnDelegateDspBackendOptions_1a58fcf50b4da6ab7ff42db1762da955ac"></span><a class="reference internal" href="#_CPPv429TfLiteQnnDelegateDspPdSession" title="TfLiteQnnDelegateDspPdSession"><span class="n"><span class="pre">TfLiteQnnDelegateDspPdSession</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pd_session</span></span></span><a class="headerlink" href="#_CPPv4N34TfLiteQnnDelegateDspBackendOptions10pd_sessionE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The default PD session is unsigned. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N34TfLiteQnnDelegateDspBackendOptions8encodingE">
+<span id="_CPPv3N34TfLiteQnnDelegateDspBackendOptions8encodingE"></span><span id="_CPPv2N34TfLiteQnnDelegateDspBackendOptions8encodingE"></span><span id="TfLiteQnnDelegateDspBackendOptions::encoding__TfLiteQnnDelegateDspEncoding"></span><span class="target" id="structTfLiteQnnDelegateDspBackendOptions_1a6fa9cc658345be840fc57672a560f842"></span><a class="reference internal" href="#_CPPv428TfLiteQnnDelegateDspEncoding" title="TfLiteQnnDelegateDspEncoding"><span class="n"><span class="pre">TfLiteQnnDelegateDspEncoding</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">encoding</span></span></span><a class="headerlink" href="#_CPPv4N34TfLiteQnnDelegateDspBackendOptions8encodingE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The default Encoding is static. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv431TfLiteQnnDelegateOpPackageOpMap">
+<span id="_CPPv331TfLiteQnnDelegateOpPackageOpMap"></span><span id="_CPPv231TfLiteQnnDelegateOpPackageOpMap"></span><span id="TfLiteQnnDelegateOpPackageOpMap"></span><span class="target" id="structTfLiteQnnDelegateOpPackageOpMap"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateOpPackageOpMap</span></span></span><a class="headerlink" href="#_CPPv431TfLiteQnnDelegateOpPackageOpMap" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnTFLiteDelegate.h&gt;</em></div>
+<p>Map of TFLite custom operator name to op type defined within an op package. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N31TfLiteQnnDelegateOpPackageOpMap14custom_op_nameE">
+<span id="_CPPv3N31TfLiteQnnDelegateOpPackageOpMap14custom_op_nameE"></span><span id="_CPPv2N31TfLiteQnnDelegateOpPackageOpMap14custom_op_nameE"></span><span id="TfLiteQnnDelegateOpPackageOpMap::custom_op_name__cCP"></span><span class="target" id="structTfLiteQnnDelegateOpPackageOpMap_1a90a2294dea982be7dffa694063b85ca6"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">custom_op_name</span></span></span><a class="headerlink" href="#_CPPv4N31TfLiteQnnDelegateOpPackageOpMap14custom_op_nameE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The TfLiteRegistration::custom_name set during registration. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N31TfLiteQnnDelegateOpPackageOpMap16qnn_op_type_nameE">
+<span id="_CPPv3N31TfLiteQnnDelegateOpPackageOpMap16qnn_op_type_nameE"></span><span id="_CPPv2N31TfLiteQnnDelegateOpPackageOpMap16qnn_op_type_nameE"></span><span id="TfLiteQnnDelegateOpPackageOpMap::qnn_op_type_name__cCP"></span><span class="target" id="structTfLiteQnnDelegateOpPackageOpMap_1a4dd983ece3d96ff0865c1c2832a7f40d"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">qnn_op_type_name</span></span></span><a class="headerlink" href="#_CPPv4N31TfLiteQnnDelegateOpPackageOpMap16qnn_op_type_nameE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The corresponding op type name defined in the op package. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv430TfLiteQnnDelegateOpPackageInfo">
+<span id="_CPPv330TfLiteQnnDelegateOpPackageInfo"></span><span id="_CPPv230TfLiteQnnDelegateOpPackageInfo"></span><span id="TfLiteQnnDelegateOpPackageInfo"></span><span class="target" id="structTfLiteQnnDelegateOpPackageInfo"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateOpPackageInfo</span></span></span><a class="headerlink" href="#_CPPv430TfLiteQnnDelegateOpPackageInfo" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnTFLiteDelegate.h&gt;</em></div>
+<p>Structure containing the information needed to register and use an op package with QNN. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N30TfLiteQnnDelegateOpPackageInfo15op_package_nameE">
+<span id="_CPPv3N30TfLiteQnnDelegateOpPackageInfo15op_package_nameE"></span><span id="_CPPv2N30TfLiteQnnDelegateOpPackageInfo15op_package_nameE"></span><span id="TfLiteQnnDelegateOpPackageInfo::op_package_name__cCP"></span><span class="target" id="structTfLiteQnnDelegateOpPackageInfo_1a8f2c54517addb234dfac280ca79fd355"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">op_package_name</span></span></span><a class="headerlink" href="#_CPPv4N30TfLiteQnnDelegateOpPackageInfo15op_package_nameE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The name of the op package. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N30TfLiteQnnDelegateOpPackageInfo15op_package_pathE">
+<span id="_CPPv3N30TfLiteQnnDelegateOpPackageInfo15op_package_pathE"></span><span id="_CPPv2N30TfLiteQnnDelegateOpPackageInfo15op_package_pathE"></span><span id="TfLiteQnnDelegateOpPackageInfo::op_package_path__cCP"></span><span class="target" id="structTfLiteQnnDelegateOpPackageInfo_1aa2300f735c2ebfb5e8db9311f3cb5a80"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">op_package_path</span></span></span><a class="headerlink" href="#_CPPv4N30TfLiteQnnDelegateOpPackageInfo15op_package_pathE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The path on disk to the op package library. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N30TfLiteQnnDelegateOpPackageInfo18interface_providerE">
+<span id="_CPPv3N30TfLiteQnnDelegateOpPackageInfo18interface_providerE"></span><span id="_CPPv2N30TfLiteQnnDelegateOpPackageInfo18interface_providerE"></span><span id="TfLiteQnnDelegateOpPackageInfo::interface_provider__cCP"></span><span class="target" id="structTfLiteQnnDelegateOpPackageInfo_1a0659734fdfdb40b308240c1cfdc6126c"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">interface_provider</span></span></span><a class="headerlink" href="#_CPPv4N30TfLiteQnnDelegateOpPackageInfo18interface_providerE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The name of a function in the op package library which satisfies the QnnOpPackage_InterfaceProvider_t interface. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N30TfLiteQnnDelegateOpPackageInfo6targetE">
+<span id="_CPPv3N30TfLiteQnnDelegateOpPackageInfo6targetE"></span><span id="_CPPv2N30TfLiteQnnDelegateOpPackageInfo6targetE"></span><span id="TfLiteQnnDelegateOpPackageInfo::target__cCP"></span><span class="target" id="structTfLiteQnnDelegateOpPackageInfo_1a537b6dcea822215cff818a396dbdc3ea"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">target</span></span></span><a class="headerlink" href="#_CPPv4N30TfLiteQnnDelegateOpPackageInfo6targetE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The target which this op package library was compiled for. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N30TfLiteQnnDelegateOpPackageInfo11num_ops_mapE">
+<span id="_CPPv3N30TfLiteQnnDelegateOpPackageInfo11num_ops_mapE"></span><span id="_CPPv2N30TfLiteQnnDelegateOpPackageInfo11num_ops_mapE"></span><span id="TfLiteQnnDelegateOpPackageInfo::num_ops_map__i"></span><span class="target" id="structTfLiteQnnDelegateOpPackageInfo_1a70f3952e8a05f07b75ee44596db2fd0f"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">num_ops_map</span></span></span><a class="headerlink" href="#_CPPv4N30TfLiteQnnDelegateOpPackageInfo11num_ops_mapE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Number of elements in the <a class="reference internal" href="#structTfLiteQnnDelegateOpPackageInfo_1a5d8e007c95641fe0b69aa7adc42547f1"><span class="std std-ref">TfLiteQnnDelegateOpPackageInfo.ops_map</span></a> array. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N30TfLiteQnnDelegateOpPackageInfo7ops_mapE">
+<span id="_CPPv3N30TfLiteQnnDelegateOpPackageInfo7ops_mapE"></span><span id="_CPPv2N30TfLiteQnnDelegateOpPackageInfo7ops_mapE"></span><span id="TfLiteQnnDelegateOpPackageInfo::ops_map__TfLiteQnnDelegateOpPackageOpMapP"></span><span class="target" id="structTfLiteQnnDelegateOpPackageInfo_1a5d8e007c95641fe0b69aa7adc42547f1"></span><a class="reference internal" href="#_CPPv431TfLiteQnnDelegateOpPackageOpMap" title="TfLiteQnnDelegateOpPackageOpMap"><span class="n"><span class="pre">TfLiteQnnDelegateOpPackageOpMap</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">ops_map</span></span></span><a class="headerlink" href="#_CPPv4N30TfLiteQnnDelegateOpPackageInfo7ops_mapE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An array of <a class="reference internal" href="#structTfLiteQnnDelegateOpPackageOpMap"><span class="std std-ref">TfLiteQnnDelegateOpPackageOpMap</span></a> structures. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv433TfLiteQnnDelegateOpPackageOptions">
+<span id="_CPPv333TfLiteQnnDelegateOpPackageOptions"></span><span id="_CPPv233TfLiteQnnDelegateOpPackageOptions"></span><span id="TfLiteQnnDelegateOpPackageOptions"></span><span class="target" id="structTfLiteQnnDelegateOpPackageOptions"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateOpPackageOptions</span></span></span><a class="headerlink" href="#_CPPv433TfLiteQnnDelegateOpPackageOptions" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnTFLiteDelegate.h&gt;</em></div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N33TfLiteQnnDelegateOpPackageOptions20num_op_package_infosE">
+<span id="_CPPv3N33TfLiteQnnDelegateOpPackageOptions20num_op_package_infosE"></span><span id="_CPPv2N33TfLiteQnnDelegateOpPackageOptions20num_op_package_infosE"></span><span id="TfLiteQnnDelegateOpPackageOptions::num_op_package_infos__i"></span><span class="target" id="structTfLiteQnnDelegateOpPackageOptions_1af98a0161d4c9a29fcba72d32eb3a47c9"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">num_op_package_infos</span></span></span><a class="headerlink" href="#_CPPv4N33TfLiteQnnDelegateOpPackageOptions20num_op_package_infosE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Number of elements in <a class="reference internal" href="#structTfLiteQnnDelegateOpPackageOptions_1afbbcf5b3ee3232d773c218b973f03b9d"><span class="std std-ref">TfLiteQnnDelegateOpPackageOptions.op_package_infos</span></a> array. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N33TfLiteQnnDelegateOpPackageOptions16op_package_infosE">
+<span id="_CPPv3N33TfLiteQnnDelegateOpPackageOptions16op_package_infosE"></span><span id="_CPPv2N33TfLiteQnnDelegateOpPackageOptions16op_package_infosE"></span><span id="TfLiteQnnDelegateOpPackageOptions::op_package_infos__TfLiteQnnDelegateOpPackageInfoP"></span><span class="target" id="structTfLiteQnnDelegateOpPackageOptions_1afbbcf5b3ee3232d773c218b973f03b9d"></span><a class="reference internal" href="#_CPPv430TfLiteQnnDelegateOpPackageInfo" title="TfLiteQnnDelegateOpPackageInfo"><span class="n"><span class="pre">TfLiteQnnDelegateOpPackageInfo</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">op_package_infos</span></span></span><a class="headerlink" href="#_CPPv4N33TfLiteQnnDelegateOpPackageOptions16op_package_infosE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An array of <a class="reference internal" href="#structTfLiteQnnDelegateOpPackageInfo"><span class="std std-ref">TfLiteQnnDelegateOpPackageInfo</span></a> structures. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv427TfLiteQnnDelegateSkipOption">
+<span id="_CPPv327TfLiteQnnDelegateSkipOption"></span><span id="_CPPv227TfLiteQnnDelegateSkipOption"></span><span id="TfLiteQnnDelegateSkipOption"></span><span class="target" id="structTfLiteQnnDelegateSkipOption"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateSkipOption</span></span></span><a class="headerlink" href="#_CPPv427TfLiteQnnDelegateSkipOption" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnTFLiteDelegate.h&gt;</em></div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N27TfLiteQnnDelegateSkipOption17skip_delegate_opsE">
+<span id="_CPPv3N27TfLiteQnnDelegateSkipOption17skip_delegate_opsE"></span><span id="_CPPv2N27TfLiteQnnDelegateSkipOption17skip_delegate_opsE"></span><span id="TfLiteQnnDelegateSkipOption::skip_delegate_ops__iCP"></span><span class="target" id="structTfLiteQnnDelegateSkipOption_1a1fd00a8b04d3908cc5c87241bb59b551"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">skip_delegate_ops</span></span></span><a class="headerlink" href="#_CPPv4N27TfLiteQnnDelegateSkipOption17skip_delegate_opsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set ops not to be delegated manually based on the op id(s). To obtain all the op ids, please refer to tensorflow/lite/builtin_ops.h. Notice that we skip all of with the types specified in the <a class="reference internal" href="#structTfLiteQnnDelegateSkipOption_1a1fd00a8b04d3908cc5c87241bb59b551"><span class="std std-ref">skip_delegate_ops</span></a> array. For example, if you set skip to include SquaredDifference, all instances of SquaredDifference ops in the model will not be delegated. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N27TfLiteQnnDelegateSkipOption20skip_delegate_ops_nrE">
+<span id="_CPPv3N27TfLiteQnnDelegateSkipOption20skip_delegate_ops_nrE"></span><span id="_CPPv2N27TfLiteQnnDelegateSkipOption20skip_delegate_ops_nrE"></span><span id="TfLiteQnnDelegateSkipOption::skip_delegate_ops_nr__uint32_t"></span><span class="target" id="structTfLiteQnnDelegateSkipOption_1a6aa5ed9f4d3c8f354ec048e64e33519e"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">skip_delegate_ops_nr</span></span></span><a class="headerlink" href="#_CPPv4N27TfLiteQnnDelegateSkipOption20skip_delegate_ops_nrE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Indicates the length of <a class="reference internal" href="#structTfLiteQnnDelegateSkipOption_1a1fd00a8b04d3908cc5c87241bb59b551"><span class="std std-ref">skip_delegate_ops</span></a> array. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N27TfLiteQnnDelegateSkipOption22skip_delegate_node_idsE">
+<span id="_CPPv3N27TfLiteQnnDelegateSkipOption22skip_delegate_node_idsE"></span><span id="_CPPv2N27TfLiteQnnDelegateSkipOption22skip_delegate_node_idsE"></span><span id="TfLiteQnnDelegateSkipOption::skip_delegate_node_ids__iCP"></span><span class="target" id="structTfLiteQnnDelegateSkipOption_1a5083fd81406c916b94dbe23a208cc67c"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">skip_delegate_node_ids</span></span></span><a class="headerlink" href="#_CPPv4N27TfLiteQnnDelegateSkipOption22skip_delegate_node_idsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set node IDs not to be delegated. Node id can be obtained by node’s location information in .tflite. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N27TfLiteQnnDelegateSkipOption25skip_delegate_node_ids_nrE">
+<span id="_CPPv3N27TfLiteQnnDelegateSkipOption25skip_delegate_node_ids_nrE"></span><span id="_CPPv2N27TfLiteQnnDelegateSkipOption25skip_delegate_node_ids_nrE"></span><span id="TfLiteQnnDelegateSkipOption::skip_delegate_node_ids_nr__uint32_t"></span><span class="target" id="structTfLiteQnnDelegateSkipOption_1a5c06b5f96ca9b81abfaca277b804268a"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">skip_delegate_node_ids_nr</span></span></span><a class="headerlink" href="#_CPPv4N27TfLiteQnnDelegateSkipOption25skip_delegate_node_ids_nrE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Indicates the length of <a class="reference internal" href="#structTfLiteQnnDelegateSkipOption_1a5083fd81406c916b94dbe23a208cc67c"><span class="std std-ref">skip_delegate_node_ids</span></a> array. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv424TfLiteQnnDelegateOptions">
+<span id="_CPPv324TfLiteQnnDelegateOptions"></span><span id="_CPPv224TfLiteQnnDelegateOptions"></span><span id="TfLiteQnnDelegateOptions"></span><span class="target" id="structTfLiteQnnDelegateOptions"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateOptions</span></span></span><a class="headerlink" href="#_CPPv424TfLiteQnnDelegateOptions" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnTFLiteDelegate.h&gt;</em></div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24TfLiteQnnDelegateOptions12backend_typeE">
+<span id="_CPPv3N24TfLiteQnnDelegateOptions12backend_typeE"></span><span id="_CPPv2N24TfLiteQnnDelegateOptions12backend_typeE"></span><span id="TfLiteQnnDelegateOptions::backend_type__TfLiteQnnDelegateBackendType"></span><span class="target" id="structTfLiteQnnDelegateOptions_1a9c123140d4503bd3968d4add4e763eb3"></span><a class="reference internal" href="#_CPPv428TfLiteQnnDelegateBackendType" title="TfLiteQnnDelegateBackendType"><span class="n"><span class="pre">TfLiteQnnDelegateBackendType</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">backend_type</span></span></span><a class="headerlink" href="#_CPPv4N24TfLiteQnnDelegateOptions12backend_typeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The backend QNN library to open and execute the graph with. This is a required argument and will error out if kUndefinedBackend is supplied. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24TfLiteQnnDelegateOptions12library_pathE">
+<span id="_CPPv3N24TfLiteQnnDelegateOptions12library_pathE"></span><span id="_CPPv2N24TfLiteQnnDelegateOptions12library_pathE"></span><span id="TfLiteQnnDelegateOptions::library_path__cCP"></span><span class="target" id="structTfLiteQnnDelegateOptions_1a4f5102c92277a3ab29a32266d625e8a8"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">library_path</span></span></span><a class="headerlink" href="#_CPPv4N24TfLiteQnnDelegateOptions12library_pathE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Optional parameter to override the QNN backend library. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24TfLiteQnnDelegateOptions16skel_library_dirE">
+<span id="_CPPv3N24TfLiteQnnDelegateOptions16skel_library_dirE"></span><span id="_CPPv2N24TfLiteQnnDelegateOptions16skel_library_dirE"></span><span id="TfLiteQnnDelegateOptions::skel_library_dir__cCP"></span><span class="target" id="structTfLiteQnnDelegateOptions_1a41391a3b31c9962eb56b4e873504320d"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">skel_library_dir</span></span></span><a class="headerlink" href="#_CPPv4N24TfLiteQnnDelegateOptions16skel_library_dirE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Optional parameter specifying the directory of QNN Skel library. Only useful for backends which have a Skel library. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24TfLiteQnnDelegateOptions11gpu_optionsE">
+<span id="_CPPv3N24TfLiteQnnDelegateOptions11gpu_optionsE"></span><span id="_CPPv2N24TfLiteQnnDelegateOptions11gpu_optionsE"></span><span id="TfLiteQnnDelegateOptions::gpu_options__TfLiteQnnDelegateGpuBackendOptions"></span><span class="target" id="structTfLiteQnnDelegateOptions_1a3d9b1ae8be4d5a110c56c35f066e87ed"></span><a class="reference internal" href="#_CPPv434TfLiteQnnDelegateGpuBackendOptions" title="TfLiteQnnDelegateGpuBackendOptions"><span class="n"><span class="pre">TfLiteQnnDelegateGpuBackendOptions</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gpu_options</span></span></span><a class="headerlink" href="#_CPPv4N24TfLiteQnnDelegateOptions11gpu_optionsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Optional backend specific options for the GPU backend. Only used when selecting <a class="reference internal" href="#QnnTFLiteDelegate_8h_1a65d87d490f916ffb8c5f3cd8284b2110a3c75ba974d54f4388f1baa0b2acbaa50"><span class="std std-ref">TfLiteQnnDelegateBackendType::kGpuBackend</span></a>, otherwise will be ignored. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24TfLiteQnnDelegateOptions11htp_optionsE">
+<span id="_CPPv3N24TfLiteQnnDelegateOptions11htp_optionsE"></span><span id="_CPPv2N24TfLiteQnnDelegateOptions11htp_optionsE"></span><span id="TfLiteQnnDelegateOptions::htp_options__TfLiteQnnDelegateHtpBackendOptions"></span><span class="target" id="structTfLiteQnnDelegateOptions_1a20b80313e8c5951bf4c1ed33b0aa390c"></span><a class="reference internal" href="#_CPPv434TfLiteQnnDelegateHtpBackendOptions" title="TfLiteQnnDelegateHtpBackendOptions"><span class="n"><span class="pre">TfLiteQnnDelegateHtpBackendOptions</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">htp_options</span></span></span><a class="headerlink" href="#_CPPv4N24TfLiteQnnDelegateOptions11htp_optionsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Optional backend specific options for the HTP backend. Only used when selecting <a class="reference internal" href="#QnnTFLiteDelegate_8h_1a65d87d490f916ffb8c5f3cd8284b2110a13319060934416099c1cd45e053f8ff4"><span class="std std-ref">TfLiteQnnDelegateBackendType::kHtpBackend</span></a>, otherwise will be ignored. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24TfLiteQnnDelegateOptions11dsp_optionsE">
+<span id="_CPPv3N24TfLiteQnnDelegateOptions11dsp_optionsE"></span><span id="_CPPv2N24TfLiteQnnDelegateOptions11dsp_optionsE"></span><span id="TfLiteQnnDelegateOptions::dsp_options__TfLiteQnnDelegateDspBackendOptions"></span><span class="target" id="structTfLiteQnnDelegateOptions_1a535553c8086baa6482ec83910370babf"></span><a class="reference internal" href="#_CPPv434TfLiteQnnDelegateDspBackendOptions" title="TfLiteQnnDelegateDspBackendOptions"><span class="n"><span class="pre">TfLiteQnnDelegateDspBackendOptions</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dsp_options</span></span></span><a class="headerlink" href="#_CPPv4N24TfLiteQnnDelegateOptions11dsp_optionsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Optional backend specific options for the DSP backend. Only used when selecting <a class="reference internal" href="#QnnTFLiteDelegate_8h_1a65d87d490f916ffb8c5f3cd8284b2110a45017ddfa4c9381bc53abebd908731df"><span class="std std-ref">TfLiteQnnDelegateBackendType::kDspBackend</span></a>, otherwise will be ignored. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24TfLiteQnnDelegateOptions9log_levelE">
+<span id="_CPPv3N24TfLiteQnnDelegateOptions9log_levelE"></span><span id="_CPPv2N24TfLiteQnnDelegateOptions9log_levelE"></span><span id="TfLiteQnnDelegateOptions::log_level__TfLiteQnnDelegateLogLevel"></span><span class="target" id="structTfLiteQnnDelegateOptions_1abbd7a0377e7690cb74009343d0e1b8a3"></span><a class="reference internal" href="#_CPPv425TfLiteQnnDelegateLogLevel" title="TfLiteQnnDelegateLogLevel"><span class="n"><span class="pre">TfLiteQnnDelegateLogLevel</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">log_level</span></span></span><a class="headerlink" href="#_CPPv4N24TfLiteQnnDelegateOptions9log_levelE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Logging level of the delegate and the backend. Default is off. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24TfLiteQnnDelegateOptions9profilingE">
+<span id="_CPPv3N24TfLiteQnnDelegateOptions9profilingE"></span><span id="_CPPv2N24TfLiteQnnDelegateOptions9profilingE"></span><span id="TfLiteQnnDelegateOptions::profiling__TfLiteQnnDelegateProfilingOptions"></span><span class="target" id="structTfLiteQnnDelegateOptions_1a1041830ba44102332b8ddaae7052ab98"></span><a class="reference internal" href="#_CPPv433TfLiteQnnDelegateProfilingOptions" title="TfLiteQnnDelegateProfilingOptions"><span class="n"><span class="pre">TfLiteQnnDelegateProfilingOptions</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">profiling</span></span></span><a class="headerlink" href="#_CPPv4N24TfLiteQnnDelegateOptions9profilingE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Option to enable profiling with the delegate. Default is off. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24TfLiteQnnDelegateOptions18op_package_optionsE">
+<span id="_CPPv3N24TfLiteQnnDelegateOptions18op_package_optionsE"></span><span id="_CPPv2N24TfLiteQnnDelegateOptions18op_package_optionsE"></span><span id="TfLiteQnnDelegateOptions::op_package_options__TfLiteQnnDelegateOpPackageOptions"></span><span class="target" id="structTfLiteQnnDelegateOptions_1ae43a76910714172dfdb12289103b174a"></span><a class="reference internal" href="#_CPPv433TfLiteQnnDelegateOpPackageOptions" title="TfLiteQnnDelegateOpPackageOptions"><span class="n"><span class="pre">TfLiteQnnDelegateOpPackageOptions</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">op_package_options</span></span></span><a class="headerlink" href="#_CPPv4N24TfLiteQnnDelegateOptions18op_package_optionsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Optional structure to specify op packages loaded and used by the backend. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24TfLiteQnnDelegateOptions23tensor_dump_output_pathE">
+<span id="_CPPv3N24TfLiteQnnDelegateOptions23tensor_dump_output_pathE"></span><span id="_CPPv2N24TfLiteQnnDelegateOptions23tensor_dump_output_pathE"></span><span id="TfLiteQnnDelegateOptions::tensor_dump_output_path__cCP"></span><span class="target" id="structTfLiteQnnDelegateOptions_1abca310db851a6c335395afa186f20a0f"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">tensor_dump_output_path</span></span></span><a class="headerlink" href="#_CPPv4N24TfLiteQnnDelegateOptions23tensor_dump_output_pathE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Tensor dump output path. If a path is given, Delegate will write outputs of each OP there. We don’t recommend using this option. It exists only for debugging accuracy issues. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24TfLiteQnnDelegateOptions9cache_dirE">
+<span id="_CPPv3N24TfLiteQnnDelegateOptions9cache_dirE"></span><span id="_CPPv2N24TfLiteQnnDelegateOptions9cache_dirE"></span><span id="TfLiteQnnDelegateOptions::cache_dir__cCP"></span><span class="target" id="structTfLiteQnnDelegateOptions_1a4bd74d5478246b2d69e36c67a01cb087"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">cache_dir</span></span></span><a class="headerlink" href="#_CPPv4N24TfLiteQnnDelegateOptions9cache_dirE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Specifies the directory of a compiled model. Signals intent to either:<ul class="simple">
+<li><p>Save the model if the file doesn’t exist, or</p></li>
+<li><p>Restore model from the file.</p></li>
+</ul>
+</p>
+<p>Model Cache specific options. Only used when setting <a class="reference internal" href="#structTfLiteQnnDelegateOptions_1a083b5dadd3699c90d0e3bf8b0f215af9"><span class="std std-ref">model_token</span></a>, otherwise will be ignored.</p>
+<p>We don’t recommend that delegate instances with/without cache be mixed in same process, unless an instance <strong>without</strong> cache is initialized, invoked, and <em>terminated</em> before an instance with cache is used in order to make sure all resources are prepared correctly.</p>
+<p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">TfLiteDelegate</span><span class="o">*</span><span class="w"> </span><span class="n">delegate_wo_cache</span><span class="w"> </span><span class="o">=</span>
+<span class="n">TfLiteQnnDelegateCreate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">options_wo_cache</span><span class="p">);</span>
+<span class="n">interpreter_0</span><span class="o">-&gt;</span><span class="n">ModifyGraphWithDelegate</span><span class="p">(</span><span class="n">delegate_wo_cache</span><span class="p">);</span>
+
+<span class="c1">// Perform inference with interpreter_0</span>
+
+<span class="n">TfLiteQnnDelegateDelete</span><span class="p">(</span><span class="n">delegate_wo_cache</span><span class="p">);</span>
+
+<span class="c1">// after this, another delegate_with_cache can be used in the same</span>
+<span class="c1">// process, though not recommended at this moment.</span>
+<span class="n">TfLiteDelegate</span><span class="o">*</span><span class="w"> </span><span class="n">delegate_with_cache</span><span class="w"> </span><span class="o">=</span>
+<span class="n">TfLiteQnnDelegateCreate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">options_with_cache</span><span class="p">);</span>
+
+<span class="c1">// another interpreter</span>
+<span class="n">interpreter_1</span><span class="o">-&gt;</span><span class="n">ModifyGraphWithDelegate</span><span class="p">(</span><span class="n">delegate_with_cache</span><span class="p">);</span>
+
+<span class="c1">// more delegates...etc.</span>
+</pre></div>
+</div>
+ </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24TfLiteQnnDelegateOptions11model_tokenE">
+<span id="_CPPv3N24TfLiteQnnDelegateOptions11model_tokenE"></span><span id="_CPPv2N24TfLiteQnnDelegateOptions11model_tokenE"></span><span id="TfLiteQnnDelegateOptions::model_token__cCP"></span><span class="target" id="structTfLiteQnnDelegateOptions_1a083b5dadd3699c90d0e3bf8b0f215af9"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">model_token</span></span></span><a class="headerlink" href="#_CPPv4N24TfLiteQnnDelegateOptions11model_tokenE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The unique null-terminated token string that acts as a ‘namespace’ for all serialization entries. Should be unique to a particular model (graph &amp; constants). For an example of how to generate this from a TFLite model, see StrFingerprint() in lite/delegates/serialization.h.</p>
+<p>Model Cache specific options. Only used when setting <a class="reference internal" href="#structTfLiteQnnDelegateOptions_1a4bd74d5478246b2d69e36c67a01cb087"><span class="std std-ref">cache_dir</span></a>, otherwise will be ignored. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24TfLiteQnnDelegateOptions12skip_optionsE">
+<span id="_CPPv3N24TfLiteQnnDelegateOptions12skip_optionsE"></span><span id="_CPPv2N24TfLiteQnnDelegateOptions12skip_optionsE"></span><span id="TfLiteQnnDelegateOptions::skip_options__TfLiteQnnDelegateSkipOption"></span><span class="target" id="structTfLiteQnnDelegateOptions_1a61d2eaba232d076d8f01d6ae777c080e"></span><a class="reference internal" href="#_CPPv427TfLiteQnnDelegateSkipOption" title="TfLiteQnnDelegateSkipOption"><span class="n"><span class="pre">TfLiteQnnDelegateSkipOption</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">skip_options</span></span></span><a class="headerlink" href="#_CPPv4N24TfLiteQnnDelegateOptions12skip_optionsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Option to skip node by specifying node types or node ids. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24TfLiteQnnDelegateOptions14graph_priorityE">
+<span id="_CPPv3N24TfLiteQnnDelegateOptions14graph_priorityE"></span><span id="_CPPv2N24TfLiteQnnDelegateOptions14graph_priorityE"></span><span id="TfLiteQnnDelegateOptions::graph_priority__TfLiteQnnDelegateGraphPriority"></span><span class="target" id="structTfLiteQnnDelegateOptions_1ac3d4ecc1a6c3033916204435c5e75069"></span><a class="reference internal" href="#_CPPv430TfLiteQnnDelegateGraphPriority" title="TfLiteQnnDelegateGraphPriority"><span class="n"><span class="pre">TfLiteQnnDelegateGraphPriority</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">graph_priority</span></span></span><a class="headerlink" href="#_CPPv4N24TfLiteQnnDelegateOptions14graph_priorityE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Option to set graph priority. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv432TfLiteQnnDelegateProfilingResult">
+<span id="_CPPv332TfLiteQnnDelegateProfilingResult"></span><span id="_CPPv232TfLiteQnnDelegateProfilingResult"></span><span id="TfLiteQnnDelegateProfilingResult"></span><span class="target" id="structTfLiteQnnDelegateProfilingResult"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TfLiteQnnDelegateProfilingResult</span></span></span><a class="headerlink" href="#_CPPv432TfLiteQnnDelegateProfilingResult" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnTFLiteDelegate.h&gt;</em></div>
+<p>Structure of profiling result. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N32TfLiteQnnDelegateProfilingResult6bufferE">
+<span id="_CPPv3N32TfLiteQnnDelegateProfilingResult6bufferE"></span><span id="_CPPv2N32TfLiteQnnDelegateProfilingResult6bufferE"></span><span id="TfLiteQnnDelegateProfilingResult::buffer__uint8_tCP"></span><span class="target" id="structTfLiteQnnDelegateProfilingResult_1aeabf037958c93ca019c5de4a893b3fe2"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">buffer</span></span></span><a class="headerlink" href="#_CPPv4N32TfLiteQnnDelegateProfilingResult6bufferE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Buffer of profiling result will be invalid once TfLiteQnnDelegateClearProfilingResult gets called </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N32TfLiteQnnDelegateProfilingResult13buffer_lengthE">
+<span id="_CPPv3N32TfLiteQnnDelegateProfilingResult13buffer_lengthE"></span><span id="_CPPv2N32TfLiteQnnDelegateProfilingResult13buffer_lengthE"></span><span id="TfLiteQnnDelegateProfilingResult::buffer_length__uint32_t"></span><span class="target" id="structTfLiteQnnDelegateProfilingResult_1a23500b0042a2da937c81ec0f9b7da1e7"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">buffer_length</span></span></span><a class="headerlink" href="#_CPPv4N32TfLiteQnnDelegateProfilingResult13buffer_lengthE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Buffer length of profiling result in bytes. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="java_interface.html" class="btn btn-neutral float-right" title="Java Interface" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="api.html" class="btn btn-neutral float-left" title="API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

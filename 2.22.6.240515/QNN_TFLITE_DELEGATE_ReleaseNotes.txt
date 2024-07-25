@@ -1,0 +1,134 @@
+.. #============================================================================
+   #
+   #  Copyright (c) Qualcomm Technologies, Inc.
+   #  All Rights Reserved.
+   #  Confidential and Proprietary - Qualcomm Technologies, Inc.
+   #
+   #============================================================================
+
+================================
+Qualcomm Neural Network Delegate
+================================
+
+This is add-on package to corresponding QNN SDK, containing artifacts for QNN TFLite Delegate,
+which allows delegation of a part or all of a TFLite model to a Qualcomm hardware runtime,
+decreasing the workload of the CPU while achieving better performance and power efficiency.
+This specific delegate is backed by Qualcomm AI Engine Direct.
+
+Contents
+--------
+
+- QNN Delegate library.
+- QNN Delegate C header files.
+- Tools to run inference with delegate.
+- Sample input images for models.
+- QNN Delegate Reference Guide.
+
+Dependencies
+------------
+
+- This add-on package has been developed and tested with TFLite runtime from
+  TensorFlow v2.10.0
+- This add-on package requires QNN libraries with the same version.
+
+Known Issues and Limitations
+----------------------------
+* The profiler might hang in multi-threading scenario.
+  Please do not enable profiling in multi-threading cases.
+
+* While 16bit Quantize is supported, QNN HTP majorly support unsigned 16bit
+  instead of signed 16bit datatype.
+
+
+=============
+Release Notes
+=============
+
+v2.22.0
+=======
+**04/30/2024**
+- qtld-net-run comes with --htp_disable_conv_hmx option.
+- Fixed a bug producing incomplete QnnSaver outputs.
+- Support 16bit QuantizeOp.
+- Support Square op.
+- Re-implement TfLiteQnnDelegateHasCapability() to better detect QC platforms.
+- Note that in next release, we expect to upgrade TensorFlow version to 2.15.0
+  if everything smooth.
+- Note that in next release, we expect to build the SDK by Android ndk 26.
+
+v2.21.0
+=======
+**03/31/2024**
+- useConvHmx is default True.
+- Added a note on the top of TfLiteQnnDelegateDelete(), which is not a thread-safe API.
+  So it can only be used when the delegate instance finish its jobs.
+
+v2.20.0
+=======
+**02/29/2024**
+- Bug fixes around HTP Prepare failures.
+- Note that useConvHmx would be default True in near future. Currently it's default False.
+- Note that the Tensorflow version will be upgraded to 2.15.0 in 3-6 months.
+
+v2.19.0
+=======
+**01/31/2024**
+- Fixed wrong RPC polling setting producing lots of unnecessary DSP traces.
+- Fixed warning messages about skip nodes options.
+
+v2.18.0
+=======
+**12/31/2023**
+- Added a java API to check SoC capability. Please see java docs for checkCapability()
+- Compiled the Delegate library by NDK r25c.
+- Added options to set HTP vtcm size and hvx thread.
+
+v2.17.0
+=======
+**11/30/2023**
+- Added graph priority option.
+- Added Snapdragon 8 Gen 3 support.
+- Added useHMX, foldRelu, and Skip options to java interfaces.
+- Now graph-execution won't die even if HTP precision is set to fp16 on an unsupported platform.
+
+
+v2.16.0
+=======
+**10/06/2023**
+- Added more TFLite builtin op support.
+  - Atan2, AddN, Ceil
+- Note that the toolchain used to build this add-on for Android
+  will be changed to NDK25c soon.
+
+v2.15.0
+=======
+**09/30/2023**
+- Added more TFLite builtin op support.
+  - Conv3d, GatherNd, Elu, L2Pool2D, ScatternNd, Relu_0_to_1, TransposeConv3d
+  - PadV2, OneHot, Cos, Round
+- Added Skip OP API usage example.
+
+v2.14.0
+=======
+**08/31/2023**
+
+- Added java interface library for Android APP, i.e., qtld-release.aar
+- Added aarch64-oe-linux-gcc11.2 and aarch64-ubuntu-gcc9.4 platform support.
+
+
+v2.13.0
+=======
+**07/31/2023**
+
+- Fixed preparation errors around Albert-, CRNN-, DPED-Instance-, and Yolo-v4 networks.
+- Supported TFLite implicit group Convolution 2D.
+
+
+v2.12.0
+=======
+**06/30/2023**
+
+- initial release for QNN TFLite Delegate.
+- Note that the aarch64-android libraries is built by ndk19c.
+  Switching to ndk25c is planned in roughly 2023/09 timeframe.
+

@@ -1,0 +1,329 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>ARM64X Tutorial &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>ARM64X Tutorial</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="arm64x-tutorial">
+<h1>ARM64X Tutorial<a class="headerlink" href="#arm64x-tutorial" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<p>Windows SDK provides ARM64X binaries, which are compatible for x86-64, ARM64 and ARM64EC applications on Windows ARM devices.
+ARM64X is only supported on SC8380XP (Snapdragon 8cx Gen 4).</p>
+</div>
+<div class="section" id="end-to-end-htp-inference-with-arm64ec-qnn-net-run-and-offline-prepared-graph">
+<h2>End-to-end HTP inference with ARM64EC qnn-net-run and offline prepared graph<a class="headerlink" href="#end-to-end-htp-inference-with-arm64ec-qnn-net-run-and-offline-prepared-graph" title="Permalink to this heading">¶</a></h2>
+<ol class="arabic">
+<li><p>Copy the following files to SC8380XP target device</p>
+<ul class="simple">
+<li><p>$QNN_SDK_ROOT/bin/arm64x-windows-msvc/qnn-net-run.exe</p></li>
+<li><p>$QNN_SDK_ROOT/lib/arm64x-windows-msvc/QnnHtp.dll</p></li>
+<li><p>$QNN_SDK_ROOT/lib/arm64x-windows-msvc/QnnHtpV73Stub.dll</p></li>
+<li><p>$QNN_SDK_ROOT/lib/hexagon-v73/unsigned/libQnnHtpV73Skel.so</p></li>
+<li><p>Inception_v3_quantized.serialized.bin (See <a class="reference internal" href="tutorial2.html"><span class="doc">Converting and executing a CNN model with QNN</span></a> for more details)</p></li>
+</ul>
+</li>
+<li><p>Run the following inference command on the target device</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ .\qnn-net-run.exe --input_list .\input_list.txt --retrieve_context .\Inception_v3_quantized.serialized.bin --backend QnnHtp.dll
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="end-to-end-htp-inference-with-arm64ec-qnn-net-run-and-online-prepared-graph">
+<h2>End-to-end HTP inference with ARM64EC qnn-net-run and online prepared graph<a class="headerlink" href="#end-to-end-htp-inference-with-arm64ec-qnn-net-run-and-online-prepared-graph" title="Permalink to this heading">¶</a></h2>
+<ol class="arabic">
+<li><p>Copy the following files to SC8380XP target device</p>
+<ul class="simple">
+<li><p>$QNN_SDK_ROOT/bin/arm64x-windows-msvc/qnn-net-run.exe</p></li>
+<li><p>$QNN_SDK_ROOT/lib/arm64x-windows-msvc/QnnHtp.dll</p></li>
+<li><p>$QNN_SDK_ROOT/lib/arm64x-windows-msvc/QnnHtpV73Stub.dll</p></li>
+<li><p>$QNN_SDK_ROOT/lib/arm64x-windows-msvc/QnnHtpPrepare.dll</p></li>
+<li><p>$QNN_SDK_ROOT/lib/hexagon-v73/unsigned/libQnnHtpV73Skel.so</p></li>
+<li><p>Inception_v3_quantized.dll (See <a class="reference internal" href="tutorial2.html"><span class="doc">Converting and executing a CNN model with QNN</span></a> for more details,
+and use -t windows-x86_64 when running the qnn-model-lib-generator)</p></li>
+</ul>
+</li>
+<li><p>Run the following inference command on the target device</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ .\qnn-net-run.exe --input_list .\input_list.txt --model .\Inception_v3_quantized.dll --backend QnnHtp.dll
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="end-to-end-htp-inference-with-arm64-qnn-net-run-and-offline-prepared-graph">
+<h2>End-to-end HTP inference with ARM64 qnn-net-run and offline prepared graph<a class="headerlink" href="#end-to-end-htp-inference-with-arm64-qnn-net-run-and-offline-prepared-graph" title="Permalink to this heading">¶</a></h2>
+<ol class="arabic">
+<li><p>Copy the following files to SC8380XP target device</p>
+<ul class="simple">
+<li><p>$QNN_SDK_ROOT/bin/aarch64-windows-msvc/qnn-net-run.exe</p></li>
+<li><p>$QNN_SDK_ROOT/lib/arm64x-windows-msvc/QnnHtp.dll</p></li>
+<li><p>$QNN_SDK_ROOT/lib/arm64x-windows-msvc/QnnHtpV73Stub.dll</p></li>
+<li><p>$QNN_SDK_ROOT/lib/hexagon-v73/unsigned/libQnnHtpV73Skel.so</p></li>
+<li><p>Inception_v3_quantized.serialized.bin (See <a class="reference internal" href="tutorial2.html"><span class="doc">Converting and executing a CNN model with QNN</span></a> for more details)</p></li>
+</ul>
+</li>
+<li><p>Run the following inference command on the target device</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ .\qnn-net-run.exe --input_list .\input_list.txt --retrieve_context .\Inception_v3_quantized.serialized.bin --backend QnnHtp.dll
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="end-to-end-htp-inference-with-arm64-qnn-net-run-with-online-prepared-graph">
+<h2>End-to-end HTP inference with ARM64 qnn-net-run with online prepared graph<a class="headerlink" href="#end-to-end-htp-inference-with-arm64-qnn-net-run-with-online-prepared-graph" title="Permalink to this heading">¶</a></h2>
+<ol class="arabic">
+<li><p>Copy the following files to SC8380XP target device</p>
+<ul class="simple">
+<li><p>$QNN_SDK_ROOT/bin/aarch64-windows-msvc/qnn-net-run.exe</p></li>
+<li><p>$QNN_SDK_ROOT/lib/arm64x-windows-msvc/QnnHtp.dll</p></li>
+<li><p>$QNN_SDK_ROOT/lib/arm64x-windows-msvc/QnnHtpV73Stub.dll</p></li>
+<li><p>$QNN_SDK_ROOT/lib/arm64x-windows-msvc/QnnHtpPrepare.dll</p></li>
+<li><p>$QNN_SDK_ROOT/lib/hexagon-v73/unsigned/libQnnHtpV73Skel.so</p></li>
+<li><p>Inception_v3_quantized.dll (See <a class="reference internal" href="tutorial2.html"><span class="doc">Converting and executing a CNN model with QNN</span></a> for more details,
+and use -t windows-aarch64 when running the qnn-model-lib-generator)</p></li>
+</ul>
+</li>
+<li><p>Run the following inference command on the target device</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ .\qnn-net-run.exe --input_list .\input_list.txt --model .\Inception_v3_quantized.dll --backend QnnHtp.dll
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="end-to-end-htp-inference-with-x64-qnn-sample-app-and-offline-prepared-graph">
+<h2>End-to-end HTP inference with x64 qnn-sample-app and offline prepared graph<a class="headerlink" href="#end-to-end-htp-inference-with-x64-qnn-sample-app-and-offline-prepared-graph" title="Permalink to this heading">¶</a></h2>
+<ol class="arabic">
+<li><p>Copy the following files to SC8380XP target device</p>
+<ul class="simple">
+<li><p>$QNN_SDK_ROOT/examples/QNN/SampleApp/build/src/Release/qnn-sample-app.exe (See <a class="reference internal" href="sample_app.html"><span class="doc">Sample App Tutorial: Create and build a sample C++ application</span></a> for more details)</p></li>
+<li><p>$QNN_SDK_ROOT/lib/arm64x-windows-msvc/QnnHtp.dll</p></li>
+<li><p>$QNN_SDK_ROOT/lib/arm64x-windows-msvc/QnnHtpV73Stub.dll</p></li>
+<li><p>$QNN_SDK_ROOT/lib/arm64x-windows-msvc/QnnSystem.dll</p></li>
+<li><p>$QNN_SDK_ROOT/lib/hexagon-v73/unsigned/libQnnHtpV73Skel.so</p></li>
+<li><p>Inception_v3_quantized.serialized.bin (See <a class="reference internal" href="tutorial2.html"><span class="doc">Converting and executing a CNN model with QNN</span></a> for more details)</p></li>
+</ul>
+</li>
+<li><p>Run the following inference command on the target device</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ .\qnn-sample-app.exe --system_library .\QnnSystem.dll --input_list .\input_list.txt --retrieve_context .\Inception_v3_quantized.serialized.bin --backend QnnHtp.dll
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

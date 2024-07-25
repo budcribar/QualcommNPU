@@ -1,0 +1,599 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>API Overview &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Usage Guidelines" href="api_usage_guidelines.html" />
+    <link rel="prev" title="API" href="api.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="operations.html">Operations</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">API</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#components">Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usage-sequences">Usage Sequences</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#basic-call-flow">Basic Call Flow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#context-caching">Context Caching</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cache-based-execution">Cache-based execution</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#backend-api-specialization">Backend API Specialization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api_usage_guidelines.html">Usage Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_version_history.html">QNN API Revision History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_version_history.html#backend-specific-revision-history">Backend Specific Revision History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_version_history.html#qnn-system-api-revision-history">QNN System API Revision History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supported_api.html">Supported APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supported_capabilities.html">Supported Capabilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#c">C</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="api.html">API</a> &raquo;</li>
+        
+      <li>API Overview</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="api-overview">
+<h1>API Overview<a class="headerlink" href="#api-overview" title="Permalink to this heading">¶</a></h1>
+<p>The current version of the Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> API is:</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp">
+<span class="sig-name descname"><span class="n"><span class="pre">QNN_API_VERSION_MAJOR</span></span></span> <span class="pre">2</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp">
+<span class="sig-name descname"><span class="n"><span class="pre">QNN_API_VERSION_MINOR</span></span></span> <span class="pre">15</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp">
+<span class="sig-name descname"><span class="n"><span class="pre">QNN_API_VERSION_PATCH</span></span></span> <span class="pre">0</span><br /></dt>
+<dd></dd></dl>
+
+<p>The QNN API is source-level backwards compatible. However, it is not guaranteed to be binary (ABI) backwards compatible.</p>
+<div class="section" id="components">
+<h2>Components<a class="headerlink" href="#components" title="Permalink to this heading">¶</a></h2>
+<p>Clients interact with Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> through the backend library by invoking <a class="reference internal" href="../api-rst/api_root.html"><span class="doc">QNN API</span></a>.
+QNN API is C-style to facilitate portability across different platforms.
+The API is organized into components, marked with <strong>QnnComponent</strong> as depicted in the diagram
+<a class="reference internal" href="#qnn-api-components-figure"><span class="std std-ref">QNN API Components</span></a>.
+Each of the API components has a corresponding header file, e.g. <code class="docutils literal notranslate"><span class="pre">QnnGraph.h</span></code>.</p>
+<p class="centered" id="qnn-api-components-figure">
+<strong><strong>QNN API Components</strong></strong></p><div class="figure align-default">
+<img alt="../_static/resources/qnn_api_components.png" src="../_static/resources/qnn_api_components.png" />
+</div>
+<p>QNN API components are categorized in
+<a class="reference internal" href="#qnn-api-components-table"><span class="std std-ref">QNN API Components Summary Table</span></a>.</p>
+<table class="colwidths-auto docutils align-default" id="qnn-api-components-table">
+<thead>
+<tr class="row-odd"><th class="head"><p>API Component</p></th>
+<th class="head"><p>Category</p></th>
+<th class="head"><p>Backend Specialization</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../api-rst/file_include_QNN_QnnBackend.h.html#file-include-qnn-qnnbackend-h"><span class="std std-ref">QnnBackend</span></a></p></td>
+<td><p>Core</p></td>
+<td><p>Yes</p></td>
+<td><p>This is a top level QNN API component. Most QNN APIs require a backend to be
+initialized first. Provides QNN OpPackage Registry API.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api-rst/file_include_QNN_QnnDevice.h.html#file-include-qnn-qnndevice-h"><span class="std std-ref">QnnDevice</span></a></p></td>
+<td><p>Core</p></td>
+<td><p>Yes</p></td>
+<td><p>This is a top level QNN API component which provides multi-core support. Provides all constructs required to
+associate desired hardware accelerator resources for execution of user composed graphs. A platform is broken down
+into potentially multiple devices. Devices may have multiple cores. Provides API for performance control.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../api-rst/file_include_QNN_QnnContext.h.html#file-include-qnn-qnncontext-h"><span class="std std-ref">QnnContext</span></a></p></td>
+<td><p>Core</p></td>
+<td><p>Yes</p></td>
+<td><p>Context provides execution environment for graphs and operations.
+Graphs and tensors which are shared in between graphs are created within a context.
+Context content can be cached into a binary form which later can be used for faster
+context/graph loading.
+It provides configuration option for Priority control.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api-rst/file_include_QNN_QnnGraph.h.html#file-include-qnn-qnngraph-h"><span class="std std-ref">QnnGraph</span></a></p></td>
+<td><p>Core</p></td>
+<td><p>Yes</p></td>
+<td><p>Provides composable graph API. A graph is created inside a context, and is composed from
+nodes and tensors.
+Nodes are connected with tensors. Once finalized, graph is ready for execution.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../api-rst/file_include_QNN_QnnTensor.h.html#file-include-qnn-qnntensor-h"><span class="std std-ref">QnnTensor</span></a></p></td>
+<td><p>Core</p></td>
+<td><p>No</p></td>
+<td><p>Tensors hold either operation’s static/constant data or input/output activation data.
+Tensors can have either Context or Graph scope. Tensors created with Context scope can be
+used within Graphs that belong to the same Context.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api-rst/file_include_QNN_QnnOpPackage.h.html#file-include-qnn-qnnoppackage-h"><span class="std std-ref">QnnOpPackage</span></a></p></td>
+<td><p>Core</p></td>
+<td><p>Yes</p></td>
+<td><p>Provides interface to the backend to use registered OpPackage libraries.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../api-rst/file_include_QNN_QnnProfile.h.html#file-include-qnn-qnnprofile-h"><span class="std std-ref">QnnProfile</span></a></p></td>
+<td><p>Utility</p></td>
+<td><p>Yes</p></td>
+<td><p>Provides means to profile QNN backends to evaluate performance (memory and timing) of
+graphs and operations.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api-rst/file_include_QNN_QnnLog.h.html#file-include-qnn-qnnlog-h"><span class="std std-ref">QnnLog</span></a></p></td>
+<td><p>Utility</p></td>
+<td><p>No</p></td>
+<td><p>Provides means for QNN backends to output logging data, can be extended to the
+OpPackage as well.
+Can be initialized before QnnBackend.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../api-rst/file_include_QNN_QnnProperty.h.html#file-include-qnn-qnnproperty-h"><span class="std std-ref">QnnProperty</span></a></p></td>
+<td><p>System</p></td>
+<td><p>No</p></td>
+<td><p>Provides means for client to discover capabilities of a backend. Can be used without
+QnnBackend initialization.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api-rst/file_include_QNN_QnnMem.h.html#file-include-qnn-qnnmem-h"><span class="std std-ref">QnnMem</span></a></p></td>
+<td><p>System</p></td>
+<td><p>No</p></td>
+<td><p>Provides API to register externally allocated memory with a backend.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../api-rst/file_include_QNN_QnnSignal.h.html#file-include-qnn-qnnsignal-h"><span class="std std-ref">QnnSignal</span></a></p></td>
+<td><p>System</p></td>
+<td><p>No</p></td>
+<td><p>Provides means to manage Signal objects. Signal objects are used to control execution of
+other components.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="usage-sequences">
+<h2>Usage Sequences<a class="headerlink" href="#usage-sequences" title="Permalink to this heading">¶</a></h2>
+<p>As highlighted in the <a class="reference internal" href="overview.html"><span class="doc">Overview</span></a> section, QNN architecture and the unified API is
+designed with the intent to ease integration into third-party NN frameworks, with the flexibility
+to support varying use-case needs.</p>
+<p>The following sections describe typical QNN API interaction workflows.</p>
+<div class="section" id="basic-call-flow">
+<h3>Basic Call Flow<a class="headerlink" href="#basic-call-flow" title="Permalink to this heading">¶</a></h3>
+<p>The most common use-case for clients interacting with QNN API is to construct a graph representing
+their network model by adding operation nodes and tensors to connect them. Once the construction is
+complete the user can start graph execution by supplying input tensors to the designated input nodes
+of the graph. Frameworks like SNPE and ANN use this workflow to construct and execute QNN graphs.</p>
+<p>The QNN SDK also includes neural network converters which can assist the user in constructing such
+graphs by translating a source network model into an equivalent QNN representation. This is
+essentially a C++ file consisting of invocations to the exact same QNN APIs that perform operations
+described above. Clients can use this converter-based workflow to compile and link the QNN
+representation of their models into applications. Some tools in the QNN SDK such as qnn-net-run
+use this workflow.</p>
+<p>The diagram <a class="reference internal" href="#qnn-basic-call-flow-figure"><span class="std std-ref">QNN Basic Call Flow</span></a>
+demonstrates this basic scenario.</p>
+<p>Note that this illustration does not showcase the usage of all API components described above.
+For simplicity, the illustration is limited to the loading and execution of an entire graph
+inside one context and on one backend.</p>
+<p class="centered" id="qnn-basic-call-flow-figure">
+<strong><strong>QNN Basic Call Flow</strong></strong></p><div class="figure align-default">
+<img alt="../_static/resources/BasicCallSequence.png" src="../_static/resources/BasicCallSequence.png" />
+</div>
+<div class="section" id="initialization-and-op-package-registration">
+<h4>Initialization and Op Package Registration<a class="headerlink" href="#initialization-and-op-package-registration" title="Permalink to this heading">¶</a></h4>
+<p>Applications interacting with QNN API need to first create the backend on which to create contexts and graphs. This is
+done using <a class="reference internal" href="../api-rst/function_QnnBackend_8h_1a495313092040347c75894f8f2db97f97.html#exhale-function-qnnbackend-8h-1a495313092040347c75894f8f2db97f97"><span class="std std-ref">QnnBackend_create()</span></a>.</p>
+<p>Native operations supported in the QNN SDK are automatically registered with the backend at the
+time of initialization. If an application wants to use custom op packages, it needs to register
+them manually using <a class="reference internal" href="../api-rst/function_QnnBackend_8h_1a95dd59ad0b59872f3649f7c363c23441.html#exhale-function-qnnbackend-8h-1a95dd59ad0b59872f3649f7c363c23441"><span class="std std-ref">QnnBackend_registerOpPackage()</span></a>.</p>
+</div>
+<div class="section" id="context-and-graph-composition">
+<h4>Context and Graph composition<a class="headerlink" href="#context-and-graph-composition" title="Permalink to this heading">¶</a></h4>
+<p>QNN graphs live in QNN contexts that provide an execution environment for their operations, as
+explained in <a class="reference internal" href="#qnn-api-components-figure"><span class="std std-ref">QNN API Components</span></a>. An application creates a context
+using <a class="reference internal" href="../api-rst/function_QnnContext_8h_1aa261465dd9bdfe51532a9d33fe4a2fa9.html#exhale-function-qnncontext-8h-1aa261465dd9bdfe51532a9d33fe4a2fa9"><span class="std std-ref">QnnContext_createFromBinary()</span></a>.
+Optionally, it can customize the context using the argument
+<a class="reference internal" href="../api-rst/structQnnContext__Config__t.html#exhale-struct-structqnncontext-config-t"><span class="std std-ref">QnnContext_Config_t</span></a>.</p>
+<p>The application then creates an empty graph with desired configuration within the context using
+<a class="reference internal" href="../api-rst/function_QnnGraph_8h_1acef7b5c50463d8b02bb4abd769ae5ea9.html#exhale-function-qnngraph-8h-1acef7b5c50463d8b02bb4abd769ae5ea9"><span class="std std-ref">QnnGraph_create()</span></a>.</p>
+<p>It then starts translating the source framework model into the QNN graph by adding nodes and
+interconnecting them by adding tensors to the graph. QNN tensors that connect these nodes are
+created using QNN APIs in <a class="reference internal" href="../api-rst/file_include_QNN_QnnTensor.h.html#file-include-qnn-qnntensor-h"><span class="std std-ref">QnnTensor.h</span></a>.
+Tensors that connect nodes within a graph are referred to as <em>graph tensors</em>, and can be created
+using <a class="reference internal" href="../api-rst/function_QnnTensor_8h_1acf98aa32e9fc9db88e2250f75c7e21ac.html#exhale-function-qnntensor-8h-1acf98aa32e9fc9db88e2250f75c7e21ac"><span class="std std-ref">QnnTensor_createGraphTensor()</span></a>.
+Tensors that are defined in the scope of a QNN context, and connect different graphs are
+referred to as <em>context tensors</em>, and can be created using
+<a class="reference internal" href="../api-rst/function_QnnTensor_8h_1ae4cb118c85d47fcc5f68dbe4f095cfec.html#exhale-function-qnntensor-8h-1ae4cb118c85d47fcc5f68dbe4f095cfec"><span class="std std-ref">QnnTensor_createContextTensor()</span></a>.
+Input tensors that represent static data such as weights and biases can be created by supplying
+data as part of <a class="reference internal" href="../api-rst/structQnn__Tensor__t.html#exhale-struct-structqnn-tensor-t"><span class="std std-ref">Qnn_Tensor_t</span></a>.</p>
+<p>QNN tensors can be designated to be of different types based on the purpose that they are used in
+an application. Graph input tensors are specified with type QNN_TENSOR_TYPE_APP_WRITE.
+Graph output tensors are specified with type QNN_TENSOR_TYPE_APP_READ. All other intermediate
+tensors in a graph are specified with type QNN_TENSOR_TYPE_NATIVE, and tensors containing static
+data are specified with type QNN_TENSOR_TYPE_STATIC. Context tensors which intend to connect
+two or more graphs are specified with type QNN_TENSOR_TYPE_APP_READWRITE.</p>
+<p>QNN prescribes rules and imposes certain restrictions in using these types when creating different
+types of QNN tensors to safeguard applications from creating them using invalid combinations.
+Refer to <a class="reference internal" href="../api-rst/file_include_QNN_QnnTensor.h.html#file-include-qnn-qnntensor-h"><span class="std std-ref">QnnTensor.h</span></a> for a comprehensive listing of all rules
+as applicable to tensor creation.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>QNN tensors must be created with a name unique in the context. Duplication is not
+permitted and results in undefined behaviour.</p>
+</div>
+<p>Nodes are instances of QNN operations. Each node is created with an operation configuration
+which defines the type and attributes of the operation this node represents. See
+<a class="reference internal" href="../api-rst/structQnn__OpConfig__t.html#exhale-struct-structqnn-opconfig-t"><span class="std std-ref">Qnn_OpConfig_t</span></a> for more details.
+Nodes are added to a graph using
+<a class="reference internal" href="../api-rst/function_QnnGraph_8h_1a1c6363e459cb7092356572f5af1c952b.html#exhale-function-qnngraph-8h-1a1c6363e459cb7092356572f5af1c952b"><span class="std std-ref">QnnGraph_addNode()</span></a>
+which accepts a user argument for such an Op configuration specified by its OpConfig.
+Adding nodes to the QNN graph should be done in the node dependency order.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There are no QNN APIs to <em>remove</em> nodes and tensors registered with a context or graph.</p>
+</div>
+</div>
+<div class="section" id="graph-finalization">
+<h4>Graph Finalization<a class="headerlink" href="#graph-finalization" title="Permalink to this heading">¶</a></h4>
+<p>After all tensors and nodes have been configured and added to the graph the application needs to
+inform QNN composition is complete, and that the graph can be <em>finalized</em> by calling
+<a class="reference internal" href="../api-rst/function_QnnGraph_8h_1addff55c1a315d0141c821f771d622d56.html#exhale-function-qnngraph-8h-1addff55c1a315d0141c821f771d622d56"><span class="std std-ref">QnnGraph_finalize()</span></a>.
+This step allows the backend to perform a series of optimizations such as collapsing
+multiple nodes into single nodes, and produce a highly performant and efficient graph.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This step of finalizing a graph is mandatory to allow applications to run inference cycles.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A finalized graph cannot be modified any further; no new nodes or tensors can be
+added to the graph after this step.</p>
+</div>
+</div>
+<div class="section" id="graph-execution">
+<h4>Graph Execution<a class="headerlink" href="#graph-execution" title="Permalink to this heading">¶</a></h4>
+<p>After having successfully created and finalized a graph the application can now start running
+inference on the backend with the graph execution APIs. Graphs can be executed synchronously
+using <a class="reference internal" href="../api-rst/function_QnnGraph_8h_1a3ea05f42a9295f9a74a2e3a0cdd64228.html#exhale-function-qnngraph-8h-1a3ea05f42a9295f9a74a2e3a0cdd64228"><span class="std std-ref">QnnGraph_execute()</span></a>,
+or asynchronously using
+<a class="reference internal" href="../api-rst/function_QnnGraph_8h_1a690b74571029dd9f36e38cd902c86784.html#exhale-function-qnngraph-8h-1a690b74571029dd9f36e38cd902c86784"><span class="std std-ref">QnnGraph_executeAsync()</span></a>.
+The asynchronous version accepts additional arguments to notify the application when
+execution completes, along with optional notification parameters.</p>
+</div>
+<div class="section" id="termination">
+<h4>Termination<a class="headerlink" href="#termination" title="Permalink to this heading">¶</a></h4>
+<p>An application can tear down contexts it created using
+<a class="reference internal" href="../api-rst/function_QnnContext_8h_1ada3a582e9ab571599958c60665c7a2c8.html#exhale-function-qnncontext-8h-1ada3a582e9ab571599958c60665c7a2c8"><span class="std std-ref">QnnContext_free()</span></a>,
+which in turn destroy any graphs they hold. Subsequently an application can free a
+backend handle with <a class="reference internal" href="../api-rst/function_QnnBackend_8h_1ac50a3953174657f1bc4affb2be9cc3a5.html#exhale-function-qnnbackend-8h-1ac50a3953174657f1bc4affb2be9cc3a5"><span class="std std-ref">QnnBackend_free()</span></a>
+that invalidates all resources and handles associated to the backend handle during
+the course of using contexts and graphs within it.</p>
+</div>
+</div>
+<div class="section" id="context-caching">
+<h3>Context Caching<a class="headerlink" href="#context-caching" title="Permalink to this heading">¶</a></h3>
+<p>The QNN framework allows applications to cache composed graphs and contexts in binary form for
+future use. Among others, one of the reasons an application may choose to do so is to save on the
+time in constructing graphs, thereby reducing network initialization time. A backend may take
+advantage of this approach by allowing applications to compose and cache QNN contexts offline on
+an x86-based desktop machine, and subsequently loading and executing graphs from the cache at
+runtime on the target device.</p>
+<p>The diagram <a class="reference internal" href="#qnn-context-caching-call-flow-figure"><span class="std std-ref">QNN Context Caching Call flow</span></a>
+demonstrates the sequence of calls involved in context caching.</p>
+<p class="centered" id="qnn-context-caching-call-flow-figure">
+<strong><strong>QNN Context Caching Call flow</strong></strong></p><div class="figure align-default">
+<img alt="../_static/resources/ContextCaching.png" src="../_static/resources/ContextCaching.png" />
+</div>
+<p>A QNN context can be cached in binary form and retrieved from the backend with
+<a class="reference internal" href="../api-rst/function_QnnContext_8h_1aa1c220389821ddf1e9d0de46b8fba0f9.html#exhale-function-qnncontext-8h-1aa1c220389821ddf1e9d0de46b8fba0f9"><span class="std std-ref">QnnContext_getBinary()</span></a>.
+The application is expected to allocate sufficient memory to hold the context cache. An estimate
+of the size of the binary can be obtained with
+<a class="reference internal" href="../api-rst/function_QnnContext_8h_1a3e2fe7d890123f7eb2c0ee5b26ccccba.html#exhale-function-qnncontext-8h-1a3e2fe7d890123f7eb2c0ee5b26ccccba"><span class="std std-ref">QnnContext_getBinarySize()</span></a>.
+The description of the contents in the binary buffer is determined by each backend individually,
+and therefore is backend-specific. However, there is additional metadata that describes the
+contents of the binary buffer that can be queried by the user, and is common across all backends.
+It contains among other things, all the information about graphs and input/output tensors to such
+graphs that users can reference later during cache-based graph inference. For full reference,
+look up <a class="reference internal" href="../api-rst/structQnnSystemContext__BinaryInfo__t.html#exhale-struct-structqnnsystemcontext-binaryinfo-t"><span class="std std-ref">QnnSystemContext_BinaryInfo_t</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Tensors are uniquely identified by their IDs. Therefore they remain the same between context caching and
+runtime cache-based inference. Graph input/output tensor IDs may be obtained from a context cache via
+<a class="reference internal" href="../api-rst/structQnnSystemContext__BinaryInfo__t.html#exhale-struct-structqnnsystemcontext-binaryinfo-t"><span class="std std-ref">QnnSystemContext_BinaryInfo_t</span></a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Context caching succeeds only if entities within the context such as graphs if they exist,
+have been properly formed and finalized.</p>
+</div>
+</div>
+<div class="section" id="cache-based-execution">
+<h3>Cache-based execution<a class="headerlink" href="#cache-based-execution" title="Permalink to this heading">¶</a></h3>
+<p>The primary objective of this workflow is to allow an application to skip graph composition by
+loading a pre-composed context from the cached binary produced by the step above.</p>
+<p>The diagram <a class="reference internal" href="#qnn-cache-exec-call-flow-figure"><span class="std std-ref">QNN Cache-based Execution Call flow</span></a>
+demonstrates the sequence of steps to execute graphs loaded from a cached context.</p>
+<p class="centered" id="qnn-cache-exec-call-flow-figure">
+<strong><strong>QNN Cache-based Execution Call flow</strong></strong></p><div class="figure align-default">
+<img alt="../_static/resources/CacheBasedExecution.png" src="../_static/resources/CacheBasedExecution.png" />
+</div>
+<p>An application first loads a context from the cached binary into the QNN backend using
+<a class="reference internal" href="../api-rst/function_QnnContext_8h_1aa261465dd9bdfe51532a9d33fe4a2fa9.html#exhale-function-qnncontext-8h-1aa261465dd9bdfe51532a9d33fe4a2fa9"><span class="std std-ref">QnnContext_createFromBinary()</span></a>.
+The backend returns a context handle that can be used to further
+retrieve a graph constructed within that context using
+<a class="reference internal" href="../api-rst/function_QnnGraph_8h_1a126bc4d0a25a5d47c10c44f95e13ba95.html#exhale-function-qnngraph-8h-1a126bc4d0a25a5d47c10c44f95e13ba95"><span class="std std-ref">QnnGraph_retrieve()</span></a>.
+These graphs are ensured to have been finalized by virtue of having been successfully cached
+in the step above. Once this is done, the application can start forward inference by supplying
+input tensors just as in the basic call flow described above.
+An application can optionally choose to use additional services provided by QNN API to inspect
+the contents of the context binary produced in the step above. This eliminates the requirement
+on applications to cache all context-related metadata themselves during graph preparation.
+These backend-independent services are made available through the so-called <em>QnnSystem</em> API
+exposed through a standalone QnnSystem library. For reference, the API
+<a class="reference internal" href="../api-rst/function_QnnSystemContext_8h_1ac3ac16e68a41c7d8c141402c2ef9bd4e.html#exhale-function-qnnsystemcontext-8h-1ac3ac16e68a41c7d8c141402c2ef9bd4e"><span class="std std-ref">QnnSystemContext_getBinaryInfo()</span></a>
+in the diagram above provides context binary info when presented with a serialized binary buffer.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Custom op packages registered with a backend do not get cached along with any contexts.
+They have to be manually registered during the cache retrieval sequence using
+<a class="reference internal" href="../api-rst/function_QnnBackend_8h_1a95dd59ad0b59872f3649f7c363c23441.html#exhale-function-qnnbackend-8h-1a95dd59ad0b59872f3649f7c363c23441"><span class="std std-ref">QnnBackend_registerOpPackage()</span></a>.</p>
+</div>
+<p>The application terminates the constructed context using
+<a class="reference internal" href="../api-rst/function_QnnContext_8h_1ada3a582e9ab571599958c60665c7a2c8.html#exhale-function-qnncontext-8h-1ada3a582e9ab571599958c60665c7a2c8"><span class="std std-ref">QnnContext_free()</span></a> as before.</p>
+</div>
+</div>
+<div class="section" id="backend-api-specialization">
+<h2>Backend API Specialization<a class="headerlink" href="#backend-api-specialization" title="Permalink to this heading">¶</a></h2>
+<p>Some QNN API components provide means for backend specialization through opaque objects for which
+structure definition needs to be provided by the backend.
+The <a class="reference internal" href="#qnn-api-components-table"><span class="std std-ref">QNN API Components Summary Table</span></a> indicates API components
+which provide backend specialization capability.</p>
+<p>API specialization is optional, and is subject to the needs and discretion of a backend.
+Backends publish their specialized headers at <code class="docutils literal notranslate"><span class="pre">&lt;QNN_SDK_ROOT&gt;/include/QNN/&lt;Backend&gt;/</span></code>
+using the following convention:</p>
+<ul class="simple">
+<li><p>Headers are named as <code class="docutils literal notranslate"><span class="pre">Qnn&lt;Backend&gt;&lt;ApiComponent&gt;.h</span></code></p>
+<ul>
+<li><p>For example, <code class="docutils literal notranslate"><span class="pre">QnnCpuOpPackage.h</span></code> is CPU backend’s specialization of <code class="docutils literal notranslate"><span class="pre">QnnOpPackage.h</span></code> header,
+and can be found in <code class="docutils literal notranslate"><span class="pre">&lt;QNN_SDK_ROOT&gt;/include/QNN/CPU/</span></code> folder.</p></li>
+</ul>
+</li>
+<li><p>Each backend-specialized header includes base API component headers as required. For example,</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">QnnCpuOpPackage.h</span></code> will <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;QnnOpPackage.h&quot;</span></code></p></li>
+</ul>
+</li>
+<li><p>Clients should include specialized headers with &lt;Backend&gt; in the path</p>
+<ul>
+<li><p>For example, <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;CPU/QnnCpuOpPackage.h&quot;</span></code></p></li>
+</ul>
+</li>
+<li><p>Clients are responsible to ensure casting the correct backend-specific type into API
+specialization interface. For example, to specify a custom graph config for the DSP backend,
+a client must cast the data structure
+<a class="reference internal" href="../api-rst/structQnnDspGraph__CustomConfig__t.html#exhale-struct-structqnndspgraph-customconfig-t"><span class="std std-ref">QnnDspGraph_CustomConfig_t</span></a>
+defined in  <a class="reference internal" href="../api-rst/file_include_QNN_DSP_QnnDspGraph.h.html#file-include-qnn-dsp-qnndspgraph-h"><span class="std std-ref">DSP/QnnDspGraph.h</span></a> into the generic
+<code class="docutils literal notranslate"><span class="pre">QnnGraph_CustomConfig_t</span></code> used in
+<a class="reference internal" href="../api-rst/structQnnGraph__Config__t.html#exhale-struct-structqnngraph-config-t"><span class="std std-ref">QnnGraph_Config_t</span></a> as part of
+<a class="reference internal" href="../api-rst/function_QnnGraph_8h_1acef7b5c50463d8b02bb4abd769ae5ea9.html#exhale-function-qnngraph-8h-1acef7b5c50463d8b02bb4abd769ae5ea9"><span class="std std-ref">QnnGraph_create()</span></a>.</p></li>
+</ul>
+<p>Current versions of backend specific APIs are found at the following locations:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../api-rst/program_listing_file_include_QNN_CPU_QnnCpuCommon.h.html#program-listing-file-include-qnn-cpu-qnncpucommon-h"><span class="std std-ref">QnnCpuCommon.h</span></a></p></li>
+<li><p><a class="reference internal" href="../api-rst/program_listing_file_include_QNN_GPU_QnnGpuCommon.h.html#program-listing-file-include-qnn-gpu-qnngpucommon-h"><span class="std std-ref">QnnGpuCommon.h</span></a></p></li>
+<li><p><a class="reference internal" href="../api-rst/program_listing_file_include_QNN_DSP_QnnDspCommon.h.html#program-listing-file-include-qnn-dsp-qnndspcommon-h"><span class="std std-ref">QnnDspCommon.h</span></a></p></li>
+<li><p><a class="reference internal" href="../api-rst/program_listing_file_include_QNN_HTP_QnnHtpCommon.h.html#program-listing-file-include-qnn-htp-qnnhtpcommon-h"><span class="std std-ref">QnnHtpCommon.h</span></a></p></li>
+<li><p><a class="reference internal" href="../api-rst/program_listing_file_include_QNN_HTA_QnnHtaCommon.h.html#program-listing-file-include-qnn-hta-qnnhtacommon-h"><span class="std std-ref">QnnHtaCommon.h</span></a></p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="api_usage_guidelines.html" class="btn btn-neutral float-right" title="Usage Guidelines" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="api.html" class="btn btn-neutral float-left" title="API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

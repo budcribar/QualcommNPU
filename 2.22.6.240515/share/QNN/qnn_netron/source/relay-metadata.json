@@ -1,0 +1,2446 @@
+[
+    {
+        "type": "nn.conv1d",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" },
+            { "name": "weight" }
+        ],
+        "attrs": {
+            "strides": { "type": ["expr"] },
+            "padding": { "type": ["expr"] },
+            "dilation": { "type": ["expr"] },
+            "groups": { "type": "int" },
+            "channels": { "type": "expr" },
+            "kernel_size": { "type": ["expr"] },
+            "data_layout": { "type": "string" },
+            "kernel_layout": { "type": "string" },
+            "out_layout": { "type": "string" },
+            "out_dtype": { "type": "datatype" }
+        }
+    },
+    {
+        "type": "nn.conv2d",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" },
+            { "name": "weight" }
+        ],
+        "attrs": {
+            "strides": { "type": ["expr"] },
+            "padding": { "type": ["expr"] },
+            "dilation": { "type": ["expr"] },
+            "groups": { "type": "int" },
+            "channels": { "type": "expr" },
+            "kernel_size": { "type": ["expr"] },
+            "data_layout": { "type": "expr" },
+            "kernel_layout": { "type": "expr" },
+            "out_layout": { "type": "expr" },
+            "out_dtype": { "type": "datatype" }
+        }
+    },
+    {
+        "type": "nn.conv3d",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" },
+            { "name": "weight" }
+        ],
+        "attrs": {
+            "strides": { "type": ["expr"] },
+            "padding": { "type": ["expr"] },
+            "dilation": { "type": ["expr"] },
+            "groups": { "type": "int" },
+            "channels": { "type": "expr" },
+            "kernel_size": { "type": ["expr"] },
+            "data_layout": { "type": "expr" },
+            "kernel_layout": { "type": "expr" },
+            "out_layout": { "type": "expr" },
+            "out_dtype": { "type": "datatype" }
+        }
+    },
+    {
+        "type": "nn.conv3d_transpose",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" },
+            { "name": "weight" }
+        ],
+        "attrs": {
+            "channels": { "type": "expr" },
+            "kernel_size": { "type": ["expr"] },
+            "strides": { "type": ["expr"] },
+            "padding": { "type": ["expr"] },
+            "output_padding": { "type": ["expr"] },
+            "dilation": { "type": ["expr"] },
+            "groups": { "type": "int" },
+            "data_layout": { "type": "string" },
+            "kernel_layout": { "type": "string" },
+            "out_layout": { "type": "string" },
+            "out_dtype": { "type": "datatype" }
+        }
+    },
+    {
+        "type": "nn.conv2d_transpose",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" },
+            { "name": "weight" }
+        ],
+        "attrs": {
+            "channels": { "type": "expr" },
+            "kernel_size": { "type": ["expr"] },
+            "strides": { "type": ["expr"] },
+            "padding": { "type": ["expr"] },
+            "output_padding": { "type": ["expr"] },
+            "dilation": { "type": ["expr"] },
+            "groups": { "type": "int" },
+            "data_layout": { "type": "string" },
+            "kernel_layout": { "type": "string" },
+            "out_layout": { "type": "string" },
+            "out_dtype": { "type": "datatype" }
+        }
+    },
+    {
+        "type": "nn.conv1d_transpose",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" },
+            { "name": "weight" }
+        ],
+        "attrs": {
+            "channels": { "type": "expr" },
+            "kernel_size": { "type": ["expr"] },
+            "strides": { "type": ["expr"] },
+            "padding": { "type": ["expr"] },
+            "output_padding": { "type": ["expr"] },
+            "dilation": { "type": ["expr"] },
+            "groups": { "type": "int" },
+            "data_layout": { "type": "string" },
+            "kernel_layout": { "type": "string" },
+            "out_layout": { "type": "string" },
+            "out_dtype": { "type": "datatype" }
+        }
+    },
+    {
+        "type": "nn.contrib_conv2d_winograd_without_weight_transform",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" },
+            { "name": "weight" }
+        ],
+        "attrs": {
+            "tile_size": { "type": "int" },
+            "strides": { "type": ["expr"] },
+            "padding": { "type": ["expr"] },
+            "dilation": { "type": ["expr"] },
+            "groups": { "type": "int" },
+            "channels": { "type": "expr" },
+            "kernel_size": { "type": ["expr"] },
+            "data_layout": { "type": "expr" },
+            "kernel_layout": { "type": "expr" },
+            "out_layout": { "type": "expr" },
+            "out_dtype": { "type": "datatype" }
+        }
+    },
+    {
+        "type": "nn.contrib_conv2d_winograd_weight_transform",
+        "category": "Layer",
+        "inputs": [
+            { "name": "weight" }
+        ],
+        "attrs": {
+            "tile_size": { "type": "int" }
+        }
+    },
+    {
+        "type": "nn.contrib_conv3d_winograd_without_weight_transform",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" },
+            { "name": "weight" }
+        ],
+        "attrs": {
+            "tile_size": { "type": "int" },
+            "strides": { "type": ["expr"] },
+            "padding": { "type": ["expr"] },
+            "dilation": { "type": ["expr"] },
+            "groups": { "type": "int" },
+            "channels": { "type": "expr" },
+            "kernel_size": { "type": ["expr"] },
+            "data_layout": { "type": "string" },
+            "kernel_layout": { "type": "string" },
+            "out_layout": { "type": "string" },
+            "out_dtype": { "type": "datatype" }
+        }
+    },
+    {
+        "type": "nn.contrib_conv3d_winograd_weight_transform",
+        "category": "Layer",
+        "inputs": [
+            { "name": "weight" }
+        ],
+        "attrs": {
+            "tile_size": { "type": "int" }
+        }
+    },
+    {
+        "type": "nn.contrib_conv2d_winograd_nnpack_weight_transform",
+        "category": "Layer",
+        "inputs": [
+            { "name": "weight" }
+        ],
+        "attrs": {
+            "convolution_algorithm": { "type": "int" },
+            "out_dtype": { "type": "datatype" }
+        }
+    },
+    {
+        "type": "nn.contrib_conv2d_gemm_without_weight_transform",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" },
+            { "name": "weight" }
+        ],
+        "attrs": {
+            "strides": { "type": ["expr"] },
+            "padding": { "type": ["expr"] },
+            "dilation": { "type": ["expr"] },
+            "groups": { "type": "int" },
+            "channels": { "type": "expr" },
+            "kernel_size": { "type": ["expr"] },
+            "data_layout": { "type": "expr" },
+            "kernel_layout": { "type": "expr" },
+            "out_layout": { "type": "expr" },
+            "out_dtype": { "type": "datatype" }
+        }
+    },
+    {
+        "type": "nn.contrib_conv2d_gemm_weight_transform",
+        "category": "Layer",
+        "inputs": [
+            { "name": "weight" }
+        ],
+        "attrs": {
+            "tile_rows": { "type": "int" },
+            "tile_cols": { "type": "int" }
+        }
+    },
+    {
+        "type": "nn.contrib_conv2d_NCHWc",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" },
+            { "name": "weight" }
+        ],
+        "attrs": {
+            "strides": { "type": ["expr"] },
+            "padding": { "type": ["expr"] },
+            "dilation": { "type": ["expr"] },
+            "groups": { "type": "int" },
+            "channels": { "type": "expr" },
+            "kernel_size": { "type": ["expr"] },
+            "data_layout": { "type": "expr" },
+            "kernel_layout": { "type": "expr" },
+            "out_layout": { "type": "expr" },
+            "out_dtype": { "type": "datatype" }
+        }
+    },
+    {
+        "type": "nn.contrib_depthwise_conv2d_NCHWc",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" },
+            { "name": "weight" }
+        ],
+        "attrs": {
+            "strides": { "type": ["expr"] },
+            "padding": { "type": ["expr"] },
+            "dilation": { "type": ["expr"] },
+            "groups": { "type": "int" },
+            "channels": { "type": "expr" },
+            "kernel_size": { "type": ["expr"] },
+            "data_layout": { "type": "expr" },
+            "kernel_layout": { "type": "expr" },
+            "out_layout": { "type": "expr" },
+            "out_dtype": { "type": "datatype" }
+        }
+    },
+    {
+        "type": "nn.deformable_conv2d",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" },
+            { "name": "offset" },
+            { "name": "weight" }
+        ],
+        "attrs": {
+            "strides": { "type": ["expr"] },
+            "padding": { "type": ["expr"] },
+            "dilation": { "type": ["expr"] },
+            "deformable_groups": { "type": "int" },
+            "groups": { "type": "int" },
+            "channels": { "type": "expr" },
+            "kernel_size": { "type": ["expr"] },
+            "data_layout": { "type": "string" },
+            "kernel_layout": { "type": "string" },
+            "out_layout": { "type": "string" },
+            "out_dtype": { "type": "datatype" }
+        }
+    },
+    {
+        "type": "nn.bitpack",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "bits": { "type": "int" },
+            "pack_axis": { "type": "int" },
+            "bit_axis": { "type": "int" },
+            "pack_type": { "type": "datatype" },
+            "name": { "type": "string" }
+        }
+    },
+    {
+        "type": "nn.bitserial_conv2d",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" },
+            { "name": "weight" }
+        ],
+        "attrs": {
+            "strides": { "type": ["expr"] },
+            "padding": { "type": ["expr"] },
+            "channels": { "type": "expr" },
+            "kernel_size": { "type": ["expr"] },
+            "activation_bits": { "type": "int" },
+            "weight_bits": { "type": "int" },
+            "data_layout": { "type": "string" },
+            "kernel_layout": { "type": "string" },
+            "pack_dtype": { "type": "datatype" },
+            "out_dtype": { "type": "datatype" },
+            "unipolar": { "type": "bool" }
+        }
+    },
+    {
+        "type": "nn.bitserial_dense",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" },
+            { "name": "weight" }
+        ],
+        "attrs": {
+            "units": { "type": "expr" },
+            "data_bits": { "type": "int" },
+            "weight_bits": { "type": "int" },
+            "pack_dtype": { "type": "datatype" },
+            "out_dtype": { "type": "datatype" },
+            "unipolar": { "type": "bool" }
+        }
+    },
+    {
+        "type": "relay.TupleGetItem",
+        "category": "Control",
+        "inputs": [
+            { "name": "tuple_value" }
+        ],
+        "attrs": {
+            "index": { "type": "int" }
+        }
+    },
+    {
+        "type": "relay.Tuple",
+        "category": "Wrapper",
+        "inputs": [
+            { "name": "fields" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "nn.max_pool2d",
+        "category": "Pool",
+        "inputs": [ { "name": "data" } ],
+        "attrs": {
+            "pool_size": { "type": ["expr"] },
+            "strides": { "type": ["expr"] },
+            "padding": { "type": ["expr"] },
+            "dilation": { "type": ["expr"] },
+            "layout": { "type": "expr" },
+            "ceil_mode": { "type": "bool" }
+        }
+    },
+    {
+        "type": "nn.avg_pool2d",
+        "category": "Pool",
+        "inputs": [ { "name": "data" } ],
+        "attrs": {
+            "pool_size": { "type": ["expr"] },
+            "strides": { "type": ["expr"] },
+            "padding": { "type": ["expr"] },
+            "dilation": { "type": ["expr"] },
+            "layout": { "type": "expr" },
+            "ceil_mode": { "type": "bool" },
+            "count_include_pad": { "type": "bool" }
+        }
+    },
+    {
+        "type": "nn.global_avg_pool2d",
+        "category": "Pool",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "layout": { "type": "expr" }
+        }
+    },
+    {
+        "type": "nn.global_max_pool2d",
+        "category": "Pool",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "layout": { "type": "expr" }
+        }
+    },
+    {
+        "type": "nn.adaptive_avg_pool1d",
+        "category": "Pool",
+        "inputs": [ { "name": "data" } ],
+        "attrs": {
+            "output_size": { "type": ["expr"] },
+            "layout": { "type": "string" }
+        }
+    },
+    {
+        "type": "nn.adaptive_max_pool1d",
+        "category": "Pool",
+        "inputs": [ { "name": "data" } ],
+        "attrs": {
+            "output_size": { "type": ["expr"] },
+            "layout": { "type": "string" }
+        }
+    },
+    {
+        "type": "nn.adaptive_avg_pool2d",
+        "category": "Pool",
+        "inputs": [ { "name": "data" } ],
+        "attrs": {
+            "output_size": { "type": ["expr"] },
+            "layout": { "type": "string" }
+        }
+    },
+    {
+        "type": "nn.adaptive_max_pool2d",
+        "category": "Pool",
+        "inputs": [ { "name": "data" } ],
+        "attrs": {
+            "output_size": { "type": ["expr"] },
+            "layout": { "type": "string" }
+        }
+    },
+    {
+        "type": "nn.adaptive_max_pool3d",
+        "category": "Pool",
+        "inputs": [ { "name": "data" } ],
+        "attrs": {
+            "output_size": { "type": ["expr"] },
+            "layout": { "type": "string" }
+        }
+    },
+    {
+        "type": "nn.adaptive_avg_pool3d",
+        "category": "Pool",
+        "inputs": [ { "name": "data" } ],
+        "attrs": {
+            "output_size": { "type": ["expr"] },
+            "layout": { "type": "string" }
+        }
+    },
+    {
+        "type": "nn.max_pool2d_grad",
+        "category": "Pool",
+        "inputs": [
+            { "name": "data" },
+            { "name": "grad" }
+        ],
+        "attrs": {
+            "pool_size": { "type": ["expr"] },
+            "strides": { "type": ["expr"] },
+            "padding": { "type": ["expr"] },
+            "dilation": { "type": ["expr"] },
+            "layout": { "type": "expr" },
+            "ceil_mode": { "type": "bool" }
+        }
+    },
+    {
+        "type": "nn.avg_pool2d_grad",
+        "category": "Pool",
+        "inputs": [
+            { "name": "data" },
+            { "name": "grad" }
+        ],
+        "attrs": {
+            "pool_size": { "type": ["expr"] },
+            "strides": { "type": ["expr"] },
+            "padding": { "type": ["expr"] },
+            "dilation": { "type": ["expr"] },
+            "layout": { "type": "expr" },
+            "ceil_mode": { "type": "bool" }
+        }
+    },
+    {
+        "type": "nn.max_pool1d",
+        "category": "Pool",
+        "inputs": [ { "name": "data" } ],
+        "attrs": {
+            "pool_size": { "type": ["expr"] },
+            "strides": { "type": ["expr"] },
+            "padding": { "type": ["expr"] },
+            "dilation": { "type": ["expr"] },
+            "layout": { "type": "string" },
+            "ceil_mode": { "type": "bool" }
+        }
+    },
+    {
+        "type": "nn.avg_pool1d",
+        "category": "Pool",
+        "inputs": [ { "name": "data" } ],
+        "attrs": {
+            "pool_size": { "type": ["expr"] },
+            "strides": { "type": ["expr"] },
+            "padding": { "type": ["expr"] },
+            "dilation": { "type": ["expr"] },
+            "layout": { "type": "string" },
+            "ceil_mode": { "type": "bool" },
+            "count_include_pad": { "type": "bool" }
+        }
+    },
+    {
+        "type": "nn.max_pool3d",
+        "category": "Pool",
+        "inputs": [ { "name": "data" } ],
+        "attrs": {
+            "pool_size": { "type": ["expr"] },
+            "strides": { "type": ["expr"] },
+            "padding": { "type": ["expr"] },
+            "dilation": { "type": ["expr"] },
+            "layout": { "type": "string" },
+            "ceil_mode": { "type": "bool" }
+        }
+    },
+    {
+        "type": "nn.avg_pool3d",
+        "category": "Pool",
+        "inputs": [ { "name": "data" } ],
+        "attrs": {
+            "pool_size": { "type": ["expr"] },
+            "strides": { "type": ["expr"] },
+            "padding": { "type": ["expr"] },
+            "dilation": { "type": ["expr"] },
+            "layout": { "type": "string" },
+            "ceil_mode": { "type": "bool" },
+            "count_include_pad": { "type": "bool" }
+        }
+    },
+    {
+        "type": "log",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "log2",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "log10",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "tan",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "cos",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "cosh",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "sin",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "sinh",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "acos",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "acosh",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "asin",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "asinh",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "atan",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "atanh",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "exp",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "fast_exp",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "erf",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "fast_erf",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "sqrt",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "rsqrt",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "zeros_like",
+        "category": "Tensor",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "ones_like",
+        "category": "Tensor",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "sigmoid",
+        "category": "Tensor",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "copy",
+        "category": "Data",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "clip",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "a_min": { "type": "double" },
+            "a_max": { "type": "double" }
+        }
+    },
+    {
+        "type": "floor",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "ceil",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "trunc",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "round",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "sign",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "abs",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "tanh",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "fast_tanh",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "negative",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "logical_not",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "bitwise_not",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "shape_of",
+        "category": "Control",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "dtype": { "type": "datatype" }
+        }
+    },
+    {
+        "type": "ndarray_size",
+        "category": "Control",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "dtype": { "type": "datatype" }
+        }
+    },
+    {
+        "type": "isnan",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "isfinite",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "isinf",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "add",
+        "category": "Layer",
+        "inputs": [
+            { "name": "lhs" },
+            { "name": "rhs" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "subtract",
+        "category": "Layer",
+        "inputs": [
+            { "name": "lhs" },
+            { "name": "rhs" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "right_shift",
+        "category": "Layer",
+        "inputs": [
+            { "name": "lhs" },
+            { "name": "rhs" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "left_shift",
+        "category": "Layer",
+        "inputs": [
+            { "name": "lhs" },
+            { "name": "rhs" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "maximum",
+        "category": "Layer",
+        "inputs": [
+            { "name": "lhs" },
+            { "name": "rhs" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "minimum",
+        "category": "Layer",
+        "inputs": [
+            { "name": "lhs" },
+            { "name": "rhs" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "divide",
+        "category": "Layer",
+        "inputs": [
+            { "name": "lhs" },
+            { "name": "rhs" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "floor_divide",
+        "category": "Layer",
+        "inputs": [
+            { "name": "lhs" },
+            { "name": "rhs" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "multiply",
+        "category": "Layer",
+        "inputs": [
+            { "name": "lhs" },
+            { "name": "rhs" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "power",
+        "category": "Layer",
+        "inputs": [
+            { "name": "lhs" },
+            { "name": "rhs" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "mod",
+        "category": "Layer",
+        "inputs": [
+            { "name": "lhs" },
+            { "name": "rhs" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "floor_mod",
+        "category": "Layer",
+        "inputs": [
+            { "name": "lhs" },
+            { "name": "rhs" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "logical_and",
+        "category": "Layer",
+        "inputs": [
+            { "name": "lhs" },
+            { "name": "rhs" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "logical_or",
+        "category": "Layer",
+        "inputs": [
+            { "name": "lhs" },
+            { "name": "rhs" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "logical_xor",
+        "category": "Layer",
+        "inputs": [
+            { "name": "lhs" },
+            { "name": "rhs" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "bitwise_and",
+        "category": "Layer",
+        "inputs": [
+            { "name": "lhs" },
+            { "name": "rhs" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "bitwise_or",
+        "category": "Layer",
+        "inputs": [
+            { "name": "lhs" },
+            { "name": "rhs" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "bitwise_xor",
+        "category": "Layer",
+        "inputs": [
+            { "name": "lhs" },
+            { "name": "rhs" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "equal",
+        "category": "Layer",
+        "inputs": [
+            { "name": "lhs" },
+            { "name": "rhs" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "not_equal",
+        "category": "Layer",
+        "inputs": [
+            { "name": "lhs" },
+            { "name": "rhs" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "less",
+        "category": "Layer",
+        "inputs": [
+            { "name": "lhs" },
+            { "name": "rhs" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "less_equal",
+        "category": "Layer",
+        "inputs": [
+            { "name": "lhs" },
+            { "name": "rhs" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "greater",
+        "category": "Layer",
+        "inputs": [
+            { "name": "lhs" },
+            { "name": "rhs" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "greater_equal",
+        "category": "Layer",
+        "inputs": [
+            { "name": "lhs" },
+            { "name": "rhs" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "nn.bias_add",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" },
+            { "name": "bias" }
+        ],
+        "attrs": {
+            "axis": { "type": "int" }
+        }
+    },
+    {
+        "type": "nn.fifo_buffer",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" },
+            { "name": "buffer" }
+        ],
+        "attrs": {
+            "axis": { "type": "int" }
+        }
+    },
+    {
+        "type": "nn.matmul",
+        "category": "Layer",
+        "inputs": [
+            { "name": "tensor_a" },
+            { "name": "tensor_b" }
+        ],
+        "attrs": {
+            "units": { "type": "expr" },
+            "out_dtype": { "type": "datatype" },
+            "transpose_a": { "type": "bool" },
+            "transpose_b": { "type": "bool" }
+        }
+    },
+    {
+        "type": "nn.dense",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" },
+            { "name": "weight" }
+        ],
+        "attrs": {
+            "units": { "type": "expr" },
+            "out_dtype": { "type": "datatype" }
+        }
+    },
+    {
+        "type": "nn.leaky_relu",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "alpha": { "type": "double" }
+        }
+    },
+    {
+        "type": "nn.prelu",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" },
+            { "name": "alpha" }
+        ],
+        "attrs": {
+            "axis": { "type": "int" }
+        }
+    },
+    {
+        "type": "nn.softmax",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "axis": { "type": "int" }
+        }
+    },
+    {
+        "type": "nn.fast_softmax",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "axis": { "type": "int" }
+        }
+    },
+    {
+        "type": "nn.log_softmax",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "axis": { "type": "int" }
+        }
+    },
+    {
+        "type": "nn.batch_flatten",
+        "category": "Transform",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "nn.relu",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "nn.lrn",
+        "category": "Activation",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "size": { "type": "int" },
+            "axis": { "type": "int" },
+            "bias": { "type": "double" },
+            "alpha": { "type": "double" },
+            "beta": { "type": "double" }
+        }
+    },
+    {
+        "type": "nn.l2_normalize",
+        "category": "Normalization",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "eps": { "type": "double" },
+            "axis": { "type": ["expr"] }
+        }
+    },
+    {
+        "type": "nn.dropout",
+        "category": "Dropout",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "rate": { "type": "double" }
+        }
+    },
+    {
+        "type": "nn.batch_norm",
+        "category": "Normalization",
+        "inputs": [
+            { "name": "data" },
+            { "name": "beta" },
+            { "name": "gamma" },
+            { "name": "moving_mean" },
+            { "name": "moving_var" }
+        ],
+        "attrs": {
+            "axis": { "type": "int" },
+            "epsilon": { "type": "double" },
+            "center": { "type": "bool" },
+            "scale": { "type": "bool" }
+        }
+    },
+    {
+        "type": "nn.instance_norm",
+        "category": "Normalization",
+        "inputs": [
+            { "name": "data" },
+            { "name": "gamma" },
+            { "name": "beta" }
+        ],
+        "attrs": {
+            "axis": { "type": "int" },
+            "epsilon": { "type": "double" },
+            "center": { "type": "bool" },
+            "scale": { "type": "bool" }
+        }
+    },
+    {
+        "type": "nn.layer_norm",
+        "category": "Normalization",
+        "inputs": [
+            { "name": "data" },
+            { "name": "gamma" },
+            { "name": "beta" }
+        ],
+        "attrs": {
+            "axis": { "type": "int" },
+            "epsilon": { "type": "double" },
+            "center": { "type": "bool" },
+            "scale": { "type": "bool" }
+        }
+    },
+    {
+        "type": "nn.group_norm",
+        "category": "Normalization",
+        "inputs": [
+            { "name": "data" },
+            { "name": "gamma" },
+            { "name": "beta" }
+        ],
+        "attrs": {
+            "num_groups": { "type": "int" },
+            "axis": { "type": "int" },
+            "epsilon": { "type": "double" },
+            "center": { "type": "bool" },
+            "scale": { "type": "bool" }
+        }
+    },
+    {
+        "type": "nn.batch_matmul",
+        "category": "Layer",
+        "inputs": [
+            { "name": "tensor_a" },
+            { "name": "tensor_b" }
+        ],
+        "attrs": {
+            "out_dtype": { "type": "datatype" },
+            "transpose_a": { "type": "bool" },
+            "transpose_b": { "type": "bool" }
+        }
+    },
+    {
+        "type": "nn.cross_entropy",
+        "category": "Activation",
+        "inputs": [
+            { "name": "x" },
+            { "name": "y" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "nn.dilate",
+        "category": "Transform",
+        "inputs": [
+            { "name": "x" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "nn.cross_entropy_with_logits",
+        "category": "Activation",
+        "inputs": [
+            { "name": "x" },
+            { "name": "y" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "nn.nll_loss",
+        "category": "Activation",
+        "inputs": [
+            { "name": "predictions" },
+            { "name": "targets" },
+            { "name": "weights" }
+        ],
+        "attrs": {
+            "reduction": { "type": "string" },
+            "ignore_index": { "type": "int" }
+        }
+    },
+    {
+        "type": "nn.depth_to_space",
+        "category": "Transform",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "block_size": { "type": "int" },
+            "layout": { "type": "string" },
+            "mode": { "type": "string" }
+        }
+    },
+    {
+        "type": "nn.space_to_depth",
+        "category": "Transform",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "block_size": { "type": "int" },
+            "layout": { "type": "string" },
+            "mode": { "type": "string" }
+        }
+    },
+    {
+        "type": "nn.space_to_batch_nd",
+        "category": "Transform",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "block_shape": { "type": ["expr"] },
+            "paddings": { "type": [["expr"]] },
+            "pad_value": { "type": "double" }
+        }
+    },
+    {
+        "type": "nn.batch_to_space_nd",
+        "category": "Transform",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "block_shape": { "type": ["expr"] },
+            "crops": { "type": [["expr"]] }
+        }
+    },
+    {
+        "type": "nn.correlation",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data1" },
+            { "name": "data2" }
+        ],
+        "attrs": {
+            "kernel_size": { "type": "int" },
+            "max_displacement": { "type": "int" },
+            "stride1": { "type": "int" },
+            "stride2": { "type": "int" },
+            "padding": { "type": ["expr"] },
+            "is_multiply": { "type": "bool" },
+            "layout": { "type": "expr" }
+        }
+    },
+    {
+        "type": "image.resize1d",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "size": { "type": ["expr"] },
+            "layout": { "type": "string" },
+            "method": { "type": "string" },
+            "coordinate_transformation_mode": { "type": "string" },
+            "rounding_method": { "type": "string" },
+            "cubic_alpha": { "type": "double" },
+            "cubic_exclude": { "type": "int" },
+            "out_dtype": { "type": "datatype" }
+        }
+    },
+    {
+        "type": "image.resize2d",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "size": { "type": ["expr"] },
+            "layout": { "type": "string" },
+            "method": { "type": "string" },
+            "coordinate_transformation_mode": { "type": "string" },
+            "rounding_method": { "type": "string" },
+            "cubic_alpha": { "type": "double" },
+            "cubic_exclude": { "type": "int" },
+            "out_dtype": { "type": "datatype" }
+        }
+    },
+    {
+        "type": "image.resize3d",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "size": { "type": ["expr"] },
+            "layout": { "type": "string" },
+            "method": { "type": "string" },
+            "coordinate_transformation_mode": { "type": "string" },
+            "rounding_method": { "type": "string" },
+            "cubic_alpha": { "type": "double" },
+            "cubic_exclude": { "type": "int" },
+            "out_dtype": { "type": "datatype" }
+        }
+    },
+    {
+        "type": "image.crop_and_resize",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" },
+            { "name": "boxes" },
+            { "name": "box_indices" }
+        ],
+        "attrs": {
+            "crop_size": { "type": ["expr"] },
+            "layout": { "type": "string" },
+            "method": { "type": "string" },
+            "extrapolation_value": { "type": "double" },
+            "out_dtype": { "type": "datatype" }
+        }
+    },
+    {
+        "type": "image.dilation2d",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" },
+            { "name": "weight" }
+        ],
+        "attrs": {
+            "strides": { "type": ["expr"] },
+            "padding": { "type": ["expr"] },
+            "dilations": { "type": ["expr"] },
+            "data_layout": { "type": "string" },
+            "kernel_layout": { "type": "string" },
+            "out_dtype": { "type": "datatype" }
+        }
+    },
+    {
+        "type": "image.affine_grid",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "target_shape": { "type": ["expr"] }
+        }
+    },
+    {
+        "type": "image.grid_sample",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" },
+            { "name": "grid" }
+        ],
+        "attrs": {
+            "method": { "type": "expr" },
+            "layout": { "type": "expr" }
+        }
+    },
+    {
+        "type": "qnn.add",
+        "category": "Layer",
+        "inputs": [
+            { "name": "lhs" },
+            { "name": "rhs" },
+            { "name": "lhs_scale" },
+            { "name": "lhs_zero_point" },
+            { "name": "rhs_scale" },
+            { "name": "rhs_zero_point" },
+            { "name": "output_scale" },
+            { "name": "output_zero_point" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "qnn.mul",
+        "category": "Layer",
+        "inputs": [
+            { "name": "lhs" },
+            { "name": "rhs" },
+            { "name": "lhs_scale" },
+            { "name": "lhs_zero_point" },
+            { "name": "rhs_scale" },
+            { "name": "rhs_zero_point" },
+            { "name": "output_scale" },
+            { "name": "output_zero_point" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "qnn.subtract",
+        "category": "Layer",
+        "inputs": [
+            { "name": "lhs" },
+            { "name": "rhs" },
+            { "name": "lhs_scale" },
+            { "name": "lhs_zero_point" },
+            { "name": "rhs_scale" },
+            { "name": "rhs_zero_point" },
+            { "name": "output_scale" },
+            { "name": "output_zero_point" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "qnn.batch_matmul",
+        "category": "Layer",
+        "inputs": [
+            { "name": "x" },
+            { "name": "y" },
+            { "name": "x_scale" },
+            { "name": "x_zero_point" },
+            { "name": "y_scale" },
+            { "name": "y_zero_point" }
+        ],
+        "attrs": {
+            "out_dtype": { "type": "datatype" },
+            "transpose_a": { "type": "bool" },
+            "transpose_b": { "type": "bool" }
+        }
+    },
+    {
+        "type": "qnn.concatenate",
+        "category": "Shape",
+        "inputs": [
+            { "name": "data" },
+            { "name": "input_scales" },
+            { "name": "input_zero_points" },
+            { "name": "output_scale" },
+            { "name": "output_zero_point" }
+        ],
+        "attrs": {
+            "axis": { "type": "int" }
+        }
+    },
+    {
+        "type": "qnn.conv2d_transpose",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" },
+            { "name": "weight" },
+            { "name": "input_scale" },
+            { "name": "input_zero_point" },
+            { "name": "weight_scale" },
+            { "name": "weight_zero_point" }
+        ],
+        "attrs": {
+            "channels": { "type": "expr" },
+            "kernel_size": { "type": ["expr"] },
+            "strides": { "type": ["expr"] },
+            "padding": { "type": ["expr"] },
+            "output_padding": { "type": ["expr"] },
+            "dilation": { "type": ["expr"] },
+            "groups": { "type": "int" },
+            "data_layout": { "type": "string" },
+            "kernel_layout": { "type": "string" },
+            "out_layout": { "type": "string" },
+            "out_dtype": { "type": "datatype" }
+        }
+    },
+    {
+        "type": "qnn.conv2d",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" },
+            { "name": "weight" },
+            { "name": "input_scale" },
+            { "name": "input_zero_point" },
+            { "name": "weight_scale" },
+            { "name": "weight_zero_point" }
+        ],
+        "attrs": {
+            "strides": { "type": ["expr"] },
+            "padding": { "type": ["expr"] },
+            "dilation": { "type": ["expr"] },
+            "groups": { "type": "int" },
+            "channels": { "type": "expr" },
+            "kernel_size": { "type": ["expr"] },
+            "data_layout": { "type": "expr" },
+            "kernel_layout": { "type": "expr" },
+            "out_layout": { "type": "expr" },
+            "out_dtype": { "type": "datatype" }
+        }
+    },
+    {
+        "type": "qnn.dense",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" },
+            { "name": "weight" },
+            { "name": "input_scale" },
+            { "name": "input_zero_point" },
+            { "name": "weight_scale" },
+            { "name": "weight_zero_point" }
+        ],
+        "attrs": {
+            "units": { "type": "expr" },
+            "out_dtype": { "type": "datatype" }
+        }
+    },
+    {
+        "type": "qnn.quantize",
+        "category": "Transform",
+        "inputs": [
+            { "name": "data" },
+            { "name": "output_scale" },
+            { "name": "output_zero_point" }
+        ],
+        "attrs": {
+            "axis": { "type": "int" },
+            "out_dtype": { "type": "datatype" }
+        }
+    },
+    {
+        "type": "qnn.dequantize",
+        "category": "Transform",
+        "inputs": [
+            { "name": "data" },
+            { "name": "input_scale" },
+            { "name": "input_zero_point" }
+        ],
+        "attrs": {
+            "axis": { "type": "int" }
+        }
+    },
+    {
+        "type": "qnn.requantize",
+        "category": "Transform",
+        "inputs": [
+            { "name": "data" },
+            { "name": "input_scale" },
+            { "name": "input_zero_point" },
+            { "name": "output_scale" },
+            { "name": "output_zero_point" }
+        ],
+        "attrs": {
+            "axis": { "type": "int" },
+            "rounding": { "type": "string" },
+            "out_dtype": { "type": "datatype" }
+        }
+    },
+    {
+        "type": "qnn.simulated_quantize",
+        "category": "Transform",
+        "inputs": [
+            { "name": "data" },
+            { "name": "out_dtype" },
+            { "name": "output_scale" },
+            { "name": "output_zero_point" }
+        ],
+        "attrs": {
+            "axis": { "type": "int" }
+        }
+    },
+    {
+        "type": "qnn.simulated_dequantize",
+        "category": "Transform",
+        "inputs": [
+            { "name": "data" },
+            { "name": "in_dtype" },
+            { "name": "input_scale" },
+            { "name": "input_zero_point" }
+        ],
+        "attrs": {
+            "axis": { "type": "int" }
+        }
+    },
+    {
+        "type": "relay.op.annotation.simulated_quantize",
+        "category": "Transform",
+        "inputs": [
+            { "name": "data" },
+            { "name": "dom_scale" },
+            { "name": "clip_min" },
+            { "name": "clip_max" }
+        ],
+        "attrs": {
+            "axis": { "type": "int" }
+        }
+    },
+    {
+        "type": "argmax",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "axis": { "type": ["expr"] },
+            "keepdims": { "type": "bool" },
+            "select_last_index": { "type": "bool" },
+            "exclude": { "type": "bool" }
+        }
+    },
+    {
+        "type": "argmin",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "axis": { "type": ["expr"] },
+            "keepdims": { "type": "bool" },
+            "select_last_index": { "type": "bool" },
+            "exclude": { "type": "bool" }
+        }
+    },
+    {
+        "type": "sum",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "axis": { "type": ["expr"] },
+            "keepdims": { "type": "bool" },
+            "exclude": { "type": "bool" }
+        }
+    },
+    {
+        "type": "all",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "axis": { "type": ["expr"] },
+            "keepdims": { "type": "bool" },
+            "exclude": { "type": "bool" }
+        }
+    },
+    {
+        "type": "any",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "axis": { "type": ["expr"] },
+            "keepdims": { "type": "bool" },
+            "exclude": { "type": "bool" }
+        }
+    },
+    {
+        "type": "max",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "axis": { "type": ["expr"] },
+            "keepdims": { "type": "bool" },
+            "exclude": { "type": "bool" }
+        }
+    },
+    {
+        "type": "min",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "axis": { "type": ["expr"] },
+            "keepdims": { "type": "bool" },
+            "exclude": { "type": "bool" }
+        }
+    },
+    {
+        "type": "prod",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "axis": { "type": ["expr"] },
+            "keepdims": { "type": "bool" },
+            "exclude": { "type": "bool" }
+        }
+    },
+    {
+        "type": "mean",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "axis": { "type": ["expr"] },
+            "keepdims": { "type": "bool" },
+            "exclude": { "type": "bool" }
+        }
+    },
+    {
+        "type": "variance",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" },
+            { "name": "mean" }
+        ],
+        "attrs": {
+            "axis": { "type": ["expr"] },
+            "keepdims": { "type": "bool" },
+            "exclude": { "type": "bool" },
+            "unbiased": { "type": "bool" }
+        }
+    },
+    {
+        "type": "nn.upsampling",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "scale_h": { "type": "double" },
+            "scale_w": { "type": "double" },
+            "layout": { "type": "expr" },
+            "method": { "type": "expr" },
+            "align_corners": { "type": "bool" }
+        }
+    },
+    {
+        "type": "nn.upsampling3d",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "scale_d": { "type": "double" },
+            "scale_h": { "type": "double" },
+            "scale_w": { "type": "double" },
+            "layout": { "type": "string" },
+            "method": { "type": "string" },
+            "coordinate_transformation_mode": { "type": "string" }
+        }
+    },
+    {
+        "type": "nn.pad",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" },
+            { "name": "pad_val"}
+        ],
+        "attrs": {
+            "pad_width": { "type": [["expr"]] },
+            "pad_mode": { "type": "string" }
+        }
+    },
+    {
+        "type": "nn.mirror_pad",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "mode": { "type": "string" },
+            "pad_width": { "type": [["expr"]] }
+        }
+    },
+    {
+        "type": "cast",
+        "category": "Transform",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "dtype": { "type": "datatype" }
+        }
+    },
+    {
+        "type": "cast_like",
+        "category": "Transform",
+        "inputs": [
+            { "name": "data" },
+            { "name": "dtype_like" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "reinterpret",
+        "category": "Transform",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "dtype": { "type": "datatype" }
+        }
+    },
+    {
+        "type": "expand_dims",
+        "category": "Shape",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "axis": { "type": "int" },
+            "num_newaxis": { "type": "int" }
+        }
+    },
+    {
+        "type": "concatenate",
+        "category": "Shape",
+        "inputs": [
+            { "name": "tuple" }
+        ],
+        "attrs": {
+            "axis": { "type": "int" }
+        }
+    },
+    {
+        "type": "stack",
+        "category": "Tensor",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "axis": { "type": "expr" }
+        }
+    },
+    {
+        "type": "transpose",
+        "category": "Transform",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "axes": { "type": ["expr"] }
+        }
+    },
+    {
+        "type": "reshape",
+        "category": "Shape",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "newshape": { "type": ["expr"] }
+        }
+    },
+    {
+        "type": "reshape_like",
+        "category": "Shape",
+        "inputs": [
+            { "name": "data" },
+            { "name": "shape_like" }
+        ],
+        "attrs": {
+            "lhs_begin": { "type": "int" },
+            "lhs_end": { "type": "expr" },
+            "rhs_begin": { "type": "int" },
+            "rhs_end": { "type": "expr" }
+        }
+    },
+    {
+        "type": "argwhere",
+        "category": "Layer",
+        "inputs": [
+            { "name": "condition" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "scatter",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" },
+            { "name": "indicies" },
+            { "name": "updates" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "scatter_add",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" },
+            { "name": "indicies" },
+            { "name": "updates" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "scatter_nd",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" },
+            { "name": "indicies" },
+            { "name": "updates" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "take",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" },
+            { "name": "indicies" }
+        ],
+        "attrs": {
+            "batch_dims": { "type": "expr" },
+            "axis": { "type": "expr" },
+            "mode": { "type": "string" }
+        }
+    },
+    {
+        "type": "full",
+        "category": "Layer",
+        "inputs": [
+            { "name": "fill_value" }
+        ],
+        "attrs": {
+            "shape": { "type": ["expr"] },
+            "dtype": { "type": "datatype" }
+        }
+    },
+    {
+        "type": "zeros",
+        "category": "Tensor",
+        "inputs": [],
+        "attrs": {
+            "shape": { "type": ["expr"] },
+            "dtype": { "type": "datatype" }
+        }
+    },
+    {
+        "type": "ones",
+        "category": "Tensor",
+        "inputs": [],
+        "attrs": {
+            "shape": { "type": ["expr"] },
+            "dtype": { "type": "datatype" }
+        }
+    },
+    {
+        "type": "full_like",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" },
+            { "name": "fill_value" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "arange",
+        "category": "Tensor",
+        "inputs": [
+            { "name": "start" },
+            { "name": "end" },
+            { "name": "step" }
+        ],
+        "attrs": {
+            "start": { "type": "expr" },
+            "end": { "type": "expr" },
+            "step": { "type": "expr" },
+            "dtype": { "type": "datatype" }
+        }
+    },
+    {
+        "type": "repeat",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "repeats": { "type": "expr" },
+            "axis": { "type": "expr" }
+        }
+    },
+    {
+        "type": "sparse_fill_empty_rows",
+        "category": "Layer",
+        "inputs": [
+            { "name": "sparse_indices" },
+            { "name": "sparse_values" },
+            { "name": "dense_shape" },
+            { "name": "default_value" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "sparse_reshape",
+        "category": "Layer",
+        "inputs": [
+            { "name": "sparse_indices" },
+            { "name": "prev_shape" },
+            { "name": "new_shape" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "meshgrid",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "indexing": { "type": "string" }
+        }
+    },
+    {
+        "type": "tile",
+        "category": "Tensor",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "reps": { "type": ["expr"] }
+        }
+    },
+    {
+        "type": "reverse",
+        "category": "Transform",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "axis": { "type": "expr" }
+        }
+    },
+    {
+        "type": "reverse_sequence",
+        "category": "Transform",
+        "inputs": [
+            { "name": "data" },
+            { "name": "seq_lengths" }
+        ],
+        "attrs": {
+            "seq_axis": { "type": "expr" },
+            "batch_axis": { "type": "expr" }
+        }
+    },
+    {
+        "type": "where",
+        "category": "Transform",
+        "inputs": [
+            { "name": "condition" },
+            { "name": "x" },
+            { "name": "y" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "squeeze",
+        "category": "Shape",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "axis": { "type": ["expr"] }
+        }
+    },
+    {
+        "type": "collapse_sum_like",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" },
+            { "name": "collapse_type" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "collapse_sum_to",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" },
+            { "name": "collapse_type" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "broadcast_to",
+        "category": "Tensor",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "broadcast_to_like",
+        "category": "Tensor",
+        "inputs": [
+            { "name": "data" },
+            { "name": "broadcast_type" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "strided_slice",
+        "category": "Tensor",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "begin": { "type": ["expr"] },
+            "end": { "type": ["expr"] },
+            "strides": { "type": ["expr"] },
+            "slice_mode": { "type": "string" },
+            "axes": { "type": ["expr"] }
+        }
+    },
+    {
+        "type": "strided_set",
+        "category": "Tensor",
+        "inputs": [
+            { "name": "data" },
+            { "name": "v" },
+            { "name": "begin" },
+            { "name": "end" },
+            { "name": "strides" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "split",
+        "category": "Tensor",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "indices_or_sections": { "type": ["expr"] },
+            "axis": { "type": "int" }
+        }
+    },
+    {
+        "type": "slice_like",
+        "category": "Tensor",
+        "inputs": [
+            { "name": "data" },
+            { "name": "shape_like" }
+        ],
+        "attrs": {
+            "axes": { "type": ["expr"] }
+        }
+    },
+    {
+        "type": "layout_transform",
+        "category": "Transform",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "src_layout": { "type": "string" },
+            "dst_layout": { "type": "string" }
+        }
+    },
+    {
+        "type": "auto_scheduler_layout_transform",
+        "category": "Transform",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "src_layout": { "type": "string" },
+            "dst_layout": { "type": "string" }
+        }
+    },
+    {
+        "type": "contrib_reverse_reshape",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": {
+            "newshape": { "type": ["expr"] }
+        }
+    },
+    {
+        "type": "gather",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" },
+            { "name": "indices" }
+        ],
+        "attrs": {
+            "axis": { "type": "expr" }
+        }
+    },
+    {
+        "type": "gather_nd",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" },
+            { "name": "indices" }
+        ],
+        "attrs": {
+            "batch_dims": { "type": "expr" },
+            "index_rank": { "type": "expr" }
+        }
+    },
+    {
+        "type": "sequence_mask",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" },
+            { "name": "valid_length" }
+        ],
+        "attrs": {
+            "mask_value": { "type": "double" },
+            "axis": { "type": "int" }
+        }
+    },
+    {
+        "type": "one_hot",
+        "category": "Layer",
+        "inputs": [
+            { "name": "indices" },
+            { "name": "on_value" },
+            { "name": "off_value" }
+        ],
+        "attrs": {
+            "depth": { "type": "int" },
+            "axis": { "type": "int" },
+            "dtype": { "type": "datatype" }
+        }
+    },
+    {
+        "type": "unravel_index",
+        "category": "Layer",
+        "inputs": [
+            { "name": "indices" },
+            { "name": "shape" }
+        ],
+        "attrs": {}
+    },
+    {
+        "type": "sparse_to_dense",
+        "category": "Transform",
+        "inputs": [
+            { "name": "sparse_indices" },
+            { "name": "sparse_values" },
+            { "name": "default_value" }
+        ],
+        "attrs": {
+            "output_shape": { "type": ["expr"] }
+        }
+    },
+    {
+        "type": "adv_index",
+        "category": "Layer",
+        "inputs": [
+            { "name": "inputs" }
+        ],
+        "attrs": { }
+    },
+    {
+        "type": "cumsum",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": { }
+    },
+    {
+        "type": "cumprod",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": { }
+    },
+    {
+        "type": "unique",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": { }
+    },
+    {
+        "type": "invert_permutation",
+        "category": "Layer",
+        "inputs": [
+            { "name": "data" }
+        ],
+        "attrs": { }
+    }
+]

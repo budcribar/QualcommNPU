@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2024 Qualcomm Technologies, Inc.
+All Rights Reserved.
+Confidential and Proprietary - Qualcomm Technologies, Inc.
+-->
+<OpDefCollection
+        PackageName="ArgMaxOpPackage"
+        Domain="aisw"
+        Version="1.0"
+>
+    <OpDefList>
+        <!--Example Op Package which defines an ArgMax Custom op using the QNN operation definition-->
+        <OpDef>
+            <Name>ArgMax</Name>
+            <Description>
+                <Content>
+                    Returns the index of the largest element.
+
+                    See Argmax backend definition for supported datatypes and constraints per backend
+                </Content>
+            </Description>
+
+            <Reference Source="Android NDK NeuralNetworks"
+                       Url="ANEURALNETWORKS_ARGMAX &lt;https://developer.android.com/ndk/reference/group/neural-networks#group___neural_networks_1ggaabbe492c60331b13038e39d4207940e0a2bfbb83a537701e2843a3d5004250c2c&gt;"/>
+
+            <Input>
+                <Name>in[0]</Name>
+                <Description>
+                    <Content>input activation</Content>
+                </Description>
+                <Mandatory>true</Mandatory>
+                <Datatype>BACKEND_SPECIFIC</Datatype>
+                <Shape>
+                    <Rank>ND</Rank>
+                    <Text>An N-dimensional tensor</Text>
+                </Shape>
+            </Input>
+
+            <Output>
+                <Name>out[0]</Name>
+                <Description>
+                    <Content>output activation</Content>
+                </Description>
+                <Mandatory>true</Mandatory>
+                <Datatype>BACKEND_SPECIFIC</Datatype>
+                <Shape>
+                    <Rank>1D</Rank>
+                    <Text>A 1-dimensional tensor</Text>
+                </Shape>
+            </Output>
+
+            <UseDefaultTranslation>true</UseDefaultTranslation>
+
+            <!--This Op is implemented on these Backends-->
+            <SupportedBackend>CPU</SupportedBackend>
+        </OpDef>
+    </OpDefList>
+
+    <SupplementalOpDefList Backend="CPU">
+        <SupportedOps>
+            <OpName>ArgMax</OpName>
+        </SupportedOps>
+
+        <!--ArgMax-->
+        <SupplementalOpDef>
+            <Name>ArgMax</Name>
+
+            <Input>
+                <Name>in[0]</Name>
+                <Datatype>QNN_DATATYPE_FLOAT_32</Datatype>
+                <Datatype>QNN_DATATYPE_UFIXED_POINT_8</Datatype>
+                <Datatype>QNN_DATATYPE_UFIXED_POINT_16</Datatype>
+            </Input>
+
+            <Output>
+                <Name>out[0]</Name>
+                <Datatype>QNN_DATATYPE_UFIXED_POINT_32</Datatype>
+            </Output>
+        </SupplementalOpDef>
+    </SupplementalOpDefList>
+
+</OpDefCollection>

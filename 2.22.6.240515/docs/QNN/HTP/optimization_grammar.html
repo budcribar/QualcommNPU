@@ -1,0 +1,788 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Optimization Grammar &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="QNN HTP Op Package - Relu Op Example" href="relu_example.html" />
+    <link rel="prev" title="QNN HTP Op Package API Revision History" href="opPackage_API_version_guide.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/setup.html">Setup</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../general/backend.html">Backend</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../general/backend.html#backend-specific-pages">Backend Specific Pages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../general/dsp/dsp_backend.html">DSP</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../general/htp/htp_backend.html">HTP</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#api-specializations">API Specializations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#usage-expectations">Usage Expectations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-supported-operations">QNN HTP Supported Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-variable-batch">QNN HTP Variable Batch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-backend-api">QNN HTP Backend API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-performance-infrastructure-api">QNN HTP Performance Infrastructure API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-precision">QNN HTP Precision</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-fp16-output-difference-between-sm8550-and-sm8650">QNN HTP FP16 output difference between SM8550 and SM8650</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-deep-learning-bandwidth-compression-dlbc">QNN HTP Deep Learning Bandwidth Compression (DLBC)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-setting-number-of-hvx-threads">QNN HTP - Setting Number of HVX Threads</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-backend-extensions">QNN HTP Backend Extensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-profiling">QNN HTP Profiling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-context-binary-size">QNN Context Binary size</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../general/htp/htp_backend.html#op-writing-guidelines">Op Writing Guidelines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#recommendations-for-network-design">Recommendations for Network Design</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#yielding-and-pre-emption">Yielding and Pre-Emption</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#vtcm-sharing">VTCM Sharing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#subsystem-restart-ssr">SubSystem Restart (SSR)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qmem-graph-shared-buffer-only-graph">Qmem Graph (shared_buffer only graph)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#htp-session-artifact-usage-guidlines">HTP Session &amp; Artifact Usage Guidlines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#graph-switching-beta">Graph Switching (Beta)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#benefits-of-batch-inference-and-multi-threaded-inference">Benefits of batch inference and multi-threaded inference</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../general/hta/hta_backend.html">HTA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/lpai/lpai_backend.html">LPAI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/cpu/cpu_backend.html">CPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/gpu/gpu_backend.html">GPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/saver/saver_backend.html">Saver</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../general/backend.html">Backend</a> &raquo;</li>
+        
+          <li><a href="../general/htp/htp_backend.html">HTP</a> &raquo;</li>
+        
+      <li>Optimization Grammar</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="optimization-grammar">
+<h1>Optimization Grammar<a class="headerlink" href="#optimization-grammar" title="Permalink to this heading">¶</a></h1>
+<p>Each of the macros described in the previous section must conform to the
+grammar below. It must be possible to compile the rules using C++
+compiler, and parse the rules using an external tool. So, certain
+constructs (such as <code class="docutils literal notranslate"><span class="pre">(int)n</span></code> rather than <code class="docutils literal notranslate"><span class="pre">int(n)</span></code>) will work in C++
+but are not permitted by the rules.</p>
+<div class="section" id="lexical">
+<h2>Lexical<a class="headerlink" href="#lexical" title="Permalink to this heading">¶</a></h2>
+<p>The only separators used in the grammar: Left and Right parentheses, and
+the comma (also, the plus sign is used in only one context):</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="sc">&#39;(&#39;</span><span class="w">  </span><span class="sc">&#39;)&#39;</span><span class="w">  </span><span class="sc">&#39;,&#39;</span><span class="w">   </span><span class="sc">&#39;+&#39;</span>
+</pre></div>
+</div>
+<p>All other characters must be one of the following:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">string_constant</span><span class="o">&gt;</span><span class="w">           </span><span class="s">&quot;Chars&quot;</span>
+</pre></div>
+</div>
+<p>Nothing unprintable, no space or escapes; so <code class="docutils literal notranslate"><span class="pre">&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">\</span></code> cannot be
+used. Empty string is not allowed. As in C/C++, if two or more string
+constants appear with nothing (or just white space) separating them,
+they are concatenated. However, full C escapes are allowed for strings
+used in <code class="docutils literal notranslate"><span class="pre">MESSAGE</span></code>, etc.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">integer_const</span><span class="o">&gt;</span><span class="w">            </span><span class="n">E</span><span class="p">.</span><span class="n">g</span><span class="p">.</span><span class="w"> </span><span class="mi">1230u</span>
+</pre></div>
+</div>
+<p>As in C, including with U or L suffixes; and with optional sign. Use of
+an octal <code class="docutils literal notranslate"><span class="pre">value</span> <span class="pre">&gt;=8</span></code> (e.g. 010) will generate a warning.</p>
+<p>Suffix ‘<code class="docutils literal notranslate"><span class="pre">L</span></code>’ is ignored; ‘<code class="docutils literal notranslate"><span class="pre">U</span></code>’ causes the value to be seen as
+‘<code class="docutils literal notranslate"><span class="pre">size_t</span></code>’ rather than ‘<code class="docutils literal notranslate"><span class="pre">int</span></code>’}</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">float_const</span><span class="o">&gt;</span><span class="w">             </span><span class="n">E</span><span class="p">.</span><span class="n">g</span><span class="p">.</span><span class="w">  </span><span class="mf">-1.331e-2</span>
+</pre></div>
+</div>
+<p>As in C, and with optional sign; ‘<code class="docutils literal notranslate"><span class="pre">f</span></code>’ suffix allowed.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="w">         </span><span class="p">[</span><span class="n">A</span><span class="o">-</span><span class="n">Za</span><span class="o">-</span><span class="n">z_</span><span class="p">][</span><span class="n">A</span><span class="o">-</span><span class="n">Za</span><span class="o">-</span><span class="n">z_0</span><span class="mi">-9</span><span class="p">]</span><span class="o">*</span>
+</pre></div>
+</div>
+<p>Any C identifier (or keyword). The names <code class="docutils literal notranslate"><span class="pre">OK</span></code>, true, false are
+recognized as bool constants. Also, <code class="docutils literal notranslate"><span class="pre">INF</span></code> and <code class="docutils literal notranslate"><span class="pre">NEG_INF</span></code> are
+recognized as float constants representing infinity’ and -infinity.
+Throughout the grammar, quoted symbols such as <code class="docutils literal notranslate"><span class="pre">'ADD'</span></code> appear, this
+means “a which is ADD”.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">dtype_tag</span><span class="o">&gt;</span><span class="w">               </span><span class="n">DType</span><span class="o">::&lt;</span><span class="n">name</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>This represents a constant of type <code class="docutils literal notranslate"><span class="pre">DType</span></code>; the must be one of the
+tags of the <code class="docutils literal notranslate"><span class="pre">DType</span></code> enum.</p>
+</div>
+<div class="section" id="general">
+<h2>General<a class="headerlink" href="#general" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">operand_tag</span><span class="w"> </span><span class="o">::=</span>
+<span class="w">   </span><span class="o">&lt;</span><span class="n">string_constant</span><span class="o">&gt;</span><span class="w">      </span><span class="c1">// representing an operand tag</span>
+</pre></div>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">opstring</span><span class="w"> </span><span class="o">::=</span>
+<span class="w">   </span><span class="o">&lt;</span><span class="n">string_constant</span><span class="o">&gt;</span><span class="w">      </span><span class="c1">// representing the function of an Op node to be matched or built</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="top-level">
+<h2>Top Level<a class="headerlink" href="#top-level" title="Permalink to this heading">¶</a></h2>
+<p>For the external rule-parsing tool, it is required that the
+<code class="docutils literal notranslate"><span class="pre">DEF_PACKAGE_OPTIMIZATION</span></code> and the following ‘(’ both appear at the
+start of the same source line; otherwise, tokens may be separated by
+arbitrary white space, and/or C++ comments.</p>
+<p>Anything after the closing ‘)’ of a <code class="docutils literal notranslate"><span class="pre">DEF_PACKAGE_OPTIMIZATION(...)</span></code>,
+up to the end of file or the next <code class="docutils literal notranslate"><span class="pre">DEF_PACKAGE_OPTIMIZATION</span></code>, is
+ignored; however, the first non-space character following a
+<code class="docutils literal notranslate"><span class="pre">DEF_PACKAGE_OPTIMIZATION(...)</span></code> may not be a left-parenthesis or
+comma.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>optimization_rule ::=
+   DEF_PACKAGE_OPTIMIZATION ( &#39;pass_spec&#39; , &#39;match_expression &#39;,&#39; constraint_expression &#39;,&#39; replacement_rule &#39;)&#39;
+</pre></div>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">pass_spec</span><span class="w"> </span><span class="o">::=</span>
+<span class="w">       </span><span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="o">|</span><span class="w">  </span><span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="w"> </span><span class="sc">&#39;+&#39;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">integer_const</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Note: in this context, * the must be one of the predefined names for
+pass groups * the integer constant may only be a decimal constant, with
+no sign or suffix</p>
+<p>With similar set of rules, user can set the configure a custom Op with
+cost and flag as the following:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>optimization_rule ::=
+   DEF_PACKAGE_OP_AND_COST_AND_FLAGS( &#39;function_name&#39;, &#39;op_name_as_str&#39;, &#39;cost_of_an_op&#39;, &#39;resources_utilized&#39;)
+</pre></div>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">resources_utilized</span><span class="o">::=</span>
+<span class="w">    </span><span class="n">IS_CONST</span><span class="w">            </span><span class="c1">// consant propogation (default flag value)</span>
+<span class="o">|</span><span class="w">   </span><span class="n">RESOURCE_HVX</span><span class="p">,</span><span class="w">       </span><span class="c1">// utilizing HVX hardware</span>
+
+<span class="o">*</span><span class="w"> </span><span class="n">User</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">set</span><span class="w"> </span><span class="n">more</span><span class="w"> </span><span class="n">than</span><span class="w"> </span><span class="n">one</span><span class="w"> </span><span class="n">flag</span><span class="p">,</span><span class="w"> </span><span class="n">separated</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="n">comma</span><span class="p">.</span>
+</pre></div>
+</div>
+<p>To simply register an Op, without any cost or resources, use the
+following:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>DEF_PACKAGE_OP( &#39;function_name&#39; , &#39;op_name_as_str&#39;)
+</pre></div>
+</div>
+</div>
+<div class="section" id="match">
+<h2>Match<a class="headerlink" href="#match" title="Permalink to this heading">¶</a></h2>
+<p>See also ref: <code class="docutils literal notranslate"><span class="pre">OptMatch</span></code></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">match_expression</span><span class="w"> </span><span class="o">::=</span>
+<span class="w">    </span><span class="n">match_op1</span>
+</pre></div>
+</div>
+<p>Note that * <code class="docutils literal notranslate"><span class="pre">Op(</span> <span class="pre">opstr,</span> <span class="pre">inp1,</span> <span class="pre">inp2,..</span> <span class="pre">)</span></code> matches a specific graph op
+with the given list of 0 or more input operands *
+<code class="docutils literal notranslate"><span class="pre">OpVarIn(</span> <span class="pre">opstr,</span> <span class="pre">inp1,</span> <span class="pre">inp2...</span> <span class="pre">)</span></code> matches a specific graph op with the
+given list of 0 or more input operands and possibly additional input
+operands. * If the same operand tag appears more than once in the match
+expression, it indicates that these parts of the matched pattern must
+all reference the same node. * <code class="docutils literal notranslate"><span class="pre">LET(</span> <span class="pre">&quot;opname&quot;,</span> <span class="pre">...</span> <span class="pre">)</span></code> can be wrapped
+around any <code class="docutils literal notranslate"><span class="pre">Op</span></code> or <code class="docutils literal notranslate"><span class="pre">OpVarIn</span></code> (other than the root), to attach an
+operand tag to the output of that Op. * Within a given match
+expression, a tag used as the first parameter of a <code class="docutils literal notranslate"><span class="pre">LET</span></code> cannot appear
+anywhere within the second operand of the same <code class="docutils literal notranslate"><span class="pre">LET</span></code>, and may not be
+used as the first parameter of any other <code class="docutils literal notranslate"><span class="pre">LET</span></code>.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>match_op1 ::=
+       &#39;Op&#39;      &#39;(&#39; opstring [&#39;,&#39; match_op]* &#39;)&#39;
+    |  &#39;OpVarIn&#39; &#39;(&#39; opstring [&#39;,&#39; match_op]* &#39;)&#39;
+</pre></div>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>match_op2 ::=
+       &#39;LET&#39; &#39;(&#39; operand_tag &#39;,&#39; match_op1 &#39;)&#39;
+    |  match_op1
+</pre></div>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">match_op</span><span class="w"> </span><span class="o">::=</span>
+<span class="w">       </span><span class="n">operand_tag</span>
+<span class="w">   </span><span class="o">|</span><span class="w">  </span><span class="n">match_op2</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="constraint">
+<h2>Constraint<a class="headerlink" href="#constraint" title="Permalink to this heading">¶</a></h2>
+<p>Note: * All of the operand_tag in constraints must exist in the
+corresponding ‘match’ rule, or must be the special tag <code class="docutils literal notranslate"><span class="pre">&quot;*&quot;</span></code>. * in
+general, constraint expressions have types: -
+<code class="docutils literal notranslate"><span class="pre">bool,</span> <span class="pre">int,</span> <span class="pre">size,</span> <span class="pre">float,</span> <span class="pre">dtype</span></code></p>
+<ul class="simple">
+<li><p>Currently, ‘dtype’ support is limited to:</p>
+<ul>
+<li><p>constants e.g. <code class="docutils literal notranslate"><span class="pre">DType::Float</span></code></p></li>
+<li><p>comparison to <code class="docutils literal notranslate"><span class="pre">dtype</span></code> using <code class="docutils literal notranslate"><span class="pre">EQ</span></code> and <code class="docutils literal notranslate"><span class="pre">NE</span></code> only;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT(</span> <span class="pre">bool,</span> <span class="pre">dtype,</span> <span class="pre">dtype</span> <span class="pre">)</span> <span class="pre">-&gt;</span> <span class="pre">dtype</span></code></p></li>
+<li><p>property <code class="docutils literal notranslate"><span class="pre">DTYPE_OF(param)</span></code> gives a <code class="docutils literal notranslate"><span class="pre">dtype</span></code></p></li>
+<li><p>conversion to int in via <code class="docutils literal notranslate"><span class="pre">INT()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WITH_OUTPUT_TYPE(..)</span></code> requires a <code class="docutils literal notranslate"><span class="pre">dtype</span></code> expression as its
+first parameter.</p></li>
+</ul>
+</li>
+</ul>
+<p>For more detail on the constraint functions, see ref: <code class="docutils literal notranslate"><span class="pre">OptConstraint</span></code></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">constraint_expression</span><span class="w"> </span><span class="o">::=</span>
+<span class="w">       </span><span class="n">cst_expr</span><span class="w">                </span><span class="c1">// must be bool type</span>
+</pre></div>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">cst_expr</span><span class="w"> </span><span class="o">::=</span>
+<span class="w">       </span><span class="n">cst_const</span>
+<span class="w">    </span><span class="o">|</span><span class="w">  </span><span class="n">cst_option</span>
+<span class="w">    </span><span class="o">|</span><span class="w">  </span><span class="n">cst_oper</span>
+<span class="w">    </span><span class="o">|</span><span class="w">  </span><span class="n">cst_property</span>
+<span class="w">    </span><span class="o">|</span><span class="w">  </span><span class="n">cst_constval</span>
+<span class="w">    </span><span class="o">|</span><span class="w">  </span><span class="n">cst_external</span>
+<span class="w">    </span><span class="o">|</span><span class="w">  </span><span class="n">cst_macro</span>
+</pre></div>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>cst_const ::=
+       &#39;OK&#39; |  &#39;true&#39; |  &#39;false&#39;         // type = bool
+    |  &#39;INF&#39; | &#39;NEG_INF&#39;                 // type = float
+    |  &lt;integer_const&gt;                   // type = &#39;int&#39;; or size, if U suffix
+    |  &lt;float_const&gt;                     // type = &#39;float&#39;
+    |  &lt;dtype_tag&gt;                       // type = &#39;dtype&#39;
+    | &#39;LAYOUT_CHUNKSIZE&#39; &#39;(&#39; &lt;name&gt;  &#39;,&#39; &lt;integer_const&gt; &#39;)&#39;  // type = size
+            // the &lt;name&gt; is the name of a tensor class.
+</pre></div>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>cst_option ::=
+       &#39;OPTION_INT&#39; &#39;(&#39; &quot;name_of_option&quot; &#39;)&#39;         // type = int
+    |  &#39;OPTION_UINT&#39; &#39;(&#39; &quot;name_of_option&quot; &#39;)&#39;        // type = size
+    |  &#39;OPTION_BOOL&#39; &#39;(&#39; &quot;name_of_option&quot; &#39;)&#39;        // type = bool
+    |  &#39;OPTION_FLOAT&#39; &#39;(&#39; &quot;name_of_option&quot; &#39;)&#39;       // type = float
+</pre></div>
+</div>
+<p>Read values from graph options. Options can be read as any type; the value is converted (perhaps with loss).
+A ‘bool’ option is read as integer 0 or 1; a ‘string’ option reads as 0 if empty, 1 if not.
+OPTION_BOOL will convert a non-bool type as if by (value!=0).</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>cst_oper ::=
+        typecast &#39;(&#39;  cst_expr &#39;)&#39;
+    |   &#39;NOT&#39; &#39;(&#39; cst_expr &#39;)&#39;                    // bool -&gt; bool
+    |   &#39;NEG&#39; &#39;(&#39; cst_expr &#39;)&#39;
+    |   &#39;ABS&#39; &#39;(&#39; cst_expr &#39;)&#39;
+    |   &#39;IS_POW2&#39; &#39;(&#39; cst_int &#39;)&#39;                // int, or size -&gt; bool
+    |   &#39;SELECT&#39; &#39;(&#39;   cst_expr &#39;,&#39; cst_expr  &#39;,&#39; cst_expr &#39;)&#39; // first must be bool
+    |   &#39;ROUNDUP&#39; &#39;(&#39;  cst_int &#39;,&#39; cst_int &#39;)&#39;      // int/size only; second must be power of 2
+    |   reduce_op &#39;(&#39;  cst_expr [ &#39;,&#39; cst_expr]* &#39;)&#39;
+    |   binary_op &#39;(&#39;  cst_expr &#39;,&#39; cst_expr &#39;)&#39;
+    |   compare_op &#39;(&#39; cst_expr &#39;,&#39; cst_expr &#39;)&#39;        // result is bool
+</pre></div>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>typecast ::=
+    &#39;UINT&#39; |  &#39;INT&#39; |  &#39;FLOAT&#39; | &#39;DTYPE&#39;
+</pre></div>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>reduce_op ::=
+        &#39;AND&#39; |  &#39;OR&#39;  |   &#39;XOR&#39;
+    |   &#39;ADD&#39; |  &#39;MUL&#39;
+    |   &#39;MIN&#39; |  &#39;MAX&#39;
+</pre></div>
+</div>
+<p>Note, <code class="docutils literal notranslate"><span class="pre">REM(a,b)</span></code> and <code class="docutils literal notranslate"><span class="pre">MOD(a,b)</span></code> are the same when applied to values
+&gt;0; for negative values, <code class="docutils literal notranslate"><span class="pre">REM(a,b)</span></code>, if not zero, has the same sign as
+‘a’; <code class="docutils literal notranslate"><span class="pre">MOD(a,b)</span></code>, if not zero, has the same sign as ‘b’.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>binary_op ::=
+       &#39;SUB&#39; |  &#39;DIV&#39; | &#39;REM&#39; | &#39;MOD&#39;
+</pre></div>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>compare_op ::=
+        &#39;EQ&#39; |  &#39;NE&#39;
+     |  &#39;LT&#39; |  &#39;GT&#39; |  &#39;LE&#39; |  &#39;GE&#39;
+</pre></div>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>cst_opref ::=
+        operand_tag
+    |   &#39;INPUT_OF&#39;  &#39;(&#39; cst_opref &#39;,&#39; cst_int &#39;)&#39;
+    |   &#39;OUTPUT_OF&#39;  &#39;(&#39; cst_opref &#39;,&#39; cst_int &#39;)&#39;
+    |   &#39;SELECT&#39; &#39;(&#39; cst_expr &#39;,&#39; cst_opref &#39;,&#39; cst_opref &#39;)&#39;  // expr must be bool
+</pre></div>
+</div>
+<p>The “<code class="docutils literal notranslate"><span class="pre">cst_property</span></code>” operations below extract properties of the output
+of the operand specified by the <code class="docutils literal notranslate"><span class="pre">cst_opref</span></code>.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>cst_property ::=
+        &#39;RANK_OF&#39; &#39;(&#39; cst_opref &#39;)&#39;
+    |   &#39;DIM_OF&#39;  &#39;(&#39; cst_opref &#39;,&#39; cst_int &#39;)&#39;
+    |   &#39;STEPSIZE_OF&#39; &#39;(&#39; cst_opref  &#39;)&#39;
+    |   &#39;DTYPE_OF&#39; &#39;(&#39; cst_opref  &#39;)&#39;
+    |   &#39;ELEMENTSIZE_OF&#39; &#39;(&#39; cst_opref  &#39;)&#39;
+    |   &#39;INPUTS_OF&#39; &#39;(&#39; cst_opref &#39;)&#39;
+    |   &#39;OUTPUTS_OF&#39; &#39;(&#39; cst_opref &#39;)&#39;
+</pre></div>
+</div>
+<p>The operations below give a boolean result and can be used to compare two
+operands. <code class="docutils literal notranslate"><span class="pre">SAME_ENCODING</span></code> means the operands have the same DType; and if the
+DType is quantized, the two also have the same quantization.</p>
+<p><code class="docutils literal notranslate"><span class="pre">SAME_OP</span></code> means that both operands refer to the same node in the graph. It is
+possible for the operands to refer to different nodes which will later be
+merged as common sub-expressions; in which case this will return ‘false’</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>cst_op_compare ::=
+        &#39;SAME_ENCODING&#39; &#39;(&#39; cst_opref &#39;,&#39; cst_opref &#39;)&#39;
+    |   &#39;SAME_OP&#39;  &#39;(&#39; cst_opref &#39;,&#39; cst_opref &#39;)&#39;
+</pre></div>
+</div>
+<p>These operations can extract a scalar value from a <code class="docutils literal notranslate"><span class="pre">Const</span></code> operand at
+the given index. In case of failure, i.e. when the the operand is not
+‘Const’, or when the index is out of range, <code class="docutils literal notranslate"><span class="pre">CONSTVAL_INT</span></code> returns
+<code class="docutils literal notranslate"><span class="pre">MIN_INT</span></code>, and <code class="docutils literal notranslate"><span class="pre">CONSTVAL_FLOAT</span></code> returns <code class="docutils literal notranslate"><span class="pre">NaN</span></code>. <code class="docutils literal notranslate"><span class="pre">CONSTVAL_INT</span></code>
+will also fail if the value is not an integer that fits in <code class="docutils literal notranslate"><span class="pre">int32</span></code>.
+The corresponding <code class="docutils literal notranslate"><span class="pre">CONSTVAL_INT_VALID</span></code> and <code class="docutils literal notranslate"><span class="pre">CONSTVAL\_FLOAT\_VALID</span></code>
+return ‘true’ if the operation will succeed, and ‘false’ if it will not.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>cst_constval ::=
+        &#39;CONSTVAL_INT&#39;         &#39;(&#39; cst_opref &#39;,&#39; cst_int &#39;)&#39;
+    |   &#39;CONSTVAL_INT_VALID&#39;   &#39;(&#39; cst_opref &#39;,&#39; cst_int &#39;)&#39;
+    |   &#39;CONSTVAL_FLOAT&#39;       &#39;(&#39; cst_opref &#39;,&#39; cst_int &#39;)&#39;
+    |   &#39;CONSTVAL_FLOAT_VALID&#39; &#39;(&#39; cst_opref &#39;,&#39; cst_int &#39;)&#39;
+</pre></div>
+</div>
+<p>In the grammar, ‘cst_int’ generally means a ‘cst_expr’ of integer or size type.
+But, when the expression appears within the last parameter of an <code class="docutils literal notranslate"><span class="pre">AUTOSPLIT</span></code> or  <code class="docutils literal notranslate"><span class="pre">OP_ITER</span></code> , the special
+operations listed below may also appear; these obtain one of the variables from the iteration.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>cst_int ::=
+         cst_expr                // with int or size type
+    |   &#39;SPLIT_DIM&#39; &#39;(&#39; split_tag &#39;)&#39;
+    |   &#39;SPLIT_START&#39; &#39;(&#39; split_tag &#39;)&#39;
+    |   &#39;SPLIT_SIZE&#39; &#39;(&#39; split_tag &#39;)&#39;
+    |   &#39;ITER_VAR&#39; &#39;(&#39; split_tag &#39;)&#39;   // synonym for SPLIT_START (use with OP_ITER, INPUT_OF, OUTPUT_OF)
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">EXTERNAL_CONSTRAINT</span></code> calls an external C++ function which is expected
+to return bool. The first parameter is an “<code class="docutils literal notranslate"><span class="pre">OperandTag</span></code>”; the
+remainder (if any) must evaluate to a scalar type
+(<code class="docutils literal notranslate"><span class="pre">int,</span> <span class="pre">size_t,</span> <span class="pre">float,</span> <span class="pre">bool</span></code>) matching the parameter types of the
+function. You can use general <code class="docutils literal notranslate"><span class="pre">cst_expr</span></code>,
+e.g. <code class="docutils literal notranslate"><span class="pre">EXTERNAL_CONSTRAINT(</span> <span class="pre">funcname,</span> <span class="pre">&quot;Operand&quot;,</span> <span class="pre">RANK_OF(&quot;Operand&quot;))</span></code></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>cst_external ::=
+    &#39;EXTERNAL_CONSTRAINT&#39; &#39;(&#39; &lt;name&gt; &#39;,&#39;  operand_tag [ &#39;,&#39; cst_expr ]* &#39;)&#39;
+</pre></div>
+</div>
+<p>‘cst_macro’ are equivalent to the expansions given:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>cst_macro ::=
+       &#39;IS_QUINT8&#39; &#39;(&#39; cst_opref &#39;)&#39;         // IS_QUINT8(x) =&gt; EQ(DTYPE_OF(x),DType::QUInt8)
+    |  &#39;IS_QINT8&#39; &#39;(&#39; cst_opref &#39;)&#39;          // IS_QINT8(x) =&gt; EQ(DTYPE_OF(x),DType::QInt8)
+    |  &#39;IS_QUINT16&#39; &#39;(&#39; cst_opref &#39;)&#39;        // IS_QUINT16(x) =&gt; EQ(DTYPE_OF(x),DType::QUInt16)
+    |  &#39;IS_QINT16&#39; &#39;(&#39; cst_opref &#39;)&#39;         // IS_QINT16(x) =&gt; EQ(DTYPE_OF(x),DType::QInt16)
+    |  &#39;IS_QINT32&#39; &#39;(&#39; cst_opref &#39;)&#39;         // IS_QINT32(x) =&gt; EQ(DTYPE_OF(x),DType::QInt32)
+    |  &#39;IS_INT32&#39; &#39;(&#39; cst_opref &#39;)&#39;          // IS_INT32(x) =&gt; EQ(DTYPE_OF(x),DType::Int32)
+    |  &#39;IS_FLOAT16&#39; &#39;(&#39; cst_opref &#39;)&#39;        // IS_FLOAT16(x) =&gt; EQ(DTYPE_OF(x),DType::Float16)
+    |  &#39;IS_FLOAT32&#39; &#39;(&#39; cst_opref &#39;)&#39;        // IS_FLOAT32(x) =&gt; EQ(DTYPE_OF(x),DType::Float32)
+    |  &#39;IS_FLOAT&#39; &#39;(&#39; cst_opref &#39;)&#39;          // IS_FLOAT(x) =&gt; IS_FLOAT32(x)
+    |  &#39;DIM_BATCHES&#39; &#39;(&#39; cst_opref &#39;)&#39;       // DIM_BATCHES(x) =&gt; DIM_OF(x,0)
+    |  &#39;DIM_HEIGHT&#39; &#39;(&#39; cst_opref &#39;)&#39;        // DIM_HEIGHT(x) =&gt; DIM_OF(x,1)
+    |  &#39;DIM_WIDTH&#39; &#39;(&#39; cst_opref &#39;)&#39;         // DIM_WIDTH(x) =&gt; DIM_OF(x,2)
+    |  &#39;DIM_DEPTH&#39; &#39;(&#39; cst_opref &#39;)&#39;         // DIM_DEPTH(x) =&gt; DIM_OF(x,3)
+    |  &#39;DIM_FILTHEIGHT&#39; &#39;(&#39; cst_opref &#39;)&#39;    // DIM_FILTHEIGHT(x) =&gt; DIM_OF(x,0)
+    |  &#39;DIM_FILTWIDTH&#39; &#39;(&#39; cst_opref &#39;)&#39;     // DIM_FILTWIDTH(x) =&gt; DIM_OF(x,1)
+    |  &#39;DIM_FILTDEPTH&#39; &#39;(&#39; cst_opref &#39;)&#39;     // DIM_FILTDEPTH(x) =&gt; DIM_OF(x,2)
+    |  &#39;DIM_NFILTS&#39; &#39;(&#39; cst_opref &#39;)&#39;        // DIM_NFILTS(x) =&gt; DIM_OF(x,3)
+    |  &#39;SAME_SHAPE&#39; &#39;(&#39; cst_opref &#39;,&#39;  cst_opref &#39;)&#39;
+            // SAME_SHAPE(x,y) =&gt; AND( EQ( DIM_OF(x,3), DIM_OF(y,3)), EQ( DIM_OF(x,2), DIM_OF(y,2)),
+            //                        EQ( DIM_OF(x,1), DIM_OF(y,1)), EQ( DIM_OF(x,0), DIM_OF(y,0)))
+</pre></div>
+</div>
+</div>
+<div class="section" id="replacement">
+<h2>Replacement<a class="headerlink" href="#replacement" title="Permalink to this heading">¶</a></h2>
+<p>Notes: * Some of the entities in the Replacement Grammar refer to
+<code class="docutils literal notranslate"><span class="pre">cst_expr</span></code> from the Constraint grammar * All of the operand_tag must
+exist in the corresponding ‘match’ rule, or must be the special tag
+<code class="docutils literal notranslate"><span class="pre">&quot;*&quot;</span></code>. * Some of the entities have a ‘<code class="docutils literal notranslate"><span class="pre">split_tag</span></code>’ operand, which
+names a split context. The scope of these names is the entire
+replacement rule containing them.</p>
+<p>The following apply in a well-formed rule: * Each instance of
+<code class="docutils literal notranslate"><span class="pre">AUTOSPLIT</span></code> or <code class="docutils literal notranslate"><span class="pre">OP_ITER</span></code> in a rule must have a distinct split_tag as its second
+operand (usually there is at most one, and the tag is <code class="docutils literal notranslate"><span class="pre">&quot;I&quot;</span></code>). * Every
+other entity referring to a split_tag must be contained within the last
+operand of an <code class="docutils literal notranslate"><span class="pre">AUTOSPLIT</span></code> or <code class="docutils literal notranslate"><span class="pre">OP_ITER</span></code> entity which has the same split_tag in its
+second operand. * An <code class="docutils literal notranslate"><span class="pre">AUTOSPLIT</span></code> must contain, within its third
+operand, at least one such entity referencing the same split_tag. *
+more detailed checks on the validity of the overall construct could be
+defined.</p>
+<p>For more detail on the replacement operations, see ref:
+<code class="docutils literal notranslate"><span class="pre">OptReplacement</span></code></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">split_tag</span><span class="w"> </span><span class="o">::=</span>
+<span class="w">   </span><span class="o">&lt;</span><span class="n">string_constant</span><span class="o">&gt;</span><span class="w">      </span><span class="c1">// representing a split context</span>
+</pre></div>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">replacement_rule</span><span class="w"> </span><span class="o">::=</span>
+<span class="w">    </span><span class="n">repl_op</span>
+</pre></div>
+</div>
+<p>Note that ‘Operand’ is redundant : whenever a string constant appears in
+a ‘<code class="docutils literal notranslate"><span class="pre">repl_op</span></code>’ context, it is assumed to be an operand tag and
+‘Operand’ is applied.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>repl_op ::=
+         cst_opref
+    |    &#39;Operand&#39;  &#39;(&#39;  operand_tag &#39;)&#39;
+    |    &#39;Op&#39;  &#39;(&#39; opstring [&#39;,&#39; repl_op]* &#39;)&#39;
+    |    &#39;WrapOp&#39;  &#39;(&#39; opstring &#39;,&#39; repl_op &#39;)&#39;
+    |    &#39;WrapOpAlways&#39;  &#39;(&#39; opstring &#39;,&#39; repl_op &#39;)&#39;
+    |    &#39;gen_Shape&#39; &#39;(&#39; cst_int [&#39;,&#39; cst_int ]* &#39;)&#39;
+    |    &#39;gen_ShapeOf&#39; &#39;(&#39; cst_opref &#39;)&#39;
+    |    &#39;gen_ConstScalar_f32&#39; &#39;(&#39; cst_expr &#39;)&#39;
+    |    &#39;gen_ConstScalar_i32&#39; &#39;(&#39; cst_int &#39;)&#39;
+    |    &#39;gen_ConstArr_f32&#39; &#39;(&#39; cst_expr &#39;,&#39; cst_int&#39;)      // gen_ConstArr_f32(floatval, n) -&gt; array[1,1,1,n] filled with floatval
+    |    &#39;gen_ConstArr_i32&#39; &#39;(&#39; cst_expr &#39;,&#39; cst_int&#39;)      // gen_ConstArr_i32(intval, n) -&gt; array[1,1,1,n] filled with intval
+    |    &#39;gen_ConstArr_vals_i32&#39; &#39;(&#39; cst_int [&#39;,&#39; cst_int]* &#39;)&#39;
+                 // gen_ConstArr_vals_i32(x,y,z,..) -&gt; array [1,1,1,n] of int filled with x,y,z ...
+    |    &#39;AUTOSPLIT&#39; &#39;(&#39; cst_int &#39;,&#39; split_tag &#39;,&#39; cst_int &#39;,&#39; repl_op &#39;)&#39;
+    |    &#39;OP_ITER&#39; &#39;(&#39; repl_op &#39;,&#39; split_tag &#39;,&#39; cst_int &#39;,&#39; cst_int &#39;,&#39; repl_op &#39;)&#39;
+    |    &#39;SELECT&#39; &#39;(&#39; cst_expr &#39;,&#39; repl_op &#39;,&#39; repl_op &#39;)&#39;
+    |    repl_iterop
+    |    repl_modifier
+    |    repl_apply
+    |    repl_macro
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">OUTPUT_OF(</span> <span class="pre">&quot;operand_tag&quot;,</span> <span class="pre">int_expr</span> <span class="pre">)</span></code> can be used, in some contexts,
+to obtain a specific output of a multi-op output.</p>
+<p><code class="docutils literal notranslate"><span class="pre">WrapOp(&quot;opname&quot;,</span> <span class="pre">some_op)</span></code>, which allows exactly one input to <code class="docutils literal notranslate"><span class="pre">&quot;opname&quot;</span></code>, works by evaluating <code class="docutils literal notranslate"><span class="pre">some_op</span></code>, and then constructing <code class="docutils literal notranslate"><span class="pre">Op(&quot;op_name&quot;,</span> <span class="pre">some_op)</span></code> with the same Dtype and output as <code class="docutils literal notranslate"><span class="pre">some_op</span></code>. The Op Id and split-history are inherited in the usual way; it is generally equivalent to <code class="docutils literal notranslate"><span class="pre">WITH_SAME_OUTPUT(X,</span> <span class="pre">Op(&quot;opname&quot;,</span> <span class="pre">X))</span></code> but without needing to evaluate <code class="docutils literal notranslate"><span class="pre">X</span></code> twice. However, if <code class="docutils literal notranslate"><span class="pre">some_op</span></code> is an <code class="docutils literal notranslate"><span class="pre">&quot;opname&quot;</span></code> Op, it does not construct a new Op, it evaluates to <code class="docutils literal notranslate"><span class="pre">some_op</span></code> (on the assumption that <code class="docutils literal notranslate"><span class="pre">Op(&quot;op_name&quot;,</span> <span class="pre">Op(&quot;op_name&quot;,x))</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">Op(&quot;op_name&quot;,x)</span></code>. When this assumption is <em>not</em> true, use <code class="docutils literal notranslate"><span class="pre">WrapOpAlways</span></code> which has the same behaviour, but will always add the new Op.</p>
+<p><code class="docutils literal notranslate"><span class="pre">repl_op</span></code> listed here under <code class="docutils literal notranslate"><span class="pre">repl_iterop</span></code> may only be used within
+the last parameter of an <code class="docutils literal notranslate"><span class="pre">AUTO_SPLIT</span></code> or <code class="docutils literal notranslate"><span class="pre">OP_ITER</span></code>, and must
+reference the same split_tag.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>repl_iterop ::=
+        &#39;ITER_INPUT_OF&#39; &#39;(&#39; cst_opref &#39;,&#39; split_tag &#39;)&#39;
+    |   &#39;AUTOSPLIT_SHAPEFN_APPLY&#39; &#39;(&#39; &lt;name&gt; &#39;,&#39; split_tag [&#39;,&#39; apply_parm ]* &#39;)&#39;
+</pre></div>
+</div>
+<p><em>Modifiers</em>:</p>
+<p>A modifier sets the attributes of the output tensor of any <code class="docutils literal notranslate"><span class="pre">Op()</span></code> in
+its last operand, according to its preceding operands. So, the last
+operand must be a <cite>repl_op</cite> which constructs an Op (including, another nested modifier).</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">WITH_OUTPUT_TYPE</span></code>: the <code class="docutils literal notranslate"><span class="pre">cst_expr</span></code> are <code class="docutils literal notranslate"><span class="pre">dtype</span></code>, <code class="docutils literal notranslate"><span class="pre">zero_off</span></code>
+and <code class="docutils literal notranslate"><span class="pre">stepsize</span></code>and must be of type
+<code class="docutils literal notranslate"><span class="pre">dtype,</span> <span class="pre">int,</span> <span class="pre">floa</span></code>t.<code class="docutils literal notranslate"><span class="pre">ResizeDim</span></code> changes one dimension to a a
+given value; the first two params are the dimension number and the value
+to change to.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>repl_modifier ::=
+        &#39;WITH_SIZE&#39; &#39;(&#39;  repl_op  &#39;,&#39;  repl_op &#39;)&#39;
+    |   &#39;WITH_TYPE&#39; &#39;(&#39;  cst_opref  &#39;,&#39;  repl_op &#39;)&#39;
+    |   &#39;WITH_SAME_OUTPUT&#39;  &#39;(&#39;  cst_opref  &#39;,&#39;  repl_op &#39;)&#39;
+    |   &#39;WITH_OUTPUT_TYPE&#39; &#39;(&#39; cst_expr &#39;,&#39; cst_expr &#39;,&#39; cst_expr &#39;,&#39;  repl_op &#39;)&#39;
+    |   &#39;WITH_MULTI_OUT&#39; &#39;(&#39; cst_expr &#39;,&#39; repl_op &#39;)&#39;
+    |   &#39;ResizeDim&#39; &#39;(&#39;  cst_int &#39;,&#39;  cst_int  &#39;,&#39; repl_op &#39;)&#39;
+    |   &#39;WITH_SAME_ID&#39; &#39;(&#39; cst_opref  &#39;,&#39;  repl_op &#39;)&#39;
+    |   &#39;WITH_SPLIT_HISTORY&#39; &#39;(&#39; cst_opref  &#39;,&#39; cst_expr &#39;,&#39; repl_op &#39;)&#39;
+    |   &#39;WITH_SPLIT_HISTORY&#39; &#39;(&#39; cst_opref  &#39;,&#39; repl_op &#39;)&#39;
+</pre></div>
+</div>
+<p>(Currently, when <code class="docutils literal notranslate"><span class="pre">WITH_SPLIT_HISTORY</span></code> has 3 parameters, the second must be an integer constant)</p>
+<p>The operations below call external functions.</p>
+<p><code class="docutils literal notranslate"><span class="pre">EXTERNAL_REPLACE</span></code> is typically used to implement the entire
+replacement rule, as <code class="docutils literal notranslate"><span class="pre">EXTERNAL_REPLACE(</span> <span class="pre">funcname</span> <span class="pre">)</span></code>; where funcname is
+a function of signature
+<code class="docutils literal notranslate"><span class="pre">OpRef</span> <span class="pre">function(Replacement</span> <span class="pre">&amp;</span> <span class="pre">rpx,</span> <span class="pre">const</span> <span class="pre">OpDef</span> <span class="pre">&amp;oldop);</span></code>‘<code class="docutils literal notranslate"><span class="pre">oldop</span></code>’
+is the <code class="docutils literal notranslate"><span class="pre">OpDef</span></code> being replaced. If the returned <code class="docutils literal notranslate"><span class="pre">OpRef</span></code> refers to
+<code class="docutils literal notranslate"><span class="pre">oldop</span></code>, the graph is not modified.</p>
+<p><code class="docutils literal notranslate"><span class="pre">SHAPEFN_APPLY</span></code> is given a function of signature
+<code class="docutils literal notranslate"><span class="pre">OpRef</span> <span class="pre">function(Replacement</span> <span class="pre">&amp;rpx,</span> <span class="pre">...args...);</span></code>where the ‘…args…’
+are derived from the ‘<code class="docutils literal notranslate"><span class="pre">apply_parm</span></code>’. Operand names become <code class="docutils literal notranslate"><span class="pre">OpRef</span></code>,
+and <code class="docutils literal notranslate"><span class="pre">cst_expr</span></code> become scalar expressions of the corresponding type.</p>
+<p><code class="docutils literal notranslate"><span class="pre">AUTOSPLIT_SHAPEFN_APPLY</span></code> is similar, but is given a function of
+signature
+<code class="docutils literal notranslate"><span class="pre">conv_split_start_valid(Replacement</span> <span class="pre">&amp;rpx,</span> <span class="pre">Split_Context</span> <span class="pre">const</span> <span class="pre">&amp;splitinfo,</span> <span class="pre">...args...);</span></code>The
+‘<code class="docutils literal notranslate"><span class="pre">splitinfo</span></code>’ is the context indicated by the ‘<code class="docutils literal notranslate"><span class="pre">split_tag</span></code>’, second
+parameter of <code class="docutils literal notranslate"><span class="pre">AUTOSPLIT_SHAPEFN_APPLY</span></code></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">SHAPEFN_APPLY</span></code> and <code class="docutils literal notranslate"><span class="pre">AUTOSPLIT_SHAPEFN_APPLY</span></code> functions
+nominally return an <code class="docutils literal notranslate"><span class="pre">OpRef</span></code> representing a newly constructed
+‘<code class="docutils literal notranslate"><span class="pre">OpDef_Shape</span></code>’; they may also return a <code class="docutils literal notranslate"><span class="pre">QuickShape</span></code> (which is a
+data structure representing a shape in a more compact way), and the
+framework will convert that to an <code class="docutils literal notranslate"><span class="pre">OpRef</span></code>.</p>
+<p>External functions may also construct a Const data array, and return its <code class="docutils literal notranslate"><span class="pre">OpRef</span></code>.</p>
+<p>These external functions need a annotation comment in the below format.
+It is added for the benefit of the external parser.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// :::EXTERNAL_SHAPEFN::: { &lt;return_type&gt; function_name(&lt;input_types&gt;); }</span>
+</pre></div>
+</div>
+<p>See also:</p>
+<ul class="simple">
+<li><p>ref: <code class="docutils literal notranslate"><span class="pre">ShapeFnApply</span></code></p></li>
+<li><p>ref: <code class="docutils literal notranslate"><span class="pre">AutoSplitShapeFnApply</span></code></p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>repl_apply ::=
+        &#39;EXTERNAL_REPLACE&#39; &#39;(&#39; &lt;name&gt; &#39;)&#39;
+    |   &#39;SHAPEFN_APPLY&#39; &#39;(&#39; &lt;name&gt; [&#39;,&#39; apply_parm ]* &#39;)&#39;
+</pre></div>
+</div>
+<p>In apply_parm context, a <code class="docutils literal notranslate"><span class="pre">&lt;string_constant&gt;</span></code> is always a
+<code class="docutils literal notranslate"><span class="pre">repl_op</span> <span class="pre">-&gt;</span> <span class="pre">operand_tag-&gt;</span> <span class="pre">&lt;string_constant&gt;;</span></code> other types of constant
+are <code class="docutils literal notranslate"><span class="pre">cst_exp</span></code>.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">apply_parm</span><span class="w"> </span><span class="o">::=</span>
+<span class="w">         </span><span class="n">repl_op</span>
+<span class="w">    </span><span class="o">|</span><span class="w">    </span><span class="n">cst_expr</span>
+</pre></div>
+</div>
+<p>The ‘<code class="docutils literal notranslate"><span class="pre">repl_macro</span></code>’ are equivalent to expanded expressions, as below.</p>
+<p>However, in the case of AUTOSPLIT_SLICE, TYPICAL_SLICE, CHANGEDIM_SLICE,
+the implementation may construct the first operand only once, and AUTOSPLIT_SLICE
+may evaluate the ‘size’ input only once. So, these operands should not be an <cite>Op()</cite>.</p>
+<p>See also :</p>
+<ul class="simple">
+<li><p>ref:<code class="docutils literal notranslate"><span class="pre">Replacement::AUTOSPLIT_SLICE</span></code></p></li>
+<li><p>ref:<code class="docutils literal notranslate"><span class="pre">Replacement::TYPICAL_SLICE</span></code></p></li>
+<li><p>ref:<code class="docutils literal notranslate"><span class="pre">Replacement::CHANGEDIM_SLICE</span></code></p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>repl_macro ::=
+        &#39;AUTOSPLIT_SLICE&#39; &#39;(&#39;  cst_opref &#39;,&#39; repl_op, &#39;,&#39; repl_op &#39;)&#39;
+                // AUTOSPLIT_SLICE( in, start,size) =&gt;
+                //     WITH_SIZE( size, WITH_TYPE( in, Op(&quot;Slice_shape&quot;, in, start, size)))
+    |   &#39;TYPICAL_SLICE&#39; &#39;(&#39; cst_opref &#39;,&#39; split_tag &#39;)&#39;
+                // TYPICAL_SLICE( in, tag )=&gt;
+                //     AUTOSPLIT_SLICE( in,
+                //           AUTOSPLIT_SHAPEFN_APPLY( simple_split_start, tag, in ),
+                //           AUTOSPLIT_SHAPEFN_APPLY( simple_split_size, tag, in ))
+    |   &#39;CHANGEDIM_SLICE&#39; &#39;(&#39; cst_opref &#39;,&#39; split_tag &#39;,&#39; new_dim &#39;)&#39;
+                // CHANGEDIM_SLICE( in, tag )=&gt;
+                //     AUTOSPLIT_SLICE( in,
+                //           AUTOSPLIT_SHAPEFN_APPLY( simpledim_split_start, tag, in, new_dim ),
+                //           AUTOSPLIT_SHAPEFN_APPLY( simpledim_split_size, tag, in, new_dim ))
+    |   &#39;OpMultiOut&#39; &#39;(&#39; cst_expr &#39;,&#39; cst_expr &#39;,&#39; opstring [&#39;,&#39; repl_op]* &#39;)&#39;
+                // OpMultiOut( n_out, outno, &quot;opstr&quot;, .. inputs .. ) =&gt;
+                //           Op( &quot;$Out&quot;, WITH_MULTI_OUT( n_out, Op( &quot;opstr&quot;, .. inputs ..)),
+                //               gen_shape(0,0,n_out, outno));
+</pre></div>
+</div>
+<p><strong>Restrictions</strong> :</p>
+<p>A Replacement rule should meet the restrictions below, most of which are not reflected in the grammar. Rules which
+do not conform may still work, but may not continue to work in future implementations.</p>
+<p>In the below, “existing opref” means a <code class="docutils literal notranslate"><span class="pre">cst_opref</span></code> as defined in the grammar;
+Such an expression always refers to a node which is in the graph before the replacement rule is applied.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The first operand to <code class="docutils literal notranslate"><span class="pre">WITH_SIZE</span></code>, <code class="docutils literal notranslate"><span class="pre">WITH_TYPE</span></code>, <code class="docutils literal notranslate"><span class="pre">WITH_SAME_OUTPUT</span></code>, <code class="docutils literal notranslate"><span class="pre">WITH_SAME_ID</span></code>, <code class="docutils literal notranslate"><span class="pre">WITH_SPLIT_HISTORY</span></code> must <em>not</em> be an Op construction (defined below).
+It can be an existing opref; or in the case of <code class="docutils literal notranslate"><span class="pre">WITH_SIZE</span></code>, a shape construction (defined below).</p></li>
+<li><p>The operand to <code class="docutils literal notranslate"><span class="pre">gen_ShapeOf</span></code> should be an existing opref. It can be a shape construction, but then the <code class="docutils literal notranslate"><span class="pre">gen_ShapeOf</span></code> is redundant.</p></li>
+<li><p>The first operand to <code class="docutils literal notranslate"><span class="pre">AUTOSPLIT_SLICE</span></code>, <code class="docutils literal notranslate"><span class="pre">TYPICAL_SLICE</span></code>, <code class="docutils literal notranslate"><span class="pre">CHANGEDIM_SLICE</span></code> must be an existing opref.</p></li>
+<li><p>The second and third operands to <code class="docutils literal notranslate"><span class="pre">AUTOSPLIT_SLICE</span></code> must be existing opref, or shape construction (or a <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> which yields one of these).</p></li>
+<li><p>The last operand to a modifier must be an Op construction.</p></li>
+<li><p>The first operand of OP_ITER must either be <code class="docutils literal notranslate"><span class="pre">Op(...)</span></code>,  or an existing opref. Note that when it is <code class="docutils literal notranslate"><span class="pre">Op(...)</span></code>, the constructed Op is always temporary, even
+when the iteration does not add additional inputs.</p></li>
+<li><p>The entire replacement rule may not simply be <code class="docutils literal notranslate"><span class="pre">&quot;*&quot;</span></code>; and it may not be a <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> or nested <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> which is capable of evaluating to <code class="docutils literal notranslate"><span class="pre">&quot;*&quot;</span></code>.</p></li>
+</ul>
+<blockquote>
+<div><p>It is permitted to be an existing opref other than <code class="docutils literal notranslate"><span class="pre">&quot;*&quot;</span></code>; or to be a <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> which may evaluate to an existing opref; in these
+cases the replacement rule just ‘bypasses’ some existing part of the graph; e.g the output of <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">-&gt;</span> <span class="pre">IntToFloat</span> <span class="pre">-&gt;</span> <span class="pre">FloatToInt</span></code> might be
+bypassed to just <code class="docutils literal notranslate"><span class="pre">&quot;x&quot;</span></code>.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">AUTOSPLIT</span></code> and <code class="docutils literal notranslate"><span class="pre">EXTERNAL_REPLACE</span></code> may only appear as the “root” of a replacement rule, or within a <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> or nested <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> at the root of a rule.</p></li>
+</ul>
+<p>A ‘‘shape construction’’ is one of :</p>
+<ul class="simple">
+<li><p><cite>gen_Shape</cite>, <cite>gen_ShapeOf</cite></p></li>
+<li><p>SHAPEFN_APPLY or AUTOSPLIT_SHAPEFN_APPLY, for a function which returns a shape</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span></code> where the second and third operands are both shape constructions.</p></li>
+</ul>
+<p>An ‘‘Op Construction’’ is one of :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Op(</span> <span class="pre">...</span> <span class="pre">)</span></code> or <code class="docutils literal notranslate"><span class="pre">OpMultiOut</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WrapOp(&quot;name&quot;,</span> <span class="pre">x)</span></code> or <code class="docutils literal notranslate"><span class="pre">WrapOpAlways(&quot;name&quot;,</span> <span class="pre">x)</span></code>. It doesn’t make sense to wrap these in a modifier other than <code class="docutils literal notranslate"><span class="pre">WITH_SAME_ID</span></code> or <code class="docutils literal notranslate"><span class="pre">WITH_SPLIT_HISTORY</span></code>, unless <code class="docutils literal notranslate"><span class="pre">x</span></code> is an Op construction to which the modifier can apply.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OP_ITER</span></code>,  <code class="docutils literal notranslate"><span class="pre">AUTOSPLIT_SLICE</span></code>,  <code class="docutils literal notranslate"><span class="pre">TYPICAL_SLICE</span></code>, <code class="docutils literal notranslate"><span class="pre">CHANGEDIM_SLICE</span></code></p></li>
+<li><p>Any modifier (which must itself contain an Op construction, as the last operand).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span></code> where at least one of the second and third operands is an Op construction.</p></li>
+</ul>
+</div></blockquote>
+<p>Strictly speaking, <code class="docutils literal notranslate"><span class="pre">AUTOSPLIT</span></code> and <code class="docutils literal notranslate"><span class="pre">EXTERNAL_REPLACE</span></code> are Op constructions, but may not be used inside modifiers.</p>
+<p><strong>Examples</strong> :
+We provided some common optimization utility functions usage examples, please check <a class="reference internal" href="common_optimization_utility_funcs_usage_examples.html#opt-utility-funcs-usage"><span class="std std-ref">here</span></a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="relu_example.html" class="btn btn-neutral float-right" title="QNN HTP Op Package - Relu Op Example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="opPackage_API_version_guide.html" class="btn btn-neutral float-left" title="QNN HTP Op Package API Revision History" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,331 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Running a model with UDO &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Model Conversion" href="usergroup3.html" />
+    <link rel="prev" title="Preparing a model with UDO" href="preparing_model_with_udo.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="usergroup1.html">Network Models</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="network_layers.html">Supported Network Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supported_onnx_ops.html">Supported ONNX Ops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quantized_models.html">Quantized vs Non-Quantized Models</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="usergroup2.html">User-defined Operations</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="udo_overview.html">Overview of UDO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="udo_operator_definition.html">Defining a UDO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="udo_package_definition.html">Defining a UDO Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="creating_udo_package.html">Creating a UDO Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="compiling_udo_package.html">Compiling a UDO package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="compiling_udo_package_for_windows.html">Compiling a UDO package for Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="preparing_model_with_udo.html">Preparing a model with UDO</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Running a model with UDO</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup3.html">Model Conversion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup6.html">Tutorials and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="usergroup1.html">Network Models</a> &raquo;</li>
+        
+          <li><a href="usergroup2.html">User-defined Operations</a> &raquo;</li>
+        
+      <li>Running a model with UDO</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="running-a-model-with-udo">
+<h1>Running a model with UDO<a class="headerlink" href="#running-a-model-with-udo" title="Permalink to this heading">¶</a></h1>
+<div class="ui-resizable side-nav-resizable docutils container" id="side-nav">
+<div class="docutils container" id="nav-tree">
+<div class="docutils container" id="nav-tree-contents">
+</div>
+</div>
+</div>
+<div class="docutils container" id="doc-content">
+<div class="header docutils container">
+</div>
+<div class="contents docutils container">
+<div class="textblock docutils container">
+<p class="rubric" id="executing-neural-networks-with-udo">Executing neural networks with UDO</p>
+<div class="line-block">
+<div class="line">This section describes how to provide the set of libraries
+representing a UDO to Qualcomm® Neural Processing SDK, to execute network models
+containing the UDO. Execution requires the model containing
+the UDO be converted into DLC format using Qualcomm® Neural Processing SDK converter
+tools as explained in <a class="reference external" href="preparing_model_with_udo.html">Preparing a model with
+UDO</a>. Execution
+additionally requires the creation of registration and
+implementation libraries compatible with UDO APIs as
+described in <a class="reference external" href="udo_overview.html">Overview of UDO</a>.</div>
+</div>
+<div class="line-block">
+<div class="line">UDOs can be registered with a process and be utilized by any
+instance of Qualcomm® Neural Processing SDK that employs them throughout the lifetime of
+the process. They are registered with Qualcomm® Neural Processing SDK using the
+<span class="xref std std-ref">Snpe_Util_AddOpPackage()</span>
+API:</div>
+</div>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>SNPE_API
+int Snpe_Util_AddOpPackage(const char* regLibraryPath );
+</pre></div>
+</div>
+<p>Note that the absolute path to the registration library is
+explicitly provided to Qualcomm® Neural Processing SDK using the above API, whereas the
+implementation libraries can exist anywhere on the system that
+should be discovered by the library loader (using
+LD_LIBRARY_PATH on Unix systems).</p>
+<div class="line-block">
+<div class="line">In addition to the native C API, the Qualcomm® Neural Processing SDK provides a
+Java API for use in Android applications. The API is a part
+of the SNPE class:</div>
+</div>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>public static boolean
+addOpPackage(final Application application, String regLibraryPath)
+</pre></div>
+</div>
+<p><strong>Running snpe-net-run command-line tool with UDO-based DLC</strong></p>
+<p>This section outlines the use of <strong>snpe-net-run</strong> command line
+tool with a UDO-based DLC. The use of
+<a class="reference external" href="tools.html#snpe-net-run">snpe-net-run</a> is largely
+unchanged from its typical usage. The snpe-net-run tool
+registers a UDO registration library through the command line
+option –udo_package_path which accepts the absolute path to
+the registration library.</p>
+<p>Example usage is as follows:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>snpe-net-run --container &lt;path_to_dlc&gt; --input_list &lt;path_to_input_list&gt; --udo_package_path &lt;path_to_registration_lib&gt;
+</pre></div>
+</div>
+<p><strong>Running a UDO-based DLC on a signed process domain</strong></p>
+<p>To run on an signed process domain, the same principles as
+the above section on utilizing the <strong>snpe-net-run</strong> command
+line tool apply with a few extensions. Firstly, signed
+process domains only apply to the DSP target. Second, for a
+signed process domain to be created, an argument must be
+passed to the command line to request it. This comes in the
+form of the platform_options key:value argument pairing. To
+enable model execution on a signed process domain, simply
+add the following to the command line:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>--use_dsp --platform_options unsignedPD:OFF
+</pre></div>
+</div>
+<p>Example usage is as follows:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>snpe-net-run --container &lt;path_to_dlc&gt; --input_list &lt;path_to_input_list&gt; --udo_package_path &lt;path_to_registration_lib&gt; --use_dsp --platform_options unsignedPD:OFF
+</pre></div>
+</div>
+<p><strong>Note:</strong> snpe-net-run requires implementation libraries to be
+discoverable by the system library loader.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="usergroup3.html" class="btn btn-neutral float-right" title="Model Conversion" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="preparing_model_with_udo.html" class="btn btn-neutral float-left" title="Preparing a model with UDO" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

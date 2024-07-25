@@ -1,0 +1,932 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Implementing Ops &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="QNN HTP Op Package API Revision History" href="opPackage_API_version_guide.html" />
+    <link rel="prev" title="HTP Core Headers for Op Packages" href="htp_core_headers.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/setup.html">Setup</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../general/backend.html">Backend</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../general/backend.html#backend-specific-pages">Backend Specific Pages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../general/dsp/dsp_backend.html">DSP</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../general/htp/htp_backend.html">HTP</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#api-specializations">API Specializations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#usage-expectations">Usage Expectations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-supported-operations">QNN HTP Supported Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-variable-batch">QNN HTP Variable Batch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-backend-api">QNN HTP Backend API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-performance-infrastructure-api">QNN HTP Performance Infrastructure API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-precision">QNN HTP Precision</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-fp16-output-difference-between-sm8550-and-sm8650">QNN HTP FP16 output difference between SM8550 and SM8650</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-deep-learning-bandwidth-compression-dlbc">QNN HTP Deep Learning Bandwidth Compression (DLBC)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-setting-number-of-hvx-threads">QNN HTP - Setting Number of HVX Threads</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-backend-extensions">QNN HTP Backend Extensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-profiling">QNN HTP Profiling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-context-binary-size">QNN Context Binary size</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../general/htp/htp_backend.html#op-writing-guidelines">Op Writing Guidelines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#recommendations-for-network-design">Recommendations for Network Design</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#yielding-and-pre-emption">Yielding and Pre-Emption</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#vtcm-sharing">VTCM Sharing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#subsystem-restart-ssr">SubSystem Restart (SSR)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qmem-graph-shared-buffer-only-graph">Qmem Graph (shared_buffer only graph)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#htp-session-artifact-usage-guidlines">HTP Session &amp; Artifact Usage Guidlines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#graph-switching-beta">Graph Switching (Beta)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#benefits-of-batch-inference-and-multi-threaded-inference">Benefits of batch inference and multi-threaded inference</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../general/hta/hta_backend.html">HTA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/lpai/lpai_backend.html">LPAI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/cpu/cpu_backend.html">CPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/gpu/gpu_backend.html">GPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/saver/saver_backend.html">Saver</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../general/backend.html">Backend</a> &raquo;</li>
+        
+          <li><a href="../general/htp/htp_backend.html">HTP</a> &raquo;</li>
+        
+      <li>Implementing Ops</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="implementing-ops">
+<h1>Implementing Ops<a class="headerlink" href="#implementing-ops" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">¶</a></h2>
+<p>This document describes implementing ops in context of QNN HTP op package
+in details. The following sections are covered:</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="#Writing-a-New-Op">Writing a New Op</a></p></li>
+<li><p><a class="reference external" href="#Steps-for-Implementing-an-Op">Steps for Implementing an Op</a></p></li>
+<li><p><a class="reference external" href="#Considerations-for-Transformations">Considerations for
+Transformations</a></p></li>
+<li><p><a class="reference external" href="#Tiling-as-Graph-Transformations">Tiling as Graph
+Transformations</a></p></li>
+<li><p><a class="reference external" href="#Tips-for-Optimization">Tips for Optimization</a></p></li>
+</ol>
+</div>
+<div class="section" id="writing-a-new-op">
+<h2>Writing a New Op<a class="headerlink" href="#writing-a-new-op" title="Permalink to this heading">¶</a></h2>
+<p>The internal representation of a QNN graph is a sequence of <code class="docutils literal notranslate"><span class="pre">OpDef</span></code>
+nodes that represent the entire graph. Some of <code class="docutils literal notranslate"><span class="pre">OpDef</span></code> nodes represent
+graph calculations, with one or more inputs; the operation is determined
+by the name given to the <code class="docutils literal notranslate"><span class="pre">OpDef</span></code>. An <code class="docutils literal notranslate"><span class="pre">OpDef</span></code> class expresses the
+definition of an operation and lists the inputs to the op (<code class="docutils literal notranslate"><span class="pre">InputDef</span></code>)
+and the output characteristics of the op (<code class="docutils literal notranslate"><span class="pre">OutputDef</span></code>).</p>
+<p><code class="docutils literal notranslate"><span class="pre">OpDef</span></code> can represent <code class="docutils literal notranslate"><span class="pre">const</span></code> data (for representing parameters,
+weights, etc.) or <code class="docutils literal notranslate"><span class="pre">shapes</span></code> (which don’t have data but still need a
+means to be expressible as a shape)</p>
+<p>The graph preparation phase starts after the graph construction phase.
+During the prepare stage, a set of optimization rules are applied based
+on priority, which cause transformations to be made to the graph: parts
+of the graph are removed and replaced by other arrangement of <code class="docutils literal notranslate"><span class="pre">OpDef</span></code>.
+The rules are organized into passes. Each pass attempts to match a
+sequence of nodes and applies the transformation on the sequence if the
+constraint is satisfied.</p>
+<p>User needs to set a priority number for each ops to indicate the order
+in which optimizations should be applied. All the <code class="docutils literal notranslate"><span class="pre">OpDefs</span></code> in the
+graph are loop through and optimizations rules are checked against one
+another. The loop ends when none of the <code class="docutils literal notranslate"><span class="pre">OpDefs</span></code> in the graph can be
+optimized using optimization rules from the current pass. Adjustments
+and replacements to the <code class="docutils literal notranslate"><span class="pre">opDef</span></code> is applied only when possible.</p>
+</div>
+<div class="section" id="steps-for-implementing-an-op">
+<h2>Steps for Implementing an Op<a class="headerlink" href="#steps-for-implementing-an-op" title="Permalink to this heading">¶</a></h2>
+<p>Writing ops can be categorized into four-step process.</p>
+<div class="section" id="step-1-op-implementation">
+<h3><em>Step 1</em>: Op Implementation<a class="headerlink" href="#step-1-op-implementation" title="Permalink to this heading">¶</a></h3>
+<p>User needs to implement the functionality of the op. Here is a simple
+example of element-wise addition:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">elementwise_add</span><span class="p">(</span><span class="n">Tensor</span><span class="w"> </span><span class="o">&amp;</span><span class="n">out</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Tensor</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Tensor</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">out</span><span class="p">.</span><span class="n">set_dims</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">aB</span><span class="p">,</span><span class="n">aH</span><span class="p">,</span><span class="n">aW</span><span class="p">,</span><span class="n">aD</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">dims</span><span class="p">();</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Idx</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">aB</span><span class="p">;</span><span class="w"> </span><span class="n">b</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Idx</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">aH</span><span class="p">;</span><span class="w"> </span><span class="n">h</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Idx</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">aW</span><span class="p">;</span><span class="w"> </span><span class="n">w</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Idx</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">aD</span><span class="p">;</span><span class="w"> </span><span class="n">d</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">out</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">d</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">d</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">d</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This is just a basic reference op implementation - more improvements are
+provided later in the doc. Let’s look at some of the details.</p>
+<p>The op implementation function parameter list consists of a series of
+HTP core tensors in the following order: <code class="docutils literal notranslate"><span class="pre">outputs</span> <span class="pre">inputs</span> <span class="pre">parameters</span></code>. Input tensors
+and parameter tensors shall be marked as const. Please note, in implementation
+fucntions, there is no separation between input tensors and parameters, they are
+both considered inputs in HTP core. Also, both
+QNN scalar and tensor parameters are converted into HTP core tensors. In addition,
+HTP core tensors are always 4 dimensions, and the layout is always bhwc. QNN tensors
+with lower dimensions are backfilled into 4-dimensional HTP core tensors. Op
+implementation functions shall return GraphStatus which is an enum defined in
+include/HTP/core/graph_status.h in QNN SDK.</p>
+<p>HTP core has a base tensor type <code class="docutils literal notranslate"><span class="pre">Tensor</span></code> and a bunch of <code class="docutils literal notranslate"><span class="pre">ConcreteTensor</span></code> types.
+<code class="docutils literal notranslate"><span class="pre">ConcreteTensor</span></code> types are derived from base <code class="docutils literal notranslate"><span class="pre">Tensor</span></code>, and each ConcreteTensor
+type has a fixed rank, memory layout and data type. Base <code class="docutils literal notranslate"><span class="pre">Tensor</span></code> can be used
+in generic op implementations and served as a fallback option. <code class="docutils literal notranslate"><span class="pre">ConcreteTensor</span></code>
+types can be used to specialize op implementations for faster performance purpose.</p>
+<p>In this implementation, there is no parameter, and generic <code class="docutils literal notranslate"><span class="pre">Tensor</span></code> is used for
+both input and outputs. Users can access elements from these generic tensors using
+parentheses. Regardless of the underlying types of tensors, the element access
+interface type is float.</p>
+<p>There is a downside to this generic approach: it is <strong>slow</strong>! Every
+element access needs to call some functions to find a location, and
+another set of functions to decode/encode the value.</p>
+<p>Fortunately, if more visibility is provided to the compiler about the
+nature of the tensors, this overhead can be greatly reduced.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">elementwise_add_faster</span><span class="p">(</span><span class="n">PlainFloatTensor</span><span class="w"> </span><span class="o">&amp;</span><span class="n">out</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">PlainFloatTensor</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">PlainFloatTensor</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">out</span><span class="p">.</span><span class="n">set_dims</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">aB</span><span class="p">,</span><span class="n">aH</span><span class="p">,</span><span class="n">aW</span><span class="p">,</span><span class="n">aD</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">dims</span><span class="p">();</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Idx</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">aB</span><span class="p">;</span><span class="w"> </span><span class="n">b</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Idx</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">aH</span><span class="p">;</span><span class="w"> </span><span class="n">h</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Idx</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">aW</span><span class="p">;</span><span class="w"> </span><span class="n">w</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Idx</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">aD</span><span class="p">;</span><span class="w"> </span><span class="n">d</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">out</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">d</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">d</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">d</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Here is an slightly optimized version using a ConcreteTensor type
+<code class="docutils literal notranslate"><span class="pre">PlainFloatTensor</span></code>, which is a tensor holding <code class="docutils literal notranslate"><span class="pre">float</span></code>
+values and a flat memory layout. The compiler now has the visibility to
+eliminate the function calls for accessing each element and decoding it,
+so this implementation is more efficient than the previous
+implementation.</p>
+<p>For a list of HTP core tensor types and their accessor functions, please refer
+to include/HTP/core/tensor.h in QNN SDK.</p>
+<p>More descriptions about HTP memory layouts and tensors can be found in
+tensors_and_memory_layout.html.</p>
+<p>How does the infrastructure choose what op to select? In this case, if
+the input tensors and output tensors of the node of this current op  type are
+all <code class="docutils literal notranslate"><span class="pre">PlainFloatTensor</span></code>, then both implementation can be work, the
+implementation registered with relatively lower cost will be selected.
+If any of the input tensors or output tensors of the node of this current
+op type are not <code class="docutils literal notranslate"><span class="pre">PlainFloatTensor</span></code>, then the first implemenation with
+generic <code class="docutils literal notranslate"><span class="pre">Tensor</span></code> type will be the fall back option.</p>
+<p>It is important to understand that reference ops can be called when the
+operands do not match the optimized implementation. Generic
+implementations can be desirable or can be implemented as always failing
+to catch problems in an input graph or with the optimization process.</p>
+<p><code class="docutils literal notranslate"><span class="pre">elementwise_add</span></code> and <code class="docutils literal notranslate"><span class="pre">elementwise_add_faster</span></code> implementations are
+extremely similar in implementation. These functions could be refactored
+to be <strong>one</strong> templatized function:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">TType</span><span class="o">&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">elementwise_add</span><span class="p">(</span><span class="n">TType</span><span class="w"> </span><span class="o">&amp;</span><span class="n">out</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TType</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TType</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">out</span><span class="p">.</span><span class="n">set_dims</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">aB</span><span class="p">,</span><span class="n">aH</span><span class="p">,</span><span class="n">aW</span><span class="p">,</span><span class="n">aD</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">dims</span><span class="p">();</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Idx</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">aB</span><span class="p">;</span><span class="w"> </span><span class="n">b</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Idx</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">aH</span><span class="p">;</span><span class="w"> </span><span class="n">h</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Idx</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">aW</span><span class="p">;</span><span class="w"> </span><span class="n">w</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Idx</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">aD</span><span class="p">;</span><span class="w"> </span><span class="n">d</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">out</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">d</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">d</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">d</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>To further optimize any op, HVX can be used to achieve parallel calculations.</p>
+</div>
+<div class="section" id="step-2-op-registration">
+<h3><em>Step 2</em>: Op Registration<a class="headerlink" href="#step-2-op-registration" title="Permalink to this heading">¶</a></h3>
+<p>Op implementation functions need to be registered with an op name, op cost and flags.
+Op registration can be achieved using HTP core macros listed below, and these macros
+should be placed in global scope in individual op implementation source files.</p>
+<div class="section" id="method-1">
+<h4>Method 1<a class="headerlink" href="#method-1" title="Permalink to this heading">¶</a></h4>
+<p>Registration with default cost value (i.e. GLACIAL) and default flag (Flags::RESOURCE_HVX)</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * F  - op implementation function</span>
+<span class="cm"> *</span>
+<span class="cm"> * OP - op name</span>
+<span class="cm"> */</span>
+<span class="n">DEF_PACKAGE_OP</span><span class="p">(</span><span class="n">F</span><span class="p">,</span><span class="n">OP</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Example</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">DEF_PACKAGE_OP</span><span class="p">(</span><span class="n">elementwise_add</span><span class="o">&lt;</span><span class="n">Tensor</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Add&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="method-2">
+<h4>Method 2<a class="headerlink" href="#method-2" title="Permalink to this heading">¶</a></h4>
+<p>Registration with user specified cost value and flags.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * F    - op implementation function</span>
+<span class="cm"> *</span>
+<span class="cm"> * OP   - op name</span>
+<span class="cm"> *</span>
+<span class="cm"> * COST - pre-defined cost value names, one of GLACIAL, SNAIL, FAST, FREE</span>
+<span class="cm"> *        (listed in descending order of value).</span>
+<span class="cm"> *        Op implementation with relatively lower cost will be chosen given all</span>
+<span class="cm"> *        other criteria are met.</span>
+<span class="cm"> *</span>
+<span class="cm"> * ...  - zero or more flags, available flags include IS_CONST, INHIBIT_CONST_PROP,</span>
+<span class="cm"> *        RESOURCE_HVX.</span>
+<span class="cm"> *        IS_CONST is used to mark an op should be treated as a constant op.</span>
+<span class="cm"> *        INHIBIT_CONST_PROP marks an op should not participate in constant propagation.</span>
+<span class="cm"> *        RESOURCE_HVX marks this op will use HVX resources.</span>
+<span class="cm"> */</span>
+<span class="n">DEF_PACKAGE_OP_AND_COST_AND_FLAGS</span><span class="p">(</span><span class="n">F</span><span class="p">,</span><span class="n">OP</span><span class="p">,</span><span class="n">COST</span><span class="p">,...)</span>
+</pre></div>
+</div>
+<p><strong>Example</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">DEF_PACKAGE_OP_AND_COST_AND_FLAGS</span><span class="w"> </span><span class="p">(</span>
+<span class="w">            </span><span class="n">elementwise_add</span><span class="o">&lt;</span><span class="n">PlainFloatTensor</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;Add&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="n">SNAIL</span><span class="p">,</span>
+<span class="w">            </span><span class="n">RESOURCE_HVX</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="method-3">
+<h4>Method 3<a class="headerlink" href="#method-3" title="Permalink to this heading">¶</a></h4>
+<p>Registration with user specified cost function and flags.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * F      - op implementation function</span>
+<span class="cm"> *</span>
+<span class="cm"> * OP     - op name</span>
+<span class="cm"> *</span>
+<span class="cm"> * COST_F - user defined cost function</span>
+<span class="cm"> *          cost function pointer type: typedef float (*cost_function) (const Op * op);</span>
+<span class="cm"> *          Op implementation with relatively lower cost will be chosen given all</span>
+<span class="cm"> *          other criteria are met.</span>
+<span class="cm"> *</span>
+<span class="cm"> * ...    - zero or more flags, available flags include IS_CONST, INHIBIT_CONST_PROP,</span>
+<span class="cm"> *          RESOURCE_HVX.</span>
+<span class="cm"> *          IS_CONST is used to mark an op should be treated as a constant op.</span>
+<span class="cm"> *          INHIBIT_CONST_PROP marks an op should not participate in constant propagation.</span>
+<span class="cm"> *          RESOURCE_HVX marks this op will use HVX resources.</span>
+<span class="cm"> */</span>
+<span class="n">DEF_PACKAGE_OP_AND_COST_F_AND_FLAGS</span><span class="p">(</span><span class="n">F</span><span class="p">,</span><span class="n">OP</span><span class="p">,</span><span class="n">COST_F</span><span class="p">,...)</span>
+</pre></div>
+</div>
+<p><strong>Example</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">float</span><span class="w"> </span><span class="nf">elementAddCost</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Op</span><span class="w"> </span><span class="o">*</span><span class="n">op</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// can use some properties of an op to determine cost</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">DEF_PACKAGE_OP_AND_COST_F_AND_FLAGS</span><span class="w"> </span><span class="p">(</span>
+<span class="w">            </span><span class="n">elementwise_add</span><span class="o">&lt;</span><span class="n">PlainFloatTensor</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;Add&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="n">elementAddCost</span><span class="p">,</span>
+<span class="w">            </span><span class="n">RESOURCE_HVX</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="step-3-specify-the-def-tensor-properties-for-operators">
+<h3><em>Step 3</em>: Specify the DEF_TENSOR_PROPERTIES for operators<a class="headerlink" href="#step-3-specify-the-def-tensor-properties-for-operators" title="Permalink to this heading">¶</a></h3>
+<p>We can achieve centralizing the decision-making on the Layout and Memory Placement of our tensors by specifying the requirements and constraints for operators in DEF_TENSOR_PROPERTIES.
+Here is an example:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">DEF_TENSOR_PROPERTIES</span><span class="p">(</span><span class="n">Op</span><span class="p">(</span><span class="s">&quot;Argmax&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;in&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;axis&quot;</span><span class="p">),</span>
+<span class="w">                     </span><span class="n">Flat</span><span class="p">(</span><span class="s">&quot;*&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;axis&quot;</span><span class="p">),</span>
+<span class="w">                     </span><span class="n">MainMemory</span><span class="p">(</span><span class="s">&quot;...&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>In this example, the first literal, <cite>“Argmax”</cite>, is the name of the operator and the remaining literals provide local names to the tensor inputs.
+* We use <cite>“*”</cite> to refer to the (first) output tensor.
+* <cite>“in”</cite> identifies the first input tensor but is not mentioned in any layout constraint and so may have either flat or crouton layout.
+* <cite>“axis”</cite> identifies the parameter tensor and require to be in flat layout.
+* The ellipsis refers to “all tensors not yet constrained” so in this case all tensors are constrained to be in main memory.</p>
+<div class="section" id="constraint-terms">
+<h4>Constraint terms:<a class="headerlink" href="#constraint-terms" title="Permalink to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>Flat: flat layout</p></li>
+<li><p>Crouton: crouton layout</p></li>
+<li><p>Tcm: in TCM</p></li>
+<li><p>MainMemory: in main memory.</p></li>
+</ul>
+<p>These are constraints: if a tensor is not mentioned for some property then the system will assign a property for it. In this example “in” identifies the first input tensor but is not mentioned in any layout constraint and so may have either flat or crouton layout. The ellipsis refers to “all tensor not yet constrained on the relevant property” so in this case all tensors are constrained to be in main memory.</p>
+</div>
+<div class="section" id="before-and-after-tcm-migration">
+<h4>Before and after TCM Migration<a class="headerlink" href="#before-and-after-tcm-migration" title="Permalink to this heading">¶</a></h4>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// DEF_OPT rules we have in the old way</span>
+<span class="n">DEF_PACKAGE_OPTIMIZATION</span><span class="p">(</span><span class="n">LATE</span><span class="o">+</span><span class="mi">900</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Op</span><span class="p">(</span><span class="s">&quot;FastExampleOp&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;in_0&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;in_1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;in_2&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">OK</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Op</span><span class="p">(</span><span class="s">&quot;FastExampleOp&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Op</span><span class="p">(</span><span class="n">FROM_DEFAULT_PACKAGE</span><span class="p">(</span><span class="s">&quot;crouton_to_vtcm&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">Op</span><span class="p">(</span><span class="n">FROM_DEFAULT_PACKAGE</span><span class="p">(</span><span class="s">&quot;ForceFormat_Crouton&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;in_0&quot;</span><span class="p">)),</span>
+<span class="w">        </span><span class="n">Op</span><span class="p">(</span><span class="n">FROM_DEFAULT_PACKAGE</span><span class="p">(</span><span class="s">&quot;flat_to_vtcm&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">Op</span><span class="p">(</span><span class="n">FROM_DEFAULT_PACKAGE</span><span class="p">(</span><span class="s">&quot;ForceFormat_Flat&quot;</span><span class="p">),</span><span class="s">&quot;in_1&quot;</span><span class="p">)),</span>
+<span class="w">        </span><span class="s">&quot;in_2&quot;</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Now instead of using flat/crouton_to_vtcm, we use DEF_TENSOR_PROPERTIES to control layout and placement</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">//The new way</span>
+<span class="n">DEF_TENSOR_PROPERTIES</span><span class="p">(</span><span class="n">Op</span><span class="p">(</span><span class="s">&quot;FastExampleOp&quot;</span><span class="p">,</span><span class="s">&quot;in0&quot;</span><span class="p">,</span><span class="s">&quot;in1&quot;</span><span class="p">,</span><span class="s">&quot;in2&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">Flat</span><span class="p">(</span><span class="s">&quot;*&quot;</span><span class="p">,</span><span class="s">&quot;in1&quot;</span><span class="p">,</span><span class="s">&quot;in2&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">Crouton</span><span class="p">(</span><span class="s">&quot;in0&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">MainMemory</span><span class="p">(</span><span class="s">&quot;in2&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">Tcm</span><span class="p">(</span><span class="s">&quot;in_0&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;in_1&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>in0 should be in Crouton and tcm memory</p></li>
+<li><p>in1 should be in Flat and tcm memory</p></li>
+</ul>
+<p>For facilitating migration to the new way, a helper script is provided under examples/customer_migration_tool/customer_migration.py in QNN SDK. More examples can be find under examples/QNN/OpPackage/HTP</p>
+</div>
+</div>
+<div class="section" id="step-4-op-parameter-order-specification-optional">
+<h3><em>Step 4</em>: Op Parameter Order Specification - <em>Optional</em><a class="headerlink" href="#step-4-op-parameter-order-specification-optional" title="Permalink to this heading">¶</a></h3>
+<p>From QNN level, some ops uses parameters in addition to inputs, and there
+might be more than one parameter. Parameters are constants provided as
+part of Qnn_OpConfig_t, and Qnn_Param_t has a name field associated with it.
+Due to the nature of HTP op implementation function interface, the
+parameters are differentiated based on order rather than names. To allow
+QNN users to use op parameter names during QnnGraph_addNode function calls,
+HTP backend allows op package writers to specify op parameter orders as well
+as default their values for any ops. HTP backend does re-arrangement of the
+op parameters used in QnnGraph_addNode based on the order listed. If an op
+does not have an op parameter order specification, no re-arrangement occurs
+in QnnGraph_addNode.</p>
+<p>This is not applicable to the elementwise_add op mentioned above.</p>
+<p>Op parameter order can be specified using HTP core macro listed below,
+and this macro should be placed in global scope in individual op implementation
+source files.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * OP       - op name</span>
+<span class="cm"> *</span>
+<span class="cm"> * PARAM    - parameter name</span>
+<span class="cm"> *</span>
+<span class="cm"> * MANATORY - boolean, whether this parameter is required to be provided at Qnn_addNode</span>
+<span class="cm"> *</span>
+<span class="cm"> * DEFAULT  - default parameter value as Qnn_Param_t*, is used when MANATORY is false.</span>
+<span class="cm"> *            If provided as Qnn_Param_t*, DEFAULT will be used for graph construction</span>
+<span class="cm"> *            when this parameter is not provided at Qnn_addNode.</span>
+<span class="cm"> *            If provided as nullptr, graph construction will skip this parameter when</span>
+<span class="cm"> *            this parameter is not provided at Qnn_addNode.</span>
+<span class="cm"> */</span>
+<span class="n">DEF_PACKAGE_PARAM_ORDER</span><span class="p">(</span><span class="n">OP</span><span class="p">,</span><span class="n">PARAM1</span><span class="p">,</span><span class="n">MANDATORY1</span><span class="p">,</span><span class="n">DEFAULT1</span><span class="p">,</span><span class="n">PARAM2</span><span class="p">,</span><span class="n">MANDATORY2</span><span class="p">,</span><span class="n">DEFAULT2</span><span class="p">...)</span>
+</pre></div>
+</div>
+<p>This macro is one per op and it takes any number of parameters. If an op has
+a parameter order definition, any parameter passed into Qnn_addNode with
+unlisted name will be abandoned. If two or more op packages with the same
+package name will be registered, they cannot list conflicting parameter orders.</p>
+<p><strong>Example</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="n">Qnn_Scalar_t</span><span class="w"> </span><span class="n">sg_opParamDefault1Scalar</span><span class="p">{.</span><span class="n">dataType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QNN_DATATYPE_FLOAT_32</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">floatValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">6.0</span><span class="p">};</span>
+<span class="k">static</span><span class="w"> </span><span class="n">Qnn_Param_t</span><span class="w"> </span><span class="n">sg_opParamDefault1</span><span class="p">{.</span><span class="n">paramType</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">QNN_PARAMTYPE_SCALAR</span><span class="p">,</span>
+<span class="w">                                      </span><span class="p">.</span><span class="n">scalarParam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sg_opParamDefault1Scalar</span><span class="p">};</span>
+<span class="n">DEF_PACKAGE_PARAM_ORDER</span><span class="p">(</span><span class="s">&quot;paramOrderDemoOp&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="s">&quot;MinusVal&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nb">false</span><span class="p">,</span>
+<span class="w">                        </span><span class="o">&amp;</span><span class="n">sg_opParamDefault1</span><span class="p">,</span>
+<span class="w">                        </span><span class="s">&quot;AxisVal&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nb">true</span><span class="p">,</span>
+<span class="w">                        </span><span class="k">nullptr</span><span class="p">,</span>
+<span class="w">                        </span><span class="s">&quot;AddVal&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nb">true</span><span class="p">,</span>
+<span class="w">                        </span><span class="k">nullptr</span><span class="p">,</span>
+<span class="w">                        </span><span class="s">&quot;OptionalParam&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nb">false</span><span class="p">,</span>
+<span class="w">                        </span><span class="k">nullptr</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This example defines op parameter order for op <code class="docutils literal notranslate"><span class="pre">paramOrderDemoOp</span></code> from the current
+op package. It expects four parameters in the order of “MinusVal”, “AxisVal”, “AddVal”,
+“OptionalParam”. “MinusVal” is an optional parameter with a default scalar parameter
+value defined in sg_opParamDefault1. “AxisVal” and “AddVal” are mandatory parameters.
+“OptionalParam”  is optional and will be skipped if not provided in Qnn_addNode.</p>
+</div>
+<div class="section" id="step-5-optimization-rule-definition-optional">
+<h3><em>Step 5</em>: Optimization Rule Definition - <em>Optional</em><a class="headerlink" href="#step-5-optimization-rule-definition-optional" title="Permalink to this heading">¶</a></h3>
+<p>Once the basic functionality of the op is completed; the user might want
+to specify rules for graph level transformations to implement things
+like tiling strategies or manipulating the data to simplify execution.
+The transformations should be applied in a way such that, originality of
+the output does not deteriorate.</p>
+<p>Optimization rules can be defined using HTP core macro listed below,
+and this macro should be placed in global scope in individual op
+implementation source files.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * PRIORITY       - unsigned integer value, used for indicating optimization pass number,</span>
+<span class="cm"> *                  smaller number indicates earlier optimization pass.</span>
+<span class="cm"> *                  Predefined values include EARLY(2000), MIDDLE(3000), LATE(4000).</span>
+<span class="cm"> *</span>
+<span class="cm"> * MATCHCODE      - subgraph matching pattern which this optimization rule should apply on</span>
+<span class="cm"> *</span>
+<span class="cm"> * CONSTRAINTCODE - constraints applied to the match pattern</span>
+<span class="cm"> *</span>
+<span class="cm"> * REPLACECODE    - new subgraph pattern which should replace the matching pattern if the</span>
+<span class="cm"> *                  constraints are met</span>
+<span class="cm"> */</span>
+<span class="n">DEF_PACKAGE_OPTIMIZATION</span><span class="p">(</span><span class="n">PRIORITY</span><span class="p">,</span><span class="n">MATCHCODE</span><span class="p">,</span><span class="n">CONSTRAINTCODE</span><span class="p">,</span><span class="n">REPLACECODE</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Example</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">DEF_PACKAGE_OPTIMIZATION</span><span class="p">(</span>
+<span class="w">    </span><span class="n">EARLY</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Op</span><span class="p">(</span><span class="s">&quot;Add&quot;</span><span class="p">,</span><span class="s">&quot;X&quot;</span><span class="p">,</span><span class="s">&quot;B&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">AND</span><span class="p">(</span><span class="n">EQ</span><span class="p">(</span><span class="n">RANK_OF</span><span class="p">(</span><span class="s">&quot;X&quot;</span><span class="p">),</span><span class="mi">4</span><span class="p">),</span><span class="n">EQ</span><span class="p">(</span><span class="n">RANK_OF</span><span class="p">(</span><span class="s">&quot;B&quot;</span><span class="p">),</span><span class="mi">4</span><span class="p">),</span><span class="n">EQ</span><span class="p">(</span><span class="n">DIM_DEPTH</span><span class="p">(</span><span class="s">&quot;X&quot;</span><span class="p">),</span><span class="n">DIM_DEPTH</span><span class="p">(</span><span class="s">&quot;B&quot;</span><span class="p">)),</span>
+<span class="w">        </span><span class="n">EQ</span><span class="p">(</span><span class="n">DIM_WIDTH</span><span class="p">(</span><span class="s">&quot;B&quot;</span><span class="p">),</span><span class="mi">1</span><span class="p">),</span><span class="n">EQ</span><span class="p">(</span><span class="n">DIM_HEIGHT</span><span class="p">(</span><span class="s">&quot;B&quot;</span><span class="p">),</span><span class="mi">1</span><span class="p">),</span><span class="n">EQ</span><span class="p">(</span><span class="n">DIM_BATCHES</span><span class="p">(</span><span class="s">&quot;B&quot;</span><span class="p">),</span><span class="mi">1</span><span class="p">)),</span>
+<span class="w">    </span><span class="n">Op</span><span class="p">(</span><span class="s">&quot;BiasAdd&quot;</span><span class="p">,</span><span class="s">&quot;X&quot;</span><span class="p">,</span><span class="s">&quot;B&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>This rule is ordered <code class="docutils literal notranslate"><span class="pre">EARLY</span></code>, which is a value that happens early in
+the optimization process. <code class="docutils literal notranslate"><span class="pre">EARLY,</span> <span class="pre">MIDDLE,</span> <span class="pre">and</span> <span class="pre">LATE</span></code> are defined to
+help order rules globally. User may wish to use
+<code class="docutils literal notranslate"><span class="pre">EARLY,</span> <span class="pre">EARLY+1,</span> <span class="pre">EARLY+2,</span> <span class="pre">etc.</span></code> to order optimizations.</p>
+<p>This matches the pattern of an op with the operation string <code class="docutils literal notranslate"><span class="pre">Add</span></code> with
+two inputs. The constraint ensures that the inputs are <code class="docutils literal notranslate"><span class="pre">4D</span></code>, that the
+last dimensions match between the two inputs, and that the other
+dimensions in the <code class="docutils literal notranslate"><span class="pre">B</span></code> input are 1.</p>
+<p>If the constraint passes, the original op is replaced with a new op,
+with the same inputs and same output specifications as the original
+output but with the operation string replaced with <code class="docutils literal notranslate"><span class="pre">BiasAdd</span></code>.</p>
+<p>Note that the strings supplied as inputs in the match are usable during
+constraint and replacement patterns to indicate whatever was matched.
+Additionally, there is a special string <code class="docutils literal notranslate"><span class="pre">&quot;*&quot;</span></code> which indicates the
+entire match. If a placeholder string occurs more than once in a match,
+it must be the same in all places.</p>
+<p>Op specifiers may be used more than once in a match or replacement
+pattern, this will match or generate more than one op in the dependent
+manner expected. For example:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">DEF_PACKAGE_OPTIMIZATION</span><span class="p">(</span>
+<span class="w">    </span><span class="n">EARLY</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Op</span><span class="p">(</span><span class="s">&quot;BiasAdd&quot;</span><span class="p">,</span><span class="n">Op</span><span class="p">(</span><span class="s">&quot;Conv2d_valid&quot;</span><span class="p">,</span><span class="s">&quot;Activations&quot;</span><span class="p">,</span><span class="s">&quot;Weights&quot;</span><span class="p">,</span><span class="s">&quot;Stride&quot;</span><span class="p">),</span><span class="s">&quot;Bias&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">OK</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Op</span><span class="p">(</span><span class="s">&quot;ConvLayer_valid&quot;</span><span class="p">,</span><span class="s">&quot;Activations&quot;</span><span class="p">,</span><span class="s">&quot;Weights&quot;</span><span class="p">,</span><span class="s">&quot;Stride&quot;</span><span class="p">,</span><span class="s">&quot;Bias&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>This rule will match the sequence of <code class="docutils literal notranslate"><span class="pre">Conv2d_valid</span></code> followed by
+<code class="docutils literal notranslate"><span class="pre">BiasAdd</span></code>into a new op called <code class="docutils literal notranslate"><span class="pre">ConvLayer</span></code> with four input
+parameters.</p>
+<p><strong>Cross-Package Optimization</strong></p>
+<p>Cross-package optimization is allowed and supported. That means any op package can define optimization
+rules which involve ops from other op packages. By default, all the op
+names used in matching patterns and replacement patterns are assigned with
+a package name associated with the current package. In scenarios when an op
+from a different op package shall be used in the matching pattern and/or
+replacement pattern, users can explicitly use this format <code class="docutils literal notranslate"><span class="pre">packageName::opName</span></code>
+in place where an op name is expected. If users want to use any HTP native ops,
+<code class="docutils literal notranslate"><span class="pre">FROM_DEFAULT_PACKAGE(OPNAME)</span></code> macro can be used to indicate that. For example,</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">DEF_PACKAGE_OPTIMIZATION</span><span class="p">(</span>
+<span class="w">    </span><span class="n">EARLY</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Op</span><span class="p">(</span><span class="s">&quot;BiasAdd&quot;</span><span class="p">,</span><span class="n">Op</span><span class="p">(</span><span class="s">&quot;OpPackageNo2::Conv2d_valid&quot;</span><span class="p">,</span><span class="s">&quot;Activations&quot;</span><span class="p">,</span><span class="s">&quot;Weights&quot;</span><span class="p">,</span><span class="s">&quot;Stride&quot;</span><span class="p">),</span><span class="s">&quot;Bias&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">OK</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Op</span><span class="p">(</span><span class="n">FROM_DEFAULT_PACKAGE</span><span class="p">(</span><span class="s">&quot;ConvLayer_valid&quot;</span><span class="p">),</span><span class="s">&quot;Activations&quot;</span><span class="p">,</span><span class="s">&quot;Weights&quot;</span><span class="p">,</span><span class="s">&quot;Stride&quot;</span><span class="p">,</span><span class="s">&quot;Bias&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>This modifies the previous optimization rule to match Op <code class="docutils literal notranslate"><span class="pre">Conv2d_valid</span></code> from
+a package named <code class="docutils literal notranslate"><span class="pre">OpPackageNo2</span></code>, and it modifies the replacement pattern with
+a HTP native <code class="docutils literal notranslate"><span class="pre">ConvLayer_valid</span></code> op.</p>
+<p>Other common default package ops examples: please read <a class="reference internal" href="common_default_package_ops_usage_examples.html#native-ops-usage"><span class="std std-ref">QNN HTP Op Package - Common Default Package Ops Usage Examples</span></a>.</p>
+<p><strong>More Complex Optimization Rule Example</strong></p>
+<p>User can even take this further and create a more complex optimization rule.
+For example:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">DEF_PACKAGE_OPTIMIZATION</span><span class="p">(</span>
+<span class="w">    </span><span class="n">LATE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Op</span><span class="p">(</span><span class="s">&quot;ConvLayer_valid&quot;</span><span class="p">,</span><span class="s">&quot;Act&quot;</span><span class="p">,</span><span class="s">&quot;Weights&quot;</span><span class="p">,</span><span class="s">&quot;Stride&quot;</span><span class="p">,</span><span class="s">&quot;Bias&quot;</span><span class="p">),</span>
+
+<span class="w">    </span><span class="n">AND</span><span class="p">(</span><span class="n">IS_QUINT8</span><span class="p">(</span><span class="s">&quot;Act&quot;</span><span class="p">),</span><span class="w">       </span><span class="c1">// the constraint</span>
+<span class="w">        </span><span class="n">IS_QUINT8</span><span class="p">(</span><span class="s">&quot;Weights&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="n">EQ</span><span class="p">(</span><span class="n">DIM_HEIGHT</span><span class="p">(</span><span class="s">&quot;Stride&quot;</span><span class="p">),</span><span class="mi">2</span><span class="p">),</span>
+<span class="w">        </span><span class="n">EQ</span><span class="p">(</span><span class="n">DIM_WIDTH</span><span class="p">(</span><span class="s">&quot;Stride&quot;</span><span class="p">),</span><span class="mi">2</span><span class="p">),</span>
+<span class="w">        </span><span class="n">LT</span><span class="p">(</span><span class="kt">int</span><span class="p">(</span><span class="n">DIM_DEPTH</span><span class="p">(</span><span class="s">&quot;Act&quot;</span><span class="p">)),</span><span class="mi">4</span><span class="p">),</span>
+<span class="w">        </span><span class="n">GT</span><span class="p">(</span><span class="kt">int</span><span class="p">(</span><span class="n">DIM_NFILTS</span><span class="p">(</span><span class="s">&quot;Weights&quot;</span><span class="p">)),</span><span class="mi">31</span><span class="p">)),</span>
+
+<span class="w">    </span><span class="n">Op</span><span class="p">(</span><span class="s">&quot;ConvLayer_valid&quot;</span><span class="p">,</span><span class="w">       </span><span class="c1">// the replacment rule</span>
+<span class="w">        </span><span class="n">WITH_TYPE</span><span class="p">(</span><span class="s">&quot;Act&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="n">WITH_SIZE</span><span class="p">(</span>
+<span class="w">                 </span><span class="n">gen_Shape</span><span class="p">(</span>
+<span class="w">                     </span><span class="n">DIM_BATCHES</span><span class="p">(</span><span class="s">&quot;Act&quot;</span><span class="p">),</span>
+<span class="w">                     </span><span class="n">ADD</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">DIV</span><span class="p">(</span><span class="n">SUB</span><span class="p">(</span><span class="n">DIM_HEIGHT</span><span class="p">(</span><span class="s">&quot;Act&quot;</span><span class="p">),</span><span class="n">DIM_FILTHEIGHT</span><span class="p">(</span><span class="s">&quot;Weights&quot;</span><span class="p">)),</span><span class="mi">2</span><span class="p">)),</span>
+<span class="w">                     </span><span class="n">ADD</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">DIV</span><span class="p">(</span><span class="n">SUB</span><span class="p">(</span><span class="n">DIM_WIDTH</span><span class="p">(</span><span class="s">&quot;Act&quot;</span><span class="p">),</span><span class="n">DIM_FILTWIDTH</span><span class="p">(</span><span class="s">&quot;Weights&quot;</span><span class="p">)),</span><span class="mi">2</span><span class="p">)),</span>
+<span class="w">                     </span><span class="n">ROUNDUP</span><span class="p">(</span><span class="n">MUL</span><span class="p">(</span><span class="n">DIM_FILTHEIGHT</span><span class="p">(</span><span class="s">&quot;Weights&quot;</span><span class="p">),</span><span class="n">DIM_FILTWIDTH</span><span class="p">(</span><span class="s">&quot;Weights&quot;</span><span class="p">),</span><span class="n">DIM_FILTDEPTH</span><span class="p">(</span><span class="s">&quot;Weights&quot;</span><span class="p">)),</span><span class="mi">32</span><span class="p">)</span>
+<span class="w">                 </span><span class="p">),</span>
+<span class="w">                </span><span class="n">Op</span><span class="p">(</span><span class="s">&quot;ConvLayer.opt.im2col_stride2&quot;</span><span class="p">,</span><span class="s">&quot;Act&quot;</span><span class="p">,</span><span class="n">gen_ShapeOf</span><span class="p">(</span><span class="s">&quot;Weights&quot;</span><span class="p">))</span>
+<span class="w">            </span><span class="p">)</span>
+<span class="w">        </span><span class="p">),</span>
+<span class="w">        </span><span class="n">WITH_TYPE</span><span class="p">(</span><span class="s">&quot;Weights&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="n">WITH_SIZE</span><span class="p">(</span>
+<span class="w">                </span><span class="n">gen_Shape</span><span class="p">(</span>
+<span class="w">                    </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">                    </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">ROUNDUP</span><span class="p">(</span><span class="n">MUL</span><span class="p">(</span><span class="n">DIM_FILTHEIGHT</span><span class="p">(</span><span class="s">&quot;Weights&quot;</span><span class="p">),</span><span class="n">DIM_FILTWIDTH</span><span class="p">(</span><span class="s">&quot;Weights&quot;</span><span class="p">),</span><span class="n">DIM_FILTDEPTH</span><span class="p">(</span><span class="s">&quot;Weights&quot;</span><span class="p">)),</span><span class="mi">32</span><span class="p">),</span>
+<span class="w">                    </span><span class="n">DIM_NFILTS</span><span class="p">(</span><span class="s">&quot;Weights&quot;</span><span class="p">)),</span>
+<span class="w">                </span><span class="n">Op</span><span class="p">(</span><span class="s">&quot;ConvLayer.opt.weights_for_im2col&quot;</span><span class="p">,</span><span class="s">&quot;Weights&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">)</span>
+<span class="w">        </span><span class="p">),</span>
+<span class="w">        </span><span class="n">gen_Shape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">        </span><span class="s">&quot;Bias&quot;</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>This has a simple match pattern (“<code class="docutils literal notranslate"><span class="pre">ConvLayer_valid</span></code>” with <code class="docutils literal notranslate"><span class="pre">4</span></code>
+inputs) but there is a constraint which must be met before the
+replacement rule is applied:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Act</span></code> and <code class="docutils literal notranslate"><span class="pre">Weights</span></code> inputs must both be of datatype
+“<code class="docutils literal notranslate"><span class="pre">Quint8</span></code>”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Stride</span></code> must have dimension of <code class="docutils literal notranslate"><span class="pre">2x2</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Act</span></code> depth must be <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">4</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Weights</span></code> must have <code class="docutils literal notranslate"><span class="pre">DIM_NFILTS</span> <span class="pre">&gt;</span> <span class="pre">31</span></code> (meaning its depths &gt; 31)</p></li>
+</ul>
+<p>The replacement pattern for the optimization above generates the op</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">Op</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;ConvLayer_valid&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="n">new_act</span><span class="o">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="n">new_weights</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="n">new_stride</span><span class="o">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Bias&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">&lt;&lt;new_act&gt;&gt;,</span> <span class="pre">&lt;&lt;new_weights&gt;,</span> <span class="pre">&lt;&lt;new_stride&gt;&gt;</span></code> are constructed as
+below:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;&lt;new_stride&gt;&gt;</span></code> is just a <code class="docutils literal notranslate"><span class="pre">[1x1x1x1]</span></code> shape, produced by the
+<code class="docutils literal notranslate"><span class="pre">gen_Shape(1,1,1,1)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;&lt;new_act&gt;&gt;</span></code> is made by applying the original “<code class="docutils literal notranslate"><span class="pre">Act</span></code>” input to
+an op
+<code class="docutils literal notranslate"><span class="pre">Op(&quot;ConvLayer.opt.im2col_stride2&quot;,&quot;Act&quot;,gen_ShapeOf(&quot;Weights&quot;))</span></code>.
+In other words, a new op <code class="docutils literal notranslate"><span class="pre">ConvLayer.opt.im2col_stride2</span></code> is inserted
+and “<code class="docutils literal notranslate"><span class="pre">Act</span></code>” becomes its first input which rearranges the data so
+that the equivalent convolution can be done with a point-wise
+convolution. It reduces the <code class="docutils literal notranslate"><span class="pre">height</span></code> and <code class="docutils literal notranslate"><span class="pre">width</span></code> dimensions by
+<code class="docutils literal notranslate"><span class="pre">/2</span></code>, and increases the depth because of <code class="docutils literal notranslate"><span class="pre">WITH_TYPE</span></code> and
+<code class="docutils literal notranslate"><span class="pre">WITH_SIZE</span></code>:</p>
+<ul>
+<li><p>the output type for <code class="docutils literal notranslate"><span class="pre">&lt;&lt;new_act&gt;&gt;</span></code> is the same as the original
+<code class="docutils literal notranslate"><span class="pre">Act</span></code> output type</p></li>
+<li><p>the shape for <code class="docutils literal notranslate"><span class="pre">&lt;&lt;new_act&gt;&gt;</span></code> is according to the constructed
+shape</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">gen_Shape</span><span class="p">(</span>
+<span class="w">    </span><span class="n">DIM_BATCHES</span><span class="p">(</span><span class="s">&quot;Act&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">ADD</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">DIV</span><span class="p">(</span><span class="n">SUB</span><span class="p">(</span><span class="n">DIM_HEIGHT</span><span class="p">(</span><span class="s">&quot;Act&quot;</span><span class="p">),</span><span class="n">DIM_FILTHEIGHT</span><span class="p">(</span><span class="s">&quot;Weights&quot;</span><span class="p">)),</span><span class="mi">2</span><span class="p">)),</span>
+<span class="w">    </span><span class="n">ADD</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">DIV</span><span class="p">(</span><span class="n">SUB</span><span class="p">(</span><span class="n">DIM_WIDTH</span><span class="p">(</span><span class="s">&quot;Act&quot;</span><span class="p">),</span><span class="n">DIM_FILTWIDTH</span><span class="p">(</span><span class="s">&quot;Weights&quot;</span><span class="p">)),</span><span class="mi">2</span><span class="p">)),</span>
+<span class="w">    </span><span class="n">ROUNDUP</span><span class="p">(</span><span class="n">MUL</span><span class="p">(</span><span class="n">DIM_FILTHEIGHT</span><span class="p">(</span><span class="s">&quot;Weights&quot;</span><span class="p">),</span><span class="n">DIM_FILTWIDTH</span><span class="p">(</span><span class="s">&quot;Weights&quot;</span><span class="p">),</span><span class="n">DIM_FILTDEPTH</span><span class="p">(</span><span class="s">&quot;Weights&quot;</span><span class="p">)),</span><span class="mi">32</span><span class="p">)</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>Note that <code class="docutils literal notranslate"><span class="pre">gen_ShapeOf(&quot;Weights&quot;)</span></code> looks at the output shape
+of the <code class="docutils literal notranslate"><span class="pre">Weights</span></code> input and creates a constant <code class="docutils literal notranslate"><span class="pre">shape</span></code>
+object of the same shape.</p>
+</div></blockquote>
+</li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;&lt;new_weights&gt;&gt;</span></code> is similarly made by using the original
+<code class="docutils literal notranslate"><span class="pre">Weights</span></code>’ input to an op
+<code class="docutils literal notranslate"><span class="pre">Op(&quot;ConvLayer.opt.weights_for_im2col&quot;,</span> <span class="pre">&quot;Weights&quot;)</span></code> and the output
+shape is calculated as <code class="docutils literal notranslate"><span class="pre">[1,1,d_in,d_out]</span></code>, where <code class="docutils literal notranslate"><span class="pre">d_in</span></code> is the
+same as the output depth of the <code class="docutils literal notranslate"><span class="pre">ConvLayer.opt.im2col_stride2</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">d_out</span></code> is the same as the original output depth of the weights.</p></li>
+</ul>
+<p>Just from a simple element-wise add, it is possible to many generate complex
+ops.</p>
+</div>
+</div>
+<div class="section" id="considerations-for-transformations">
+<h2>Considerations for Transformations<a class="headerlink" href="#considerations-for-transformations" title="Permalink to this heading">¶</a></h2>
+<p>By default, replacement ops are created with the same output parameters
+(shape and quantization information) as the entire rule. This is not
+always appropriate, especially if the user is manipulating part of an
+input sequence.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">WITH_SIZE(Size,Replacement)</span></code> generates Replacement with the same
+size as <code class="docutils literal notranslate"><span class="pre">Size</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WITH_TYPE(Type,Replacement)</span></code> generates Replacement with the same
+type as <code class="docutils literal notranslate"><span class="pre">Type</span></code>.</p></li>
+</ul>
+<p>For example, if someone is trying to manipulate a parameter of an input,
+they might have a rule like:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">DEF_PACKAGE_OPTIMIAZATION</span><span class="p">(</span>
+<span class="w">        </span><span class="n">EARLY</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Op</span><span class="p">(</span><span class="s">&quot;MyOp&quot;</span><span class="p">,</span><span class="s">&quot;Input0&quot;</span><span class="p">,</span><span class="s">&quot;Input1&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="n">OK</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Op</span><span class="p">(</span><span class="s">&quot;MyOp.real&quot;</span><span class="p">,</span><span class="s">&quot;Input0&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="n">WITH_SIZE</span><span class="p">(</span><span class="s">&quot;Input1&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="n">WITH_TYPE</span><span class="p">(</span><span class="s">&quot;Input1&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">Op</span><span class="p">(</span><span class="s">&quot;MyOp.AdjustInput&quot;</span><span class="p">,</span><span class="s">&quot;Input1&quot;</span><span class="p">))))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>This would replace the sequence <code class="docutils literal notranslate"><span class="pre">MyOp(A,B)</span></code> with
+<code class="docutils literal notranslate"><span class="pre">MyOp.real(A,MyOp.AdjustInput(B))</span></code>, but would keep the size and type
+of the second op the same as the <code class="docutils literal notranslate"><span class="pre">B</span></code> input.</p>
+<p>To generate a shape or constant scalar op, there are some helper
+replacement patterns:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">gen_Shape(A,B,C,D)</span></code> generates a <code class="docutils literal notranslate"><span class="pre">4D</span></code> shape.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gen_ConstScalar_f32(val)</span></code> generates a constant float scalar with
+value val.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gen_ConstScalar_i32(val)</span></code> generates a constant integer scalar with
+value val.</p></li>
+</ul>
+</div>
+<div class="section" id="tiling-as-graph-transformations">
+<h2>Tiling as Graph Transformations<a class="headerlink" href="#tiling-as-graph-transformations" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><p>Turn some ops to smaller ops to help with practicality, And those ops
+to smaller ops until locality is achieved</p>
+</div></blockquote>
+<p>For tiling, it is common to want to replace an op with the concatenation
+of a set of smaller ops. To facilitate this, the <code class="docutils literal notranslate"><span class="pre">AUTOSPLIT</span></code>
+replacement pattern helper will set this up. <code class="docutils literal notranslate"><span class="pre">AUTOSPLIT</span></code> takes as
+parameters:</p>
+<ul class="simple">
+<li><p>The <strong>output dimension to split on</strong></p></li>
+<li><p><strong>A variable</strong> to hold information about the splitting process for a
+replacement</p></li>
+<li><p>The <strong>size of the split</strong></p></li>
+<li><p>The <strong>replacement pattern</strong></p></li>
+</ul>
+<p>For example,</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">DEF_PACKAGE_OPTIMIAZATION</span><span class="p">(</span>
+<span class="w">            </span><span class="n">EARLY</span><span class="o">+</span><span class="mi">4</span><span class="p">,</span>
+<span class="w">            </span><span class="n">Op</span><span class="p">(</span><span class="s">&quot;MaxPool_valid&quot;</span><span class="p">,</span><span class="s">&quot;Act&quot;</span><span class="p">,</span><span class="s">&quot;W&quot;</span><span class="p">,</span><span class="s">&quot;S&quot;</span><span class="p">),</span>
+<span class="w">            </span><span class="n">GT</span><span class="p">(</span><span class="n">DIM_DEPTH</span><span class="p">(</span><span class="s">&quot;*&quot;</span><span class="p">),</span><span class="w"> </span><span class="mi">32</span><span class="p">),</span>
+<span class="w">            </span><span class="n">AUTOSPLIT</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="s">&quot;I&quot;</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="n">Op</span><span class="p">(</span><span class="s">&quot;MaxPool_valid&quot;</span><span class="p">,</span><span class="n">TYPICAL_SLICE</span><span class="p">(</span><span class="s">&quot;Act&quot;</span><span class="p">,</span><span class="s">&quot;I&quot;</span><span class="p">),</span><span class="s">&quot;W&quot;</span><span class="p">,</span><span class="s">&quot;S&quot;</span><span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>This will match a <code class="docutils literal notranslate"><span class="pre">MaxPool_valid</span></code> op with three inputs, enforce that
+the number of output channels is greater than <code class="docutils literal notranslate"><span class="pre">32</span></code>, and then split
+along the output channels into some number of replacements, each with at
+most <code class="docutils literal notranslate"><span class="pre">32</span></code> channels. The replacement pattern is a <code class="docutils literal notranslate"><span class="pre">MaxPool_valid</span></code> op
+where the input is replaced with a slice of input with the helper
+<code class="docutils literal notranslate"><span class="pre">TYPICAL_SLICE</span></code>, which takes a slice of the specified input. All the
+replacement ops are then concatenated together along the split dimension
+automatically. If our input/output is <code class="docutils literal notranslate"><span class="pre">64</span></code> channels, the replacement
+would look like:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">Concat</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span>
+<span class="w">    </span><span class="n">MaxPool_valid</span><span class="p">(</span>
+<span class="w">        </span><span class="n">Slice</span><span class="p">(</span><span class="s">&quot;Act&quot;</span><span class="p">,</span><span class="w"> </span><span class="cm">/* Slice control values here */</span><span class="p">)</span>
+<span class="w">        </span><span class="s">&quot;W&quot;</span><span class="p">,</span><span class="s">&quot;S&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">MaxPool_valid</span><span class="p">(</span>
+<span class="w">        </span><span class="n">Slice</span><span class="p">(</span><span class="s">&quot;Act&quot;</span><span class="p">,</span><span class="w"> </span><span class="cm">/* Slice control values here */</span><span class="p">)</span>
+<span class="w">        </span><span class="s">&quot;W&quot;</span><span class="p">,</span><span class="s">&quot;S&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>If a typical slice doesn’t match what is needed, use
+<code class="docutils literal notranslate"><span class="pre">AUTOSPLIT_SHAPEFN_APPLY</span></code> helper to apply a user-specified function to
+generate the shape needed.</p>
+<p>Breaking down ops to smaller ops helps the framework to be able to
+reduce the memory footprint (by more quickly eliminating temporary
+results), as well as increase parallelism by enabling ops to run in
+parallel.</p>
+<p>It’s important to note that when the graph transformations are applied,
+manipulations happen to the same graph, converting one valid graph to
+another.</p>
+</div>
+<div class="section" id="tips-for-optimization">
+<h2>Tips for Optimization<a class="headerlink" href="#tips-for-optimization" title="Permalink to this heading">¶</a></h2>
+<p>More fine-grained tiling opens up more opportunities for parallelism and
+finer-grained data management, however it increases the amount of
+metadata and per-op overhead.</p>
+<p>It is recommended that the graph always remain correct. If there is a
+rule that is optional (for example, tiling when the op handles arbitrary
+sizes), use the same op name, but if there is a change in the behavior,
+it is best to change the name. This way an implementation of the
+original name or an implementation of the new op name has well-defined
+behavior.</p>
+<p>A part from all this, below are a set of graph level optimization that
+are done by the core framework:</p>
+<ul class="simple">
+<li><p><strong>Constant Propagation</strong>: If there is a chains of data that are all
+constant, it will be evaluated when the graph is prepared.</p></li>
+<li><p><strong>Dead Code Elimination</strong>: Code that is not used during execution
+process is deleted.</p></li>
+<li><p><strong>Common Sub-expression Elimination</strong>: Replaces identical expressions
+with a single variable holding the computed value.</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="opPackage_API_version_guide.html" class="btn btn-neutral float-right" title="QNN HTP Op Package API Revision History" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="htp_core_headers.html" class="btn btn-neutral float-left" title="HTP Core Headers for Op Packages" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

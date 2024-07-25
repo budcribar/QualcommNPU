@@ -1,0 +1,23 @@
+{
+    "Name":"",
+    "HostRootPath": "/qnn/user_data",
+    "HostResultsDir":"output",
+    "DevicePath":"/data/local/tmp/nas_artifacts",
+    "Devices":["36253e6d"],
+    "Runs":1,
+
+    "Model": {
+        "Name": "NAS Eval",
+        "InputList": "input_list.txt",
+        "Data": "images",
+        "Conversion": {
+            "Inputs": { "x": "1,28,28,1" },
+            "Outputs": ["Identity"],
+            "Command": "qnn-tensorflow-converter -i saved_model -d x 1,28,28 --out_node Identity --input_list input_list.txt"
+	      },
+        "CustomProcessing": "custom_processing.py"
+    },
+    "Chipset":"8550",
+    "Backends":"DSP",
+    "Measurements": "timing"
+ }

@@ -1,0 +1,835 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>File PSNPE.hpp &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup1.html">Network Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup6.html">Tutorials and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>File PSNPE.hpp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="file-psnpe-hpp">
+<span id="file-snpe-psnpe-hpp"></span><h1>File PSNPE.hpp<a class="headerlink" href="#file-psnpe-hpp" title="Permalink to this heading">¶</a></h1>
+<p>↰ <a class="reference internal" href="dir_SNPE.html#dir-snpe"><span class="std std-ref">Parent directory</span></a> (<code class="docutils literal notranslate"><span class="pre">SNPE</span></code>)</p>
+<div class="contents local topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#definition-snpe-psnpe-hpp" id="id1">Definition (<code class="docutils literal notranslate"><span class="pre">SNPE/PSNPE.hpp</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#includes" id="id2">Includes</a></p></li>
+<li><p><a class="reference internal" href="#namespaces" id="id3">Namespaces</a></p></li>
+<li><p><a class="reference internal" href="#classes" id="id4">Classes</a></p></li>
+<li><p><a class="reference internal" href="#enums" id="id5">Enums</a></p></li>
+<li><p><a class="reference internal" href="#typedefs" id="id6">Typedefs</a></p></li>
+<li><p><a class="reference internal" href="#full-file-listing" id="id7">Full File Listing</a></p></li>
+</ul>
+</div>
+<div class="section" id="definition-snpe-psnpe-hpp">
+<h2>Definition (<code class="docutils literal notranslate"><span class="pre">SNPE/PSNPE.hpp</span></code>)<a class="headerlink" href="#definition-snpe-psnpe-hpp" title="Permalink to this heading">¶</a></h2>
+</div>
+<div class="section" id="includes">
+<h2>Includes<a class="headerlink" href="#includes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DlContainer/IDlContainer.hpp</span></code> (<a class="reference internal" href="file_DlContainer_IDlContainer.hpp.html#file-dlcontainer-idlcontainer-hpp"><span class="std std-ref">File IDlContainer.hpp</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DlSystem/DlEnums.hpp</span></code> (<a class="reference internal" href="file_DlSystem_DlEnums.hpp.html#file-dlsystem-dlenums-hpp"><span class="std std-ref">File DlEnums.hpp</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DlSystem/DlOptional.hpp</span></code> (<a class="reference internal" href="file_DlSystem_DlOptional.hpp.html#file-dlsystem-dloptional-hpp"><span class="std std-ref">File DlOptional.hpp</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DlSystem/DlVersion.hpp</span></code> (<a class="reference internal" href="file_DlSystem_DlVersion.hpp.html#file-dlsystem-dlversion-hpp"><span class="std std-ref">File DlVersion.hpp</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DlSystem/IBufferAttributes.hpp</span></code> (<a class="reference internal" href="file_DlSystem_IBufferAttributes.hpp.html#file-dlsystem-ibufferattributes-hpp"><span class="std std-ref">File IBufferAttributes.hpp</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DlSystem/StringList.hpp</span></code> (<a class="reference internal" href="file_DlSystem_StringList.hpp.html#file-dlsystem-stringlist-hpp"><span class="std std-ref">File StringList.hpp</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DlSystem/UserMemoryMap.hpp</span></code> (<a class="reference internal" href="file_DlSystem_UserMemoryMap.hpp.html#file-dlsystem-usermemorymap-hpp"><span class="std std-ref">File UserMemoryMap.hpp</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SNPE/ApplicationBufferMap.hpp</span></code> (<a class="reference internal" href="file_SNPE_ApplicationBufferMap.hpp.html#file-snpe-applicationbuffermap-hpp"><span class="std std-ref">File ApplicationBufferMap.hpp</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SNPE/PSNPE.h</span></code> (<a class="reference internal" href="#file-snpe-psnpe-hpp"><span class="std std-ref">File PSNPE.hpp</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SNPE/RuntimeConfigList.hpp</span></code> (<a class="reference internal" href="file_SNPE_RuntimeConfigList.hpp.html#file-snpe-runtimeconfiglist-hpp"><span class="std std-ref">File RuntimeConfigList.hpp</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SNPE/UserBufferList.hpp</span></code> (<a class="reference internal" href="file_SNPE_UserBufferList.hpp.html#file-snpe-userbufferlist-hpp"><span class="std std-ref">File UserBufferList.hpp</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">atomic</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cstddef</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">functional</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mutex</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="namespaces">
+<h2>Namespaces<a class="headerlink" href="#namespaces" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="namespace_PSNPE.html#namespace-psnpe"><span class="std std-ref">Namespace PSNPE</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="structPSNPE_1_1BuildConfig.html#exhale-struct-structpsnpe-1-1buildconfig"><span class="std std-ref">Struct BuildConfig</span></a></p></li>
+<li><p><a class="reference internal" href="structPSNPE_1_1InputOutputAsyncCallbackParam.html#exhale-struct-structpsnpe-1-1inputoutputasynccallbackparam"><span class="std std-ref">Struct InputOutputAsyncCallbackParam</span></a></p></li>
+<li><p><a class="reference internal" href="structPSNPE_1_1InputOutputInputAsyncCallbackParam.html#exhale-struct-structpsnpe-1-1inputoutputinputasynccallbackparam"><span class="std std-ref">Struct InputOutputInputAsyncCallbackParam</span></a></p></li>
+<li><p><a class="reference internal" href="structPSNPE_1_1OutputAsyncCallbackParam.html#exhale-struct-structpsnpe-1-1outputasynccallbackparam"><span class="std std-ref">Struct OutputAsyncCallbackParam</span></a></p></li>
+<li><p><a class="reference internal" href="classPSNPE_1_1PSNPE.html#exhale-class-classpsnpe-1-1psnpe"><span class="std std-ref">Class PSNPE</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="enums">
+<h2>Enums<a class="headerlink" href="#enums" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="enum_namespacePSNPE_1aad1f972ebdb8c741212af27c2a1aa4b2.html#exhale-enum-namespacepsnpe-1aad1f972ebdb8c741212af27c2a1aa4b2"><span class="std std-ref">Enum BuildMode</span></a></p></li>
+<li><p><a class="reference internal" href="enum_namespacePSNPE_1a9df9db44a67fc9cb93e9260da5d3df65.html#exhale-enum-namespacepsnpe-1a9df9db44a67fc9cb93e9260da5d3df65"><span class="std std-ref">Enum InputOutputTransmissionMode</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="typedefs">
+<h2>Typedefs<a class="headerlink" href="#typedefs" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="typedef_namespacePSNPE_1a371b41f121d3707242009884acf6afd9.html#exhale-typedef-namespacepsnpe-1a371b41f121d3707242009884acf6afd9"><span class="std std-ref">Typedef PSNPE::InputOutputAsyncCallbackFunc</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_namespacePSNPE_1adc9431aa6011625bb817dd1baaa9be9b.html#exhale-typedef-namespacepsnpe-1adc9431aa6011625bb817dd1baaa9be9b"><span class="std std-ref">Typedef PSNPE::InputOutputAsyncInputCallback</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_namespacePSNPE_1a4c5d5b185b6127f6f796241e403bf426.html#exhale-typedef-namespacepsnpe-1a4c5d5b185b6127f6f796241e403bf426"><span class="std std-ref">Typedef PSNPE::OutputAsyncCallbackFunc</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="full-file-listing">
+<h2>Full File Listing<a class="headerlink" href="#full-file-listing" title="Permalink to this heading">¶</a></h2>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv45PSNPE">
+<span id="_CPPv35PSNPE"></span><span id="_CPPv25PSNPE"></span><span id="PSNPE"></span><span class="target" id="namespacePSNPE"></span><span class="k"><span class="pre">namespace</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PSNPE</span></span></span><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE23OutputAsyncCallbackFuncE">
+<span id="_CPPv3N5PSNPE23OutputAsyncCallbackFuncE"></span><span id="_CPPv2N5PSNPE23OutputAsyncCallbackFuncE"></span><span class="target" id="namespacePSNPE_1a4c5d5b185b6127f6f796241e403bf426"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OutputAsyncCallbackFunc</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">function</span></span><span class="p"><span class="pre">&lt;</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="structPSNPE_1_1OutputAsyncCallbackParam.html#_CPPv4N5PSNPE24OutputAsyncCallbackParamE" title="PSNPE::OutputAsyncCallbackParam"><span class="n"><span class="pre">OutputAsyncCallbackParam</span></span></a><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N5PSNPE23OutputAsyncCallbackFuncE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This callback is called when the output data is ready, only use for Output Async mode. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE28InputOutputAsyncCallbackFuncE">
+<span id="_CPPv3N5PSNPE28InputOutputAsyncCallbackFuncE"></span><span id="_CPPv2N5PSNPE28InputOutputAsyncCallbackFuncE"></span><span class="target" id="namespacePSNPE_1a371b41f121d3707242009884acf6afd9"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InputOutputAsyncCallbackFunc</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">function</span></span><span class="p"><span class="pre">&lt;</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="structPSNPE_1_1InputOutputAsyncCallbackParam.html#_CPPv4N5PSNPE29InputOutputAsyncCallbackParamE" title="PSNPE::InputOutputAsyncCallbackParam"><span class="n"><span class="pre">InputOutputAsyncCallbackParam</span></span></a><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N5PSNPE28InputOutputAsyncCallbackFuncE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This callback is called when the output data is ready, only use for Output-Input Async mode. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE29InputOutputAsyncInputCallbackE">
+<span id="_CPPv3N5PSNPE29InputOutputAsyncInputCallbackE"></span><span id="_CPPv2N5PSNPE29InputOutputAsyncInputCallbackE"></span><span class="target" id="namespacePSNPE_1adc9431aa6011625bb817dd1baaa9be9b"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InputOutputAsyncInputCallback</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">function</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">shared_ptr</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="classPSNPE_1_1ApplicationBufferMap.html#_CPPv4N5PSNPE20ApplicationBufferMapE" title="PSNPE::ApplicationBufferMap"><span class="n"><span class="pre">ApplicationBufferMap</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="structPSNPE_1_1InputOutputInputAsyncCallbackParam.html#_CPPv4N5PSNPE34InputOutputInputAsyncCallbackParamE" title="PSNPE::InputOutputInputAsyncCallbackParam"><span class="n"><span class="pre">InputOutputInputAsyncCallbackParam</span></span></a><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N5PSNPE29InputOutputAsyncInputCallbackE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This callback is called when the input data is ready,only use for Output-Input Async mode. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE9BuildModeE">
+<span id="_CPPv3N5PSNPE9BuildModeE"></span><span id="_CPPv2N5PSNPE9BuildModeE"></span><span class="target" id="namespacePSNPE_1aad1f972ebdb8c741212af27c2a1aa4b2"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">BuildMode</span></span></span><a class="headerlink" href="#_CPPv4N5PSNPE9BuildModeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>build snpe instance in serial or parallel </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE9BuildMode6SERIALE">
+<span id="_CPPv3N5PSNPE9BuildMode6SERIALE"></span><span id="_CPPv2N5PSNPE9BuildMode6SERIALE"></span><span class="target" id="namespacePSNPE_1aad1f972ebdb8c741212af27c2a1aa4b2a30462c6322753cc40b7a0f0607b39a32"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SERIAL</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N5PSNPE9BuildMode6SERIALE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE9BuildMode8PARALLELE">
+<span id="_CPPv3N5PSNPE9BuildMode8PARALLELE"></span><span id="_CPPv2N5PSNPE9BuildMode8PARALLELE"></span><span class="target" id="namespacePSNPE_1aad1f972ebdb8c741212af27c2a1aa4b2ae5d735c111e7ecc27e3b7c1094ec4904"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PARALLEL</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N5PSNPE9BuildMode8PARALLELE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE27InputOutputTransmissionModeE">
+<span id="_CPPv3N5PSNPE27InputOutputTransmissionModeE"></span><span id="_CPPv2N5PSNPE27InputOutputTransmissionModeE"></span><span class="target" id="namespacePSNPE_1a9df9db44a67fc9cb93e9260da5d3df65"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InputOutputTransmissionMode</span></span></span><a class="headerlink" href="#_CPPv4N5PSNPE27InputOutputTransmissionModeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Input and output transmission mode. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE27InputOutputTransmissionMode4syncE">
+<span id="_CPPv3N5PSNPE27InputOutputTransmissionMode4syncE"></span><span id="_CPPv2N5PSNPE27InputOutputTransmissionMode4syncE"></span><span class="target" id="namespacePSNPE_1a9df9db44a67fc9cb93e9260da5d3df65a66bbfb3f86011e73768fd2215a28b093"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sync</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N5PSNPE27InputOutputTransmissionMode4syncE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE27InputOutputTransmissionMode11outputAsyncE">
+<span id="_CPPv3N5PSNPE27InputOutputTransmissionMode11outputAsyncE"></span><span id="_CPPv2N5PSNPE27InputOutputTransmissionMode11outputAsyncE"></span><span class="target" id="namespacePSNPE_1a9df9db44a67fc9cb93e9260da5d3df65a30bf0432f439e1e83bfd3cf2ca347d55"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">outputAsync</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N5PSNPE27InputOutputTransmissionMode11outputAsyncE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE27InputOutputTransmissionMode16inputOutputAsyncE">
+<span id="_CPPv3N5PSNPE27InputOutputTransmissionMode16inputOutputAsyncE"></span><span id="_CPPv2N5PSNPE27InputOutputTransmissionMode16inputOutputAsyncE"></span><span class="target" id="namespacePSNPE_1a9df9db44a67fc9cb93e9260da5d3df65a0df131ee684867e057b7d4cedc795d9d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">inputOutputAsync</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">2</span></span><a class="headerlink" href="#_CPPv4N5PSNPE27InputOutputTransmissionMode16inputOutputAsyncE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE24OutputAsyncCallbackParamE">
+<span id="_CPPv3N5PSNPE24OutputAsyncCallbackParamE"></span><span id="_CPPv2N5PSNPE24OutputAsyncCallbackParamE"></span><span id="PSNPE::OutputAsyncCallbackParam"></span><span class="target" id="structPSNPE_1_1OutputAsyncCallbackParam"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OutputAsyncCallbackParam</span></span></span><a class="headerlink" href="#_CPPv4N5PSNPE24OutputAsyncCallbackParamE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;PSNPE.hpp&gt;</em></div>
+<p>A structure representing parameters of callback function of Async Output mode. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE24OutputAsyncCallbackParam24OutputAsyncCallbackParamEv">
+<span id="_CPPv3N5PSNPE24OutputAsyncCallbackParam24OutputAsyncCallbackParamEv"></span><span id="_CPPv2N5PSNPE24OutputAsyncCallbackParam24OutputAsyncCallbackParamEv"></span><span id="PSNPE::OutputAsyncCallbackParam::OutputAsyncCallbackParam"></span><span class="target" id="structPSNPE_1_1OutputAsyncCallbackParam_1a8e966604de9f5723a5c18b66346b3f84"></span><span class="sig-name descname"><span class="n"><span class="pre">OutputAsyncCallbackParam</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">delete</span></span><a class="headerlink" href="#_CPPv4N5PSNPE24OutputAsyncCallbackParam24OutputAsyncCallbackParamEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE24OutputAsyncCallbackParam24OutputAsyncCallbackParamERR24OutputAsyncCallbackParam">
+<span id="_CPPv3N5PSNPE24OutputAsyncCallbackParam24OutputAsyncCallbackParamERR24OutputAsyncCallbackParam"></span><span id="_CPPv2N5PSNPE24OutputAsyncCallbackParam24OutputAsyncCallbackParamERR24OutputAsyncCallbackParam"></span><span id="PSNPE::OutputAsyncCallbackParam::OutputAsyncCallbackParam__OutputAsyncCallbackParamRR"></span><span class="target" id="structPSNPE_1_1OutputAsyncCallbackParam_1ad1db16045beddfd03f27d9c1ce91f2c4"></span><span class="sig-name descname"><span class="n"><span class="pre">OutputAsyncCallbackParam</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structPSNPE_1_1OutputAsyncCallbackParam.html#_CPPv4N5PSNPE24OutputAsyncCallbackParam24OutputAsyncCallbackParamERR24OutputAsyncCallbackParam" title="PSNPE::OutputAsyncCallbackParam::OutputAsyncCallbackParam"><span class="n"><span class="pre">OutputAsyncCallbackParam</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">other</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N5PSNPE24OutputAsyncCallbackParam24OutputAsyncCallbackParamERR24OutputAsyncCallbackParam" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE24OutputAsyncCallbackParam9dataIndexE">
+<span id="_CPPv3N5PSNPE24OutputAsyncCallbackParam9dataIndexE"></span><span id="_CPPv2N5PSNPE24OutputAsyncCallbackParam9dataIndexE"></span><span id="PSNPE::OutputAsyncCallbackParam::dataIndex__DataIndexReference:s:"></span><span class="target" id="structPSNPE_1_1OutputAsyncCallbackParam_1a802479d5a7adbb097fbcc1b6c7a4def6"></span><span class="n"><span class="pre">DataIndexReference</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">size_t</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dataIndex</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="o"><span class="pre">*</span></span><span class="k"><span class="pre">this</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5PSNPE24OutputAsyncCallbackParam9dataIndexE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE24OutputAsyncCallbackParam13executeStatusE">
+<span id="_CPPv3N5PSNPE24OutputAsyncCallbackParam13executeStatusE"></span><span id="_CPPv2N5PSNPE24OutputAsyncCallbackParam13executeStatusE"></span><span id="PSNPE::OutputAsyncCallbackParam::executeStatus__ExecuteStatusReference:b:"></span><span class="target" id="structPSNPE_1_1OutputAsyncCallbackParam_1a189c745ad12e9f02cf40cbc053569c2f"></span><span class="n"><span class="pre">ExecuteStatusReference</span></span><span class="p"><span class="pre">&lt;</span></span><span class="kt"><span class="pre">bool</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">executeStatus</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="o"><span class="pre">*</span></span><span class="k"><span class="pre">this</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5PSNPE24OutputAsyncCallbackParam13executeStatusE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE24OutputAsyncCallbackParam8errorMsgE">
+<span id="_CPPv3N5PSNPE24OutputAsyncCallbackParam8errorMsgE"></span><span id="_CPPv2N5PSNPE24OutputAsyncCallbackParam8errorMsgE"></span><span id="PSNPE::OutputAsyncCallbackParam::errorMsg__ErrorMsgReference:ss:"></span><span class="target" id="structPSNPE_1_1OutputAsyncCallbackParam_1aae43e4960063ed73eac931c39bc6810a"></span><span class="n"><span class="pre">ErrorMsgReference</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">errorMsg</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="o"><span class="pre">*</span></span><span class="k"><span class="pre">this</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5PSNPE24OutputAsyncCallbackParam8errorMsgE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE24OutputAsyncCallbackParam10callbackIDE">
+<span id="_CPPv3N5PSNPE24OutputAsyncCallbackParam10callbackIDE"></span><span id="_CPPv2N5PSNPE24OutputAsyncCallbackParam10callbackIDE"></span><span id="PSNPE::OutputAsyncCallbackParam::callbackID__CallbackIDReference:s:"></span><span class="target" id="structPSNPE_1_1OutputAsyncCallbackParam_1a8166b905cdd1f8b1ff6b257492188546"></span><span class="n"><span class="pre">CallbackIDReference</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">size_t</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">callbackID</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="o"><span class="pre">*</span></span><span class="k"><span class="pre">this</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5PSNPE24OutputAsyncCallbackParam10callbackIDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE34InputOutputInputAsyncCallbackParamE">
+<span id="_CPPv3N5PSNPE34InputOutputInputAsyncCallbackParamE"></span><span id="_CPPv2N5PSNPE34InputOutputInputAsyncCallbackParamE"></span><span id="PSNPE::InputOutputInputAsyncCallbackParam"></span><span class="target" id="structPSNPE_1_1InputOutputInputAsyncCallbackParam"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InputOutputInputAsyncCallbackParam</span></span></span><a class="headerlink" href="#_CPPv4N5PSNPE34InputOutputInputAsyncCallbackParamE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;PSNPE.hpp&gt;</em></div>
+<p>A structure representing parameters of callback function of Async Input/Output mode. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE34InputOutputInputAsyncCallbackParam34InputOutputInputAsyncCallbackParamEv">
+<span id="_CPPv3N5PSNPE34InputOutputInputAsyncCallbackParam34InputOutputInputAsyncCallbackParamEv"></span><span id="_CPPv2N5PSNPE34InputOutputInputAsyncCallbackParam34InputOutputInputAsyncCallbackParamEv"></span><span id="PSNPE::InputOutputInputAsyncCallbackParam::InputOutputInputAsyncCallbackParam"></span><span class="target" id="structPSNPE_1_1InputOutputInputAsyncCallbackParam_1a51ac70b57e385fced018b2ac9a11c40c"></span><span class="sig-name descname"><span class="n"><span class="pre">InputOutputInputAsyncCallbackParam</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">delete</span></span><a class="headerlink" href="#_CPPv4N5PSNPE34InputOutputInputAsyncCallbackParam34InputOutputInputAsyncCallbackParamEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE34InputOutputInputAsyncCallbackParam34InputOutputInputAsyncCallbackParamERR34InputOutputInputAsyncCallbackParam">
+<span id="_CPPv3N5PSNPE34InputOutputInputAsyncCallbackParam34InputOutputInputAsyncCallbackParamERR34InputOutputInputAsyncCallbackParam"></span><span id="_CPPv2N5PSNPE34InputOutputInputAsyncCallbackParam34InputOutputInputAsyncCallbackParamERR34InputOutputInputAsyncCallbackParam"></span><span id="PSNPE::InputOutputInputAsyncCallbackParam::InputOutputInputAsyncCallbackParam__InputOutputInputAsyncCallbackParamRR"></span><span class="target" id="structPSNPE_1_1InputOutputInputAsyncCallbackParam_1afce0d40b894e8cdf604c5827ed2358ab"></span><span class="sig-name descname"><span class="n"><span class="pre">InputOutputInputAsyncCallbackParam</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structPSNPE_1_1InputOutputInputAsyncCallbackParam.html#_CPPv4N5PSNPE34InputOutputInputAsyncCallbackParam34InputOutputInputAsyncCallbackParamERR34InputOutputInputAsyncCallbackParam" title="PSNPE::InputOutputInputAsyncCallbackParam::InputOutputInputAsyncCallbackParam"><span class="n"><span class="pre">InputOutputInputAsyncCallbackParam</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">other</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N5PSNPE34InputOutputInputAsyncCallbackParam34InputOutputInputAsyncCallbackParamERR34InputOutputInputAsyncCallbackParam" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE34InputOutputInputAsyncCallbackParam6inputsE">
+<span id="_CPPv3N5PSNPE34InputOutputInputAsyncCallbackParam6inputsE"></span><span id="_CPPv2N5PSNPE34InputOutputInputAsyncCallbackParam6inputsE"></span><span id="PSNPE::InputOutputInputAsyncCallbackParam::inputs__InputsReference:std::vector:ss::"></span><span class="target" id="structPSNPE_1_1InputOutputInputAsyncCallbackParam_1ab9cc652f28a1476c4190e40d09a2dccb"></span><span class="n"><span class="pre">InputsReference</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">inputs</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="o"><span class="pre">*</span></span><span class="k"><span class="pre">this</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5PSNPE34InputOutputInputAsyncCallbackParam6inputsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE34InputOutputInputAsyncCallbackParam10inputNamesE">
+<span id="_CPPv3N5PSNPE34InputOutputInputAsyncCallbackParam10inputNamesE"></span><span id="_CPPv2N5PSNPE34InputOutputInputAsyncCallbackParam10inputNamesE"></span><span id="PSNPE::InputOutputInputAsyncCallbackParam::inputNames__InputNamesReference:DlSystem::StringList:"></span><span class="target" id="structPSNPE_1_1InputOutputInputAsyncCallbackParam_1ac634b21a612405bc4c0b902d9f8e4ebd"></span><span class="n"><span class="pre">InputNamesReference</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1StringList.html#_CPPv4N8DlSystem10StringListE" title="DlSystem::StringList"><span class="n"><span class="pre">StringList</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">inputNames</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="o"><span class="pre">*</span></span><span class="k"><span class="pre">this</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5PSNPE34InputOutputInputAsyncCallbackParam10inputNamesE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE34InputOutputInputAsyncCallbackParam10callbackIDE">
+<span id="_CPPv3N5PSNPE34InputOutputInputAsyncCallbackParam10callbackIDE"></span><span id="_CPPv2N5PSNPE34InputOutputInputAsyncCallbackParam10callbackIDE"></span><span id="PSNPE::InputOutputInputAsyncCallbackParam::callbackID__CallbackIDReference:s:"></span><span class="target" id="structPSNPE_1_1InputOutputInputAsyncCallbackParam_1ad6b5392e46e4d882a2e067ab51bd1986"></span><span class="n"><span class="pre">CallbackIDReference</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">size_t</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">callbackID</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="o"><span class="pre">*</span></span><span class="k"><span class="pre">this</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5PSNPE34InputOutputInputAsyncCallbackParam10callbackIDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE29InputOutputAsyncCallbackParamE">
+<span id="_CPPv3N5PSNPE29InputOutputAsyncCallbackParamE"></span><span id="_CPPv2N5PSNPE29InputOutputAsyncCallbackParamE"></span><span id="PSNPE::InputOutputAsyncCallbackParam"></span><span class="target" id="structPSNPE_1_1InputOutputAsyncCallbackParam"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InputOutputAsyncCallbackParam</span></span></span><a class="headerlink" href="#_CPPv4N5PSNPE29InputOutputAsyncCallbackParamE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;PSNPE.hpp&gt;</em></div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE29InputOutputAsyncCallbackParam29InputOutputAsyncCallbackParamERR29InputOutputAsyncCallbackParam">
+<span id="_CPPv3N5PSNPE29InputOutputAsyncCallbackParam29InputOutputAsyncCallbackParamERR29InputOutputAsyncCallbackParam"></span><span id="_CPPv2N5PSNPE29InputOutputAsyncCallbackParam29InputOutputAsyncCallbackParamERR29InputOutputAsyncCallbackParam"></span><span id="PSNPE::InputOutputAsyncCallbackParam::InputOutputAsyncCallbackParam__InputOutputAsyncCallbackParamRR"></span><span class="target" id="structPSNPE_1_1InputOutputAsyncCallbackParam_1a55fdceb1be55f8c8909536c53e52ab85"></span><span class="sig-name descname"><span class="n"><span class="pre">InputOutputAsyncCallbackParam</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structPSNPE_1_1InputOutputAsyncCallbackParam.html#_CPPv4N5PSNPE29InputOutputAsyncCallbackParam29InputOutputAsyncCallbackParamERR29InputOutputAsyncCallbackParam" title="PSNPE::InputOutputAsyncCallbackParam::InputOutputAsyncCallbackParam"><span class="n"><span class="pre">InputOutputAsyncCallbackParam</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">other</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N5PSNPE29InputOutputAsyncCallbackParam29InputOutputAsyncCallbackParamERR29InputOutputAsyncCallbackParam" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE29InputOutputAsyncCallbackParam9dataIndexE">
+<span id="_CPPv3N5PSNPE29InputOutputAsyncCallbackParam9dataIndexE"></span><span id="_CPPv2N5PSNPE29InputOutputAsyncCallbackParam9dataIndexE"></span><span id="PSNPE::InputOutputAsyncCallbackParam::dataIndex__DataIndexReference:s:"></span><span class="target" id="structPSNPE_1_1InputOutputAsyncCallbackParam_1a1d3b7aab46bdd1b21a339502098d6137"></span><span class="n"><span class="pre">DataIndexReference</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">size_t</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dataIndex</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="o"><span class="pre">*</span></span><span class="k"><span class="pre">this</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5PSNPE29InputOutputAsyncCallbackParam9dataIndexE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE29InputOutputAsyncCallbackParam9outputMapE">
+<span id="_CPPv3N5PSNPE29InputOutputAsyncCallbackParam9outputMapE"></span><span id="_CPPv2N5PSNPE29InputOutputAsyncCallbackParam9outputMapE"></span><span id="PSNPE::InputOutputAsyncCallbackParam::outputMap__OutputMapReference:ApplicationBufferMap:"></span><span class="target" id="structPSNPE_1_1InputOutputAsyncCallbackParam_1a674332b2b1f9d63055ec9bfe0a4ca8be"></span><span class="n"><span class="pre">OutputMapReference</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="classPSNPE_1_1ApplicationBufferMap.html#_CPPv4N5PSNPE20ApplicationBufferMapE" title="PSNPE::ApplicationBufferMap"><span class="n"><span class="pre">ApplicationBufferMap</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">outputMap</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="o"><span class="pre">*</span></span><span class="k"><span class="pre">this</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5PSNPE29InputOutputAsyncCallbackParam9outputMapE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE29InputOutputAsyncCallbackParam13executeStatusE">
+<span id="_CPPv3N5PSNPE29InputOutputAsyncCallbackParam13executeStatusE"></span><span id="_CPPv2N5PSNPE29InputOutputAsyncCallbackParam13executeStatusE"></span><span id="PSNPE::InputOutputAsyncCallbackParam::executeStatus__ExecuteStatusReference:b:"></span><span class="target" id="structPSNPE_1_1InputOutputAsyncCallbackParam_1a1d40ecf23bef2ad789f76071198f04fd"></span><span class="n"><span class="pre">ExecuteStatusReference</span></span><span class="p"><span class="pre">&lt;</span></span><span class="kt"><span class="pre">bool</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">executeStatus</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="o"><span class="pre">*</span></span><span class="k"><span class="pre">this</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5PSNPE29InputOutputAsyncCallbackParam13executeStatusE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>OOOH, this will be super tricky to not have a copy every time. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE29InputOutputAsyncCallbackParam8errorMsgE">
+<span id="_CPPv3N5PSNPE29InputOutputAsyncCallbackParam8errorMsgE"></span><span id="_CPPv2N5PSNPE29InputOutputAsyncCallbackParam8errorMsgE"></span><span id="PSNPE::InputOutputAsyncCallbackParam::errorMsg__ErrorMsgReference:ss:"></span><span class="target" id="structPSNPE_1_1InputOutputAsyncCallbackParam_1a2b18e4026bb15220f391b3586608ed54"></span><span class="n"><span class="pre">ErrorMsgReference</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">errorMsg</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="o"><span class="pre">*</span></span><span class="k"><span class="pre">this</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5PSNPE29InputOutputAsyncCallbackParam8errorMsgE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE29InputOutputAsyncCallbackParam10callbackIDE">
+<span id="_CPPv3N5PSNPE29InputOutputAsyncCallbackParam10callbackIDE"></span><span id="_CPPv2N5PSNPE29InputOutputAsyncCallbackParam10callbackIDE"></span><span id="PSNPE::InputOutputAsyncCallbackParam::callbackID__CallbackIDReference:s:"></span><span class="target" id="structPSNPE_1_1InputOutputAsyncCallbackParam_1af727036d75eb4802e5ad403f2cb44db6"></span><span class="n"><span class="pre">CallbackIDReference</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">size_t</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">callbackID</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="o"><span class="pre">*</span></span><span class="k"><span class="pre">this</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5PSNPE29InputOutputAsyncCallbackParam10callbackIDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE11BuildConfigE">
+<span id="_CPPv3N5PSNPE11BuildConfigE"></span><span id="_CPPv2N5PSNPE11BuildConfigE"></span><span id="PSNPE::BuildConfig"></span><span class="target" id="structPSNPE_1_1BuildConfig"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">BuildConfig</span></span></span><a class="headerlink" href="#_CPPv4N5PSNPE11BuildConfigE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;PSNPE.hpp&gt;</em></div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE11BuildConfig9buildModeE">
+<span id="_CPPv3N5PSNPE11BuildConfig9buildModeE"></span><span id="_CPPv2N5PSNPE11BuildConfig9buildModeE"></span><span id="PSNPE::BuildConfig::buildMode__BuildMode"></span><span class="target" id="structPSNPE_1_1BuildConfig_1af5489875a6257e350c38f2c5c528b1ce"></span><a class="reference internal" href="#_CPPv4N5PSNPE9BuildModeE" title="PSNPE::BuildMode"><span class="n"><span class="pre">BuildMode</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">buildMode</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5PSNPE9BuildModeE" title="PSNPE::BuildMode"><span class="n"><span class="pre">BuildMode</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N5PSNPE9BuildMode6SERIALE" title="PSNPE::BuildMode::SERIAL"><span class="n"><span class="pre">SERIAL</span></span></a><a class="headerlink" href="#_CPPv4N5PSNPE11BuildConfig9buildModeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Specify build in serial mode or parallel mode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE11BuildConfig9containerE">
+<span id="_CPPv3N5PSNPE11BuildConfig9containerE"></span><span id="_CPPv2N5PSNPE11BuildConfig9containerE"></span><span id="PSNPE::BuildConfig::container__zdl::DlContainer::IDlContainerP"></span><span class="target" id="structPSNPE_1_1BuildConfig_1adbbf5d36c013820600a74717723d0b6c"></span><a class="reference internal" href="file_DlSystem_DlError.hpp.html#_CPPv43zdl" title="zdl"><span class="n"><span class="pre">zdl</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">DlContainer</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">IDlContainer</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">container</span></span></span><a class="headerlink" href="#_CPPv4N5PSNPE11BuildConfig9containerE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The opened container ptr. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE11BuildConfig17outputBufferNamesE">
+<span id="_CPPv3N5PSNPE11BuildConfig17outputBufferNamesE"></span><span id="_CPPv2N5PSNPE11BuildConfig17outputBufferNamesE"></span><span id="PSNPE::BuildConfig::outputBufferNames__zdl::DlSystem::StringList"></span><span class="target" id="structPSNPE_1_1BuildConfig_1ab2d1a290503dd18c7d35876b26336c9d"></span><a class="reference internal" href="file_DlSystem_DlError.hpp.html#_CPPv43zdl" title="zdl"><span class="n"><span class="pre">zdl</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="file_DlSystem_DlError.hpp.html#_CPPv4N3zdl8DlSystemE" title="zdl::DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">StringList</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">outputBufferNames</span></span></span><a class="headerlink" href="#_CPPv4N5PSNPE11BuildConfig17outputBufferNamesE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Specify the output layer name. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE11BuildConfig13outputTensorsE">
+<span id="_CPPv3N5PSNPE11BuildConfig13outputTensorsE"></span><span id="_CPPv2N5PSNPE11BuildConfig13outputTensorsE"></span><span id="PSNPE::BuildConfig::outputTensors__zdl::DlSystem::StringList"></span><span class="target" id="structPSNPE_1_1BuildConfig_1ab15c3b2488e0c5f50a6c13607fabf104"></span><a class="reference internal" href="file_DlSystem_DlError.hpp.html#_CPPv43zdl" title="zdl"><span class="n"><span class="pre">zdl</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="file_DlSystem_DlError.hpp.html#_CPPv4N3zdl8DlSystemE" title="zdl::DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">StringList</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">outputTensors</span></span></span><a class="headerlink" href="#_CPPv4N5PSNPE11BuildConfig13outputTensorsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Specify the output layer name. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE11BuildConfig17runtimeConfigListE">
+<span id="_CPPv3N5PSNPE11BuildConfig17runtimeConfigListE"></span><span id="_CPPv2N5PSNPE11BuildConfig17runtimeConfigListE"></span><span id="PSNPE::BuildConfig::runtimeConfigList__RuntimeConfigList"></span><span class="target" id="structPSNPE_1_1BuildConfig_1a862e84f4147724905500aed52a53e071"></span><a class="reference internal" href="classPSNPE_1_1RuntimeConfigList.html#_CPPv4N5PSNPE17RuntimeConfigListE" title="PSNPE::RuntimeConfigList"><span class="n"><span class="pre">RuntimeConfigList</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">runtimeConfigList</span></span></span><a class="headerlink" href="#_CPPv4N5PSNPE11BuildConfig17runtimeConfigListE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The runtime config list for <a class="reference internal" href="#classPSNPE_1_1PSNPE"><span class="std std-ref">PSNPE</span></a>,. </p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="file_SNPE_RuntimeConfigList.hpp.html#structPSNPE_1_1RuntimeConfig"><span class="std std-ref">RuntimeConfig</span></a> </p>
+</div>
+</p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE11BuildConfig18inputThreadNumbersE">
+<span id="_CPPv3N5PSNPE11BuildConfig18inputThreadNumbersE"></span><span id="_CPPv2N5PSNPE11BuildConfig18inputThreadNumbersE"></span><span id="PSNPE::BuildConfig::inputThreadNumbers__s"></span><span class="target" id="structPSNPE_1_1BuildConfig_1a229689b90c55ef7b0e595412fbc60db8"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">inputThreadNumbers</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N5PSNPE11BuildConfig18inputThreadNumbersE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Specify the number of threads used in the execution phase to process input data, only used in inputOutputAsync mode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE11BuildConfig19outputThreadNumbersE">
+<span id="_CPPv3N5PSNPE11BuildConfig19outputThreadNumbersE"></span><span id="_CPPv2N5PSNPE11BuildConfig19outputThreadNumbersE"></span><span id="PSNPE::BuildConfig::outputThreadNumbers__s"></span><span class="target" id="structPSNPE_1_1BuildConfig_1aed1c04a7007db21cc488fc4215df2e7e"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">outputThreadNumbers</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N5PSNPE11BuildConfig19outputThreadNumbersE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Specify the number of threads used in the execution phase to process output data, only used in inputOutputAsync and outputAsync mode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE11BuildConfig14outputCallbackE">
+<span id="_CPPv3N5PSNPE11BuildConfig14outputCallbackE"></span><span id="_CPPv2N5PSNPE11BuildConfig14outputCallbackE"></span><span id="PSNPE::BuildConfig::outputCallback__OutputAsyncCallbackFunc"></span><span class="target" id="structPSNPE_1_1BuildConfig_1af509b020e1d2401058bc1f44e409115f"></span><a class="reference internal" href="typedef_namespacePSNPE_1a4c5d5b185b6127f6f796241e403bf426.html#_CPPv4N5PSNPE23OutputAsyncCallbackFuncE" title="PSNPE::OutputAsyncCallbackFunc"><span class="n"><span class="pre">OutputAsyncCallbackFunc</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">outputCallback</span></span></span><a class="headerlink" href="#_CPPv4N5PSNPE11BuildConfig14outputCallbackE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The callback to deal with output data ,only used in outputAsync mode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE11BuildConfig19inputOutputCallbackE">
+<span id="_CPPv3N5PSNPE11BuildConfig19inputOutputCallbackE"></span><span id="_CPPv2N5PSNPE11BuildConfig19inputOutputCallbackE"></span><span id="PSNPE::BuildConfig::inputOutputCallback__InputOutputAsyncCallbackFunc"></span><span class="target" id="structPSNPE_1_1BuildConfig_1a304382761c0da5d0750ea7f3ff61f0e5"></span><a class="reference internal" href="typedef_namespacePSNPE_1a371b41f121d3707242009884acf6afd9.html#_CPPv4N5PSNPE28InputOutputAsyncCallbackFuncE" title="PSNPE::InputOutputAsyncCallbackFunc"><span class="n"><span class="pre">InputOutputAsyncCallbackFunc</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">inputOutputCallback</span></span></span><a class="headerlink" href="#_CPPv4N5PSNPE11BuildConfig19inputOutputCallbackE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The callback to deal with output data ,only used in inputOutputAsync mode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE11BuildConfig24inputOutputInputCallbackE">
+<span id="_CPPv3N5PSNPE11BuildConfig24inputOutputInputCallbackE"></span><span id="_CPPv2N5PSNPE11BuildConfig24inputOutputInputCallbackE"></span><span id="PSNPE::BuildConfig::inputOutputInputCallback__InputOutputAsyncInputCallback"></span><span class="target" id="structPSNPE_1_1BuildConfig_1a6b7cd6ba06dd251e77ba5a0c49ed2876"></span><a class="reference internal" href="typedef_namespacePSNPE_1adc9431aa6011625bb817dd1baaa9be9b.html#_CPPv4N5PSNPE29InputOutputAsyncInputCallbackE" title="PSNPE::InputOutputAsyncInputCallback"><span class="n"><span class="pre">InputOutputAsyncInputCallback</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">inputOutputInputCallback</span></span></span><a class="headerlink" href="#_CPPv4N5PSNPE11BuildConfig24inputOutputInputCallbackE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The callback to deal with input data ,only used in inputOutputAsync mode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE11BuildConfig27inputOutputTransmissionModeE">
+<span id="_CPPv3N5PSNPE11BuildConfig27inputOutputTransmissionModeE"></span><span id="_CPPv2N5PSNPE11BuildConfig27inputOutputTransmissionModeE"></span><span id="PSNPE::BuildConfig::inputOutputTransmissionMode__InputOutputTransmissionMode"></span><span class="target" id="structPSNPE_1_1BuildConfig_1afd41ed07b84b3aeb7f58ac19f218298f"></span><a class="reference internal" href="enum_namespacePSNPE_1a9df9db44a67fc9cb93e9260da5d3df65.html#_CPPv4N5PSNPE27InputOutputTransmissionModeE" title="PSNPE::InputOutputTransmissionMode"><span class="n"><span class="pre">InputOutputTransmissionMode</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">inputOutputTransmissionMode</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="enum_namespacePSNPE_1a9df9db44a67fc9cb93e9260da5d3df65.html#_CPPv4N5PSNPE27InputOutputTransmissionModeE" title="PSNPE::InputOutputTransmissionMode"><span class="n"><span class="pre">InputOutputTransmissionMode</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="enum_namespacePSNPE_1a9df9db44a67fc9cb93e9260da5d3df65.html#_CPPv4N5PSNPE27InputOutputTransmissionMode4syncE" title="PSNPE::InputOutputTransmissionMode::sync"><span class="n"><span class="pre">sync</span></span></a><a class="headerlink" href="#_CPPv4N5PSNPE11BuildConfig27inputOutputTransmissionModeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Specify execution mode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE11BuildConfig14profilingLevelE">
+<span id="_CPPv3N5PSNPE11BuildConfig14profilingLevelE"></span><span id="_CPPv2N5PSNPE11BuildConfig14profilingLevelE"></span><span id="PSNPE::BuildConfig::profilingLevel__zdl::DlSystem::ProfilingLevel_t"></span><span class="target" id="structPSNPE_1_1BuildConfig_1ae22cc1169dea97969e082ab9b902596e"></span><a class="reference internal" href="file_DlSystem_DlError.hpp.html#_CPPv43zdl" title="zdl"><span class="n"><span class="pre">zdl</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="file_DlSystem_DlError.hpp.html#_CPPv4N3zdl8DlSystemE" title="zdl::DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ProfilingLevel_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">profilingLevel</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="file_DlSystem_DlError.hpp.html#_CPPv43zdl" title="zdl"><span class="n"><span class="pre">zdl</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="file_DlSystem_DlError.hpp.html#_CPPv4N3zdl8DlSystemE" title="zdl::DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ProfilingLevel_t</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">OFF</span></span><a class="headerlink" href="#_CPPv4N5PSNPE11BuildConfig14profilingLevelE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Specify profiling level for Diaglog. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE11BuildConfig6encodeE">
+<span id="_CPPv3N5PSNPE11BuildConfig6encodeE"></span><span id="_CPPv2N5PSNPE11BuildConfig6encodeE"></span><span id="PSNPE::BuildConfig::encode__uint64_tA"></span><span class="target" id="structPSNPE_1_1BuildConfig_1a9df5d966f33b42a35d37860973507670"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">encode</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">2</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5PSNPE11BuildConfig6encodeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE11BuildConfig15enableInitCacheE">
+<span id="_CPPv3N5PSNPE11BuildConfig15enableInitCacheE"></span><span id="_CPPv2N5PSNPE11BuildConfig15enableInitCacheE"></span><span id="PSNPE::BuildConfig::enableInitCache__b"></span><span class="target" id="structPSNPE_1_1BuildConfig_1a09b8521d5d241035534971c6c5275f9b"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">enableInitCache</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span><a class="headerlink" href="#_CPPv4N5PSNPE11BuildConfig15enableInitCacheE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE11BuildConfig15platformOptionsE">
+<span id="_CPPv3N5PSNPE11BuildConfig15platformOptionsE"></span><span id="_CPPv2N5PSNPE11BuildConfig15platformOptionsE"></span><span id="PSNPE::BuildConfig::platformOptions__ss"></span><span class="target" id="structPSNPE_1_1BuildConfig_1ae4720e473cbafc9fc4ae10f569a6228e"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">platformOptions</span></span></span><a class="headerlink" href="#_CPPv4N5PSNPE11BuildConfig15platformOptionsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE11BuildConfig16diaglogOutputDirE">
+<span id="_CPPv3N5PSNPE11BuildConfig16diaglogOutputDirE"></span><span id="_CPPv2N5PSNPE11BuildConfig16diaglogOutputDirE"></span><span id="PSNPE::BuildConfig::diaglogOutputDir__ss"></span><span class="target" id="structPSNPE_1_1BuildConfig_1a716cad9fedb80798e5dae2161b4e24d7"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">diaglogOutputDir</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;./diaglogs/&quot;</span></span><a class="headerlink" href="#_CPPv4N5PSNPE11BuildConfig16diaglogOutputDirE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Specify a diaglog output directory to save the generated Diaglog files. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE11BuildConfig10callbackIDE">
+<span id="_CPPv3N5PSNPE11BuildConfig10callbackIDE"></span><span id="_CPPv2N5PSNPE11BuildConfig10callbackIDE"></span><span id="PSNPE::BuildConfig::callbackID__s"></span><span class="target" id="structPSNPE_1_1BuildConfig_1a5e58266d5aee9baa69663592e4234033"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">callbackID</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N5PSNPE11BuildConfig10callbackIDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE5PSNPEE">
+<span id="_CPPv3N5PSNPE5PSNPEE"></span><span id="_CPPv2N5PSNPE5PSNPEE"></span><span id="PSNPE::PSNPE"></span><span class="target" id="classPSNPE_1_1PSNPE"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PSNPE</span></span></span><a class="headerlink" href="#_CPPv4N5PSNPE5PSNPEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;PSNPE.hpp&gt;</em></div>
+<p>The class for executing <a class="reference internal" href="file_SNPE_SNPEFactory.hpp.html#namespaceSNPE"><span class="std std-ref">SNPE</span></a> instances in parallel. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE5PSNPE5PSNPEEv">
+<span id="_CPPv3N5PSNPE5PSNPE5PSNPEEv"></span><span id="_CPPv2N5PSNPE5PSNPE5PSNPEEv"></span><span id="PSNPE::PSNPE::PSNPE"></span><span class="target" id="classPSNPE_1_1PSNPE_1a762ac1a10f2f8a4875f07a74005b9ed0"></span><span class="sig-name descname"><span class="n"><span class="pre">PSNPE</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5PSNPE5PSNPE5PSNPEEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE5PSNPE5buildER11BuildConfig">
+<span id="_CPPv3N5PSNPE5PSNPE5buildER11BuildConfig"></span><span id="_CPPv2N5PSNPE5PSNPE5buildER11BuildConfig"></span><span id="PSNPE::PSNPE::build__BuildConfigR"></span><span class="target" id="classPSNPE_1_1PSNPE_1a38468ac4026bff76b78e87adebfff3a3"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">build</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structPSNPE_1_1BuildConfig.html#_CPPv4N5PSNPE11BuildConfigE" title="PSNPE::BuildConfig"><span class="n"><span class="pre">BuildConfig</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">buildConfig</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N5PSNPE5PSNPE5buildER11BuildConfig" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Build snpe instances. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE5PSNPE7executeER14UserBufferListR14UserBufferList">
+<span id="_CPPv3N5PSNPE5PSNPE7executeER14UserBufferListR14UserBufferList"></span><span id="_CPPv2N5PSNPE5PSNPE7executeER14UserBufferListR14UserBufferList"></span><span id="PSNPE::PSNPE::execute__UserBufferListR.UserBufferListR"></span><span class="target" id="classPSNPE_1_1PSNPE_1a1bbf06c5097ad5f0262ca76bfe89470c"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">execute</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="file_SNPE_UserBufferList.hpp.html#_CPPv4N5PSNPE14UserBufferListE" title="PSNPE::UserBufferList"><span class="n"><span class="pre">UserBufferList</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">inputBufferList</span></span>, <a class="reference internal" href="file_SNPE_UserBufferList.hpp.html#_CPPv4N5PSNPE14UserBufferListE" title="PSNPE::UserBufferList"><span class="n"><span class="pre">UserBufferList</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">outputBufferList</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N5PSNPE5PSNPE7executeER14UserBufferListR14UserBufferList" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Execute snpe instances in Async Output mode and Sync mode. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputBufferList</strong> – <strong>[in]</strong> A list of user buffers that contains the input data</p></li>
+<li><p><strong>outputBufferList</strong> – <strong>[inout]</strong> A list of user buffers that will hold the output data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True in case of successful execution, false otherwise </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE5PSNPE23executeInputOutputAsyncERKN8DlSystem10StringListE6size_tbb">
+<span id="_CPPv3N5PSNPE5PSNPE23executeInputOutputAsyncERKN8DlSystem10StringListE6size_tbb"></span><span id="_CPPv2N5PSNPE5PSNPE23executeInputOutputAsyncERKN8DlSystem10StringListE6size_tbb"></span><span id="PSNPE::PSNPE::executeInputOutputAsync__DlSystem::StringListCR.s.b.b"></span><span class="target" id="classPSNPE_1_1PSNPE_1aee2393a4153ff068a451c5523b370fbb"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">executeInputOutputAsync</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1StringList.html#_CPPv4N8DlSystem10StringListE" title="DlSystem::StringList"><span class="n"><span class="pre">StringList</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">inputMap</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dataIndex</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">isTF8buff</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">isTF8Outputbuff</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N5PSNPE5PSNPE23executeInputOutputAsyncERKN8DlSystem10StringListE6size_tbb" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Execute snpe instances in Async Input/Output mode. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputMap</strong> – <strong>[in]</strong> A map of input buffers that contains input data. The names of buffers need to be matched with names retrived through <a class="reference internal" href="#classPSNPE_1_1PSNPE_1adeaf7f0e8124d2ef4033f484463c6798"><span class="std std-ref">getInputTensorNames()</span></a></p></li>
+<li><p><strong>dataIndex</strong> – <strong>[in]</strong> Index of the input data</p></li>
+<li><p><strong>isTF8buff</strong> – <strong>[in]</strong> Whether prefer to using 8 bit quantized element for inference</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if executed successfully; flase, otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE5PSNPE23executeInputOutputAsyncERKNSt6vectorINSt6stringEEE6size_tbb">
+<span id="_CPPv3N5PSNPE5PSNPE23executeInputOutputAsyncERKNSt6vectorINSt6stringEEE6size_tbb"></span><span id="_CPPv2N5PSNPE5PSNPE23executeInputOutputAsyncERKNSt6vectorINSt6stringEEE6size_tbb"></span><span id="PSNPE::PSNPE::executeInputOutputAsync__std::vector:ss:CR.s.b.b"></span><span class="target" id="classPSNPE_1_1PSNPE_1a436fc7fec3fac33f3f889b5e26a9603b"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">executeInputOutputAsync</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">inputMap</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dataIndex</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">isTF8buff</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">isTF8Outputbuff</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N5PSNPE5PSNPE23executeInputOutputAsyncERKNSt6vectorINSt6stringEEE6size_tbb" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Execute snpe instances in Async Input/Output mode. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputMap</strong> – <strong>[in]</strong> A map of input buffers that contains input data. The names of buffers need to be matched with names retrived through <a class="reference internal" href="#classPSNPE_1_1PSNPE_1adeaf7f0e8124d2ef4033f484463c6798"><span class="std std-ref">getInputTensorNames()</span></a></p></li>
+<li><p><strong>dataIndex</strong> – <strong>[in]</strong> Index of the input data</p></li>
+<li><p><strong>isTF8buff</strong> – <strong>[in]</strong> Whether prefer to using 8 bit quantized element for inference</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if executed successfully; flase, otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE5PSNPE23executeInputOutputAsyncERKN8DlSystem10StringListE6size_tb">
+<span id="_CPPv3N5PSNPE5PSNPE23executeInputOutputAsyncERKN8DlSystem10StringListE6size_tb"></span><span id="_CPPv2N5PSNPE5PSNPE23executeInputOutputAsyncERKN8DlSystem10StringListE6size_tb"></span><span id="PSNPE::PSNPE::executeInputOutputAsync__DlSystem::StringListCR.s.b"></span><span class="target" id="classPSNPE_1_1PSNPE_1aff9360193a8ed59478278bce2b2eb026"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">executeInputOutputAsync</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1StringList.html#_CPPv4N8DlSystem10StringListE" title="DlSystem::StringList"><span class="n"><span class="pre">StringList</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">inputMap</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dataIndex</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">isTF8buff</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N5PSNPE5PSNPE23executeInputOutputAsyncERKN8DlSystem10StringListE6size_tb" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Execute snpe instances in Async Input/Output mode. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputMap</strong> – <strong>[in]</strong> A map of input buffers that contains input data. The names of buffers need to be matched with names retrived through <a class="reference internal" href="#classPSNPE_1_1PSNPE_1adeaf7f0e8124d2ef4033f484463c6798"><span class="std std-ref">getInputTensorNames()</span></a></p></li>
+<li><p><strong>dataIndex</strong> – <strong>[in]</strong> Index of the input data</p></li>
+<li><p><strong>isTF8buff</strong> – <strong>[in]</strong> Whether prefer to using 8 bit quantized element for inference</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if executed successfully; flase, otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE5PSNPE23executeInputOutputAsyncERKNSt6vectorINSt6stringEEE6size_tb">
+<span id="_CPPv3N5PSNPE5PSNPE23executeInputOutputAsyncERKNSt6vectorINSt6stringEEE6size_tb"></span><span id="_CPPv2N5PSNPE5PSNPE23executeInputOutputAsyncERKNSt6vectorINSt6stringEEE6size_tb"></span><span id="PSNPE::PSNPE::executeInputOutputAsync__std::vector:ss:CR.s.b"></span><span class="target" id="classPSNPE_1_1PSNPE_1a05764d5a978d4db2bd6557dbdaaa70ab"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">executeInputOutputAsync</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">inputMap</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dataIndex</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">isTF8buff</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N5PSNPE5PSNPE23executeInputOutputAsyncERKNSt6vectorINSt6stringEEE6size_tb" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Execute snpe instances in Async Input/Output mode. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Param </dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5PSNPE5PSNPE19getInputTensorNamesEv">
+<span id="_CPPv3NK5PSNPE5PSNPE19getInputTensorNamesEv"></span><span id="_CPPv2NK5PSNPE5PSNPE19getInputTensorNamesEv"></span><span id="PSNPE::PSNPE::getInputTensorNamesC"></span><span class="target" id="classPSNPE_1_1PSNPE_1adeaf7f0e8124d2ef4033f484463c6798"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1StringList.html#_CPPv4N8DlSystem10StringListE" title="DlSystem::StringList"><span class="n"><span class="pre">StringList</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getInputTensorNames</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5PSNPE5PSNPE19getInputTensorNamesEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the input tensor names for <a class="reference internal" href="#classPSNPE_1_1PSNPE"><span class="std std-ref">PSNPE</span></a> object. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The string list of input tensor names </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5PSNPE5PSNPE20getOutputTensorNamesEv">
+<span id="_CPPv3NK5PSNPE5PSNPE20getOutputTensorNamesEv"></span><span id="_CPPv2NK5PSNPE5PSNPE20getOutputTensorNamesEv"></span><span id="PSNPE::PSNPE::getOutputTensorNamesC"></span><span class="target" id="classPSNPE_1_1PSNPE_1aba5b05e69ec07e398f9019da8a744332"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1StringList.html#_CPPv4N8DlSystem10StringListE" title="DlSystem::StringList"><span class="n"><span class="pre">StringList</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getOutputTensorNames</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5PSNPE5PSNPE20getOutputTensorNamesEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the output tensor names for <a class="reference internal" href="#classPSNPE_1_1PSNPE"><span class="std std-ref">PSNPE</span></a> object. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The string list of output tensor names </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5PSNPE5PSNPE18getInputDimensionsEv">
+<span id="_CPPv3NK5PSNPE5PSNPE18getInputDimensionsEv"></span><span id="_CPPv2NK5PSNPE5PSNPE18getInputDimensionsEv"></span><span id="PSNPE::PSNPE::getInputDimensionsC"></span><span class="target" id="classPSNPE_1_1PSNPE_1ae03b3586d642d6ffa6583917b2c64547"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1TensorShape.html#_CPPv4N8DlSystem11TensorShapeE" title="DlSystem::TensorShape"><span class="n"><span class="pre">TensorShape</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getInputDimensions</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5PSNPE5PSNPE18getInputDimensionsEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the input dimension shape for <a class="reference internal" href="#classPSNPE_1_1PSNPE"><span class="std std-ref">PSNPE</span></a> object. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The tensor shape of input dimension </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5PSNPE5PSNPE18getInputDimensionsEPKc">
+<span id="_CPPv3NK5PSNPE5PSNPE18getInputDimensionsEPKc"></span><span id="_CPPv2NK5PSNPE5PSNPE18getInputDimensionsEPKc"></span><span id="PSNPE::PSNPE::getInputDimensions__cCPC"></span><span class="target" id="classPSNPE_1_1PSNPE_1ae05d57839be1a5b4f22c06188483efa9"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="file_DlSystem_DlError.hpp.html#_CPPv43zdl" title="zdl"><span class="n"><span class="pre">zdl</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="file_DlSystem_DlError.hpp.html#_CPPv4N3zdl8DlSystemE" title="zdl::DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">TensorShape</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getInputDimensions</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">name</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5PSNPE5PSNPE18getInputDimensionsEPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the input dimension shape for the specific input name for <a class="reference internal" href="#classPSNPE_1_1PSNPE"><span class="std std-ref">PSNPE</span></a> object. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – <strong>[in]</strong> The name of input data</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The tensor shape of a specific input name </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5PSNPE5PSNPE23getBufferAttributesDimsEPKc">
+<span id="_CPPv3NK5PSNPE5PSNPE23getBufferAttributesDimsEPKc"></span><span id="_CPPv2NK5PSNPE5PSNPE23getBufferAttributesDimsEPKc"></span><span id="PSNPE::PSNPE::getBufferAttributesDims__cCPC"></span><span class="target" id="classPSNPE_1_1PSNPE_1adcdbec1329ce0db4bc08169305b01bf4"></span><a class="reference internal" href="file_DlSystem_DlError.hpp.html#_CPPv43zdl" title="zdl"><span class="n"><span class="pre">zdl</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="file_DlSystem_DlError.hpp.html#_CPPv4N3zdl8DlSystemE" title="zdl::DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">TensorShape</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getBufferAttributesDims</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">name</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5PSNPE5PSNPE23getBufferAttributesDimsEPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the number of elements in each dimension for input and output buffer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – <strong>[in]</strong> The name of input and output buffer</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Dimension size </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5PSNPE5PSNPE30getInputOutputBufferAttributesEPKc">
+<span id="_CPPv3NK5PSNPE5PSNPE30getInputOutputBufferAttributesEPKc"></span><span id="_CPPv2NK5PSNPE5PSNPE30getInputOutputBufferAttributesEPKc"></span><span id="PSNPE::PSNPE::getInputOutputBufferAttributes__cCPC"></span><span class="target" id="classPSNPE_1_1PSNPE_1a44d87e55868ad59b9b947d371dee017b"></span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Optional</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1IBufferAttributes.html#_CPPv4N8DlSystem17IBufferAttributesE" title="DlSystem::IBufferAttributes"><span class="n"><span class="pre">IBufferAttributes</span></span></a><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getInputOutputBufferAttributes</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">name</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5PSNPE5PSNPE30getInputOutputBufferAttributesEPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the handle of IBufferAttributes. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – <strong>[in]</strong> The name of attribute buffer</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Handle to access IBufferAttributes </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5PSNPE5PSNPE18registerIonBuffersERKN8DlSystem13UserMemoryMapE">
+<span id="_CPPv3NK5PSNPE5PSNPE18registerIonBuffersERKN8DlSystem13UserMemoryMapE"></span><span id="_CPPv2NK5PSNPE5PSNPE18registerIonBuffersERKN8DlSystem13UserMemoryMapE"></span><span id="PSNPE::PSNPE::registerIonBuffers__DlSystem::UserMemoryMapCRC"></span><span class="target" id="classPSNPE_1_1PSNPE_1ad5b2b4180867c6b6df96e5b7f7531e70"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">registerIonBuffers</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1UserMemoryMap.html#_CPPv4N8DlSystem13UserMemoryMapE" title="DlSystem::UserMemoryMap"><span class="n"><span class="pre">UserMemoryMap</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ionBufferMap</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5PSNPE5PSNPE18registerIonBuffersERKN8DlSystem13UserMemoryMapE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5PSNPE5PSNPE20deregisterIonBuffersERKN8DlSystem10StringListE">
+<span id="_CPPv3NK5PSNPE5PSNPE20deregisterIonBuffersERKN8DlSystem10StringListE"></span><span id="_CPPv2NK5PSNPE5PSNPE20deregisterIonBuffersERKN8DlSystem10StringListE"></span><span id="PSNPE::PSNPE::deregisterIonBuffers__DlSystem::StringListCRC"></span><span class="target" id="classPSNPE_1_1PSNPE_1a99f0734d147d67213cff243f8a9dba19"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">deregisterIonBuffers</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1StringList.html#_CPPv4N8DlSystem10StringListE" title="DlSystem::StringList"><span class="n"><span class="pre">StringList</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ionBufferNames</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK5PSNPE5PSNPE20deregisterIonBuffersERKN8DlSystem10StringListE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE5PSNPE27registerMemoryMappedBuffersERKN8DlSystem13UserMemoryMapE">
+<span id="_CPPv3N5PSNPE5PSNPE27registerMemoryMappedBuffersERKN8DlSystem13UserMemoryMapE"></span><span id="_CPPv2N5PSNPE5PSNPE27registerMemoryMappedBuffersERKN8DlSystem13UserMemoryMapE"></span><span id="PSNPE::PSNPE::registerMemoryMappedBuffers__DlSystem::UserMemoryMapCR"></span><span class="target" id="classPSNPE_1_1PSNPE_1a829845158c37d334f5c79eb2a631f95e"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">registerMemoryMappedBuffers</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1UserMemoryMap.html#_CPPv4N8DlSystem13UserMemoryMapE" title="DlSystem::UserMemoryMap"><span class="n"><span class="pre">UserMemoryMap</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">memoryMappedBufferMap</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N5PSNPE5PSNPE27registerMemoryMappedBuffersERKN8DlSystem13UserMemoryMapE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Register Client Memory-Mapped Buffers (Example ION buffers in Android) </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>memmoryMappedBufferMap</strong> – <strong>[in]</strong> A UserMemoryMap of virtual addresses</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>SNPE_SUCCESS upon successful memory mapped buffer registration </p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>UserBuffer type passed for registration must match the data type of the tensor in the dlc For regular UserBuffers <a class="reference internal" href="file_SNPE_SNPEFactory.hpp.html#namespaceSNPE"><span class="std std-ref">SNPE</span></a> performs an online data conversion (quantization or dequantization etc). This is not possible for memory mapped buffers hence can lead to issues during execution or accuracy degradation</p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE5PSNPE29deregisterMemoryMappedBuffersERKN8DlSystem10StringListE">
+<span id="_CPPv3N5PSNPE5PSNPE29deregisterMemoryMappedBuffersERKN8DlSystem10StringListE"></span><span id="_CPPv2N5PSNPE5PSNPE29deregisterMemoryMappedBuffersERKN8DlSystem10StringListE"></span><span id="PSNPE::PSNPE::deregisterMemoryMappedBuffers__DlSystem::StringListCR"></span><span class="target" id="classPSNPE_1_1PSNPE_1af8cdde1b7409b46c8557a8e280967921"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">deregisterMemoryMappedBuffers</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1StringList.html#_CPPv4N8DlSystem10StringListE" title="DlSystem::StringList"><span class="n"><span class="pre">StringList</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">bufferNames</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N5PSNPE5PSNPE29deregisterMemoryMappedBuffersERKN8DlSystem10StringListE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Deregister Client Memory-Mapped Buffers (Example ION buffers in Android) </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bufferNamesHandle</strong> – <strong>[in]</strong> A StringList of memory mapped buffer names</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>SNPE_SUCCESS upon successful memory mapped buffer deregistration </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5PSNPE5PSNPE18getLastErrorStringEv">
+<span id="_CPPv3N5PSNPE5PSNPE18getLastErrorStringEv"></span><span id="_CPPv2N5PSNPE5PSNPE18getLastErrorStringEv"></span><span id="PSNPE::PSNPE::getLastErrorString"></span><span class="target" id="classPSNPE_1_1PSNPE_1a960ec1dc55e9e09a4ae5eeb15961035f"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">getLastErrorString</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5PSNPE5PSNPE18getLastErrorStringEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the error message during the failed execution. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The error message </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

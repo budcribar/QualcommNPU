@@ -1,0 +1,801 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Class SNPE &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup1.html">Network Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup6.html">Tutorials and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Class SNPE</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="class-snpe">
+<span id="exhale-class-classsnpe-1-1snpe"></span><h1>Class SNPE<a class="headerlink" href="#class-snpe" title="Permalink to this heading">¶</a></h1>
+<ul class="simple">
+<li><p>Defined in <a class="reference internal" href="file_SNPE_SNPE.hpp.html#file-snpe-snpe-hpp"><span class="std std-ref">File SNPE.hpp</span></a></p></li>
+</ul>
+<div class="section" id="class-documentation">
+<h2>Class Documentation<a class="headerlink" href="#class-documentation" title="Permalink to this heading">¶</a></h2>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N4SNPE4SNPEE">
+<span id="_CPPv3N4SNPE4SNPEE"></span><span id="_CPPv2N4SNPE4SNPEE"></span><span id="SNPE::SNPE"></span><span class="target" id="classSNPE_1_1SNPE"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SNPE</span></span></span><a class="headerlink" href="#_CPPv4N4SNPE4SNPEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4SNPE4SNPE19getInputTensorNamesEv">
+<span id="_CPPv3NK4SNPE4SNPE19getInputTensorNamesEv"></span><span id="_CPPv2NK4SNPE4SNPE19getInputTensorNamesEv"></span><span id="SNPE::SNPE::getInputTensorNamesC"></span><span class="target" id="classSNPE_1_1SNPE_1aecbf051c39dbd2453b3ceac12336b3c6"></span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Optional</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1StringList.html#_CPPv4N8DlSystem10StringListE" title="DlSystem::StringList"><span class="n"><span class="pre">StringList</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getInputTensorNames</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK4SNPE4SNPE19getInputTensorNamesEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Gets the names of input tensors to the network. </p>
+<p>To support multiple input scenarios, where multiple tensors are passed through <a class="reference internal" href="file_SNPE_SNPE.hpp.html#classSNPE_1_1SNPE_1a0d4c02b37496a07a6456c0a5ec844cbb"><span class="std std-ref">execute()</span></a> in a TensorMap, each tensor needs to be uniquely named. The names of tensors can be retrieved through this function.</p>
+<p>In the case of a single input, one name will be returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>An Optional List of input tensor names. </p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that because the returned value is an Optional list, the list must be verified as boolean true value before being dereferenced.</p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4SNPE4SNPE20getOutputTensorNamesEv">
+<span id="_CPPv3NK4SNPE4SNPE20getOutputTensorNamesEv"></span><span id="_CPPv2NK4SNPE4SNPE20getOutputTensorNamesEv"></span><span id="SNPE::SNPE::getOutputTensorNamesC"></span><span class="target" id="classSNPE_1_1SNPE_1a093411edc12e3c35fce346920d6dab83"></span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Optional</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1StringList.html#_CPPv4N8DlSystem10StringListE" title="DlSystem::StringList"><span class="n"><span class="pre">StringList</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getOutputTensorNames</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK4SNPE4SNPE20getOutputTensorNamesEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Gets the names of output tensors to the network. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>List of output tensor names. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4SNPE4SNPE31getOutputTensorNamesByLayerNameEPKc">
+<span id="_CPPv3NK4SNPE4SNPE31getOutputTensorNamesByLayerNameEPKc"></span><span id="_CPPv2NK4SNPE4SNPE31getOutputTensorNamesByLayerNameEPKc"></span><span id="SNPE::SNPE::getOutputTensorNamesByLayerName__cCPC"></span><span class="target" id="classSNPE_1_1SNPE_1a97a4f664b9cf7cac74f6cd0574eb7ad9"></span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1StringList.html#_CPPv4N8DlSystem10StringListE" title="DlSystem::StringList"><span class="n"><span class="pre">StringList</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getOutputTensorNamesByLayerName</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">name</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK4SNPE4SNPE31getOutputTensorNamesByLayerNameEPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Gets the names of output tensor from the input layer name. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – <strong>[in]</strong> Layer name</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Output tensor names. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4SNPE4SNPE7executeERKN8DlSystem9TensorMapERN8DlSystem9TensorMapE">
+<span id="_CPPv3N4SNPE4SNPE7executeERKN8DlSystem9TensorMapERN8DlSystem9TensorMapE"></span><span id="_CPPv2N4SNPE4SNPE7executeERKN8DlSystem9TensorMapERN8DlSystem9TensorMapE"></span><span id="SNPE::SNPE::execute__DlSystem::TensorMapCR.DlSystem::TensorMapR"></span><span class="target" id="classSNPE_1_1SNPE_1a0d4c02b37496a07a6456c0a5ec844cbb"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">execute</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1TensorMap.html#_CPPv4N8DlSystem9TensorMapE" title="DlSystem::TensorMap"><span class="n"><span class="pre">TensorMap</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">input</span></span>, <a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1TensorMap.html#_CPPv4N8DlSystem9TensorMapE" title="DlSystem::TensorMap"><span class="n"><span class="pre">TensorMap</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">output</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N4SNPE4SNPE7executeERKN8DlSystem9TensorMapERN8DlSystem9TensorMapE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Processes the input data and returns the output. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> – <strong>[in]</strong> map of tensors that contains the input data for each input. The names of tensors needs to be matched with names retrieved through <a class="reference internal" href="file_SNPE_SNPE.hpp.html#classSNPE_1_1SNPE_1aecbf051c39dbd2453b3ceac12336b3c6"><span class="std std-ref">getInputTensorNames()</span></a></p></li>
+<li><p><strong>An</strong> – <strong>[inout]</strong> empty map of tensors that will contain the output data of potentially multiple layers (the key in the map is the layer name) upon return</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>output tensormap has to be empty. To forward propagate and get results in user-supplied tensors, use executeWithSuppliedOutputTensors. </p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4SNPE4SNPE7executeEPKN8DlSystem7ITensorERN8DlSystem9TensorMapE">
+<span id="_CPPv3N4SNPE4SNPE7executeEPKN8DlSystem7ITensorERN8DlSystem9TensorMapE"></span><span id="_CPPv2N4SNPE4SNPE7executeEPKN8DlSystem7ITensorERN8DlSystem9TensorMapE"></span><span id="SNPE::SNPE::execute__DlSystem::ITensorCP.DlSystem::TensorMapR"></span><span class="target" id="classSNPE_1_1SNPE_1a66ecf6b5c31e58c7a62b59ead2771510"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">execute</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1ITensor.html#_CPPv4N8DlSystem7ITensorE" title="DlSystem::ITensor"><span class="n"><span class="pre">ITensor</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">input</span></span>, <a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1TensorMap.html#_CPPv4N8DlSystem9TensorMapE" title="DlSystem::TensorMap"><span class="n"><span class="pre">TensorMap</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">output</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N4SNPE4SNPE7executeEPKN8DlSystem7ITensorERN8DlSystem9TensorMapE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Processes the input data and returns the output. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> – <strong>[in]</strong> single tensor contains the input data.</p></li>
+<li><p><strong>An</strong> – <strong>[inout]</strong> empty map of tensors that will contain the output data of potentially multiple layers (the key in the map is the layer name) upon return</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>output tensormap has to be empty. </p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4SNPE4SNPE7executeERKN8DlSystem13UserBufferMapERKN8DlSystem13UserBufferMapE">
+<span id="_CPPv3N4SNPE4SNPE7executeERKN8DlSystem13UserBufferMapERKN8DlSystem13UserBufferMapE"></span><span id="_CPPv2N4SNPE4SNPE7executeERKN8DlSystem13UserBufferMapERKN8DlSystem13UserBufferMapE"></span><span id="SNPE::SNPE::execute__DlSystem::UserBufferMapCR.DlSystem::UserBufferMapCR"></span><span class="target" id="classSNPE_1_1SNPE_1a7b2925d42fd342efe850b4bf803bd208"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">execute</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1UserBufferMap.html#_CPPv4N8DlSystem13UserBufferMapE" title="DlSystem::UserBufferMap"><span class="n"><span class="pre">UserBufferMap</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">input</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1UserBufferMap.html#_CPPv4N8DlSystem13UserBufferMapE" title="DlSystem::UserBufferMap"><span class="n"><span class="pre">UserBufferMap</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">output</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N4SNPE4SNPE7executeERKN8DlSystem13UserBufferMapERKN8DlSystem13UserBufferMapE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Processes the input data and returns the output, using user-supplied buffers. </p>
+<p>
+Caller must guarantee that for the duration of <a class="reference internal" href="file_SNPE_SNPE.hpp.html#classSNPE_1_1SNPE_1a0d4c02b37496a07a6456c0a5ec844cbb"><span class="std std-ref">execute()</span></a>, the buffer stored in UserBuffer would remain valid. For more detail on buffer ownership and lifetime requirements, please refer to zdl::DlSystem::UserBuffer documentation. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> – <strong>[in]</strong> map of UserBuffers that contains the input data for each input. The names of UserBuffers needs to be matched with names retrieved through <a class="reference internal" href="file_SNPE_SNPE.hpp.html#classSNPE_1_1SNPE_1aecbf051c39dbd2453b3ceac12336b3c6"><span class="std std-ref">getInputTensorNames()</span></a></p></li>
+<li><p><strong>A</strong> – <strong>[inout]</strong> map of UserBuffers that will hold the output data of potentially multiple layers (the key in the map is the UserBuffer name)</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>input and output UserBuffer maps must be fully pre-populated. with dimensions matching what the network expects. For example, if there are 5 output UserBuffers they all have to be present in map.</p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4SNPE4SNPE18registerIonBuffersERKN8DlSystem13UserMemoryMapE">
+<span id="_CPPv3N4SNPE4SNPE18registerIonBuffersERKN8DlSystem13UserMemoryMapE"></span><span id="_CPPv2N4SNPE4SNPE18registerIonBuffersERKN8DlSystem13UserMemoryMapE"></span><span id="SNPE::SNPE::registerIonBuffers__DlSystem::UserMemoryMapCR"></span><span class="target" id="classSNPE_1_1SNPE_1a8018a098856e22d7c605d3fe503c30b5"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">registerIonBuffers</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1UserMemoryMap.html#_CPPv4N8DlSystem13UserMemoryMapE" title="DlSystem::UserMemoryMap"><span class="n"><span class="pre">UserMemoryMap</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ionBufferMap</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N4SNPE4SNPE18registerIonBuffersERKN8DlSystem13UserMemoryMapE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Register Client ION Buffers. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>A</strong> – <strong>[in]</strong> UserMemoryMap of virtual addresses</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To be deprecated, please use new api registerMemoryMappedBuffers</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>UserBuffer type passed for registration must match the data type of the tensor in the dlc For regular UserBuffers <a class="reference internal" href="file_SNPE_SNPE.hpp.html#classSNPE_1_1SNPE"><span class="std std-ref">SNPE</span></a> performs an online data conversion (quantization or dequantization etc). This is not possible for ion buffers hence can lead to issues during execution or accuracy degradation </p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4SNPE4SNPE20deregisterIonBuffersERKN8DlSystem10StringListE">
+<span id="_CPPv3N4SNPE4SNPE20deregisterIonBuffersERKN8DlSystem10StringListE"></span><span id="_CPPv2N4SNPE4SNPE20deregisterIonBuffersERKN8DlSystem10StringListE"></span><span id="SNPE::SNPE::deregisterIonBuffers__DlSystem::StringListCR"></span><span class="target" id="classSNPE_1_1SNPE_1ad87297236cb570fcdedc79f7858500b1"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">deregisterIonBuffers</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1StringList.html#_CPPv4N8DlSystem10StringListE" title="DlSystem::StringList"><span class="n"><span class="pre">StringList</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ionBufferNames</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N4SNPE4SNPE20deregisterIonBuffersERKN8DlSystem10StringListE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Deregister Client ION Buffers. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>A</strong> – <strong>[in]</strong> StringList of ION Buffer names </p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To be deprecated, please use new api deregisterMemoryMappedBuffers</p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4SNPE4SNPE27registerMemoryMappedBuffersERKN8DlSystem13UserMemoryMapE">
+<span id="_CPPv3N4SNPE4SNPE27registerMemoryMappedBuffersERKN8DlSystem13UserMemoryMapE"></span><span id="_CPPv2N4SNPE4SNPE27registerMemoryMappedBuffersERKN8DlSystem13UserMemoryMapE"></span><span id="SNPE::SNPE::registerMemoryMappedBuffers__DlSystem::UserMemoryMapCR"></span><span class="target" id="classSNPE_1_1SNPE_1a846d3187037c1c969e250c1c5e036fc8"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">registerMemoryMappedBuffers</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1UserMemoryMap.html#_CPPv4N8DlSystem13UserMemoryMapE" title="DlSystem::UserMemoryMap"><span class="n"><span class="pre">UserMemoryMap</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">memoryMappedBufferMap</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N4SNPE4SNPE27registerMemoryMappedBuffersERKN8DlSystem13UserMemoryMapE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Register Client Memory-Mapped Buffers (Example ION buffers in Android) </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>A</strong> – <strong>[in]</strong> UserMemoryMap of virtual addresses</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>UserBuffer type passed for registration must match the data type of the tensor in the dlc For regular UserBuffers <a class="reference internal" href="file_SNPE_SNPE.hpp.html#classSNPE_1_1SNPE"><span class="std std-ref">SNPE</span></a> performs an online data conversion (quantization or dequantization etc). This is not possible for memory mapped buffers hence can lead to issues during execution or accuracy degradation </p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4SNPE4SNPE29deregisterMemoryMappedBuffersERKN8DlSystem10StringListE">
+<span id="_CPPv3N4SNPE4SNPE29deregisterMemoryMappedBuffersERKN8DlSystem10StringListE"></span><span id="_CPPv2N4SNPE4SNPE29deregisterMemoryMappedBuffersERKN8DlSystem10StringListE"></span><span id="SNPE::SNPE::deregisterMemoryMappedBuffers__DlSystem::StringListCR"></span><span class="target" id="classSNPE_1_1SNPE_1a21046d275ed3b72064df7df456efe305"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">deregisterMemoryMappedBuffers</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1StringList.html#_CPPv4N8DlSystem10StringListE" title="DlSystem::StringList"><span class="n"><span class="pre">StringList</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">bufferNames</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N4SNPE4SNPE29deregisterMemoryMappedBuffersERKN8DlSystem10StringListE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Deregister Client Memory-Mapped Buffers (Example ION buffers in Android) </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>A</strong> – <strong>[in]</strong> StringList of memory mapped buffer names </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4SNPE4SNPE15getModelVersionEv">
+<span id="_CPPv3NK4SNPE4SNPE15getModelVersionEv"></span><span id="_CPPv2NK4SNPE4SNPE15getModelVersionEv"></span><span id="SNPE::SNPE::getModelVersionC"></span><span class="target" id="classSNPE_1_1SNPE_1a1f1fccc8c7ca05092aaa6e8e90e91008"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getModelVersion</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4SNPE4SNPE15getModelVersionEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns the version string embedded at model conversion time. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Model version string, which is a free-form string supplied at the time of the conversion </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4SNPE4SNPE18getInputDimensionsEv">
+<span id="_CPPv3NK4SNPE4SNPE18getInputDimensionsEv"></span><span id="_CPPv2NK4SNPE4SNPE18getInputDimensionsEv"></span><span id="SNPE::SNPE::getInputDimensionsC"></span><span class="target" id="classSNPE_1_1SNPE_1a8177ab33fb8d3fb81fabe3be4ba2c0c9"></span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Optional</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1TensorShape.html#_CPPv4N8DlSystem11TensorShapeE" title="DlSystem::TensorShape"><span class="n"><span class="pre">TensorShape</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getInputDimensions</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK4SNPE4SNPE18getInputDimensionsEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns the dimensions of the input data to the model in the form of TensorShape. The dimensions in TensorShape corresponds to what the tensor dimensions would need to be for an input tensor to the model. </p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="file_DlSystem_ITensor.hpp.html#classDlSystem_1_1ITensor"><span class="std std-ref">DlSystem::ITensor</span></a> </p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#classDlSystem_1_1TensorShape"><span class="std std-ref">DlSystem::TensorShape</span></a> </p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="file_DlSystem_DlOptional.hpp.html#classDlSystem_1_1Optional"><span class="std std-ref">DlSystem::Optional</span></a> </p>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>An Optional instance of TensorShape that maintains dimensions, matching the tensor dimensions for input to the model, where the last entry is the fastest varying dimension, etc.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that this function only makes sense for networks that have a fixed input size. For networks in which the input size varies with each call of Execute(), this function should not be used.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Because the returned type is an Optional instance, it must be verified as a boolean true value before being dereferenced.</p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4SNPE4SNPE18getInputDimensionsEPKc">
+<span id="_CPPv3NK4SNPE4SNPE18getInputDimensionsEPKc"></span><span id="_CPPv2NK4SNPE4SNPE18getInputDimensionsEPKc"></span><span id="SNPE::SNPE::getInputDimensions__cCPC"></span><span class="target" id="classSNPE_1_1SNPE_1a10f3436c1385c1df9959f938d51b9baf"></span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Optional</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1TensorShape.html#_CPPv4N8DlSystem11TensorShapeE" title="DlSystem::TensorShape"><span class="n"><span class="pre">TensorShape</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getInputDimensions</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">name</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK4SNPE4SNPE18getInputDimensionsEPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns the dimensions of the input data to the model in the form of TensorShape. The dimensions in TensorShape corresponds to what the tensor dimensions would need to be for an input tensor to the model. </p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Snpe_ITensor_Handle_t </p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Snpe_TensorShape_Handle_t </p>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – <strong>[in]</strong> input name.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a TensorShape that maintains dimensions, matching the tensor dimensions for input to the model, where the last entry is the fastest varying dimension, etc.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that this function only makes sense for networks that have a fixed input size. For networks in which the input size varies with each call of Execute(), this function should not be used.</p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4SNPE4SNPE19getOutputLayerNamesEv">
+<span id="_CPPv3NK4SNPE4SNPE19getOutputLayerNamesEv"></span><span id="_CPPv2NK4SNPE4SNPE19getOutputLayerNamesEv"></span><span id="SNPE::SNPE::getOutputLayerNamesC"></span><span class="target" id="classSNPE_1_1SNPE_1a5c40185cffc876edcd90f20d517748a5"></span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Optional</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1StringList.html#_CPPv4N8DlSystem10StringListE" title="DlSystem::StringList"><span class="n"><span class="pre">StringList</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getOutputLayerNames</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK4SNPE4SNPE19getOutputLayerNamesEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Gets the output layer(s) for the network. </p>
+<p>Note that the output layers returned by this function may be different than those specified when the network was created via the zdl::SNPE::SNPEBuilder. For example, if the network was created in debug mode with no explicit output layers specified, this will contain all layers.</p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="file_DlSystem_DlOptional.hpp.html#group__c__plus__plus__apis_1ga9fe82246023347259d8ec5f226d2ff85"><span class="std std-ref">zdl::DlSystem::Optional</span></a> </p>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A List of output layer names.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that because the returned value is an Optional StringList, the list must be verified as a boolean true value before being dereferenced.</p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4SNPE4SNPE30getInputOutputBufferAttributesEPKc">
+<span id="_CPPv3NK4SNPE4SNPE30getInputOutputBufferAttributesEPKc"></span><span id="_CPPv2NK4SNPE4SNPE30getInputOutputBufferAttributesEPKc"></span><span id="SNPE::SNPE::getInputOutputBufferAttributes__cCPC"></span><span class="target" id="classSNPE_1_1SNPE_1a599f1c57ec8be0a68cfb0d877fe78ade"></span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Optional</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1IBufferAttributes.html#_CPPv4N8DlSystem17IBufferAttributesE" title="DlSystem::IBufferAttributes"><span class="n"><span class="pre">IBufferAttributes</span></span></a><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getInputOutputBufferAttributes</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">name</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK4SNPE4SNPE30getInputOutputBufferAttributesEPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns attributes of buffers used to feed input tensors and receive result from output tensors. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>Tensor</strong> – <strong>[in]</strong> name.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>BufferAttributes of input/output tensor named </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4SNPE4SNPE29getInputTensorNamesForNetworkEPKc">
+<span id="_CPPv3NK4SNPE4SNPE29getInputTensorNamesForNetworkEPKc"></span><span id="_CPPv2NK4SNPE4SNPE29getInputTensorNamesForNetworkEPKc"></span><span id="SNPE::SNPE::getInputTensorNamesForNetwork__cCPC"></span><span class="target" id="classSNPE_1_1SNPE_1a8fac861fb6ef7c6b828c45b5ff891c6d"></span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Optional</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1StringList.html#_CPPv4N8DlSystem10StringListE" title="DlSystem::StringList"><span class="n"><span class="pre">StringList</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getInputTensorNamesForNetwork</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">networkName</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK4SNPE4SNPE29getInputTensorNamesForNetworkEPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Gets the names of input tensors to the network. </p>
+<p>To support multiple input scenarios, where multiple tensors are passed through <a class="reference internal" href="file_SNPE_SNPE.hpp.html#classSNPE_1_1SNPE_1a0d4c02b37496a07a6456c0a5ec844cbb"><span class="std std-ref">execute()</span></a> in a TensorMap, each tensor needs to be uniquely named. The names of tensors can be retrieved through this function.</p>
+<p>In the case of a single input, one name will be returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>networkName</strong> – <strong>[in]</strong> Network name.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A StringList of input tensor names. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4SNPE4SNPE30getOutputTensorNamesForNetworkEPKc">
+<span id="_CPPv3NK4SNPE4SNPE30getOutputTensorNamesForNetworkEPKc"></span><span id="_CPPv2NK4SNPE4SNPE30getOutputTensorNamesForNetworkEPKc"></span><span id="SNPE::SNPE::getOutputTensorNamesForNetwork__cCPC"></span><span class="target" id="classSNPE_1_1SNPE_1a6ab2e91ae3383c9e5e959de532d1470b"></span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Optional</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1StringList.html#_CPPv4N8DlSystem10StringListE" title="DlSystem::StringList"><span class="n"><span class="pre">StringList</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getOutputTensorNamesForNetwork</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">networkName</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK4SNPE4SNPE30getOutputTensorNamesForNetworkEPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Gets the names of output tensors to the network. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>networkName</strong> – <strong>[in]</strong> Network name.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of output tensor names. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4SNPE4SNPE41getOutputTensorNamesByLayerNameForNetworkEPKcPKc">
+<span id="_CPPv3NK4SNPE4SNPE41getOutputTensorNamesByLayerNameForNetworkEPKcPKc"></span><span id="_CPPv2NK4SNPE4SNPE41getOutputTensorNamesByLayerNameForNetworkEPKcPKc"></span><span id="SNPE::SNPE::getOutputTensorNamesByLayerNameForNetwork__cCP.cCPC"></span><span class="target" id="classSNPE_1_1SNPE_1a2931bc038fe0b8afb9c38a0d343b988b"></span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1StringList.html#_CPPv4N8DlSystem10StringListE" title="DlSystem::StringList"><span class="n"><span class="pre">StringList</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getOutputTensorNamesByLayerNameForNetwork</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">networkName</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">name</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK4SNPE4SNPE41getOutputTensorNamesByLayerNameForNetworkEPKcPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Gets the names of output tensor from the input layer name. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>networkName</strong> – <strong>[in]</strong> Network name.</p></li>
+<li><p><strong>name</strong> – <strong>[in]</strong> Layer name</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Output tensor names. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4SNPE4SNPE7executeEPKcRKN8DlSystem9TensorMapERN8DlSystem9TensorMapE">
+<span id="_CPPv3N4SNPE4SNPE7executeEPKcRKN8DlSystem9TensorMapERN8DlSystem9TensorMapE"></span><span id="_CPPv2N4SNPE4SNPE7executeEPKcRKN8DlSystem9TensorMapERN8DlSystem9TensorMapE"></span><span id="SNPE::SNPE::execute__cCP.DlSystem::TensorMapCR.DlSystem::TensorMapR"></span><span class="target" id="classSNPE_1_1SNPE_1ad69657826f22a5abb17791ba248bd8ed"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">execute</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">networkName</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1TensorMap.html#_CPPv4N8DlSystem9TensorMapE" title="DlSystem::TensorMap"><span class="n"><span class="pre">TensorMap</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">input</span></span>, <a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1TensorMap.html#_CPPv4N8DlSystem9TensorMapE" title="DlSystem::TensorMap"><span class="n"><span class="pre">TensorMap</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">output</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N4SNPE4SNPE7executeEPKcRKN8DlSystem9TensorMapERN8DlSystem9TensorMapE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Processes the input data and returns the output. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> – <strong>[in]</strong> A map of tensors that contains the input data for each input. The names of tensors needs to be matched with names retrieved through <a class="reference internal" href="file_SNPE_SNPE.hpp.html#classSNPE_1_1SNPE_1aecbf051c39dbd2453b3ceac12336b3c6"><span class="std std-ref">getInputTensorNames()</span></a></p></li>
+<li><p><strong>output</strong> – <strong>[inout]</strong> An empty map of tensors that will contain the output data of potentially multiple layers (the key in the map is the layer name) upon return</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>SNPE_SUCCESS upon successful execution </p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>output TensorMap has to be empty. To forward propagate and get results in user-supplied tensors, use Snpe_SNPE_ExecuteUserBuffers().</p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4SNPE4SNPE7executeEPKcPKN8DlSystem7ITensorERN8DlSystem9TensorMapE">
+<span id="_CPPv3N4SNPE4SNPE7executeEPKcPKN8DlSystem7ITensorERN8DlSystem9TensorMapE"></span><span id="_CPPv2N4SNPE4SNPE7executeEPKcPKN8DlSystem7ITensorERN8DlSystem9TensorMapE"></span><span id="SNPE::SNPE::execute__cCP.DlSystem::ITensorCP.DlSystem::TensorMapR"></span><span class="target" id="classSNPE_1_1SNPE_1a8b7cea643fab14f026efbb82ad3e2d49"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">execute</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">networkName</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1ITensor.html#_CPPv4N8DlSystem7ITensorE" title="DlSystem::ITensor"><span class="n"><span class="pre">ITensor</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">input</span></span>, <a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1TensorMap.html#_CPPv4N8DlSystem9TensorMapE" title="DlSystem::TensorMap"><span class="n"><span class="pre">TensorMap</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">output</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N4SNPE4SNPE7executeEPKcPKN8DlSystem7ITensorERN8DlSystem9TensorMapE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Processes the input data and returns the output. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>networkName</strong> – <strong>[in]</strong> Network name.</p></li>
+<li><p><strong>input</strong> – <strong>[in]</strong> A single tensor contains the input data.</p></li>
+<li><p><strong>output</strong> – <strong>[inout]</strong> An empty map of tensors that will contain the output data of potentially multiple layers (the key in the map is the layer name) upon return</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>SNPE_SUCCESS upon successful execution </p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>output TensorMap has to be empty. To forward propagate and get results in user-supplied tensors, use Snpe_SNPE_ExecuteUserBuffers.</p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4SNPE4SNPE7executeEPKcRKN8DlSystem13UserBufferMapERKN8DlSystem13UserBufferMapE">
+<span id="_CPPv3N4SNPE4SNPE7executeEPKcRKN8DlSystem13UserBufferMapERKN8DlSystem13UserBufferMapE"></span><span id="_CPPv2N4SNPE4SNPE7executeEPKcRKN8DlSystem13UserBufferMapERKN8DlSystem13UserBufferMapE"></span><span id="SNPE::SNPE::execute__cCP.DlSystem::UserBufferMapCR.DlSystem::UserBufferMapCR"></span><span class="target" id="classSNPE_1_1SNPE_1a4dfb57a09182d5a03029cf3552ec3f38"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">execute</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">networkName</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1UserBufferMap.html#_CPPv4N8DlSystem13UserBufferMapE" title="DlSystem::UserBufferMap"><span class="n"><span class="pre">UserBufferMap</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">input</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1UserBufferMap.html#_CPPv4N8DlSystem13UserBufferMapE" title="DlSystem::UserBufferMap"><span class="n"><span class="pre">UserBufferMap</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">output</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N4SNPE4SNPE7executeEPKcRKN8DlSystem13UserBufferMapERKN8DlSystem13UserBufferMapE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Processes the input data and returns the output, using user-supplied buffers. </p>
+<p>
+Caller must guarantee that for the duration of <a class="reference internal" href="file_SNPE_SNPE.hpp.html#classSNPE_1_1SNPE_1a0d4c02b37496a07a6456c0a5ec844cbb"><span class="std std-ref">execute()</span></a>, the buffer stored in UserBuffer would remain valid. For more detail on buffer ownership and lifetime requirements, please refer to zdl::DlSystem::UserBuffer documentation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>networkName</strong> – <strong>[in]</strong> Network name.</p></li>
+<li><p><strong>input</strong> – <strong>[in]</strong> A map of UserBuffers that contains the input data for each input. The names of UserBuffers needs to be matched with names retrieved through <a class="reference internal" href="file_SNPE_SNPE.hpp.html#classSNPE_1_1SNPE_1aecbf051c39dbd2453b3ceac12336b3c6"><span class="std std-ref">getInputTensorNames()</span></a></p></li>
+<li><p><strong>output</strong> – <strong>[inout]</strong> A map of UserBuffers that will hold the output data of potentially multiple layers (the key in the map is the UserBuffer name)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>SNPE_SUCCESS upon successful execution </p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>input and output UserBuffer maps must be fully pre-populated. with dimensions matching what the network expects. For example, if there are 5 output UserBuffers they all have to be present in map.</p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4SNPE4SNPE37registerMemoryMappedBuffersForNetworkEPKcRKN8DlSystem13UserMemoryMapE">
+<span id="_CPPv3N4SNPE4SNPE37registerMemoryMappedBuffersForNetworkEPKcRKN8DlSystem13UserMemoryMapE"></span><span id="_CPPv2N4SNPE4SNPE37registerMemoryMappedBuffersForNetworkEPKcRKN8DlSystem13UserMemoryMapE"></span><span id="SNPE::SNPE::registerMemoryMappedBuffersForNetwork__cCP.DlSystem::UserMemoryMapCR"></span><span class="target" id="classSNPE_1_1SNPE_1a8f145fafd74e48fe1738107f242f62a7"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">registerMemoryMappedBuffersForNetwork</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">networkName</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1UserMemoryMap.html#_CPPv4N8DlSystem13UserMemoryMapE" title="DlSystem::UserMemoryMap"><span class="n"><span class="pre">UserMemoryMap</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">memoryMappedBufferMap</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N4SNPE4SNPE37registerMemoryMappedBuffersForNetworkEPKcRKN8DlSystem13UserMemoryMapE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Register Client Memory-Mapped Buffers (Example ION buffers in Android) </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>networkName</strong> – <strong>[in]</strong> Network name.</p></li>
+<li><p><strong>memoryMappedBuuferMap</strong> – <strong>[in]</strong> A UserMemoryMap of virtual addresses</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>SNPE_SUCCESS upon successful memory mapped buffer registration </p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>UserBuffer type passed for registration must match the data type of the tensor in the dlc For regular UserBuffers <a class="reference internal" href="file_SNPE_SNPE.hpp.html#classSNPE_1_1SNPE"><span class="std std-ref">SNPE</span></a> performs an online data conversion (quantization or dequantization etc). This is not possible for memory mapped buffers hence can lead to issues during execution or accuracy degradation</p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4SNPE4SNPE39deregisterMemoryMappedBuffersForNetworkEPKcRKN8DlSystem10StringListE">
+<span id="_CPPv3N4SNPE4SNPE39deregisterMemoryMappedBuffersForNetworkEPKcRKN8DlSystem10StringListE"></span><span id="_CPPv2N4SNPE4SNPE39deregisterMemoryMappedBuffersForNetworkEPKcRKN8DlSystem10StringListE"></span><span id="SNPE::SNPE::deregisterMemoryMappedBuffersForNetwork__cCP.DlSystem::StringListCR"></span><span class="target" id="classSNPE_1_1SNPE_1aeddbb91d83ce38b5f93354cad142105c"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">deregisterMemoryMappedBuffersForNetwork</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">networkName</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1StringList.html#_CPPv4N8DlSystem10StringListE" title="DlSystem::StringList"><span class="n"><span class="pre">StringList</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">bufferNames</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N4SNPE4SNPE39deregisterMemoryMappedBuffersForNetworkEPKcRKN8DlSystem10StringListE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Deregister Client Memory-Mapped Buffers (Example ION buffers in Android) </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>networkName</strong> – <strong>[in]</strong> Network name.</p></li>
+<li><p><strong>bufferNames</strong> – <strong>[in]</strong> A StringList of memory mapped buffer names</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>SNPE_SUCCESS upon successful memory mapped buffer deregistration </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4SNPE4SNPE28getInputDimensionsForNetworkEPKc">
+<span id="_CPPv3NK4SNPE4SNPE28getInputDimensionsForNetworkEPKc"></span><span id="_CPPv2NK4SNPE4SNPE28getInputDimensionsForNetworkEPKc"></span><span id="SNPE::SNPE::getInputDimensionsForNetwork__cCPC"></span><span class="target" id="classSNPE_1_1SNPE_1abf8816e0dedcd19cd50cb7320f59ae8d"></span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Optional</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1TensorShape.html#_CPPv4N8DlSystem11TensorShapeE" title="DlSystem::TensorShape"><span class="n"><span class="pre">TensorShape</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getInputDimensionsForNetwork</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">networkName</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK4SNPE4SNPE28getInputDimensionsForNetworkEPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns the dimensions of the input data to the model in the form of TensorShape. The dimensions in TensorShape corresponds to what the tensor dimensions would need to be for an input tensor to the model. </p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Snpe_ITensor_Handle_t </p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Snpe_TensorShape_Handle_t </p>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>networkName</strong> – <strong>[in]</strong> Network name.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a TensorShape that maintains dimensions, matching the tensor dimensions for input to the model, where the last entry is the fastest varying dimension, etc.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that this function only makes sense for networks that have a fixed input size. For networks in which the input size varies with each call of Execute(), this function should not be used.</p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4SNPE4SNPE28getInputDimensionsForNetworkEPKcPKc">
+<span id="_CPPv3NK4SNPE4SNPE28getInputDimensionsForNetworkEPKcPKc"></span><span id="_CPPv2NK4SNPE4SNPE28getInputDimensionsForNetworkEPKcPKc"></span><span id="SNPE::SNPE::getInputDimensionsForNetwork__cCP.cCPC"></span><span class="target" id="classSNPE_1_1SNPE_1ae5e76dca801fd3a5fcbd4f171d86874e"></span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Optional</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1TensorShape.html#_CPPv4N8DlSystem11TensorShapeE" title="DlSystem::TensorShape"><span class="n"><span class="pre">TensorShape</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getInputDimensionsForNetwork</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">networkName</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">name</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK4SNPE4SNPE28getInputDimensionsForNetworkEPKcPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns the dimensions of the input data to the model in the form of TensorShape. The dimensions in TensorShape corresponds to what the tensor dimensions would need to be for an input tensor to the model. </p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Snpe_ITensor_Handle_t </p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Snpe_TensorShape_Handle_t </p>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>snpeHandle</strong> – <strong>[in]</strong> Handle to access the <a class="reference internal" href="file_SNPE_SNPE.hpp.html#classSNPE_1_1SNPE"><span class="std std-ref">SNPE</span></a> object</p></li>
+<li><p><strong>networkName</strong> – <strong>[in]</strong> Network name.</p></li>
+<li><p><strong>name</strong> – <strong>[in]</strong> input name.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a TensorShape that maintains dimensions, matching the tensor dimensions for input to the model, where the last entry is the fastest varying dimension, etc.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that this function only makes sense for networks that have a fixed input size. For networks in which the input size varies with each call of Execute(), this function should not be used.</p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4SNPE4SNPE29getOutputLayerNamesForNetworkEPKc">
+<span id="_CPPv3NK4SNPE4SNPE29getOutputLayerNamesForNetworkEPKc"></span><span id="_CPPv2NK4SNPE4SNPE29getOutputLayerNamesForNetworkEPKc"></span><span id="SNPE::SNPE::getOutputLayerNamesForNetwork__cCPC"></span><span class="target" id="classSNPE_1_1SNPE_1ae57a643f842c934bc1e99bf5916c1eed"></span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Optional</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1StringList.html#_CPPv4N8DlSystem10StringListE" title="DlSystem::StringList"><span class="n"><span class="pre">StringList</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getOutputLayerNamesForNetwork</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">networkName</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK4SNPE4SNPE29getOutputLayerNamesForNetworkEPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Gets the output layer(s) for the network. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>networkName</strong> – <strong>[in]</strong> Network name.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A StringList of output layer names. </p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The output layers returned by this function may be different than those specified when the network was created via the SNPEBuilder. For example, if the network was created in debug mode with no explicit output layers specified, this will contain all layers.</p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4SNPE4SNPE40getInputOutputBufferAttributesForNetworkEPKcPKc">
+<span id="_CPPv3NK4SNPE4SNPE40getInputOutputBufferAttributesForNetworkEPKcPKc"></span><span id="_CPPv2NK4SNPE4SNPE40getInputOutputBufferAttributesForNetworkEPKcPKc"></span><span id="SNPE::SNPE::getInputOutputBufferAttributesForNetwork__cCP.cCPC"></span><span class="target" id="classSNPE_1_1SNPE_1a2b6c5bde7335f9278d42ff0a4b868469"></span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Optional</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1IBufferAttributes.html#_CPPv4N8DlSystem17IBufferAttributesE" title="DlSystem::IBufferAttributes"><span class="n"><span class="pre">IBufferAttributes</span></span></a><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getInputOutputBufferAttributesForNetwork</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">networkName</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">name</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK4SNPE4SNPE40getInputOutputBufferAttributesForNetworkEPKcPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns attributes of buffers used to feed input tensors and receive result from output tensors. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>networkName</strong> – <strong>[in]</strong> Network name.</p></li>
+<li><p><strong>name</strong> – <strong>[in]</strong> Tensor name.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>BufferAttributes of input/output tensor named </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4SNPE4SNPE19getDiagLogInterfaceEv">
+<span id="_CPPv3N4SNPE4SNPE19getDiagLogInterfaceEv"></span><span id="_CPPv2N4SNPE4SNPE19getDiagLogInterfaceEv"></span><span id="SNPE::SNPE::getDiagLogInterface"></span><span class="target" id="classSNPE_1_1SNPE_1a2440aeddd17011d544e93fcfc269cbb8"></span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Optional</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="file_DiagLog_IDiagLog.hpp.html#_CPPv47DiagLog" title="DiagLog"><span class="n"><span class="pre">DiagLog</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDiagLog_1_1IDiagLog.html#_CPPv4N7DiagLog8IDiagLogE" title="DiagLog::IDiagLog"><span class="n"><span class="pre">IDiagLog</span></span></a><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getDiagLogInterface</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N4SNPE4SNPE19getDiagLogInterfaceEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the diagnostic logging interface. </p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="file_DlSystem_DlOptional.hpp.html#classDlSystem_1_1Optional"><span class="std std-ref">DlSystem::Optional</span></a> </p>
+</div>
+</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that because the returned type is an Optional instance, it must be verified as a boolean true value before being dereferenced.</p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4SNPE4SNPE15getNetworkNamesEv">
+<span id="_CPPv3NK4SNPE4SNPE15getNetworkNamesEv"></span><span id="_CPPv2NK4SNPE4SNPE15getNetworkNamesEv"></span><span id="SNPE::SNPE::getNetworkNamesC"></span><span class="target" id="classSNPE_1_1SNPE_1ad832e47b0f82a6d538d0c68254369d1e"></span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Optional</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1StringList.html#_CPPv4N8DlSystem10StringListE" title="DlSystem::StringList"><span class="n"><span class="pre">StringList</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getNetworkNames</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK4SNPE4SNPE15getNetworkNamesEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns a stringList of network names managed by the snpeHandle. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>StringListHandle of networkNames </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4SNPE4SNPE21setPerformanceProfileEN8DlSystem20PerformanceProfile_tE">
+<span id="_CPPv3N4SNPE4SNPE21setPerformanceProfileEN8DlSystem20PerformanceProfile_tE"></span><span id="_CPPv2N4SNPE4SNPE21setPerformanceProfileEN8DlSystem20PerformanceProfile_tE"></span><span id="SNPE::SNPE::setPerformanceProfile__DlSystem::PerformanceProfile_t"></span><span class="target" id="classSNPE_1_1SNPE_1ab14c6991d66bdb69724e959fbffb433b"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setPerformanceProfile</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="enum_group__c__plus__plus__apis_1ga81f31f2d5dc9c6c0df60c1372c4bb621.html#_CPPv4N8DlSystem20PerformanceProfile_tE" title="DlSystem::PerformanceProfile_t"><span class="n"><span class="pre">PerformanceProfile_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">perfProfile</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N4SNPE4SNPE21setPerformanceProfileEN8DlSystem20PerformanceProfile_tE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets performance profile. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>perfProfile, performance</strong> – <strong>[in]</strong> profile level</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>true upon successful setting of performance profile </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4SNPE4SNPE20setCustomPerfProfileEN8DlSystem15SNPEPerfProfileE">
+<span id="_CPPv3N4SNPE4SNPE20setCustomPerfProfileEN8DlSystem15SNPEPerfProfileE"></span><span id="_CPPv2N4SNPE4SNPE20setCustomPerfProfileEN8DlSystem15SNPEPerfProfileE"></span><span id="SNPE::SNPE::setCustomPerfProfile__DlSystem::SNPEPerfProfile"></span><span class="target" id="classSNPE_1_1SNPE_1ab361a0e9cd35d35e13f24176035a842a"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setCustomPerfProfile</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1SNPEPerfProfile.html#_CPPv4N8DlSystem15SNPEPerfProfileE" title="DlSystem::SNPEPerfProfile"><span class="n"><span class="pre">SNPEPerfProfile</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">perfProfile</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N4SNPE4SNPE20setCustomPerfProfileEN8DlSystem15SNPEPerfProfileE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets custom performance profile. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>perfProfile, custom</strong> – <strong>[in]</strong> performance profile level</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>true upon successful setting of custom performance profile </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,323 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>QNN HTP Op Package - Common Default Package Ops Usage Examples &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="QNN HTP Optimization Utility Functions Usage Examples" href="common_optimization_utility_funcs_usage_examples.html" />
+    <link rel="prev" title="HTP" href="../general/htp/htp_backend.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/setup.html">Setup</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../general/backend.html">Backend</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../general/backend.html#backend-specific-pages">Backend Specific Pages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../general/dsp/dsp_backend.html">DSP</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../general/htp/htp_backend.html">HTP</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#api-specializations">API Specializations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#usage-expectations">Usage Expectations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-supported-operations">QNN HTP Supported Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-variable-batch">QNN HTP Variable Batch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-backend-api">QNN HTP Backend API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-performance-infrastructure-api">QNN HTP Performance Infrastructure API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-precision">QNN HTP Precision</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-fp16-output-difference-between-sm8550-and-sm8650">QNN HTP FP16 output difference between SM8550 and SM8650</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-deep-learning-bandwidth-compression-dlbc">QNN HTP Deep Learning Bandwidth Compression (DLBC)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-setting-number-of-hvx-threads">QNN HTP - Setting Number of HVX Threads</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-backend-extensions">QNN HTP Backend Extensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-profiling">QNN HTP Profiling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-context-binary-size">QNN Context Binary size</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../general/htp/htp_backend.html#op-writing-guidelines">Op Writing Guidelines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#recommendations-for-network-design">Recommendations for Network Design</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#yielding-and-pre-emption">Yielding and Pre-Emption</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#vtcm-sharing">VTCM Sharing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#subsystem-restart-ssr">SubSystem Restart (SSR)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qmem-graph-shared-buffer-only-graph">Qmem Graph (shared_buffer only graph)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#htp-session-artifact-usage-guidlines">HTP Session &amp; Artifact Usage Guidlines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#graph-switching-beta">Graph Switching (Beta)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#benefits-of-batch-inference-and-multi-threaded-inference">Benefits of batch inference and multi-threaded inference</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../general/hta/hta_backend.html">HTA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/lpai/lpai_backend.html">LPAI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/cpu/cpu_backend.html">CPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/gpu/gpu_backend.html">GPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/saver/saver_backend.html">Saver</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../general/backend.html">Backend</a> &raquo;</li>
+        
+          <li><a href="../general/htp/htp_backend.html">HTP</a> &raquo;</li>
+        
+      <li>QNN HTP Op Package - Common Default Package Ops Usage Examples</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="qnn-htp-op-package-common-default-package-ops-usage-examples">
+<span id="native-ops-usage"></span><h1>QNN HTP Op Package - Common Default Package Ops Usage Examples<a class="headerlink" href="#qnn-htp-op-package-common-default-package-ops-usage-examples" title="Permalink to this heading">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="#native-ops-usage-add"><span class="std std-ref">Add</span></a></p></li>
+<li><p><a class="reference internal" href="#native-ops-usage-reshape"><span class="std std-ref">Reshape</span></a></p></li>
+</ul>
+<div class="section" id="add">
+<span id="native-ops-usage-add"></span><h2>Add<a class="headerlink" href="#add" title="Permalink to this heading">¶</a></h2>
+<p>Add two tensors element-wise</p>
+<p><strong>Usage Hint</strong></p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * In1             -  Input tensor1</span>
+<span class="cm"> * In2             -  Input tensor2</span>
+<span class="cm"> */</span>
+<span class="w"> </span><span class="n">Op</span><span class="p">(</span><span class="n">FROM_DEFAULT_PACKAGE</span><span class="p">(</span><span class="s">&quot;Add&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;In1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;In2&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Example</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp"># we can combine a Matmul Op followed by an Add to a new Matmul_bias op</span>
+<span class="n">DEF_PACKAGE_OPTIMIZATION</span><span class="p">(</span><span class="n">Fraph</span><span class="p">,</span>
+<span class="w"> </span><span class="n">Op</span><span class="p">(</span><span class="s">&quot;Add&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Op</span><span class="p">(</span><span class="s">&quot;Matmul&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;A&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;B&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Bias&quot;</span><span class="p">),</span>
+<span class="w"> </span><span class="n">OK</span><span class="p">,</span>
+<span class="w"> </span><span class="n">Op</span><span class="p">(</span><span class="s">&quot;Matmul_bias&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;A&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;B&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Bias&quot;</span><span class="p">)</span>
+<span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="reshape">
+<span id="native-ops-usage-reshape"></span><h2>Reshape<a class="headerlink" href="#reshape" title="Permalink to this heading">¶</a></h2>
+<p>Reshapes a tensor from one dimension to another</p>
+<p><strong>Usage Hint</strong></p>
+<p>Often used with WITH_SIZE(gen_Shape(X,X,X,X)) to determine the output tensor dimension</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * In             -  Input tensor</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+<span class="w"> </span><span class="n">Op</span><span class="p">(</span><span class="n">FROM_DEFAULT_PACKAGE</span><span class="p">(</span><span class="s">&quot;Reshape&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;In&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Example</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp"># We can reshape input tensor into seme shape that Relu_1x1x1xd Op like</span>
+<span class="n">DEF_PACKAGE_OPTIMIZATION</span><span class="p">(</span><span class="n">TILING</span><span class="p">,</span>
+<span class="w"> </span><span class="n">Op</span><span class="p">(</span><span class="s">&quot;Relu&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;In&quot;</span><span class="p">),</span>
+<span class="w"> </span><span class="n">OK</span><span class="p">,</span>
+<span class="w"> </span><span class="n">Op</span><span class="p">(</span><span class="s">&quot;Relu_1x1x1xd&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">WITH_SIZE</span><span class="p">(</span>
+<span class="w">   </span><span class="n">WITH_SIZE</span><span class="p">(</span><span class="n">gen_Shape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">MUL</span><span class="p">(</span><span class="n">DIM_BATCH</span><span class="p">(</span><span class="s">&quot;In&quot;</span><span class="p">),</span><span class="n">DIM_HEIGHT</span><span class="p">(</span><span class="s">&quot;In&quot;</span><span class="p">),</span><span class="n">DIM_WIDTH</span><span class="p">(</span><span class="s">&quot;In&quot;</span><span class="p">),</span><span class="n">DIM_DEPTH</span><span class="p">(</span><span class="s">&quot;In&quot;</span><span class="p">))),</span>
+<span class="w">     </span><span class="n">Op</span><span class="p">(</span><span class="n">FROM_DEFAULT_PACKAGE</span><span class="p">(</span><span class="s">&quot;Reshape&quot;</span><span class="p">),</span><span class="s">&quot;In&quot;</span><span class="p">)</span>
+<span class="w">   </span><span class="p">)</span>
+<span class="w"> </span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="common_optimization_utility_funcs_usage_examples.html" class="btn btn-neutral float-right" title="QNN HTP Optimization Utility Functions Usage Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../general/htp/htp_backend.html" class="btn btn-neutral float-left" title="HTP" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

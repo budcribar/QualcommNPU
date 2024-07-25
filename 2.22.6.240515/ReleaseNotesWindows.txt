@@ -1,0 +1,148 @@
+SNPE SDK
+
+SNPE is a software development kit for building machine learning based applications.
+
+SNPE 2.22.0
+
+Dependencies:
+
+* for building Windows example build
+  * Visual Studio 2022 (Build Tools v14.34)
+  * Win10 SDK 10.0.22621
+* for Windows platform
+  * Visual C++ Redistributable for Visual Studio 2022
+  * BSP build
+    * SC8180X > 17800
+    * SC8280X > 9200
+    * SC7280X > 4000
+
+Contents:
+
+* SNPE neural network accelerated runtime
+* Sample Native C++ and Windows applications
+* SNPE C++ library x86_64-windows-vc19, aarch64-windows-vc19
+* Snapdragon Neural Processing Engine SDK Reference Guide
+
+Known Issues:
+
+* Please refer to the "Limitations and Issues" chapter of the SNPE User and Reference Guide
+
+Changelog:
+2.22.0:
+Bugs:
+* HTP: Fixed accuracy issue for the pattern: Batchnorm -> Relu -> Concat.
+
+2.21.0:
+Bugs:
+* Addressed SSR (SubSystem Restart) occurring during SNPE_Execute().
+
+2.19.0:
+Features:
+* Tools: Added snpe-dlc-graph-prepare for WoS.
+* SDK: Updated documentation to announce new tools support for WoS.
+
+Bugs:
+* Core: Windows - Fixed hang in SNPE initialization when debugger is attached.
+
+2.18.0:
+Features:
+* SDK: Added ARM64EC python extension modules for WoS.
+* SDK: Added native ARM64 snpe-dlc-quant.
+* SDK: Modified lib/python structure to organize python extension modules by platform.
+* Core: Added new option --keep_num_outputs in snpe-net-run to control the number of outputs that would be saved to the
+  file system post inference.
+
+2.17.0:
+Features:
+* Tools: qnn-net-run and qnn-throughput-net-run added support --shared_buffer in ARM64X environment.
+
+Bugs:
+* Tools:ONNX Converter: Fixed WhereOp axis format issue.
+* Tools: Converter: Fixed tensorflow strided_slice conversion for out of range start/end.
+
+2.16.0
+Features:
+* Core: Added support for Windows line endings when processing user provided input lists for various SNPE binaries and examples.
+* Added support for ARM64X toolchain for UDO on Windows.
+* SDK: Added support for Compute SoC: SC8380XP
+* SDK: Added Windows arm64x binaries.
+
+2.15.0
+Bugs:
+* Core: snpe-parallel-run fixed for --userbuffer_memorymapped for WoS.
+
+1.61.0
+Features:
+* Snpe support for SC7280X
+* Logging system enabled in DSP stub
+
+1.59.0
+Allow customers to set search path for locating DSP libraries.
+
+1.58.0
+No Windows specific change
+
+1.57.0
+Fix snpe-net-run error with platform_opions unsignedPD:ON
+
+1.56.2
+Remove the requirement to handle locating libcdsprpc.dll by customers
+
+1.55.0
+Bugs:
+* Fixed hang issue when setting priority by setExecutionPriorityHint
+
+1.54.0
+No Windows specific change
+
+1.53.2
+Improve SC8280X power consumption of DSP runtime with burst profile.
+
+1.52.0
+No Windows specific change
+
+1.51.0
+Features:
+* Support UDO on SC8280X.
+* Remove dependency of VC redistributable package.
+
+Bugs:
+* Fixed SNPE hanging issue when running SNPE in new thread.
+
+1.50.0
+Bugs:
+* Fixed when using DSP runtime on SC8280X, the loading of network will fail randomly.
+* Fixed when using DSP runtime on SC8280X, SNPE may hang if SEH exception.
+
+1.49.0
+Features:
+* Support DSP workload priority control.
+* Beta release for SC8280X.
+
+1.48.0
+No Windows specific change
+
+1.47.0
+No Windows specific change
+
+1.46.0
+Bugs:
+* Fixed SNPE hanging issue when running SNPE in new thread
+
+1.45.0
+Bugs:
+* Fixed SNPE hanging issue when skel cannot be loaded
+
+1.44.0
+Features:
+* Enhanced DiagLog performance.
+
+Bugs:
+* Fix issue that inference with DSP runtime may output wrong results with low probability.
+
+1.43.0
+Features:
+* Support CPU runtime on Windows.
+* Support DSP runtime on Windows.
+* Port snpe-net-run to Windows.
+* Add tutorial pages for Windows.

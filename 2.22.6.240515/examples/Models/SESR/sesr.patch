@@ -1,0 +1,34 @@
+diff --git a/models/model_utils.py b/models/model_utils.py
+index 6dc99ee..523348a 100644
+--- a/models/model_utils.py
++++ b/models/model_utils.py
+@@ -150,7 +150,7 @@ class LinearBlock_c(tf.keras.layers.Layer):
+ 
+         # Ensure the Value isn't trainable
+         self.delta = tf.Variable(initial_value=delta, trainable=False, dtype=tf.float32)
+-        
++        self.bias = tf.Variable(tf.random_uniform_initializer(minval=-0.05, maxval=0.05, seed=None)(shape=[self.out_filters], dtype=tf.float32), trainable=False, dtype=tf.float32)
+         if self.quant_W:
+             self.wt_quant_min = self.add_weight(
+                 name='wt_quant_min',
+@@ -231,6 +231,7 @@ class LinearBlock_c(tf.keras.layers.Layer):
+ 
+         # Output - the actual conv2d
+         out = tf.nn.conv2d(inputs, wt_tensor, strides=[1, 1, 1, 1], padding="SAME")
++        out = tf.nn.bias_add(out, self.bias)
+ 
+         return out
+ 
+diff --git a/models/sesr.py b/models/sesr.py
+index bf1df7b..b73a465 100644
+--- a/models/sesr.py
++++ b/models/sesr.py
+@@ -70,7 +70,7 @@ class SESR(tf.keras.Model):
+                            quant_W=quant_W,
+                            mode=mode)
+             for _ in range(m)]
+-        if quant_W and quant_A:
++        if True:
+           print('Quantization mode: Using ReLU instead of PReLU activations.')
+           self.activations = [tf.keras.layers.ReLU() for _ in range(m)]
+         else:

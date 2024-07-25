@@ -1,0 +1,1093 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Sample App Tutorial &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Sample App Tutorial</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sample-app-tutorial">
+<h1>Sample App Tutorial<a class="headerlink" href="#sample-app-tutorial" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<p>This tutorial describes how to build a C++ application using QNN APIs that can execute models
+created using one of the qnn converters on a Linux host or an Android device, and it describes
+the working of <em>qnn-sample-app</em>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The qnn-sample-app is subject to change without notice.</p>
+</div>
+<p><em>qnn-sample-app</em> is an example C++ application available with the SDK at
+<strong>${QNN_SDK_ROOT}/examples/QNN/SampleApp</strong>. Where QNN_SDK_ROOT is the path to extracted QNN SDK.
+This tutorial navigates through the source code of
+<em>qnn-sample-app</em> showing the workflow of usage of QNN APIs to execute a model.</p>
+<p>For creating a C++ application based on QNN APIs, we prescribe the below pattern:</p>
+<ol class="arabic">
+<li><p><a class="reference internal" href="#loading-pre-requisite-shared-libraries">Loading pre-requisite shared libraries</a></p></li>
+<li><p><a class="reference internal" href="#usage-of-qnn-apis">Usage of QNN APIs</a></p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><p><a class="reference internal" href="#use-qnn-interface-to-obtain-function-pointers">Use QNN Interface to obtain function pointers</a></p></li>
+<li><p><a class="reference internal" href="#set-up-logging">Set up logging</a></p></li>
+<li><p><a class="reference internal" href="#initialize-backend">Initialize backend</a></p></li>
+<li><p><a class="reference internal" href="#initialize-profiling">Initialize profiling</a></p></li>
+<li><p><a class="reference internal" href="#create-device">Create device</a></p></li>
+<li><p><a class="reference internal" href="#register-op-packages">Register op packages</a></p></li>
+<li><p><a class="reference internal" href="#create-context">Create context</a></p></li>
+<li><p><a class="reference internal" href="#prepare-graphs">Prepare graphs</a></p></li>
+<li><p><a class="reference internal" href="#finalize-graphs">Finalize graphs</a></p></li>
+<li><p><a class="reference internal" href="#save-context-into-a-binary">Save context into a Binary</a></p></li>
+<li><p><a class="reference internal" href="#load-context-from-a-cached-binary">Load context from a cached binary</a></p></li>
+<li><p><a class="reference internal" href="#execute-graphs">Execute graphs</a></p></li>
+<li><p><a class="reference internal" href="#free-context">Free context</a></p></li>
+<li><p><a class="reference internal" href="#terminate-backend">Terminate backend</a></p></li>
+</ol>
+</div></blockquote>
+</li>
+<li><p><a class="reference internal" href="#building-and-running-qnn-sample-app">Building and running qnn-sample-app</a></p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><p><a class="reference internal" href="#build">Build</a></p></li>
+<li><p><a class="reference internal" href="#run">Run</a></p></li>
+</ol>
+</div></blockquote>
+</li>
+</ol>
+<div class="section" id="guide-for-navigating-through-qnn-sample-app-source-code">
+<h3>Guide for navigating through qnn-sample-app source code<a class="headerlink" href="#guide-for-navigating-through-qnn-sample-app-source-code" title="Permalink to this heading">¶</a></h3>
+<dl class="simple">
+<dt>Things to note before we proceed to navigate through the source code:</dt><dd><ol class="arabic simple">
+<li><p>Any return statement returning a value of type StatusCode::xxxx is a reference to enums named StatusCode containing appropriate return codes.</p></li>
+<li><p>QNN_xxxx macros are used for logging various debug messages.</p></li>
+</ol>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="loading-pre-requisite-shared-libraries">
+<h2>Loading pre-requisite shared libraries<a class="headerlink" href="#loading-pre-requisite-shared-libraries" title="Permalink to this heading">¶</a></h2>
+<p>QNN SDK provides various shared libraries to access backends, and applications have to load them as
+needed to execute a network.</p>
+<dl class="simple">
+<dt>A network in QNN can be created in two ways:</dt><dd><ol class="arabic simple">
+<li><p>It can be directly built into the user application by using QNN APIs.</p></li>
+<li><p>QNN converters can be used to produce a shared library of a QNN network.</p></li>
+</ol>
+</dd>
+</dl>
+<p><em>qnn-sample-app</em> makes use of the second option above. This network can be produced using one of the
+QNN converters available in the SDK, and further be compiled into a shared library using
+<a class="reference internal" href="tools.html#qnn-model-lib-generator"><span class="std std-ref">qnn-model-lib-generator</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For Windows users, please replace all ‘.so’ files with the analogous ‘.dll’ file in the following sections. Please refer to <a class="reference internal" href="introduction.html#platform-differences"><span class="std std-ref">Platform Differences</span></a> for more details.</p>
+</div>
+<div class="section" id="loading-a-backend">
+<h3>Loading a backend<a class="headerlink" href="#loading-a-backend" title="Permalink to this heading">¶</a></h3>
+<p>Shared libraries for various backends including CPU, GPU, HTP, and DSP are available in the QNN SDK.
+Every backend that implements QNN APIs exposes all necessary symbols that can be accessed
+using dynamic loading mechanism.</p>
+<p>Let’s consider a sample backend shared library named <em>libQnnSampleBackend.so</em>, which can be
+dynamically loaded as shown below:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">libBackendHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pal</span><span class="o">::</span><span class="n">dynamicloading</span><span class="o">::</span><span class="n">dlOpen</span><span class="p">(</span>
+<span class="linenos">2</span><span class="w">   </span><span class="s">&quot;libQnnSampleBackend.so&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pal</span><span class="o">::</span><span class="n">dynamicloading</span><span class="o">::</span><span class="n">DL_NOW</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">pal</span><span class="o">::</span><span class="n">dynamicloading</span><span class="o">::</span><span class="n">DL_LOCAL</span><span class="p">);</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nullptr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">libBackendHandle</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">5</span><span class="w">   </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Unable to load backend. pal::dynamicloading::dlError(): %s&quot;</span><span class="p">,</span>
+<span class="linenos">6</span><span class="w">             </span><span class="n">pal</span><span class="o">::</span><span class="n">dynamicloading</span><span class="o">::</span><span class="n">dlError</span><span class="p">());</span>
+<span class="linenos">7</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAIL_LOAD_BACKEND</span><span class="p">;</span>
+<span class="linenos">8</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>To load a model as a shared library, let’s consider a sample model shared library named
+<em>libQnnSampleModel.so</em>, which can be dynamically loaded as shown below:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">libModelHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pal</span><span class="o">::</span><span class="n">dynamicloading</span><span class="o">::</span><span class="n">dlOpen</span><span class="p">(</span>
+<span class="linenos">2</span><span class="w">     </span><span class="s">&quot;libQnnSampleModel.so&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pal</span><span class="o">::</span><span class="n">dynamicloading</span><span class="o">::</span><span class="n">DL_NOW</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">pal</span><span class="o">::</span><span class="n">dynamicloading</span><span class="o">::</span><span class="n">DL_LOCAL</span><span class="p">);</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nullptr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">libModelHandle</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">5</span><span class="w">   </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Unable to load model. pal::dynamicloading::dlError(): %s&quot;</span><span class="p">,</span>
+<span class="linenos">6</span><span class="w">             </span><span class="n">pal</span><span class="o">::</span><span class="n">dynamicloading</span><span class="o">::</span><span class="n">dlError</span><span class="p">());</span>
+<span class="linenos">7</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAIL_LOAD_MODEL</span><span class="p">;</span>
+<span class="linenos">8</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Optionally, to create a context from  a cached binary and execute graphs, applications can make use
+of QnnSystem API to retrieve metadata associated with the context. QnnSystem API can be accessed
+by loading the <em>libQnnSystem.so</em> shared library as shown below:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">systemLibraryHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pal</span><span class="o">::</span><span class="n">dynamicloading</span><span class="o">::</span><span class="n">dlOpen</span><span class="p">(</span>
+<span class="linenos">2</span><span class="w">   </span><span class="s">&quot;libQnnSystem.so&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pal</span><span class="o">::</span><span class="n">dynamicloading</span><span class="o">::</span><span class="n">DL_NOW</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">pal</span><span class="o">::</span><span class="n">dynamicloading</span><span class="o">::</span><span class="n">DL_LOCAL</span><span class="p">);</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nullptr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">systemLibraryHandle</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">5</span><span class="w">   </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Unable to load system library. pal::dynamicloading::dlError(): %s&quot;</span><span class="p">,</span>
+<span class="linenos">6</span><span class="w">             </span><span class="n">pal</span><span class="o">::</span><span class="n">dynamicloading</span><span class="o">::</span><span class="n">dlError</span><span class="p">());</span>
+<span class="linenos">7</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAIL_LOAD_SYSTEM_LIB</span><span class="p">;</span>
+<span class="linenos">8</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="resolving-symbols-in-shared-libraries">
+<h3>Resolving symbols in shared libraries<a class="headerlink" href="#resolving-symbols-in-shared-libraries" title="Permalink to this heading">¶</a></h3>
+<p>After the shared libraries are successfully loaded, we can proceed to resolve all necessary symbols
+to access QNN APIs.</p>
+<p>The below code snippet shows a template to resolve a symbol in a shared library:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="w"> </span><span class="c1">// A generic function to resolve symbols in a library</span>
+<span class="linenos"> 2</span><span class="w"> </span><span class="n">template</span><span class="w"> </span><span class="o">&lt;</span><span class="n">class</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span>
+<span class="linenos"> 3</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="n">resolveSymbol</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">libHandle</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">symName</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 4</span><span class="w">   </span><span class="n">T</span><span class="w"> </span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="n">pal</span><span class="o">::</span><span class="n">dynamicloading</span><span class="o">::</span><span class="n">dlSym</span><span class="p">(</span><span class="n">libHandle</span><span class="p">,</span><span class="w"> </span><span class="n">symName</span><span class="p">);</span>
+<span class="linenos"> 5</span><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ptr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 6</span><span class="w">     </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Unable to access symbol [%s]. pal::dynamicloading::dlError(): %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">symName</span><span class="p">,</span><span class="w"> </span><span class="n">pal</span><span class="o">::</span><span class="n">dynamicloading</span><span class="o">::</span><span class="n">dlError</span><span class="p">());</span>
+<span class="linenos"> 7</span><span class="w">   </span><span class="p">}</span>
+<span class="linenos"> 8</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">ptr</span><span class="p">;</span>
+<span class="linenos"> 9</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="w"> </span><span class="c1">// Template for resolving a function of type SampleFnHandleType_t</span>
+<span class="linenos">12</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">ReturnType_t</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">SampleFnHandleType_t</span><span class="p">)(</span><span class="n">FunctionParameterTypes_t</span><span class="w"> </span><span class="p">...);</span>
+<span class="linenos">13</span><span class="w"> </span><span class="n">SampleFnHandleType_t</span><span class="w"> </span><span class="n">sampleFn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nullptr</span><span class="p">;</span>
+<span class="linenos">14</span><span class="w"> </span><span class="n">sampleFnHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">resolveSymbol</span><span class="o">&lt;</span><span class="n">SampleFnHandleType_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">libBackendHandle</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;QnnSample_API&quot;</span><span class="p">);</span>
+<span class="linenos">15</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nullptr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">sampleFnHandle</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">16</span><span class="w">   </span><span class="c1">// Error code indicating failure in symbol resolution</span>
+<span class="linenos">17</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAIL_SYM_FUNCTION</span><span class="p">;</span>
+<span class="linenos">18</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>The below code snippet shows an example of how to resolve an actual QNN API:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="w"> </span><span class="cm">/* Resolve the symbol for Qnn_ErrorHandle_t QnnInterface_getProviders(const QnnInterface_t*** providerList,</span>
+<span class="linenos"> 2</span><span class="cm">                                                                       uint32_t* numProviders)</span>
+<span class="linenos"> 3</span><span class="cm">    API */</span>
+<span class="linenos"> 4</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">Qnn_ErrorHandle_t</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">QnnInterfaceGetProvidersFn_t</span><span class="p">)(</span><span class="k">const</span><span class="w"> </span><span class="n">QnnInterface_t</span><span class="o">***</span><span class="w"> </span><span class="n">providerList</span><span class="p">,</span>
+<span class="linenos"> 5</span><span class="w">                                                           </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">numProviders</span><span class="p">);</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="w"> </span><span class="n">QnnInterfaceGetProvidersFn_t</span><span class="w"> </span><span class="n">getInterfaceProviders</span><span class="w"> </span><span class="p">{</span><span class="n">nullptr</span><span class="p">};</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="w"> </span><span class="n">getInterfaceProviders</span><span class="w"> </span><span class="o">=</span>
+<span class="linenos">11</span><span class="w">   </span><span class="n">resolveSymbol</span><span class="o">&lt;</span><span class="n">QnnInterfaceGetProvidersFn_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">libBackendHandle</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;QnnInterface_getProviders&quot;</span><span class="p">);</span>
+<span class="linenos">12</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nullptr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">getInterfaceProviders</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">13</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAIL_SYM_FUNCTION</span><span class="p">;</span>
+<span class="linenos">14</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>In <em>qnn-sample-app</em> source code, all necessary symbols are resolved and stored in a struct of type
+QnnFunctionPointers shown below:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">QnnFunctionPointers</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">  </span><span class="c1">// APIs from model output from converters</span>
+<span class="linenos"> 3</span><span class="w">  </span><span class="c1">// QnnModel_composeGraphs</span>
+<span class="linenos"> 4</span><span class="w">  </span><span class="n">ComposeGraphsFnHandleType_t</span><span class="w"> </span><span class="n">composeGraphsFnHandle</span><span class="p">;</span>
+<span class="linenos"> 5</span><span class="w">  </span><span class="c1">// QnnModel_freeGraphsInfo</span>
+<span class="linenos"> 6</span><span class="w">  </span><span class="n">FreeGraphInfoFnHandleType_t</span><span class="w"> </span><span class="n">freeGraphInfoFnHandle</span><span class="p">;</span>
+<span class="linenos"> 7</span><span class="w">  </span><span class="c1">// QNN Interface function table containing pointers to all necessary QNN APIs</span>
+<span class="linenos"> 8</span><span class="w">  </span><span class="c1">// in a backend</span>
+<span class="linenos"> 9</span><span class="w">  </span><span class="n">QNN_INTERFACE_VER_TYPE</span><span class="w"> </span><span class="n">qnnInterface</span><span class="p">;</span>
+<span class="linenos">10</span><span class="w">  </span><span class="c1">// QNN System Interface function table containing pointers to all QNN System APIs</span>
+<span class="linenos">11</span><span class="w">  </span><span class="n">QNN_SYSTEM_INTERFACE_VER_TYPE</span><span class="w"> </span><span class="n">qnnSystemInterface</span><span class="p">;</span>
+<span class="linenos">12</span><span class="p">}</span><span class="w"> </span><span class="n">QnnFunctionPointers</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The above structure can be found in <strong>${QNN_SDK_ROOT}/examples/QNN/SampleApp/src/SampleApp.hpp</strong>. The
+rest of the tutorial will assume a variable named <em>m_qnnFunctionPointers</em> of type
+<em>QnnFunctionPointers</em> that contains valid function pointers.</p>
+</div>
+</div>
+<div class="section" id="usage-of-qnn-apis">
+<h2>Usage of QNN APIs<a class="headerlink" href="#usage-of-qnn-apis" title="Permalink to this heading">¶</a></h2>
+<p>This section demonstrates the usage of QNN APIs in a client application.</p>
+<div class="section" id="use-qnn-interface-to-obtain-function-pointers">
+<h3>Use QNN Interface to obtain function pointers<a class="headerlink" href="#use-qnn-interface-to-obtain-function-pointers" title="Permalink to this heading">¶</a></h3>
+<p>QNN Interface mechanism can be used to set up a table of function pointers to QNN APIs in the backend
+instead of manually resolving symbols to each and every API, which makes resolving symbols easy.
+QNN Interface can be used as below:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">QnnInterface_t</span><span class="o">**</span><span class="w"> </span><span class="n">interfaceProviders</span><span class="p">{</span><span class="n">nullptr</span><span class="p">};</span>
+<span class="linenos"> 2</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">numProviders</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="linenos"> 3</span><span class="c1">// Query for al available interfaces</span>
+<span class="linenos"> 4</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">QNN_SUCCESS</span><span class="w"> </span><span class="o">!=</span>
+<span class="linenos"> 5</span><span class="w">   </span><span class="n">getInterfaceProviders</span><span class="p">((</span><span class="k">const</span><span class="w"> </span><span class="n">QnnInterface_t</span><span class="o">***</span><span class="p">)</span><span class="o">&amp;</span><span class="n">interfaceProviders</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">numProviders</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 6</span><span class="w">  </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Failed to get interface providers.&quot;</span><span class="p">);</span>
+<span class="linenos"> 7</span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAIL_GET_INTERFACE_PROVIDERS</span><span class="p">;</span>
+<span class="linenos"> 8</span><span class="p">}</span>
+<span class="linenos"> 9</span><span class="c1">// Check for validity of returned interfaces</span>
+<span class="linenos">10</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nullptr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">interfaceProviders</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">11</span><span class="w">  </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Failed to get interface providers: null interface providers received.&quot;</span><span class="p">);</span>
+<span class="linenos">12</span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAIL_GET_INTERFACE_PROVIDERS</span><span class="p">;</span>
+<span class="linenos">13</span><span class="p">}</span>
+<span class="linenos">14</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">numProviders</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">15</span><span class="w">  </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Failed to get interface providers: 0 interface providers.&quot;</span><span class="p">);</span>
+<span class="linenos">16</span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAIL_GET_INTERFACE_PROVIDERS</span><span class="p">;</span>
+<span class="linenos">17</span><span class="p">}</span>
+<span class="linenos">18</span><span class="kt">bool</span><span class="w"> </span><span class="n">foundValidInterface</span><span class="p">{</span><span class="nb">false</span><span class="p">};</span>
+<span class="linenos">19</span><span class="c1">// Loop through all available interface providers and pick the one that suits the current API</span>
+<span class="linenos">20</span><span class="c1">// version</span>
+<span class="linenos">21</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">pIdx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">pIdx</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">numProviders</span><span class="p">;</span><span class="w"> </span><span class="n">pIdx</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">22</span><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">QNN_API_VERSION_MAJOR</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">interfaceProviders</span><span class="p">[</span><span class="n">pIdx</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">apiVersion</span><span class="p">.</span><span class="n">coreApiVersion</span><span class="p">.</span><span class="n">major</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="linenos">23</span><span class="w">      </span><span class="n">QNN_API_VERSION_MINOR</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">interfaceProviders</span><span class="p">[</span><span class="n">pIdx</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">apiVersion</span><span class="p">.</span><span class="n">coreApiVersion</span><span class="p">.</span><span class="n">minor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">24</span><span class="w">    </span><span class="n">foundValidInterface</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="linenos">25</span><span class="w">    </span><span class="n">m_qnnFunctionPointers</span><span class="p">.</span><span class="n">qnnInterface</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">interfaceProviders</span><span class="p">[</span><span class="n">pIdx</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">QNN_INTERFACE_VER_NAME</span><span class="p">;</span>
+<span class="linenos">26</span><span class="w">    </span><span class="k">break</span><span class="p">;</span>
+<span class="linenos">27</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos">28</span><span class="p">}</span>
+<span class="linenos">29</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">foundValidInterface</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">30</span><span class="w">  </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Unable to find a valid interface.&quot;</span><span class="p">);</span>
+<span class="linenos">31</span><span class="w">  </span><span class="n">libBackendHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nullptr</span><span class="p">;</span>
+<span class="linenos">32</span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAIL_GET_INTERFACE_PROVIDERS</span><span class="p">;</span>
+<span class="linenos">33</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>QNN System Interface can be used to resolve all symbols related to QNN System APIs as shown below:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">Qnn_ErrorHandle_t</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">QnnSystemInterfaceGetProvidersFn_t</span><span class="p">)(</span>
+<span class="linenos"> 2</span><span class="w">   </span><span class="k">const</span><span class="w"> </span><span class="n">QnnSystemInterface_t</span><span class="o">***</span><span class="w"> </span><span class="n">providerList</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">numProviders</span><span class="p">);</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="w"> </span><span class="n">QnnSystemInterfaceGetProvidersFn_t</span><span class="w"> </span><span class="n">getSystemInterfaceProviders</span><span class="p">{</span><span class="n">nullptr</span><span class="p">};</span>
+<span class="linenos"> 5</span><span class="w"> </span><span class="n">getSystemInterfaceProviders</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">resolveSymbol</span><span class="o">&lt;</span><span class="n">QnnSystemInterfaceGetProvidersFn_t</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="linenos"> 6</span><span class="w">   </span><span class="n">systemLibraryHandle</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;QnnSystemInterface_getProviders&quot;</span><span class="p">);</span>
+<span class="linenos"> 7</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nullptr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">getSystemInterfaceProviders</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 8</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAIL_SYM_FUNCTION</span><span class="p">;</span>
+<span class="linenos"> 9</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">10</span><span class="w"> </span><span class="n">QnnSystemInterface_t</span><span class="o">**</span><span class="w"> </span><span class="n">systemInterfaceProviders</span><span class="p">{</span><span class="n">nullptr</span><span class="p">};</span>
+<span class="linenos">11</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">numProviders</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="linenos">12</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">QNN_SUCCESS</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">getSystemInterfaceProviders</span><span class="p">(</span>
+<span class="linenos">13</span><span class="w">                      </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">QnnSystemInterface_t</span><span class="o">***</span><span class="p">)</span><span class="o">&amp;</span><span class="n">systemInterfaceProviders</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">numProviders</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">14</span><span class="w">   </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Failed to get system interface providers.&quot;</span><span class="p">);</span>
+<span class="linenos">15</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAIL_GET_INTERFACE_PROVIDERS</span><span class="p">;</span>
+<span class="linenos">16</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">17</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nullptr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">systemInterfaceProviders</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">18</span><span class="w">   </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Failed to get system interface providers: null interface providers received.&quot;</span><span class="p">);</span>
+<span class="linenos">19</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAIL_GET_INTERFACE_PROVIDERS</span><span class="p">;</span>
+<span class="linenos">20</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">21</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">numProviders</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">22</span><span class="w">   </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Failed to get interface providers: 0 interface providers.&quot;</span><span class="p">);</span>
+<span class="linenos">23</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAIL_GET_INTERFACE_PROVIDERS</span><span class="p">;</span>
+<span class="linenos">24</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">25</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">foundValidSystemInterface</span><span class="p">{</span><span class="nb">false</span><span class="p">};</span>
+<span class="linenos">26</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">pIdx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">pIdx</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">numProviders</span><span class="p">;</span><span class="w"> </span><span class="n">pIdx</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">27</span><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">QNN_SYSTEM_API_VERSION_MAJOR</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">systemInterfaceProviders</span><span class="p">[</span><span class="n">pIdx</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">systemApiVersion</span><span class="p">.</span><span class="n">major</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="linenos">28</span><span class="w">       </span><span class="n">QNN_SYSTEM_API_VERSION_MINOR</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">systemInterfaceProviders</span><span class="p">[</span><span class="n">pIdx</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">systemApiVersion</span><span class="p">.</span><span class="n">minor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">29</span><span class="w">     </span><span class="n">foundValidSystemInterface</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="linenos">30</span><span class="w">     </span><span class="n">m_qnnFunctionPointers</span><span class="o">-&gt;</span><span class="n">qnnSystemInterface</span><span class="w"> </span><span class="o">=</span>
+<span class="linenos">31</span><span class="w">       </span><span class="n">systemInterfaceProviders</span><span class="p">[</span><span class="n">pIdx</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">QNN_SYSTEM_INTERFACE_VER_NAME</span><span class="p">;</span>
+<span class="linenos">32</span><span class="w">     </span><span class="k">break</span><span class="p">;</span>
+<span class="linenos">33</span><span class="w">   </span><span class="p">}</span>
+<span class="linenos">34</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="set-up-logging">
+<h3>Set up logging<a class="headerlink" href="#set-up-logging" title="Permalink to this heading">¶</a></h3>
+<p>Logging can be set up before a backed is initialized and after a backend shared library has been
+dynamically loaded.</p>
+<p>To initialize logging, a callback of type <em>QnnLog_Callback_t</em> has to be defined. An example is
+defined below:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">logStdoutCallback</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">fmt</span><span class="p">,</span>
+<span class="linenos"> 2</span><span class="w">                        </span><span class="n">QnnLog_Level_t</span><span class="w"> </span><span class="n">level</span><span class="p">,</span>
+<span class="linenos"> 3</span><span class="w">                        </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">timestamp</span><span class="p">,</span>
+<span class="linenos"> 4</span><span class="w">                        </span><span class="kt">va_list</span><span class="w"> </span><span class="n">argp</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 5</span><span class="w">   </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">levelStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span>
+<span class="linenos"> 6</span><span class="w">   </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">level</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 7</span><span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="no">QNN_LOG_LEVEL_ERROR</span><span class="p">:</span>
+<span class="linenos"> 8</span><span class="w">     </span><span class="n">levelStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot; ERROR &quot;</span><span class="p">;</span>
+<span class="linenos"> 9</span><span class="w">     </span><span class="k">break</span><span class="p">;</span>
+<span class="linenos">10</span><span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="no">QNN_LOG_LEVEL_WARN</span><span class="p">:</span>
+<span class="linenos">11</span><span class="w">     </span><span class="n">levelStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;WARNING&quot;</span><span class="p">;</span>
+<span class="linenos">12</span><span class="w">     </span><span class="k">break</span><span class="p">;</span>
+<span class="linenos">13</span><span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="no">QNN_LOG_LEVEL_INFO</span><span class="p">:</span>
+<span class="linenos">14</span><span class="w">     </span><span class="n">levelStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;  INFO &quot;</span><span class="p">;</span>
+<span class="linenos">15</span><span class="w">     </span><span class="k">break</span><span class="p">;</span>
+<span class="linenos">16</span><span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="no">QNN_LOG_LEVEL_DEBUG</span><span class="p">:</span>
+<span class="linenos">17</span><span class="w">     </span><span class="n">levelStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot; DEBUG &quot;</span><span class="p">;</span>
+<span class="linenos">18</span><span class="w">     </span><span class="k">break</span><span class="p">;</span>
+<span class="linenos">19</span><span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="no">QNN_LOG_LEVEL_VERBOSE</span><span class="p">:</span>
+<span class="linenos">20</span><span class="w">     </span><span class="n">levelStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;VERBOSE&quot;</span><span class="p">;</span>
+<span class="linenos">21</span><span class="w">     </span><span class="k">break</span><span class="p">;</span>
+<span class="linenos">22</span><span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="no">QNN_LOG_LEVEL_MAX</span><span class="p">:</span>
+<span class="linenos">23</span><span class="w">     </span><span class="n">levelStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;UNKNOWN&quot;</span><span class="p">;</span>
+<span class="linenos">24</span><span class="w">     </span><span class="k">break</span><span class="p">;</span>
+<span class="linenos">25</span><span class="w">   </span><span class="p">}</span>
+<span class="linenos">26</span><span class="w">   </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%8.1fms [%-7s] &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ms</span><span class="p">,</span><span class="w"> </span><span class="n">levelStr</span><span class="p">);</span>
+<span class="linenos">27</span><span class="w">   </span><span class="n">vfprintf</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span><span class="w"> </span><span class="n">fmt</span><span class="p">,</span><span class="w"> </span><span class="n">argp</span><span class="p">);</span>
+<span class="linenos">28</span><span class="w">   </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="linenos">29</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>The above callback can be registered with the backend along with a maximum log level. Sample
+code to initialize with a max log level of QNN_LOG_LEVEL_INFO:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w"> </span><span class="n">Qnn_LogHandle_t</span><span class="w"> </span><span class="n">logHandle</span><span class="p">;</span>
+<span class="linenos">2</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">QNN_SUCCESS</span><span class="w"> </span><span class="o">!=</span>
+<span class="linenos">3</span><span class="w">       </span><span class="n">m_qnnFunctionPointers</span><span class="p">.</span><span class="n">qnnInterface</span><span class="p">.</span><span class="n">logCreate</span><span class="p">(</span><span class="n">logStdoutCallback</span><span class="p">,</span><span class="w"> </span><span class="n">QNN_LOG_LEVEL_INFO</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">logHandle</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">4</span><span class="w">   </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Unable to initialize logging in the backend.&quot;</span><span class="p">);</span>
+<span class="linenos">5</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span>
+<span class="linenos">6</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="initialize-backend">
+<h3>Initialize backend<a class="headerlink" href="#initialize-backend" title="Permalink to this heading">¶</a></h3>
+<p>Once logging has been successfully initialized, backend can be initialized as shown below:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w"> </span><span class="n">Qnn_BackendHandle_t</span><span class="w"> </span><span class="n">backendHandle</span><span class="p">;</span>
+<span class="linenos">2</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">QnnBackend_Config_t</span><span class="o">*</span><span class="w"> </span><span class="n">backendConfigs</span><span class="p">;</span>
+<span class="linenos">3</span><span class="w"> </span><span class="cm">/* Set up any necessary backend configurations */</span>
+<span class="linenos">4</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">QNN_BACKEND_NO_ERROR</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">m_qnnFunctionPointers</span><span class="p">.</span><span class="n">qnnInterface</span><span class="p">.</span><span class="n">backendCreate</span><span class="p">(</span><span class="n">logHandle</span><span class="p">,</span>
+<span class="linenos">5</span><span class="w">                                                                              </span><span class="o">&amp;</span><span class="n">backendConfigs</span><span class="p">,</span>
+<span class="linenos">6</span><span class="w">                                                                              </span><span class="o">&amp;</span><span class="n">backendHandle</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">7</span><span class="w">   </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Could not initialize backend&quot;</span><span class="p">);</span>
+<span class="linenos">8</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span>
+<span class="linenos">9</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="initialize-profiling">
+<h3>Initialize Profiling<a class="headerlink" href="#initialize-profiling" title="Permalink to this heading">¶</a></h3>
+<p>If profiling is desired, after the backend is initialized, a profile handle can be set up.
+This profile handle can be used at a later point in any API that supports profiling.</p>
+<p>A profile handle can be created in the backend with basic profiling level as shown below:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w"> </span><span class="n">Qnn_ProfileHandle_t</span><span class="w"> </span><span class="n">profileHandle</span><span class="p">;</span>
+<span class="linenos">2</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">QNN_PROFILE_NO_ERROR</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">m_qnnFunctionPointers</span><span class="p">.</span><span class="n">qnnInterface</span><span class="p">.</span><span class="n">profileCreate</span><span class="p">(</span>
+<span class="linenos">3</span><span class="w">                                   </span><span class="n">backendHandle</span><span class="p">,</span><span class="w"> </span><span class="n">QNN_PROFILE_LEVEL_BASIC</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">profileHandle</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">4</span><span class="w">   </span><span class="n">QNN_WARN</span><span class="p">(</span><span class="s">&quot;Unable to create profile handle in the backend.&quot;</span><span class="p">);</span>
+<span class="linenos">5</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span>
+<span class="linenos">6</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-device">
+<h3>Create device<a class="headerlink" href="#create-device" title="Permalink to this heading">¶</a></h3>
+<p>Device can be created as shown below:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">Qnn_DeviceHandle_t</span><span class="w"> </span><span class="n">deviceHandle</span><span class="w"> </span><span class="p">{</span><span class="n">nullptr</span><span class="p">};</span>
+<span class="linenos">2</span><span class="k">const</span><span class="w"> </span><span class="n">QnnDevice_Config_t</span><span class="o">*</span><span class="w"> </span><span class="n">devConfigArray</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="o">&amp;</span><span class="n">devConfig</span><span class="p">,</span><span class="w"> </span><span class="n">nullptr</span><span class="p">};</span>
+<span class="linenos">3</span><span class="n">Qnn_ErrorHandle_t</span><span class="w"> </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m_qnnFunctionPointers</span><span class="p">.</span><span class="n">qnnInterface</span><span class="p">.</span><span class="n">deviceCreate</span><span class="p">(</span><span class="n">logHandle</span><span class="p">,</span><span class="w"> </span><span class="n">devConfigArray</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">deviceHandle</span><span class="p">);</span>
+<span class="linenos">4</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">QNN_SUCCESS</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">ret</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">5</span><span class="w">   </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Failed to create device: %u&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">qnnStatus</span><span class="p">);</span>
+<span class="linenos">6</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span>
+<span class="linenos">7</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Set <strong>devConfig</strong> as defined here in <a class="reference internal" href="htp/htp_backend.html#qnn-htp-backend-api"><span class="std std-ref">QNN HTP Backend API</span></a></p>
+</div>
+<div class="section" id="register-op-packages">
+<h3>Register op packages<a class="headerlink" href="#register-op-packages" title="Permalink to this heading">¶</a></h3>
+<p>Op packages are way to supply libraries containing ops to backends. They can be registered as shown
+below:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">opPackageCount</span><span class="p">;</span>
+<span class="linenos"> 2</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">opPackagePath</span><span class="p">[</span><span class="n">opPackageCount</span><span class="p">];</span>
+<span class="linenos"> 3</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">opPackageInterfaceProvider</span><span class="p">[</span><span class="n">opPackageCount</span><span class="p">];</span>
+<span class="linenos"> 4</span><span class="w"> </span><span class="cm">/* Set up required op package paths and interface providers as necessary */</span>
+<span class="linenos"> 5</span><span class="w"> </span><span class="k">for</span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">opPackageCount</span><span class="p">;</span><span class="w"> </span><span class="n">idx</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 6</span><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">QNN_BACKEND_NO_ERROR</span><span class="w"> </span><span class="o">!=</span>
+<span class="linenos"> 7</span><span class="w">         </span><span class="n">m_qnnFunctionPointers</span><span class="p">.</span><span class="n">qnnInterface</span><span class="p">.</span><span class="n">backendRegisterOpPackage</span><span class="p">(</span><span class="n">backendHandle</span><span class="p">,</span>
+<span class="linenos"> 8</span><span class="w">                                                                     </span><span class="n">opPackagePath</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span>
+<span class="linenos"> 9</span><span class="w">                                                                     </span><span class="n">opPackageInterfaceProvider</span><span class="p">[</span><span class="n">idx</span><span class="p">]))</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">10</span><span class="w">     </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Could not register Op Package: %s and interface provider: %s&quot;</span><span class="p">,</span>
+<span class="linenos">11</span><span class="w">             </span><span class="n">opPackagePath</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span>
+<span class="linenos">12</span><span class="w">             </span><span class="n">opPackageInterfaceProvider</span><span class="p">[</span><span class="n">idx</span><span class="p">]);</span>
+<span class="linenos">13</span><span class="w">     </span><span class="k">return</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span>
+<span class="linenos">14</span><span class="w">   </span><span class="p">}</span>
+<span class="linenos">15</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-context">
+<h3>Create context<a class="headerlink" href="#create-context" title="Permalink to this heading">¶</a></h3>
+<p>A context can be created in a backend as shown below:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="w"> </span><span class="n">Qnn_ContextHandle_t</span><span class="w"> </span><span class="n">context</span><span class="p">;</span>
+<span class="linenos"> 2</span><span class="w"> </span><span class="n">Qnn_DeviceHandle_t</span><span class="w"> </span><span class="n">deviceHandle</span><span class="w"> </span><span class="p">{</span><span class="n">nullptr</span><span class="p">};</span>
+<span class="linenos"> 3</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">QnnContext_Config_t</span><span class="o">*</span><span class="w"> </span><span class="n">contextConfigs</span><span class="p">;</span>
+<span class="linenos"> 4</span><span class="w"> </span><span class="cm">/* Set up any context configs that are necessary */</span>
+<span class="linenos"> 5</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">QNN_CONTEXT_NO_ERROR</span><span class="w"> </span><span class="o">!=</span>
+<span class="linenos"> 6</span><span class="w">       </span><span class="n">m_qnnFunctionPointers</span><span class="p">.</span><span class="n">qnnInterface</span><span class="p">.</span><span class="n">contextCreate</span><span class="p">(</span><span class="n">backendHandle</span><span class="p">,</span>
+<span class="linenos"> 7</span><span class="w">                                                        </span><span class="n">deviceHandle</span><span class="p">,</span>
+<span class="linenos"> 8</span><span class="w">                                                        </span><span class="o">&amp;</span><span class="n">contextConfigs</span><span class="p">,</span>
+<span class="linenos"> 9</span><span class="w">                                                        </span><span class="o">&amp;</span><span class="n">context</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">10</span><span class="w">   </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Could not create context&quot;</span><span class="p">);</span>
+<span class="linenos">11</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span>
+<span class="linenos">12</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="prepare-graphs">
+<h3>Prepare graphs<a class="headerlink" href="#prepare-graphs" title="Permalink to this heading">¶</a></h3>
+<p><em>qnn-sample-app</em> relies on the output from one of the converters to create a QNN network in the
+backend. <em>composeGraphsFnHandle</em> is mapped to <em>QnnModel_composeGraphs</em> API in the model shared
+library, which takes <em>qnn_wrapper_api::GraphInfo_t***</em> as one of the parameters. The function
+<em>composeGraphsFnHandle</em> will make necessary calls to the backend to create a network(s). It also
+writes all necessary information, like information about input and output tensors related to the
+graph, required to execute a graph into the structure <em>graphsInfo</em> as shown in the following code
+block:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="w"> </span><span class="cm">/* Structure to retrieve information about graphs, like graph name,</span>
+<span class="linenos"> 2</span><span class="cm">    details about input and output tensors preset in libQnnSampleModel.so */</span>
+<span class="linenos"> 3</span><span class="w"> </span><span class="n">qnn_wrapper_api</span><span class="o">::</span><span class="n">GraphInfo_t</span><span class="o">**</span><span class="w"> </span><span class="n">graphsInfo</span><span class="p">;</span>
+<span class="linenos"> 4</span><span class="w"> </span><span class="c1">// No. of graphs present in libQnnSampleModel.so</span>
+<span class="linenos"> 5</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">graphsCount</span><span class="p">;</span>
+<span class="linenos"> 6</span><span class="w"> </span><span class="c1">// true to enable intermediate outputs, false for network outputs only</span>
+<span class="linenos"> 7</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">debug</span><span class="p">;</span>
+<span class="linenos"> 8</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">qnn_wrapper_api</span><span class="o">::</span><span class="n">ModelError_t</span><span class="o">::</span><span class="n">MODEL_NO_ERROR</span><span class="w"> </span><span class="o">!=</span>
+<span class="linenos"> 9</span><span class="w">         </span><span class="n">m_qnnFunctionPointers</span><span class="p">.</span><span class="n">composeGraphsFnHandle</span><span class="p">(</span><span class="n">backendHandle</span><span class="p">,</span>
+<span class="linenos">10</span><span class="w">                                                     </span><span class="n">m_qnnFunctionPointers</span><span class="p">.</span><span class="n">qnnInterface</span><span class="p">,</span>
+<span class="linenos">11</span><span class="w">                                                     </span><span class="n">context</span><span class="p">,</span>
+<span class="linenos">12</span><span class="w">                                                     </span><span class="o">&amp;</span><span class="n">graphsInfo</span><span class="p">,</span>
+<span class="linenos">13</span><span class="w">                                                     </span><span class="o">&amp;</span><span class="n">graphsCount</span><span class="p">,</span>
+<span class="linenos">14</span><span class="w">                                                     </span><span class="n">debug</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">15</span><span class="w">   </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Failed in composeGraphs()&quot;</span><span class="p">);</span>
+<span class="linenos">16</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span>
+<span class="linenos">17</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>At this point, the context will contain all the graphs that were present in <em>libQnnSampleModel.so</em>.</p>
+</div>
+<div class="section" id="finalize-graphs">
+<h3>Finalize Graphs<a class="headerlink" href="#finalize-graphs" title="Permalink to this heading">¶</a></h3>
+<p>Graphs that were added in the previous step can be finalized as shown below:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="w"> </span><span class="c1">// information about graphs obtained in the previous step</span>
+<span class="linenos"> 2</span><span class="w"> </span><span class="n">qnn_wrapper_api</span><span class="o">::</span><span class="n">GraphInfo_t</span><span class="o">**</span><span class="w"> </span><span class="n">graphsInfo</span><span class="p">;</span>
+<span class="linenos"> 3</span><span class="w"> </span><span class="c1">// No. of graphs obtained in the previous step</span>
+<span class="linenos"> 4</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">graphsCount</span><span class="p">;</span>
+<span class="linenos"> 5</span><span class="w"> </span><span class="cm">/* A valid profile handle if profiling is desired,</span>
+<span class="linenos"> 6</span><span class="cm">    nullptr if profiling is not needed */</span>
+<span class="linenos"> 7</span><span class="w"> </span><span class="n">Qnn_ProfileHandle_t</span><span class="w"> </span><span class="n">profileHandle</span><span class="p">;</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">graphIdx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">graphIdx</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">m_graphsCount</span><span class="p">;</span><span class="w"> </span><span class="n">graphIdx</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">10</span><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">QNN_GRAPH_NO_ERROR</span><span class="w"> </span><span class="o">!=</span>
+<span class="linenos">11</span><span class="w">     </span><span class="n">m_qnnFunctionPointers</span><span class="p">.</span><span class="n">qnnInterface</span><span class="p">.</span><span class="n">graphFinalize</span><span class="p">(</span>
+<span class="linenos">12</span><span class="w">         </span><span class="p">(</span><span class="o">*</span><span class="n">graphsInfo</span><span class="p">)[</span><span class="n">graphIdx</span><span class="p">].</span><span class="n">graph</span><span class="p">,</span><span class="w"> </span><span class="n">profileBackendHandle</span><span class="p">,</span><span class="w"> </span><span class="n">nullptr</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">13</span><span class="w">     </span><span class="k">return</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span>
+<span class="linenos">14</span><span class="w">   </span><span class="p">}</span>
+<span class="linenos">15</span><span class="w">   </span><span class="cm">/* Extract profiling information if desired and if a valid handle was supplied to finalize</span>
+<span class="linenos">16</span><span class="cm">      graphs API */</span>
+<span class="linenos">17</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="save-context-into-a-binary">
+<h3>Save context into a binary<a class="headerlink" href="#save-context-into-a-binary" title="Permalink to this heading">¶</a></h3>
+<p>After all the graphs in a context are finalized, the user application may choose to save the
+context into a binary for future use. The advantage of saving a context is that it can be retrieved
+in the future for execution of graphs contained within it without having to finalize them again.
+This will save considerable time for initialization during execution of a network.</p>
+<p>The context can be saved as shown below:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="w"> </span><span class="c1">// Get the expected size of the buffer from the backend in which the context can be saved</span>
+<span class="linenos"> 2</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">QNN_CONTEXT_NO_ERROR</span><span class="w"> </span><span class="o">!=</span>
+<span class="linenos"> 3</span><span class="w">   </span><span class="n">m_qnnFunctionPointers</span><span class="p">.</span><span class="n">qnnInterface</span><span class="p">.</span><span class="n">contextGetBinarySize</span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">requiredBufferSize</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 4</span><span class="w">   </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Could not get the required binary size.&quot;</span><span class="p">);</span>
+<span class="linenos"> 5</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span>
+<span class="linenos"> 6</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="w"> </span><span class="c1">// Allocate a buffer of the required size</span>
+<span class="linenos"> 9</span><span class="w"> </span><span class="n">saveBuffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">requiredBufferSize</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">uint8_t</span><span class="p">));</span>
+<span class="linenos">10</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nullptr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">saveBuffer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">11</span><span class="w">   </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Could not allocate buffer to save binary.&quot;</span><span class="p">);</span>
+<span class="linenos">12</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span>
+<span class="linenos">13</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">SUCCESS</span><span class="p">;</span>
+<span class="linenos">16</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">writtenBufferSize</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="linenos">17</span><span class="w"> </span><span class="c1">// Pass the allocated buffer and obtain a copy of the context binary written into the buffer</span>
+<span class="linenos">18</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">QNN_CONTEXT_NO_ERROR</span><span class="w"> </span><span class="o">!=</span>
+<span class="linenos">19</span><span class="w">   </span><span class="n">m_qnnFunctionPointers</span><span class="p">.</span><span class="n">qnnInterface</span><span class="p">.</span><span class="n">contextGetBinary</span><span class="p">(</span><span class="n">context</span><span class="p">,</span>
+<span class="linenos">20</span><span class="w">                                                       </span><span class="n">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">saveBuffer</span><span class="p">),</span>
+<span class="linenos">21</span><span class="w">                                                       </span><span class="n">requiredBufferSize</span><span class="p">,</span>
+<span class="linenos">22</span><span class="w">                                                       </span><span class="o">&amp;</span><span class="n">writtenBufferSize</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">23</span><span class="w">  </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Could not get binary.&quot;</span><span class="p">);</span>
+<span class="linenos">24</span><span class="w">  </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span>
+<span class="linenos">25</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">26</span>
+<span class="linenos">27</span><span class="w"> </span><span class="c1">// Check if the supplied buffer size is at least as big as the amount of data witten by the backend</span>
+<span class="linenos">28</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">requiredBufferSize</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">writtenBufferSize</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">29</span><span class="w">   </span><span class="n">QNN_ERROR</span><span class="p">(</span>
+<span class="linenos">30</span><span class="w">     </span><span class="s">&quot;Illegal written buffer size [%d] bytes. Cannot exceed allocated memory of [%d] bytes&quot;</span><span class="p">,</span>
+<span class="linenos">31</span><span class="w">     </span><span class="n">writtenBufferSize</span><span class="p">,</span>
+<span class="linenos">32</span><span class="w">     </span><span class="n">requiredBufferSize</span><span class="p">);</span>
+<span class="linenos">33</span><span class="w">   </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span>
+<span class="linenos">34</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">35</span>
+<span class="linenos">36</span><span class="w"> </span><span class="c1">// Use caching utility to save metadata along with the binary buffer from the backend</span>
+<span class="linenos">37</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">status</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">SUCCESS</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="linenos">38</span><span class="w">   </span><span class="n">tools</span><span class="o">::</span><span class="n">datautil</span><span class="o">::</span><span class="n">StatusCode</span><span class="o">::</span><span class="n">SUCCESS</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">tools</span><span class="o">::</span><span class="n">datautil</span><span class="o">::</span><span class="n">writeBinaryToFile</span><span class="p">(</span><span class="n">outputPath</span><span class="p">,</span>
+<span class="linenos">39</span><span class="w">                                                                              </span><span class="n">saveBinaryName</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;.bin&quot;</span><span class="p">,</span>
+<span class="linenos">40</span><span class="w">                                                                              </span><span class="p">(</span><span class="kt">uint8_t</span><span class="o">*</span><span class="p">)</span><span class="n">saveBuffer</span><span class="p">,</span>
+<span class="linenos">41</span><span class="w">                                                                              </span><span class="n">writtenBufferSize</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">42</span><span class="w">   </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Could not serialize to file.&quot;</span><span class="p">);</span>
+<span class="linenos">43</span><span class="w">   </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span>
+<span class="linenos">44</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="load-context-from-a-cached-binary">
+<h3>Load context from a cached binary<a class="headerlink" href="#load-context-from-a-cached-binary" title="Permalink to this heading">¶</a></h3>
+<p>A context that was saved into a binary, like in the previous step, can be loaded as an alternative
+to creating a new context every time. The code snippet below demonstrates this step:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">returnStatus</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">SUCCESS</span><span class="p">;</span>
+<span class="linenos"> 2</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">buffer</span><span class="p">{</span><span class="n">nullptr</span><span class="p">};</span>
+<span class="linenos"> 3</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">graphsCount</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="linenos"> 4</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">new</span><span class="w"> </span><span class="kt">uint8_t</span><span class="p">[</span><span class="n">bufferSize</span><span class="p">],</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">default_delete</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">());</span>
+<span class="linenos"> 5</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">buffer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 6</span><span class="w">     </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Failed to allocate memory.&quot;</span><span class="p">);</span>
+<span class="linenos"> 7</span><span class="w">     </span><span class="k">return</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span>
+<span class="linenos"> 8</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tools</span><span class="o">::</span><span class="n">datautil</span><span class="o">::</span><span class="n">StatusCode</span><span class="o">::</span><span class="n">SUCCESS</span><span class="w"> </span><span class="o">!=</span>
+<span class="linenos">11</span><span class="w">     </span><span class="n">tools</span><span class="o">::</span><span class="n">datautil</span><span class="o">::</span><span class="n">readBinaryFromFile</span><span class="p">(</span>
+<span class="linenos">12</span><span class="w">     </span><span class="n">cachedBinaryPath</span><span class="p">,</span><span class="w"> </span><span class="n">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">buffer</span><span class="p">.</span><span class="n">get</span><span class="p">()),</span><span class="w"> </span><span class="n">bufferSize</span><span class="p">)</span>
+<span class="linenos">13</span><span class="w">     </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Failed to read binary file.&quot;</span><span class="p">);</span>
+<span class="linenos">14</span><span class="w">     </span><span class="n">returnStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span>
+<span class="linenos">15</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="w"> </span><span class="cm">/* Create a QnnSystemContext handle to access system context APIs. */</span>
+<span class="linenos">18</span><span class="w"> </span><span class="n">QnnSystemContext_Handle_t</span><span class="w"> </span><span class="n">sysCtxHandle</span><span class="p">{</span><span class="n">nullptr</span><span class="p">};</span>
+<span class="linenos">19</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">QNN_SUCCESS</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">m_qnnFunctionPointers</span><span class="p">.</span><span class="n">qnnSystemInterface</span><span class="p">.</span><span class="n">systemContextCreate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sysCtxHandle</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">20</span><span class="w">   </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Could not create system handle.&quot;</span><span class="p">);</span>
+<span class="linenos">21</span><span class="w">   </span><span class="n">returnStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span>
+<span class="linenos">22</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">23</span>
+<span class="linenos">24</span><span class="w"> </span><span class="cm">/* Retrieve metadata from the context binary through QNN System Context API. */</span>
+<span class="linenos">25</span><span class="w"> </span><span class="n">QnnSystemContext_BinaryInfo_t</span><span class="o">*</span><span class="w"> </span><span class="n">binaryInfo</span><span class="p">{</span><span class="n">nullptr</span><span class="p">};</span>
+<span class="linenos">26</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">binaryInfoSize</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="linenos">27</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">StatusCode</span><span class="o">::</span><span class="n">SUCCESS</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">returnStatus</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="linenos">28</span><span class="w">     </span><span class="n">QNN_SUCCESS</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">m_qnnFunctionPointers</span><span class="p">.</span><span class="n">qnnSystemInterface</span><span class="p">.</span><span class="n">systemContextGetBinaryInfo</span><span class="p">(</span>
+<span class="linenos">29</span><span class="w">                      </span><span class="n">sysCtxHandle</span><span class="p">,</span>
+<span class="linenos">30</span><span class="w">                      </span><span class="n">static_cast</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">buffer</span><span class="p">.</span><span class="n">get</span><span class="p">()),</span>
+<span class="linenos">31</span><span class="w">                      </span><span class="n">bufferSize</span><span class="p">,</span>
+<span class="linenos">32</span><span class="w">                      </span><span class="o">&amp;</span><span class="n">binaryInfo</span><span class="p">,</span>
+<span class="linenos">33</span><span class="w">                      </span><span class="o">&amp;</span><span class="n">binaryInfoSize</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">34</span><span class="w">     </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Failed to get context binary info&quot;</span><span class="p">);</span>
+<span class="linenos">35</span><span class="w">     </span><span class="n">returnStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span>
+<span class="linenos">36</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">37</span>
+<span class="linenos">38</span><span class="w"> </span><span class="n">qnn_wrapper_api</span><span class="o">::</span><span class="n">GraphInfo_t</span><span class="o">**</span><span class="w"> </span><span class="n">graphsInfo</span><span class="p">;</span>
+<span class="linenos">39</span><span class="w"> </span><span class="cm">/* Make a copy of the metadata. */</span>
+<span class="linenos">40</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">StatusCode</span><span class="o">::</span><span class="n">SUCCESS</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">returnStatus</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="linenos">41</span><span class="w">     </span><span class="o">!</span><span class="n">copyMetadataToGraphsInfo</span><span class="p">(</span><span class="n">binaryInfo</span><span class="p">,</span><span class="w"> </span><span class="n">graphsInfo</span><span class="p">,</span><span class="w"> </span><span class="n">graphsCount</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">42</span><span class="w">   </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Failed to copy metadata.&quot;</span><span class="p">);</span>
+<span class="linenos">43</span><span class="w">   </span><span class="n">returnStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span>
+<span class="linenos">44</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">45</span>
+<span class="linenos">46</span><span class="w"> </span><span class="cm">/* Release resources associated with previously created QnnSystemContext handle. */</span>
+<span class="linenos">47</span><span class="w"> </span><span class="n">m_qnnFunctionPointers</span><span class="p">.</span><span class="n">qnnSystemInterface</span><span class="p">.</span><span class="n">systemContextFree</span><span class="p">(</span><span class="n">sysCtxHandle</span><span class="p">);</span>
+<span class="linenos">48</span><span class="w"> </span><span class="n">sysCtxHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nullptr</span><span class="p">;</span>
+<span class="linenos">49</span>
+<span class="linenos">50</span><span class="w"> </span><span class="cm">/* readBuffer contains the binary data that was previously obtained from a backend. Pass this</span>
+<span class="linenos">51</span><span class="cm">    cached binary data to the backend to recreate the same context. */</span>
+<span class="linenos">52</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">StatusCode</span><span class="o">::</span><span class="n">SUCCESS</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">returnStatus</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="linenos">53</span><span class="w">     </span><span class="n">m_qnnFunctionPointers</span><span class="p">.</span><span class="n">qnnInterface</span><span class="p">.</span><span class="n">contextCreateFromBinary</span><span class="p">(</span><span class="n">backendHandle</span><span class="p">,</span>
+<span class="linenos">54</span><span class="w">                                                                </span><span class="n">deviceHandle</span><span class="p">,</span>
+<span class="linenos">55</span><span class="w">                                                                </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">QnnContext_Config_t</span><span class="o">**</span><span class="p">)</span><span class="o">&amp;</span><span class="n">contextConfig</span><span class="p">,</span>
+<span class="linenos">56</span><span class="w">                                                                </span><span class="n">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">readBuffer</span><span class="p">),</span>
+<span class="linenos">57</span><span class="w">                                                                </span><span class="n">bufferSize</span><span class="p">,</span>
+<span class="linenos">58</span><span class="w">                                                                </span><span class="o">&amp;</span><span class="n">context</span><span class="p">,</span>
+<span class="linenos">59</span><span class="w">                                                                </span><span class="n">profileBackendHandle</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">60</span><span class="w">   </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Could not create context from binary.&quot;</span><span class="p">);</span>
+<span class="linenos">61</span><span class="w">   </span><span class="n">returnStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span>
+<span class="linenos">62</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">63</span>
+<span class="linenos">64</span><span class="w"> </span><span class="c1">// Optionally, extract profiling numbers if desired</span>
+<span class="linenos">65</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ProfilingLevel</span><span class="o">::</span><span class="n">OFF</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">m_profilingLevel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">66</span><span class="w">   </span><span class="n">extractBackendProfilingInfo</span><span class="p">(</span><span class="n">profileBackendHandle</span><span class="p">);</span>
+<span class="linenos">67</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">68</span>
+<span class="linenos">69</span><span class="w"> </span><span class="cm">/* Obtain and save graph handles for each graph present in the context based on the saved graph</span>
+<span class="linenos">70</span><span class="cm">    names in the metadata */</span>
+<span class="linenos">71</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">StatusCode</span><span class="o">::</span><span class="n">SUCCESS</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">returnStatus</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">72</span><span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">graphIdx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">graphIdx</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">m_graphsCount</span><span class="p">;</span><span class="w"> </span><span class="n">graphIdx</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">73</span><span class="w">     </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">QNN_SUCCESS</span><span class="w"> </span><span class="o">!=</span>
+<span class="linenos">74</span><span class="w">         </span><span class="n">m_qnnFunctionPointers</span><span class="p">.</span><span class="n">qnnInterface</span><span class="p">.</span><span class="n">graphRetrieve</span><span class="p">(</span>
+<span class="linenos">75</span><span class="w">             </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">graphsInfo</span><span class="p">)[</span><span class="n">graphIdx</span><span class="p">].</span><span class="n">graphName</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">((</span><span class="o">*</span><span class="n">graphsInfo</span><span class="p">)[</span><span class="n">graphIdx</span><span class="p">].</span><span class="n">graph</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">76</span><span class="w">       </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Unable to retrieve graph handle for graph Idx: %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">graphIdx</span><span class="p">);</span>
+<span class="linenos">77</span><span class="w">       </span><span class="n">returnStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span>
+<span class="linenos">78</span><span class="w">     </span><span class="p">}</span>
+<span class="linenos">79</span><span class="w">   </span><span class="p">}</span>
+<span class="linenos">80</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="execute-graphs">
+<h3>Execute graphs<a class="headerlink" href="#execute-graphs" title="Permalink to this heading">¶</a></h3>
+<p>After a context has been created, graphs have been added and finalized, or alternatively, after a
+context has been retrieved from a binary, one or more graphs in the context can be executed.</p>
+<p>Executing a graph involves:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Setting up input and output tensors.</p></li>
+<li><p>Populating input data into input tensors.</p></li>
+<li><p>Calling the execute method in the backend.</p></li>
+<li><p>Obtaining outputs and saving them.</p></li>
+</ol>
+</div></blockquote>
+<p>This is demonstrated using the code snippet below:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="w"> </span><span class="c1">// Select a graph from graphsInfo if there are more than one graph in this context</span>
+<span class="linenos"> 2</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">graphIdx</span><span class="p">;</span>
+<span class="linenos"> 3</span><span class="w"> </span><span class="n">QNN_DEBUG</span><span class="p">(</span><span class="s">&quot;Starting execution for graphIdx: %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">graphIdx</span><span class="p">);</span>
+<span class="linenos"> 4</span><span class="w"> </span><span class="n">Qnn_Tensor_t</span><span class="o">*</span><span class="w"> </span><span class="n">inputs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">nullptr</span><span class="p">;</span>
+<span class="linenos"> 5</span><span class="w"> </span><span class="n">Qnn_Tensor_t</span><span class="o">*</span><span class="w"> </span><span class="n">outputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nullptr</span><span class="p">;</span>
+<span class="linenos"> 6</span><span class="w"> </span><span class="c1">// IOTensor utility is used to set up input and output tensor structures</span>
+<span class="linenos"> 7</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">iotensor</span><span class="o">::</span><span class="n">StatusCode</span><span class="o">::</span><span class="n">SUCCESS</span><span class="w"> </span><span class="o">!=</span>
+<span class="linenos"> 8</span><span class="w">       </span><span class="n">ioTensor</span><span class="p">.</span><span class="n">setupInputAndOutputTensors</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inputs</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">outputs</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">graphsInfo</span><span class="p">)[</span><span class="n">graphIdx</span><span class="p">]))</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 9</span><span class="w">   </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Error in setting up Input and output Tensors for graphIdx: %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">graphIdx</span><span class="p">);</span>
+<span class="linenos">10</span><span class="w">   </span><span class="n">returnStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span>
+<span class="linenos">11</span><span class="w">   </span><span class="k">break</span><span class="p">;</span>
+<span class="linenos">12</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="w"> </span><span class="c1">// Grab input raw file paths to read input data</span>
+<span class="linenos">15</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">inputFileList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inputFileLists</span><span class="p">[</span><span class="n">graphIdx</span><span class="p">];</span>
+<span class="linenos">16</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">graphInfo</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">graphsInfo</span><span class="p">)[</span><span class="n">graphIdx</span><span class="p">];</span>
+<span class="linenos">17</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">inputFileList</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">18</span><span class="w">   </span><span class="cm">/* *qnn-sample-app* reads data based on the batch size until the whole buffer is filled.</span>
+<span class="linenos">19</span><span class="cm">      If there isn&#39;t sufficient data, it pads the rest with zeroes. */</span>
+<span class="linenos">20</span><span class="w">   </span><span class="kt">size_t</span><span class="w"> </span><span class="n">totalCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inputFileList</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">size</span><span class="p">();</span>
+<span class="linenos">21</span><span class="w">   </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">inputFileList</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">22</span><span class="w">     </span><span class="kt">size_t</span><span class="w"> </span><span class="n">startIdx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">totalCount</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">inputFileList</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">size</span><span class="p">());</span>
+<span class="linenos">23</span>
+<span class="linenos">24</span><span class="w">     </span><span class="c1">// IOTensor utility is used to populate input tensors with input data</span>
+<span class="linenos">25</span><span class="w">     </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">iotensor</span><span class="o">::</span><span class="n">StatusCode</span><span class="o">::</span><span class="n">SUCCESS</span><span class="w"> </span><span class="o">!=</span>
+<span class="linenos">26</span><span class="w">           </span><span class="n">m_ioTensor</span><span class="p">.</span><span class="n">populateInputTensors</span><span class="p">(</span>
+<span class="linenos">27</span><span class="w">             </span><span class="n">graphIdx</span><span class="p">,</span><span class="w"> </span><span class="n">inputFileList</span><span class="p">,</span><span class="w"> </span><span class="n">inputs</span><span class="p">,</span><span class="w"> </span><span class="n">graphInfo</span><span class="p">,</span><span class="w"> </span><span class="n">inputDataType</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">28</span><span class="w">       </span><span class="n">returnStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span>
+<span class="linenos">29</span><span class="w">     </span><span class="p">}</span>
+<span class="linenos">30</span>
+<span class="linenos">31</span><span class="w">     </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">StatusCode</span><span class="o">::</span><span class="n">SUCCESS</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">returnStatus</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">32</span><span class="w">       </span><span class="c1">// Execute the graph in the backend with optional profile handle</span>
+<span class="linenos">33</span><span class="w">       </span><span class="n">QNN_DEBUG</span><span class="p">(</span><span class="s">&quot;Successfully populated input tensors for graphIdx: %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">graphIdx</span><span class="p">);</span>
+<span class="linenos">34</span><span class="w">       </span><span class="n">Qnn_ErrorHandle_t</span><span class="w"> </span><span class="n">executeStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QNN_GRAPH_NO_ERROR</span><span class="p">;</span>
+<span class="linenos">35</span><span class="w">       </span><span class="n">executeStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m_qnnFunctionPointers</span><span class="p">.</span><span class="n">qnnInterface</span><span class="p">.</span><span class="n">graphExecute</span><span class="p">(</span><span class="n">graphInfo</span><span class="p">.</span><span class="n">graph</span><span class="p">,</span>
+<span class="linenos">36</span><span class="w">                                                                       </span><span class="n">inputs</span><span class="p">,</span>
+<span class="linenos">37</span><span class="w">                                                                       </span><span class="n">graphInfo</span><span class="p">.</span><span class="n">numInputTensors</span><span class="p">,</span>
+<span class="linenos">38</span><span class="w">                                                                       </span><span class="n">outputs</span><span class="p">,</span>
+<span class="linenos">39</span><span class="w">                                                                       </span><span class="n">graphInfo</span><span class="p">.</span><span class="n">numOutputTensors</span><span class="p">,</span>
+<span class="linenos">40</span><span class="w">                                                                       </span><span class="n">profileBackendHandle</span><span class="p">,</span>
+<span class="linenos">41</span><span class="w">                                                                       </span><span class="n">nullptr</span><span class="p">);</span>
+<span class="linenos">42</span><span class="w">       </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">QNN_GRAPH_NO_ERROR</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">executeStatus</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">43</span><span class="w">         </span><span class="n">returnStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span>
+<span class="linenos">44</span><span class="w">       </span><span class="p">}</span>
+<span class="linenos">45</span><span class="w">       </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">StatusCode</span><span class="o">::</span><span class="n">SUCCESS</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">returnStatus</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">46</span><span class="w">         </span><span class="n">QNN_DEBUG</span><span class="p">(</span><span class="s">&quot;Successfully executed graphIdx: %d &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">graphIdx</span><span class="p">);</span>
+<span class="linenos">47</span><span class="w">         </span><span class="c1">// IOTensor utility is used to write output tensors to raw files</span>
+<span class="linenos">48</span><span class="w">         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">iotensor</span><span class="o">::</span><span class="n">StatusCode</span><span class="o">::</span><span class="n">SUCCESS</span><span class="w"> </span><span class="o">!=</span>
+<span class="linenos">49</span><span class="w">               </span><span class="n">ioTensor</span><span class="p">.</span><span class="n">writeOutputTensors</span><span class="p">(</span><span class="n">graphIdx</span><span class="p">,</span>
+<span class="linenos">50</span><span class="w">                                           </span><span class="n">startIdx</span><span class="p">,</span>
+<span class="linenos">51</span><span class="w">                                           </span><span class="n">graphInfo</span><span class="p">.</span><span class="n">graphName</span><span class="p">,</span>
+<span class="linenos">52</span><span class="w">                                           </span><span class="n">outputs</span><span class="p">,</span>
+<span class="linenos">53</span><span class="w">                                           </span><span class="n">graphInfo</span><span class="p">.</span><span class="n">outputTensors</span><span class="p">,</span>
+<span class="linenos">54</span><span class="w">                                           </span><span class="n">graphInfo</span><span class="p">.</span><span class="n">numOutputTensors</span><span class="p">,</span>
+<span class="linenos">55</span><span class="w">                                           </span><span class="n">outputDataType</span><span class="p">,</span>
+<span class="linenos">56</span><span class="w">                                           </span><span class="n">graphsCount</span><span class="p">,</span>
+<span class="linenos">57</span><span class="w">                                           </span><span class="n">outputPath</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">58</span><span class="w">             </span><span class="n">returnStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span>
+<span class="linenos">59</span><span class="w">           </span><span class="p">}</span>
+<span class="linenos">60</span><span class="w">         </span><span class="p">}</span>
+<span class="linenos">61</span><span class="w">       </span><span class="p">}</span>
+<span class="linenos">62</span><span class="w">       </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">StatusCode</span><span class="o">::</span><span class="n">SUCCESS</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">returnStatus</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">63</span><span class="w">         </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Execution of Graph: %d failed!&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">graphIdx</span><span class="p">);</span>
+<span class="linenos">64</span><span class="w">         </span><span class="k">break</span><span class="p">;</span>
+<span class="linenos">65</span><span class="w">       </span><span class="p">}</span>
+<span class="linenos">66</span><span class="w">     </span><span class="p">}</span>
+<span class="linenos">67</span><span class="w">   </span><span class="p">}</span>
+<span class="linenos">68</span>
+<span class="linenos">69</span><span class="w">   </span><span class="c1">// Clean up all the tensors after execution is completed</span>
+<span class="linenos">70</span><span class="w">   </span><span class="n">ioTensor</span><span class="p">.</span><span class="n">tearDownInputAndOutputTensors</span><span class="p">(</span>
+<span class="linenos">71</span><span class="w">       </span><span class="n">inputs</span><span class="p">,</span><span class="w"> </span><span class="n">outputs</span><span class="p">,</span><span class="w"> </span><span class="n">graphInfo</span><span class="p">.</span><span class="n">numInputTensors</span><span class="p">,</span><span class="w"> </span><span class="n">graphInfo</span><span class="p">.</span><span class="n">numOutputTensors</span><span class="p">);</span>
+<span class="linenos">72</span><span class="w">   </span><span class="n">inputs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">nullptr</span><span class="p">;</span>
+<span class="linenos">73</span><span class="w">   </span><span class="n">outputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nullptr</span><span class="p">;</span>
+<span class="linenos">74</span><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">StatusCode</span><span class="o">::</span><span class="n">SUCCESS</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">returnStatus</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">75</span><span class="w">     </span><span class="k">break</span><span class="p">;</span>
+<span class="linenos">76</span><span class="w">   </span><span class="p">}</span>
+<span class="linenos">77</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>IOTensor is a utility provided with the source code at
+<strong>${QNN_SDK_ROOT}/examples/QNN/SampleApp/src/Utils/IOTensor.cpp</strong>. It exposes a few methods that help
+with the execution of a graph, which were used in the previous code snippet:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p><em>setupInputAndOutputTensors</em> to set up structures related to input and output tensors.</p></li>
+<li><p><em>populateInputTensors</em> to copy input data into input tensor structures.</p></li>
+<li><p><em>tearDownInputAndOutputTensors</em> to clean up resources associated with input and output tensors.</p></li>
+</ol>
+</div></blockquote>
+<p>Refer to the IOTensor source code for more details about these APIs.</p>
+</div>
+<div class="section" id="free-context">
+<h3>Free context<a class="headerlink" href="#free-context" title="Permalink to this heading">¶</a></h3>
+<p>After all the execution is completed, the context can be freed as shown below:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">QNN_CONTEXT_NO_ERROR</span><span class="w"> </span><span class="o">!=</span>
+<span class="linenos">2</span><span class="w">       </span><span class="n">m_qnnFunctionPointers</span><span class="p">.</span><span class="n">qnnInterface</span><span class="p">.</span><span class="n">contextFree</span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">profileBackendHandle</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">3</span><span class="w">   </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Could not free context&quot;</span><span class="p">);</span>
+<span class="linenos">4</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span>
+<span class="linenos">5</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="terminate-backend">
+<h3>Terminate backend<a class="headerlink" href="#terminate-backend" title="Permalink to this heading">¶</a></h3>
+<p>Backend can be terminated as shown below:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">QNN_BACKEND_NO_ERROR</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">m_qnnFunctionPointers</span><span class="p">.</span><span class="n">qnnInterface</span><span class="p">.</span><span class="n">backendFree</span><span class="p">(</span><span class="n">backendHandle</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">2</span><span class="w">   </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Could not free backend&quot;</span><span class="p">);</span>
+<span class="linenos">3</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span>
+<span class="linenos">4</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="building-and-running-qnn-sample-app">
+<h2>Building and running qnn-sample-app<a class="headerlink" href="#building-and-running-qnn-sample-app" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="setup">
+<h3>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">¶</a></h3>
+<p><strong>Linux</strong></p>
+<dl class="simple">
+<dt>Building <em>qnn-sample-app</em> has two external dependencies:</dt><dd><ol class="arabic simple">
+<li><p>clang compiler</p></li>
+<li><p>ndk-build (for Android targets only)</p></li>
+</ol>
+</dd>
+</dl>
+<p>If the clang compiler is not available in your system <strong>PATH</strong>, the script
+<strong>${QNN_SDK_ROOT}/bin/check-linux-dependency.sh</strong> provided with the SDK
+can be used to install and prepare your environment. Alternatively, you could install these
+dependencies and make them available in your PATH.</p>
+<p>Command to automatically install required dependencies:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w"> </span><span class="n">$</span><span class="w"> </span><span class="n">sudo</span><span class="w"> </span><span class="n">bash</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">check</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">dependency</span><span class="p">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>For the second dependency to be satisfied, ndk-build needs to be set using <span class="xref std std-ref">general/setup:Compiler Toolchains</span></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w"> </span><span class="n">$</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">envcheck</span><span class="w"> </span><span class="o">-</span><span class="n">n</span>
+</pre></div>
+</div>
+<p><em>Note: qnn-sample-app has been verified to work with Android NDK version r25c.</em></p>
+<p><strong>GCC Toolchain</strong></p>
+<p>For building <em>qnn-sample-app</em> to run on devices with Yocto based OS, gcc compiler is needed. To support Yocto Kirkstone based devices,
+the SDK libraries are compiled with GCC-11.2. Following section provides steps to acquire the toolchain taking Yocto Kirkstone as an example.</p>
+<p>If the required compiler is not available in your system <strong>PATH</strong>, please use the below steps to install the
+dependency and make them available in your PATH.</p>
+<p>Please follow Qualcomm build guide to generate the eSDK that contains cross compiler toolchain
+(qcom-wayland-x86_64-qcom-console-image-armv8-2a-qcm6490-toolchain-ext-0.0.sh) required to build sample application.</p>
+<blockquote>
+<div><ol class="arabic">
+<li><dl>
+<dt>Steps to build the eSDK are available at <a class="reference external" href="https://docs.qualcomm.com/bundle/resource/topics/80-70014-2/build_procedures.html">https://docs.qualcomm.com/bundle/resource/topics/80-70014-2/build_procedures.html</a></dt><dd><dl class="simple">
+<dt>1.1. After building the eSDK, qcom-wayland-x86_64-qcom-console-image-armv8-2a-qcm6490-toolchain-ext-0.0.sh will</dt><dd><p>be generated at &lt;WORKSPACE DIR&gt;/build-qcom-wayland/tmp-glibc/deploy/sdk.</p>
+</dd>
+</dl>
+<p>1.2. Extract toolchain using ./qcom-wayland-x86_64-qcom-console-image-armv8-2a-qcm6490-toolchain-ext-0.0.sh</p>
+</dd>
+</dl>
+</li>
+</ol>
+</div></blockquote>
+<p><strong>Windows</strong></p>
+<p>The tutorial assumes general setup instructions have been followed at <a class="reference internal" href="setup.html"><span class="doc">Setup</span></a>.
+Please use “Developer PowerShell for VS 2022” in the following steps.</p>
+</div>
+<div class="section" id="build">
+<h3>Build<a class="headerlink" href="#build" title="Permalink to this heading">¶</a></h3>
+<p>Once the setup is complete, <em>qnn-sample-app</em> can be built as follows:</p>
+<p><strong>Linux</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w"> </span><span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">SampleApp</span>
+<span class="linenos">2</span><span class="w"> </span><span class="n">$</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="n">all_x86</span><span class="w"> </span><span class="n">all_android</span>
+</pre></div>
+</div>
+<p>After executing make from above, you should be able to see two new folders in the same directory:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>bin: contains <em>qnn-sample-app</em> binaries for each platform within respective directories.</p></li>
+<li><p>obj: contains all the object files that were used for building and linking the executable.</p></li>
+</ol>
+</div></blockquote>
+<p>To delete all the artifacts that were generated in the above step, run:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w"> </span><span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">SampleApp</span>
+<span class="linenos">2</span><span class="w"> </span><span class="n">$</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="n">clean</span>
+</pre></div>
+</div>
+<p><strong>Linux (Yocto Based)</strong></p>
+<p>For those devices which have Yocto based Linux OS, GCC compiler needs to be used to build the sample source code.
+To support Yocto Kirkstone based devices, libraries are compiled with gcc11.2. Please refer below steps for building
+QNN sample app:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w"> </span><span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">SampleApp</span><span class="o">/</span>
+<span class="linenos">2</span><span class="w"> </span><span class="n">$</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">QNN_AARCH64_LINUX_OE_GCC_112</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">extracted</span><span class="o">/</span><span class="n">toolchain</span>
+<span class="linenos">3</span><span class="w"> </span><span class="n">$</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="n">CXX</span><span class="o">=</span><span class="s">&quot;&lt;installed_toolchain_path&gt;/tmp/sysroots/x86_64/usr/bin/aarch64-qcom-linux/aarch64-qcom-linux-g++</span>
+<span class="linenos">4</span><span class="w">   </span><span class="o">--</span><span class="n">sysroot</span><span class="o">=&lt;</span><span class="n">installed_toolchain_path</span><span class="o">&gt;/</span><span class="n">tmp</span><span class="o">/</span><span class="n">sysroots</span><span class="o">/</span><span class="n">qcm6490</span><span class="s">&quot; all_linux_oe_aarch64_gcc112</span>
+</pre></div>
+</div>
+<p>After executing make from above, you should be able to see two new folders in the same directory:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>bin: contains <em>qnn-sample-app</em> binaries for each platform within respective directories.</p></li>
+<li><p>obj: contains all the object files that were used for building and linking the executable.</p></li>
+</ol>
+</div></blockquote>
+<p>To delete all the artifacts that were generated in the above step, run:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w"> </span><span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">SampleApp</span>
+<span class="linenos">2</span><span class="w"> </span><span class="n">$</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="n">clean</span>
+</pre></div>
+</div>
+<p><strong>Windows</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w"> </span><span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">$QNN_SDK_ROOT</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">SampleApp</span>
+<span class="linenos">2</span><span class="w"> </span><span class="n">$</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="n">build</span>
+<span class="linenos">3</span><span class="w"> </span><span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">build</span>
+<span class="linenos">4</span><span class="w"> </span><span class="n">$</span><span class="w"> </span><span class="n">cmake</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="w"> </span><span class="o">-</span><span class="n">A</span><span class="w"> </span><span class="p">[</span><span class="n">x64</span><span class="p">,</span><span class="w"> </span><span class="n">ARM64</span><span class="p">]</span>
+<span class="linenos">5</span><span class="w"> </span><span class="n">$</span><span class="w"> </span><span class="n">cmake</span><span class="w"> </span><span class="o">--</span><span class="n">build</span><span class="w"> </span><span class="p">.</span><span class="o">/</span><span class="w"> </span><span class="o">--</span><span class="n">config</span><span class="w"> </span><span class="n">Release</span>
+</pre></div>
+</div>
+<p>After executing commands from above, you should be able to see $QNN_SDK_ROOT/examples/QNN/SampleApp/build/src/Release/qnn-sample-app.exe</p>
+</div>
+<div class="section" id="run">
+<h3>Run<a class="headerlink" href="#run" title="Permalink to this heading">¶</a></h3>
+<p><strong>Linux</strong></p>
+<p><em>qnn-sample-app</em> executable generated in the build step can be used to execute a model using any QNN
+backend available for <em>linux-x86_64</em> and <em>aarch64-android</em>. It is very similar to executing
+<em>qnn-net-run</em>, except when retrieving a context from a cached binary. To retrieve a cached context,
+qnn-sample-app additionally needs the QNN System library (<em>libQnnSystem.so</em>) to extract metadata,
+and it can be provided through the <em>–system_library</em> option. <em>libQnnSystem.so</em> can be found in the
+SDK for a particular target under <em>lib/&lt;target&gt;</em> folder. Refer to further documentation on
+<em>qnn-net-run</em> <a class="reference internal" href="tools.html#qnn-net-run"><span class="std std-ref">here</span></a>.</p>
+<p>For example, let’s consider execution of the shallow model on CPU backend on a Linux host from
+<a class="reference internal" href="tutorial1.html"><span class="doc">Tutorial 1</span></a>. Replacing <em>qnn-net-run</em> with <em>qnn-sample-app</em> should produce same
+results:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>$ cd ${QNN_SDK_ROOT}/examples/QNN/converter/models # access input data
+<span class="linenos">2</span>$ ${QNN_SDK_ROOT}/examples/QNN/SampleApp/bin/x86_64-linux-clang/qnn-sample-app \
+<span class="linenos">3</span>              --backend ${QNN_SDK_ROOT}/lib/x86_64-linux-clang/libQnnCpu.so \
+<span class="linenos">4</span>              --model ${QNN_SDK_ROOT}/examples/QNN/example_libs/x86_64-linux-clang/libqnn_model_float.so \
+<span class="linenos">5</span>              --input_list ${QNN_SDK_ROOT}/examples/QNN/converter/models/input_list_float.txt \
+<span class="linenos">6</span>              --op_packages ${QNN_SDK_ROOT}/examples/QNN/OpPackage/CPU/libs/x86_64-linux-clang/libQnnCpuOpPackageExample.so:QnnOpPackage_interfaceProvider
+</pre></div>
+</div>
+<p>For more tool help, run:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w"> </span><span class="n">$</span><span class="w"> </span><span class="n">qnn</span><span class="o">-</span><span class="n">sample</span><span class="o">-</span><span class="n">app</span><span class="w"> </span><span class="o">--</span><span class="n">help</span>
+</pre></div>
+</div>
+<p><strong>Linux (Yocto Based)</strong></p>
+<p><em>qnn-sample-app</em> executable generated in the build step can be used to execute a model using any QNN backend.
+To support Yocto kirkstone based devices, backends are available for <em>aarch64-oe-linux-gcc11.2</em>. To run the executable,
+please refer same steps as <strong>LINUX</strong> section above.</p>
+<p>For more tool help, run:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w"> </span><span class="n">$</span><span class="w"> </span><span class="n">qnn</span><span class="o">-</span><span class="n">sample</span><span class="o">-</span><span class="n">app</span><span class="w"> </span><span class="o">--</span><span class="n">help</span>
+</pre></div>
+</div>
+<p><strong>Windows</strong></p>
+<p><em>qnn-sample-app.exe</em> executable generated in the build step can be used to execute a model using any QNN backend available
+for windows-x86_64 and aarch64-windows platforms. It is very similar to executing qnn-net-run. Refer to the
+general QNN documentation available at <a class="reference internal" href="tools.html#qnn-net-run"><span class="std std-ref">here</span></a> to see how to run qnn-net-run. Simply
+replacing qnn-net-run with <em>qnn-sample-app.exe</em> in the tutorials should help.</p>
+<p>For example, let’s consider execution of the Inception_v3 model on CPU backend on a Windows host from
+<a class="reference internal" href="tutorial2.html"><span class="doc">Converting and executing a CNN model with QNN</span></a>. Replacing <em>qnn-net-run</em> with <em>qnn-sample-app.exe</em> should produce same
+results:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">$</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="s">&quot;&lt;QNN_SDK_ROOT&gt;/bin/envsetup.ps1&quot;</span>
+<span class="linenos">2</span><span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">$QNN_SDK_ROOT</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">converter</span><span class="o">/</span><span class="n">models</span>
+<span class="linenos">3</span><span class="n">$</span><span class="w"> </span><span class="n">qnn</span><span class="o">-</span><span class="n">sample</span><span class="o">-</span><span class="n">app</span><span class="p">.</span><span class="n">exe</span><span class="w"> </span>\
+<span class="linenos">4</span><span class="w">              </span><span class="o">--</span><span class="n">backend</span><span class="w"> </span><span class="n">QnnCpu</span><span class="p">.</span><span class="n">dll</span><span class="w"> </span>\
+<span class="linenos">5</span><span class="w">              </span><span class="o">--</span><span class="n">model</span><span class="w"> </span><span class="n">Inception_v3</span><span class="p">.</span><span class="n">dll</span><span class="w"> </span>\
+<span class="linenos">6</span><span class="w">              </span><span class="o">--</span><span class="n">input_list</span><span class="w"> </span><span class="n">$QNN_SDK_ROOT</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">converter</span><span class="o">/</span><span class="n">models</span><span class="o">/</span><span class="n">input_list_float</span><span class="p">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>For more tool help, run:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w"> </span><span class="n">$</span><span class="w"> </span><span class="n">qnn</span><span class="o">-</span><span class="n">sample</span><span class="o">-</span><span class="n">app</span><span class="p">.</span><span class="n">exe</span><span class="w"> </span><span class="o">--</span><span class="n">help</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

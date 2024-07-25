@@ -1,0 +1,364 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Common Terminology &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="QNN Operation Definitions" href="../OpDef/MasterOpDef.html" />
+    <link rel="prev" title="QNN LPAI Op Support Revision History" href="lpai/lpai_opdef_version_history.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="operations.html">Operations</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../OpDef/SupportedOps.html">Supported Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../OpDef/opdef_version_history.html">Op Definition Revision History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../OpDef/opdef_version_history.html#backend-specific-revision-history">Backend Specific Revision History</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="operations.html#operation-definitions">Operation Definitions</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Common Terminology</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#operation-definition-rules">Operation definition rules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#conventions">Conventions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#element-wise-operation-rules">Element-wise operation rules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#operation-configuration-and-tensor-sizing-notes">Operation configuration and tensor sizing notes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../OpDef/MasterOpDef.html">Master Definitions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="operations.html#backend-supplements">Backend Supplements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="operations.html">Operations</a> &raquo;</li>
+        
+      <li>Common Terminology</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="common-terminology">
+<h1>Common Terminology<a class="headerlink" href="#common-terminology" title="Permalink to this heading">¶</a></h1>
+<p>The QNN Ops are defined in <a class="reference internal" href="../OpDef/MasterOpDef.html#qnn-operation-definitions"><span class="std std-ref">QNN Operation Definitions</span></a>. This section
+provides some general Op definition and usage rules.</p>
+<div class="section" id="operation-definition-rules">
+<h2>Operation definition rules<a class="headerlink" href="#operation-definition-rules" title="Permalink to this heading">¶</a></h2>
+<p>For each operation:</p>
+<ul class="simple">
+<li><p>Input tensors are defined in a list. Each has a designated index.</p></li>
+<li><p>Output tensors are defined in a list. Each has a designated index.</p></li>
+<li><p>Output tensors cannot be static.</p></li>
+<li><p>Parameters are named and need NOT be ordered.</p></li>
+</ul>
+<p>Each tensor has a data format which can be expressed via the field <em>Qnn_TensorDataFormat_t</em> in
+<em>Qnn_Tensor_t</em>. Generally, tensors are n-dimensional and formatted in memory as flat buffers where
+the last dimension varies the fastest. The flat format of a tensor is supported by all backends, and
+each backend may optionally provide a list of other data formats that it supports. Backends advertise
+their specific support level details via <span class="xref std std-ref">general/api:Backend Supplements</span>.</p>
+<p>Input tensors, Output tensors and Parameter properties are defined as follows:</p>
+<ul class="simple">
+<li><p>Mandatory: true or false.</p>
+<ul>
+<li><p><em>true</em> means that the property is required, it cannot be omitted.
+This does not imply “must not be static”.</p></li>
+<li><p><em>false</em> means that the property is optional.
+If a tensor is optional, client must mark the tensor type to be QNN_TENSOR_TYPE_NULL, unless
+optional tensors are at the end of list.
+If a parameter is optional, it is supported at least for the <em>default</em> value,
+and it can be omitted.
+If a tensor carries static data (such as weights and biases of an op), it must be marked to be
+of type QNN_TENSOR_TYPE_STATIC.
+For any OpDef version, a backend will recognize all defined parameters and can choose to
+reject values it does not support, as documented in backend specific Op definition supplement.
+Backend will error out when unrecognized parameter name is provided.</p></li>
+</ul>
+</li>
+<li><p>Data type: One or more data types as defined by <em>Qnn_DataType_t</em>.
+“Backend specific” indicates that supported data types are identified in backend specific
+Op definition supplement.</p></li>
+<li><p>Shape: describes shape restrictions</p></li>
+<li><p>Default: present for optional tensors or parameters</p></li>
+</ul>
+<p>Operations marked DEPRECATED are subject to removal in the future, after expiration of
+deprecation period. The deprecation period is at least 60 days from announcement.
+Deprecation marking also can be revoked.</p>
+</div>
+<div class="section" id="conventions">
+<h2>Conventions<a class="headerlink" href="#conventions" title="Permalink to this heading">¶</a></h2>
+<p>The following pseudo-functions are used throughout the operation definitions, and should be
+interpreted as indicated in this section.</p>
+<div class="section" id="bracket-indexing">
+<h3>bracket indexing<a class="headerlink" href="#bracket-indexing" title="Permalink to this heading">¶</a></h3>
+<p>Bracket indexing (e.g. ‘in[i]’) refers to a member of a sequence, which may be the sequence
+of inputs or outputs of an operation, or the shape of a tensor. Indexing starts from 0.</p>
+</div>
+<div class="section" id="floor-value">
+<h3>floor(<em>value</em>)<a class="headerlink" href="#floor-value" title="Permalink to this heading">¶</a></h3>
+<p>The greatest integer less than or equal to <em>value</em></p>
+</div>
+<div class="section" id="max-value1-value2">
+<h3>max(<em>value1</em>,  <em>value2</em>,  <em>…</em>)<a class="headerlink" href="#max-value1-value2" title="Permalink to this heading">¶</a></h3>
+<p>The greatest value amongst all arguments to the pseudo-function.</p>
+</div>
+<div class="section" id="rank-tensor">
+<h3>rank(<em>tensor</em>)<a class="headerlink" href="#rank-tensor" title="Permalink to this heading">¶</a></h3>
+<p>Refers to the rank, i.e. size of the runtime shape of the tensor.</p>
+</div>
+<div class="section" id="shape-tensor">
+<h3>shape(<em>tensor</em>)<a class="headerlink" href="#shape-tensor" title="Permalink to this heading">¶</a></h3>
+<p>Refers to the runtime shape of the tensor as a sequence of integer values.</p>
+</div>
+<div class="section" id="size-tensor">
+<h3>size(<em>tensor</em>)<a class="headerlink" href="#size-tensor" title="Permalink to this heading">¶</a></h3>
+<p>Refers to the number of elements in the tensor.</p>
+</div>
+<div class="section" id="sum-var-expression">
+<h3>sum(<em>var</em>, <em>expression</em>)<a class="headerlink" href="#sum-var-expression" title="Permalink to this heading">¶</a></h3>
+<p>The sum of a range of numerical values. <em>var</em> will be used within <em>expression</em> to
+indicate the range from which values will be extracted, usually by indexing a collection
+established previously in the definition of the operation.</p>
+</div>
+</div>
+<div class="section" id="element-wise-operation-rules">
+<span id="elementwiserules"></span><h2>Element-wise operation rules<a class="headerlink" href="#element-wise-operation-rules" title="Permalink to this heading">¶</a></h2>
+<p>To perform element-wise operation on two input tensors their dimensions must be compatible.
+Two dimensions are compatible when they are equal or one of them is 1.
+Dimension which is equal to 1 is the one being broadcasted.
+The size of the output is the maximum size along each dimension of the input tensors.</p>
+<div class="section" id="rank-matching-rules">
+<span id="rankmatchingrules"></span><h3>Rank matching rules<a class="headerlink" href="#rank-matching-rules" title="Permalink to this heading">¶</a></h3>
+<blockquote>
+<div><p>For binary operations the two input tensors do not need to have the same rank. The dimensions of the
+tensor with the lowest rank is 1-extended, starting with the trailing dimensions until the ranks are
+equal.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">shape</span><span class="p">(</span><span class="n">in</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span>
+<span class="n">shape</span><span class="p">(</span><span class="n">in</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span>
+<span class="mi">1</span><span class="o">-</span><span class="n">extended</span><span class="w"> </span><span class="n">shape</span><span class="p">(</span><span class="n">in</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span>
+<span class="n">shape</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>In some cases, only unidirectional broadcasting is allowed, e.g. from in[1] to in[0].
+Refer to backend supplement information for any possible backend specific limitations.</p>
+</div>
+</div>
+<div class="section" id="operation-configuration-and-tensor-sizing-notes">
+<span id="tensorsizingnotes"></span><h2>Operation configuration and tensor sizing notes<a class="headerlink" href="#operation-configuration-and-tensor-sizing-notes" title="Permalink to this heading">¶</a></h2>
+<p>QNN graph nodes have fixed/static configuration, i.e. no node configuration changes are
+allowed after node creation (i.e. after graph finalize). Nodes are created/added to a
+graph based on a client-provided Op configuration. The Op configuration includes information
+about Op parameters and shape, data and tensor type of input/output tensors.</p>
+<p>QNN tensor configuration provisions for dynamically sized tensors. The
+<a class="reference internal" href="../api-rst/structQnn__Tensor__t.html#exhale-struct-structqnn-tensor-t"><span class="std std-ref">Qnn_Tensor_t</span></a> struct defines a <code class="docutils literal notranslate"><span class="pre">dimensions</span></code> field. During tensor creation
+and graph finalization, this field is interpreted as the tensor maximum dimensions. During graph execution, this field
+is interpreted as the current dimensions. The tensor current dimensions cannot exceed the tensor maximum dimensions.
+Dynamically sized tensors are subject to QNN backend op support constraints.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../OpDef/MasterOpDef.html" class="btn btn-neutral float-right" title="QNN Operation Definitions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="lpai/lpai_opdef_version_history.html" class="btn btn-neutral float-left" title="QNN LPAI Op Support Revision History" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

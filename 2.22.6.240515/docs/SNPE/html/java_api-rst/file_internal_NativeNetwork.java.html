@@ -1,0 +1,615 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>File NativeNetwork.java &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup1.html">Network Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup6.html">Tutorials and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>File NativeNetwork.java</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="file-nativenetwork-java">
+<span id="file-internal-nativenetwork-java"></span><h1>File NativeNetwork.java<a class="headerlink" href="#file-nativenetwork-java" title="Permalink to this heading">¶</a></h1>
+<p>↰ <a class="reference internal" href="dir_internal.html#dir-internal"><span class="std std-ref">Parent directory</span></a> (<code class="docutils literal notranslate"><span class="pre">internal</span></code>)</p>
+<div class="contents local topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#definition-internal-nativenetwork-java" id="id1">Definition (<code class="docutils literal notranslate"><span class="pre">internal/NativeNetwork.java</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#namespaces" id="id2">Namespaces</a></p></li>
+<li><p><a class="reference internal" href="#classes" id="id3">Classes</a></p></li>
+<li><p><a class="reference internal" href="#full-file-listing" id="id4">Full File Listing</a></p></li>
+</ul>
+</div>
+<div class="section" id="definition-internal-nativenetwork-java">
+<h2>Definition (<code class="docutils literal notranslate"><span class="pre">internal/NativeNetwork.java</span></code>)<a class="headerlink" href="#definition-internal-nativenetwork-java" title="Permalink to this heading">¶</a></h2>
+</div>
+<div class="section" id="namespaces">
+<h2>Namespaces<a class="headerlink" href="#namespaces" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="namespace_com__qualcomm__qti__snpe__internal.html#namespace-com-qualcomm-qti-snpe-internal"><span class="std std-ref">Namespace com::qualcomm::qti::snpe::internal</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork.html#exhale-class-classcom-1-1qualcomm-1-1qti-1-1snpe-1-1internal-1-1nativenetwork"><span class="std std-ref">Class NativeNetwork</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="full-file-listing">
+<h2>Full File Listing<a class="headerlink" href="#full-file-listing" title="Permalink to this heading">¶</a></h2>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe8internalE">
+<span id="_CPPv3N3com8qualcomm3qti4snpe8internalE"></span><span id="_CPPv2N3com8qualcomm3qti4snpe8internalE"></span><span id="com::qualcomm::qti::snpe::internal"></span><span class="target" id="namespacecom_1_1qualcomm_1_1qti_1_1snpe_1_1internal"></span><span class="k"><span class="pre">namespace</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">internal</span></span></span><br /></dt>
+<dd><dl class="cpp class">
+<dt class="sig sig-object cpp">
+<span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork"></span><span class="sig-name descname"><span class="pre">NativeNetwork</span> <span class="pre">:</span> <span class="pre">public</span> <span class="pre">com.qualcomm.qti.snpe.NeuralNetwork</span></span></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1aa29e59b023b827dcc7403a492815fc5c"></span><span class="sig-name descname"><span class="pre">inline</span>&#160; <span class="pre">NativeNetwork</span> <span class="pre">(final</span> <span class="pre">Runtime</span> <span class="pre">runtime,</span> <span class="pre">final</span> <span class="pre">NativeBufferOutputStream</span> <span class="pre">modelBuffer,</span> <span class="pre">final</span> <span class="pre">Set&lt;</span> <span class="pre">String</span> <span class="pre">&gt;</span> <span class="pre">outputLayerNames,</span> <span class="pre">final</span> <span class="pre">boolean</span> <span class="pre">isDebugEnabled,</span> <span class="pre">final</span> <span class="pre">PerformanceProfile</span> <span class="pre">performanceProfile,</span> <span class="pre">final</span> <span class="pre">ProfilingLevel</span> <span class="pre">profileLevel,</span> <span class="pre">final</span> <span class="pre">ExecutionPriorityHint</span> <span class="pre">executionPriorityHint,</span> <span class="pre">boolean</span> <span class="pre">isCpuFallbackEnabled,</span> <span class="pre">boolean</span> <span class="pre">unsignedPD,</span> <span class="pre">boolean</span> <span class="pre">useUserSuppliedBuffers,</span> <span class="pre">boolean</span> <span class="pre">isInitCacheEnabled,</span> <span class="pre">boolean</span> <span class="pre">isDlCacheAvailable,</span> <span class="pre">boolean</span> <span class="pre">cpuFxpMode,</span> <span class="pre">final</span> <span class="pre">String</span> <span class="pre">storageDirectory,</span> <span class="pre">final</span> <span class="pre">String</span> <span class="pre">dspCachePath,</span> <span class="pre">final</span> <span class="pre">Map&lt;</span> <span class="pre">String,</span> <span class="pre">int[]&gt;</span> <span class="pre">inputDimensions)</span></span></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1a647fb3a5d2ddc89cb6dc155f5835ca17"></span><span class="sig-name descname"><span class="pre">inline</span>&#160; <span class="pre">NativeNetwork</span> <span class="pre">(final</span> <span class="pre">Runtime</span> <span class="pre">runtime,</span> <span class="pre">final</span> <span class="pre">File</span> <span class="pre">modelFile,</span> <span class="pre">final</span> <span class="pre">Set&lt;</span> <span class="pre">String</span> <span class="pre">&gt;</span> <span class="pre">outputLayerNames,</span> <span class="pre">final</span> <span class="pre">boolean</span> <span class="pre">isDebugEnabled,</span> <span class="pre">final</span> <span class="pre">PerformanceProfile</span> <span class="pre">performanceProfile,</span> <span class="pre">final</span> <span class="pre">ProfilingLevel</span> <span class="pre">profileLevel,</span> <span class="pre">final</span> <span class="pre">ExecutionPriorityHint</span> <span class="pre">executionPriorityHint,</span> <span class="pre">boolean</span> <span class="pre">isCpuFallbackEnabled,</span> <span class="pre">boolean</span> <span class="pre">unsignedPD,</span> <span class="pre">boolean</span> <span class="pre">useUserSuppliedBuffers,</span> <span class="pre">boolean</span> <span class="pre">isInitCacheEnabled,</span> <span class="pre">boolean</span> <span class="pre">isDlCacheAvailable,</span> <span class="pre">boolean</span> <span class="pre">cpuFxpMode,</span> <span class="pre">final</span> <span class="pre">String</span> <span class="pre">storageDirectory,</span> <span class="pre">final</span> <span class="pre">String</span> <span class="pre">dspCachePath,</span> <span class="pre">final</span> <span class="pre">Map&lt;</span> <span class="pre">String,</span> <span class="pre">int[]&gt;</span> <span class="pre">inputDimensions)</span></span></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1a77a7ab02319a50338323faa2f62df301"></span><span class="sig-name descname"><span class="pre">inline</span> <span class="pre">Map&lt;</span> <span class="pre">String,</span> <span class="pre">FloatTensor</span> <span class="pre">&gt;</span> <span class="pre">execute</span> <span class="pre">(final</span> <span class="pre">Map&lt;</span> <span class="pre">String,</span> <span class="pre">FloatTensor</span> <span class="pre">&gt;</span> <span class="pre">inputs)</span></span></dt>
+<dd><p>Forward propagates the inputs through the neural network.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> – map of input name and tensor. </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a map of output name and tensor. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1a135321275844ad065109d09296c3790f"></span><span class="sig-name descname"><span class="pre">inline</span> <span class="pre">boolean</span> <span class="pre">execute</span> <span class="pre">(Map&lt;</span> <span class="pre">String,</span> <span class="pre">?</span> <span class="pre">extends</span> <span class="pre">UserBufferTensor</span> <span class="pre">&gt;</span> <span class="pre">inputs,</span> <span class="pre">Map&lt;</span> <span class="pre">String,</span> <span class="pre">?</span> <span class="pre">extends</span> <span class="pre">UserBufferTensor</span> <span class="pre">&gt;</span> <span class="pre">outputs)</span></span></dt>
+<dd><p>Forward propagates the inputs through the neural network.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> – map of input name and user buffer tensor. </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a map of output name and user buffer tensor. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1a9029309506e00c58f322ba14755f05b0"></span><span class="sig-name descname"><span class="pre">inline</span> <span class="pre">FloatTensor</span> <span class="pre">createFloatTensor</span> <span class="pre">(final</span> <span class="pre">int...</span> <span class="pre">shape)</span></span></dt>
+<dd><p>Creates a <a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1FloatTensor.html#classcom_1_1qualcomm_1_1qti_1_1snpe_1_1FloatTensor"><span class="std std-ref">FloatTensor</span></a> instance with the specified shape.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>shape</strong> – tensor shape. </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>newly created instance. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1a7d403a185f4088596cfb7fa29933283c"></span><span class="sig-name descname"><span class="pre">inline</span> <span class="pre">TF8UserBufferTensor</span> <span class="pre">createTF8UserBufferTensor</span> <span class="pre">(final</span> <span class="pre">int</span> <span class="pre">size,</span> <span class="pre">final</span> <span class="pre">int[]</span> <span class="pre">strides,</span> <span class="pre">int</span> <span class="pre">stepExactly0,</span> <span class="pre">float</span> <span class="pre">quantizedStepSize,</span> <span class="pre">ByteBuffer</span> <span class="pre">userBuffer)</span></span></dt>
+<dd><p>Creates a <a class="reference internal" href="file_TF8UserBufferTensor.java.html#classcom_1_1qualcomm_1_1qti_1_1snpe_1_1TF8UserBufferTensor"><span class="std std-ref">TF8UserBufferTensor</span></a> instance to wrap a user buffer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>size</strong> – total size of the buffer, in bytes </p></li>
+<li><p><strong>strides</strong> – total number of bytes between elements in each dimension </p></li>
+<li><p><strong>stepExactly0</strong> – step value that represents exactly 0.0 </p></li>
+<li><p><strong>quantizedStepSize</strong> – step size </p></li>
+<li><p><strong>userBuffer</strong> – byte buffer that contains user data. This buffer must have been allocated using direct allocation and possess native byte ordering. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>newly created instance </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError21getInputTensorsShapesEv">
+<span id="_CPPv3N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError21getInputTensorsShapesEv"></span><span id="_CPPv2N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError21getInputTensorsShapesEv"></span><span id="com::qualcomm::qti::snpe::internal::PhonyNameDueToError::getInputTensorsShapes"></span><span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1a315cd8eb0f71b4cee97dc4fe38f834d9"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">Map</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">String</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getInputTensorsShapes</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError21getInputTensorsShapesEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a map of the input tensors(s) shape(s). </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError22getOutputTensorsShapesEv">
+<span id="_CPPv3N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError22getOutputTensorsShapesEv"></span><span id="_CPPv2N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError22getOutputTensorsShapesEv"></span><span id="com::qualcomm::qti::snpe::internal::PhonyNameDueToError::getOutputTensorsShapes"></span><span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1ad4b9bac03c4a9d7bf843bdef42757baa"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">Map</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">String</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getOutputTensorsShapes</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError22getOutputTensorsShapesEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a map of the input tensors(s) shape(s). </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError20getInputTensorsNamesEv">
+<span id="_CPPv3N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError20getInputTensorsNamesEv"></span><span id="_CPPv2N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError20getInputTensorsNamesEv"></span><span id="com::qualcomm::qti::snpe::internal::PhonyNameDueToError::getInputTensorsNames"></span><span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1a6ccc3e3be6b3854dbecf743fcc6f7801"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">Set</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">String</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getInputTensorsNames</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError20getInputTensorsNamesEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a set with the input tensor(s) name(s). </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError21getOutputTensorsNamesEv">
+<span id="_CPPv3N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError21getOutputTensorsNamesEv"></span><span id="_CPPv2N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError21getOutputTensorsNamesEv"></span><span id="com::qualcomm::qti::snpe::internal::PhonyNameDueToError::getOutputTensorsNames"></span><span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1a5780b816d2c1fa55d4222c8865a05d63"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">Set</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">String</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getOutputTensorsNames</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError21getOutputTensorsNamesEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a set with the output tensor(s) name(s). </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError19getTensorAttributesE6String">
+<span id="_CPPv3N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError19getTensorAttributesE6String"></span><span id="_CPPv2N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError19getTensorAttributesE6String"></span><span id="com::qualcomm::qti::snpe::internal::PhonyNameDueToError::getTensorAttributes__String"></span><span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1ac4d2f5858b9cf4a19e7afd76550a290f"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="file_TensorAttributes.java.html#_CPPv4N3com8qualcomm3qti4snpe16TensorAttributesE" title="com::qualcomm::qti::snpe::TensorAttributes"><span class="n"><span class="pre">TensorAttributes</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getTensorAttributes</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">String</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">name</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError19getTensorAttributesE6String" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – name of the network tensor. </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>object representing the attributes of the tensor. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError15getModelVersionEv">
+<span id="_CPPv3N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError15getModelVersionEv"></span><span id="_CPPv2N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError15getModelVersionEv"></span><span id="com::qualcomm::qti::snpe::internal::PhonyNameDueToError::getModelVersion"></span><span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1a33366d6fe14ca8d8cc8b5b82e3953fda"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">String</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getModelVersion</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError15getModelVersionEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the user defined model version. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError10getRuntimeEv">
+<span id="_CPPv3N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError10getRuntimeEv"></span><span id="_CPPv2N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError10getRuntimeEv"></span><span id="com::qualcomm::qti::snpe::internal::PhonyNameDueToError::getRuntime"></span><span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1a7d287c407e2eb8bd39f73132bf56a03d"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">Runtime</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getRuntime</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError10getRuntimeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>com.qualcomm.qti.snpe.SNPE.NeuralNetworkBuilder::setRuntimeOrder(Runtime…) </p>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The neural network’s selected runtime. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError15getOutputLayersEv">
+<span id="_CPPv3N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError15getOutputLayersEv"></span><span id="_CPPv2N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError15getOutputLayersEv"></span><span id="com::qualcomm::qti::snpe::internal::PhonyNameDueToError::getOutputLayers"></span><span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1af670c7cc3c7553a8c9d70c789a0cf3e1"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">Set</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">String</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getOutputLayers</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError15getOutputLayersEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="file_SNPE.java.html#classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SNPE_1_1NeuralNetworkBuilder_1abc6f4d4db8428f020c2f1bb3ea826d91"><span class="std std-ref">com.qualcomm.qti.snpe.SNPE.NeuralNetworkBuilder::setOutputLayers(String…)</span></a> </p>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The selected output layer(s) name(s). </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1ae935ac8dcea148f117fdacf00583c948"></span><span class="sig-name descname"><span class="pre">inline</span> <span class="pre">synchronized</span> <span class="pre">void</span> <span class="pre">release</span> <span class="pre">()</span></span></dt>
+<dd><p>Releases the neural network’s resources. After this call you can no longer invoke any methods on this class instance. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-static-functions">Public Static Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1a672f1a11edd1ee03c4554fc38fbefaee"></span><span class="sig-name descname"><span class="pre">static</span> <span class="pre">inline</span> <span class="pre">synchronized</span> <span class="pre">boolean</span> <span class="pre">isRuntimeAvailable</span> <span class="pre">(final</span> <span class="pre">Runtime</span> <span class="pre">runtime,</span> <span class="pre">final</span> <span class="pre">RuntimeCheckOption</span> <span class="pre">runtimeCheckOption)</span></span></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-protected-functions">Protected Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError8finalizeEv">
+<span id="_CPPv3N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError8finalizeEv"></span><span id="_CPPv2N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError8finalizeEv"></span><span id="com::qualcomm::qti::snpe::internal::PhonyNameDueToError::finalize"></span><span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1aa4e7033ce3b3398c9216c015ce1b1481"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">finalize</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-functions">Private Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError4initE7Runtime3SetI6StringE7boolean">
+<span id="_CPPv3N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError4initE7Runtime3SetI6StringE7boolean"></span><span id="_CPPv2N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError4initE7Runtime3SetI6StringE7boolean"></span><span id="com::qualcomm::qti::snpe::internal::PhonyNameDueToError::init__Runtime.Set:String:.boolean"></span><span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1a8c04dbf0d3ed85b4f4df98a14eb85f64"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">init</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">Runtime</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">runtime</span></span>, <span class="n"><span class="pre">Set</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">String</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">outputLayerNames</span></span>, <span class="n"><span class="pre">boolean</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">isDebugEnabled</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError4initE7Runtime3SetI6StringE7boolean" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError9doReleaseEv">
+<span id="_CPPv3N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError9doReleaseEv"></span><span id="_CPPv2N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError9doReleaseEv"></span><span id="com::qualcomm::qti::snpe::internal::PhonyNameDueToError::doRelease"></span><span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1a8df22f356d4ff0eab928e9d2f7a66ccb"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">doRelease</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1a37d67a37ee8c6b5a42872b1560a5c58a"></span><span class="sig-name descname"><span class="pre">inline</span> <span class="pre">Map&lt;</span> <span class="pre">String,</span> <span class="pre">FloatTensor</span> <span class="pre">&gt;</span> <span class="pre">readOutputTensors</span> <span class="pre">(final</span> <span class="pre">JniOutputBundle</span> <span class="pre">outputBundle)</span></span></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1a9a4d9794c7c8f7b1eb4db2182f5fb4dc"></span><span class="sig-name descname"><span class="pre">inline</span> <span class="pre">Pair&lt;</span> <span class="pre">String,</span> <span class="pre">FloatTensor</span> <span class="pre">&gt;</span> <span class="pre">readTensor</span> <span class="pre">(final</span> <span class="pre">JniOutputBundle</span> <span class="pre">outputBundle)</span></span></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1a6c32de732b2d3d63b4c05bf038d1d312"></span><span class="sig-name descname"><span class="pre">inline</span> <span class="pre">boolean</span> <span class="pre">readOutputUserBufferTensors</span> <span class="pre">(final</span> <span class="pre">JniOutputBundle</span> <span class="pre">outputBundle,</span> <span class="pre">final</span> <span class="pre">Map&lt;</span> <span class="pre">String,</span> <span class="pre">?</span> <span class="pre">extends</span> <span class="pre">UserBufferTensor</span> <span class="pre">&gt;</span> <span class="pre">outputMap)</span></span></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1a113617480ec4c0fdaec710ef990a75de"></span><span class="sig-name descname"><span class="pre">inline</span> <span class="pre">void</span> <span class="pre">readUserBufferTensor</span> <span class="pre">(final</span> <span class="pre">JniOutputBundle</span> <span class="pre">outputBundle,</span> <span class="pre">final</span> <span class="pre">UserBufferTensor</span> <span class="pre">outputTensor)</span></span></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1a4808a1292b77f7b4976b63410b089d60"></span><span class="sig-name descname"><span class="pre">inline</span> <span class="pre">List&lt;</span> <span class="pre">ByteBuffer</span> <span class="pre">&gt;</span> <span class="pre">writeInputTensors</span> <span class="pre">(final</span> <span class="pre">JniInputBundle</span> <span class="pre">bundle,</span> <span class="pre">final</span> <span class="pre">Map&lt;</span> <span class="pre">String,</span> <span class="pre">NativeFloatTensor</span> <span class="pre">&gt;</span> <span class="pre">tensorMap)</span></span></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1a447dd9e0d46f86d2bc655279d6cb56dd"></span><span class="sig-name descname"><span class="pre">inline</span> <span class="pre">ByteBuffer</span> <span class="pre">writeTensor</span> <span class="pre">(final</span> <span class="pre">JniInputBundle</span> <span class="pre">bundle,</span> <span class="pre">final</span> <span class="pre">String</span> <span class="pre">name,</span> <span class="pre">final</span> <span class="pre">NativeFloatTensor</span> <span class="pre">tensor)</span></span></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1a13f756a8fd386b46c9cf2c5c16e7650a"></span><span class="sig-name descname"><span class="pre">inline</span> <span class="pre">void</span> <span class="pre">writeUserBufferTensors</span> <span class="pre">(final</span> <span class="pre">JniInputBundle</span> <span class="pre">bundle,</span> <span class="pre">final</span> <span class="pre">Map&lt;</span> <span class="pre">String,</span> <span class="pre">?</span> <span class="pre">extends</span> <span class="pre">UserBufferTensor</span> <span class="pre">&gt;</span> <span class="pre">tensorMap)</span></span></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1a1f57fe1cd7e090e13f8c005827dae2e9"></span><span class="sig-name descname"><span class="pre">inline</span> <span class="pre">void</span> <span class="pre">assertInputTensor</span> <span class="pre">(final</span> <span class="pre">String</span> <span class="pre">name,</span> <span class="pre">final</span> <span class="pre">Tensor</span> <span class="pre">tensor)</span></span></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1a91e7583a8f66720d98c7447745517ca1"></span><span class="sig-name descname"><span class="pre">inline</span> <span class="pre">void</span> <span class="pre">assertInputTensor</span> <span class="pre">(final</span> <span class="pre">String</span> <span class="pre">name,</span> <span class="pre">final</span> <span class="pre">UserBufferTensor</span> <span class="pre">tensor)</span></span></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1ae753674da4225344515a81cbdaa5cbe8"></span><span class="sig-name descname"><span class="pre">inline</span> <span class="pre">void</span> <span class="pre">assertOutputTensor</span> <span class="pre">(final</span> <span class="pre">String</span> <span class="pre">name,</span> <span class="pre">final</span> <span class="pre">UserBufferTensor</span> <span class="pre">tensor)</span></span></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1afcd3ace6ab36d8cccd0604b9aaa2e0c3"></span><span class="sig-name descname"><span class="pre">native</span> <span class="pre">long</span> <span class="pre">nativeInitFromBuffer</span> <span class="pre">(long</span> <span class="pre">nativeModelStreamHandle,</span> <span class="pre">ByteBuffer</span> <span class="pre">bundle,</span> <span class="pre">int</span> <span class="pre">bundleSize)</span></span></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1af4ebe8616608c92d96d2b739e251a974"></span><span class="sig-name descname"><span class="pre">native</span> <span class="pre">long</span> <span class="pre">nativeInitFromFile</span> <span class="pre">(String</span> <span class="pre">absolutePath,</span> <span class="pre">ByteBuffer</span> <span class="pre">bundleBuffer,</span> <span class="pre">int</span> <span class="pre">capacity)</span></span></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1ada412e2b64cf078ab73b045697ac918e"></span><span class="sig-name descname"><span class="pre">native</span> <span class="pre">JniOutputBundle</span> <span class="pre">nativeGetModelMetadata</span> <span class="pre">(long</span> <span class="pre">nativeHandle)</span></span></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1aa7a4589dca97ba87bb36d33437238aeb"></span><span class="sig-name descname"><span class="pre">native</span> <span class="pre">JniOutputBundle</span> <span class="pre">nativeForward</span> <span class="pre">(long</span> <span class="pre">nativeHandle,</span> <span class="pre">ByteBuffer</span> <span class="pre">bundle,</span> <span class="pre">int</span> <span class="pre">bundleSize,</span> <span class="pre">ByteBuffer[]</span> <span class="pre">byteBuffers)</span></span></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1a77024f49ac8a2c2dda19ae2eaf67d2fb"></span><span class="sig-name descname"><span class="pre">native</span> <span class="pre">JniOutputBundle</span> <span class="pre">nativeUserBufferForward</span> <span class="pre">(long</span> <span class="pre">nativeHandle,</span> <span class="pre">ByteBuffer</span> <span class="pre">bundle,</span> <span class="pre">int</span> <span class="pre">bundleSize)</span></span></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1a2e2114c434bcc50257563a6a291102ab"></span><span class="sig-name descname"><span class="pre">native</span> <span class="pre">void</span> <span class="pre">nativeRelease</span> <span class="pre">(long</span> <span class="pre">nativeHandle)</span></span></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-members">Private Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError17mOutputLayerNamesE">
+<span id="_CPPv3N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError17mOutputLayerNamesE"></span><span id="_CPPv2N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError17mOutputLayerNamesE"></span><span id="com::qualcomm::qti::snpe::internal::PhonyNameDueToError::mOutputLayerNames__Set:String:"></span><span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1a989bf73fe03d9dba8d3e3db185021655"></span><span class="n"><span class="pre">Set</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">String</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mOutputLayerNames</span></span></span><a class="headerlink" href="#_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError17mOutputLayerNamesE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError13mInputTensorsE">
+<span id="_CPPv3N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError13mInputTensorsE"></span><span id="_CPPv2N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError13mInputTensorsE"></span><span id="com::qualcomm::qti::snpe::internal::PhonyNameDueToError::mInputTensors__TensorAttributesMap"></span><span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1a1f3de2929704e0057b8c59e6405b6779"></span><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1TensorAttributesMap.html#_CPPv4N3com8qualcomm3qti4snpe8internal19TensorAttributesMapE" title="com::qualcomm::qti::snpe::internal::TensorAttributesMap"><span class="n"><span class="pre">TensorAttributesMap</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mInputTensors</span></span></span><a class="headerlink" href="#_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError13mInputTensorsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError14mOutputTensorsE">
+<span id="_CPPv3N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError14mOutputTensorsE"></span><span id="_CPPv2N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError14mOutputTensorsE"></span><span id="com::qualcomm::qti::snpe::internal::PhonyNameDueToError::mOutputTensors__TensorAttributesMap"></span><span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1a4a6bdd40de1a1ef7b2a638cbf794258c"></span><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1TensorAttributesMap.html#_CPPv4N3com8qualcomm3qti4snpe8internal19TensorAttributesMapE" title="com::qualcomm::qti::snpe::internal::TensorAttributesMap"><span class="n"><span class="pre">TensorAttributesMap</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mOutputTensors</span></span></span><a class="headerlink" href="#_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError14mOutputTensorsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError13mNativeHandleE">
+<span id="_CPPv3N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError13mNativeHandleE"></span><span id="_CPPv2N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError13mNativeHandleE"></span><span id="com::qualcomm::qti::snpe::internal::PhonyNameDueToError::mNativeHandle__l"></span><span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1a2f809be0d4ec472d79e58d54986c5ab1"></span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mNativeHandle</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError13mModelVersionE">
+<span id="_CPPv3N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError13mModelVersionE"></span><span id="_CPPv2N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError13mModelVersionE"></span><span id="com::qualcomm::qti::snpe::internal::PhonyNameDueToError::mModelVersion__String"></span><span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1ab690d8dfbf3782251726aa00879efb92"></span><span class="n"><span class="pre">String</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mModelVersion</span></span></span><a class="headerlink" href="#_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError13mModelVersionE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError14mTargetRuntimeE">
+<span id="_CPPv3N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError14mTargetRuntimeE"></span><span id="_CPPv2N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError14mTargetRuntimeE"></span><span id="com::qualcomm::qti::snpe::internal::PhonyNameDueToError::mTargetRuntime__Runtime"></span><span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1ad03a8b8145d3ca6f98e0c8bd14258977"></span><span class="n"><span class="pre">Runtime</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mTargetRuntime</span></span></span><a class="headerlink" href="#_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError14mTargetRuntimeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError15mIsDebugEnabledE">
+<span id="_CPPv3N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError15mIsDebugEnabledE"></span><span id="_CPPv2N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError15mIsDebugEnabledE"></span><span id="com::qualcomm::qti::snpe::internal::PhonyNameDueToError::mIsDebugEnabled__boolean"></span><span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1aee70e2441050f3efc2795d9ef39cc212"></span><span class="n"><span class="pre">boolean</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mIsDebugEnabled</span></span></span><a class="headerlink" href="#_CPPv4N3com8qualcomm3qti4snpe8internal19PhonyNameDueToError15mIsDebugEnabledE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-static-functions">Private Static Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1a16792bd01c232fee3ae082f9ed9d2f68"></span><span class="sig-name descname"><span class="pre">static</span> <span class="pre">inline</span> <span class="pre">Set&lt;</span> <span class="pre">String</span> <span class="pre">&gt;</span> <span class="pre">readOutputLayerNames</span> <span class="pre">(final</span> <span class="pre">JniOutputBundle</span> <span class="pre">modelMetadata)</span></span></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1ad045e51a1a7e4daab55d426d1cdb5091"></span><span class="sig-name descname"><span class="pre">static</span> <span class="pre">inline</span> <span class="pre">void</span> <span class="pre">assertSelectedOutputLayer</span> <span class="pre">(final</span> <span class="pre">Set&lt;</span> <span class="pre">String</span> <span class="pre">&gt;</span> <span class="pre">outputLayerNames,</span> <span class="pre">final</span> <span class="pre">Set&lt;</span> <span class="pre">String</span> <span class="pre">&gt;</span> <span class="pre">selectedLayerNames)</span></span></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1aecad4b060dd368f83d20c05938bf1df0"></span><span class="sig-name descname"><span class="pre">static</span> <span class="pre">inline</span> <span class="pre">JniInputBundle</span> <span class="pre">createInitBundle</span> <span class="pre">(final</span> <span class="pre">Runtime</span> <span class="pre">runtime,</span> <span class="pre">final</span> <span class="pre">Set&lt;</span> <span class="pre">String</span> <span class="pre">&gt;</span> <span class="pre">layerNames,</span> <span class="pre">final</span> <span class="pre">boolean</span> <span class="pre">isDebugEnabled,</span> <span class="pre">final</span> <span class="pre">PerformanceProfile</span> <span class="pre">performanceProfile,</span> <span class="pre">final</span> <span class="pre">ProfilingLevel</span> <span class="pre">profileLevel,</span> <span class="pre">final</span> <span class="pre">ExecutionPriorityHint</span> <span class="pre">executionPriorityHint,</span> <span class="pre">boolean</span> <span class="pre">isCpuFallbackEnabled,</span> <span class="pre">boolean</span> <span class="pre">unsignedPD,</span> <span class="pre">boolean</span> <span class="pre">useUserSuppliedBuffers,</span> <span class="pre">boolean</span> <span class="pre">isInitCacheEnabled,</span> <span class="pre">boolean</span> <span class="pre">isDlCacheAvailable,</span> <span class="pre">boolean</span> <span class="pre">cpuFxpMode,</span> <span class="pre">final</span> <span class="pre">String</span> <span class="pre">storageDirectory,</span> <span class="pre">final</span> <span class="pre">String</span> <span class="pre">dspCachePath,</span> <span class="pre">final</span> <span class="pre">Map&lt;</span> <span class="pre">String,</span> <span class="pre">int[]&gt;</span> <span class="pre">inputDimensions)</span></span></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1ac5fa8ccba7243774cecd1ec5bd83ecda"></span><span class="sig-name descname"><span class="pre">static</span> <span class="pre">native</span> <span class="pre">boolean</span> <span class="pre">nativeIsRuntimeAvailable</span> <span class="pre">(int</span> <span class="pre">ordinal,</span> <span class="pre">int</span> <span class="pre">runtimeCheckOption)</span></span></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-static-attributes">Private Static Attributes</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp">
+<span class="target" id="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork_1ad9fc587a0dbd16d47be57508d9c53c0c"></span><span class="sig-name descname"><span class="pre">static</span> <span class="pre">final</span> <span class="pre">HashMap&lt;</span> <span class="pre">Runtime,</span> <span class="pre">Boolean</span> <span class="pre">&gt;</span> <span class="pre">mRuntimeAvailability</span>&#160;&#160; <span class="pre">=</span> <span class="pre">new</span> <span class="pre">HashMap&lt;&gt;()</span></span></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

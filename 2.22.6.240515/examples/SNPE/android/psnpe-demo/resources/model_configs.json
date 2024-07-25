@@ -1,0 +1,427 @@
+{
+    "models": [
+        {
+            "name": "inceptionv3_sync",
+            "modelFile": "/storage/emulated/0/Android/data/com.qualcomm.qti.psnpedemo/files/models/classification/inceptionv3.dlc",
+            "executeMode": "sync",
+            "bulkSize": 100,
+            "buildConfig": [
+                {
+                    "runtime": "DSP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                },
+                {
+                    "runtime": "AIP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                },
+                {
+                    "runtime": "AIP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                }
+            ]
+        },
+        {
+            "name": "deeplabv3_inputOutputAsync",
+            "modelFile": "/storage/emulated/0/Android/data/com.qualcomm.qti.psnpedemo/files/models/segmentation/deeplab.dlc",
+            "executeMode": "inputOutputAsync",
+            "bulkSize": 100,
+            "buildConfig": [
+                {
+                    "runtime": "AIP",
+                    "batch": 1,
+                    "userBufferMode": "float",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                },
+                {
+                    "runtime": "AIP",
+                    "batch": 1,
+                    "userBufferMode": "float",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                }
+            ]
+        },
+        {
+            "name": "deeplabv3_outputAsync",
+            "modelFile": "/storage/emulated/0/Android/data/com.qualcomm.qti.psnpedemo/files/models/segmentation/deeplab.dlc",
+            "executeMode": "outputAsync",
+            "bulkSize": 100,
+            "buildConfig": [
+                {
+                    "runtime": "AIP",
+                    "batch": 1,
+                    "userBufferMode": "float",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                },
+                {
+                    "runtime": "AIP",
+                    "batch": 1,
+                    "userBufferMode": "float",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                }
+            ]
+        },
+        {
+            "name": "deeplabv3_sync",
+            "modelFile": "/storage/emulated/0/Android/data/com.qualcomm.qti.psnpedemo/files/models/segmentation/deeplab.dlc",
+            "executeMode": "sync",
+            "bulkSize": 100,
+            "buildConfig": [
+                {
+                    "runtime": "AIP",
+                    "batch": 1,
+                    "userBufferMode": "float",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                },
+                {
+                    "runtime": "AIP",
+                    "batch": 1,
+                    "userBufferMode": "float",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                }
+            ]
+        },
+        {
+            "name": "inceptionv3_outputAsync",
+            "modelFile": "/storage/emulated/0/Android/data/com.qualcomm.qti.psnpedemo/files/models/classification/inceptionv3.dlc",
+            "executeMode": "outputAsync",
+            "bulkSize": 100,
+            "buildConfig": [
+                {
+                    "runtime": "DSP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                },
+                {
+                    "runtime": "AIP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                },
+                {
+                    "runtime": "AIP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                }
+            ]
+        },
+        {
+            "name": "inceptionv3_inputOutputAsync",
+            "modelFile": "/storage/emulated/0/Android/data/com.qualcomm.qti.psnpedemo/files/models/classification/inceptionv3.dlc",
+            "executeMode": "inputOutputAsync",
+            "bulkSize": 100,
+            "buildConfig": [
+                {
+                    "runtime": "DSP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                },
+                {
+                    "runtime": "AIP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                },
+                {
+                    "runtime": "AIP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                }
+            ]
+        },
+        {
+            "name": "ssd_inputOutputAsync",
+            "modelFile": "/storage/emulated/0/Android/data/com.qualcomm.qti.psnpedemo/files/models/detection/ssd.dlc",
+            "executeMode": "inputOutputAsync",
+            "bulkSize": 168,
+            "outputLayerNames": [
+                "Postprocessor/BatchMultiClassNonMaxSuppression",
+                "add"
+            ],
+            "buildConfig": [
+                {
+                    "runtime": "AIP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                },
+                {
+                    "runtime": "AIP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                },
+                {
+                    "runtime": "AIP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                },
+                {
+                    "runtime": "AIP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                }
+            ]
+        },
+        {
+            "name": "ssd_outputAsync",
+            "modelFile": "/storage/emulated/0/Android/data/com.qualcomm.qti.psnpedemo/files/models/detection/ssd.dlc",
+            "executeMode": "outputAsync",
+            "bulkSize": 168,
+            "outputLayerNames": [
+                "Postprocessor/BatchMultiClassNonMaxSuppression",
+                "add"
+            ],
+            "buildConfig": [
+                {
+                    "runtime": "AIP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                },
+                {
+                    "runtime": "AIP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                },
+                {
+                    "runtime": "AIP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                },
+                {
+                    "runtime": "AIP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                }
+            ]
+        },
+        {
+            "name": "ssd_Sync",
+            "modelFile": "/storage/emulated/0/Android/data/com.qualcomm.qti.psnpedemo/files/models/detection/ssd.dlc",
+            "executeMode": "sync",
+            "bulkSize": 168,
+            "outputLayerNames": [
+                "Postprocessor/BatchMultiClassNonMaxSuppression",
+                "add"
+            ],
+            "buildConfig": [
+                {
+                    "runtime": "AIP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                },
+                {
+                    "runtime": "AIP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                },
+                {
+                    "runtime": "AIP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                },
+                {
+                    "runtime": "AIP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                }
+            ]
+        },
+        {
+            "name": "resnet34_inputOutputAsync",
+            "modelFile": "/storage/emulated/0/Android/data/com.qualcomm.qti.psnpedemo/files/models/classification/resnet34.dlc",
+            "executeMode": "inputOutputAsync",
+            "bulkSize": 100,
+            "buildConfig": [
+                {
+                    "runtime": "DSP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                },
+                {
+                    "runtime": "DSP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                },
+                {
+                    "runtime": "AIP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                },
+                {
+                    "runtime": "AIP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                },
+                {
+                    "runtime": "AIP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                },
+                {
+                    "runtime": "AIP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                }
+            ]
+        },
+        {
+            "name": "resnet34_outputAsync",
+            "modelFile": "/storage/emulated/0/Android/data/com.qualcomm.qti.psnpedemo/files/models/classification/resnet34.dlc",
+            "executeMode": "outputAsync",
+            "bulkSize": 100,
+            "buildConfig": [
+                {
+                    "runtime": "DSP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                },
+                {
+                    "runtime": "DSP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                },
+                {
+                    "runtime": "AIP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                },
+                {
+                    "runtime": "AIP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                },
+                {
+                    "runtime": "AIP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                },
+                {
+                    "runtime": "AIP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                }
+            ]
+        },
+        {
+            "name": "resnet34_sync",
+            "modelFile": "/storage/emulated/0/Android/data/com.qualcomm.qti.psnpedemo/files/models/classification/resnet34.dlc",
+            "executeMode": "sync",
+            "bulkSize": 100,
+            "buildConfig": [
+                {
+                    "runtime": "DSP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                },
+                {
+                    "runtime": "DSP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                },
+                {
+                    "runtime": "AIP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                },
+                {
+                    "runtime": "AIP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                },
+                {
+                    "runtime": "AIP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                },
+                {
+                    "runtime": "AIP",
+                    "batch": 1,
+                    "userBufferMode": "TF8",
+                    "performanceProfile": "burst",
+                    "enableCPUFallback": "false"
+                }
+            ]
+        }
+    ]
+}

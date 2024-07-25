@@ -1,0 +1,497 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>GPU &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Saver" href="../saver/saver_backend.html" />
+    <link rel="prev" title="CPU" href="../cpu/cpu_backend.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup.html">Setup</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../backend.html">Backend</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../backend.html#backend-specific-pages">Backend Specific Pages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../dsp/dsp_backend.html">DSP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../htp/htp_backend.html">HTP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hta/hta_backend.html">HTA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lpai/lpai_backend.html">LPAI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cpu/cpu_backend.html">CPU</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">GPU</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#api-specializations">API Specializations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#operation-limitations">Operation Limitations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#kernel-persistence">Kernel Persistence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#precision-mode">Precision Mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#performance-hints">Performance Hints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#context-configs">Context Configs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#disabling-optimizations">Disabling Optimizations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#backend-extensions">Backend Extensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#custom-profile-reader">Custom Profile Reader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#op-package-writing-guidelines">Op Package Writing Guidelines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#other-notes">Other Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../saver/saver_backend.html">Saver</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../backend.html">Backend</a> &raquo;</li>
+        
+      <li>GPU</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="gpu">
+<h1>GPU<a class="headerlink" href="#gpu" title="Permalink to this heading">¶</a></h1>
+<p>This section provides information about the QNN GPU backend.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#api-specializations">API Specializations</a></p></li>
+<li><p><a class="reference internal" href="#operation-limitations">Operation Limitations</a></p></li>
+<li><p><a class="reference internal" href="#kernel-persistence">Kernel Persistence</a></p></li>
+<li><p><a class="reference internal" href="#precision-mode">Precision Mode</a></p></li>
+<li><p><a class="reference internal" href="#performance-hints">Performance Hints</a></p></li>
+<li><p><a class="reference internal" href="#context-configs">Context Configs</a></p></li>
+<li><p><a class="reference internal" href="#disabling-optimizations">Disabling Optimizations</a></p></li>
+<li><p><a class="reference internal" href="#backend-extensions">Backend Extensions</a></p></li>
+<li><p><a class="reference internal" href="#custom-profile-reader">Custom Profile Reader</a></p></li>
+<li><p><a class="reference internal" href="#op-package-writing-guidelines">Op Package Writing Guidelines</a></p></li>
+<li><p><a class="reference internal" href="#other-notes">Other Notes</a></p></li>
+</ul>
+<div class="section" id="api-specializations">
+<h2>API Specializations<a class="headerlink" href="#api-specializations" title="Permalink to this heading">¶</a></h2>
+<p>This section contains information related to API specialization for the GPU backend. All QNN GPU
+backend specialization is available under the <code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/include/QNN/GPU/</span></code> directory.</p>
+<p>The current version of the QNN GPU backend API is:</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp">
+<span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_API_VERSION_MAJOR</span></span></span> <span class="pre">3</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp">
+<span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_API_VERSION_MINOR</span></span></span> <span class="pre">4</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp">
+<span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_API_VERSION_PATCH</span></span></span> <span class="pre">0</span><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="operation-limitations">
+<h2>Operation Limitations<a class="headerlink" href="#operation-limitations" title="Permalink to this heading">¶</a></h2>
+<p>QNN GPU operation limitations are documented in <a class="reference internal" href="../../OpDef/GpuOpDefSupplement.html#gpu-backend-op-definition-supplement"><span class="std std-ref">GPU Backend Op Definition Supplement</span></a>.</p>
+</div>
+<div class="section" id="kernel-persistence">
+<h2>Kernel Persistence<a class="headerlink" href="#kernel-persistence" title="Permalink to this heading">¶</a></h2>
+<p>The QNN GPU backend supports two kernel persistence strategies held within a QNN Context: in-memory and on-disk.
+We refer to the in-memory
+persistence as the kernel registry and we refer to the on-disk persistence as the kernel repository. These are two
+mechanisms whereby kernels are re-used to reduce model initialization time. The following will outline how to use these
+features by introducing a simple use case.</p>
+<p>A user creates a new QNN GPU Context by calling
+<a class="reference internal" href="../../api-rst/function_QnnContext_8h_1a32eb31e802e865f4cb33c5097e367773.html#exhale-function-qnncontext-8h-1a32eb31e802e865f4cb33c5097e367773"><span class="std std-ref">QnnContext_create</span></a> with a custom config
+setting providing a valid <a class="reference internal" href="../../api-rst/structQnnGpuContext__CustomConfig__t.html#exhale-struct-structqnngpucontext-customconfig-t"><span class="std std-ref">kernelRepoDir</span></a>. Let’s assume this
+path is <code class="docutils literal notranslate"><span class="pre">${QNN_GPU_KERNEL_REPO}</span></code>. Assume that there is no existing on-disk repo corresponding to this path. Therefore,
+kernels will not be deserialized and the in-memory registry will contain no kernels. Kernels originating from the
+built-in qti.aisw op package will be deserialized during
+<a class="reference internal" href="../../api-rst/function_QnnContext_8h_1a32eb31e802e865f4cb33c5097e367773.html#exhale-function-qnncontext-8h-1a32eb31e802e865f4cb33c5097e367773"><span class="std std-ref">QnnContext_create</span></a>. Kernels originating from
+another op package will be deserialized when that op package is registered via
+<a class="reference internal" href="../../api-rst/function_QnnBackend_8h_1a95dd59ad0b59872f3649f7c363c23441.html#exhale-function-qnnbackend-8h-1a95dd59ad0b59872f3649f7c363c23441"><span class="std std-ref">QnnBackend_registerOpPackage</span></a>.</p>
+<p>A user creates model A and finalizes it. Suppose that
+model A comprises of kernels 1, 2, and 3. These kernels are created from scratch and added to the in-memory kernel
+registry. A user creates model B and finalizes it. Suppose that model B comprises of kernels 3 and 4. Kernel 3 will be
+recovered from the in-memory kernel registry and kernel 4 will be created from scratch and added to the registry.</p>
+<p>The user now calls <a class="reference internal" href="../../api-rst/function_QnnContext_8h_1ada3a582e9ab571599958c60665c7a2c8.html#exhale-function-qnncontext-8h-1ada3a582e9ab571599958c60665c7a2c8"><span class="std std-ref">QnnContext_free</span></a>. Since
+a valid kernel repo path was provided, the QNN GPU Context will serialize in-memory kernels and, for each op package,
+write them to <code class="docutils literal notranslate"><span class="pre">${QNN_GPU_KERNEL_REPO}/gpukernelcache.${OP_PKG_NAME}</span></code> where OP_PKG_NAME is the op package
+<a class="reference internal" href="../../api-rst/structQnnOpPackage__Info__t.html#exhale-struct-structqnnoppackage-info-t"><span class="std std-ref">packageName</span></a>.</p>
+<p>If the user creates another QNN GPU Context specifying the same kernel repo path, these kernels will be deserialized
+as outlined above and added to the in-memory kernel registry. If the user now creates model A or B, all kernels will be
+ready for creation via the in-memory registry, greatly reducing initialization time.</p>
+<p>Note that an op package provides a
+<a class="reference internal" href="../../api-rst/structQnnGpuOpPackage__PackageInfo__t.html#exhale-struct-structqnngpuoppackage-packageinfo-t"><span class="std std-ref">kernelRepoHash</span></a> to the Context. If the QNN
+GPU Context detects that an on-disk kernel repository was generated by an op package of the same name, but with a
+different kernelRepoHash, the on-disk repository will be automatically invalidated. This ensures that kernel version
+mis-matches do not occur.</p>
+<p>Also note that these QNN GPU kernel persistence features are separate from the QNN context cache feature (see
+<a class="reference internal" href="../../api-rst/function_QnnContext_8h_1aa1c220389821ddf1e9d0de46b8fba0f9.html#exhale-function-qnncontext-8h-1aa1c220389821ddf1e9d0de46b8fba0f9"><span class="std std-ref">QnnContext_getBinary</span></a>). A QNN GPU context cache
+will store everything needed to re-create a context, including kernels.</p>
+</div>
+<div class="section" id="precision-mode">
+<h2>Precision Mode<a class="headerlink" href="#precision-mode" title="Permalink to this heading">¶</a></h2>
+<p>The QNN GPU backend offers four precision modes via the QNN graph custom config feature
+(see <a class="reference internal" href="../../api-rst/structQnnGpuGraph__CustomConfig__t.html#exhale-struct-structqnngpugraph-customconfig-t"><span class="std std-ref">QnnGpuGraph_CustomConfig_t</span></a> and
+<a class="reference internal" href="../../api-rst/enum_QnnGpuGraph_8h_1af5b8531e7f98c28fcf5dc896252a70b9.html#exhale-enum-qnngpugraph-8h-1af5b8531e7f98c28fcf5dc896252a70b9"><span class="std std-ref">QnnGpu_Precision_t</span></a>). These modes are:</p>
+<ul>
+<li><p>QNN_GPU_PRECISION_FP32 (FP32 mode)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>FP32 mode will convert NATIVE tensor data types to FP32 and will select kernels that use an FP32 accumulator.</p></li>
+<li><p>FP32 mode offers the best accuracy at the expense of performance.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>QNN_GPU_PRECISION_FP16 (FP16 mode)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>FP16 mode will convert NATIVE tensor data types to FP16 and will select kernels that use an FP16 accumulator
+where possible.</p></li>
+<li><p>FP16 mode offers the best performance at the expense of accuracy.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>QNN_GPU_PRECISION_HYBRID</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Hybrid mode will convert NATIVE tensor data types to FP16 and will select kernels that use an FP32 accumulator.</p></li>
+<li><p>Hybrid mode offers a good trade-off between performance and accuracy.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>QNN_GPU_PRECISION_USER_PROVIDED</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>This is the default precision mode when a custom config has not been provided.</p></li>
+<li><p>The QNN GPU backend will not optimize NATIVE tensor data types.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="performance-hints">
+<h2>Performance Hints<a class="headerlink" href="#performance-hints" title="Permalink to this heading">¶</a></h2>
+<p>The QNN GPU offers three performance hints via the QNN context custom config feature
+(see <a class="reference internal" href="../../api-rst/structQnnGpuContext__CustomConfig__t.html#exhale-struct-structqnngpucontext-customconfig-t"><span class="std std-ref">QnnGpuContext_CustomConfig_t</span></a> and
+<a class="reference internal" href="../../api-rst/enum_QnnGpuContext_8h_1a3d215d3dbd62c5c5668acacd384578b2.html#exhale-enum-qnngpucontext-8h-1a3d215d3dbd62c5c5668acacd384578b2"><span class="std std-ref">QnnGpuContext_PerfHint_t</span></a>). These hints are:</p>
+<ul>
+<li><p>QNN_GPU_CONTEXT_PERF_HINT_HIGH</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The HIGH perf hint will maximize GPU clock frequencies.</p></li>
+<li><p>HIGH perf hint offers the best inference latency at the expense of power consumption.</p></li>
+<li><p>This is the default.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>QNN_GPU_CONTEXT_PERF_HINT_NORMAL</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The NORMAL perf hint offers balanced performance dependent upon power management.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>QNN_GPU_CONTEXT_PERF_HINT_LOW</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The LOW perf hint will minimize GPU clock frequencies.</p></li>
+<li><p>LOW perf hint offers the lowest power consumption at the expense of inference latency.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>Note that performance hints are included in the context cache. However, calls to
+<a class="reference internal" href="../../api-rst/function_QnnContext_8h_1a380694614a9167136c744b21da34feb7.html#exhale-function-qnncontext-8h-1a380694614a9167136c744b21da34feb7"><span class="std std-ref">QnnContext_setConfig</span></a> can override the
+cached performance hint setting.</p>
+</div>
+<div class="section" id="context-configs">
+<h2>Context Configs<a class="headerlink" href="#context-configs" title="Permalink to this heading">¶</a></h2>
+<p>QnnContext custom configs (<a class="reference internal" href="../../api-rst/structQnnGpuContext__CustomConfig__t.html#exhale-struct-structqnngpucontext-customconfig-t"><span class="std std-ref">QnnGpuContext_CustomConfig_t</span></a>)
+and Context Priority (see <a class="reference internal" href="../../api-rst/enum_QnnTypes_8h_1a4394623faa5580a396f83dac19565e4d.html#exhale-enum-qnntypes-8h-1a4394623faa5580a396f83dac19565e4d"><span class="std std-ref">Qnn_Priority_t</span></a>
+and <a class="reference internal" href="../../api-rst/enum_QnnContext_8h_1a054235316eddc82552593ec91318f90e.html#exhale-enum-qnncontext-8h-1a054235316eddc82552593ec91318f90e"><span class="std std-ref">QnnContext_ConfigOption_t</span></a>) are supported.</p>
+</div>
+<div class="section" id="disabling-optimizations">
+<h2>Disabling Optimizations<a class="headerlink" href="#disabling-optimizations" title="Permalink to this heading">¶</a></h2>
+<p>The QNN GPU backend offers three features to disable the corresponding optimization. These features are enabled via the
+custom graph config (see <a class="reference internal" href="../../api-rst/structQnnGpuGraph__CustomConfig__t.html#exhale-struct-structqnngpugraph-customconfig-t"><span class="std std-ref">QnnGpuGraph_CustomConfig_t</span></a>).</p>
+<p>The QNN GPU backend will share NATIVE tensor memory based upon analysis of the network topology. When
+<a class="reference internal" href="../../api-rst/structQnnGpuGraph__CustomConfig__t.html#exhale-struct-structqnngpugraph-customconfig-t"><span class="std std-ref">disableMemoryOptimizations</span></a> is non-zero, each tensor in the
+model will be allocated unique memory and sharing is disabled.</p>
+<p>The QNN GPU backend will fuse compatible operations into one operation to improve
+<a class="reference internal" href="../../api-rst/function_QnnGraph_8h_1a3ea05f42a9295f9a74a2e3a0cdd64228.html#exhale-function-qnngraph-8h-1a3ea05f42a9295f9a74a2e3a0cdd64228"><span class="std std-ref">QnnGraph_execute</span></a> performance. When
+<a class="reference internal" href="../../api-rst/structQnnGpuGraph__CustomConfig__t.html#exhale-struct-structqnngpugraph-customconfig-t"><span class="std std-ref">disableNodeOptimizations</span></a> is non-zero, operations will not be
+fused and will be kept separate. <a class="reference internal" href="../tools.html#qnn-net-run"><span class="std std-ref">qnn-net-run</span></a>’s –debug option also disables operation
+fusion.</p>
+<p>The QNN GPU backend will use queue recording to improve
+<a class="reference internal" href="../../api-rst/function_QnnGraph_8h_1a3ea05f42a9295f9a74a2e3a0cdd64228.html#exhale-function-qnngraph-8h-1a3ea05f42a9295f9a74a2e3a0cdd64228"><span class="std std-ref">QnnGraph_execute</span></a> performance. When
+<a class="reference internal" href="../../api-rst/structQnnGpuGraph__CustomConfig__t.html#exhale-struct-structqnngpugraph-customconfig-t"><span class="std std-ref">disableQueueRecording</span></a> is non-zero, queue recording is disabled.</p>
+</div>
+<div class="section" id="backend-extensions">
+<h2>Backend Extensions<a class="headerlink" href="#backend-extensions" title="Permalink to this heading">¶</a></h2>
+<p>The QNN backend extension feature facilitates usage of the backend specific APIs, namely custom configurations.
+More documentation on backend extensions can be found under <a class="reference internal" href="../tools.html#qnn-net-run"><span class="std std-ref">qnn-net-run</span></a>.
+Note that the scope of QNN backend extensions is limited to qnn-net-run.</p>
+<p>In the GPU backend, a list of graph names is required if graph custom config options are specified as indicated by the
+dependencies in the schema below. The graph custom config options will be applied to each graph. The schema for GPU
+backend extensions is:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="s">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;object&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="s">&quot;properties&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="c1">// Corresponds to the graph name provided to QnnGraph_create</span>
+<span class="w">     </span><span class="s">&quot;graph_names&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;array&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;items&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;string&quot;</span><span class="p">}},</span>
+
+<span class="w">     </span><span class="c1">// Precision Mode [optional]</span>
+<span class="w">     </span><span class="c1">// Corresponds to QnnGpuGraph_CustomConfig_t::precisionMode.</span>
+<span class="w">     </span><span class="s">&quot;precision_mode&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;string&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;enum&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;fp16&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;fp32&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;hybrid&quot;</span><span class="p">]},</span>
+
+<span class="w">     </span><span class="c1">// Disable Memory Optimizations (e.g. sharing tensor memory) [optional]</span>
+<span class="w">     </span><span class="c1">// Corresponds to QnnGpuGraph_CustomConfig_t::disableMemoryOptimizations.</span>
+<span class="w">     </span><span class="s">&quot;disable_memory_optimizations&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;boolean&quot;</span><span class="p">},</span>
+
+<span class="w">     </span><span class="c1">// Disable Node Optimizations (e.g. node fusion) [optional]</span>
+<span class="w">     </span><span class="c1">// Corresponds to QnnGpuGraph_CustomConfig_t::disableNodeOptimizations.</span>
+<span class="w">     </span><span class="s">&quot;disable_node_optimizations&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;boolean&quot;</span><span class="p">},</span>
+
+<span class="w">     </span><span class="c1">// Kernel Disk Repository Path [optional]</span>
+<span class="w">     </span><span class="c1">// Corresponds to QnnGpuContext_CustomConfig_t::kernelRepoDir.</span>
+<span class="w">     </span><span class="c1">// Valid values are any valid path having read/write permissions.</span>
+<span class="w">     </span><span class="s">&quot;kernel_repo_path&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;string&quot;</span><span class="p">},</span>
+
+<span class="w">     </span><span class="c1">// Disable Recordable Command Queue [optional]</span>
+<span class="w">     </span><span class="c1">// Corresponds to QnnGpuGraph_CustomConfig_t::disableQueueRecording.</span>
+<span class="w">     </span><span class="s">&quot;disable_queue_recording&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;type&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">&quot;boolean&quot;</span><span class="p">},</span>
+
+<span class="w">     </span><span class="c1">// Context custom config performance hint [optional]</span>
+<span class="w">     </span><span class="c1">// Corresponds to QnnGpuContext_CustomConfig_t::perfHint.</span>
+<span class="w">     </span><span class="s">&quot;perf_hint&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;string&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;enum&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;high&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;normal&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;low&quot;</span><span class="p">]}</span>
+<span class="w">   </span><span class="p">},</span>
+<span class="w">   </span><span class="s">&quot;dependencies&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="s">&quot;precision_mode&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;graph_names&quot;</span><span class="p">],</span>
+<span class="w">     </span><span class="s">&quot;disable_memory_optimizations&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;graph_names&quot;</span><span class="p">],</span>
+<span class="w">     </span><span class="s">&quot;disable_node_optimizations&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;graph_names&quot;</span><span class="p">],</span>
+<span class="w">     </span><span class="s">&quot;disable_queue_recording&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;graph_names&quot;</span><span class="p">]</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="custom-profile-reader">
+<h2>Custom Profile Reader<a class="headerlink" href="#custom-profile-reader" title="Permalink to this heading">¶</a></h2>
+<p>The <a class="reference internal" href="../tools.html#qnn-profile-viewer"><span class="std std-ref">qnn-profile-viewer</span></a> application can accept different readers and
+writers. The QNN GPU backend offers the libQnnGpuProfilingReader.so library to output profiling data in a JSON format.</p>
+</div>
+<div class="section" id="op-package-writing-guidelines">
+<h2>Op Package Writing Guidelines<a class="headerlink" href="#op-package-writing-guidelines" title="Permalink to this heading">¶</a></h2>
+<p>Detailed information regarding op package writing will be provided in a future release. In the meantime, please refer to
+the op package example which can be found in <code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/QNN/OpPackage/GPU/</span></code>.</p>
+</div>
+<div class="section" id="other-notes">
+<h2>Other Notes<a class="headerlink" href="#other-notes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Variable input dimensions (e.g. batch) are currently not supported</p></li>
+<li><p>Variable output dimensions are currently not supported</p></li>
+<li><p>Signed zero values are supported</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../saver/saver_backend.html" class="btn btn-neutral float-right" title="Saver" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../cpu/cpu_backend.html" class="btn btn-neutral float-left" title="CPU" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

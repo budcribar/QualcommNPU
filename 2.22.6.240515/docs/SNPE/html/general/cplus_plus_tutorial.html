@@ -1,0 +1,813 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>C++ Tutorial - Build the Sample &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="C Tutorial - Build the Sample" href="c_tutorial.html" />
+    <link rel="prev" title="Code Examples" href="usergroup8.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup1.html">Network Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="usergroup6.html">Tutorials and Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial_setup.html">Tutorials Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snpe2_migration_guidelines.html">SNPE1 to SNPE2 Migration Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup7.html">Running Nets</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="usergroup8.html">Code Examples</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">C++ Tutorial - Build the Sample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="c_tutorial.html">C Tutorial - Build the Sample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="c_api_guidelines.html">C API Guidelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="android_tutorial.html">Android Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="build_samplecode_windows.html">Windows Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_inceptionv3_udo.html">UDO Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_inceptionv3_udo_dsp.html">UDO DSP tutorial for Quantized DLC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_inceptionv3_udo_dsp_win.html">UDO DSP tutorial on Windows for Quantized DLC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_onnx_udo_weights.html">UDO Tutorial With Weights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_psnpe_introduction.html">PSNPE Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_psnpe_c_tutorial.html">PSNPE C Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_psnpe_cplus_plus_tutorial.html">PSNPE C++ Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_psnpe_android_tutorial.html">PSNPE Android Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dsp_runtime.html">DSP Runtime Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="network_resize.html">Network Resizing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="input_batch.html">Input Image Batch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="init_caching.html">Init Caching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup9.html">Application Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="usergroup6.html">Tutorials and Examples</a> &raquo;</li>
+        
+          <li><a href="usergroup8.html">Code Examples</a> &raquo;</li>
+        
+      <li>C++ Tutorial - Build the Sample</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="c-tutorial-build-the-sample">
+<h1>C++ Tutorial - Build the Sample<a class="headerlink" href="#c-tutorial-build-the-sample" title="Permalink to this heading">¶</a></h1>
+<div class="ui-resizable side-nav-resizable docutils container" id="side-nav">
+<div class="docutils container" id="nav-tree">
+<div class="docutils container" id="nav-tree-contents">
+</div>
+</div>
+</div>
+<div class="docutils container" id="doc-content">
+<div class="header docutils container">
+</div>
+<div class="contents docutils container">
+<div class="textblock docutils container">
+<blockquote>
+<div><p class="rubric" id="prerequisites">Prerequisites</p>
+<ul class="simple">
+<li><p>The Qualcomm® Neural Processing SDK has been set up following the <a class="reference external" href="setup.html">Qualcomm (R) Neural Processing SDK
+Setup</a> chapter.</p></li>
+<li><p>The <a class="reference external" href="tutorial_setup.html">Tutorials Setup</a> has been
+completed.</p></li>
+</ul>
+<p class="rubric" id="introduction">Introduction</p>
+<p>This tutorial demonstrates how to build a C++ sample
+application that can execute neural network models on the PC or
+target device. Please note, while this sample code does not do any error
+checking, it is strongly recommended that users check for
+errors when using the Qualcomm® Neural Processing SDK APIs.</p>
+<p>Most applications will follow the following pattern while using
+a neural network:</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="cplus_plus_tutorial.html#get-available-runtime">Get Available Runtime</a></p></li>
+<li><p><a class="reference external" href="cplus_plus_tutorial.html#load-network">Load Network</a></p></li>
+<li><p><a class="reference external" href="cplus_plus_tutorial.html#load-udo">Load UDO</a></p></li>
+<li><p><a class="reference external" href="cplus_plus_tutorial.html#set-network-builder-options">Set Network Builder Options</a></p></li>
+<li><p><a class="reference external" href="cplus_plus_tutorial.html#load-network-inputs">Load Network Inputs</a></p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="cplus_plus_tutorial.html#load-using-user-buffers">Using User Buffers</a></p></li>
+<li><p><a class="reference external" href="cplus_plus_tutorial.html#load-using-itensors">Using ITensors</a></p></li>
+</ol>
+</li>
+<li><p><a class="reference external" href="cplus_plus_tutorial.html#execute-the-network-process-output">Execute the Network &amp; Process Output</a></p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="cplus_plus_tutorial.html#execute-using-user-buffers">Using User Buffers</a></p></li>
+<li><p><a class="reference external" href="cplus_plus_tutorial.html#execute-using-itensors">Using ITensors</a></p></li>
+</ol>
+</li>
+<li><p><a class="reference external" href="cplus_plus_tutorial.html#using-iobufferdatatypemap">Using IOBufferDataTypeMap</a></p></li>
+</ol>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>static zdl::DlSystem::Runtime_t runtime = checkRuntime();
+std::unique_ptr&lt;zdl::DlContainer::IDlContainer&gt; container = loadContainerFromFile(dlc);
+std::unique_ptr&lt;zdl::SNPE::SNPE&gt; snpe = setBuilderOptions(container, runtime, useUserSuppliedBuffers);
+std::unique_ptr&lt;zdl::DlSystem::ITensor&gt; inputTensor = loadInputTensor(snpe, fileLine); // ITensor
+loadInputUserBuffer(applicationInputBuffers, snpe, fileLine); // User Buffer
+executeNetwork(snpe , inputTensor, OutputDir, inputListNum); // ITensor
+executeNetwork(snpe, inputMap, outputMap, applicationOutputBuffers, OutputDir, inputListNum); // User Buffer
+</pre></div>
+</div>
+<p>The sections below describe how to implement each step
+described above. For more details, please refer to the
+collection of source code files located at
+$SNPE_ROOT/examples/SNPE/NativeCpp/SampleCode/jni.</p>
+<p class="rubric" id="get-available-runtime">Get Available Runtime</p>
+<p>The code excerpt below illustrates how to check if a specific
+runtime is available using the native APIs (the GPU runtime is
+used as an example).</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>zdl::DlSystem::Runtime_t checkRuntime()
+{
+    static zdl::DlSystem::Version_t Version = zdl::SNPE::SNPEFactory::getLibraryVersion();
+    static zdl::DlSystem::Runtime_t Runtime;
+    std::cout &lt;&lt; &quot;Qualcomm (R) Neural Processing SDK Version: &quot; &lt;&lt; Version.asString().c_str() &lt;&lt; std::endl; //Print Version number
+    if (zdl::SNPE::SNPEFactory::isRuntimeAvailable(zdl::DlSystem::Runtime_t::GPU)) {
+        Runtime = zdl::DlSystem::Runtime_t::GPU;
+    } else {
+        Runtime = zdl::DlSystem::Runtime_t::CPU;
+    }
+    return Runtime;
+}
+</pre></div>
+</div>
+<p class="rubric" id="load-network">Load Network</p>
+<p>The code excerpt below illustrates how to load a network from
+the Qualcomm® Neural Processing SDK container file (DLC).</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>std::unique_ptr&lt;zdl::DlContainer::IDlContainer&gt; loadContainerFromFile(std::string containerPath)
+{
+    std::unique_ptr&lt;zdl::DlContainer::IDlContainer&gt; container;
+    container = zdl::DlContainer::IDlContainer::open(containerPath);
+    return container;
+}
+</pre></div>
+</div>
+<p class="rubric" id="load-udo">Load UDO</p>
+<p>The code excerpt below illustrates how to load UDO package(s).</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>bool loadUDOPackage(const std::string&amp; UdoPackagePath)
+{
+    std::vector&lt;std::string&gt; udoPkgPathsList;
+    split(udoPkgPathsList, UdoPackagePath, &#39;,&#39;);
+    for (const auto &amp;u : udoPkgPathsList)
+    {
+       if (false == zdl::SNPE::SNPEFactory::addOpPackage(u))
+       {
+          std::cerr &lt;&lt; &quot;Error while loading UDO package: &quot;&lt;&lt; u &lt;&lt; std::endl;
+          return false;
+       }
+    }
+    return true;
+}
+</pre></div>
+</div>
+<p>Qualcomm® Neural Processing SDK can execute network with user-defined operations (UDO).
+Please refer to <a class="reference external" href="tutorial_inceptionv3_udo.html">UDO Tutorial</a> for implementing
+an UDO. The UDO can be specified to snpe-sample using “-u” option.</p>
+<p class="rubric" id="set-network-builder-options">Set Network Builder Options</p>
+<p>The following code demonstrates how to instantiate a SNPE
+Builder object, which will be used to execute the network with
+the given parameters.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>std::unique_ptr&lt;zdl::SNPE::SNPE&gt; setBuilderOptions(std::unique_ptr&lt;zdl::DlContainer::IDlContainer&gt;&amp; container,
+                                                   zdl::DlSystem::RuntimeList runtimeList,
+                                                   bool useUserSuppliedBuffers)
+{
+    std::unique_ptr&lt;zdl::SNPE::SNPE&gt; snpe;
+    zdl::SNPE::SNPEBuilder snpeBuilder(container.get());
+    snpe = snpeBuilder.setOutputLayers({})
+       .setRuntimeProcessorOrder(runtimeList)
+       .setUseUserSuppliedBuffers(useUserSuppliedBuffers)
+       .build();
+    return snpe;
+}
+</pre></div>
+</div>
+<p class="rubric" id="load-network-inputs">Load Network Inputs</p>
+<p>Network inputs and outputs can be either user-backed buffers or
+ITensors (built-in Qualcomm® Neural Processing SDK buffers), but not both. The advantage
+of using user-backed buffers is that it eliminates an extra
+copy from user buffers to create ITensors. Both methods of
+loading network inputs are shown below.</p>
+<p class="rubric" id="load-using-user-buffers">Using User Buffers</p>
+<p>Qualcomm® Neural Processing SDK can create its network inputs and outputs from user-backed
+buffers. Note that Qualcomm® Neural Processing SDK expects the values of the buffers to be
+present and valid during the duration of its execution.</p>
+<p>Here is a function for creating a Qualcomm® Neural Processing SDK UserBuffer from a
+user-backed buffer and storing it in a
+<span class="xref std std-doc">zdl::DlSystem::UserBufferMap</span>
+These maps are a convenient collection of all input or output
+user buffers that can be passed to Qualcomm® Neural Processing SDK to execute the network.</p>
+<p>Disclaimer: The strides of the buffer should already be known
+by the user and should not be calculated as shown below. The
+calculation shown is solely used for executing the example
+code.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>void createUserBuffer(zdl::DlSystem::UserBufferMap&amp; userBufferMap,
+                      std::unordered_map&lt;std::string, std::vector&lt;uint8_t&gt;&gt;&amp; applicationBuffers,
+                      std::vector&lt;std::unique_ptr&lt;zdl::DlSystem::IUserBuffer&gt;&gt;&amp; snpeUserBackedBuffers,
+                      std::unique_ptr&lt;zdl::SNPE::SNPE&gt;&amp; snpe,
+                      const char * name)
+{
+   // get attributes of buffer by name
+   auto bufferAttributesOpt = snpe-&gt;getInputOutputBufferAttributes(name);
+   if (!bufferAttributesOpt) throw std::runtime_error(std::string(&quot;Error obtaining attributes for input tensor &quot;) + name);
+   // calculate the size of buffer required by the input tensor
+   const zdl::DlSystem::TensorShape&amp; bufferShape = (*bufferAttributesOpt)-&gt;getDims();
+   // Calculate the stride based on buffer strides, assuming tightly packed.
+   // Note: Strides = Number of bytes to advance to the next element in each dimension.
+   // For example, if a float tensor of dimension 2x4x3 is tightly packed in a buffer of 96 bytes, then the strides would be (48,12,4)
+   // Note: Buffer stride is usually known and does not need to be calculated.
+   std::vector&lt;size_t&gt; strides(bufferShape.rank());
+   strides[strides.size() - 1] = sizeof(float);
+   size_t stride = strides[strides.size() - 1];
+   for (size_t i = bufferShape.rank() - 1; i &gt; 0; i--)
+   {
+      stride *= bufferShape[i];
+      strides[i-1] = stride;
+   }
+   const size_t bufferElementSize = (*bufferAttributesOpt)-&gt;getElementSize();
+   size_t bufSize = calcSizeFromDims(bufferShape.getDimensions(), bufferShape.rank(), bufferElementSize);
+   // set the buffer encoding type
+   zdl::DlSystem::UserBufferEncodingFloat userBufferEncodingFloat;
+   // create user-backed storage to load input data onto it
+   applicationBuffers.emplace(name, std::vector&lt;uint8_t&gt;(bufSize));
+   // create Qualcomm (R) Neural Processing SDK user buffer from the user-backed buffer
+   zdl::DlSystem::IUserBufferFactory&amp; ubFactory = zdl::SNPE::SNPEFactory::getUserBufferFactory();
+   snpeUserBackedBuffers.push_back(ubFactory.createUserBuffer(applicationBuffers.at(name).data(),
+                                                              bufSize,
+                                                              strides,
+                                                              &amp;userBufferEncodingFloat));
+   // add the user-backed buffer to the inputMap, which is later on fed to the network for execution
+   userBufferMap.add(name, snpeUserBackedBuffers.back().get());
+}
+</pre></div>
+</div>
+<p>The following function then shows how to load input data from
+file(s) to user buffers. Note that the input values are simply
+loaded onto user-backed buffers, on top of which Qualcomm® Neural Processing SDK can
+create Qualcomm® Neural Processing SDK UserBuffers, as shown above.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>void loadInputUserBuffer(std::unordered_map&lt;std::string, std::vector&lt;uint8_t&gt;&gt;&amp; applicationBuffers,
+                               std::unique_ptr&lt;zdl::SNPE::SNPE&gt;&amp; snpe,
+                               const std::string&amp; fileLine)
+{
+    // get input tensor names of the network that need to be populated
+    const auto&amp; inputNamesOpt = snpe-&gt;getInputTensorNames();
+    if (!inputNamesOpt) throw std::runtime_error(&quot;Error obtaining input tensor names&quot;);
+    const zdl::DlSystem::StringList&amp; inputNames = *inputNamesOpt;
+    assert(inputNames.size() &gt; 0);
+    // treat each line as a space-separated list of input files
+    std::vector&lt;std::string&gt; filePaths;
+    split(filePaths, fileLine, &#39; &#39;);
+    if (inputNames.size()) std::cout &lt;&lt; &quot;Processing DNN Input: &quot; &lt;&lt; std::endl;
+    for (size_t i = 0; i &lt; inputNames.size(); i++) {
+        const char* name = inputNames.at(i);
+        std::string filePath(filePaths[i]);
+        // print out which file is being processed
+        std::cout &lt;&lt; &quot;\t&quot; &lt;&lt; i + 1 &lt;&lt; &quot;) &quot; &lt;&lt; filePath &lt;&lt; std::endl;
+        // load file content onto application storage buffer,
+        // on top of which, Qualcomm (R) Neural Processing SDK has created a user buffer
+        loadByteDataFile(filePath, applicationBuffers.at(name));
+    };
+}
+</pre></div>
+</div>
+<p class="rubric" id="load-using-itensors">Using ITensors</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>std::unique_ptr&lt;zdl::DlSystem::ITensor&gt; loadInputTensor (std::unique_ptr&lt;zdl::SNPE::SNPE&gt; &amp; snpe , std::string&amp; fileLine)
+{
+    std::unique_ptr&lt;zdl::DlSystem::ITensor&gt; input;
+    const auto &amp;strList_opt = snpe-&gt;getInputTensorNames();
+    if (!strList_opt) throw std::runtime_error(&quot;Error obtaining Input tensor names&quot;);
+    const auto &amp;strList = *strList_opt;
+    // Make sure the network requires only a single input
+    assert (strList.size() == 1);
+    // If the network has a single input, each line represents the input file to be loaded for that input
+    std::string filePath(fileLine);
+    std::cout &lt;&lt; &quot;Processing DNN Input: &quot; &lt;&lt; filePath &lt;&lt; &quot;\n&quot;;
+    std::vector&lt;float&gt; inputVec = loadFloatDataFile(filePath);
+    /* Create an input tensor that is correctly sized to hold the input of the network. Dimensions that have no fixed size will be represented with a value of 0. */
+    const auto &amp;inputDims_opt = snpe-&gt;getInputDimensions(strList.at(0));
+    const auto &amp;inputShape = *inputDims_opt;
+    /* Calculate the total number of elements that can be stored in the tensor so that we can check that the input contains the expected number of elements.
+       With the input dimensions computed create a tensor to convey the input into the network. */
+    input = zdl::SNPE::SNPEFactory::getTensorFactory().createTensor(inputShape);
+    /* Copy the loaded input file contents into the networks input tensor.SNPE&#39;s ITensor supports C++ STL functions like std::copy() */
+    std::copy(inputVec.begin(), inputVec.end(), input-&gt;begin());
+    return input;
+}
+</pre></div>
+</div>
+<p class="rubric" id="execute-the-network-process-output">Execute the Network &amp; Process Output</p>
+<p>The following snippets of code use the native API to execute
+the network (in UserBuffer or ITensor mode) and show how to
+iterate through the newly populated output tensor.</p>
+<p class="rubric" id="execute-using-user-buffers">Using User Buffers</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>void executeNetwork(std::unique_ptr&lt;zdl::SNPE::SNPE&gt;&amp; snpe,
+                    zdl::DlSystem::UserBufferMap&amp; inputMap,
+                    zdl::DlSystem::UserBufferMap&amp; outputMap,
+                    std::unordered_map&lt;std::string,std::vector&lt;uint8_t&gt;&gt;&amp; applicationOutputBuffers,
+                    const std::string&amp; outputDir,
+                    int num)
+{
+    // Execute the network and store the outputs in user buffers specified in outputMap
+    snpe-&gt;execute(inputMap, outputMap);
+    // Get all output buffer names from the network
+    const zdl::DlSystem::StringList&amp; outputBufferNames = outputMap.getUserBufferNames();
+    // Iterate through output buffers and print each output to a raw file
+    std::for_each(outputBufferNames.begin(), outputBufferNames.end(), [&amp;](const char* name)
+    {
+       std::ostringstream path;
+       path &lt;&lt; outputDir &lt;&lt; &quot;/Result_&quot; &lt;&lt; num &lt;&lt; &quot;/&quot; &lt;&lt; name &lt;&lt; &quot;.raw&quot;;
+       SaveUserBuffer(path.str(), applicationOutputBuffers.at(name));
+    });
+}
+// The following is a partial snippet of the function
+void SaveUserBuffer(const std::string&amp; path, const std::vector&lt;uint8_t&gt;&amp; buffer) {
+   ...
+   std::ofstream os(path, std::ofstream::binary);
+   if (!os)
+   {
+      std::cerr &lt;&lt; &quot;Failed to open output file for writing: &quot; &lt;&lt; path &lt;&lt; &quot;\n&quot;;
+      std::exit(EXIT_FAILURE);
+   }
+   if (!os.write((char*)(buffer.data()), buffer.size()))
+   {
+      std::cerr &lt;&lt; &quot;Failed to write data to: &quot; &lt;&lt; path &lt;&lt; &quot;\n&quot;;
+      std::exit(EXIT_FAILURE);
+   }
+}
+</pre></div>
+</div>
+<p class="rubric" id="execute-using-itensors">Using ITensors</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>void executeNetwork(std::unique_ptr&lt;zdl::SNPE::SNPE&gt;&amp; snpe,
+                    std::unique_ptr&lt;zdl::DlSystem::ITensor&gt;&amp; input,
+                    std::string OutputDir,
+                    int num)
+{
+    //Execute the network and store the outputs that were specified when creating the network in a TensorMap
+    static zdl::DlSystem::TensorMap outputTensorMap;
+    snpe-&gt;execute(input.get(), outputTensorMap);
+    zdl::DlSystem::StringList tensorNames = outputTensorMap.getTensorNames();
+    //Iterate through the output Tensor map, and print each output layer name
+    std::for_each( tensorNames.begin(), tensorNames.end(), [&amp;](const char* name)
+    {
+        std::ostringstream path;
+        path &lt;&lt; OutputDir &lt;&lt; &quot;/&quot;
+        &lt;&lt; &quot;Result_&quot; &lt;&lt; num &lt;&lt; &quot;/&quot;
+        &lt;&lt; name &lt;&lt; &quot;.raw&quot;;
+        auto tensorPtr = outputTensorMap.getTensor(name);
+        SaveITensor(path.str(), tensorPtr);
+    });
+}
+// The following is a partial snippet of the function
+void SaveITensor(const std::string&amp; path, const zdl::DlSystem::ITensor* tensor)
+{
+   ...
+   std::ofstream os(path, std::ofstream::binary);
+   if (!os)
+   {
+      std::cerr &lt;&lt; &quot;Failed to open output file for writing: &quot; &lt;&lt; path &lt;&lt; &quot;\n&quot;;
+      std::exit(EXIT_FAILURE);
+   }
+   for ( auto it = tensor-&gt;cbegin(); it != tensor-&gt;cend(); ++it )
+   {
+      float f = *it;
+      if (!os.write(reinterpret_cast&lt;char*&gt;(&amp;f), sizeof(float)))
+      {
+         std::cerr &lt;&lt; &quot;Failed to write data to: &quot; &lt;&lt; path &lt;&lt; &quot;\n&quot;;
+         std::exit(EXIT_FAILURE);
+      }
+   }
+}
+</pre></div>
+</div>
+<p class="rubric" id="using-iobufferdatatypemap">Using IOBufferDataTypeMap</p>
+<ul class="simple">
+<li><p>The IOBufferDataTypeMap is used to specify the intended data
+type for input/output of a network. The data type values
+include
+zdl::DlSystem::IOBufferDataType_t::FLOATING_POINT_32,
+zdl::DlSystem::IOBufferDataType_t::FIXED_POINT_8 and
+zdl::DlSystem::IOBufferDataType_t::FIXED_POINT_16.</p></li>
+<li><p>If the output of a network is of type FIXED_POINT_8 and
+the user intends to access the output in FLOATING_POINT_32
+format, the dequantization operation is performed on the ARM
+side. By specifying the data type as FLOATING_POINT_32 using
+the IOBufferDataTypeMap API, the dequantization operation is
+added directly to the graph.</p></li>
+</ul>
+<p>The following snippet of code shows how to specify the data
+type for a buffer using the native API.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>void setBufferDataType(zdl::DlSystem::IOBufferDataTypeMap&amp; bufferDataTypeMap, std::string bufferName, zdl::DlSystem::IOBufferDataType_t dataType)
+{
+    bufferDataTypeMap.add(bufferName.c_str(), dataType);
+}
+setBufferDataType(bufferDataTypeMap, &quot;output_1&quot;, zdl::DlSystem::IOBufferDataType_t::FLOATING_POINT_32);
+zdl::SNPE::SNPEBuilder snpeBuilder(container.get());
+snpeBuilder.setBufferDataType(bufferDataTypeMap);
+</pre></div>
+</div>
+<p class="rubric" id="building-the-c-application">Building the C++ Application</p>
+<p class="rubric" id="building-and-running-on-x86-linux-and-embedded-linux">Building and Running on x86 Linux and Embedded
+Linux</p>
+<p>Start by going to the snpe-sample base directory.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>cd $SNPE_ROOT/examples/SNPE/NativeCpp/SampleCode
+</pre></div>
+</div>
+<p>Note the different makefiles associated with the different
+Linux platform. Note that the $CXX would need to be set
+according to the target platform. Here is a table of the
+supported targets, and their corresponding settings for $CXX
+and the Makefiles to use.</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Target</p></th>
+<th class="head"><p>Makefile</p></th>
+<th class="head"><p>Possible CXX value</p></th>
+<th class="head"><p>Output Location</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>aarch64-oe-linux-gcc8.2</p></td>
+<td><p>Makefile.aarch64-oe-linux-gcc8.2</p></td>
+<td><p>aarch64-oe-linux-g++</p></td>
+<td><p>aarch64-oe-linux-gcc8.2</p></td>
+</tr>
+<tr class="row-odd"><td><p>aarch64-oe-linux-gcc9.3</p></td>
+<td><p>Makefile.aarch64-oe-linux-gcc9.3</p></td>
+<td><p>aarch64-oe-linux-g++</p></td>
+<td><p>aarch64-oe-linux-gcc9.3</p></td>
+</tr>
+<tr class="row-even"><td><p>aarch64-oe-linux-gcc11.2</p></td>
+<td><p>Makefile.aarch64-oe-linux-gcc11.2</p></td>
+<td><p>aarch64-oe-linux-g++</p></td>
+<td><p>aarch64-oe-linux-gcc11.2</p></td>
+</tr>
+<tr class="row-odd"><td><p>aarch64-ubuntu-gcc7.5</p></td>
+<td><p>Makefile.aarch64-ubuntu-gcc7.5</p></td>
+<td><p>aarch64-linux-gnu-g++</p></td>
+<td><p>aarch64-ubuntu-gcc7.5</p></td>
+</tr>
+<tr class="row-even"><td><p>aarch64-ubuntu-gcc9.4</p></td>
+<td><p>Makefile.aarch64-ubuntu-gcc9.4</p></td>
+<td><p>aarch64-linux-gnu-g++</p></td>
+<td><p>aarch64-ubuntu-gcc9.4</p></td>
+</tr>
+<tr class="row-odd"><td><p>x86_64-linux</p></td>
+<td><p>Makefile.x86_64-linux-clang</p></td>
+<td><p>g++</p></td>
+<td><p>x86_64-linux-clang</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>export CXX=&lt;Name of c++ cross compiler&gt;
+make -f &lt;Makefile for the target&gt;
+</pre></div>
+</div>
+<p><strong>Note:</strong> Ensure that the path to the compiler binary is
+already set in $PATH.</p>
+<p>Along with the sample executable, all other libraries need to
+be pushed onto their respective targets. The $LD_LIBRARY_PATH
+may also need to be updated to point to the support libraries.
+You can run the executable with -h argument to see its
+description.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>snpe-sample -h
+</pre></div>
+</div>
+<p>The description should look like the following:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>DESCRIPTION:
+------------
+Example application demonstrating how to load and execute a neural network
+using the SNPE C++ API.
+
+
+REQUIRED ARGUMENTS:
+-------------------
+  -d  &lt;FILE&gt;   Path to the DL container containing the network.
+  -i  &lt;FILE&gt;   Path to a file listing the inputs for the network.
+  -o  &lt;PATH&gt;   Path to directory to store output results.
+
+OPTIONAL ARGUMENTS:
+-------------------
+  -b  &lt;TYPE&gt;   Type of buffers to use [USERBUFFER_FLOAT, USERBUFFER_TF8, ITENSOR, USERBUFFER_TF16] (ITENSOR is default).
+  -q  &lt;BOOL&gt;    Specifies to use static quantization parameters from the model instead of input specific quantization [true, false]. Used in conjunction with USERBUFFER_TF8.
+  -r  &lt;RUNTIME&gt; The runtime to be used [gpu, dsp, aip, cpu] (cpu is default).
+  -u  &lt;VAL,VAL&gt; Path to UDO package with registration library for UDOs.
+                Optionally, user can provide multiple packages as a comma-separated list.
+  -z  &lt;NUMBER&gt;  The maximum number that resizable dimensions can grow into.
+                Used as a hint to create UserBuffers for models with dynamic sized outputs. Should be a positive integer and is not applicable when using ITensor.
+  -c           Enable init caching to accelerate the initialization process of SNPE. Defaults to disable.
+  -l  &lt;VAL,VAL,VAL&gt; Specifies the order of precedence for runtime e.g  cpu_float32, dsp_fixed8_tf etc. Valid values are:-
+                    cpu_float32 (Snapdragon CPU)       = Data &amp; Math: float 32bit
+                    gpu_float32_16_hybrid (Adreno GPU) = Data: float 16bit Math: float 32bit
+                    dsp_fixed8_tf (Hexagon DSP)        = Data &amp; Math: 8bit fixed point Tensorflow style format
+                    gpu_float16 (Adreno GPU)           = Data: float 16bit Math: float 16bit
+                    cpu (Snapdragon CPU)               = Same as cpu_float32
+                    gpu (Adreno GPU)                   = Same as gpu_float32_16_hybrid
+                    dsp (Hexagon DSP)                  = Same as dsp_fixed8_tf
+</pre></div>
+</div>
+<p>Running the snpe-sample assumes <a class="reference external" href="tutorial_inceptionv3.html">Running the
+Inception v3 Model</a> has been
+previously setup.</p>
+<p>Run <strong>snpe-sample</strong> with the AlexNet model:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>cd $SNPE_ROOT/examples/Models/InceptionV3/data
+$SNPE_ROOT/examples/SNPE/NativeCpp/SampleCode/obj/local/x86_64-linux-clang/snpe-sample -b ITENSOR -d ../dlc/inception_v3.dlc -i target_raw_list.txt -o output
+</pre></div>
+</div>
+<p>The results are stored in the output directory. To process the
+output run the following script to generate the classifiscation
+results.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>python3 $SNPE_ROOT/examples/Models/InceptionV3/scripts/show_inceptionv3_classifications.py -i target_raw_list.txt -o output/ -l imagenet_slim_labels.txt
+Classification results
+cropped/notice_sign.raw 0.167454 459 brass
+cropped/plastic_cup.raw 0.990612 648 measuring cup
+cropped/chairs.raw      0.382222 832 studio couch
+cropped/trash_bin.raw   0.684572 413 ashcan
+</pre></div>
+</div>
+<p class="rubric" id="building-and-running-on-arm-android">Building and Running on ARM Android</p>
+<p><strong>Prerequisite:</strong> You will need the Android NDK to build the
+Android C++ executable. The tutorial assumes that you can
+invoke ‘ndk-build’ from the shell.</p>
+<p>To build snpe-sample with clang Qualcomm® Neural Processing SDK binaries (i.e.,
+aarch64-android), use the following command:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>cd $SNPE_ROOT/examples/SNPE/NativeCpp/SampleCode
+ndk-build NDK_TOOLCHAIN_VERSION=clang APP_STL=c++_shared
+</pre></div>
+</div>
+<p>The ndk-build command will build arm64-v8a binaries of snpe-sample.</p>
+<ul class="simple">
+<li><p>$SNPE_ROOT/examples/SNPE/NativeCpp/SampleCode/obj/local/arm64-v8a/<strong>snpe-sample</strong></p></li>
+</ul>
+<p>To run the Android C++ executable, push the appropriate Qualcomm® Neural Processing SDK
+libraries and the executable onto the Android target.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>export SNPE_TARGET_ARCH=aarch64-android
+export SNPE_TARGET_DSPARCH=hexagon-v73
+adb shell &quot;mkdir -p /data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/bin&quot;
+adb shell &quot;mkdir -p /data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/lib&quot;
+adb shell &quot;mkdir -p /data/local/tmp/snpeexample/dsp/lib&quot;
+adb push $SNPE_ROOT/lib/$SNPE_TARGET_ARCH/*.so /data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/lib
+adb push $SNPE_ROOT/lib/$SNPE_TARGET_DSPARCH/unsigned/*.so /data/local/tmp/snpeexample/dsp/lib
+adb push $SNPE_ROOT/examples/SNPE/NativeCpp/SampleCode/obj/local/arm64-v8a/snpe-sample /data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/bin
+</pre></div>
+</div>
+<p>Run <strong>snpe-sample</strong> with the Inception v3 model on the target. This
+assumes that you have done the setup steps for running <a class="reference external" href="tutorial_inceptionv3.html#run-on-target-platform">Run on
+Android Target</a>
+to push to the target all the sample data files and Alexnet
+model.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>adb shell
+export SNPE_TARGET_ARCH=aarch64-android
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/lib
+export PATH=$PATH:/data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/bin
+cd /data/local/tmp/inception_v3
+snpe-sample -b ITENSOR -d inception_v3.dlc -i target_raw_list.txt -o output_sample
+exit
+</pre></div>
+</div>
+<p>Pull the target output into a host side output directory.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>cd $SNPE_ROOT/examples/Models/InceptionV3
+adb pull /data/local/tmp/inception_v3/output_sample output_sample
+</pre></div>
+</div>
+<p>Again, we can run the interpret script to see the classification results.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>python3 $SNPE_ROOT/examples/Models/InceptionV3/scripts/show_inceptionv3_classifications.py -i data/target_raw_list.txt -o output_sample/ -l data/imagenet_slim_labels.txt
+Classification results
+cropped/notice_sign.raw 0.167454 459 brass
+cropped/plastic_cup.raw 0.990612 648 measuring cup
+cropped/chairs.raw      0.382221 832 studio couch
+cropped/trash_bin.raw   0.684573 413 ashcan
+</pre></div>
+</div>
+<p class="rubric" id="building-and-running-on-oe-linux">Building and running on Linux (Yocto Based)</p>
+<dl class="simple">
+<dt><strong>Prerequisite:</strong> This assumes that <a class="reference external" href="tutorial_setup.html">Tutorials Setup</a> has been completed.</dt><dd><p>For those devices which have Yocto based Linux OS, GCC compiler needs to be used to build the sample source code.
+To support Yocto Kirkstone based devices, libraries are compiled with gcc11.2. Please refer below steps for building SNPE sample app:</p>
+</dd>
+</dl>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>export SNPE_ROOT=/path/to/extracted/snpe-sdk
+cd ${SNPE_ROOT}/examples/SNPE/NativeCpp/SampleCode/
+export AARCH64_LINUX_OE_GCC_112=/path/to/extracted/toolchain
+make CXX=&quot;&lt;installed_toolchain_path&gt;/tmp/sysroots/x86_64/usr/bin/aarch64-qcom-linux/aarch64-qcom-linux-g++
+--sysroot=&lt;installed_toolchain_path&gt;/tmp/sysroots/qcm6490&quot; -f Makefile.aarch64-oe-linux-gcc11.2
+</pre></div>
+</div>
+<p>After executing make from above, you should be able to see two new folders in the same directory:</p>
+<ol class="arabic simple">
+<li><p>bin: contains <em>snpe-sample</em> binaries for each platform within respective directories.</p></li>
+<li><p>obj: contains all the object files that were used for building and linking the executable.</p></li>
+</ol>
+<p>To delete all the artifacts that were generated in the above step, run:</p>
+</div></blockquote>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>cd ${SNPE_ROOT}/examples/SNPE/NativeCpp/SampleCode
+make clean
+</pre></div>
+</div>
+<p>To run the snpe-sample C++ executable, push the appropriate Qualcomm® Neural Processing SDK libraries and
+the executable i.e., aarch64-oe-linux-gcc11.2 onto the target. Run snpe-sample using below command:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>snpe-sample -b ITENSOR -d &lt;input_dlc&gt; -i &lt;target_raw_list&gt; -o output_sample
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="c_tutorial.html" class="btn btn-neutral float-right" title="C Tutorial - Build the Sample" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="usergroup8.html" class="btn btn-neutral float-left" title="Code Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,718 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Tutorial: Executing a shallow model using custom op package &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Tutorial: Executing a shallow model using custom op package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tutorial-executing-a-shallow-model-using-custom-op-package">
+<h1>Tutorial: Executing a shallow model using custom op package<a class="headerlink" href="#tutorial-executing-a-shallow-model-using-custom-op-package" title="Permalink to this heading">¶</a></h1>
+<p>The following tutorial will demonstrate the use of the QNN API and
+QNN tools with an example Op Package. The simulated workflow will use
+a shallow network as the model and Relu as an example operation.</p>
+<p>The tutorial will use an example shallow network model,
+and execute the model using the C++ application <a class="reference internal" href="tools.html#qnn-net-run"><span class="std std-ref">qnn-net-run</span></a>.
+The execution will show usage on the CPU, GPU, HTP and DSP backends on both host (for CPU)
+and device.</p>
+<p>The sections of the tutorial are as follows:</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#tutorial-setup">Tutorial Setup</a></p></li>
+<li><p><a class="reference internal" href="#building-example-op-package">Building Example Op Package</a></p></li>
+<li><p><a class="reference internal" href="#building-example-model">Building Example Model</a></p></li>
+<li><p><a class="reference internal" href="#executing-example-model">Executing Example Model</a></p></li>
+</ol>
+<div class="section" id="tutorial-setup">
+<h2>Tutorial Setup<a class="headerlink" href="#tutorial-setup" title="Permalink to this heading">¶</a></h2>
+<p>The tutorial assumes general setup instructions have been followed
+at <a class="reference internal" href="setup.html"><span class="doc">Setup</span></a>.</p>
+</div>
+<div class="section" id="building-example-op-package">
+<h2>Building Example Op Package<a class="headerlink" href="#building-example-op-package" title="Permalink to this heading">¶</a></h2>
+<p>Sources for an example Op Package, containing the Relu operation, are present for
+the CPU, GPU, DSP, and HTP backend.
+Each backend has different requirements for building the
+Op Package consumable by <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code>.</p>
+<div class="section" id="compiling-for-cpu-backend">
+<h3>Compiling for CPU Backend<a class="headerlink" href="#compiling-for-cpu-backend" title="Permalink to this heading">¶</a></h3>
+<p>The CPU Backend Example Op Package is located at:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">OpPackage</span><span class="o">/</span><span class="n">CPU</span>
+</pre></div>
+</div>
+<p>Building the example Op Package for CPU by default builds
+for Linux x86-64 and Android architectures, and has a dependency on the Android NDK Toolchain.
+Ensure that <code class="docutils literal notranslate"><span class="pre">ANDROID_NDK_ROOT</span></code> is set. See <a class="reference internal" href="setup.html"><span class="doc">Setup</span></a> for more information.</p>
+<p>To build the example Op Package for CPU:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">OpPackage</span><span class="o">/</span><span class="n">CPU</span>
+<span class="n">$</span><span class="w"> </span><span class="n">make</span>
+</pre></div>
+</div>
+<p>This will produce the artifact(s):</p>
+<ul class="simple">
+<li><p>${QNN_SDK_ROOT}/examples/QNN/OpPackage/CPU/libs/&lt;target&gt;/libQnnCpuOpPackageExample.so</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The desired architecture can be specified using provided make targets:
+cpu_aarch64-android, cpu_x86</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To compile for only Linux x86-64 architectures replace the command
+“make” with “make cpu_x86”. To compile for only Android architectures replace
+the command “make” with “make cpu_android”.</p>
+</div>
+</div>
+<div class="section" id="compiling-for-gpu-backend">
+<h3>Compiling for GPU Backend<a class="headerlink" href="#compiling-for-gpu-backend" title="Permalink to this heading">¶</a></h3>
+<p>The GPU Backend example Op Package is located at:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">OpPackage</span><span class="o">/</span><span class="n">GPU</span>
+</pre></div>
+</div>
+<p>Compilation of the GPU Op Package has a dependency
+on the Android NDK Toolchain. Ensure that <code class="docutils literal notranslate"><span class="pre">ANDROID_NDK_ROOT</span></code> is set.
+See <a class="reference internal" href="setup.html"><span class="doc">Setup</span></a> for more information.</p>
+<p>To compile the example GPU Op Package</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">OpPackage</span><span class="o">/</span><span class="n">GPU</span>
+<span class="n">$</span><span class="w"> </span><span class="n">make</span>
+</pre></div>
+</div>
+<p>This will produce artifact(s):</p>
+<ul class="simple">
+<li><p>${QNN_SDK_ROOT}/examples/QNN/OpPackage/GPU/libs/&lt;target&gt;/libQnnGpuOpPackageExample.so</p></li>
+</ul>
+</div>
+<div class="section" id="compiling-for-htp-backend">
+<h3>Compiling for HTP Backend<a class="headerlink" href="#compiling-for-htp-backend" title="Permalink to this heading">¶</a></h3>
+<p>The HTP Backend Example Op Package is located at:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">OpPackage</span><span class="o">/</span><span class="n">HTP</span>
+</pre></div>
+</div>
+<div class="section" id="htp-emulation-x86-compilation">
+<h4>HTP Emulation x86 Compilation<a class="headerlink" href="#htp-emulation-x86-compilation" title="Permalink to this heading">¶</a></h4>
+<p>Compiling the example Op Package for the HTP emulation has dependencies on
+clang++ and the Hexagon SDK.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">X86_CXX</span><span class="o">=&lt;</span><span class="n">path</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">clang</span><span class="o">++&gt;</span>
+<span class="n">$</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">HEXAGON_SDK_ROOT</span><span class="o">=&lt;</span><span class="n">path</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">hexagon</span><span class="o">-</span><span class="n">sdk</span><span class="o">&gt;</span>
+<span class="n">$</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">QNN_INCLUDE</span><span class="o">=</span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">include</span><span class="o">/</span><span class="n">QNN</span>
+</pre></div>
+</div>
+<p>To compile the example HTP Emulation Op Package for use on the Linux x86-64 architecture:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">OpPackage</span><span class="o">/</span><span class="n">HTP</span>
+<span class="n">$</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="n">htp_x86</span>
+</pre></div>
+</div>
+<p>This will produce the artifact(s):</p>
+<ul class="simple">
+<li><p>${QNN_SDK_ROOT}/examples/QNN/OpPackage/HTP/build/x86_64-linux-clang/libQnnHtpOpPackageExample.so</p></li>
+</ul>
+</div>
+<div class="section" id="htp-hexagon-v68-compilation">
+<h4>HTP Hexagon V68 Compilation<a class="headerlink" href="#htp-hexagon-v68-compilation" title="Permalink to this heading">¶</a></h4>
+<p>Compiling the example Op Package for the HTP Hexagon V68 has dependencies on
+Hexagon SDK.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">HEXAGON_SDK_ROOT</span><span class="o">=&lt;</span><span class="n">path</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">hexagon</span><span class="o">-</span><span class="n">sdk</span><span class="o">&gt;</span>
+<span class="n">$</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">QNN_INCLUDE</span><span class="o">=</span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">include</span><span class="o">/</span><span class="n">QNN</span>
+</pre></div>
+</div>
+<p>To compile the example HTP Op Package for use on the Hexagon V68 architecture:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">OpPackage</span><span class="o">/</span><span class="n">HTP</span>
+<span class="n">$</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="n">htp_v68</span>
+</pre></div>
+</div>
+<p>This will produce the artifact(s):</p>
+<ul class="simple">
+<li><p>${QNN_SDK_ROOT}/examples/QNN/OpPackage/HTP/build/hexagon-v68/libQnnHtpOpPackageExample.so</p></li>
+</ul>
+</div>
+<div class="section" id="htp-arm-compilation">
+<h4>HTP ARM Compilation<a class="headerlink" href="#htp-arm-compilation" title="Permalink to this heading">¶</a></h4>
+<p>Compiling the example Op Package for the HTP Hexagon V68 has dependencies on
+Android NDK.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">ANDROID_NDK_ROOT</span><span class="o">=&lt;</span><span class="n">path</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">android</span><span class="o">-</span><span class="n">ndk</span><span class="o">&gt;</span>
+<span class="n">$</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">QNN_INCLUDE</span><span class="o">=</span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">include</span><span class="o">/</span><span class="n">QNN</span>
+</pre></div>
+</div>
+<p>To compile the example HTP Op Package for use on the Android ARM architecture:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">OpPackage</span><span class="o">/</span><span class="n">HTP</span>
+<span class="n">$</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="n">htp_aarch64</span>
+</pre></div>
+</div>
+<p>This will produce the artifact(s):</p>
+<ul class="simple">
+<li><p>${QNN_SDK_ROOT}/examples/QNN/OpPackage/HTP/build/aarch64-android/libQnnHtpOpPackageExample.so</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="compiling-for-dsp-backend">
+<h3>Compiling for DSP Backend<a class="headerlink" href="#compiling-for-dsp-backend" title="Permalink to this heading">¶</a></h3>
+<p>The DSP Backend Example Op Package is located at:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">OpPackage</span><span class="o">/</span><span class="n">DSP</span>
+</pre></div>
+</div>
+<p>Compiling the example Op Package for the DSP has dependencies on Hexagon SDK.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">HEXAGON_SDK_ROOT</span><span class="o">=&lt;</span><span class="n">path</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">hexagon</span><span class="o">-</span><span class="n">sdk</span><span class="o">&gt;</span>
+<span class="n">$</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">QNN_SDK_ROOT</span><span class="o">=</span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>To compile the example DSP Op Package:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">OpPackage</span><span class="o">/</span><span class="n">DSP</span>
+<span class="n">$</span><span class="w"> </span><span class="n">make</span>
+</pre></div>
+</div>
+<p>This will produce the artifact(s):</p>
+<ul class="simple">
+<li><p>${QNN_SDK_ROOT}/examples/QNN/OpPackage/DSP/build/DSP/libQnnDspOpPackageExample.so</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="building-example-model">
+<h2>Building Example Model<a class="headerlink" href="#building-example-model" title="Permalink to this heading">¶</a></h2>
+<p>The shallow model in this tutorial is post-use of the QNN Converter.
+Information on the QNN converter can be found on the <a class="reference internal" href="tools.html"><span class="doc">Tools</span></a> page.</p>
+<p>The model is located at:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">converter</span><span class="o">/</span><span class="n">models</span><span class="o">/</span><span class="n">qnn_model_float</span><span class="p">.</span><span class="n">cpp</span>
+</pre></div>
+</div>
+<p>Additionally, for the HTP and DSP backend there is a quantized model</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">converter</span><span class="o">/</span><span class="n">models</span><span class="o">/</span><span class="n">qnn_model_8bit_quantized</span><span class="p">.</span><span class="n">cpp</span>
+</pre></div>
+</div>
+<p>The remainder of the tutorial will use qnn_model_float.cpp. For the quantized model
+replace qnn_model_float.cpp with qnn_model_8bit_quantized.cpp and qnn_model_float.bin with
+qnn_model_8bit_quantized.bin.</p>
+<p>In order to use the example Op Package, instead of QNN’s default Op Package, the
+model must be manually edited to refer to the example. The process is outlined here:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">vim</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">converter</span><span class="o">/</span><span class="n">models</span><span class="o">/</span><span class="n">qnn_model_float</span><span class="p">.</span><span class="n">cpp</span>
+</pre></div>
+</div>
+<p>Before:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="mi">242</span><span class="w">   </span><span class="n">VALIDATE</span><span class="p">(</span><span class="n">convReluModel</span><span class="p">.</span><span class="n">addNode</span><span class="p">(</span>
+<span class="mi">243</span><span class="w">                </span><span class="n">QNN_OPCONFIG_VERSION_1</span><span class="p">,</span><span class="w">                              </span><span class="c1">// Op_Config_t Version</span>
+<span class="mi">244</span><span class="w">                </span><span class="s">&quot;InceptionV3_InceptionV3_Conv2d_1a_3x3_Relu&quot;</span><span class="p">,</span><span class="w">        </span><span class="c1">// Node Name</span>
+<span class="mi">245</span><span class="w">                </span><span class="s">&quot;qti.aisw&quot;</span><span class="p">,</span><span class="w">                                          </span><span class="c1">// Package Name Default</span>
+</pre></div>
+</div>
+<p>After:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="mi">242</span><span class="w">   </span><span class="n">VALIDATE</span><span class="p">(</span><span class="n">convReluModel</span><span class="p">.</span><span class="n">addNode</span><span class="p">(</span>
+<span class="mi">243</span><span class="w">                </span><span class="n">QNN_OPCONFIG_VERSION_1</span><span class="p">,</span><span class="w">                             </span><span class="c1">// Op_Config_t Version</span>
+<span class="mi">244</span><span class="w">                </span><span class="s">&quot;InceptionV3_InceptionV3_Conv2d_1a_3x3_Relu&quot;</span><span class="p">,</span><span class="w">       </span><span class="c1">// Node Name</span>
+<span class="mi">245</span><span class="w">                </span><span class="s">&quot;examples.OpPackage&quot;</span><span class="p">,</span><span class="w">                               </span><span class="c1">// Package Name To Change</span>
+</pre></div>
+</div>
+<p>After the appropriate Op Package name has been populated, the model can
+be built for the desired target using <code class="docutils literal notranslate"><span class="pre">qnn-model-lib-generator</span></code>. Before
+generating the model, ensure <code class="docutils literal notranslate"><span class="pre">ANDROID_NDK_ROOT</span></code> is set. See <a class="reference internal" href="setup.html"><span class="doc">Setup</span></a>
+for more information.</p>
+<p>To build the model use:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ ${QNN_SDK_ROOT}/bin/x86_64-linux-clang/qnn-model-lib-generator \
+  -c ${QNN_SDK_ROOT}/examples/QNN/converter/models/qnn_model_float.cpp \
+  -b ${QNN_SDK_ROOT}/examples/QNN/converter/models/qnn_model_float.bin \
+  -o ${QNN_SDK_ROOT}/examples/QNN/example_libs # This can be any path
+</pre></div>
+</div>
+<p>This will produce the following artifact(s):</p>
+<ul class="simple">
+<li><p>${QNN_SDK_ROOT}/examples/QNN/example_libs/&lt;target&gt;/libqnn_model_float.so</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Any output path can be used with the -o flag. The remainder of this tutorial
+will use ${QNN_SDK_ROOT}/examples/QNN/example_libs to refer to the directory containing model
+libraries.</p>
+</div>
+</div>
+<div class="section" id="cpu-backend-execution">
+<span id="executing-example-model"></span><h2>CPU Backend Execution<a class="headerlink" href="#cpu-backend-execution" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="running-cpu-backend-on-linux-x86">
+<h3>Running CPU Backend on Linux x86<a class="headerlink" href="#running-cpu-backend-on-linux-x86" title="Permalink to this heading">¶</a></h3>
+<p>With the libraries discoverable, <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code> is used with the following:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ cd ${QNN_SDK_ROOT}/examples/QNN/converter/models # access input data
+$ ${QNN_SDK_ROOT}/bin/x86_64-linux-clang/qnn-net-run \
+              --backend ${QNN_SDK_ROOT}/lib/x86_64-linux-clang/libQnnCpu.so \
+              --model ${QNN_SDK_ROOT}/examples/QNN/example_libs/x86_64-linux-clang/libqnn_model_float.so \
+              --input_list ${QNN_SDK_ROOT}/examples/QNN/converter/models/input_list_float.txt \
+              --op_packages ${QNN_SDK_ROOT}/examples/QNN/OpPackage/CPU/libs/x86_64-linux-clang/libQnnCpuOpPackageExample.so:QnnOpPackage_interfaceProvider
+</pre></div>
+</div>
+<p>Outputs from the run will be located at the default ./output directory.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If full paths are not given to <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code>, all libraries must be added to
+LD_LIBRARY_PATH and be discoverable by the system library loader.</p>
+</div>
+</div>
+<div class="section" id="running-cpu-backend-on-android">
+<h3>Running CPU Backend on Android<a class="headerlink" href="#running-cpu-backend-on-android" title="Permalink to this heading">¶</a></h3>
+<p>Running the CPU Backend on an Android target is largely
+similar to running on the Linux x86 target.</p>
+<p>First, create a directory for the example on device:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp"># make oppackage if necessary</span>
+<span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">shell</span><span class="w"> </span><span class="s">&quot;mkdir /data/local/tmp/oppackage&quot;</span>
+<span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">shell</span><span class="w"> </span><span class="s">&quot;mkdir /data/local/tmp/oppackage/CPU&quot;</span>
+</pre></div>
+</div>
+<p>Now push the necessary libraries to device:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ adb push ${QNN_SDK_ROOT}/lib/aarch64-android/libQnnCpu.so /data/local/tmp/oppackage/CPU
+$ adb push ${QNN_SDK_ROOT}/examples/QNN/OpPackage/CPU/libs/aarch64-android/libQnnCpuOpPackageExample.so /data/local/tmp/oppackage/CPU
+$ adb push ${QNN_SDK_ROOT}/examples/QNN/example_libs/aarch64-android/*.so /data/local/tmp/oppackage/CPU
+</pre></div>
+</div>
+<p>Now push the input data and input lists to device:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">converter</span><span class="o">/</span><span class="n">models</span><span class="o">/</span><span class="n">input_data_float</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">oppackage</span><span class="o">/</span><span class="n">CPU</span>
+<span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">converter</span><span class="o">/</span><span class="n">models</span><span class="o">/</span><span class="n">input_list_float</span><span class="p">.</span><span class="n">txt</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">oppackage</span><span class="o">/</span><span class="n">CPU</span>
+</pre></div>
+</div>
+<p>Push the <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code> tool:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">aarch64</span><span class="o">-</span><span class="n">android</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">net</span><span class="o">-</span><span class="n">run</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">oppackage</span><span class="o">/</span><span class="n">CPU</span>
+</pre></div>
+</div>
+<p>Now set up the environment on device:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">shell</span>
+<span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">oppackage</span><span class="o">/</span><span class="n">CPU</span>
+<span class="n">$</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">LD_LIBRARY_PATH</span><span class="o">=/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">oppackage</span><span class="o">/</span><span class="n">CPU</span>
+</pre></div>
+</div>
+<p>Finally, use <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code> with the following:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="p">.</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">net</span><span class="o">-</span><span class="n">run</span><span class="w"> </span><span class="o">--</span><span class="n">backend</span><span class="w"> </span><span class="n">libQnnCpu</span><span class="p">.</span><span class="n">so</span><span class="w"> </span><span class="o">--</span><span class="n">model</span><span class="w"> </span><span class="n">libqnn_model_float</span><span class="p">.</span><span class="n">so</span><span class="w"> </span><span class="o">--</span><span class="n">input_list</span><span class="w"> </span><span class="n">input_list_float</span><span class="p">.</span><span class="n">txt</span><span class="w"> </span><span class="o">--</span><span class="n">op_packages</span><span class="w"> </span><span class="n">libQnnCpuOpPackageExample</span><span class="p">.</span><span class="n">so</span><span class="o">:</span><span class="n">QnnOpPackage_interfaceProvider</span>
+</pre></div>
+</div>
+<p>Outputs from the run will be located at the default ./output directory.</p>
+</div>
+</div>
+<div class="section" id="gpu-backend-execution">
+<h2>GPU Backend Execution<a class="headerlink" href="#gpu-backend-execution" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="running-gpu-backend-on-android">
+<h3>Running GPU Backend on Android<a class="headerlink" href="#running-gpu-backend-on-android" title="Permalink to this heading">¶</a></h3>
+<p>Running the GPU Backend on an Android target is largely
+similar to running CPU Backend on Android.</p>
+<p>First, create a directory for the example on device:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp"># make oppackage if necessary</span>
+<span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">shell</span><span class="w"> </span><span class="s">&quot;mkdir /data/local/tmp/oppackage&quot;</span>
+<span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">shell</span><span class="w"> </span><span class="s">&quot;mkdir /data/local/tmp/oppackage/GPU&quot;</span>
+</pre></div>
+</div>
+<p>Now push the necessary libraries to device:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ adb push ${QNN_SDK_ROOT}/lib/aarch64-android/libQnnGpu.so /data/local/tmp/oppackage/GPU
+$ adb push ${QNN_SDK_ROOT}/examples/QNN/OpPackage/GPU/libs/aarch64-android/libQnnGpuOpPackageExample.so /data/local/tmp/oppackage/GPU
+$ adb push ${QNN_SDK_ROOT}/examples/QNN/example_libs/aarch64-android/*.so /data/local/tmp/oppackage/GPU
+</pre></div>
+</div>
+<p>Now push the input data and input lists to device:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">converter</span><span class="o">/</span><span class="n">models</span><span class="o">/</span><span class="n">input_data_float</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">oppackage</span><span class="o">/</span><span class="n">GPU</span>
+<span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">converter</span><span class="o">/</span><span class="n">models</span><span class="o">/</span><span class="n">input_list_float</span><span class="p">.</span><span class="n">txt</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">oppackage</span><span class="o">/</span><span class="n">GPU</span>
+</pre></div>
+</div>
+<p>Push the <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code> tool:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">aarch64</span><span class="o">-</span><span class="n">android</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">net</span><span class="o">-</span><span class="n">run</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">oppackage</span><span class="o">/</span><span class="n">GPU</span>
+</pre></div>
+</div>
+<p>Now set up the environment on device:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">shell</span>
+<span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">oppackage</span><span class="o">/</span><span class="n">GPU</span>
+<span class="n">$</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">LD_LIBRARY_PATH</span><span class="o">=/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">oppackage</span><span class="o">/</span><span class="n">GPU</span>
+</pre></div>
+</div>
+<p>Finally, use <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code> with the following:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="p">.</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">net</span><span class="o">-</span><span class="n">run</span><span class="w"> </span><span class="o">--</span><span class="n">backend</span><span class="w"> </span><span class="n">libQnnGpu</span><span class="p">.</span><span class="n">so</span><span class="w"> </span><span class="o">--</span><span class="n">model</span><span class="w"> </span><span class="n">libqnn_model_float</span><span class="p">.</span><span class="n">so</span><span class="w"> </span><span class="o">--</span><span class="n">input_list</span><span class="w"> </span><span class="n">input_list_float</span><span class="p">.</span><span class="n">txt</span><span class="w"> </span><span class="o">--</span><span class="n">op_packages</span><span class="w"> </span><span class="n">libQnnGpuOpPackageExample</span><span class="p">.</span><span class="n">so</span><span class="o">:</span><span class="n">QnnOpPackage_interfaceProvider</span>
+</pre></div>
+</div>
+<p>Outputs from the run will be located at the default ./output directory.</p>
+</div>
+</div>
+<div class="section" id="htp-backend-execution">
+<h2>HTP Backend Execution<a class="headerlink" href="#htp-backend-execution" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="running-htp-emulation-backend-on-linux-x86">
+<h3>Running HTP Emulation Backend on Linux x86<a class="headerlink" href="#running-htp-emulation-backend-on-linux-x86" title="Permalink to this heading">¶</a></h3>
+<p>With the appropriate libraries compiled, <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code> is used with the following:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">converter</span><span class="o">/</span><span class="n">models</span>
+<span class="n">$</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">net</span><span class="o">-</span><span class="n">run</span><span class="w"> </span>\
+<span class="w">              </span><span class="o">--</span><span class="n">backend</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">libQnnHtp</span><span class="p">.</span><span class="n">so</span><span class="w"> </span>\
+<span class="w">              </span><span class="o">--</span><span class="n">model</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">example_libs</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">libqnn_model_8bit_quantized</span><span class="p">.</span><span class="n">so</span><span class="w"> </span>\
+<span class="w">              </span><span class="o">--</span><span class="n">input_list</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">converter</span><span class="o">/</span><span class="n">models</span><span class="o">/</span><span class="n">input_list_float</span><span class="p">.</span><span class="n">txt</span><span class="w"> </span>\
+<span class="w">              </span><span class="o">--</span><span class="n">op_packages</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">OpPackage</span><span class="o">/</span><span class="n">HTP</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">libQnnHtpOpPackageExample</span><span class="p">.</span><span class="n">so</span><span class="o">:</span><span class="n">exampleInterfaceProvider</span>
+</pre></div>
+</div>
+<p>Outputs from the run will be located at the default ./output directory.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If full paths are not given to <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code>, all libraries must be added to
+LD_LIBRARY_PATH and be discoverable by the system library loader.</p>
+</div>
+</div>
+<div class="section" id="running-htp-backend-on-android-using-offline-prepared-graph">
+<h3>Running HTP Backend on Android using offline prepared graph<a class="headerlink" href="#running-htp-backend-on-android-using-offline-prepared-graph" title="Permalink to this heading">¶</a></h3>
+<p>Running the HTP Backend on an Android target is largely similar to running CPU and GPU Backend.
+In this tutorial, we first prepare the graph on x86 host, then pass the serialized context binary to the device
+HTP Backend to execute. To run the graph on the HTP backend,
+the aarch64 version of the OpPackage is needed in addition to the hexagon-v68 version.</p>
+<p>Additionally, running the HTP on device can be done with
+the generation of a serialized context. This serialized context can be
+initialized more efficiently by HTP compared to the original libqnn_model_8bit_quantized.so model.
+To generate the context, run:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">context</span><span class="o">-</span><span class="n">binary</span><span class="o">-</span><span class="n">generator</span><span class="w"> </span>\
+<span class="w">              </span><span class="o">--</span><span class="n">backend</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">libQnnHtp</span><span class="p">.</span><span class="n">so</span><span class="w"> </span>\
+<span class="w">              </span><span class="o">--</span><span class="n">model</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">example_libs</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">libqnn_model_8bit_quantized</span><span class="p">.</span><span class="n">so</span><span class="w"> </span>\
+<span class="w">              </span><span class="o">--</span><span class="n">op_packages</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">OpPackage</span><span class="o">/</span><span class="n">HTP</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">libQnnHtpOpPackageExample</span><span class="p">.</span><span class="n">so</span><span class="o">:</span><span class="n">exampleInterfaceProvider</span>
+<span class="w">              </span><span class="o">--</span><span class="n">binary_file</span><span class="w"> </span><span class="n">qnn_model_8bit_quantized</span><span class="p">.</span><span class="n">serialized</span>
+</pre></div>
+</div>
+<p>This creates the context at:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">./output/qnn_model_8bit_quantized.serialized.bin</span></code></p></li>
+</ul>
+<p>First, create a directory for the example on device:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp"># make oppackage if necessary</span>
+<span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">shell</span><span class="w"> </span><span class="s">&quot;mkdir /data/local/tmp/oppackage&quot;</span>
+<span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">shell</span><span class="w"> </span><span class="s">&quot;mkdir /data/local/tmp/oppackage/HTP&quot;</span>
+</pre></div>
+</div>
+<p>Now push the necessary libraries to device:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ adb push ${QNN_SDK_ROOT}/lib/aarch64-android/libQnnHtp.so /data/local/tmp/oppackage/HTP
+$ adb push ${QNN_SDK_ROOT}/lib/aarch64-android/libQnnHtpPrepare.so /data/local/tmp/oppackage/HTP
+$ adb push ${QNN_SDK_ROOT}/lib/aarch64-android/libQnnHtpV68Stub.so /data/local/tmp/oppackage/HTP
+$ adb push ${QNN_SDK_ROOT}/examples/QNN/OpPackage/HTP/build/hexagon-v68/libQnnHtpOpPackageExample.so /data/local/tmp/oppackage/HTP
+$ adb push ${QNN_SDK_ROOT}/examples/QNN/OpPackage/HTP/build/aarch64-android/libQnnHtpOpPackageExample.so /data/local/tmp/oppackage/HTP/libQnnHtpOpPackageExample_Cpu.so
+$ adb push ${QNN_SDK_ROOT}/examples/QNN/example_libs/aarch64-android/*.so /data/local/tmp/oppackage/HTP
+$ adb push ./output/qnn_model_8bit_quantized.serialized.bin /data/local/tmp/oppackage/HTP
+$ # Additionally, the HTP requires Hexagon specific libraries
+$ adb push ${QNN_SDK_ROOT}/lib/hexagon-v68/unsigned/libQnnHtpV68Skel.so /data/local/tmp/oppackage/HTP
+</pre></div>
+</div>
+<p>Now push the input data and input lists to device:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">converter</span><span class="o">/</span><span class="n">models</span><span class="o">/</span><span class="n">input_data_float</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">oppackage</span><span class="o">/</span><span class="n">HTP</span>
+<span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">converter</span><span class="o">/</span><span class="n">models</span><span class="o">/</span><span class="n">input_list_float</span><span class="p">.</span><span class="n">txt</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">oppackage</span><span class="o">/</span><span class="n">HTP</span>
+</pre></div>
+</div>
+<p>Push the <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code> tool:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">aarch64</span><span class="o">-</span><span class="n">android</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">net</span><span class="o">-</span><span class="n">run</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">oppackage</span><span class="o">/</span><span class="n">HTP</span>
+</pre></div>
+</div>
+<p>Now set up the environment on device:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">shell</span>
+<span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">oppackage</span><span class="o">/</span><span class="n">HTP</span>
+<span class="n">$</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">LD_LIBRARY_PATH</span><span class="o">=/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">oppackage</span><span class="o">/</span><span class="n">HTP</span>
+<span class="n">$</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">ADSP_LIBRARY_PATH</span><span class="o">=</span><span class="s">&quot;/data/local/tmp/oppackage/HTP&quot;</span>
+</pre></div>
+</div>
+<p>Finally, use <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code> with the following:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="p">.</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">net</span><span class="o">-</span><span class="n">run</span><span class="w"> </span><span class="o">--</span><span class="n">backend</span><span class="w"> </span><span class="n">libQnnHtp</span><span class="p">.</span><span class="n">so</span><span class="w"> </span><span class="o">--</span><span class="n">retrieve_context</span><span class="w"> </span><span class="n">qnn_model_8bit_quantized</span><span class="p">.</span><span class="n">serialized</span><span class="p">.</span><span class="n">bin</span><span class="w"> </span><span class="o">--</span><span class="n">input_list</span><span class="w"> </span><span class="n">input_list_float</span><span class="p">.</span><span class="n">txt</span><span class="w"> </span><span class="o">--</span><span class="n">op_packages</span><span class="w"> </span><span class="n">libQnnHtpOpPackageExample_Cpu</span><span class="p">.</span><span class="n">so</span><span class="o">:</span><span class="n">exampleInterfaceProvider</span><span class="o">:</span><span class="n">CPU</span><span class="p">,</span><span class="n">libQnnHtpOpPackageExample_Htp</span><span class="p">.</span><span class="n">so</span><span class="o">:</span><span class="n">exampleInterfaceProvider</span><span class="o">:</span><span class="n">HTP</span>
+</pre></div>
+</div>
+<p>In this case two op packages are passed to qnn-net-run.  The first one,
+libQnnHtpOpPackageExample_Cpu.so, is the ARM aarch64 build of the op package. The second op package,
+libQnnHtpOpPackageExample_Htp.so, is the hexagon v68 build of the same op package.
+“:CPU” and “:HTP” are the optional target parameters specifying the target platforms on which
+the backend must register the op packages. The “CPU” target indicates that the op package
+is compiled for CPU (ARM aarch64).
+The “HTP” target indicates that the op package is compiled for HTP on-device.</p>
+</div>
+<div class="section" id="running-htp-backend-on-android-using-on-device-prepared-graph">
+<h3>Running HTP Backend on Android using on-device prepared graph<a class="headerlink" href="#running-htp-backend-on-android-using-on-device-prepared-graph" title="Permalink to this heading">¶</a></h3>
+<p>In this tutorial we prepare the model on the Android ARM (CPU) side.</p>
+<p>First, create a directory for the example on device:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp"># make oppackage if necessary</span>
+<span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">shell</span><span class="w"> </span><span class="s">&quot;mkdir /data/local/tmp/oppackage&quot;</span>
+<span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">shell</span><span class="w"> </span><span class="s">&quot;mkdir /data/local/tmp/oppackage/HTP&quot;</span>
+</pre></div>
+</div>
+<p>Now push the necessary libraries to device:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ adb push ${QNN_SDK_ROOT}/lib/aarch64-android/libQnnHtp.so /data/local/tmp/oppackage/HTP
+$ adb push ${QNN_SDK_ROOT}/lib/aarch64-android/libQnnHtpPrepare.so /data/local/tmp/oppackage/HTP
+$ adb push ${QNN_SDK_ROOT}/lib/aarch64-android/libQnnHtpV68Stub.so /data/local/tmp/oppackage/HTP
+$ adb push ${QNN_SDK_ROOT}/examples/QNN/OpPackage/HTP/build/hexagon-v68/libQnnHtpOpPackageExample.so /data/local/tmp/oppackage/HTP/libQnnHtpOpPackageExample_Htp.so
+$ adb push ${QNN_SDK_ROOT}/examples/QNN/OpPackage/HTP/build/aarch64-android/libQnnHtpOpPackageExample.so /data/local/tmp/oppackage/HTP/libQnnHtpOpPackageExample_Cpu.so
+$ adb push ${QNN_SDK_ROOT}/examples/QNN/example_libs/aarch64-android/*.so /data/local/tmp/oppackage/HTP
+$ # Additionally, the HTP requires Hexagon specific libraries
+$ adb push ${QNN_SDK_ROOT}/lib/hexagon-v68/unsigned/libQnnHtpV68Skel.so /data/local/tmp/oppackage/HTP
+</pre></div>
+</div>
+<p>Now push the input data and input lists to device:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">converter</span><span class="o">/</span><span class="n">models</span><span class="o">/</span><span class="n">input_data_float</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">oppackage</span><span class="o">/</span><span class="n">HTP</span>
+<span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">converter</span><span class="o">/</span><span class="n">models</span><span class="o">/</span><span class="n">input_list_float</span><span class="p">.</span><span class="n">txt</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">oppackage</span><span class="o">/</span><span class="n">HTP</span>
+</pre></div>
+</div>
+<p>Push the <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code> tool:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">aarch64</span><span class="o">-</span><span class="n">android</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">net</span><span class="o">-</span><span class="n">run</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">oppackage</span><span class="o">/</span><span class="n">HTP</span>
+</pre></div>
+</div>
+<p>Now set up the environment on device:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">shell</span>
+<span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">oppackage</span><span class="o">/</span><span class="n">HTP</span>
+<span class="n">$</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">LD_LIBRARY_PATH</span><span class="o">=/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">oppackage</span><span class="o">/</span><span class="n">HTP</span>
+<span class="n">$</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">ADSP_LIBRARY_PATH</span><span class="o">=</span><span class="s">&quot;/data/local/tmp/oppackage/HTP&quot;</span>
+</pre></div>
+</div>
+<p>Finally, use <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code> with the following:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="p">.</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">net</span><span class="o">-</span><span class="n">run</span><span class="w"> </span><span class="o">--</span><span class="n">backend</span><span class="w"> </span><span class="n">libQnnHtp</span><span class="p">.</span><span class="n">so</span><span class="w"> </span><span class="o">--</span><span class="n">model</span><span class="w"> </span><span class="n">libqnn_model_8bit_quantized</span><span class="p">.</span><span class="n">so</span><span class="w"> </span><span class="o">--</span><span class="n">input_list</span><span class="w"> </span><span class="n">input_list_float</span><span class="p">.</span><span class="n">txt</span><span class="w"> </span><span class="o">--</span><span class="n">op_packages</span><span class="w"> </span><span class="n">libQnnHtpOpPackageExample_Cpu</span><span class="p">.</span><span class="n">so</span><span class="o">:</span><span class="n">exampleInterfaceProvider</span><span class="o">:</span><span class="n">CPU</span><span class="p">,</span><span class="n">libQnnHtpOpPackageExample_Htp</span><span class="p">.</span><span class="n">so</span><span class="o">:</span><span class="n">exampleInterfaceProvider</span><span class="o">:</span><span class="n">HTP</span>
+</pre></div>
+</div>
+<p>In this case two op packages are passed to qnn-net-run.  The first one,
+libQnnHtpOpPackageExample_Cpu.so, is the ARM aarch64 build of the op package. The second op package,
+libQnnHtpOpPackageExample_Htp.so, is the hexagon v68 build of the same op package.
+“:CPU” and “:HTP” are the optional target parameters specifying the target platforms on which
+the backend must register the op packages. The “CPU” target indicates that the op package
+is compiled for CPU (ARM aarch64).
+The “HTP” target indicates that the op package is compiled for HTP on-device.</p>
+</div>
+</div>
+<div class="section" id="dsp-backend-execution">
+<h2>DSP Backend Execution<a class="headerlink" href="#dsp-backend-execution" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="running-dsp-backend-on-android">
+<h3>Running DSP Backend on Android<a class="headerlink" href="#running-dsp-backend-on-android" title="Permalink to this heading">¶</a></h3>
+<p>Running the DSP Backend on an Android target is largely
+similar to running HTP Backend on the Android. And the
+following assumes running on Hexagon DSP v66 device.</p>
+<p>First, create a directory for the example on device:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp"># make oppackage if necessary</span>
+<span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">shell</span><span class="w"> </span><span class="s">&quot;mkdir /data/local/tmp/oppackage&quot;</span>
+<span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">shell</span><span class="w"> </span><span class="s">&quot;mkdir /data/local/tmp/oppackage/DSP&quot;</span>
+</pre></div>
+</div>
+<p>Now push the necessary libraries to device:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ adb push ${QNN_SDK_ROOT}/lib/aarch64-android/libQnnDsp.so /data/local/tmp/oppackage/DSP
+$ adb push ${QNN_SDK_ROOT}/lib/aarch64-android/libQnnDspV66Stub.so /data/local/tmp/oppackage/DSP
+$ adb push ${QNN_SDK_ROOT}/examples/QNN/OpPackage/DSP/build/DSP/libQnnDspOpPackageExample.so /data/local/tmp/oppackage/DSP
+$ adb push ${QNN_SDK_ROOT}/examples/QNN/example_libs/aarch64-android/*.so /data/local/tmp/oppackage/DSP
+$ adb push ${QNN_SDK_ROOT}/examples/QNN/example_libs/aarch64-android/libqnn_model_8bit_quantized.so /data/local/tmp/oppackage/DSP
+$ # Additionally, the DSP requires Hexagon specific libraries
+$ adb push ${QNN_SDK_ROOT}/lib/hexagon-v66/unsigned/libQnnDspV66Skel.so /data/local/tmp/oppackage/DSP
+</pre></div>
+</div>
+<p>Now push the input data and input lists to device:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">converter</span><span class="o">/</span><span class="n">models</span><span class="o">/</span><span class="n">input_data_float</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">oppackage</span><span class="o">/</span><span class="n">DSP</span>
+<span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">converter</span><span class="o">/</span><span class="n">models</span><span class="o">/</span><span class="n">input_list_float</span><span class="p">.</span><span class="n">txt</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">oppackage</span><span class="o">/</span><span class="n">DSP</span>
+</pre></div>
+</div>
+<p>Push the <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code> tool:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">aarch64</span><span class="o">-</span><span class="n">android</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">net</span><span class="o">-</span><span class="n">run</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">oppackage</span><span class="o">/</span><span class="n">DSP</span>
+</pre></div>
+</div>
+<p>Now set up the environment on device:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ adb shell
+$ cd /data/local/tmp/oppackage/DSP
+$ export VENDOR_LIB=/vendor/lib/ # /vendor/lib64/ if aarch64
+$ export LD_LIBRARY_PATH=/data/local/tmp/oppackage/DSP:/vendor/dsp/cdsp:$VENDOR_LIB
+$ export ADSP_LIBRARY_PATH=&quot;/data/local/tmp/oppackage/DSP;/vendor/dsp/cdsp;/vendor/lib/rfsa/adsp;/system/lib/rfsa/adsp;/dsp&quot;
+</pre></div>
+</div>
+<p>Finally, use <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code> with the following:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="p">.</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">net</span><span class="o">-</span><span class="n">run</span><span class="w"> </span><span class="o">--</span><span class="n">backend</span><span class="w"> </span><span class="n">libQnnDsp</span><span class="p">.</span><span class="n">so</span><span class="w"> </span><span class="o">--</span><span class="n">model</span><span class="w"> </span><span class="n">libqnn_model_8bit_quantized</span><span class="p">.</span><span class="n">so</span><span class="w"> </span><span class="o">--</span><span class="n">input_list</span><span class="w"> </span><span class="n">input_list_float</span><span class="p">.</span><span class="n">txt</span><span class="w"> </span><span class="o">--</span><span class="n">op_packages</span><span class="w"> </span><span class="n">libQnnDspOpPackageExample</span><span class="p">.</span><span class="n">so</span><span class="o">:</span><span class="n">ExampleReluPackageInterfaceProvider</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,522 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Architecture Checker (Experimental) &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Quantization Checker (Experimental)" href="debug_tools_snpe-quantization-checker.html" />
+    <link rel="prev" title="Debug Tools" href="usergroup11.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup1.html">Network Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup6.html">Tutorials and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="usergroup11.html">Debug Tools</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Architecture Checker (Experimental)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debug_tools_snpe-quantization-checker.html">Quantization Checker (Experimental)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debug_tools_snpe-accuracy-debugger.html">Accuracy Debugger (Experimental)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="usergroup11.html">Debug Tools</a> &raquo;</li>
+        
+      <li>Architecture Checker (Experimental)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="architecture-checker-experimental">
+<h1>Architecture Checker (Experimental)<a class="headerlink" href="#architecture-checker-experimental" title="Permalink to this heading">¶</a></h1>
+<div class="ui-resizable side-nav-resizable docutils container" id="side-nav">
+<div class="docutils container" id="nav-tree">
+<div class="docutils container" id="nav-tree-contents">
+</div>
+</div>
+</div>
+<div class="docutils container" id="doc-content">
+<div class="header docutils container">
+</div>
+<div class="contents docutils container">
+<div class="textblock docutils container">
+<p>Architecture checker is a tool made for models running with HTP
+backend, including quantized 8-bit, quantized 16-bit and FP16
+models. It outputs a list of issues in the model that keep the
+model from getting better performance while running on the HTP
+backend. Architecture checker tool can be invoked with the
+modifier feature which will apply the recommended modifications
+for these issues. This will help in visualizing the changes that can be
+applied to the model to make it a better fit on the HTP backend.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>X86-Linux/ WSL usage: snpe-architecture-checker [-h] -i INPUT_DLC [-o OUTPUT_PATH] [-m MODIFY]
+
+X86-Windows/ Windows on Snapdragon usage: python snpe-architecture-checker [-h] -i INPUT_DLC [-o OUTPUT_PATH] [-m MODIFY]
+
+required arguments:
+  -i INPUT_DLC, --input_dlc INPUT_DLC
+                        Path to a DLC file
+
+optional arguments:
+  -o OUTPUT_PATH, --output_path OUTPUT_PATH
+                        Path where the output csv should be saved. If not
+                        specified, the output csv will be written to the same
+                        path as the input dlc file
+  -m MODIFY, --modify MODIFY
+                     The query to select the modifications to apply.
+                     --modify or --modify show - To see all the possible modifications. Display list of rule names and details of the modifications.
+                     --modify all - To apply all the possible modifications found for the model.
+                     --modify apply=rule_name1,rule_name2 - To apply modifications for specified rule names. The list of rules should be comma separated without spaces
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><strong>Note:</strong></div>
+<div class="line">SNPE_ROOT environment variable must be configured before running the tool.</div>
+</div>
+<p>The output is a csv file and will be saved as
+&lt;OUTPUT_PATH&gt;_architecture_checker.csv.</p>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">model_architecture_checker.csv</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 1%" />
+<col style="width: 6%" />
+<col style="width: 17%" />
+<col style="width: 14%" />
+<col style="width: 2%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 11%" />
+<col style="width: 8%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Graph / Layer name</p></th>
+<th class="head"><p>Issue</p></th>
+<th class="head"><p>Recommendation</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Input_tensor_name:[dims]</p></th>
+<th class="head"><p>Output_tensor_name:[dims]</p></th>
+<th class="head"><p>Parameters</p></th>
+<th class="head"><p>Previous layer</p></th>
+<th class="head"><p>Next layers</p></th>
+<th class="head"><p>Modification</p></th>
+<th class="head"><p>Modification_info</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Graph</p></td>
+<td><p>This model uses 16-bit activation data.
+16-bit activation data takes twice the
+amount of memory than 8-bit activation data does.</p></td>
+<td><p>Try to use a smaller datatype to get
+better performance. E.g., 8-bit</p></td>
+<td><p>N/A</p></td>
+<td><p>N/A</p></td>
+<td><p>N/A</p></td>
+<td><p>N/A</p></td>
+<td><p>N/A</p></td>
+<td><p>N/A</p></td>
+<td><p>N/A</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Layer_name_1</p></td>
+<td><p>The number of channels in the input/output tensor
+of this convolution is low (smaller than 32).</p></td>
+<td><p>Try increasing the number of channels in
+the input/output tensor to 32 or greater
+to get better performance.</p></td>
+<td><p>Conv2d</p></td>
+<td><p>input_1:[1, 250, 250, 3],
+__param_ 1:[5, 5, 3, 32],
+convolution_0_bias:[32]</p></td>
+<td><p>output_1:[1, 123, 123, 32]</p></td>
+<td><p>{‘dilation’:’[1, 1]’,
+‘group’:1,
+‘pad_amount’:’[[1, 1], [1, 1]]’,
+‘stride’: ‘[1, 1]’}</p></td>
+<td><p>[‘previous_layer_name’]</p></td>
+<td><p>[‘next_layer_name1’,
+‘next_layer_name2’]</p></td>
+<td><p>N/A</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><strong>How to read the example output csv?</strong></div>
+<div class="line">Row 1: This is an issue on the graph, the graph is using
+16-bit activation data, as said in the recommendation,
+changing the activation from 16 bit to 8 bit gives better
+performance.</div>
+<div class="line">Row 2: The issue is on the layer with name
+“Layer_name_1”. This layer has three inputs: input_1,
+__param_1 and convolution_0_bias where the dimensions are
+[1, 250, 250, 3], [5, 5, 3, 32] and [32] respectively. This
+layer has one output with tensor name output_1 and the
+dimension of this tensor is [1, 123, 123, 32]. The issue for
+this layer is the channel of the input tensor is low, as the
+channel is smaller than 32, would recommend to increase the
+channel to at least 32 to get better performance on HTP
+backend. Currently the input dimension is [1, 250, 250, 3]
+and ideally have that to be [1, x, x, 32]. The Modification
+and Modification_info columns provide details about the
+modifications applied to the layer. If the Architecture Checker
+is not invoked with modifier or if there aren’t any modifications
+applicable, then these value will be N/A.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>Is the layer/tensor name the same in the original model?</strong></div>
+<div class="line">It might not be the same but should be similar. The input
+tensor, output tensor, parameters and previous/next layers
+are avaliable in the output csv file to help locate the
+correct node inside the original model.</div>
+</div>
+<p><strong>Sample Command</strong></p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>snpe-architecture-checker --input_dlc ./model.dlc
+               --output_path ./archCheckerOutput
+</pre></div>
+</div>
+<p><strong>Architecture Checker - Model Modifier</strong></p>
+<p>For appying modifications to the model, the Architecture Checker can be invoked
+with “–modify” or “–modify show” which will display a list of possible modifications.
+In this case, the Architecture Checker tool will only show the rule names and modification detail.
+It will run without making any changes to the model and generate the csv output.
+Using the rule names from the above run, the Architecture Checker can be invoked with
+“–modify all” or “–modify apply=rule_name1,rule_name2”. In this case, the rule specific changes
+will be applied to the model and the changes can be viewed in the updated model.
+Additionally, the output csv will also contain information related to the modifications.</p>
+<p>Consider the below csv output generated after applying “–modify apply=elwisediv” modification on an example model.</p>
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-text">model_architecture_checker.csv</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 1%" />
+<col style="width: 6%" />
+<col style="width: 16%" />
+<col style="width: 13%" />
+<col style="width: 5%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 12%" />
+<col style="width: 8%" />
+<col style="width: 7%" />
+<col style="width: 6%" />
+<col style="width: 11%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Graph / Layer name</p></th>
+<th class="head"><p>Issue</p></th>
+<th class="head"><p>Recommendation</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Input_tensor_name:[dims]</p></th>
+<th class="head"><p>Output_tensor_name:[dims]</p></th>
+<th class="head"><p>Parameters</p></th>
+<th class="head"><p>Previous layer</p></th>
+<th class="head"><p>Next layers</p></th>
+<th class="head"><p>Modification</p></th>
+<th class="head"><p>Modification_info</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Layer_name_1</p></td>
+<td><p>ElementWiseDivide usually has poor performance
+compared to ElementWiseMultiply</p></td>
+<td><p>Try replacing ElementWiseDivide with
+ElementWiseMultiply using the reciprocal
+value to get better performance</p></td>
+<td><p>Eltwise_Binary</p></td>
+<td><p>input_1:[1, 52, 52, 6],
+input_2:[1]</p></td>
+<td><p>output_1:[1, 52, 52, 6]</p></td>
+<td><p>{‘eltwise_type’: ‘ElementWiseDivide’}</p></td>
+<td><p>[‘previous_layer_name’]</p></td>
+<td><p>[‘next_layer_name1’,
+‘next_layer_name2’]</p></td>
+<td><p>Done</p></td>
+<td><p>ElementWiseDivide has been replaced
+by ElementWiseMultiply using
+the reciprocal value</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Layer_name_2</p></td>
+<td><p>The number of channels in the input/output tensor
+of this convolution is low (smaller than 32).</p></td>
+<td><p>Try increasing the number of channels in
+the input/output tensor to 32 or greater
+to get better performance.</p></td>
+<td><p>Conv2d</p></td>
+<td><p>input_3:[1, 250, 250, 3],
+__param_1:[5, 5, 3, 32],
+convolution_1_bias:[32]</p></td>
+<td><p>output_2:[1, 123, 123, 32]</p></td>
+<td><p>{‘dilation’:’[1, 1]’,
+‘group’:1,
+‘pad_amount’:’[[1, 1], [1, 1]]’,
+‘stride’: ‘[1, 1]’}</p></td>
+<td><p>[‘previous_layer_name’]</p></td>
+<td><p>[‘next_layer_name1’,
+‘next_layer_name2’]</p></td>
+<td><p>N/A</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><strong>How to read the example output csv?</strong></div>
+<div class="line">Row 1: The issue is on the layer with name “Layer_name_1”.
+It has element wise divide which gives a poor performance
+as compared to elementwise multipy. After invoking architecture checker
+with “–modify apply=elwisediv”, the modifications have been successfully applied
+i.e. the element wise divide is replaced by element wise multiply with a reciprocal value.
+This information is available in the Modification and Modification_info columns.</div>
+<div class="line">Row 2: The issue is on the layer with name “Layer_name_2”. The number of channels
+of the input tensor is less than 32. Its recommended to increase the number of channels
+to 32 or greater for better performance. For this issue, the modification through the tool
+is not applicable hence the Modification and Modification_info columns are N/A.</div>
+<div class="line">After modifying the model, the above run will generate updated model along with the csv output.
+Running the Architecture Checker on the updated model will no longer show the element wise divide issue on Layer_name_1.</div>
+</div>
+<p>Following are the commands to invoke Architecture Checker with Modifier to display list of modifications:</p>
+<p><strong>Sample Command</strong></p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>snpe-architecture-checker --input_dlc ./model.dlc
+               --output_path ./archCheckerOutput
+               --modify
+</pre></div>
+</div>
+<p><strong>Sample Command</strong></p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>snpe-architecture-checker --input_dlc ./model.dlc
+               --output_path ./archCheckerOutput
+               --modify show
+</pre></div>
+</div>
+<p>Following are the commands to apply the modifications either on all possible modifications or specific rules:</p>
+<p><strong>Sample Command</strong></p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>snpe-architecture-checker --input_dlc ./model.dlc
+               --output_path ./archCheckerOutput
+               --modify all
+</pre></div>
+</div>
+<p><strong>Sample Command</strong></p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>snpe-architecture-checker --input_dlc ./model.dlc
+               --output_path ./archCheckerOutput
+               --modify apply=prelu,elwisediv
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><strong>Note:</strong></div>
+<div class="line">The Architecture Checker with modifier is an enchancement to help visualize the changes
+that can be applied on the model to better fit it on the HTP.
+To see the actual performance improvements, the model may require retraining/redesigning.</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="debug_tools_snpe-quantization-checker.html" class="btn btn-neutral float-right" title="Quantization Checker (Experimental)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="usergroup11.html" class="btn btn-neutral float-left" title="Debug Tools" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

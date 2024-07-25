@@ -1,0 +1,101 @@
+{
+  "backends": [
+    {
+      "backendName": "cpu_backend",
+      "backendPath": "libQnnCpu.so",
+      "profilingLevel": "BASIC"
+    },
+    {
+      "backendName": "gpu_backend",
+      "backendPath": "libQnnGpu.so",
+      "profilingLevel": "OFF"
+    },
+    {
+      "backendName": "htp_backend",
+      "backendPath": "libQnnHtp.so",
+      "profilingLevel": "BASIC",
+      "backendExtensions": "libQnnHtpNetRunExtensions.so",
+      "perfProfile": "high_performance"
+    }
+  ],
+  "models": [
+    {
+      "modelName": "model_1",
+      "modelPath": "libqnn_model_1.so",
+      "loadFromCachedBinary": false,
+      "inputPath": "model_1-input_list.txt",
+      "inputDataType": "FLOAT",
+      "postProcessor": "MSE",
+      "outputPath": "model_1-output",
+      "outputDataType": "FLOAT_ONLY",
+      "saveOutput": "NATIVE_ALL",
+      "groundTruthPath": "model_1-golden_list.txt"
+    },
+    {
+      "modelName": "model_2",
+      "modelPath": "libqnn_model_2.so",
+      "loadFromCachedBinary": false,
+      "inputPath": "model_2-input_list.txt",
+      "inputDataType": "FLOAT",
+      "postProcessor": "MSE",
+      "outputPath": "model_2-output",
+      "outputDataType": "FLOAT_ONLY",
+      "saveOutput": "NATIVE_LAST"
+    },
+    {
+      "modelName": "model_3",
+      "modelPath": "model_3_qnngraph.serialized.bin",
+      "loadFromCachedBinary": true,
+      "inputPath": "model_3-input_list.txt",
+      "inputDataType": "FLOAT",
+      "postProcessor": "MSE",
+      "outputPath": "model_3-output",
+      "outputDataType": "FLOAT_ONLY",
+      "saveOutput": "NATIVE_ALL"
+    }
+  ],
+  "contexts": [
+    {
+      "contextName": "cpu_context_1"
+    },
+    {
+      "contextName": "gpu_context_1"
+    },
+    {
+      "contextName": "htp_context_1"
+    }
+  ],
+  "testCase": {
+    "iteration": 5,
+    "logLevel": "error",
+    "threads": [
+      {
+        "threadName": "cpu_thread_1",
+        "backend": "cpu_backend",
+        "context": "cpu_context_1",
+        "model": "model_1",
+        "interval": 10,
+        "loopUnit": "count",
+        "loop": 1
+      },
+      {
+        "threadName": "gpu_thread_1",
+        "backend": "gpu_backend",
+        "context": "gpu_context_1",
+        "model": "model_2",
+        "interval": 0,
+        "loopUnit": "count",
+        "loop": 10
+      },
+      {
+        "threadName": "htp_thread_1",
+        "backend": "htp_backend",
+        "context": "htp_context_1",
+        "model": "model_3",
+        "interval": 0,
+        "loopUnit": "second",
+        "loop": 20
+      }
+    ]
+  }
+}

@@ -1,0 +1,53 @@
+{
+    "inference_engine": {
+        "executables": {
+            "tflite": {
+                "1.13.0": "executors/tools/tflite/minimal_android_tf_v1.13",
+                "1.14.0": "executors/tools/tflite/minimal_android_tf_v1.14",
+                "2.2.0": "executors/tools/tflite/minimal_android_tf_v2.2"
+            }
+        },
+        "controls": {
+            "runtimes": {
+                "nnhal_cpu": {
+                    "off": "setprop debug.nnhal.common off",
+                    "on": "setprop debug.nnhal.common on",
+                    "always": "setprop debug.nnhal.common always"
+                },
+                "nnhal_dsp": {
+                    "off": "setprop debug.nnhal.hvx off",
+                    "on": "setprop debug.nnhal.hvx on",
+                    "always": "setprop debug.nnhal.hvx always"
+                },
+                "nnhal_gpu": {
+                    "off": "setprop debug.nnhal.adreno off",
+                    "on": "setprop debug.nnhal.adreno on",
+                    "always": "setprop debug.nnhal.adreno always"
+                },
+                "nnhal_gpu_relaxed": {
+                    "off": "setprop debug.nnhal.adreno off",
+                    "on": "setprop debug.nnhal.adreno on",
+                    "always": "setprop debug.nnhal.adreno always"
+                }
+            },
+            "process_tag": "android.hardware.neuralnetworks",
+            "find_process": "ps | grep neural | awk '{print $2}'",
+            "kill": "kill -9 "
+        }
+    },
+    "devices": {
+        "host": ["x86"],
+        "target": ["android"]
+    },
+    "executor": {
+        "executable": "minimal_android",
+        "arguments": {
+            "model": "-m",
+            "input": "-i",
+            "output": "-o",
+            "acceleration": "-a",
+            "relaxed": "-r"
+        },
+        "target_path": "/data/local/tmp/network_diagnosis"
+    }
+}

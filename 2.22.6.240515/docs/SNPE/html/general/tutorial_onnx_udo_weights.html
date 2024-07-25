@@ -1,0 +1,640 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>UDO Tutorial With Weights &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="PSNPE Introduction" href="tutorial_psnpe_introduction.html" />
+    <link rel="prev" title="UDO DSP tutorial on Windows for Quantized DLC" href="tutorial_inceptionv3_udo_dsp_win.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup1.html">Network Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="usergroup6.html">Tutorials and Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial_setup.html">Tutorials Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snpe2_migration_guidelines.html">SNPE1 to SNPE2 Migration Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup7.html">Running Nets</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="usergroup8.html">Code Examples</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="cplus_plus_tutorial.html">C++ Tutorial - Build the Sample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="c_tutorial.html">C Tutorial - Build the Sample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="c_api_guidelines.html">C API Guidelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="android_tutorial.html">Android Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="build_samplecode_windows.html">Windows Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_inceptionv3_udo.html">UDO Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_inceptionv3_udo_dsp.html">UDO DSP tutorial for Quantized DLC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_inceptionv3_udo_dsp_win.html">UDO DSP tutorial on Windows for Quantized DLC</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">UDO Tutorial With Weights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_psnpe_introduction.html">PSNPE Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_psnpe_c_tutorial.html">PSNPE C Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_psnpe_cplus_plus_tutorial.html">PSNPE C++ Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_psnpe_android_tutorial.html">PSNPE Android Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dsp_runtime.html">DSP Runtime Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="network_resize.html">Network Resizing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="input_batch.html">Input Image Batch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="init_caching.html">Init Caching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup9.html">Application Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="usergroup6.html">Tutorials and Examples</a> &raquo;</li>
+        
+          <li><a href="usergroup8.html">Code Examples</a> &raquo;</li>
+        
+      <li>UDO Tutorial With Weights</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="udo-tutorial-with-weights">
+<h1>UDO Tutorial With Weights<a class="headerlink" href="#udo-tutorial-with-weights" title="Permalink to this heading">¶</a></h1>
+<div class="ui-resizable side-nav-resizable docutils container" id="side-nav">
+<div class="docutils container" id="nav-tree">
+<div class="docutils container" id="nav-tree-contents">
+</div>
+</div>
+</div>
+<div class="docutils container" id="doc-content">
+<div class="header docutils container">
+</div>
+<div class="contents docutils container">
+<div class="textblock docutils container">
+<p class="rubric" id="overview">Overview</p>
+<p>This tutorial describes the steps needed to create a UDO
+package with weights and execute the VGG model using the package.
+The Convolution operation has been chosen in this tutorial to
+demonstrate the implementation of a UDO with weights.</p>
+<p>The Qualcomm® Neural Processing SDK provides the resources for this example under</p>
+<ul class="simple">
+<li><p>$SNPE_ROOT/examples/SNPE/NativeCpp/UdoExample/Conv2D</p></li>
+</ul>
+<p>Information on UDO in general is available at <a class="reference external" href="udo_overview.html">UDO Overview</a>.
+Information on running the VGG network without UDO is
+available at <a class="reference external" href="tutorial_onnx.html">VGG Tutorial</a>.
+Information on creating a UDO package and executing the model
+using the package is available at <a class="reference external" href="tutorial_inceptionv3_udo.html">UDO
+Tutorial</a>.</p>
+<p class="rubric" id="prerequisites">Prerequisites</p>
+<p>The following tutorial assumes that general <a class="reference external" href="setup.html">Qualcomm (R) Neural Processing SDK
+setup</a> has been followed to support
+SDK environment, ONNX environment, and desired platform
+dependencies. Additionally, we need an extracted Qualcomm® AI Direct SDK (no
+need of Qualcomm® AI Direct SDK setup) for generating the skeleton code and
+building the libraries. For Qualcomm® AI Direct SDK details, refer to the Qualcomm® AI Direct SDK
+documentation at <code class="docutils literal notranslate"><span class="pre">$QNN_SDK_ROOT/docs/QNN/index.html</span></code> page, where
+<code class="docutils literal notranslate"><span class="pre">QNN_SDK_ROOT</span></code> is the location of the Qualcomm® AI Direct SDK installation.
+Set the <code class="docutils literal notranslate"><span class="pre">$QNN_SDK_ROOT</span></code> to the unzipped Qualcomm® AI Direct SDK location. This has to be performed
+after running the envsetup.sh script mentioned in <a class="reference external" href="setup.html#environment-setup">SNPE Setup</a>. The
+steps listed in this tutorial use the ONNX model in the
+form of vgg16.onnx. For details on
+acquiring the VGG model visit <a class="reference external" href="tutorial_setup.html#getting-vgg">Tutorials
+Setup</a>.</p>
+<p class="rubric" id="introduction">Introduction</p>
+<p>Here are the steps to develop and run a UDO</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="tutorial_onnx_udo_weights.html#step-1-package-generation">Package Generation</a></p></li>
+<li><p><a class="reference external" href="tutorial_onnx_udo_weights.html#step-2-framework-model-conversion-to-a-dlc">Framework Model Conversion to a DLC</a></p></li>
+<li><p><a class="reference external" href="tutorial_onnx_udo_weights.html#step-3-package-implementations">Package Implementation</a></p></li>
+<li><p><a class="reference external" href="tutorial_onnx_udo_weights.html#step-4-package-compilation">Package Compilation</a></p></li>
+<li><p><a class="reference external" href="tutorial_onnx_udo_weights.html#model-execution">Model Execution</a></p></li>
+</ol>
+<p>Steps 1-4 are run offline on the x86 host and are necessary for
+execution in step 5. Step 5 provides information on execution
+using the Qualcomm® Neural Processing SDK command-line executable <strong>snpe-net-run</strong>.</p>
+<p class="rubric" id="step-1-package-generation">Step 1: Package Generation</p>
+<p>Generating the Conv2DPackage requires the
+<strong>snpe-udo-package-generator</strong> tool and the provided UDO
+plugin: Conv2D.json / Conv2DQuant.json / Conv2D_Htp.json depending on your
+runtime requirement. The Conv2D.json and Conv2DQuant.json gives
+you skeleton code for CPU (float) and DSP (uint8) implementations
+respectively. The plugins is located under
+$SNPE_ROOT/examples/SNPE/NativeCpp/UdoExample/Conv2D/config. More
+information about creating a UDO plugin can be found
+<a class="reference external" href="udo_operator_definition.html#the-udo-configuration-specification">here</a>.</p>
+<p>Generate the Conv2DPackage UDO package using the following:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>export SNPE_UDO_ROOT=$SNPE_ROOT/share/SNPE/SnpeUdo
+export QNN_SDK_ROOT=&lt;path to Qualcomm® AI Direct SDK&gt;
+mkdir $SNPE_ROOT/examples/Models/VGG/ConvUdoCpu
+snpe-udo-package-generator -p $SNPE_ROOT/examples/SNPE/NativeCpp/UdoExample/Conv2D/config/Conv2D.json -o $SNPE_ROOT/examples/Models/VGG/ConvUdoCpu
+</pre></div>
+</div>
+<p>or for DSP less than V68</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>export SNPE_UDO_ROOT=$SNPE_ROOT/share/SNPE/SnpeUdo
+export QNN_SDK_ROOT=&lt;path to Qualcomm® AI Direct SDK&gt;
+mkdir $SNPE_ROOT/examples/Models/VGG/ConvUdoDsp
+snpe-udo-package-generator -p $SNPE_ROOT/examples/SNPE/NativeCpp/UdoExample/Conv2D/config/Conv2DQuant.json -o $SNPE_ROOT/examples/Models/VGG/ConvUdoDsp
+</pre></div>
+</div>
+<p>or for DSP V68 and later</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>export SNPE_UDO_ROOT=$SNPE_ROOT/share/SNPE/SnpeUdo
+export QNN_SDK_ROOT=&lt;path to Qualcomm® AI Direct SDK&gt;
+mkdir $SNPE_ROOT/examples/Models/VGG/ConvUdoDsp
+snpe-udo-package-generator -p $SNPE_ROOT/examples/SNPE/NativeCpp/UdoExample/Conv2D/config/Conv2D_Htp.json -o $SNPE_ROOT/examples/Models/VGG/ConvUdoDsp
+</pre></div>
+</div>
+<p>This command creates the Convolution based package at
+$SNPE_ROOT/examples/Models/VGG/ConvUdoCpu/Conv2DPackage or
+$SNPE_ROOT/examples/Models/VGG/ConvUdoDsp/Conv2DPackage.</p>
+<p>For more information on the snpe-udo-package-generator tool
+visit <a class="reference external" href="creating_udo_package.html">here</a>.</p>
+<p class="rubric" id="step-2-framework-model-conversion-to-a-dlc">Step 2: Framework model Conversion to a DLC</p>
+<p>Converting the ONNX VGG model to DLC requires
+the <a class="reference external" href="tools.html#snpe-onnx-to-dlc">snpe-onnx-to-dlc</a> tool.
+The snpe-onnx-to-dlc
+tool consumes the same Conv2D.json used in package generation
+via the –udo command line option. In this step,
+&lt;VGG_PATH&gt; refers to the path to the vgg.onnx
+file. For example, after running the setup_vgg.py
+script &lt;VGG_PATH&gt; is
+$SNPE_ROOT/examples/Models/VGG/onnx.</p>
+<p>Convert VGG with the following:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>snpe-onnx-to-dlc --input_network &lt;VGG_PATH&gt;/vgg16.onnx --output_path $SNPE_ROOT/examples/Models/VGG/dlc/vgg16_udo.dlc --udo $SNPE_ROOT/examples/SNPE/NativeCpp/UdoExample/Conv2D/config/Conv2D.json
+</pre></div>
+</div>
+<p>This will generate a DLC named vgg16_udo.dlc containing the
+Convolution as UDO at $SNPE_ROOT/examples/Models/VGG/dlc.</p>
+<p class="rubric" id="step-3-package-implementations">Step 3: Package Implementations</p>
+<p>The generated package creates the skeleton of the operation
+implementation, which must be filled by the user to create a
+functional UDO. The rest of the code scaffolding for
+compatibility with Qualcomm® Neural Processing SDK is provided by the
+<strong>snpe-udo-package-generator</strong>. The UDO implementations for this tutorial are provided under
+$SNPE_ROOT/examples/SNPE/NativeCpp/UdoExample/Conv2D/src.</p>
+<p><strong>CPU Implementations (Android and x86)</strong></p>
+<p>The file in the package that needs to be implemented for CPU is</p>
+<ul class="simple">
+<li><p>ConvUdoCpu/Conv2DPackage/jni/src/CPU/src/ops/Conv.cpp</p></li>
+</ul>
+<p>The provided example implementation is present at the location</p>
+<ul class="simple">
+<li><p>$SNPE_ROOT/examples/SNPE/NativeCpp/UdoExample/Conv2D/src/CPU/Conv.cpp</p></li>
+</ul>
+<p>Copy the provided implementation to the package:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>cp -f $SNPE_ROOT/examples/SNPE/NativeCpp/UdoExample/Conv2D/src/CPU/Conv.cpp $SNPE_ROOT/examples/Models/VGG/ConvUdoCpu/Conv2DPackage/jni/src/CPU/src/ops/
+</pre></div>
+</div>
+<p><strong>DSP Implementations (Android) for V65 and V66</strong></p>
+<p>Please note that only C files are supported for UDO on DSP V65
+and V66 runtimes. Refer <a class="reference external" href="compiling_udo_package.html#implementing-a-udo-for-dsp-v65-and-v66">Implementing a UDO for DSP V65 and
+V66</a>
+for more information on implementing UDO for DSP V65 and V66
+runtimes. The example here executes float implementation on DSP
+runtime. Please refer to <a class="reference external" href="tutorial_inceptionv3_udo_dsp.html">UDO DSP for Quantized
+DLC</a> tutorial for
+executing quantized implementation on DSP runtime.</p>
+<p>The file in the package that need to be implemented for DSP V65
+and V66 are</p>
+<ul class="simple">
+<li><p>ConvUdoDsp/Conv2DPackage/jni/src/DSP/ConvolutionImplLibDsp.c</p></li>
+<li><p>ConvUdoDsp/Conv2DPackage/include/ConvolutionImplLibDsp.h</p></li>
+</ul>
+<p>The provided example implementations are present at the
+locations</p>
+<ul class="simple">
+<li><p>$SNPE_ROOT/examples/SNPE/NativeCpp/UdoExample/Conv2D/src/DSP/Conv2DInt8Impl/ConvolutionImplLibDsp.c</p></li>
+<li><p>$SNPE_ROOT/examples/SNPE/NativeCpp/UdoExample/Conv2D/src/DSP/Conv2DInt8Impl/ConvolutionImplLibDsp.h</p></li>
+</ul>
+<p>Copy the provided implementations to the package:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>cp -f $SNPE_ROOT/examples/SNPE/NativeCpp/UdoExample/Conv2D/src/DSP/Conv2DInt8Impl/ConvolutionImplLibDsp.c $SNPE_ROOT/examples/Models/VGG/ConvUdoDsp/Conv2DPackage/jni/src/DSP/
+cp -f $SNPE_ROOT/examples/SNPE/NativeCpp/UdoExample/Conv2D/src/DSP/Conv2DInt8Impl/ConvolutionImplLibDsp.h $SNPE_ROOT/examples/Models/VGG/ConvUdoDsp/Conv2DPackage/include/
+</pre></div>
+</div>
+<p>Optionally, the user can provide their own implementations in
+the package.</p>
+<p><strong>DSP Implementations for V68 and later</strong></p>
+<p>Please note that only C++ files are supported for UDO on DSP
+V68 and later runtimes. Refer <a class="reference external" href="compiling_udo_package.html#implementing-a-udo-for-dsp-v68-or-later">Implementing a UDO for DSP V68
+or
+later</a>
+for more information on implementing UDO for DSP V68 or later
+runtimes. The directory paths and locations in this example are
+specific to DSP V68 and later architectures. For runtimes later than DSP V68, please
+replace <strong>DSP_V68</strong> with the corresponding DSP architecture.</p>
+<p>The file in the package that needs to be implemented for DSP
+V68 and later is</p>
+<ul class="simple">
+<li><p>ConvUdoDsp/Conv2DPackage/jni/src/DSP_V68/ConvImplLibDsp.cpp</p></li>
+</ul>
+<p>The provided example implementation is present at the location</p>
+<ul class="simple">
+<li><p>$SNPE_ROOT/examples/SNPE/NativeCpp/UdoExample/Conv2D/src/HTP/ConvImplLibDsp.cpp</p></li>
+</ul>
+<p>Copy the provided implementations to the package:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>cp -f $SNPE_ROOT/examples/SNPE/NativeCpp/UdoExample/Conv2D/src/HTP/ConvImplLibDsp.cpp $SNPE_ROOT/examples/Models/VGG/ConvUdoDsp/Conv2DPackage/jni/src/DSP_V68/
+</pre></div>
+</div>
+<p>Optionally, the user can provide their own implementations in
+the package.</p>
+<p class="rubric" id="step-4-package-compilation">Step 4: Package Compilation</p>
+<p><strong>x86 Host Compilation</strong></p>
+<p>Compiling on x86 host uses the make build system. Compile the
+CPU implementations with the following:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>cd $SNPE_ROOT/examples/Models/VGG/ConvUdoCpu/Conv2DPackage
+make cpu_x86
+</pre></div>
+</div>
+<p>The expected artifacts after compiling for CPU on x86 host are</p>
+<ul class="simple">
+<li><p>ConvUdoCpu/Conv2DPackage/libs/x86-64_linux_clang/libUdoConv2DPackageImplCpu.so</p></li>
+<li><p>ConvUdoCpu/Conv2DPackage/libs/x86-64_linux_clang/libUdoConv2DPackageReg.so</p></li>
+</ul>
+<p><strong>Android CPU Runtime Compilation</strong></p>
+<p>Compilation for the CPU runtime on Android uses Android NDK.
+The ANDROID_NDK_ROOT environment variable must be set to the
+directory containing ndk-build in order to compile the package.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>export ANDROID_NDK_ROOT=&lt;path_to_android_ndk&gt;
+</pre></div>
+</div>
+<p>It is suggested to add ANDROID_NDK_ROOT to the PATH environment
+variable to access ndk-build.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>export PATH=$ANDROID_NDK_ROOT:$PATH
+</pre></div>
+</div>
+<p>Once the ANDROID_NDK_ROOT is part of PATH, compile the package
+for Android CPU target:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>cd $SNPE_ROOT/examples/Models/VGG/ConvUdoCpu/Conv2DPackage
+make cpu_android
+</pre></div>
+</div>
+<p>The expected artifacts after compiling for Android CPU are</p>
+<ul class="simple">
+<li><p>ConvUdoCpu/Conv2DPackage/libs/arm64-v8a/libUdoConv2DPackageImplCpu.so</p></li>
+<li><p>ConvUdoCpu/Conv2DPackage/libs/arm64-v8a/libUdoConv2DPackageReg.so</p></li>
+<li><p>ConvUdoCpu/Conv2DPackage/libs/arm64-v8a/libc++_shared.so</p></li>
+</ul>
+<p><strong>Hexagon DSP Runtime Compilation</strong></p>
+<p>Compilation for the DSP runtime makes use of the make system.
+In order to build the implementation libraries for DSP V65 and
+V66 runtimes, Hexagon-SDK needs to be installed and set up. For
+details, follow the setup instructions on
+<code class="docutils literal notranslate"><span class="pre">$HEXAGON_SDK_ROOT/docs/readme.html</span></code> page, where
+<code class="docutils literal notranslate"><span class="pre">HEXAGON_SDK_ROOT</span></code> is the location of your Hexagon-SDK
+installation. Information for compiling a UDO for DSP is
+available at <a class="reference external" href="compiling_udo_package.html#compiling-a-udo-for-dsp-v65-and-v66-on-device">Compiling UDO for
+DSP</a>.</p>
+<p class="rubric" id="model-execution">Model Execution</p>
+<p><strong>Execution using snpe-net-run</strong></p>
+<p>Executing VGG with UDO is largely the same as use of
+<a class="reference external" href="tutorial_onnx.html#overview">snpe-net-run</a>
+without UDO.</p>
+<p>The Qualcomm® Neural Processing SDK provides Linux and Android binaries of
+<strong>snpe-net-run</strong> under</p>
+<ul class="simple">
+<li><p>$SNPE_ROOT/bin/x86_64-linux-clang</p></li>
+<li><p>$SNPE_ROOT/bin/aarch64-android</p></li>
+<li><p>$SNPE_ROOT/bin/aarch64-oe-linux-gcc8.2</p></li>
+<li><p>$SNPE_ROOT/bin/aarch64-oe-linux-gcc9.3</p></li>
+<li><p>$SNPE_ROOT/bin/aarch64-ubuntu-gcc7.5</p></li>
+</ul>
+<p>For UDO, snpe-net-run consumes the registration library through
+the –udo_package_path option. LD_LIBRARY_PATH must also be
+updated to include the runtime-specific artifacts generated
+from package compilation.</p>
+<p><strong>x86 Host Execution</strong></p>
+<p>To execute the network on x86 host, run:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>cd $SNPE_ROOT/examples/Models/VGG
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$SNPE_ROOT/examples/Models/VGG/ConvUdoCpu/Conv2DPackage/libs/x86-64_linux_clang/
+snpe-net-run --container dlc/vgg16_udo.dlc --input_list data/cropped/raw_list.txt --udo_package_path ConvUdoCpu/Conv2DPackage/libs/x86-64_linux_clang/libUdoConv2DPackageReg.so
+</pre></div>
+</div>
+<p><strong>Android Target Execution</strong></p>
+<p>The tutorial for execution on Android targets will use the
+arm64-v8a architecture. This portion of the tutorial is generic
+to all runtimes (CPU, DSP). Set SNPE_TARGET_DSPARCH
+to the DSP architecture of the target Android device.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span># architecture: arm64-v8a - compiler: clang - STL: libc++
+export SNPE_TARGET_ARCH=aarch64-android
+export SNPE_TARGET_DSPARCH=hexagon-v68
+</pre></div>
+</div>
+<p>Then, push Qualcomm® Neural Processing SDK binaries and libraries to the target device:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>adb shell &quot;mkdir -p /data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/bin&quot;
+adb shell &quot;mkdir -p /data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/lib&quot;
+
+adb push $SNPE_ROOT/lib/$SNPE_TARGET_ARCH/*.so \
+      /data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/lib
+adb push $SNPE_ROOT/bin/$SNPE_TARGET_ARCH/snpe-net-run \
+      /data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/bin
+</pre></div>
+</div>
+<p>Next, update environment variables on the target device to
+include the Qualcomm® Neural Processing SDK libraries and binaries:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>adb shell
+export SNPE_TARGET_ARCH=aarch64-android
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/lib
+export PATH=$PATH:/data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/bin
+</pre></div>
+</div>
+<p>Lastly, push the VGG UDO model and input data to the device:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>cd $SNPE_ROOT/examples/Models/VGG
+mkdir data/rawfiles &amp;&amp; cp data/cropped/*.raw data/rawfiles/
+adb shell &quot;mkdir -p /data/local/tmp/vgg16_udo&quot;
+adb push data/rawfiles /data/local/tmp/vgg16_udo/cropped
+adb push data/raw_list.txt /data/local/tmp/vgg16_udo
+adb push dlc/vgg16_udo.dlc /data/local/tmp/vgg16_udo
+rm -rf data/rawfiles
+</pre></div>
+</div>
+<p><strong>Android CPU Execution</strong></p>
+<p>Once the model and data have been placed on the device, place
+the UDO libraries on the device:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>cd $SNPE_ROOT/examples/Models/VGG
+adb shell &quot;mkdir -p /data/local/tmp/vgg16_udo/cpu&quot;
+adb push ConvUdoCpu/Conv2DPackage/libs/arm64-v8a/libUdoConv2DPackageImplCpu.so /data/local/tmp/vgg16_udo/cpu
+adb push ConvUdoCpu/Conv2DPackage/libs/arm64-v8a/libUdoConv2DPackageReg.so /data/local/tmp/vgg16_udo/cpu
+adb push ConvUdoCpu/Conv2DPackage/libs/arm64-v8a/libc++_shared.so /data/local/tmp/vgg16_udo/cpu
+</pre></div>
+</div>
+<p>Now set required environment variables and run snpe-net-run on device:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>adb shell
+cd /data/local/tmp/vgg16_udo/
+export SNPE_TARGET_ARCH=aarch64-android
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/lib
+export PATH=$PATH:/data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/bin
+export LD_LIBRARY_PATH=/data/local/tmp/vgg16_udo/cpu/:$LD_LIBRARY_PATH
+snpe-net-run --container vgg16_udo.dlc --input_list raw_list.txt --udo_package_path cpu/libUdoConv2DPackageReg.so
+</pre></div>
+</div>
+<p><strong>Hexagon DSP Execution</strong></p>
+<p>The procedure for execution on device for DSP is largely the
+same as CPU and GPU. However, the DSP runtime requires
+quantized network parameters. While DSP allows unquantized
+DLCs, it is generally recommended to quantize DLCs for improved
+performance. The tutorial will use a quantized DLC as an
+illustrative example. Quantizing the DLC requires the
+<strong>snpe-dlc-quantize</strong> tool.</p>
+<p>To quantize the DLC for use on DSP:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>cd $SNPE_ROOT/examples/Models/VGG/
+snpe-dlc-quantize --input_dlc dlc/vgg16_udo.dlc --input_list data/cropped/raw_list.txt --udo_package_path ConvUdoCpu/Conv2DPackage/libs/x86-64_linux_clang/libUdoConv2DPackageReg.so --output_dlc dlc/vgg16_udo_quantized.dlc
+</pre></div>
+</div>
+<p>For more information on <strong>snpe-dlc-quantize</strong> visit
+<a class="reference external" href="quantized_models.html#overview">quantization</a>. For
+information on UDO-specific quantization visit <a class="reference external" href="preparing_model_with_udo.html#quantizing-a-dlc-with-udo">Quantizing a
+DLC with UDO</a>.
+For information on DSP runtime visit <a class="reference external" href="dsp_runtime.html">DSP Runtime</a>.</p>
+<p>Now push the quantized model to device:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>adb push dlc/vgg16_udo_quantized.dlc /data/local/tmp/vgg16_udo
+</pre></div>
+</div>
+<p><strong>Note:</strong> Please refer to <a class="reference external" href="tutorial_inceptionv3_udo_dsp.html">UDO DSP tutorial for Quantized
+DLC</a> for executing on the
+DSP runtime using quantized dlc.</p>
+<p>Before executing on the DSP, push the Qualcomm® Neural Processing SDK libraries for DSP to
+device:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>adb shell &quot;mkdir -p /data/local/tmp/snpeexample/dsp/lib&quot;
+adb push $SNPE_ROOT/lib/$SNPE_TARGET_DSPARCH/unsigned/*.so /data/local/tmp/snpeexample/dsp/lib
+</pre></div>
+</div>
+<p>Now push DSP-specific UDO libraries to device. Depending on DSP
+architecture specified in the config, <strong>dsp_v68</strong> directory can
+be <strong>dsp_v60</strong> or <strong>dsp</strong> (with older Qualcomm® Neural Processing SDK).</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>cd $SNPE_ROOT/examples/Models/VGG
+adb shell &quot;mkdir -p /data/local/tmp/vgg16_udo/dsp&quot;
+adb push ConvUdoDsp/Conv2DPackage/libs/dsp_v68/*.so /data/local/tmp/vgg16_udo/dsp # For DSP V68 or later
+adb push ConvUdoDsp/Conv2DPackage/libs/dsp_v60/*.so /data/local/tmp/vgg16_udo/dsp # For DSP versions less than v68
+adb push ConvUdoDsp/Conv2DPackage/libs/arm64-v8a/libUdoConv2DPackageReg.so /data/local/tmp/vgg16_udo/dsp # Pushes reg lib
+adb push ConvUdoDsp/Conv2DPackage/libs/arm64-v8a/libc++_shared.so /data/local/tmp/vgg16_udo/dsp
+</pre></div>
+</div>
+<p>Then set required environment variables and run snpe-net-run on
+device. Note that <strong>Conv2DInt8Impl</strong> should be used for quantized DLCs:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>adb shell
+cd /data/local/tmp/vgg16_udo/
+export SNPE_TARGET_ARCH=aarch64-android
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/lib
+export PATH=$PATH:/data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/bin
+export LD_LIBRARY_PATH=/data/local/tmp/vgg16_udo/dsp/:$LD_LIBRARY_PATH
+export ADSP_LIBRARY_PATH=&quot;/data/local/tmp/vgg16_udo/dsp/;/data/local/tmp/snpeexample/dsp/lib;/system/lib/rfsa/adsp;/system/vendor/lib/rfsa/adsp;/dsp&quot;
+snpe-net-run --container vgg16_udo_quantized.dlc --input_list raw_list.txt --udo_package_path dsp/libUdoConv2DPackageReg.so --use_dsp
+</pre></div>
+</div>
+<p>To verify classification results, run the following on your host cpu machine.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>cd $SNPE_ROOT/examples/Models/VGG
+adb pull /data/local/tmp/vgg16_udo/output .
+python3 $SNPE_ROOT/examples/Models/VGG/scripts/show_vgg_classifications.py -i data/cropped/raw_list.txt \
+                                                                           -o output/ \
+                                                                           -l data/synset.txt
+</pre></div>
+</div>
+<p>The output should look like the following, showing
+classification results for all the images.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>Classification results
+probability=0.351832 ; class=n02123045 tabby, tabby cat
+probability=0.315168 ; class=n02123159 tiger cat
+probability=0.313084 ; class=n02124075 Egyptian cat
+probability=0.012995 ; class=n02127052 lynx, catamount
+probability=0.003528 ; class=n02129604 tiger, Panthera tigris
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="tutorial_psnpe_introduction.html" class="btn btn-neutral float-right" title="PSNPE Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="tutorial_inceptionv3_udo_dsp_win.html" class="btn btn-neutral float-left" title="UDO DSP tutorial on Windows for Quantized DLC" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

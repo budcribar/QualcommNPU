@@ -1,0 +1,292 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Application Integration Tips &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Performance Tips" href="prog_performance.html" />
+    <link rel="prev" title="Application Tips" href="usergroup9.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup1.html">Network Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="usergroup6.html">Tutorials and Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial_setup.html">Tutorials Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snpe2_migration_guidelines.html">SNPE1 to SNPE2 Migration Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup7.html">Running Nets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup8.html">Code Examples</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="usergroup9.html">Application Tips</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Application Integration Tips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="prog_performance.html">Performance Tips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="prog_burst_mode.html">Burst Mode on DSP and AIP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_logging.html">Logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpu_fxp_mode.html">CPU Fixed Point Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arm64x_support.html">Windows ARM64X Support</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="usergroup6.html">Tutorials and Examples</a> &raquo;</li>
+        
+          <li><a href="usergroup9.html">Application Tips</a> &raquo;</li>
+        
+      <li>Application Integration Tips</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="application-integration-tips">
+<h1>Application Integration Tips<a class="headerlink" href="#application-integration-tips" title="Permalink to this heading">¶</a></h1>
+<div class="ui-resizable side-nav-resizable docutils container" id="side-nav">
+<div class="docutils container" id="nav-tree">
+<div class="docutils container" id="nav-tree-contents">
+</div>
+</div>
+</div>
+<div class="docutils container" id="doc-content">
+<div class="header docutils container">
+</div>
+<div class="contents docutils container">
+<div class="textblock docutils container">
+<p class="rubric" id="upgrading-neural-network-dlc-files">Upgrading Neural Network DLC Files</p>
+<p>Qualcomm® Neural Processing SDK supports DLC files created from previous Qualcomm® Neural Processing SDK release (any
+release after 1.0). However, users experiencing issues when
+upgrading to a new Qualcomm® Neural Processing SDK release may want to try reconverting
+their model to DLC with the current release.</p>
+<p class="rubric" id="upgrading-to-1-16-and-later-releases-from-older-versions">Upgrading To 1.16 and Later Releases From Older
+Versions</p>
+<p>Qualcomm® Neural Processing SDK Release 1.16.0 introduces support for the batch
+dimension which requires some special attention. In older releases, if the source
+model contained a batch dimension, resulting in a 4D input tensor, the dimension was
+quietly ignored and the converted DLC would use a 3D input tensor in its place.
+From Release 1.16.0 onward, the batch dimension is honored and stored in the DLC.</p>
+<p>For example, if a Tensorflow source model contains an input with
+dimensions {1,3,224,224}, older releases of Qualcomm® Neural Processing SDK would have
+converted this to an input with dimension {224,224,3}. In the
+newer releases, the converter creates an input with dimension
+{1,224,224,3}. The addition of the batch dimension will
+ripple all the way through to the end of the model, and the
+output tensor will also have a batch of 1 added to its
+dimensionality. This means that existing application code that assumes a 3D
+input tensor has to be updated to now assume a 4D tensor,
+when it is executed against a DLC file that was converted
+using the new release.</p>
+<p>Additionally, if the source model contained the batch
+dimension with a non-unity extent, this extent is reflected
+in the DLC. For example, if our Tensorflow source model had an
+input with dimension {5,3,224,224}, older Qualcomm® Neural Processing SDK releases would
+have produced an input of {224,224,3}. But new releases
+create an input of dimension {5,224,224,3}. The application
+code using this model is now expected to give Qualcomm® Neural Processing SDK an input
+tensor with a size of 5x224x224x3 = 752,640 values.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="prog_performance.html" class="btn btn-neutral float-right" title="Performance Tips" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="usergroup9.html" class="btn btn-neutral float-left" title="Application Tips" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

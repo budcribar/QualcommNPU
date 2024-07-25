@@ -1,0 +1,295 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>TFLite Model Conversion &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="PyTorch Model Conversion" href="model_conv_pytorch.html" />
+    <link rel="prev" title="Tensorflow Graph Compatibility" href="tensorflow_graphs.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="usergroup1.html">Network Models</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="network_layers.html">Supported Network Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supported_onnx_ops.html">Supported ONNX Ops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quantized_models.html">Quantized vs Non-Quantized Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup2.html">User-defined Operations</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="usergroup3.html">Model Conversion</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="model_conv_tensorflow.html">TensorFlow Model Conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensorflow_graphs.html">Tensorflow Graph Compatibility</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">TFLite Model Conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model_conv_pytorch.html">PyTorch Model Conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model_conv_onnx.html">ONNX Model Conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model_conversion.html">Quantizing a Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="offline_graph_caching.html">Offline Graph Caching for DSP Runtime on HTP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qairt_converter.html">Qairt Converter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qairt_quantizer.html">Qairt Quantizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usergroup4.html">Model Tips</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup6.html">Tutorials and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="usergroup1.html">Network Models</a> &raquo;</li>
+        
+          <li><a href="usergroup3.html">Model Conversion</a> &raquo;</li>
+        
+      <li>TFLite Model Conversion</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tflite-model-conversion">
+<h1>TFLite Model Conversion<a class="headerlink" href="#tflite-model-conversion" title="Permalink to this heading">¶</a></h1>
+<div class="ui-resizable side-nav-resizable docutils container" id="side-nav">
+<div class="docutils container" id="nav-tree">
+<div class="docutils container" id="nav-tree-contents">
+</div>
+</div>
+</div>
+<div class="docutils container" id="doc-content">
+<div class="header docutils container">
+</div>
+<div class="contents docutils container">
+<div class="textblock docutils container">
+<p>Machine Learning frameworks have specific formats for storing
+neural network models. Qualcomm® Neural Processing SDK supports these various models by
+converting them to a framework neutral <strong>deep learning
+container (DLC)</strong> format. The DLC file is used by the Qualcomm® Neural Processing SDK
+runtime for execution of the neural network.</p>
+<p>A trained Tensorflow model can be converted to a TFLte model
+(.tflite) file using the instructions at
+<a class="reference external" href="https://www.tensorflow.org/lite/convert#python_api_">https://www.tensorflow.org/lite/convert#python_api_</a></p>
+<p>The
+<a class="reference external" href="tools.html#snpe-tflite-to-dlc">snpe-tflite-to-dlc</a>
+tool converts a TFLite model into an equivalent Qualcomm® Neural Processing SDK DLC file.
+The following command will convert an Inception v3 TFLite model
+into a Qualcomm® Neural Processing SDK DLC file.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>snpe-tflite-to-dlc --input_network inception_v3.tflite
+                   --input_dim input &quot;1,299,299,3&quot;
+                   --output_path inception_v3.dlc
+</pre></div>
+</div>
+<p>The Inception v3 model files can be obtained from
+<a class="reference external" href="https://tfhub.dev/tensorflow/lite-model/inception_v3/1/default/1">https://tfhub.dev/tensorflow/lite-model/inception_v3/1/default/1</a></p>
+<p>Note:</p>
+<ul class="simple">
+<li><p>To check the list of currently supported TFlite Ops, see <a class="reference external" href="network_layers.html#network_layers">Op
+Support Table</a>.</p></li>
+<li><p>Qualcomm® Neural Processing SDK and TFlite Converter currently only support float input
+data types.</p></li>
+<li><p>There are some known issues with certain older versions of
+MLIR based TFLite converter that can lead to failure loading
+the model.</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="model_conv_pytorch.html" class="btn btn-neutral float-right" title="PyTorch Model Conversion" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="tensorflow_graphs.html" class="btn btn-neutral float-left" title="Tensorflow Graph Compatibility" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

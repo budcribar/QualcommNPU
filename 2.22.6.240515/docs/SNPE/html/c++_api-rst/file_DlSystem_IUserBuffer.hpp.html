@@ -1,0 +1,1102 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>File IUserBuffer.hpp &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup1.html">Network Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup6.html">Tutorials and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>File IUserBuffer.hpp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="file-iuserbuffer-hpp">
+<span id="file-dlsystem-iuserbuffer-hpp"></span><h1>File IUserBuffer.hpp<a class="headerlink" href="#file-iuserbuffer-hpp" title="Permalink to this heading">¶</a></h1>
+<p>↰ <a class="reference internal" href="dir_DlSystem.html#dir-dlsystem"><span class="std std-ref">Parent directory</span></a> (<code class="docutils literal notranslate"><span class="pre">DlSystem</span></code>)</p>
+<div class="contents local topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#definition-dlsystem-iuserbuffer-hpp" id="id1">Definition (<code class="docutils literal notranslate"><span class="pre">DlSystem/IUserBuffer.hpp</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#includes" id="id2">Includes</a></p></li>
+<li><p><a class="reference internal" href="#included-by" id="id3">Included By</a></p></li>
+<li><p><a class="reference internal" href="#namespaces" id="id4">Namespaces</a></p></li>
+<li><p><a class="reference internal" href="#classes" id="id5">Classes</a></p></li>
+<li><p><a class="reference internal" href="#full-file-listing" id="id6">Full File Listing</a></p></li>
+</ul>
+</div>
+<div class="section" id="definition-dlsystem-iuserbuffer-hpp">
+<h2>Definition (<code class="docutils literal notranslate"><span class="pre">DlSystem/IUserBuffer.hpp</span></code>)<a class="headerlink" href="#definition-dlsystem-iuserbuffer-hpp" title="Permalink to this heading">¶</a></h2>
+</div>
+<div class="section" id="includes">
+<h2>Includes<a class="headerlink" href="#includes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DlSystem/IUserBuffer.h</span></code> (<a class="reference internal" href="#file-dlsystem-iuserbuffer-hpp"><span class="std std-ref">File IUserBuffer.hpp</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TensorShape.hpp</span></code> (<a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#file-dlsystem-tensorshape-hpp"><span class="std std-ref">File TensorShape.hpp</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cstddef</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="included-by">
+<h2>Included By<a class="headerlink" href="#included-by" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="file_DlSystem_IBufferAttributes.hpp.html#file-dlsystem-ibufferattributes-hpp"><span class="std std-ref">File IBufferAttributes.hpp</span></a></p></li>
+<li><p><a class="reference internal" href="file_DlSystem_IUserBufferFactory.hpp.html#file-dlsystem-iuserbufferfactory-hpp"><span class="std std-ref">File IUserBufferFactory.hpp</span></a></p></li>
+<li><p><a class="reference internal" href="file_DlSystem_UserBufferMap.hpp.html#file-dlsystem-userbuffermap-hpp"><span class="std std-ref">File UserBufferMap.hpp</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="namespaces">
+<h2>Namespaces<a class="headerlink" href="#namespaces" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="namespace_DlSystem.html#namespace-dlsystem"><span class="std std-ref">Namespace DlSystem</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="classDlSystem_1_1IUserBuffer.html#exhale-class-classdlsystem-1-1iuserbuffer"><span class="std std-ref">Class IUserBuffer</span></a></p></li>
+<li><p><a class="reference internal" href="classDlSystem_1_1UserBufferEncoding.html#exhale-class-classdlsystem-1-1userbufferencoding"><span class="std std-ref">Class UserBufferEncoding</span></a></p></li>
+<li><p><a class="reference internal" href="classDlSystem_1_1UserBufferEncodingBool.html#exhale-class-classdlsystem-1-1userbufferencodingbool"><span class="std std-ref">Class UserBufferEncodingBool</span></a></p></li>
+<li><p><a class="reference internal" href="classDlSystem_1_1UserBufferEncodingFloat.html#exhale-class-classdlsystem-1-1userbufferencodingfloat"><span class="std std-ref">Class UserBufferEncodingFloat</span></a></p></li>
+<li><p><a class="reference internal" href="classDlSystem_1_1UserBufferEncodingFloatN.html#exhale-class-classdlsystem-1-1userbufferencodingfloatn"><span class="std std-ref">Class UserBufferEncodingFloatN</span></a></p></li>
+<li><p><a class="reference internal" href="classDlSystem_1_1UserBufferEncodingIntN.html#exhale-class-classdlsystem-1-1userbufferencodingintn"><span class="std std-ref">Class UserBufferEncodingIntN</span></a></p></li>
+<li><p><a class="reference internal" href="classDlSystem_1_1UserBufferEncodingTf8.html#exhale-class-classdlsystem-1-1userbufferencodingtf8"><span class="std std-ref">Class UserBufferEncodingTf8</span></a></p></li>
+<li><p><a class="reference internal" href="classDlSystem_1_1UserBufferEncodingTfN.html#exhale-class-classdlsystem-1-1userbufferencodingtfn"><span class="std std-ref">Class UserBufferEncodingTfN</span></a></p></li>
+<li><p><a class="reference internal" href="classDlSystem_1_1UserBufferEncodingUintN.html#exhale-class-classdlsystem-1-1userbufferencodinguintn"><span class="std std-ref">Class UserBufferEncodingUintN</span></a></p></li>
+<li><p><a class="reference internal" href="classDlSystem_1_1UserBufferEncodingUnsigned8Bit.html#exhale-class-classdlsystem-1-1userbufferencodingunsigned8bit"><span class="std std-ref">Class UserBufferEncodingUnsigned8Bit</span></a></p></li>
+<li><p><a class="reference internal" href="classDlSystem_1_1UserBufferSource.html#exhale-class-classdlsystem-1-1userbuffersource"><span class="std std-ref">Class UserBufferSource</span></a></p></li>
+<li><p><a class="reference internal" href="classDlSystem_1_1UserBufferSourceGLBuffer.html#exhale-class-classdlsystem-1-1userbuffersourceglbuffer"><span class="std std-ref">Class UserBufferSourceGLBuffer</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="full-file-listing">
+<h2>Full File Listing<a class="headerlink" href="#full-file-listing" title="Permalink to this heading">¶</a></h2>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv48DlSystem">
+<span id="_CPPv38DlSystem"></span><span id="_CPPv28DlSystem"></span><span id="DlSystem"></span><span class="target" id="namespaceDlSystem"></span><span class="k"><span class="pre">namespace</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DlSystem</span></span></span><br /></dt>
+<dd><dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem18UserBufferEncodingE">
+<span id="_CPPv3N8DlSystem18UserBufferEncodingE"></span><span id="_CPPv2N8DlSystem18UserBufferEncodingE"></span><span id="DlSystem::UserBufferEncoding"></span><span class="target" id="classDlSystem_1_1UserBufferEncoding"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferEncoding</span></span></span><a class="headerlink" href="#_CPPv4N8DlSystem18UserBufferEncodingE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;IUserBuffer.hpp&gt;</em></div>
+<p>Subclassed by <a class="reference internal" href="#classDlSystem_1_1UserBufferEncodingBool"><span class="std std-ref">DlSystem::UserBufferEncodingBool</span></a>, <a class="reference internal" href="#classDlSystem_1_1UserBufferEncodingFloat"><span class="std std-ref">DlSystem::UserBufferEncodingFloat</span></a>, <a class="reference internal" href="#classDlSystem_1_1UserBufferEncodingFloatN"><span class="std std-ref">DlSystem::UserBufferEncodingFloatN</span></a>, <a class="reference internal" href="#classDlSystem_1_1UserBufferEncodingIntN"><span class="std std-ref">DlSystem::UserBufferEncodingIntN</span></a>, <a class="reference internal" href="#classDlSystem_1_1UserBufferEncodingTfN"><span class="std std-ref">DlSystem::UserBufferEncodingTfN</span></a>, <a class="reference internal" href="#classDlSystem_1_1UserBufferEncodingUintN"><span class="std std-ref">DlSystem::UserBufferEncodingUintN</span></a>, <a class="reference internal" href="#classDlSystem_1_1UserBufferEncodingUnsigned8Bit"><span class="std std-ref">DlSystem::UserBufferEncodingUnsigned8Bit</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-types">Public Types</p>
+<dl class="cpp enum-class">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem18UserBufferEncoding13ElementType_tE">
+<span id="_CPPv3N8DlSystem18UserBufferEncoding13ElementType_tE"></span><span id="_CPPv2N8DlSystem18UserBufferEncoding13ElementType_tE"></span><span class="target" id="classDlSystem_1_1UserBufferEncoding_1a0b6c4ca05d17e8edb1a21a39b32f3d92"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ElementType_t</span></span></span><a class="headerlink" href="#_CPPv4N8DlSystem18UserBufferEncoding13ElementType_tE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An enum class of all supported element types in a <a class="reference internal" href="#classDlSystem_1_1IUserBuffer"><span class="std std-ref">IUserBuffer</span></a> </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem18UserBufferEncoding13ElementType_t7UNKNOWNE">
+<span id="_CPPv3N8DlSystem18UserBufferEncoding13ElementType_t7UNKNOWNE"></span><span id="_CPPv2N8DlSystem18UserBufferEncoding13ElementType_t7UNKNOWNE"></span><span class="target" id="classDlSystem_1_1UserBufferEncoding_1a0b6c4ca05d17e8edb1a21a39b32f3d92a696b031073e74bf2cb98e5ef201d4aa3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UNKNOWN</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N8DlSystem18UserBufferEncoding13ElementType_t7UNKNOWNE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Unknown element type. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem18UserBufferEncoding13ElementType_t5FLOATE">
+<span id="_CPPv3N8DlSystem18UserBufferEncoding13ElementType_t5FLOATE"></span><span id="_CPPv2N8DlSystem18UserBufferEncoding13ElementType_t5FLOATE"></span><span class="target" id="classDlSystem_1_1UserBufferEncoding_1a0b6c4ca05d17e8edb1a21a39b32f3d92ae738c26bf4ce1037fa81b039a915cbf6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FLOAT</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N8DlSystem18UserBufferEncoding13ElementType_t5FLOATE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Each element is presented by 32-bit float. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem18UserBufferEncoding13ElementType_t12UNSIGNED8BITE">
+<span id="_CPPv3N8DlSystem18UserBufferEncoding13ElementType_t12UNSIGNED8BITE"></span><span id="_CPPv2N8DlSystem18UserBufferEncoding13ElementType_t12UNSIGNED8BITE"></span><span class="target" id="classDlSystem_1_1UserBufferEncoding_1a0b6c4ca05d17e8edb1a21a39b32f3d92a3e34d525056a825b9051e2d25bfae2ad"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UNSIGNED8BIT</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">2</span></span><a class="headerlink" href="#_CPPv4N8DlSystem18UserBufferEncoding13ElementType_t12UNSIGNED8BITE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Each element is presented by an unsigned int. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem18UserBufferEncoding13ElementType_t7FLOAT16E">
+<span id="_CPPv3N8DlSystem18UserBufferEncoding13ElementType_t7FLOAT16E"></span><span id="_CPPv2N8DlSystem18UserBufferEncoding13ElementType_t7FLOAT16E"></span><span class="target" id="classDlSystem_1_1UserBufferEncoding_1a0b6c4ca05d17e8edb1a21a39b32f3d92ac49f280a5ad551ccc77be0b01a2f386a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FLOAT16</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">3</span></span><a class="headerlink" href="#_CPPv4N8DlSystem18UserBufferEncoding13ElementType_t7FLOAT16E" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Each element is presented by 16-bit float. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem18UserBufferEncoding13ElementType_t3TF8E">
+<span id="_CPPv3N8DlSystem18UserBufferEncoding13ElementType_t3TF8E"></span><span id="_CPPv2N8DlSystem18UserBufferEncoding13ElementType_t3TF8E"></span><span class="target" id="classDlSystem_1_1UserBufferEncoding_1a0b6c4ca05d17e8edb1a21a39b32f3d92a41e780d95eb9a2852e42282d2d2a3177"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TF8</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">10</span></span><a class="headerlink" href="#_CPPv4N8DlSystem18UserBufferEncoding13ElementType_t3TF8E" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Each element is presented by an 8-bit quantized value. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem18UserBufferEncoding13ElementType_t4TF16E">
+<span id="_CPPv3N8DlSystem18UserBufferEncoding13ElementType_t4TF16E"></span><span id="_CPPv2N8DlSystem18UserBufferEncoding13ElementType_t4TF16E"></span><span class="target" id="classDlSystem_1_1UserBufferEncoding_1a0b6c4ca05d17e8edb1a21a39b32f3d92a7aa10c8c6752f417e0b049d7a4c37899"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TF16</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">11</span></span><a class="headerlink" href="#_CPPv4N8DlSystem18UserBufferEncoding13ElementType_t4TF16E" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Each element is presented by an 16-bit quantized value. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem18UserBufferEncoding13ElementType_t5INT32E">
+<span id="_CPPv3N8DlSystem18UserBufferEncoding13ElementType_t5INT32E"></span><span id="_CPPv2N8DlSystem18UserBufferEncoding13ElementType_t5INT32E"></span><span class="target" id="classDlSystem_1_1UserBufferEncoding_1a0b6c4ca05d17e8edb1a21a39b32f3d92a6495adba09844fac8eeb0aba86e6f1bf"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">INT32</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">12</span></span><a class="headerlink" href="#_CPPv4N8DlSystem18UserBufferEncoding13ElementType_t5INT32E" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Each element is presented by Int32. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem18UserBufferEncoding13ElementType_t6UINT32E">
+<span id="_CPPv3N8DlSystem18UserBufferEncoding13ElementType_t6UINT32E"></span><span id="_CPPv2N8DlSystem18UserBufferEncoding13ElementType_t6UINT32E"></span><span class="target" id="classDlSystem_1_1UserBufferEncoding_1a0b6c4ca05d17e8edb1a21a39b32f3d92a17266551181f69a1b4a3ad5c9e270afc"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UINT32</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">13</span></span><a class="headerlink" href="#_CPPv4N8DlSystem18UserBufferEncoding13ElementType_t6UINT32E" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Each element is presented by UInt32. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem18UserBufferEncoding13ElementType_t4INT8E">
+<span id="_CPPv3N8DlSystem18UserBufferEncoding13ElementType_t4INT8E"></span><span id="_CPPv2N8DlSystem18UserBufferEncoding13ElementType_t4INT8E"></span><span class="target" id="classDlSystem_1_1UserBufferEncoding_1a0b6c4ca05d17e8edb1a21a39b32f3d92aee9d73311ff0658494edfff14c3ec1e3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">INT8</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">14</span></span><a class="headerlink" href="#_CPPv4N8DlSystem18UserBufferEncoding13ElementType_t4INT8E" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Each element is presented by Int8. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem18UserBufferEncoding13ElementType_t5UINT8E">
+<span id="_CPPv3N8DlSystem18UserBufferEncoding13ElementType_t5UINT8E"></span><span id="_CPPv2N8DlSystem18UserBufferEncoding13ElementType_t5UINT8E"></span><span class="target" id="classDlSystem_1_1UserBufferEncoding_1a0b6c4ca05d17e8edb1a21a39b32f3d92aecfc091ed2a607335524c8389cfa41b5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UINT8</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">15</span></span><a class="headerlink" href="#_CPPv4N8DlSystem18UserBufferEncoding13ElementType_t5UINT8E" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Each element is presented by UInt8. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem18UserBufferEncoding13ElementType_t5INT16E">
+<span id="_CPPv3N8DlSystem18UserBufferEncoding13ElementType_t5INT16E"></span><span id="_CPPv2N8DlSystem18UserBufferEncoding13ElementType_t5INT16E"></span><span class="target" id="classDlSystem_1_1UserBufferEncoding_1a0b6c4ca05d17e8edb1a21a39b32f3d92a5f90af42814c0a419d715d43ae54fd7a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">INT16</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">16</span></span><a class="headerlink" href="#_CPPv4N8DlSystem18UserBufferEncoding13ElementType_t5INT16E" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Each element is presented by Int16. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem18UserBufferEncoding13ElementType_t6UINT16E">
+<span id="_CPPv3N8DlSystem18UserBufferEncoding13ElementType_t6UINT16E"></span><span id="_CPPv2N8DlSystem18UserBufferEncoding13ElementType_t6UINT16E"></span><span class="target" id="classDlSystem_1_1UserBufferEncoding_1a0b6c4ca05d17e8edb1a21a39b32f3d92a48d8f1a723d44ff4a87db1bb6c551c62"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UINT16</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">17</span></span><a class="headerlink" href="#_CPPv4N8DlSystem18UserBufferEncoding13ElementType_t6UINT16E" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Each element is presented by UInt16. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem18UserBufferEncoding13ElementType_t5BOOL8E">
+<span id="_CPPv3N8DlSystem18UserBufferEncoding13ElementType_t5BOOL8E"></span><span id="_CPPv2N8DlSystem18UserBufferEncoding13ElementType_t5BOOL8E"></span><span class="target" id="classDlSystem_1_1UserBufferEncoding_1a0b6c4ca05d17e8edb1a21a39b32f3d92a05afd9eb8887a406d47474cd3809a5dd"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">BOOL8</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">18</span></span><a class="headerlink" href="#_CPPv4N8DlSystem18UserBufferEncoding13ElementType_t5BOOL8E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem18UserBufferEncoding13ElementType_t5INT64E">
+<span id="_CPPv3N8DlSystem18UserBufferEncoding13ElementType_t5INT64E"></span><span id="_CPPv2N8DlSystem18UserBufferEncoding13ElementType_t5INT64E"></span><span class="target" id="classDlSystem_1_1UserBufferEncoding_1a0b6c4ca05d17e8edb1a21a39b32f3d92a4e866b275c85fbb439f6484251cfb31c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">INT64</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">19</span></span><a class="headerlink" href="#_CPPv4N8DlSystem18UserBufferEncoding13ElementType_t5INT64E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem18UserBufferEncoding13ElementType_t6UINT64E">
+<span id="_CPPv3N8DlSystem18UserBufferEncoding13ElementType_t6UINT64E"></span><span id="_CPPv2N8DlSystem18UserBufferEncoding13ElementType_t6UINT64E"></span><span class="target" id="classDlSystem_1_1UserBufferEncoding_1a0b6c4ca05d17e8edb1a21a39b32f3d92a6de7acf711860176ba606e9aa2b85d5f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UINT64</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">20</span></span><a class="headerlink" href="#_CPPv4N8DlSystem18UserBufferEncoding13ElementType_t6UINT64E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem18UserBufferEncodingD0Ev">
+<span id="_CPPv3N8DlSystem18UserBufferEncodingD0Ev"></span><span id="_CPPv2N8DlSystem18UserBufferEncodingD0Ev"></span><span id="DlSystem::UserBufferEncoding::~UserBufferEncoding"></span><span class="target" id="classDlSystem_1_1UserBufferEncoding_1ae69127107da9ebcbb7ee0754cd28f00b"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">~UserBufferEncoding</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">default</span></span><a class="headerlink" href="#_CPPv4N8DlSystem18UserBufferEncodingD0Ev" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem18UserBufferEncoding18UserBufferEncodingERR18UserBufferEncoding">
+<span id="_CPPv3N8DlSystem18UserBufferEncoding18UserBufferEncodingERR18UserBufferEncoding"></span><span id="_CPPv2N8DlSystem18UserBufferEncoding18UserBufferEncodingERR18UserBufferEncoding"></span><span id="DlSystem::UserBufferEncoding::UserBufferEncoding__UserBufferEncodingRR"></span><span class="target" id="classDlSystem_1_1UserBufferEncoding_1acc8ca2e1a0bc2fc36f4f7be5a86a1d18"></span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferEncoding</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="classDlSystem_1_1UserBufferEncoding.html#_CPPv4N8DlSystem18UserBufferEncoding18UserBufferEncodingERR18UserBufferEncoding" title="DlSystem::UserBufferEncoding::UserBufferEncoding"><span class="n"><span class="pre">UserBufferEncoding</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">other</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N8DlSystem18UserBufferEncoding18UserBufferEncodingERR18UserBufferEncoding" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK8DlSystem18UserBufferEncoding14getElementTypeEv">
+<span id="_CPPv3NK8DlSystem18UserBufferEncoding14getElementTypeEv"></span><span id="_CPPv2NK8DlSystem18UserBufferEncoding14getElementTypeEv"></span><span id="DlSystem::UserBufferEncoding::getElementTypeC"></span><span class="target" id="classDlSystem_1_1UserBufferEncoding_1a4692d624f72def25017f11cb25fb16ec"></span><a class="reference internal" href="classDlSystem_1_1UserBufferEncoding.html#_CPPv4N8DlSystem18UserBufferEncoding13ElementType_tE" title="DlSystem::UserBufferEncoding::ElementType_t"><span class="n"><span class="pre">ElementType_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getElementType</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK8DlSystem18UserBufferEncoding14getElementTypeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Retrieves the element type. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Element type </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK8DlSystem18UserBufferEncoding14getElementSizeEv">
+<span id="_CPPv3NK8DlSystem18UserBufferEncoding14getElementSizeEv"></span><span id="_CPPv2NK8DlSystem18UserBufferEncoding14getElementSizeEv"></span><span id="DlSystem::UserBufferEncoding::getElementSizeC"></span><span class="target" id="classDlSystem_1_1UserBufferEncoding_1acc4073d7a6fd5917206d9a8fd016d309"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getElementSize</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK8DlSystem18UserBufferEncoding14getElementSizeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Retrieves the size of the element, in bytes. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Size of the element, in bytes. </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem16UserBufferSourceE">
+<span id="_CPPv3N8DlSystem16UserBufferSourceE"></span><span id="_CPPv2N8DlSystem16UserBufferSourceE"></span><span id="DlSystem::UserBufferSource"></span><span class="target" id="classDlSystem_1_1UserBufferSource"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferSource</span></span></span><a class="headerlink" href="#_CPPv4N8DlSystem16UserBufferSourceE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;IUserBuffer.hpp&gt;</em></div>
+<p>Subclassed by <a class="reference internal" href="#classDlSystem_1_1UserBufferSourceGLBuffer"><span class="std std-ref">DlSystem::UserBufferSourceGLBuffer</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-types">Public Types</p>
+<dl class="cpp enum-class">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem16UserBufferSource12SourceType_tE">
+<span id="_CPPv3N8DlSystem16UserBufferSource12SourceType_tE"></span><span id="_CPPv2N8DlSystem16UserBufferSource12SourceType_tE"></span><span class="target" id="classDlSystem_1_1UserBufferSource_1acbbc845576c642627261f2147719ebdd"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SourceType_t</span></span></span><a class="headerlink" href="#_CPPv4N8DlSystem16UserBufferSource12SourceType_tE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem16UserBufferSource12SourceType_t7UNKNOWNE">
+<span id="_CPPv3N8DlSystem16UserBufferSource12SourceType_t7UNKNOWNE"></span><span id="_CPPv2N8DlSystem16UserBufferSource12SourceType_t7UNKNOWNE"></span><span class="target" id="classDlSystem_1_1UserBufferSource_1acbbc845576c642627261f2147719ebdda696b031073e74bf2cb98e5ef201d4aa3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UNKNOWN</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N8DlSystem16UserBufferSource12SourceType_t7UNKNOWNE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Unknown buffer source type. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem16UserBufferSource12SourceType_t3CPUE">
+<span id="_CPPv3N8DlSystem16UserBufferSource12SourceType_t3CPUE"></span><span id="_CPPv2N8DlSystem16UserBufferSource12SourceType_t3CPUE"></span><span class="target" id="classDlSystem_1_1UserBufferSource_1acbbc845576c642627261f2147719ebdda2b55387dd066c5bac646ac61543d152d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CPU</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N8DlSystem16UserBufferSource12SourceType_t3CPUE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The network inputs are from CPU buffer. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem16UserBufferSource12SourceType_t8GLBUFFERE">
+<span id="_CPPv3N8DlSystem16UserBufferSource12SourceType_t8GLBUFFERE"></span><span id="_CPPv2N8DlSystem16UserBufferSource12SourceType_t8GLBUFFERE"></span><span class="target" id="classDlSystem_1_1UserBufferSource_1acbbc845576c642627261f2147719ebdda5d064569fe7135925c6de22d56770948"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GLBUFFER</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">2</span></span><a class="headerlink" href="#_CPPv4N8DlSystem16UserBufferSource12SourceType_t8GLBUFFERE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The network inputs are from OpenGL buffer. </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK8DlSystem16UserBufferSource13getSourceTypeEv">
+<span id="_CPPv3NK8DlSystem16UserBufferSource13getSourceTypeEv"></span><span id="_CPPv2NK8DlSystem16UserBufferSource13getSourceTypeEv"></span><span id="DlSystem::UserBufferSource::getSourceTypeC"></span><span class="target" id="classDlSystem_1_1UserBufferSource_1a48f9413224744eb8da704d9386df98e1"></span><a class="reference internal" href="classDlSystem_1_1UserBufferSource.html#_CPPv4N8DlSystem16UserBufferSource12SourceType_tE" title="DlSystem::UserBufferSource::SourceType_t"><span class="n"><span class="pre">SourceType_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getSourceType</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK8DlSystem16UserBufferSource13getSourceTypeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Retrieves the source type. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Source type </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-protected-functions">Protected Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem16UserBufferSource16UserBufferSourceE10HandleType">
+<span id="_CPPv3N8DlSystem16UserBufferSource16UserBufferSourceE10HandleType"></span><span id="_CPPv2N8DlSystem16UserBufferSource16UserBufferSourceE10HandleType"></span><span id="DlSystem::UserBufferSource::UserBufferSource__HandleType"></span><span class="target" id="classDlSystem_1_1UserBufferSource_1af3e17f2ba0af31a56b88cb5d5936f372"></span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferSource</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">HandleType</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">handle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem16UserBufferSource16UserBufferSourceE10HandleType" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem24UserBufferSourceGLBufferE">
+<span id="_CPPv3N8DlSystem24UserBufferSourceGLBufferE"></span><span id="_CPPv2N8DlSystem24UserBufferSourceGLBufferE"></span><span id="DlSystem::UserBufferSourceGLBuffer"></span><span class="target" id="classDlSystem_1_1UserBufferSourceGLBuffer"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferSourceGLBuffer</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1UserBufferSource.html#_CPPv4N8DlSystem16UserBufferSourceE" title="DlSystem::UserBufferSource"><span class="n"><span class="pre">UserBufferSource</span></span></a><a class="headerlink" href="#_CPPv4N8DlSystem24UserBufferSourceGLBufferE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;IUserBuffer.hpp&gt;</em></div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem24UserBufferSourceGLBuffer24UserBufferSourceGLBufferEv">
+<span id="_CPPv3N8DlSystem24UserBufferSourceGLBuffer24UserBufferSourceGLBufferEv"></span><span id="_CPPv2N8DlSystem24UserBufferSourceGLBuffer24UserBufferSourceGLBufferEv"></span><span id="DlSystem::UserBufferSourceGLBuffer::UserBufferSourceGLBuffer"></span><span class="target" id="classDlSystem_1_1UserBufferSourceGLBuffer_1a287d9662f6f7aca6c51f0b745ccfd224"></span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferSourceGLBuffer</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem24UserBufferSourceGLBuffer24UserBufferSourceGLBufferEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An source type where input data is delivered from OpenGL buffer </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem30UserBufferEncodingUnsigned8BitE">
+<span id="_CPPv3N8DlSystem30UserBufferEncodingUnsigned8BitE"></span><span id="_CPPv2N8DlSystem30UserBufferEncodingUnsigned8BitE"></span><span id="DlSystem::UserBufferEncodingUnsigned8Bit"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingUnsigned8Bit"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferEncodingUnsigned8Bit</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1UserBufferEncoding.html#_CPPv4N8DlSystem18UserBufferEncodingE" title="DlSystem::UserBufferEncoding"><span class="n"><span class="pre">UserBufferEncoding</span></span></a><a class="headerlink" href="#_CPPv4N8DlSystem30UserBufferEncodingUnsigned8BitE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;IUserBuffer.hpp&gt;</em></div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem30UserBufferEncodingUnsigned8Bit30UserBufferEncodingUnsigned8BitEv">
+<span id="_CPPv3N8DlSystem30UserBufferEncodingUnsigned8Bit30UserBufferEncodingUnsigned8BitEv"></span><span id="_CPPv2N8DlSystem30UserBufferEncodingUnsigned8Bit30UserBufferEncodingUnsigned8BitEv"></span><span id="DlSystem::UserBufferEncodingUnsigned8Bit::UserBufferEncodingUnsigned8Bit"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingUnsigned8Bit_1a2b6efe2895616632f7b50f5bd4529ad1"></span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferEncodingUnsigned8Bit</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem30UserBufferEncodingUnsigned8Bit30UserBufferEncodingUnsigned8BitEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Copy Constructor for <a class="reference internal" href="#classDlSystem_1_1UserBufferEncodingUnsigned8Bit"><span class="std std-ref">UserBufferEncodingUnsigned8Bit</span></a>. </p>
+<p>An encoding type where each element is represented by an unsigned int.</p>
+<p>Userbuffer size assumes uint8 encoding for each element. (i.e., a tensor with dimensions (2,3) will be represented by (2 * 3) * 1 = 6 bytes in memory).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a handle to the <a class="reference internal" href="#classDlSystem_1_1UserBufferEncodingUnsigned8Bit"><span class="std std-ref">UserBufferEncodingUnsigned8Bit</span></a> </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem30UserBufferEncodingUnsigned8Bit18UserBufferEncodingERR18UserBufferEncoding">
+<span id="_CPPv3N8DlSystem30UserBufferEncodingUnsigned8Bit18UserBufferEncodingERR18UserBufferEncoding"></span><span id="_CPPv2N8DlSystem30UserBufferEncodingUnsigned8Bit18UserBufferEncodingERR18UserBufferEncoding"></span><span id="DlSystem::UserBufferEncodingUnsigned8Bit::UserBufferEncoding__UserBufferEncodingRR"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingUnsigned8Bit_1acc8ca2e1a0bc2fc36f4f7be5a86a1d18"></span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferEncoding</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="classDlSystem_1_1UserBufferEncodingUnsigned8Bit.html#_CPPv4N8DlSystem30UserBufferEncodingUnsigned8Bit18UserBufferEncodingERR18UserBufferEncoding" title="DlSystem::UserBufferEncodingUnsigned8Bit::UserBufferEncoding"><span class="n"><span class="pre">UserBufferEncoding</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">other</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N8DlSystem30UserBufferEncodingUnsigned8Bit18UserBufferEncodingERR18UserBufferEncoding" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem24UserBufferEncodingFloatNE">
+<span id="_CPPv3N8DlSystem24UserBufferEncodingFloatNE"></span><span id="_CPPv2N8DlSystem24UserBufferEncodingFloatNE"></span><span id="DlSystem::UserBufferEncodingFloatN"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingFloatN"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferEncodingFloatN</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1UserBufferEncoding.html#_CPPv4N8DlSystem18UserBufferEncodingE" title="DlSystem::UserBufferEncoding"><span class="n"><span class="pre">UserBufferEncoding</span></span></a><a class="headerlink" href="#_CPPv4N8DlSystem24UserBufferEncodingFloatNE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;IUserBuffer.hpp&gt;</em></div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem24UserBufferEncodingFloatN24UserBufferEncodingFloatNE7uint8_t">
+<span id="_CPPv3N8DlSystem24UserBufferEncodingFloatN24UserBufferEncodingFloatNE7uint8_t"></span><span id="_CPPv2N8DlSystem24UserBufferEncodingFloatN24UserBufferEncodingFloatNE7uint8_t"></span><span id="DlSystem::UserBufferEncodingFloatN::UserBufferEncodingFloatN__uint8_t"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingFloatN_1a1cffe1d8e25735e277a85862e44f970a"></span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferEncodingFloatN</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bWidth</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">32</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem24UserBufferEncodingFloatN24UserBufferEncodingFloatNE7uint8_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An encoding type where each element is represented by a float N. </p>
+<p>
+Userbuffer size assumes float N encoding for each element. (i.e., a tensor with dimensions (2,3) with a provided bitwidth of 16 will be represented by (2 * 3) * 2 = 12 bytes in memory). </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bWidth</strong> – <strong>[in]</strong> is bitWidth N.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem24UserBufferEncodingFloatN24UserBufferEncodingFloatNERK24UserBufferEncodingFloatN">
+<span id="_CPPv3N8DlSystem24UserBufferEncodingFloatN24UserBufferEncodingFloatNERK24UserBufferEncodingFloatN"></span><span id="_CPPv2N8DlSystem24UserBufferEncodingFloatN24UserBufferEncodingFloatNERK24UserBufferEncodingFloatN"></span><span id="DlSystem::UserBufferEncodingFloatN::UserBufferEncodingFloatN__UserBufferEncodingFloatNCR"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingFloatN_1af68cfdb8fe367db020c4174202db3593"></span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferEncodingFloatN</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="classDlSystem_1_1UserBufferEncodingFloatN.html#_CPPv4N8DlSystem24UserBufferEncodingFloatN24UserBufferEncodingFloatNERK24UserBufferEncodingFloatN" title="DlSystem::UserBufferEncodingFloatN::UserBufferEncodingFloatN"><span class="n"><span class="pre">UserBufferEncodingFloatN</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">other</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem24UserBufferEncodingFloatN24UserBufferEncodingFloatNERK24UserBufferEncodingFloatN" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Copy Constructor for <a class="reference internal" href="#classDlSystem_1_1UserBufferEncodingFloatN"><span class="std std-ref">UserBufferEncodingFloatN</span></a>. </p>
+<p>An encoding type where each element is represented by a float N</p>
+<p>Userbuffer size assumes float N encoding for each element. (i.e., a tensor with dimensions (2,3) with a provided bitwidth of 16 will be represented by (2 * 3) * 2 = 12 bytes in memory).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>other</strong> – <strong>[in]</strong> : Source <a class="reference internal" href="#classDlSystem_1_1UserBufferEncodingFloatN"><span class="std std-ref">UserBufferEncodingFloatN</span></a> to copy from</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a handle to the constructed <a class="reference internal" href="#classDlSystem_1_1UserBufferEncodingFloatN"><span class="std std-ref">UserBufferEncodingFloatN</span></a> </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem24UserBufferEncodingFloatN18UserBufferEncodingERR18UserBufferEncoding">
+<span id="_CPPv3N8DlSystem24UserBufferEncodingFloatN18UserBufferEncodingERR18UserBufferEncoding"></span><span id="_CPPv2N8DlSystem24UserBufferEncodingFloatN18UserBufferEncodingERR18UserBufferEncoding"></span><span id="DlSystem::UserBufferEncodingFloatN::UserBufferEncoding__UserBufferEncodingRR"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingFloatN_1acc8ca2e1a0bc2fc36f4f7be5a86a1d18"></span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferEncoding</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="classDlSystem_1_1UserBufferEncodingFloatN.html#_CPPv4N8DlSystem24UserBufferEncodingFloatN18UserBufferEncodingERR18UserBufferEncoding" title="DlSystem::UserBufferEncodingFloatN::UserBufferEncoding"><span class="n"><span class="pre">UserBufferEncoding</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">other</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N8DlSystem24UserBufferEncodingFloatN18UserBufferEncodingERR18UserBufferEncoding" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-static-functions">Public Static Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem24UserBufferEncodingFloatN16getTypeFromWidthE7uint8_t">
+<span id="_CPPv3N8DlSystem24UserBufferEncodingFloatN16getTypeFromWidthE7uint8_t"></span><span id="_CPPv2N8DlSystem24UserBufferEncodingFloatN16getTypeFromWidthE7uint8_t"></span><span id="DlSystem::UserBufferEncodingFloatN::getTypeFromWidth__uint8_t"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingFloatN_1a328441c209baa5112dc0a7767b52386a"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">ElementType_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getTypeFromWidth</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">width</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem24UserBufferEncodingFloatN16getTypeFromWidthE7uint8_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem23UserBufferEncodingFloatE">
+<span id="_CPPv3N8DlSystem23UserBufferEncodingFloatE"></span><span id="_CPPv2N8DlSystem23UserBufferEncodingFloatE"></span><span id="DlSystem::UserBufferEncodingFloat"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingFloat"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferEncodingFloat</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1UserBufferEncoding.html#_CPPv4N8DlSystem18UserBufferEncodingE" title="DlSystem::UserBufferEncoding"><span class="n"><span class="pre">UserBufferEncoding</span></span></a><a class="headerlink" href="#_CPPv4N8DlSystem23UserBufferEncodingFloatE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;IUserBuffer.hpp&gt;</em></div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem23UserBufferEncodingFloat23UserBufferEncodingFloatEv">
+<span id="_CPPv3N8DlSystem23UserBufferEncodingFloat23UserBufferEncodingFloatEv"></span><span id="_CPPv2N8DlSystem23UserBufferEncodingFloat23UserBufferEncodingFloatEv"></span><span id="DlSystem::UserBufferEncodingFloat::UserBufferEncodingFloat"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingFloat_1a18c88a8d49c3a01f49ac17b70a6062fe"></span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferEncodingFloat</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem23UserBufferEncodingFloat23UserBufferEncodingFloatEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An encoding type where each element is represented by a float. Userbuffer size assumes float encoding for each element. (i.e., a tensor with dimensions (2,3) will be represented by (2 * 3) * 4 = 24 bytes in memory). </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem23UserBufferEncodingFloat23UserBufferEncodingFloatERK23UserBufferEncodingFloat">
+<span id="_CPPv3N8DlSystem23UserBufferEncodingFloat23UserBufferEncodingFloatERK23UserBufferEncodingFloat"></span><span id="_CPPv2N8DlSystem23UserBufferEncodingFloat23UserBufferEncodingFloatERK23UserBufferEncodingFloat"></span><span id="DlSystem::UserBufferEncodingFloat::UserBufferEncodingFloat__UserBufferEncodingFloatCR"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingFloat_1aeab0432fc3aae6b673d52e77ba0afabf"></span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferEncodingFloat</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="classDlSystem_1_1UserBufferEncodingFloat.html#_CPPv4N8DlSystem23UserBufferEncodingFloat23UserBufferEncodingFloatERK23UserBufferEncodingFloat" title="DlSystem::UserBufferEncodingFloat::UserBufferEncodingFloat"><span class="n"><span class="pre">UserBufferEncodingFloat</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">other</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem23UserBufferEncodingFloat23UserBufferEncodingFloatERK23UserBufferEncodingFloat" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Copy Constructor for <a class="reference internal" href="#classDlSystem_1_1UserBufferEncodingFloat"><span class="std std-ref">UserBufferEncodingFloat</span></a>. </p>
+<p>An encoding type where each element is represented by a float.</p>
+<p>Userbuffer size assumes float encoding for each element. (i.e., a tensor with dimensions (2,3) will be represented by (2 * 3) * 4 = 24 bytes in memory).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>otherHandle</strong> – <strong>[in]</strong> : a handle to another <a class="reference internal" href="#classDlSystem_1_1UserBufferEncodingFloat"><span class="std std-ref">UserBufferEncodingFloat</span></a> to copy</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a handle to the constructed <a class="reference internal" href="#classDlSystem_1_1UserBufferEncodingFloat"><span class="std std-ref">UserBufferEncodingFloat</span></a> </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem23UserBufferEncodingFloat23UserBufferEncodingFloatERR23UserBufferEncodingFloat">
+<span id="_CPPv3N8DlSystem23UserBufferEncodingFloat23UserBufferEncodingFloatERR23UserBufferEncodingFloat"></span><span id="_CPPv2N8DlSystem23UserBufferEncodingFloat23UserBufferEncodingFloatERR23UserBufferEncodingFloat"></span><span id="DlSystem::UserBufferEncodingFloat::UserBufferEncodingFloat__UserBufferEncodingFloatRR"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingFloat_1aac9a6cbbe5ee6f0098fd4880f375adae"></span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferEncodingFloat</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="classDlSystem_1_1UserBufferEncodingFloat.html#_CPPv4N8DlSystem23UserBufferEncodingFloat23UserBufferEncodingFloatERR23UserBufferEncodingFloat" title="DlSystem::UserBufferEncodingFloat::UserBufferEncodingFloat"><span class="n"><span class="pre">UserBufferEncodingFloat</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">other</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N8DlSystem23UserBufferEncodingFloat23UserBufferEncodingFloatERR23UserBufferEncodingFloat" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Copy Constructor for <a class="reference internal" href="#classDlSystem_1_1UserBufferEncodingFloat"><span class="std std-ref">UserBufferEncodingFloat</span></a>. </p>
+<p>An encoding type where each element is represented by a float.</p>
+<p>Userbuffer size assumes float encoding for each element. (i.e., a tensor with dimensions (2,3) will be represented by (2 * 3) * 4 = 24 bytes in memory).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>otherHandle</strong> – <strong>[in]</strong> : a handle to another <a class="reference internal" href="#classDlSystem_1_1UserBufferEncodingFloat"><span class="std std-ref">UserBufferEncodingFloat</span></a> to copy</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a handle to the constructed <a class="reference internal" href="#classDlSystem_1_1UserBufferEncodingFloat"><span class="std std-ref">UserBufferEncodingFloat</span></a> </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem23UserBufferEncodingFloat18UserBufferEncodingERR18UserBufferEncoding">
+<span id="_CPPv3N8DlSystem23UserBufferEncodingFloat18UserBufferEncodingERR18UserBufferEncoding"></span><span id="_CPPv2N8DlSystem23UserBufferEncodingFloat18UserBufferEncodingERR18UserBufferEncoding"></span><span id="DlSystem::UserBufferEncodingFloat::UserBufferEncoding__UserBufferEncodingRR"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingFloat_1acc8ca2e1a0bc2fc36f4f7be5a86a1d18"></span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferEncoding</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="classDlSystem_1_1UserBufferEncodingFloat.html#_CPPv4N8DlSystem23UserBufferEncodingFloat18UserBufferEncodingERR18UserBufferEncoding" title="DlSystem::UserBufferEncodingFloat::UserBufferEncoding"><span class="n"><span class="pre">UserBufferEncoding</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">other</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N8DlSystem23UserBufferEncodingFloat18UserBufferEncodingERR18UserBufferEncoding" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem21UserBufferEncodingTfNE">
+<span id="_CPPv3N8DlSystem21UserBufferEncodingTfNE"></span><span id="_CPPv2N8DlSystem21UserBufferEncodingTfNE"></span><span id="DlSystem::UserBufferEncodingTfN"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingTfN"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferEncodingTfN</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1UserBufferEncoding.html#_CPPv4N8DlSystem18UserBufferEncodingE" title="DlSystem::UserBufferEncoding"><span class="n"><span class="pre">UserBufferEncoding</span></span></a><a class="headerlink" href="#_CPPv4N8DlSystem21UserBufferEncodingTfNE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;IUserBuffer.hpp&gt;</em></div>
+<p>Subclassed by <a class="reference internal" href="#classDlSystem_1_1UserBufferEncodingTf8"><span class="std std-ref">DlSystem::UserBufferEncodingTf8</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I00_NSt9enable_ifIXaaNSt11is_integralI1TE5valueENSt17is_floating_pointI1UE5valueEEiE4typeEEN8DlSystem21UserBufferEncodingTfN21UserBufferEncodingTfNE1T1U7uint8_t">
+<span id="_CPPv3I00_NSt9enable_ifIXaaNSt11is_integralI1TE5valueENSt17is_floating_pointI1UE5valueEEiE4typeEEN8DlSystem21UserBufferEncodingTfN21UserBufferEncodingTfNE1T1U7uint8_t"></span><span id="_CPPv2I00_NSt9enable_ifIXstd::is_integral<T>::value && std::is_floating_point<U>::valueEiE4typeEEN8DlSystem21UserBufferEncodingTfN21UserBufferEncodingTfNE1T1U7uint8_t"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">U</span></span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">enable_if</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">is_integral</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="classDlSystem_1_1UserBufferEncodingTfN.html#_CPPv4I00_NSt9enable_ifIXaaNSt11is_integralI1TE5valueENSt17is_floating_pointI1UE5valueEEiE4typeEEN8DlSystem21UserBufferEncodingTfN21UserBufferEncodingTfNE1T1U7uint8_t" title="DlSystem::UserBufferEncodingTfN::UserBufferEncodingTfN::T"><span class="n"><span class="pre">T</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">value</span></span><span class="w"> </span><span class="o"><span class="pre">&amp;&amp;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">is_floating_point</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="classDlSystem_1_1UserBufferEncodingTfN.html#_CPPv4I00_NSt9enable_ifIXaaNSt11is_integralI1TE5valueENSt17is_floating_pointI1UE5valueEEiE4typeEEN8DlSystem21UserBufferEncodingTfN21UserBufferEncodingTfNE1T1U7uint8_t" title="DlSystem::UserBufferEncodingTfN::UserBufferEncodingTfN::U"><span class="n"><span class="pre">U</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">type</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classDlSystem_1_1UserBufferEncodingTfN_1a8eeee99315b1736a768ee65ccb626193"></span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferEncodingTfN</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="classDlSystem_1_1UserBufferEncodingTfN.html#_CPPv4I00_NSt9enable_ifIXaaNSt11is_integralI1TE5valueENSt17is_floating_pointI1UE5valueEEiE4typeEEN8DlSystem21UserBufferEncodingTfN21UserBufferEncodingTfNE1T1U7uint8_t" title="DlSystem::UserBufferEncodingTfN::UserBufferEncodingTfN::T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">stepFor0</span></span>, <a class="reference internal" href="classDlSystem_1_1UserBufferEncodingTfN.html#_CPPv4I00_NSt9enable_ifIXaaNSt11is_integralI1TE5valueENSt17is_floating_pointI1UE5valueEEiE4typeEEN8DlSystem21UserBufferEncodingTfN21UserBufferEncodingTfNE1T1U7uint8_t" title="DlSystem::UserBufferEncodingTfN::UserBufferEncodingTfN::U"><span class="n"><span class="pre">U</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">stepSize</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bWidth</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">8</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I00_NSt9enable_ifIXaaNSt11is_integralI1TE5valueENSt17is_floating_pointI1UE5valueEEiE4typeEEN8DlSystem21UserBufferEncodingTfN21UserBufferEncodingTfNE1T1U7uint8_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An encoding type where each element is represented by tfN, which is an N-bit quantized value, which has an exact representation of 0.0. </p>
+<p>Userbuffer size assumes tf N encoding for each element. (i.e., a tensor with dimensions (2,3) with a provided bitwidth of 16 will be represented by (2 * 3) * 2 = 12 bytes in memory). </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem21UserBufferEncodingTfN21UserBufferEncodingTfNERK18UserBufferEncoding">
+<span id="_CPPv3N8DlSystem21UserBufferEncodingTfN21UserBufferEncodingTfNERK18UserBufferEncoding"></span><span id="_CPPv2N8DlSystem21UserBufferEncodingTfN21UserBufferEncodingTfNERK18UserBufferEncoding"></span><span id="DlSystem::UserBufferEncodingTfN::UserBufferEncodingTfN__UserBufferEncodingCR"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingTfN_1a27bac82dce8b1c89fe3d4dc1d6bda8db"></span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferEncodingTfN</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="classDlSystem_1_1UserBufferEncodingTfN.html#_CPPv4N8DlSystem21UserBufferEncodingTfN18UserBufferEncodingERR18UserBufferEncoding" title="DlSystem::UserBufferEncodingTfN::UserBufferEncoding"><span class="n"><span class="pre">UserBufferEncoding</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ubEncoding</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem21UserBufferEncodingTfN21UserBufferEncodingTfNERK18UserBufferEncoding" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Copy Constructor for <a class="reference internal" href="#classDlSystem_1_1UserBufferEncodingTfN"><span class="std std-ref">UserBufferEncodingTfN</span></a>. </p>
+<p>An encoding type where each element is represented by tfN, which is an N-bit quantized value, which has an exact representation of 0.0</p>
+<p>Userbuffer size assumes tf N encoding for each element. (i.e., a tensor with dimensions (2,3) with a provided bitwidth of 16 will be represented by (2 * 3) * 2 = 12 bytes in memory). </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>otherHandle</strong> – the <a class="reference internal" href="#classDlSystem_1_1UserBufferEncodingTfN"><span class="std std-ref">UserBufferEncodingTfN</span></a> to copy </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a handle to a newly constructed <a class="reference internal" href="#classDlSystem_1_1UserBufferEncodingTfN"><span class="std std-ref">UserBufferEncodingTfN</span></a> </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem21UserBufferEncodingTfN21UserBufferEncodingTfNERK21UserBufferEncodingTfN">
+<span id="_CPPv3N8DlSystem21UserBufferEncodingTfN21UserBufferEncodingTfNERK21UserBufferEncodingTfN"></span><span id="_CPPv2N8DlSystem21UserBufferEncodingTfN21UserBufferEncodingTfNERK21UserBufferEncodingTfN"></span><span id="DlSystem::UserBufferEncodingTfN::UserBufferEncodingTfN__UserBufferEncodingTfNCR"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingTfN_1a7b67e055b783af224d7347608206e905"></span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferEncodingTfN</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="classDlSystem_1_1UserBufferEncodingTfN.html#_CPPv4N8DlSystem21UserBufferEncodingTfN21UserBufferEncodingTfNERK21UserBufferEncodingTfN" title="DlSystem::UserBufferEncodingTfN::UserBufferEncodingTfN"><span class="n"><span class="pre">UserBufferEncodingTfN</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ubEncoding</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem21UserBufferEncodingTfN21UserBufferEncodingTfNERK21UserBufferEncodingTfN" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Copy Constructor for <a class="reference internal" href="#classDlSystem_1_1UserBufferEncodingTfN"><span class="std std-ref">UserBufferEncodingTfN</span></a>. </p>
+<p>An encoding type where each element is represented by tfN, which is an N-bit quantized value, which has an exact representation of 0.0</p>
+<p>Userbuffer size assumes tf N encoding for each element. (i.e., a tensor with dimensions (2,3) with a provided bitwidth of 16 will be represented by (2 * 3) * 2 = 12 bytes in memory). </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>otherHandle</strong> – the <a class="reference internal" href="#classDlSystem_1_1UserBufferEncodingTfN"><span class="std std-ref">UserBufferEncodingTfN</span></a> to copy </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a handle to a newly constructed <a class="reference internal" href="#classDlSystem_1_1UserBufferEncodingTfN"><span class="std std-ref">UserBufferEncodingTfN</span></a> </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem21UserBufferEncodingTfN15setStepExactly0E8uint64_t">
+<span id="_CPPv3N8DlSystem21UserBufferEncodingTfN15setStepExactly0E8uint64_t"></span><span id="_CPPv2N8DlSystem21UserBufferEncodingTfN15setStepExactly0E8uint64_t"></span><span id="DlSystem::UserBufferEncodingTfN::setStepExactly0__uint64_t"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingTfN_1ac8ebb642cc80765e73561c6461889cac"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setStepExactly0</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">stepExactly0</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem21UserBufferEncodingTfN15setStepExactly0E8uint64_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets the step value that represents 0. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>userBufferEncodingHandle</strong> – <strong>[in]</strong> : Handle to access the encoding</p></li>
+<li><p><strong>stepExactly0</strong> – <strong>[in]</strong> : The step value that represents 0 </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem21UserBufferEncodingTfN20setQuantizedStepSizeEKf">
+<span id="_CPPv3N8DlSystem21UserBufferEncodingTfN20setQuantizedStepSizeEKf"></span><span id="_CPPv2N8DlSystem21UserBufferEncodingTfN20setQuantizedStepSizeEKf"></span><span id="DlSystem::UserBufferEncodingTfN::setQuantizedStepSize__floatC"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingTfN_1aaccdab2834bc7e7bf952135e09947ade"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setQuantizedStepSize</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">quantizedStepSize</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem21UserBufferEncodingTfN20setQuantizedStepSizeEKf" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets the float value that each step represents. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>userBufferEncodingHandle</strong> – <strong>[in]</strong> : Handle to access the encoding</p></li>
+<li><p><strong>quantizedStepSize</strong> – <strong>[in]</strong> : The float value of each step size </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK8DlSystem21UserBufferEncodingTfN15getStepExactly0Ev">
+<span id="_CPPv3NK8DlSystem21UserBufferEncodingTfN15getStepExactly0Ev"></span><span id="_CPPv2NK8DlSystem21UserBufferEncodingTfN15getStepExactly0Ev"></span><span id="DlSystem::UserBufferEncodingTfN::getStepExactly0C"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingTfN_1a229867da6cb5a0aa66fe8c5e9d55cad1"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getStepExactly0</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8DlSystem21UserBufferEncodingTfN15getStepExactly0Ev" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Retrieves the step that represents 0.0. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>userBufferEncodingHandle</strong> – <strong>[in]</strong> : Handle to access the encoding</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Step value </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK8DlSystem21UserBufferEncodingTfN6getMinEv">
+<span id="_CPPv3NK8DlSystem21UserBufferEncodingTfN6getMinEv"></span><span id="_CPPv2NK8DlSystem21UserBufferEncodingTfN6getMinEv"></span><span id="DlSystem::UserBufferEncodingTfN::getMinC"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingTfN_1a46d83d27db885f006779a7a32526a1b1"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getMin</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8DlSystem21UserBufferEncodingTfN6getMinEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Calculates the minimum floating point value that can be represented with this encoding. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>userBufferEncodingHandle</strong> – <strong>[in]</strong> : Handle to access the encoding</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Minimum representable floating point value </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK8DlSystem21UserBufferEncodingTfN6getMaxEv">
+<span id="_CPPv3NK8DlSystem21UserBufferEncodingTfN6getMaxEv"></span><span id="_CPPv2NK8DlSystem21UserBufferEncodingTfN6getMaxEv"></span><span id="DlSystem::UserBufferEncodingTfN::getMaxC"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingTfN_1a2e38391f1e1a6a44adcd7ced89ce2a3f"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getMax</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8DlSystem21UserBufferEncodingTfN6getMaxEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Calculates the maximum floating point value that can be represented with this encoding. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>userBufferEncodingHandle</strong> – <strong>[in]</strong> : Handle to access the encoding</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Maximum representable floating point value </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK8DlSystem21UserBufferEncodingTfN20getQuantizedStepSizeEv">
+<span id="_CPPv3NK8DlSystem21UserBufferEncodingTfN20getQuantizedStepSizeEv"></span><span id="_CPPv2NK8DlSystem21UserBufferEncodingTfN20getQuantizedStepSizeEv"></span><span id="DlSystem::UserBufferEncodingTfN::getQuantizedStepSizeC"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingTfN_1a03f697c781ba17fb843a13eb9b507832"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getQuantizedStepSize</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8DlSystem21UserBufferEncodingTfN20getQuantizedStepSizeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Retrieves the step size. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>userBufferEncodingHandle</strong> – <strong>[in]</strong> : Handle to access the encoding</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Step size </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem21UserBufferEncodingTfN18UserBufferEncodingERR18UserBufferEncoding">
+<span id="_CPPv3N8DlSystem21UserBufferEncodingTfN18UserBufferEncodingERR18UserBufferEncoding"></span><span id="_CPPv2N8DlSystem21UserBufferEncodingTfN18UserBufferEncodingERR18UserBufferEncoding"></span><span id="DlSystem::UserBufferEncodingTfN::UserBufferEncoding__UserBufferEncodingRR"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingTfN_1acc8ca2e1a0bc2fc36f4f7be5a86a1d18"></span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferEncoding</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="classDlSystem_1_1UserBufferEncodingTfN.html#_CPPv4N8DlSystem21UserBufferEncodingTfN18UserBufferEncodingERR18UserBufferEncoding" title="DlSystem::UserBufferEncodingTfN::UserBufferEncoding"><span class="n"><span class="pre">UserBufferEncoding</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">other</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N8DlSystem21UserBufferEncodingTfN18UserBufferEncodingERR18UserBufferEncoding" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-static-functions">Public Static Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem21UserBufferEncodingTfN16getTypeFromWidthE7uint8_t">
+<span id="_CPPv3N8DlSystem21UserBufferEncodingTfN16getTypeFromWidthE7uint8_t"></span><span id="_CPPv2N8DlSystem21UserBufferEncodingTfN16getTypeFromWidthE7uint8_t"></span><span id="DlSystem::UserBufferEncodingTfN::getTypeFromWidth__uint8_t"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingTfN_1a79b40f162895fb6f1ebbe3272603f63a"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">ElementType_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getTypeFromWidth</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">width</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem21UserBufferEncodingTfN16getTypeFromWidthE7uint8_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the tfN type corresponding to a given bitwidth. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>width</strong> – bitwidth of tfN type</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>ElementType corresponding to a tfN of width bits </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem22UserBufferEncodingIntNE">
+<span id="_CPPv3N8DlSystem22UserBufferEncodingIntNE"></span><span id="_CPPv2N8DlSystem22UserBufferEncodingIntNE"></span><span id="DlSystem::UserBufferEncodingIntN"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingIntN"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferEncodingIntN</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1UserBufferEncoding.html#_CPPv4N8DlSystem18UserBufferEncodingE" title="DlSystem::UserBufferEncoding"><span class="n"><span class="pre">UserBufferEncoding</span></span></a><a class="headerlink" href="#_CPPv4N8DlSystem22UserBufferEncodingIntNE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;IUserBuffer.hpp&gt;</em></div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem22UserBufferEncodingIntN22UserBufferEncodingIntNE7uint8_t">
+<span id="_CPPv3N8DlSystem22UserBufferEncodingIntN22UserBufferEncodingIntNE7uint8_t"></span><span id="_CPPv2N8DlSystem22UserBufferEncodingIntN22UserBufferEncodingIntNE7uint8_t"></span><span id="DlSystem::UserBufferEncodingIntN::UserBufferEncodingIntN__uint8_t"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingIntN_1aa576e55df3a10994ad4b4a3f77d375e3"></span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferEncodingIntN</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bWidth</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">32</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem22UserBufferEncodingIntN22UserBufferEncodingIntNE7uint8_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An encoding type where each element is represented by a Int. </p>
+<p>Userbuffer size assumes int N encoding for each element. (i.e., a tensor with dimensions (2,3) with a provided bitwidth of 32 will be represented by (2 * 3) * 4 = 24 bytes in memory). </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem22UserBufferEncodingIntN22UserBufferEncodingIntNERK18UserBufferEncoding">
+<span id="_CPPv3N8DlSystem22UserBufferEncodingIntN22UserBufferEncodingIntNERK18UserBufferEncoding"></span><span id="_CPPv2N8DlSystem22UserBufferEncodingIntN22UserBufferEncodingIntNERK18UserBufferEncoding"></span><span id="DlSystem::UserBufferEncodingIntN::UserBufferEncodingIntN__UserBufferEncodingCR"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingIntN_1a5705e59d727adc668a4331730b2bc841"></span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferEncodingIntN</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="classDlSystem_1_1UserBufferEncoding.html#_CPPv4N8DlSystem18UserBufferEncodingE" title="DlSystem::UserBufferEncoding"><span class="n"><span class="pre">UserBufferEncoding</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ubEncoding</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem22UserBufferEncodingIntN22UserBufferEncodingIntNERK18UserBufferEncoding" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Copy Constructor for <a class="reference internal" href="#classDlSystem_1_1UserBufferEncodingIntN"><span class="std std-ref">UserBufferEncodingIntN</span></a>. </p>
+<p>An encoding type where each element is represented by a Int</p>
+<p>Userbuffer size assumes int N encoding for each element. (i.e., a tensor with dimensions (2,3) with a provided bitwidth of 32 will be represented by (2 * 3) * 4 = 24 bytes in memory). </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>otherHandle</strong> – the <a class="reference internal" href="#classDlSystem_1_1UserBufferEncodingIntN"><span class="std std-ref">UserBufferEncodingIntN</span></a> to copy </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a handle to a newly constructed <a class="reference internal" href="#classDlSystem_1_1UserBufferEncodingIntN"><span class="std std-ref">UserBufferEncodingIntN</span></a> </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-static-functions">Public Static Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem22UserBufferEncodingIntN16getTypeFromWidthE7uint8_t">
+<span id="_CPPv3N8DlSystem22UserBufferEncodingIntN16getTypeFromWidthE7uint8_t"></span><span id="_CPPv2N8DlSystem22UserBufferEncodingIntN16getTypeFromWidthE7uint8_t"></span><span id="DlSystem::UserBufferEncodingIntN::getTypeFromWidth__uint8_t"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingIntN_1af7b50045e44fb1f5e8b03033d41e441c"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">ElementType_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getTypeFromWidth</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">width</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem22UserBufferEncodingIntN16getTypeFromWidthE7uint8_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the int type corresponding to a given bitwidth. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>width</strong> – bitwidth of int type</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>ElementType corresponding to a int of width bits </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem23UserBufferEncodingUintNE">
+<span id="_CPPv3N8DlSystem23UserBufferEncodingUintNE"></span><span id="_CPPv2N8DlSystem23UserBufferEncodingUintNE"></span><span id="DlSystem::UserBufferEncodingUintN"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingUintN"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferEncodingUintN</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1UserBufferEncoding.html#_CPPv4N8DlSystem18UserBufferEncodingE" title="DlSystem::UserBufferEncoding"><span class="n"><span class="pre">UserBufferEncoding</span></span></a><a class="headerlink" href="#_CPPv4N8DlSystem23UserBufferEncodingUintNE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;IUserBuffer.hpp&gt;</em></div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem23UserBufferEncodingUintN23UserBufferEncodingUintNE7uint8_t">
+<span id="_CPPv3N8DlSystem23UserBufferEncodingUintN23UserBufferEncodingUintNE7uint8_t"></span><span id="_CPPv2N8DlSystem23UserBufferEncodingUintN23UserBufferEncodingUintNE7uint8_t"></span><span id="DlSystem::UserBufferEncodingUintN::UserBufferEncodingUintN__uint8_t"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingUintN_1a918d245cfc3a8ba40c2019e06d7b906c"></span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferEncodingUintN</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bWidth</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">32</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem23UserBufferEncodingUintN23UserBufferEncodingUintNE7uint8_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An encoding type where each element is represented by a Uint. </p>
+<p>Userbuffer size assumes uint N encoding for each element. (i.e., a tensor with dimensions (2,3) with a provided bitwidth of 32 will be represented by (2 * 3) * 4 = 24 bytes in memory). </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem23UserBufferEncodingUintN23UserBufferEncodingUintNERK18UserBufferEncoding">
+<span id="_CPPv3N8DlSystem23UserBufferEncodingUintN23UserBufferEncodingUintNERK18UserBufferEncoding"></span><span id="_CPPv2N8DlSystem23UserBufferEncodingUintN23UserBufferEncodingUintNERK18UserBufferEncoding"></span><span id="DlSystem::UserBufferEncodingUintN::UserBufferEncodingUintN__UserBufferEncodingCR"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingUintN_1ab5a1cf5812875c347286e2d061f0ccbf"></span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferEncodingUintN</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="classDlSystem_1_1UserBufferEncoding.html#_CPPv4N8DlSystem18UserBufferEncodingE" title="DlSystem::UserBufferEncoding"><span class="n"><span class="pre">UserBufferEncoding</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ubEncoding</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem23UserBufferEncodingUintN23UserBufferEncodingUintNERK18UserBufferEncoding" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Copy Constructor for <a class="reference internal" href="#classDlSystem_1_1UserBufferEncodingUintN"><span class="std std-ref">UserBufferEncodingUintN</span></a>. </p>
+<p>An encoding type where each element is represented by a Uint</p>
+<p>Userbuffer size assumes uint N encoding for each element. (i.e., a tensor with dimensions (2,3) with a provided bitwidth of 32 will be represented by (2 * 3) * 4 = 24 bytes in memory). </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>otherHandle</strong> – the <a class="reference internal" href="#classDlSystem_1_1UserBufferEncodingUintN"><span class="std std-ref">UserBufferEncodingUintN</span></a> to copy </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a handle to a newly constructed <a class="reference internal" href="#classDlSystem_1_1UserBufferEncodingUintN"><span class="std std-ref">UserBufferEncodingUintN</span></a> </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-static-functions">Public Static Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem23UserBufferEncodingUintN16getTypeFromWidthE7uint8_t">
+<span id="_CPPv3N8DlSystem23UserBufferEncodingUintN16getTypeFromWidthE7uint8_t"></span><span id="_CPPv2N8DlSystem23UserBufferEncodingUintN16getTypeFromWidthE7uint8_t"></span><span id="DlSystem::UserBufferEncodingUintN::getTypeFromWidth__uint8_t"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingUintN_1a0e513ddf1d6e24f2b79ffd8ed81d076b"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">ElementType_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getTypeFromWidth</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">width</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem23UserBufferEncodingUintN16getTypeFromWidthE7uint8_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the uint type corresponding to a given bitwidth. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>width</strong> – bitwidth of uint type</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>ElementType corresponding to a uint of width bits </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem21UserBufferEncodingTf8E">
+<span id="_CPPv3N8DlSystem21UserBufferEncodingTf8E"></span><span id="_CPPv2N8DlSystem21UserBufferEncodingTf8E"></span><span id="DlSystem::UserBufferEncodingTf8"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingTf8"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferEncodingTf8</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1UserBufferEncodingTfN.html#_CPPv4N8DlSystem21UserBufferEncodingTfNE" title="DlSystem::UserBufferEncodingTfN"><span class="n"><span class="pre">UserBufferEncodingTfN</span></span></a><a class="headerlink" href="#_CPPv4N8DlSystem21UserBufferEncodingTf8E" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;IUserBuffer.hpp&gt;</em></div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem21UserBufferEncodingTf821UserBufferEncodingTf8Ev">
+<span id="_CPPv3N8DlSystem21UserBufferEncodingTf821UserBufferEncodingTf8Ev"></span><span id="_CPPv2N8DlSystem21UserBufferEncodingTf821UserBufferEncodingTf8Ev"></span><span id="DlSystem::UserBufferEncodingTf8::UserBufferEncodingTf8"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingTf8_1acecab691f8010132af1181fe2086f437"></span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferEncodingTf8</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">delete</span></span><a class="headerlink" href="#_CPPv4N8DlSystem21UserBufferEncodingTf821UserBufferEncodingTf8Ev" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I00_NSt9enable_ifIXaaNSt11is_integralI1TE5valueENSt17is_floating_pointI1UE5valueEEiE4typeEEN8DlSystem21UserBufferEncodingTf821UserBufferEncodingTf8E1T1U">
+<span id="_CPPv3I00_NSt9enable_ifIXaaNSt11is_integralI1TE5valueENSt17is_floating_pointI1UE5valueEEiE4typeEEN8DlSystem21UserBufferEncodingTf821UserBufferEncodingTf8E1T1U"></span><span id="_CPPv2I00_NSt9enable_ifIXstd::is_integral<T>::value && std::is_floating_point<U>::valueEiE4typeEEN8DlSystem21UserBufferEncodingTf821UserBufferEncodingTf8E1T1U"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">U</span></span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">enable_if</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">is_integral</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="classDlSystem_1_1UserBufferEncodingTf8.html#_CPPv4I00_NSt9enable_ifIXaaNSt11is_integralI1TE5valueENSt17is_floating_pointI1UE5valueEEiE4typeEEN8DlSystem21UserBufferEncodingTf821UserBufferEncodingTf8E1T1U" title="DlSystem::UserBufferEncodingTf8::UserBufferEncodingTf8::T"><span class="n"><span class="pre">T</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">value</span></span><span class="w"> </span><span class="o"><span class="pre">&amp;&amp;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">is_floating_point</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="classDlSystem_1_1UserBufferEncodingTf8.html#_CPPv4I00_NSt9enable_ifIXaaNSt11is_integralI1TE5valueENSt17is_floating_pointI1UE5valueEEiE4typeEEN8DlSystem21UserBufferEncodingTf821UserBufferEncodingTf8E1T1U" title="DlSystem::UserBufferEncodingTf8::UserBufferEncodingTf8::U"><span class="n"><span class="pre">U</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">type</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classDlSystem_1_1UserBufferEncodingTf8_1a5bb0bbcbf939b36037f48513f32004b9"></span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferEncodingTf8</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="classDlSystem_1_1UserBufferEncodingTf8.html#_CPPv4I00_NSt9enable_ifIXaaNSt11is_integralI1TE5valueENSt17is_floating_pointI1UE5valueEEiE4typeEEN8DlSystem21UserBufferEncodingTf821UserBufferEncodingTf8E1T1U" title="DlSystem::UserBufferEncodingTf8::UserBufferEncodingTf8::T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">stepFor0</span></span>, <a class="reference internal" href="classDlSystem_1_1UserBufferEncodingTf8.html#_CPPv4I00_NSt9enable_ifIXaaNSt11is_integralI1TE5valueENSt17is_floating_pointI1UE5valueEEiE4typeEEN8DlSystem21UserBufferEncodingTf821UserBufferEncodingTf8E1T1U" title="DlSystem::UserBufferEncodingTf8::UserBufferEncodingTf8::U"><span class="n"><span class="pre">U</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">stepSize</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I00_NSt9enable_ifIXaaNSt11is_integralI1TE5valueENSt17is_floating_pointI1UE5valueEEiE4typeEEN8DlSystem21UserBufferEncodingTf821UserBufferEncodingTf8E1T1U" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem21UserBufferEncodingTf821UserBufferEncodingTf8ERK18UserBufferEncoding">
+<span id="_CPPv3N8DlSystem21UserBufferEncodingTf821UserBufferEncodingTf8ERK18UserBufferEncoding"></span><span id="_CPPv2N8DlSystem21UserBufferEncodingTf821UserBufferEncodingTf8ERK18UserBufferEncoding"></span><span id="DlSystem::UserBufferEncodingTf8::UserBufferEncodingTf8__UserBufferEncodingCR"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingTf8_1a820291c596af77be9986437ef860ddc1"></span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferEncodingTf8</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="classDlSystem_1_1UserBufferEncoding.html#_CPPv4N8DlSystem18UserBufferEncodingE" title="DlSystem::UserBufferEncoding"><span class="n"><span class="pre">UserBufferEncoding</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ubEncoding</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem21UserBufferEncodingTf821UserBufferEncodingTf8ERK18UserBufferEncoding" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I00_NSt9enable_ifIXaaNSt11is_integralI1TE5valueENSt17is_floating_pointI1UE5valueEEiE4typeEEN8DlSystem21UserBufferEncodingTf821UserBufferEncodingTfNE1T1U7uint8_t">
+<span id="_CPPv3I00_NSt9enable_ifIXaaNSt11is_integralI1TE5valueENSt17is_floating_pointI1UE5valueEEiE4typeEEN8DlSystem21UserBufferEncodingTf821UserBufferEncodingTfNE1T1U7uint8_t"></span><span id="_CPPv2I00_NSt9enable_ifIXstd::is_integral<T>::value && std::is_floating_point<U>::valueEiE4typeEEN8DlSystem21UserBufferEncodingTf821UserBufferEncodingTfNE1T1U7uint8_t"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">U</span></span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">enable_if</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">is_integral</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="classDlSystem_1_1UserBufferEncodingTf8.html#_CPPv4I00_NSt9enable_ifIXaaNSt11is_integralI1TE5valueENSt17is_floating_pointI1UE5valueEEiE4typeEEN8DlSystem21UserBufferEncodingTf821UserBufferEncodingTfNE1T1U7uint8_t" title="DlSystem::UserBufferEncodingTf8::UserBufferEncodingTfN::T"><span class="n"><span class="pre">T</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">value</span></span><span class="w"> </span><span class="o"><span class="pre">&amp;&amp;</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">is_floating_point</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="classDlSystem_1_1UserBufferEncodingTf8.html#_CPPv4I00_NSt9enable_ifIXaaNSt11is_integralI1TE5valueENSt17is_floating_pointI1UE5valueEEiE4typeEEN8DlSystem21UserBufferEncodingTf821UserBufferEncodingTfNE1T1U7uint8_t" title="DlSystem::UserBufferEncodingTf8::UserBufferEncodingTfN::U"><span class="n"><span class="pre">U</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">type</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classDlSystem_1_1UserBufferEncodingTf8_1a8eeee99315b1736a768ee65ccb626193"></span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferEncodingTfN</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="classDlSystem_1_1UserBufferEncodingTf8.html#_CPPv4I00_NSt9enable_ifIXaaNSt11is_integralI1TE5valueENSt17is_floating_pointI1UE5valueEEiE4typeEEN8DlSystem21UserBufferEncodingTf821UserBufferEncodingTfNE1T1U7uint8_t" title="DlSystem::UserBufferEncodingTf8::UserBufferEncodingTfN::T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">stepFor0</span></span>, <a class="reference internal" href="classDlSystem_1_1UserBufferEncodingTf8.html#_CPPv4I00_NSt9enable_ifIXaaNSt11is_integralI1TE5valueENSt17is_floating_pointI1UE5valueEEiE4typeEEN8DlSystem21UserBufferEncodingTf821UserBufferEncodingTfNE1T1U7uint8_t" title="DlSystem::UserBufferEncodingTf8::UserBufferEncodingTfN::U"><span class="n"><span class="pre">U</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">stepSize</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bWidth</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">8</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I00_NSt9enable_ifIXaaNSt11is_integralI1TE5valueENSt17is_floating_pointI1UE5valueEEiE4typeEEN8DlSystem21UserBufferEncodingTf821UserBufferEncodingTfNE1T1U7uint8_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An encoding type where each element is represented by tfN, which is an N-bit quantized value, which has an exact representation of 0.0. </p>
+<p>Userbuffer size assumes tf N encoding for each element. (i.e., a tensor with dimensions (2,3) with a provided bitwidth of 16 will be represented by (2 * 3) * 2 = 12 bytes in memory). </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem21UserBufferEncodingTf821UserBufferEncodingTfNERK18UserBufferEncoding">
+<span id="_CPPv3N8DlSystem21UserBufferEncodingTf821UserBufferEncodingTfNERK18UserBufferEncoding"></span><span id="_CPPv2N8DlSystem21UserBufferEncodingTf821UserBufferEncodingTfNERK18UserBufferEncoding"></span><span id="DlSystem::UserBufferEncodingTf8::UserBufferEncodingTfN__UserBufferEncodingCR"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingTf8_1a27bac82dce8b1c89fe3d4dc1d6bda8db"></span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferEncodingTfN</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="classDlSystem_1_1UserBufferEncoding.html#_CPPv4N8DlSystem18UserBufferEncodingE" title="DlSystem::UserBufferEncoding"><span class="n"><span class="pre">UserBufferEncoding</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ubEncoding</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem21UserBufferEncodingTf821UserBufferEncodingTfNERK18UserBufferEncoding" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Copy Constructor for <a class="reference internal" href="#classDlSystem_1_1UserBufferEncodingTfN"><span class="std std-ref">UserBufferEncodingTfN</span></a>. </p>
+<p>An encoding type where each element is represented by tfN, which is an N-bit quantized value, which has an exact representation of 0.0</p>
+<p>Userbuffer size assumes tf N encoding for each element. (i.e., a tensor with dimensions (2,3) with a provided bitwidth of 16 will be represented by (2 * 3) * 2 = 12 bytes in memory). </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>otherHandle</strong> – the <a class="reference internal" href="#classDlSystem_1_1UserBufferEncodingTfN"><span class="std std-ref">UserBufferEncodingTfN</span></a> to copy </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a handle to a newly constructed <a class="reference internal" href="#classDlSystem_1_1UserBufferEncodingTfN"><span class="std std-ref">UserBufferEncodingTfN</span></a> </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem21UserBufferEncodingTf821UserBufferEncodingTfNERK21UserBufferEncodingTfN">
+<span id="_CPPv3N8DlSystem21UserBufferEncodingTf821UserBufferEncodingTfNERK21UserBufferEncodingTfN"></span><span id="_CPPv2N8DlSystem21UserBufferEncodingTf821UserBufferEncodingTfNERK21UserBufferEncodingTfN"></span><span id="DlSystem::UserBufferEncodingTf8::UserBufferEncodingTfN__UserBufferEncodingTfNCR"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingTf8_1a7b67e055b783af224d7347608206e905"></span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferEncodingTfN</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="classDlSystem_1_1UserBufferEncodingTf8.html#_CPPv4N8DlSystem21UserBufferEncodingTf821UserBufferEncodingTfNERK21UserBufferEncodingTfN" title="DlSystem::UserBufferEncodingTf8::UserBufferEncodingTfN"><span class="n"><span class="pre">UserBufferEncodingTfN</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ubEncoding</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem21UserBufferEncodingTf821UserBufferEncodingTfNERK21UserBufferEncodingTfN" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Copy Constructor for <a class="reference internal" href="#classDlSystem_1_1UserBufferEncodingTfN"><span class="std std-ref">UserBufferEncodingTfN</span></a>. </p>
+<p>An encoding type where each element is represented by tfN, which is an N-bit quantized value, which has an exact representation of 0.0</p>
+<p>Userbuffer size assumes tf N encoding for each element. (i.e., a tensor with dimensions (2,3) with a provided bitwidth of 16 will be represented by (2 * 3) * 2 = 12 bytes in memory). </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>otherHandle</strong> – the <a class="reference internal" href="#classDlSystem_1_1UserBufferEncodingTfN"><span class="std std-ref">UserBufferEncodingTfN</span></a> to copy </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a handle to a newly constructed <a class="reference internal" href="#classDlSystem_1_1UserBufferEncodingTfN"><span class="std std-ref">UserBufferEncodingTfN</span></a> </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem22UserBufferEncodingBoolE">
+<span id="_CPPv3N8DlSystem22UserBufferEncodingBoolE"></span><span id="_CPPv2N8DlSystem22UserBufferEncodingBoolE"></span><span id="DlSystem::UserBufferEncodingBool"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingBool"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferEncodingBool</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1UserBufferEncoding.html#_CPPv4N8DlSystem18UserBufferEncodingE" title="DlSystem::UserBufferEncoding"><span class="n"><span class="pre">UserBufferEncoding</span></span></a><a class="headerlink" href="#_CPPv4N8DlSystem22UserBufferEncodingBoolE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;IUserBuffer.hpp&gt;</em></div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem22UserBufferEncodingBool22UserBufferEncodingBoolE7uint8_t">
+<span id="_CPPv3N8DlSystem22UserBufferEncodingBool22UserBufferEncodingBoolE7uint8_t"></span><span id="_CPPv2N8DlSystem22UserBufferEncodingBool22UserBufferEncodingBoolE7uint8_t"></span><span id="DlSystem::UserBufferEncodingBool::UserBufferEncodingBool__uint8_t"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingBool_1a63d331f4c9a62df2e2fe2babde4b67dd"></span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferEncodingBool</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bWidth</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">8</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem22UserBufferEncodingBool22UserBufferEncodingBoolE7uint8_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem22UserBufferEncodingBool22UserBufferEncodingBoolERK18UserBufferEncoding">
+<span id="_CPPv3N8DlSystem22UserBufferEncodingBool22UserBufferEncodingBoolERK18UserBufferEncoding"></span><span id="_CPPv2N8DlSystem22UserBufferEncodingBool22UserBufferEncodingBoolERK18UserBufferEncoding"></span><span id="DlSystem::UserBufferEncodingBool::UserBufferEncodingBool__UserBufferEncodingCR"></span><span class="target" id="classDlSystem_1_1UserBufferEncodingBool_1a5ec06eb5d6eb12095f960da058081ad5"></span><span class="sig-name descname"><span class="n"><span class="pre">UserBufferEncodingBool</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="classDlSystem_1_1UserBufferEncoding.html#_CPPv4N8DlSystem18UserBufferEncodingE" title="DlSystem::UserBufferEncoding"><span class="n"><span class="pre">UserBufferEncoding</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ubEncoding</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem22UserBufferEncodingBool22UserBufferEncodingBoolERK18UserBufferEncoding" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem11IUserBufferE">
+<span id="_CPPv3N8DlSystem11IUserBufferE"></span><span id="_CPPv2N8DlSystem11IUserBufferE"></span><span id="DlSystem::IUserBuffer"></span><span class="target" id="classDlSystem_1_1IUserBuffer"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IUserBuffer</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">Wrapper</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="classDlSystem_1_1IUserBuffer.html#_CPPv4N8DlSystem11IUserBufferE" title="DlSystem::IUserBuffer"><span class="n"><span class="pre">IUserBuffer</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">Snpe_IUserBuffer_Handle_t</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">true</span></span><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N8DlSystem11IUserBufferE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;IUserBuffer.hpp&gt;</em></div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK8DlSystem11IUserBuffer10getStridesEv">
+<span id="_CPPv3NK8DlSystem11IUserBuffer10getStridesEv"></span><span id="_CPPv2NK8DlSystem11IUserBuffer10getStridesEv"></span><span id="DlSystem::IUserBuffer::getStridesC"></span><span class="target" id="classDlSystem_1_1IUserBuffer_1aef234f0070770e45b66740da252c5147"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="classDlSystem_1_1TensorShape.html#_CPPv4N8DlSystem11TensorShapeE" title="DlSystem::TensorShape"><span class="n"><span class="pre">TensorShape</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">getStrides</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8DlSystem11IUserBuffer10getStridesEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Retrieves the total number of bytes between elements in each dimension if the buffer were to be interpreted as a multi-dimensional array. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A const reference to the number of bytes between elements in each dimension. e.g. A tightly packed tensor of floats with dimensions [4, 3, 2] would return strides of [24, 8, 4]. </p>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not modify the <a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#classDlSystem_1_1TensorShape"><span class="std std-ref">TensorShape</span></a> returned by reference. Treat it as a const reference.</p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK8DlSystem11IUserBuffer7getSizeEv">
+<span id="_CPPv3NK8DlSystem11IUserBuffer7getSizeEv"></span><span id="_CPPv2NK8DlSystem11IUserBuffer7getSizeEv"></span><span id="DlSystem::IUserBuffer::getSizeC"></span><span class="target" id="classDlSystem_1_1IUserBuffer_1ac064906b19d603d0691a9c1c83c44623"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getSize</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8DlSystem11IUserBuffer7getSizeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Retrieves the size of the buffer, in bytes. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Size of the underlying buffer, in bytes. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK8DlSystem11IUserBuffer13getOutputSizeEv">
+<span id="_CPPv3NK8DlSystem11IUserBuffer13getOutputSizeEv"></span><span id="_CPPv2NK8DlSystem11IUserBuffer13getOutputSizeEv"></span><span id="DlSystem::IUserBuffer::getOutputSizeC"></span><span class="target" id="classDlSystem_1_1IUserBuffer_1a098c55ac4390ac760d13bac899394b49"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getOutputSize</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8DlSystem11IUserBuffer13getOutputSizeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Retrieves the size of the inference data in the buffer, in bytes. </p>
+<p>The inference results from a dynamic-sized model may not be exactly the same size as the UserBuffer provided to <a class="reference internal" href="file_SNPE_SNPEFactory.hpp.html#namespaceSNPE"><span class="std std-ref">SNPE</span></a>. This function can be used to get the amount of output inference data, which may be less or greater than the size of the UserBuffer.</p>
+<p>If the inference results fit in the UserBuffer, <a class="reference internal" href="#classDlSystem_1_1IUserBuffer_1a098c55ac4390ac760d13bac899394b49"><span class="std std-ref">getOutputSize()</span></a> would be less than or equal to <a class="reference internal" href="#classDlSystem_1_1IUserBuffer_1ac064906b19d603d0691a9c1c83c44623"><span class="std std-ref">getSize()</span></a>. But if the inference results were more than the capacity of the provided UserBuffer, the results would be truncated to fit the UserBuffer. But, <a class="reference internal" href="#classDlSystem_1_1IUserBuffer_1a098c55ac4390ac760d13bac899394b49"><span class="std std-ref">getOutputSize()</span></a> would be greater than <a class="reference internal" href="#classDlSystem_1_1IUserBuffer_1ac064906b19d603d0691a9c1c83c44623"><span class="std std-ref">getSize()</span></a>, which indicates a bigger buffer needs to be provided to <a class="reference internal" href="file_SNPE_SNPEFactory.hpp.html#namespaceSNPE"><span class="std std-ref">SNPE</span></a> to hold all of the inference results.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Size required for the buffer to hold all inference results, which can be less or more than the size of the buffer, in bytes. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK8DlSystem11IUserBuffer13getAddrOffsetEv">
+<span id="_CPPv3NK8DlSystem11IUserBuffer13getAddrOffsetEv"></span><span id="_CPPv2NK8DlSystem11IUserBuffer13getAddrOffsetEv"></span><span id="DlSystem::IUserBuffer::getAddrOffsetC"></span><span class="target" id="classDlSystem_1_1IUserBuffer_1a5da5c1083027a69319508fe860c22e12"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getAddrOffset</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8DlSystem11IUserBuffer13getAddrOffsetEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Retrieves the byte offset to the starting address of the buffer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>byte offset of the buffer from total allocated memory address. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem11IUserBuffer16setBufferAddressEPv">
+<span id="_CPPv3N8DlSystem11IUserBuffer16setBufferAddressEPv"></span><span id="_CPPv2N8DlSystem11IUserBuffer16setBufferAddressEPv"></span><span id="DlSystem::IUserBuffer::setBufferAddress__voidP"></span><span class="target" id="classDlSystem_1_1IUserBuffer_1a251a29b1bb6d12cc2372df460de7913a"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setBufferAddress</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N8DlSystem11IUserBuffer16setBufferAddressEPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Changes the underlying memory that backs the UserBuffer. </p>
+<p>This can be used to avoid creating multiple UserBuffer objects when the only thing that differs is the memory location.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>buffer</strong> – <strong>[in]</strong> : Pointer to the memory location</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Whether the set succeeds. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem11IUserBuffer22setBufferAddressOffsetE8uint64_t">
+<span id="_CPPv3N8DlSystem11IUserBuffer22setBufferAddressOffsetE8uint64_t"></span><span id="_CPPv2N8DlSystem11IUserBuffer22setBufferAddressOffsetE8uint64_t"></span><span id="DlSystem::IUserBuffer::setBufferAddressOffset__uint64_t"></span><span class="target" id="classDlSystem_1_1IUserBuffer_1ac0478f59e6a197141bb4f49a90faa4d2"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setBufferAddressOffset</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">offset</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N8DlSystem11IUserBuffer22setBufferAddressOffsetE8uint64_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Updates the address offset of the UserBuffer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>offset</strong> – <strong>[in]</strong> : byte offset to the starting address of the UserBuffer.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Whether the set succeeds. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK8DlSystem11IUserBuffer11getEncodingEv">
+<span id="_CPPv3NK8DlSystem11IUserBuffer11getEncodingEv"></span><span id="_CPPv2NK8DlSystem11IUserBuffer11getEncodingEv"></span><span id="DlSystem::IUserBuffer::getEncodingC"></span><span class="target" id="classDlSystem_1_1IUserBuffer_1a188f294d1c8f451f4707435346d3652e"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="classDlSystem_1_1UserBufferEncoding.html#_CPPv4N8DlSystem18UserBufferEncodingE" title="DlSystem::UserBufferEncoding"><span class="n"><span class="pre">UserBufferEncoding</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">getEncoding</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4NK8DlSystem11IUserBuffer11getEncodingEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Gets a reference to the data encoding object of the underlying buffer. </p>
+<p>This is necessary when the UserBuffer is re-used, and the encoding parameters can change. For example, each input can be quantized with different step sizes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Data encoding meta-data </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem11IUserBuffer11getEncodingEv">
+<span id="_CPPv3N8DlSystem11IUserBuffer11getEncodingEv"></span><span id="_CPPv2N8DlSystem11IUserBuffer11getEncodingEv"></span><span id="DlSystem::IUserBuffer::getEncoding"></span><span class="target" id="classDlSystem_1_1IUserBuffer_1a6a1842497b7d5a896874d3dc1c131abe"></span><a class="reference internal" href="classDlSystem_1_1UserBufferEncoding.html#_CPPv4N8DlSystem18UserBufferEncodingE" title="DlSystem::UserBufferEncoding"><span class="n"><span class="pre">UserBufferEncoding</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">getEncoding</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N8DlSystem11IUserBuffer11getEncodingEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Gets a reference to the data encoding object of the underlying buffer. </p>
+<p>This is necessary when the UserBuffer is re-used, and the encoding parameters can change. For example, each input can be quantized with different step sizes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Data encoding meta-data </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-members">Private Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp">
+<span class="target" id="classDlSystem_1_1IUserBuffer_1a64d86521a50872ad212e893c48e7dcf5"></span><span class="sig-name descname"><span class="pre">friend</span> <span class="pre">BaseType</span></span></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-static-attributes">Private Static Attributes</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem11IUserBuffer14DeleteFunctionE">
+<span id="_CPPv3N8DlSystem11IUserBuffer14DeleteFunctionE"></span><span id="_CPPv2N8DlSystem11IUserBuffer14DeleteFunctionE"></span><span id="DlSystem::IUserBuffer::DeleteFunction__DeleteFunctionType"></span><span class="target" id="classDlSystem_1_1IUserBuffer_1a1553c3945fafa150dd7d91b04a0338f0"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">constexpr</span></span><span class="w"> </span><span class="n"><span class="pre">DeleteFunctionType</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DeleteFunction</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="n"><span class="pre">Snpe_IUserBuffer_Delete</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N8DlSystem11IUserBuffer14DeleteFunctionE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

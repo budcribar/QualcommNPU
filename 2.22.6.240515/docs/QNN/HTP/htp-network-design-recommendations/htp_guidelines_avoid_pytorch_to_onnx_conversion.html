@@ -1,0 +1,277 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Avoid converting PyTorch models to onnx first &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="INT4 encodings for weights" href="htp_guidelines_int4_weights.html" />
+    <link rel="prev" title="Quantized 16 bit activations (A16) vs FP16 and Activation Fusion: Performance and power differences" href="htp_guidelines_a16_vs_fp16.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../general/backend.html">Backend</a> &raquo;</li>
+        
+          <li><a href="../../general/htp/htp_backend.html">HTP</a> &raquo;</li>
+        
+      <li>Avoid converting PyTorch models to onnx first</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="avoid-converting-pytorch-models-to-onnx-first">
+<h1>Avoid converting PyTorch models to onnx first<a class="headerlink" href="#avoid-converting-pytorch-models-to-onnx-first" title="Permalink to this heading">¶</a></h1>
+<p>It has been observed that converting PyTorch graph files to Onnx first and then converting the Onnx to
+QNN may result in patterns in the graph which affect the performance negatively. Examples are given in
+following sections.</p>
+<div class="section" id="changing-the-rank-of-the-tensor">
+<h2>Changing the rank of the tensor<a class="headerlink" href="#changing-the-rank-of-the-tensor" title="Permalink to this heading">¶</a></h2>
+<p>The ‘PyTorch-&gt;Onnx-&gt;QNN’ conversions can change the ranks of Tensors in a way which can prevent optimization of
+certain patterns which rely on specific sequence of ops and specific ranks of their inputs. For example consider
+the following 2 patterns in Fig. 14. The entire pattern on the left is a layer norm and is optimized successully.
+Note that the channel dimension is the last dimension and the Mul and the Add Ops at the end have scalar values.
+Now compare this to the pattern on the right. The channel dimension is the second dimension and the scale and
+bias values (Mul and Add at the end) are Tensors with rank 1. The optimization of the latter case is not supported
+yet and can lead to significant performance bottlenecks.</p>
+<div class="figure align-center" id="figure-14-figure">
+<img alt="../../_static/resources/htp_guidelines_fig_18.png" src="../../_static/resources/htp_guidelines_fig_18.png" />
+</div>
+<p class="centered">
+<strong><strong>Figure 1</strong></strong></p></div>
+<div class="section" id="introducing-avoidable-reshape-transpose-slice-sequence">
+<h2>Introducing avoidable reshape-transpose-slice sequence<a class="headerlink" href="#introducing-avoidable-reshape-transpose-slice-sequence" title="Permalink to this heading">¶</a></h2>
+<p>The following types of patterns (Fig. 15, 16) in a graph could be introduced during conversion from ‘PyTorch-&gt;Onnx-&gt;QNN’.
+The slice ops introduced in Fig. 15 make it difficult to optimize the multiplication op and they serve no purpose.
+These types of patterns can be entirely avoided during conversion if we could make the multiplication to be a part of
+the convolution at the beginning. Additionally, the reshape and transpose ops in both figures are very expensive as
+permute ops are added before and after the reshape to correct to NHWC format. Removing these types of artifacts in the
+converted graphs can improve the inference times by about 10% in many cases.</p>
+<div class="figure align-center" id="figure-15-figure">
+<img alt="../../_static/resources/htp_guidelines_fig_14.png" src="../../_static/resources/htp_guidelines_fig_14.png" />
+</div>
+<p class="centered">
+<strong><strong>Figure 2</strong></strong></p><div class="figure align-center" id="figure-16-figure">
+<img alt="../../_static/resources/htp_guidelines_fig_16.png" src="../../_static/resources/htp_guidelines_fig_16.png" />
+</div>
+<p class="centered">
+<strong><strong>Figure 3</strong></strong></p></div>
+<div class="section" id="adding-reshape-op-as-the-first-node-of-graph">
+<h2>Adding Reshape op as the first node of graph<a class="headerlink" href="#adding-reshape-op-as-the-first-node-of-graph" title="Permalink to this heading">¶</a></h2>
+<p>Reshape at first node consumes a lot of cycles. See Fig. 17. Additionally, as mentioned previously, permute ops are added
+before and after reshape, further degrading the performance. This could degrade the total inference time of a graph by 5-10%.</p>
+<div class="figure align-center" id="figure-17-figure">
+<img alt="../../_static/resources/htp_guidelines_fig_15.png" src="../../_static/resources/htp_guidelines_fig_15.png" />
+</div>
+<p class="centered">
+<strong><strong>Figure 4</strong></strong></p></div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="htp_guidelines_int4_weights.html" class="btn btn-neutral float-right" title="INT4 encodings for weights" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="htp_guidelines_a16_vs_fp16.html" class="btn btn-neutral float-left" title="Quantized 16 bit activations (A16) vs FP16 and Activation Fusion: Performance and power differences" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

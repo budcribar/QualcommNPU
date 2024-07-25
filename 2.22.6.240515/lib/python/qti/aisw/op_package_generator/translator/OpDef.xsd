@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2020-2024 Qualcomm Technologies, Inc.
+All Rights Reserved.
+Confidential and Proprietary - Qualcomm Technologies, Inc.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<!--Define allowable QnnDatatypes-->
+<xs:simpleType name="QnnType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="BACKEND_SPECIFIC"/>
+      <xs:enumeration value="QNN_DATATYPE_INT_8"/>
+      <xs:enumeration value="QNN_DATATYPE_INT_16"/>
+      <xs:enumeration value="QNN_DATATYPE_INT_32"/>
+      <xs:enumeration value="QNN_DATATYPE_INT_64"/>
+      <xs:enumeration value="QNN_DATATYPE_UINT_8"/>
+      <xs:enumeration value="QNN_DATATYPE_UINT_16"/>
+      <xs:enumeration value="QNN_DATATYPE_UINT_32"/>
+      <xs:enumeration value="QNN_DATATYPE_UINT_64"/>
+      <xs:enumeration value="QNN_DATATYPE_FLOAT_16"/>
+      <xs:enumeration value="QNN_DATATYPE_FLOAT_32"/>
+      <xs:enumeration value="QNN_DATATYPE_SFIXED_POINT_4"/>
+      <xs:enumeration value="QNN_DATATYPE_SFIXED_POINT_8"/>
+      <xs:enumeration value="QNN_DATATYPE_SFIXED_POINT_16"/>
+      <xs:enumeration value="QNN_DATATYPE_SFIXED_POINT_32"/>
+      <xs:enumeration value="QNN_DATATYPE_UFIXED_POINT_4"/>
+      <xs:enumeration value="QNN_DATATYPE_UFIXED_POINT_8"/>
+      <xs:enumeration value="QNN_DATATYPE_UFIXED_POINT_16"/>
+      <xs:enumeration value="QNN_DATATYPE_UFIXED_POINT_32"/>
+      <xs:enumeration value="QNN_DATATYPE_BOOL_8"/>
+      <xs:enumeration value="QNN_DATATYPE_STRING"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<!--Define allowable NativeDatatypes-->
+<xs:simpleType name="NativeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="BACKEND_SPECIFIC"/>
+      <xs:enumeration value="INT_8"/>
+      <xs:enumeration value="INT_16"/>
+      <xs:enumeration value="INT_32"/>
+      <xs:enumeration value="INT_64"/>
+      <xs:enumeration value="UINT_8"/>
+      <xs:enumeration value="UINT_16"/>
+      <xs:enumeration value="UINT_32"/>
+      <xs:enumeration value="UINT_64"/>
+      <xs:enumeration value="FLOAT_16"/>
+      <xs:enumeration value="FLOAT_32"/>
+      <xs:enumeration value="SFIXED_POINT_4"/>
+      <xs:enumeration value="SFIXED_POINT_8"/>
+      <xs:enumeration value="SFIXED_POINT_16"/>
+      <xs:enumeration value="SFIXED_POINT_32"/>
+      <xs:enumeration value="UFIXED_POINT_4"/>
+      <xs:enumeration value="UFIXED_POINT_8"/>
+      <xs:enumeration value="UFIXED_POINT_16"/>
+      <xs:enumeration value="UFIXED_POINT_32"/>
+      <xs:enumeration value="BOOL_8"/>
+      <xs:enumeration value="STRING"/>
+     </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="DatatypeType">
+    <xs:union memberTypes="QnnType NativeType"/>
+</xs:simpleType>
+
+<xs:simpleType name="EncodingType">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="SCALE_OFFSET"/>
+        <xs:enumeration value="AXIS_SCALE_OFFSET"/>
+        <xs:enumeration value="BW_SCALE_OFFSET"/>
+        <xs:enumeration value="BW_AXIS_SCALE_OFFSET"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<!--Define allowable Backends-->
+<xs:simpleType name="BackendType">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="CPU"/>
+        <xs:enumeration value="GPU"/>
+        <xs:enumeration value="DSP"/>
+        <xs:enumeration value="HTP"/>
+        <xs:enumeration value="AIC"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<!--Define a shape element with rank info and human readable content-->
+<xs:simpleType name="RankType">
+  <xs:restriction base="xs:string">
+    <xs:enumeration value="SCALAR"/> <!--Scalar-->
+    <xs:enumeration value="0D"/>     <!--Point-->
+    <xs:enumeration value="1D"/>     <!--Vector-->
+    <xs:enumeration value="2D"/>     <!--Matrix-->
+    <xs:enumeration value="3D"/>     <!--3D Tensor-->
+    <xs:enumeration value="4D"/>     <!--4D Tensor-->
+    <xs:enumeration value="5D"/>     <!--5D Tensor-->
+    <xs:enumeration value="ND"/>     <!--Generic rank n-->
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="LayoutType">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="NHWC"/>
+        <xs:enumeration value="NDHWC"/>
+        <xs:enumeration value="NONTRIVIAL"/>
+        <xs:enumeration value="UNDEFINED"/>
+        <xs:enumeration value="BACKEND_SPECIFIC"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<xs:complexType name="QuantParamType" mixed="true">
+    <xs:sequence>
+        <xs:element name="Encoding" type="EncodingType" minOccurs="1" maxOccurs="4"></xs:element>
+        <xs:element name="Axis" type="xs:int" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+        <xs:element name="Symmetric" type="xs:boolean" minOccurs="0" maxOccurs="1"></xs:element>
+        <xs:element name="Scale" type="xs:float" nillable="true" minOccurs="0" maxOccurs="1"></xs:element>
+        <xs:element name="Offset" type="xs:float" nillable="true" minOccurs="0" maxOccurs="1"></xs:element>
+        <xs:element name="Min" type="xs:int" nillable="true" minOccurs="0" maxOccurs="1"></xs:element>
+        <xs:element name="Max" type="xs:int" nillable="true" minOccurs="0" maxOccurs="1"></xs:element>
+        <xs:element name="IsMathInvariant" type="xs:boolean" minOccurs="0" maxOccurs="1"></xs:element>
+    </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ShapeType">
+  <xs:sequence>
+      <xs:element name="Rank" type="RankType"></xs:element>
+      <xs:element name="Layout" type="LayoutType" minOccurs="0" maxOccurs="1"></xs:element>
+      <xs:element name="Text" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="SupplementalShapeType">
+    <xs:sequence>
+        <xs:element name="Layout" type="LayoutType" minOccurs="0" maxOccurs="unbounded"></xs:element>
+        <xs:element name="Text" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
+    </xs:sequence>
+</xs:complexType>
+
+<!--Define a Description Type to include Code for Docs-->
+<xs:complexType name="DescriptionType">
+   <xs:sequence maxOccurs="unbounded">
+      <xs:element name="Content" type="xs:string" minOccurs="0" maxOccurs="unbounded"></xs:element>
+      <xs:element name="Code" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+   </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="EnumType">
+    <xs:sequence>
+       <xs:element name="Enum" type="xs:string" minOccurs="1" maxOccurs="unbounded"></xs:element>
+    </xs:sequence>
+</xs:complexType>
+
+<!--Broadcast different kinds of constraints-->
+ <xs:simpleType name="ConstraintValueType">
+     <xs:restriction base="xs:string">
+         <xs:enumeration value="Number"></xs:enumeration>
+         <xs:enumeration value="Shape"></xs:enumeration>
+         <xs:enumeration value="Value"></xs:enumeration>
+         <xs:enumeration value="Datatype"></xs:enumeration>
+         <xs:enumeration value="Description"></xs:enumeration>
+     </xs:restriction>
+ </xs:simpleType>
+
+ <xs:complexType name="ConstraintType" mixed="true">
+   <xs:sequence>
+        <xs:element name="Code" type="xs:string" nillable="true" minOccurs="0" maxOccurs="1"></xs:element>
+   </xs:sequence>
+   <xs:attribute name="id" type="xs:int" use="required"></xs:attribute>
+   <xs:attribute name="Type" type="ConstraintValueType" use="required"></xs:attribute>
+ </xs:complexType>
+
+<!--Define the Tensor-->
+<xs:complexType name ="TensorType">
+   <xs:sequence>
+        <xs:element name="Name" type="xs:string" minOccurs="1" maxOccurs="1"></xs:element>
+        <xs:element name="Description" type="DescriptionType" minOccurs="0" maxOccurs="1"></xs:element>
+        <xs:element name="Constraint" type="ConstraintType" minOccurs="0" maxOccurs="unbounded"></xs:element>
+        <xs:element name="Mandatory" type="xs:boolean"></xs:element>
+        <xs:element name="Datatype" type="DatatypeType" minOccurs="1" maxOccurs="unbounded"></xs:element>
+        <xs:element name="Shape" type="ShapeType"></xs:element>
+        <xs:element name="Default" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
+    </xs:sequence>
+</xs:complexType>
+
+<!--Define the Supplemental (Per BE) Information for a Tensor-->
+<xs:complexType name ="SupplementalTensorType">
+    <xs:sequence>
+        <xs:element name="Name" type="xs:string" nillable="false"></xs:element>
+        <xs:element name="Constraint" type="ConstraintType" minOccurs="0" maxOccurs="unbounded"></xs:element>
+        <xs:element name="Datatype" type="DatatypeType" minOccurs="0" maxOccurs="unbounded"></xs:element>
+        <xs:element name="QuantParam" type="QuantParamType" minOccurs="0" maxOccurs="unbounded"></xs:element>
+        <xs:element name="Shape" type="SupplementalShapeType" minOccurs="0" maxOccurs="1"></xs:element>
+        <xs:element name="OnlyDefaultSupported" type="xs:boolean" minOccurs="0" maxOccurs="1"></xs:element> <!--Signifies an Op will only support the default value-->
+    </xs:sequence>
+</xs:complexType>
+
+<!--Define Activation Tensor-->
+<xs:complexType name="ActivationTensorType">
+    <xs:complexContent>
+      <xs:extension base="TensorType">
+        <xs:sequence>
+            <xs:element name="Repeated" type="xs:boolean" minOccurs="0" maxOccurs="1"></xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+ </xs:complexType>
+
+<!--Define the Input-->
+<xs:complexType name ="InputType">
+    <xs:complexContent>
+        <xs:extension base="ActivationTensorType">
+            <xs:sequence>
+                <xs:element name="IsStaticTensor" type="xs:boolean" minOccurs="0" maxOccurs="1"></xs:element>
+            </xs:sequence>
+        </xs:extension>
+    </xs:complexContent>
+</xs:complexType>
+
+<!--Define the Parameter-->
+<xs:complexType name ="ParamType">
+    <xs:complexContent>
+        <xs:extension base="TensorType">
+            <xs:sequence>
+               <xs:element name="Enumeration" type="EnumType" minOccurs="0" maxOccurs="1"></xs:element>
+            </xs:sequence>
+        </xs:extension>
+    </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name ="ReferenceType">
+  <xs:simpleContent>
+     <xs:extension base="xs:string">
+         <xs:attribute name="Source" type="xs:string"></xs:attribute>
+         <xs:attribute name="Url" type="xs:string"></xs:attribute>
+     </xs:extension>
+  </xs:simpleContent>
+</xs:complexType>
+
+<!--Define the OpDefType-->
+<xs:complexType name ="OpDefType">
+  <xs:sequence>
+    <xs:element name="Name" type="xs:string" nillable="false"></xs:element>
+    <xs:element name="Description" type="DescriptionType" minOccurs="1" maxOccurs="unbounded"></xs:element>
+    <xs:element name="Reference" type="ReferenceType" minOccurs="0" maxOccurs="unbounded"></xs:element>
+    <xs:element name="Input" type="InputType" minOccurs="1" maxOccurs="unbounded"></xs:element>
+    <xs:element name="Output" type="ActivationTensorType" minOccurs="0" maxOccurs="unbounded"></xs:element>
+    <xs:element name="Parameter" type="ParamType" minOccurs="0" maxOccurs="unbounded"></xs:element>
+    <!--Introduce Constraints at Op Level-->
+  </xs:sequence>
+</xs:complexType>
+
+<!--Define the Supplemental OpDefType-->
+<xs:complexType name ="SupplementalOpDefType">
+  <xs:sequence>
+    <xs:element name="Name" type="xs:string" nillable="false"></xs:element>
+    <xs:element name="Input" type="SupplementalTensorType" minOccurs="0" maxOccurs="unbounded"></xs:element>
+    <xs:element name="Output" type="SupplementalTensorType" minOccurs="0" maxOccurs="unbounded"></xs:element>
+    <xs:element name="Parameter" type="SupplementalTensorType" minOccurs="0" maxOccurs="unbounded"></xs:element>
+  </xs:sequence>
+</xs:complexType>
+
+<!--Define a per BE OpDef to simplify OpDefCollection-->
+<xs:complexType name="CustomOpDefType">
+    <xs:complexContent>
+        <xs:extension base="OpDefType">
+            <xs:sequence>
+                <xs:element name="UseDefaultTranslation" type="xs:boolean" minOccurs="0" maxOccurs="1"></xs:element>
+                <xs:element name="SupportedBackend" type="xs:string" minOccurs="1" maxOccurs="unbounded"></xs:element>
+            </xs:sequence>
+        </xs:extension>
+    </xs:complexContent>
+</xs:complexType>
+
+<xs:element name="OpDef" type="OpDefType"></xs:element>
+
+<!--Define a Typical OpDefList-->
+<xs:complexType name="OpDefListType">
+   <xs:sequence>
+     <xs:element ref="OpDef" maxOccurs="unbounded"></xs:element>
+   </xs:sequence>
+   <xs:attribute name="Version" type="xs:string" use="optional"></xs:attribute>
+</xs:complexType>
+
+<!--Define a Typical OpDefList-->
+<xs:complexType name="SupportedOpsType">
+    <xs:sequence>
+        <xs:element name="OpName" type="xs:string" minOccurs="1" maxOccurs="unbounded"></xs:element>
+    </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="SupplementalOpDefListType">
+   <xs:sequence>
+     <xs:element name="SupportedOps" type="SupportedOpsType" minOccurs="0" maxOccurs="1"></xs:element>
+     <xs:element name="SupplementalOpDef" type="SupplementalOpDefType" maxOccurs="unbounded"></xs:element>
+   </xs:sequence>
+   <xs:attribute name="Backend" type="xs:string" use="required"></xs:attribute>
+   <xs:attribute name="Runtime" type="xs:string" use="optional"></xs:attribute>
+</xs:complexType>
+
+<!--Define a SupplementalOpDefSpecification-->
+<xs:complexType name="SupplementalOpDefSpecificationType">
+    <xs:sequence>
+        <xs:element ref="SupplementalOpDefList" minOccurs="1" maxOccurs="unbounded"></xs:element>
+    </xs:sequence>
+</xs:complexType>
+
+<!--OpDef List for OpDefCollection-->
+<xs:complexType name="CollectionOpDefListType">
+    <xs:sequence>
+        <xs:element name="OpDef" type="CustomOpDefType" minOccurs="1" maxOccurs="unbounded"></xs:element>
+    </xs:sequence>
+</xs:complexType>
+
+<!--Final XML will be an OpDefList with a sequence of OpDefs-->
+<xs:element name="OpDefList" type="OpDefListType"></xs:element>
+
+<!--Alternately, the XML can supplement an OpDefList-->
+<xs:element name="SupplementalOpDefList" type="SupplementalOpDefListType"></xs:element>
+
+<!--An XML may contain multiple Supplemental OpDefLists in a SupplementalOpDefSpecification-->
+<xs:element name="SupplementalOpDefSpecification" type="SupplementalOpDefSpecificationType"></xs:element>
+
+<!--Define an OpDefCollection-->
+<xs:complexType name="OpDefCollectionType">
+    <xs:sequence>
+        <xs:element name="OpDefList" type="CollectionOpDefListType" minOccurs="1" maxOccurs="1"></xs:element>
+        <xs:element name="SupplementalOpDefList" type="SupplementalOpDefListType" minOccurs="0" maxOccurs="unbounded"></xs:element>
+    </xs:sequence>
+    <xs:attribute name="PackageName" type="xs:string" use="required"></xs:attribute>
+    <xs:attribute name="Domain" type="xs:string" use="required"></xs:attribute>
+    <xs:attribute name="Version" type="xs:string" use="required"></xs:attribute>
+</xs:complexType>
+
+<!--
+Specifying an OpList and Supplemental Information in the same
+XML constitutes an OpDefCollection.
+-->
+<xs:element name="OpDefCollection" type="OpDefCollectionType"></xs:element>
+
+</xs:schema>

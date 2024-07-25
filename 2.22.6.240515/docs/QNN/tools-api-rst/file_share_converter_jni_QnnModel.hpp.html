@@ -1,0 +1,565 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>File QnnModel.hpp &mdash; Qualcomm® AI Engine Direct  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>File QnnModel.hpp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="file-qnnmodel-hpp">
+<span id="file-share-converter-jni-qnnmodel-hpp"></span><h1>File QnnModel.hpp<a class="headerlink" href="#file-qnnmodel-hpp" title="Permalink to this heading">¶</a></h1>
+<p>↰ <a class="reference internal" href="dir_share_converter_jni.html#dir-share-converter-jni"><span class="std std-ref">Parent directory</span></a> (<code class="docutils literal notranslate"><span class="pre">share/converter/jni</span></code>)</p>
+<div class="contents local topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#definition-share-converter-jni-qnnmodel-hpp" id="id1">Definition (<code class="docutils literal notranslate"><span class="pre">share/converter/jni/QnnModel.hpp</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#includes" id="id2">Includes</a></p></li>
+<li><p><a class="reference internal" href="#namespaces" id="id3">Namespaces</a></p></li>
+<li><p><a class="reference internal" href="#classes" id="id4">Classes</a></p></li>
+<li><p><a class="reference internal" href="#functions" id="id5">Functions</a></p></li>
+<li><p><a class="reference internal" href="#full-file-listing" id="id6">Full File Listing</a></p></li>
+</ul>
+</div>
+<div class="section" id="definition-share-converter-jni-qnnmodel-hpp">
+<h2>Definition (<code class="docutils literal notranslate"><span class="pre">share/converter/jni/QnnModel.hpp</span></code>)<a class="headerlink" href="#definition-share-converter-jni-qnnmodel-hpp" title="Permalink to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="program_listing_file_share_converter_jni_QnnModel.hpp.html">Program Listing for File QnnModel.hpp</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="includes">
+<h2>Includes<a class="headerlink" href="#includes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">QnnInterface.h</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QnnLog.h</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QnnModelPal.hpp</span></code> (<a class="reference internal" href="file_share_converter_jni_QnnModelPal.hpp.html#file-share-converter-jni-qnnmodelpal-hpp"><span class="std std-ref">File QnnModelPal.hpp</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QnnWrapperUtils.hpp</span></code> (<a class="reference internal" href="file_share_converter_jni_QnnWrapperUtils.hpp.html#file-share-converter-jni-qnnwrapperutils-hpp"><span class="std std-ref">File QnnWrapperUtils.hpp</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">limits</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">map</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vector</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="namespaces">
+<h2>Namespaces<a class="headerlink" href="#namespaces" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="namespace_qnn_wrapper_api.html#namespace-qnn-wrapper-api"><span class="std std-ref">Namespace qnn_wrapper_api</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="classqnn__wrapper__api_1_1QnnModel.html#exhale-class-classqnn-wrapper-api-1-1qnnmodel"><span class="std std-ref">Class QnnModel</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="function_namespaceqnn__wrapper__api_1a39e97cb0ce0b29d3897e578466a77ade.html#exhale-function-namespaceqnn-wrapper-api-1a39e97cb0ce0b29d3897e578466a77ade"><span class="std std-ref">Function qnn_wrapper_api::freeGraphsInfo</span></a></p></li>
+<li><p><a class="reference internal" href="function_namespaceqnn__wrapper__api_1a0de4daf55fe480dc8ca6464efbb568bb.html#exhale-function-namespaceqnn-wrapper-api-1a0de4daf55fe480dc8ca6464efbb568bb"><span class="std std-ref">Function qnn_wrapper_api::getGraphInfoFromModels</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="full-file-listing">
+<h2>Full File Listing<a class="headerlink" href="#full-file-listing" title="Permalink to this heading">¶</a></h2>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv415qnn_wrapper_api">
+<span id="_CPPv315qnn_wrapper_api"></span><span id="_CPPv215qnn_wrapper_api"></span><span id="qnn_wrapper_api"></span><span class="target" id="namespaceqnn__wrapper__api"></span><span class="k"><span class="pre">namespace</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">qnn_wrapper_api</span></span></span><a class="headerlink" href="#_CPPv415qnn_wrapper_api" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N15qnn_wrapper_api22getGraphInfoFromModelsEP8QnnModel8uint32_tPP14GraphInfoPtr_t">
+<span id="_CPPv3N15qnn_wrapper_api22getGraphInfoFromModelsEP8QnnModel8uint32_tPP14GraphInfoPtr_t"></span><span id="_CPPv2N15qnn_wrapper_api22getGraphInfoFromModelsEP8QnnModel8uint32_tPP14GraphInfoPtr_t"></span><span id="qnn_wrapper_api::getGraphInfoFromModels__QnnModelP.uint32_t.GraphInfoPtr_tPP"></span><span class="target" id="namespaceqnn__wrapper__api_1a0de4daf55fe480dc8ca6464efbb568bb"></span><a class="reference internal" href="file_share_converter_jni_QnnWrapperUtils.hpp.html#_CPPv4N15qnn_wrapper_api12ModelError_tE" title="qnn_wrapper_api::ModelError_t"><span class="n"><span class="pre">ModelError_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getGraphInfoFromModels</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="classqnn__wrapper__api_1_1QnnModel.html#_CPPv4N15qnn_wrapper_api8QnnModelE" title="qnn_wrapper_api::QnnModel"><span class="n"><span class="pre">QnnModel</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">models</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">numModels</span></span>, <a class="reference internal" href="file_share_converter_jni_QnnWrapperUtils.hpp.html#_CPPv4N15qnn_wrapper_api14GraphInfoPtr_tE" title="qnn_wrapper_api::GraphInfoPtr_t"><span class="n"><span class="pre">GraphInfoPtr_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">graphsInfo</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15qnn_wrapper_api22getGraphInfoFromModelsEP8QnnModel8uint32_tPP14GraphInfoPtr_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A helper function to convert <a class="reference internal" href="#classqnn__wrapper__api_1_1QnnModel"><span class="std std-ref">QnnModel</span></a> objects to Graph struct for qnn_model c interface. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>models</strong> – <strong>[in]</strong> List of <a class="reference internal" href="#classqnn__wrapper__api_1_1QnnModel"><span class="std std-ref">QnnModel</span></a> objects </p></li>
+<li><p><strong>numModels</strong> – <strong>[in]</strong> The number of elements in above models object</p></li>
+<li><p><strong>graphsInfo</strong> – <strong>[out]</strong> The corresponding array of Graph object for each of the above model objects(note: this function will malloc memory needed to store the struct objects. Following free shall be invoked when objects are no longer needed.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N15qnn_wrapper_api14freeGraphsInfoEPP14GraphInfoPtr_t8uint32_t">
+<span id="_CPPv3N15qnn_wrapper_api14freeGraphsInfoEPP14GraphInfoPtr_t8uint32_t"></span><span id="_CPPv2N15qnn_wrapper_api14freeGraphsInfoEPP14GraphInfoPtr_t8uint32_t"></span><span id="qnn_wrapper_api::freeGraphsInfo__GraphInfoPtr_tPP.uint32_t"></span><span class="target" id="namespaceqnn__wrapper__api_1a39e97cb0ce0b29d3897e578466a77ade"></span><a class="reference internal" href="file_share_converter_jni_QnnWrapperUtils.hpp.html#_CPPv4N15qnn_wrapper_api12ModelError_tE" title="qnn_wrapper_api::ModelError_t"><span class="n"><span class="pre">ModelError_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">freeGraphsInfo</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="file_share_converter_jni_QnnWrapperUtils.hpp.html#_CPPv4N15qnn_wrapper_api14GraphInfoPtr_tE" title="qnn_wrapper_api::GraphInfoPtr_t"><span class="n"><span class="pre">GraphInfoPtr_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">graphsInfo</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">numGraphs</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15qnn_wrapper_api14freeGraphsInfoEPP14GraphInfoPtr_t8uint32_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A helper function to free memory malloced for communicating the Graph for a model(s) </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graphsInfo</strong> – <strong>[in]</strong> Pointer pointing to location of graph objects </p></li>
+<li><p><strong>numGraphs</strong> – <strong>[in]</strong> The number of graph objects the above pointer is pointing to</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N15qnn_wrapper_api8QnnModelE">
+<span id="_CPPv3N15qnn_wrapper_api8QnnModelE"></span><span id="_CPPv2N15qnn_wrapper_api8QnnModelE"></span><span id="qnn_wrapper_api::QnnModel"></span><span class="target" id="classqnn__wrapper__api_1_1QnnModel"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnModel</span></span></span><a class="headerlink" href="#_CPPv4N15qnn_wrapper_api8QnnModelE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnModel.hpp&gt;</em></div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N15qnn_wrapper_api8QnnModelD0Ev">
+<span id="_CPPv3N15qnn_wrapper_api8QnnModelD0Ev"></span><span id="_CPPv2N15qnn_wrapper_api8QnnModelD0Ev"></span><span id="qnn_wrapper_api::QnnModel::~QnnModel"></span><span class="target" id="classqnn__wrapper__api_1_1QnnModel_1a6d548b186e6ac87ca1905b17fd640da5"></span><span class="sig-name descname"><span class="n"><span class="pre">~QnnModel</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">default</span></span><a class="headerlink" href="#_CPPv4N15qnn_wrapper_api8QnnModelD0Ev" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N15qnn_wrapper_api8QnnModel10initializeERK19Qnn_BackendHandle_tRK22QNN_INTERFACE_VER_TYPERK19Qnn_ContextHandle_tPKcb7uint8_tPPK17QnnGraph_Config_t">
+<span id="_CPPv3N15qnn_wrapper_api8QnnModel10initializeERK19Qnn_BackendHandle_tRK22QNN_INTERFACE_VER_TYPERK19Qnn_ContextHandle_tPKcb7uint8_tPPK17QnnGraph_Config_t"></span><span id="_CPPv2N15qnn_wrapper_api8QnnModel10initializeERK19Qnn_BackendHandle_tRK22QNN_INTERFACE_VER_TYPERK19Qnn_ContextHandle_tPKcb7uint8_tPPK17QnnGraph_Config_t"></span><span id="qnn_wrapper_api::QnnModel::initialize__Qnn_BackendHandle_tCR.QNN_INTERFACE_VER_TYPECR.Qnn_ContextHandle_tCR.cCP.b.uint8_t.QnnGraph_Config_tCPP"></span><span class="target" id="classqnn__wrapper__api_1_1QnnModel_1a3ce7e48f08b49810cf0758d1cffd64ba"></span><a class="reference internal" href="file_share_converter_jni_QnnWrapperUtils.hpp.html#_CPPv4N15qnn_wrapper_api12ModelError_tE" title="qnn_wrapper_api::ModelError_t"><span class="n"><span class="pre">ModelError_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">initialize</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Qnn_BackendHandle_t</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">backendHandle</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">QNN_INTERFACE_VER_TYPE</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">qnnInterface</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Qnn_ContextHandle_t</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">context</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">graphName</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">debug</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">doNodeValidations</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">QnnGraph_Config_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">graphConfigs</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">nullptr</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15qnn_wrapper_api8QnnModel10initializeERK19Qnn_BackendHandle_tRK22QNN_INTERFACE_VER_TYPERK19Qnn_ContextHandle_tPKcb7uint8_tPPK17QnnGraph_Config_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Creates a Qnn Graph within given context. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>backendHandle</strong> – <strong>[in]</strong> A handle to the QNN backend handle which will be used to query the API symbols</p></li>
+<li><p><strong>qnnInterface</strong> – <strong>[in]</strong> the QNN backend interface to use</p></li>
+<li><p><strong>context</strong> – <strong>[in]</strong> A handler to the context where the model’s graph would be created.</p></li>
+<li><p><strong>graphName</strong> – <strong>[in]</strong> The name to use for creating a graph in the context provided.</p></li>
+<li><p><strong>debug</strong> – <strong>[in]</strong> If flag is true, sets all tensors created in model to be QNN_TENSOR_TYPE_APP_READ, essentially overwriting what is set in Qnn_TensorType.</p></li>
+<li><p><strong>doNodeValidations</strong> – <strong>[in]</strong> If flag is set, all nodes added with addNode call will be validated by Backend</p></li>
+<li><p><strong>graphConfigs</strong> – <strong>[in]</strong> Array of graph configurations to use for creating the QNN Graph. Default: nullptr </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N15qnn_wrapper_api8QnnModel9addTensorEPKcP12Qnn_Tensor_tb">
+<span id="_CPPv3N15qnn_wrapper_api8QnnModel9addTensorEPKcP12Qnn_Tensor_tb"></span><span id="_CPPv2N15qnn_wrapper_api8QnnModel9addTensorEPKcP12Qnn_Tensor_tb"></span><span id="qnn_wrapper_api::QnnModel::addTensor__cCP.Qnn_Tensor_tP.b"></span><span class="target" id="classqnn__wrapper__api_1_1QnnModel_1abf12f2e7b5c064f31d943f1ead5745fb"></span><a class="reference internal" href="file_share_converter_jni_QnnWrapperUtils.hpp.html#_CPPv4N15qnn_wrapper_api12ModelError_tE" title="qnn_wrapper_api::ModelError_t"><span class="n"><span class="pre">ModelError_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">addTensor</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">nodeName</span></span>, <span class="n"><span class="pre">Qnn_Tensor_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">tensor</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">saveTensor</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">true</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15qnn_wrapper_api8QnnModel9addTensorEPKcP12Qnn_Tensor_tb" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A wrapper function to create a tensor inside class’s context graph. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nodeName</strong> – <strong>[in]</strong> Lookup name for node/layer</p></li>
+<li><p><strong>tensor</strong> – <strong>[in]</strong> A pointer to a struct containing information on the tensor</p></li>
+<li><p><strong>saveTensor</strong> – <strong>[in]</strong> Flag to indicate if tensor should be saved in object for later retrieval with class getter functions.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N15qnn_wrapper_api8QnnModel9addTensorEPKc12Qnn_Tensor_tb">
+<span id="_CPPv3N15qnn_wrapper_api8QnnModel9addTensorEPKc12Qnn_Tensor_tb"></span><span id="_CPPv2N15qnn_wrapper_api8QnnModel9addTensorEPKc12Qnn_Tensor_tb"></span><span id="qnn_wrapper_api::QnnModel::addTensor__cCP.Qnn_Tensor_t.b"></span><span class="target" id="classqnn__wrapper__api_1_1QnnModel_1a1d6328b9acfd60a2f69c2e16a9cfb353"></span><a class="reference internal" href="file_share_converter_jni_QnnWrapperUtils.hpp.html#_CPPv4N15qnn_wrapper_api12ModelError_tE" title="qnn_wrapper_api::ModelError_t"><span class="n"><span class="pre">ModelError_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">addTensor</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">nodeName</span></span>, <span class="n"><span class="pre">Qnn_Tensor_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">tensor</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">saveTensor</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">true</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15qnn_wrapper_api8QnnModel9addTensorEPKc12Qnn_Tensor_tb" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A wrapper function to create a tensor inside class’s context graph. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nodeName</strong> – <strong>[in]</strong> Lookup name for node/layer</p></li>
+<li><p><strong>tensor</strong> – <strong>[in]</strong> A struct containing information on the tensor</p></li>
+<li><p><strong>saveTensor</strong> – <strong>[in]</strong> Flag to indicate if tensor should be saved in object for later retrieval with class getter functions.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N15qnn_wrapper_api8QnnModel12getQnnTensorERPKcRPKcR12Qnn_Tensor_t">
+<span id="_CPPv3N15qnn_wrapper_api8QnnModel12getQnnTensorERPKcRPKcR12Qnn_Tensor_t"></span><span id="_CPPv2N15qnn_wrapper_api8QnnModel12getQnnTensorERPKcRPKcR12Qnn_Tensor_t"></span><span id="qnn_wrapper_api::QnnModel::getQnnTensor__cCPR.cCPR.Qnn_Tensor_tR"></span><span class="target" id="classqnn__wrapper__api_1_1QnnModel_1a7fb6446bef2efa008099fec6c99488dd"></span><a class="reference internal" href="file_share_converter_jni_QnnWrapperUtils.hpp.html#_CPPv4N15qnn_wrapper_api12ModelError_tE" title="qnn_wrapper_api::ModelError_t"><span class="n"><span class="pre">ModelError_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getQnnTensor</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">nodeName</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">tensorName</span></span>, <span class="n"><span class="pre">Qnn_Tensor_t</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">tensor</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15qnn_wrapper_api8QnnModel12getQnnTensorERPKcRPKcR12Qnn_Tensor_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>function to be used to query tensors created within this <a class="reference internal" href="#classqnn__wrapper__api_1_1QnnModel"><span class="std std-ref">QnnModel</span></a> instance </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nodeName</strong> – <strong>[in]</strong> Lookup name for node/layer</p></li>
+<li><p><strong>tensorName</strong> – <strong>[in]</strong> Lookup name for tensor</p></li>
+<li><p><strong>tensor</strong> – <strong>[out]</strong> The corresponding Qnn_Tensor_t object for given tensor name.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N15qnn_wrapper_api8QnnModel7addNodeE21Qnn_OpConfigVersion_tPKcPKcPKcP11Qnn_Param_t8uint32_tPPKc8uint32_tP12Qnn_Tensor_t8uint32_t">
+<span id="_CPPv3N15qnn_wrapper_api8QnnModel7addNodeE21Qnn_OpConfigVersion_tPKcPKcPKcP11Qnn_Param_t8uint32_tPPKc8uint32_tP12Qnn_Tensor_t8uint32_t"></span><span id="_CPPv2N15qnn_wrapper_api8QnnModel7addNodeE21Qnn_OpConfigVersion_tPKcPKcPKcP11Qnn_Param_t8uint32_tPPKc8uint32_tP12Qnn_Tensor_t8uint32_t"></span><span id="qnn_wrapper_api::QnnModel::addNode__Qnn_OpConfigVersion_t.cCP.cCP.cCP.Qnn_Param_tP.uint32_t.cCPP.uint32_t.Qnn_Tensor_tP.uint32_t"></span><span class="target" id="classqnn__wrapper__api_1_1QnnModel_1a355eb3c75227362769e06d52e098629d"></span><a class="reference internal" href="file_share_converter_jni_QnnWrapperUtils.hpp.html#_CPPv4N15qnn_wrapper_api12ModelError_tE" title="qnn_wrapper_api::ModelError_t"><span class="n"><span class="pre">ModelError_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">addNode</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">Qnn_OpConfigVersion_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">version</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">name</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">packageName</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">type</span></span>, <span class="n"><span class="pre">Qnn_Param_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">params</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">numOfParams</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">inputNames</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">numOfInputs</span></span>, <span class="n"><span class="pre">Qnn_Tensor_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">outputTensors</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">numOfOutputs</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15qnn_wrapper_api8QnnModel7addNodeE21Qnn_OpConfigVersion_tPKcPKcPKcP11Qnn_Param_t8uint32_tPPKc8uint32_tP12Qnn_Tensor_t8uint32_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A wrapper function to create a node in class’s graph. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>version</strong> – <strong>[in]</strong> The QNN version for Op_Config_t structure to use (e.g. QNN_OPCONFIG_VERSION_1)</p></li>
+<li><p><strong>name</strong> – <strong>[in]</strong> The node name to use (e.g. my_graph_conv_1)</p></li>
+<li><p><strong>packageName</strong> – <strong>[in]</strong> The node package name (e.g. qti.aisw)</p></li>
+<li><p><strong>type</strong> – <strong>[in]</strong> The QNN_OP_QNN_OP_H node type (e.g. QNN_OP_ARGMAX)</p></li>
+<li><p><strong>params</strong> – <strong>[in]</strong> A struct object containing all the params for the node to be added. For tensorParam case. The tensor will be created within the function and the data will be retrieved from the binary blob to set the tensor data.</p></li>
+<li><p><strong>numOfParams</strong> – <strong>[in]</strong> The number of elements in above params object</p></li>
+<li><p><strong>inputNames</strong> – <strong>[in]</strong> List of tensor names for inputs to node. Note: the corresponding qnn tensor objects must be created within this instance prior to being listed as input to a node</p></li>
+<li><p><strong>numOfInputs</strong> – <strong>[in]</strong> The number of elements in above inputNames object</p></li>
+<li><p><strong>outputTensors</strong> – <strong>[in]</strong> List of Qnn_Tensor_t objects for outputs from node. Note1: the corresponding qnn tensor objects will be created in function and must not already exist. Note2: the output names must be unique per graph</p></li>
+<li><p><strong>numOfOutputs</strong> – <strong>[in]</strong> The number of elements in above outputs object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N15qnn_wrapper_api8QnnModel11getQnnGraphEv">
+<span id="_CPPv3N15qnn_wrapper_api8QnnModel11getQnnGraphEv"></span><span id="_CPPv2N15qnn_wrapper_api8QnnModel11getQnnGraphEv"></span><span id="qnn_wrapper_api::QnnModel::getQnnGraph"></span><span class="target" id="classqnn__wrapper__api_1_1QnnModel_1ae7b7921966163daa844381ad07268528"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">Qnn_GraphHandle_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getQnnGraph</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15qnn_wrapper_api8QnnModel11getQnnGraphEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A wrapper function to return model’s graph. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The Qnn graph object </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N15qnn_wrapper_api8QnnModel15getQnnGraphNameEv">
+<span id="_CPPv3N15qnn_wrapper_api8QnnModel15getQnnGraphNameEv"></span><span id="_CPPv2N15qnn_wrapper_api8QnnModel15getQnnGraphNameEv"></span><span id="qnn_wrapper_api::QnnModel::getQnnGraphName"></span><span class="target" id="classqnn__wrapper__api_1_1QnnModel_1a811e34216b7f3750c9aa44da7d87b4ae"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getQnnGraphName</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15qnn_wrapper_api8QnnModel15getQnnGraphNameEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A wrapper function to return model’s graphName. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The Qnn graph object’s name </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N15qnn_wrapper_api8QnnModel20getGraphInputTensorsEv">
+<span id="_CPPv3N15qnn_wrapper_api8QnnModel20getGraphInputTensorsEv"></span><span id="_CPPv2N15qnn_wrapper_api8QnnModel20getGraphInputTensorsEv"></span><span id="qnn_wrapper_api::QnnModel::getGraphInputTensors"></span><span class="target" id="classqnn__wrapper__api_1_1QnnModel_1a903d0d74dae1f579391a8e1f636b076f"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Qnn_Tensor_t</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getGraphInputTensors</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15qnn_wrapper_api8QnnModel20getGraphInputTensorsEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A wrapper function to return model’s graph input tensors. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>vector of Qnn_Tensor_t objects </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N15qnn_wrapper_api8QnnModel21getGraphOutputTensorsEv">
+<span id="_CPPv3N15qnn_wrapper_api8QnnModel21getGraphOutputTensorsEv"></span><span id="_CPPv2N15qnn_wrapper_api8QnnModel21getGraphOutputTensorsEv"></span><span id="qnn_wrapper_api::QnnModel::getGraphOutputTensors"></span><span class="target" id="classqnn__wrapper__api_1_1QnnModel_1aebf4f3edc646b38bdfbd4f4b19798271"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Qnn_Tensor_t</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getGraphOutputTensors</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15qnn_wrapper_api8QnnModel21getGraphOutputTensorsEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A wrapper function to return model’s graph output tensors. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>vector of Qnn_Tensor_t objects </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N15qnn_wrapper_api8QnnModel18getOutputTensorMapEv">
+<span id="_CPPv3N15qnn_wrapper_api8QnnModel18getOutputTensorMapEv"></span><span id="_CPPv2N15qnn_wrapper_api8QnnModel18getOutputTensorMapEv"></span><span id="qnn_wrapper_api::QnnModel::getOutputTensorMap"></span><span class="target" id="classqnn__wrapper__api_1_1QnnModel_1a7462ffe6a167300b6d1318cd5108199e"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">map</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getOutputTensorMap</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15qnn_wrapper_api8QnnModel18getOutputTensorMapEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A wrapper function to return graph’s output tensors-&gt;op mapping. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>map of std::string, std::vector&lt;std::string&gt; </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N15qnn_wrapper_api8QnnModel8finalizeE19Qnn_ProfileHandle_t18Qnn_SignalHandle_t">
+<span id="_CPPv3N15qnn_wrapper_api8QnnModel8finalizeE19Qnn_ProfileHandle_t18Qnn_SignalHandle_t"></span><span id="_CPPv2N15qnn_wrapper_api8QnnModel8finalizeE19Qnn_ProfileHandle_t18Qnn_SignalHandle_t"></span><span id="qnn_wrapper_api::QnnModel::finalize__Qnn_ProfileHandle_t.Qnn_SignalHandle_t"></span><span class="target" id="classqnn__wrapper__api_1_1QnnModel_1a61b1b73389e4b65138a26b0e5b2633ab"></span><a class="reference internal" href="file_share_converter_jni_QnnWrapperUtils.hpp.html#_CPPv4N15qnn_wrapper_api12ModelError_tE" title="qnn_wrapper_api::ModelError_t"><span class="n"><span class="pre">ModelError_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">finalize</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">Qnn_ProfileHandle_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">profile</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">nullptr</span></span>, <span class="n"><span class="pre">Qnn_SignalHandle_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">signal</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">nullptr</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15qnn_wrapper_api8QnnModel8finalizeE19Qnn_ProfileHandle_t18Qnn_SignalHandle_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A wrapper function to finalize model’s graph which includes calling backend finalize on graph. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Error code </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N15qnn_wrapper_api8QnnModel17freeCachedTensorsEv">
+<span id="_CPPv3N15qnn_wrapper_api8QnnModel17freeCachedTensorsEv"></span><span id="_CPPv2N15qnn_wrapper_api8QnnModel17freeCachedTensorsEv"></span><span id="qnn_wrapper_api::QnnModel::freeCachedTensors"></span><span class="target" id="classqnn__wrapper__api_1_1QnnModel_1a549774779967aa1d5229ce5fd8eae2f5"></span><a class="reference internal" href="file_share_converter_jni_QnnWrapperUtils.hpp.html#_CPPv4N15qnn_wrapper_api12ModelError_tE" title="qnn_wrapper_api::ModelError_t"><span class="n"><span class="pre">ModelError_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">freeCachedTensors</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15qnn_wrapper_api8QnnModel17freeCachedTensorsEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Removes saved Qnn_Tensor_t objects and frees memory Note: Cleanup doesnt apply to input/output tensors as they are needed beyond this class finishes graph construction for the execute call. User of this API is expected to free those. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Error code </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-members">Private Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15qnn_wrapper_api8QnnModel7m_graphE">
+<span id="_CPPv3N15qnn_wrapper_api8QnnModel7m_graphE"></span><span id="_CPPv2N15qnn_wrapper_api8QnnModel7m_graphE"></span><span id="qnn_wrapper_api::QnnModel::m_graph__Qnn_GraphHandle_t"></span><span class="target" id="classqnn__wrapper__api_1_1QnnModel_1a40cb0b458ae9f2144a6bbe7a01dae2ff"></span><span class="n"><span class="pre">Qnn_GraphHandle_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">m_graph</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">nullptr</span></span><a class="headerlink" href="#_CPPv4N15qnn_wrapper_api8QnnModel7m_graphE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15qnn_wrapper_api8QnnModel11m_graphNameE">
+<span id="_CPPv3N15qnn_wrapper_api8QnnModel11m_graphNameE"></span><span id="_CPPv2N15qnn_wrapper_api8QnnModel11m_graphNameE"></span><span id="qnn_wrapper_api::QnnModel::m_graphName__ss"></span><span class="target" id="classqnn__wrapper__api_1_1QnnModel_1af198873567788773c47dceb39a677aea"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">m_graphName</span></span></span><a class="headerlink" href="#_CPPv4N15qnn_wrapper_api8QnnModel11m_graphNameE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15qnn_wrapper_api8QnnModel7m_debugE">
+<span id="_CPPv3N15qnn_wrapper_api8QnnModel7m_debugE"></span><span id="_CPPv2N15qnn_wrapper_api8QnnModel7m_debugE"></span><span id="qnn_wrapper_api::QnnModel::m_debug__b"></span><span class="target" id="classqnn__wrapper__api_1_1QnnModel_1ac48775c50d9cb0e5b5cfa9bf2c2c0abb"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">m_debug</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span><a class="headerlink" href="#_CPPv4N15qnn_wrapper_api8QnnModel7m_debugE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15qnn_wrapper_api8QnnModel19m_doNodeValidationsE">
+<span id="_CPPv3N15qnn_wrapper_api8QnnModel19m_doNodeValidationsE"></span><span id="_CPPv2N15qnn_wrapper_api8QnnModel19m_doNodeValidationsE"></span><span id="qnn_wrapper_api::QnnModel::m_doNodeValidations__b"></span><span class="target" id="classqnn__wrapper__api_1_1QnnModel_1a435100433e86469f6f48a4f4fad208ba"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">m_doNodeValidations</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">true</span></span><a class="headerlink" href="#_CPPv4N15qnn_wrapper_api8QnnModel19m_doNodeValidationsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15qnn_wrapper_api8QnnModel19m_modelInputTensorsE">
+<span id="_CPPv3N15qnn_wrapper_api8QnnModel19m_modelInputTensorsE"></span><span id="_CPPv2N15qnn_wrapper_api8QnnModel19m_modelInputTensorsE"></span><span id="qnn_wrapper_api::QnnModel::m_modelInputTensors__std::vector:Qnn_Tensor_t:"></span><span class="target" id="classqnn__wrapper__api_1_1QnnModel_1a29e99881b03de885b432e87130677a66"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Qnn_Tensor_t</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">m_modelInputTensors</span></span></span><a class="headerlink" href="#_CPPv4N15qnn_wrapper_api8QnnModel19m_modelInputTensorsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15qnn_wrapper_api8QnnModel20m_modelOutputTensorsE">
+<span id="_CPPv3N15qnn_wrapper_api8QnnModel20m_modelOutputTensorsE"></span><span id="_CPPv2N15qnn_wrapper_api8QnnModel20m_modelOutputTensorsE"></span><span id="qnn_wrapper_api::QnnModel::m_modelOutputTensors__std::vector:Qnn_Tensor_t:"></span><span class="target" id="classqnn__wrapper__api_1_1QnnModel_1a0fea3fd505de5c1c9bac4c6c70c1365d"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Qnn_Tensor_t</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">m_modelOutputTensors</span></span></span><a class="headerlink" href="#_CPPv4N15qnn_wrapper_api8QnnModel20m_modelOutputTensorsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15qnn_wrapper_api8QnnModel17m_modelTensorsMapE">
+<span id="_CPPv3N15qnn_wrapper_api8QnnModel17m_modelTensorsMapE"></span><span id="_CPPv2N15qnn_wrapper_api8QnnModel17m_modelTensorsMapE"></span><span id="qnn_wrapper_api::QnnModel::m_modelTensorsMap__std::map:ss.Qnn_Tensor_t:"></span><span class="target" id="classqnn__wrapper__api_1_1QnnModel_1a4eacdbe5b2bc67027219851b7bcebe06"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">map</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">Qnn_Tensor_t</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">m_modelTensorsMap</span></span></span><a class="headerlink" href="#_CPPv4N15qnn_wrapper_api8QnnModel17m_modelTensorsMapE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15qnn_wrapper_api8QnnModel22m_modelOutputTensorMapE">
+<span id="_CPPv3N15qnn_wrapper_api8QnnModel22m_modelOutputTensorMapE"></span><span id="_CPPv2N15qnn_wrapper_api8QnnModel22m_modelOutputTensorMapE"></span><span id="qnn_wrapper_api::QnnModel::m_modelOutputTensorMap__std::map:ss.std::vector:ss::"></span><span class="target" id="classqnn__wrapper__api_1_1QnnModel_1a0c8dbdb8444b2ef46d15969d450d4005"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">map</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">m_modelOutputTensorMap</span></span></span><a class="headerlink" href="#_CPPv4N15qnn_wrapper_api8QnnModel22m_modelOutputTensorMapE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15qnn_wrapper_api8QnnModel14m_qnnInterfaceE">
+<span id="_CPPv3N15qnn_wrapper_api8QnnModel14m_qnnInterfaceE"></span><span id="_CPPv2N15qnn_wrapper_api8QnnModel14m_qnnInterfaceE"></span><span id="qnn_wrapper_api::QnnModel::m_qnnInterface__QNN_INTERFACE_VER_TYPE"></span><span class="target" id="classqnn__wrapper__api_1_1QnnModel_1a07416d5ce03f727f22c8f68a48833819"></span><span class="n"><span class="pre">QNN_INTERFACE_VER_TYPE</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">m_qnnInterface</span></span></span><a class="headerlink" href="#_CPPv4N15qnn_wrapper_api8QnnModel14m_qnnInterfaceE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15qnn_wrapper_api8QnnModel15m_backendHandleE">
+<span id="_CPPv3N15qnn_wrapper_api8QnnModel15m_backendHandleE"></span><span id="_CPPv2N15qnn_wrapper_api8QnnModel15m_backendHandleE"></span><span id="qnn_wrapper_api::QnnModel::m_backendHandle__Qnn_BackendHandle_t"></span><span class="target" id="classqnn__wrapper__api_1_1QnnModel_1a29cd5da20052b3897d4b44206ed029a0"></span><span class="n"><span class="pre">Qnn_BackendHandle_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">m_backendHandle</span></span></span><a class="headerlink" href="#_CPPv4N15qnn_wrapper_api8QnnModel15m_backendHandleE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,804 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Using the qnn-op-package-generator &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="XML OpDef Schema Breakdown" href="op_def_schema.html" />
+    <link rel="prev" title="Generating Custom Op Packages" href="generating_op_packages.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend.html">Backend</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="op_packages.html">Op Packages</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="generating_op_packages.html"> Generating Op Packages</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">QNN Op Package Code Generation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-qnn-op-package-skeleton">Creating a QNN Op Package Skeleton</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Skeleton Code Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Compilation Instructions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="op_def_schema.html">XML OpDef Schema Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="example_op_defs.html">Example XML OpDef Configs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="converter_op_package_gen_example.html">QNN Converter Op Package Code Generation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="op_packages.html">Op Packages</a> &raquo;</li>
+        
+          <li><a href="generating_op_packages.html">Generating Custom Op Packages</a> &raquo;</li>
+        
+      <li>Using the qnn-op-package-generator</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="using-the-qnn-op-package-generator">
+<h1>Using the qnn-op-package-generator<a class="headerlink" href="#using-the-qnn-op-package-generator" title="Permalink to this heading">¶</a></h1>
+<p>This section defines steps which demonstrate usage of the <code class="docutils literal notranslate"><span class="pre">qnn-op-package-generator</span></code> to generate skeleton code,
+along with makefiles for compilation, both of which are exercised in tandem to create a QNN Op Package shared library.
+The tools accepts an XML config input file that describes the package attributes, and produces a
+QNN Op Package directory structure.</p>
+<div class="section" id="creating-a-qnn-op-package-skeleton">
+<h2>Creating a QNN Op Package Skeleton<a class="headerlink" href="#creating-a-qnn-op-package-skeleton" title="Permalink to this heading">¶</a></h2>
+<p>For the following section, we will assume that setup instructions have been run and the <code class="docutils literal notranslate"><span class="pre">qnn-op-package-generator</span></code>
+is accessible on the command line. <a class="footnote-reference brackets" href="#id9" id="id1">1</a>
+The first step to creating a package skeleton is to define an XML OpDef configuration file which describes package
+information such as the package name, version and domain, as well as the operations the package contains.
+The package info and operations are described with respect to a pre-defined XML schema, which primarily requires
+information about the operation’s inputs, outputs and parameters. For information on defining an XML Op Def, see
+<a class="reference internal" href="op_def_schema.html"><span class="doc">XML OpDef Schema Breakdown</span></a>.</p>
+<p>Sample configs can also be found at <a class="reference internal" href="example_op_defs.html"><span class="doc">Example XML Op Def Configs</span></a> and in the SDK at:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">OpPackageGenerator</span>
+</pre></div>
+</div>
+<p>Once an XML has been fully defined according to the spec, it can be passed as an argument to the tool
+using the <em>–config_path or -p</em> option.
+To generate multiple packages, the <code class="docutils literal notranslate"><span class="pre">-p</span></code> option can also be specified multiple times with a different config.</p>
+<p>The tool can be run using a single XML config on the command line as:</p>
+<p><strong>On Linux</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">qnn</span><span class="o">-</span><span class="n">op</span><span class="o">-</span><span class="n">package</span><span class="o">-</span><span class="n">generator</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="o">&lt;</span><span class="n">QNN_SDK_ROOT</span><span class="o">&gt;/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">OpPackageGenerator</span><span class="o">/</span><span class="n">ExampleOpPackageHtp</span><span class="p">.</span><span class="n">xml</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="o">&lt;</span><span class="n">output_dir</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <em>-p</em> command line option can be specified multiple to generate different packages provided each package name
+is distinct. If the package name is not distinct, the tool will merge all ops defined in each config
+into a single package directory.</p>
+</div>
+<p><strong>Directory Structure on Linux</strong>:</p>
+<p>The example command in the previous section outputs a package skeleton directory called <strong>ExampleOpPackage</strong> at the
+specified output path. <a class="footnote-reference brackets" href="#id10" id="id2">2</a> In this context, the package name is <strong>ExampleOpPackage</strong>. <a class="footnote-reference brackets" href="#id11" id="id3">3</a> The package also
+contains two ops: <strong>Conv2D</strong> and <strong>Softmax</strong>.</p>
+<p>The package directory tree is shown and expanded below:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>|-- Makefile
+|-- makefiles
+    |-- Android.mk
+    |-- Application.mk
+|-- config
+|   `-- ExampleOpPackage.xml
+|-- include
+`-- src
+    |-- ExamplePackageInterface.cpp
+    |-- utils
+    `-- ops
+        |-- Conv2D.cpp
+        `-- Softmax.cpp
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Makefile</strong>: This file contains make targets and rules to compile the package source files for various known architectures.
+Note that make commands are different across backends and that CPU targets require additional makefiles
+in the <strong>makefiles</strong> directory for android targets.</p></li>
+<li><p><strong>config</strong>: This directory contains all XML OpDef config(s) passed to the tool.</p></li>
+<li><p><strong>include</strong>:This directory is a placeholder for any additional include files the user may need to compile.</p></li>
+<li><p><strong>src</strong>: This directory contains generated source files for each operation defined in the config, as well
+as a generated interface source file.</p>
+<ul>
+<li><p><strong>ExamplePackageInterface</strong>: This file implements function pointers needed by the QNN API to load and
+execute a package. The file is always named &lt;package_name&gt;Interface.cpp.
+See <a class="reference internal" href="op_packages.html"><span class="doc">Op Packages</span></a> for more information about all other required function pointers.</p></li>
+<li><p><strong>utils</strong>: Helper utilities that enable ease of use across backends. Users should note that this directory
+will currently only be present for the CPU backend. The contents are left out here for brevity, and
+in general most users should not need to make changes to the files included.</p></li>
+<li><p><strong>ops</strong>: Each source file is named &lt;op_name&gt;.cpp. The source files implement API interface methods needed by a QNN
+Backend to enable op initialization, op destruction and kernel execution.</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>On Windows-x86</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>python ${QNN_SDK_ROOT}/bin/x86_64-windows-msvc/qnn-op-package-generator `
+         -p ${QNN_SDK_ROOT}/examples/QNN/OpPackageGenerator/ReluOpPackageCpu.xml `
+         -o &lt;output_dir&gt; `
+         --gen_cmakelists
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Currently, the x86_64-windows-msvc platform only supports the CPU backend. <code class="docutils literal notranslate"><span class="pre">qnn-op-package-generator</span></code> must
+operate with <code class="docutils literal notranslate"><span class="pre">python</span></code> commands attached ahead and must use <code class="docutils literal notranslate"><span class="pre">gen_cmakelists</span></code> as an option to generate the CMakeLists.txt
+file that corresponds to the CMake build system within <code class="docutils literal notranslate"><span class="pre">Developer</span> <span class="pre">PowerShell</span> <span class="pre">for</span> <span class="pre">VS</span> <span class="pre">2022</span></code>.</p>
+</div>
+<p><strong>Directory Structure on Windows-x86</strong>:</p>
+<p>The package directory tree is shown and explained below:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>|-- CMakelists.txt
+|-- config
+|-- include
+`-- src
+    |-- CpuCustomOpPackage.cpp
+    |-- ReluOpPackageInterface.cpp
+    |-- ops
+    `-- utils
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>CMakelists.txt</strong>: Contains rules, directives and basic commands in preparation for Window-x86 targets(.dll).</p></li>
+<li><p><strong>config</strong>: Contains XML configuration with OpDef configuration in use.</p></li>
+<li><p><strong>src/ops</strong>: Locates the .cpp files with basic API interface for that specific Op. The function body will need to be implemented by users.</p></li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>Skeleton Code Overview<a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h2>
+<p>In this section, we will cover the two kinds of generated source files: interface and op-specific files. The interface need not
+require extra implementation in general, while the source files simply contain empty functions bodies that should be
+completed by users. The code used in this section references the generated package in <a class="reference internal" href="#directory-structure-linux"><span class="std std-ref">Directory Structure</span></a>.
+(Users on Windows-x86 platform please refer to <a class="reference internal" href="#directory-structure-windows"><span class="std std-ref">Directory Structure Windows</span></a>.)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The content of the generated op-specific files may vary across backends.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To have good performance and stability, it is required to avoid heap memory
+allocation in the completed op execution functions, that is, <em>&lt;op_name&gt;Impl</em>,
+<em>&lt;op_name&gt;_executeOp</em>, and <em>execute</em> functions for HTP, DSP, and CPU respectively which
+are executed during graph execution. The heap memory allocation includes but not limited
+to calling <code class="code docutils literal notranslate"><span class="pre">malloc</span></code>, <code class="code docutils literal notranslate"><span class="pre">operator</span> <span class="pre">new</span></code>, constructing STL container objects like
+<code class="code docutils literal notranslate"><span class="pre">std::vector</span></code> with default allocator, and adding items like calling
+<code class="code docutils literal notranslate"><span class="pre">std::vector::push_back</span></code> to STL container objects with default allocator.</p>
+<p>The reason to avoid heap memory allocation is because the time to finish heap memory
+allocation is unbounded and may have huge variance. Especially for DSP and HTP, the heap
+memory allocation can trigger CPU request in some cases and significantly impact the
+inference speed. Also, the heap memory allocation can fail and return null pointers or
+throw exceptions. In such case, there is usually no good way to continue the execution.
+In applications with strict functional safety requirements, heap memory allocation
+after initialization is not even permitted.</p>
+<p>If scratch buffer is required to carry out the op computation, here are some potential
+alternatives:</p>
+<ul class="simple">
+<li><p><strong>construct std::array instead of std::vector for local variables</strong>: Unlike
+<code class="code docutils literal notranslate"><span class="pre">std::vector</span></code>, <code class="code docutils literal notranslate"><span class="pre">std::array</span></code> uses stack memory. This works if the maximum
+memory size can be known in advance and the size is not large.</p></li>
+<li><p><strong>use output tensor space as scratch memory</strong>: Each execution function has at least
+one output tensor. You can use the space of the output tensor as the scratch buffer
+before you fill in the real output data. Please note that the output tensor space can
+only be safely written in the execution function which owns the output tensor.</p></li>
+</ul>
+</div>
+<div class="section" id="interface-file">
+<h3>Interface File<a class="headerlink" href="#interface-file" title="Permalink to this heading">¶</a></h3>
+<p>A snippet of the interface provider function obtained from the generated interface file is shown below:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">Qnn_ErrorHandle_t</span><span class="w"> </span><span class="nf">ExamplePackageInterfaceProvider</span><span class="p">(</span><span class="n">QnnOpPackage_Interface_t</span><span class="o">*</span><span class="w"> </span><span class="n">interface</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">2</span><span class="w">   </span><span class="n">interface</span><span class="o">-&gt;</span><span class="n">interfaceVersion</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">};</span>
+<span class="linenos">3</span><span class="w">   </span><span class="n">interface</span><span class="o">-&gt;</span><span class="n">v1_3</span><span class="p">.</span><span class="n">init</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="n">ExamplePackageInit</span><span class="p">;</span>
+<span class="linenos">4</span><span class="w">   </span><span class="n">interface</span><span class="o">-&gt;</span><span class="n">v1_3</span><span class="p">.</span><span class="n">terminate</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">ExamplePackageTerminate</span><span class="p">;</span>
+<span class="linenos">5</span><span class="w">   </span><span class="n">interface</span><span class="o">-&gt;</span><span class="n">v1_3</span><span class="p">.</span><span class="n">createKernels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ExamplePackageCreateKernels</span><span class="p">;</span>
+<span class="linenos">6</span><span class="w">   </span><span class="n">interface</span><span class="o">-&gt;</span><span class="n">v1_3</span><span class="p">.</span><span class="n">getInfo</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">ExamplePackageGetInfo</span><span class="p">;</span>
+<span class="linenos">7</span><span class="p">......</span>
+</pre></div>
+</div>
+<p>The file contains generated functions in accordance with the Op Package API determined by the backend. The interface
+provider is needed for all backends as input to the <a class="reference internal" href="tools.html"><span class="doc">qnn-net-run</span></a> tool. The function on <em>line 1</em> is always named
+<em>&lt;package_name&gt;InterfaceProvider</em> using the information obtained from the config at generation.
+<strong>Users should note that the package name must always be a valid C++ identifier, which means it can
+only contain alphanumeric characters and underscores.</strong> Additionally, all other functions following <em>lines
+5-7</em> are also prefixed with the package name.</p>
+</div>
+<div class="section" id="op-source-files">
+<h3>Op Source Files<a class="headerlink" href="#op-source-files" title="Permalink to this heading">¶</a></h3>
+<p>This section describes the source files generated by the tool for available backends. The example below highlights
+the output for the Conv2D op defined in the example config.</p>
+</div>
+<div class="section" id="htp-conv2d-cpp-example">
+<h3>HTP Conv2D.cpp Example<a class="headerlink" href="#htp-conv2d-cpp-example" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cm">/* execute functions for ops */</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">TensorType</span><span class="p">,</span><span class="k">typename</span><span class="w"> </span><span class="nc">TensorType1</span><span class="o">&gt;</span>
+<span class="linenos"> 4</span><span class="n">GraphStatus</span><span class="w"> </span><span class="n">conv2dImpl</span><span class="p">(</span><span class="n">TensorType</span><span class="o">&amp;</span><span class="w"> </span><span class="n">out_0</span><span class="p">,</span>
+<span class="linenos"> 5</span><span class="w">                       </span><span class="k">const</span><span class="w"> </span><span class="n">TensorType</span><span class="o">&amp;</span><span class="w"> </span><span class="n">in_0</span><span class="p">,</span>
+<span class="linenos"> 6</span><span class="w">                       </span><span class="k">const</span><span class="w"> </span><span class="n">TensorType</span><span class="o">&amp;</span><span class="w"> </span><span class="n">filter</span><span class="p">,</span>
+<span class="linenos"> 7</span><span class="w">                       </span><span class="k">const</span><span class="w"> </span><span class="n">TensorType1</span><span class="w"> </span><span class="o">&amp;</span><span class="n">bias</span><span class="p">,</span>
+<span class="linenos"> 8</span><span class="w">                       </span><span class="k">const</span><span class="w"> </span><span class="n">Tensor</span><span class="o">&amp;</span><span class="w"> </span><span class="n">stride</span><span class="p">,</span>
+<span class="linenos"> 9</span><span class="w">                       </span><span class="k">const</span><span class="w"> </span><span class="n">Tensor</span><span class="o">&amp;</span><span class="w"> </span><span class="n">pad_amount</span><span class="p">,</span>
+<span class="linenos">10</span><span class="w">                       </span><span class="k">const</span><span class="w"> </span><span class="n">Tensor</span><span class="o">&amp;</span><span class="w"> </span><span class="n">group</span><span class="p">,</span>
+<span class="linenos">11</span><span class="w">                       </span><span class="k">const</span><span class="w"> </span><span class="n">Tensor</span><span class="o">&amp;</span><span class="w"> </span><span class="n">dilation</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">12</span><span class="w">  </span><span class="cm">/*</span>
+<span class="linenos">13</span><span class="cm">   * add code here</span>
+<span class="linenos">14</span><span class="cm">   * */</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">GraphStatus</span><span class="o">::</span><span class="n">Success</span><span class="p">;</span>
+<span class="linenos">17</span><span class="p">}</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="n">__attribute__</span><span class="p">((</span><span class="n">unused</span><span class="p">))</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">conv2dCostFunc</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Op</span><span class="w"> </span><span class="o">*</span><span class="n">op</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">20</span><span class="w">  </span><span class="cm">/*</span>
+<span class="linenos">21</span><span class="cm">  * add code here</span>
+<span class="linenos">22</span><span class="cm">  * */</span>
+<span class="linenos">23</span>
+<span class="linenos">24</span><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">cost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span><span class="w">  </span><span class="c1">// add cost computation here</span>
+<span class="linenos">25</span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">cost</span><span class="p">;</span>
+<span class="linenos">26</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>The function showed above is used by the QNN HTP Backend for execution and cost analysis. Both functions are always
+named as <em>&lt;op_name&gt;Impl</em> and <em>&lt;op_name&gt;CostFunc</em> respectively. <strong>Users should note that the op name
+must always be a valid C++ identifier, which means it can
+only contain alphanumeric characters and underscores.</strong> Each function is registered with the HTP
+backend
+using QNN HTP API macros, and should be completed by the user to enable
+accurate functionality. Each function to be completed has the <em>add code here</em> comment
+included in the function body. <a class="footnote-reference brackets" href="#id12" id="id5">4</a></p>
+<p>Users should also note that the template types are deduced from the XML OpDef config to
+enable simple creation of multiple execution functions, and are not strictly required by the QNN HTP backend.
+Each function signature can be specialized at the user’s discretion.</p>
+<p>Additionally, users should be aware of the <strong>DEF_PACKAGE_PARAM_ORDER</strong> macro that is
+auto-generated into the source code.
+Note that this macro is optional, and simply lists the order of parameters passed into execution
+functions and their corresponding default values if any.  Importantly, <strong>users should note that
+all tensor and string parameters defined in this macro are always set to mandatory with a default
+null pointer value regardless of optionality</strong> . As such, users may need to manually change
+tensor param values to ensure accurate execution.</p>
+</div>
+<div class="section" id="dsp-conv2d-cpp-example">
+<h3>DSP Conv2D.cpp Example<a class="headerlink" href="#dsp-conv2d-cpp-example" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">Udo_ErrorType_t</span>
+<span class="linenos"> 2</span><span class="nf">conv2d_createOpFactory</span><span class="w"> </span><span class="p">(</span><span class="n">QnnOpPackage_GlobalInfrastructure_t</span><span class="w"> </span><span class="n">globalInfra</span><span class="p">,</span>
+<span class="linenos"> 3</span><span class="w">   </span><span class="n">Udo_CoreType_t</span><span class="w"> </span><span class="n">udoCoreType</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">perFactoryInfrastructure</span><span class="p">,</span>
+<span class="linenos"> 4</span><span class="w">   </span><span class="n">Udo_String_t</span><span class="w"> </span><span class="n">operationType</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">numOfStaticParams</span><span class="p">,</span>
+<span class="linenos"> 5</span><span class="w">   </span><span class="n">Udo_Param_t</span><span class="w"> </span><span class="o">*</span><span class="n">staticParams</span><span class="p">,</span><span class="w"> </span><span class="n">Udo_OpFactory_t</span><span class="w"> </span><span class="o">*</span><span class="n">opFactory</span><span class="p">)</span>
+<span class="linenos"> 6</span><span class="p">{</span>
+<span class="linenos"> 7</span><span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">operationType</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">opFactory</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 8</span><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">UDO_INVALID_ARGUMENT</span><span class="p">;</span>
+<span class="linenos"> 9</span><span class="w">   </span><span class="p">}</span>
+<span class="linenos">10</span><span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">operationType</span><span class="p">,</span><span class="w"> </span><span class="n">g_conv2dOpType</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">11</span><span class="w">      </span><span class="n">conv2dOpFactory_t</span><span class="o">*</span><span class="w"> </span><span class="n">thisFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">conv2dOpFactory_t</span><span class="w"> </span><span class="o">*</span><span class="p">)(</span><span class="o">*</span><span class="p">(</span><span class="n">globalInfra</span><span class="o">-&gt;</span><span class="n">dspGlobalInfra</span><span class="o">-&gt;</span><span class="n">hexNNv2Infra</span><span class="p">.</span><span class="n">udoMalloc</span><span class="p">))(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">conv2dOpFactory_t</span><span class="p">));</span>
+<span class="linenos">12</span><span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">strlen</span><span class="p">(</span><span class="n">operationType</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// +1 to hold the &#39;\0&#39; character</span>
+<span class="linenos">13</span><span class="w">      </span><span class="n">thisFactory</span><span class="o">-&gt;</span><span class="n">opType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Udo_String_t</span><span class="p">)(</span><span class="o">*</span><span class="p">(</span><span class="n">globalInfra</span><span class="o">-&gt;</span><span class="n">dspGlobalInfra</span><span class="o">-&gt;</span><span class="n">hexNNv2Infra</span><span class="p">.</span><span class="n">udoMalloc</span><span class="p">))(</span><span class="n">size</span><span class="p">);</span>
+<span class="linenos">14</span><span class="w">      </span><span class="n">strlcpy</span><span class="p">((</span><span class="n">thisFactory</span><span class="o">-&gt;</span><span class="n">opType</span><span class="p">),</span><span class="w"> </span><span class="n">operationType</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">);</span>
+<span class="linenos">15</span><span class="w">      </span><span class="n">thisFactory</span><span class="o">-&gt;</span><span class="n">numOfStaticParams</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numOfStaticParams</span><span class="p">;</span>
+<span class="linenos">16</span><span class="w">      </span><span class="cm">/*</span>
+<span class="linenos">17</span><span class="cm">       * if this op has static params, add code here</span>
+<span class="linenos">18</span><span class="cm">       */</span>
+<span class="linenos">19</span><span class="w">      </span><span class="o">*</span><span class="n">opFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Udo_OpFactory_t</span><span class="p">)</span><span class="n">thisFactory</span><span class="p">;</span>
+<span class="linenos">20</span><span class="w">   </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">21</span><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">UDO_INVALID_ARGUMENT</span><span class="p">;</span>
+<span class="linenos">22</span><span class="w">   </span><span class="p">}</span>
+<span class="linenos">23</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">UDO_NO_ERROR</span><span class="p">;</span>
+<span class="linenos">24</span><span class="p">}</span>
+<span class="linenos">25</span>
+<span class="linenos">26</span><span class="n">Udo_ErrorType_t</span>
+<span class="linenos">27</span><span class="nf">conv2d_releaseOpFactory</span><span class="p">(</span><span class="n">QnnOpPackage_GlobalInfrastructure_t</span><span class="w"> </span><span class="n">globalInfra</span><span class="p">,</span>
+<span class="linenos">28</span><span class="w">                                             </span><span class="n">Udo_OpFactory_t</span><span class="w"> </span><span class="n">opFactory</span><span class="p">)</span>
+<span class="linenos">29</span><span class="p">{</span>
+<span class="linenos">30</span><span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">opFactory</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">31</span><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">UDO_INVALID_ARGUMENT</span><span class="p">;</span>
+<span class="linenos">32</span><span class="w">   </span><span class="p">}</span>
+<span class="linenos">33</span><span class="w">   </span><span class="n">conv2dOpFactory_t</span><span class="o">*</span><span class="w"> </span><span class="n">thisFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">conv2dOpFactory_t</span><span class="w"> </span><span class="o">*</span><span class="p">)(</span><span class="n">opFactory</span><span class="p">);</span>
+<span class="linenos">34</span><span class="w">   </span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">globalInfra</span><span class="o">-&gt;</span><span class="n">dspGlobalInfra</span><span class="o">-&gt;</span><span class="n">hexNNv2Infra</span><span class="p">.</span><span class="n">udoFree</span><span class="p">))((</span><span class="n">thisFactory</span><span class="o">-&gt;</span><span class="n">opType</span><span class="p">));</span>
+<span class="linenos">35</span><span class="w">   </span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">globalInfra</span><span class="o">-&gt;</span><span class="n">dspGlobalInfra</span><span class="o">-&gt;</span><span class="n">hexNNv2Infra</span><span class="p">.</span><span class="n">udoFree</span><span class="p">))(</span><span class="n">thisFactory</span><span class="p">);</span>
+<span class="linenos">36</span><span class="w">   </span><span class="cm">/*</span>
+<span class="linenos">37</span><span class="cm">    * if this op has static params, add code here</span>
+<span class="linenos">38</span><span class="cm">    */</span>
+<span class="linenos">39</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">UDO_NO_ERROR</span><span class="p">;</span>
+<span class="linenos">40</span><span class="p">}</span>
+<span class="linenos">41</span>
+<span class="linenos">42</span><span class="n">Udo_ErrorType_t</span>
+<span class="linenos">43</span><span class="nf">conv2d_validateOperation</span><span class="w"> </span><span class="p">(</span><span class="n">Udo_String_t</span><span class="w"> </span><span class="n">operationType</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">numOfStaticParams</span><span class="p">,</span>
+<span class="linenos">44</span><span class="w">   </span><span class="k">const</span><span class="w"> </span><span class="n">Udo_Param_t</span><span class="w"> </span><span class="o">*</span><span class="n">staticParams</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">45</span><span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">operationType</span><span class="p">,</span><span class="w"> </span><span class="n">g_conv2dOpType</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">46</span><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">numOfStaticParams</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">g_conv2dStaticParamsNum</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">47</span><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">UDO_INVALID_ARGUMENT</span><span class="p">;</span>
+<span class="linenos">48</span><span class="w">      </span><span class="p">}</span>
+<span class="linenos">49</span><span class="w">      </span><span class="cm">/*</span>
+<span class="linenos">50</span><span class="cm">       * If this op should validate others, add code here</span>
+<span class="linenos">51</span><span class="cm">       */</span>
+<span class="linenos">52</span><span class="w">   </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">53</span><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">UDO_INVALID_ARGUMENT</span><span class="p">;</span>
+<span class="linenos">54</span><span class="w">   </span><span class="p">}</span>
+<span class="linenos">55</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">UDO_NO_ERROR</span><span class="p">;</span>
+<span class="linenos">56</span><span class="p">}</span>
+<span class="linenos">57</span>
+<span class="linenos">58</span><span class="n">Udo_ErrorType_t</span>
+<span class="linenos">59</span><span class="nf">conv2d_executeOp</span><span class="w"> </span><span class="p">(</span><span class="n">QnnOpPackage_GlobalInfrastructure_t</span><span class="w"> </span><span class="n">globalInfra</span><span class="p">,</span>
+<span class="linenos">60</span><span class="w">   </span><span class="n">Udo_Operation_t</span><span class="w"> </span><span class="n">operation</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">blocking</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ID</span><span class="p">,</span>
+<span class="linenos">61</span><span class="w">   </span><span class="n">Udo_ExternalNotify_t</span><span class="w"> </span><span class="n">notifyFunc</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">62</span><span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">operation</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">63</span><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">UDO_INVALID_ARGUMENT</span><span class="p">;</span>
+<span class="linenos">64</span><span class="w">   </span><span class="p">}</span>
+<span class="linenos">65</span><span class="w">   </span><span class="n">OpParams_t</span><span class="o">*</span><span class="w"> </span><span class="n">m_Operation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">OpParams_t</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">operation</span><span class="p">;</span>
+<span class="linenos">66</span><span class="w">   </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">opType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="n">conv2dOpFactory_t</span><span class="o">*</span><span class="p">)(</span><span class="n">m_Operation</span><span class="o">-&gt;</span><span class="n">opFactory</span><span class="p">))</span><span class="o">-&gt;</span><span class="n">opType</span><span class="p">;</span>
+<span class="linenos">67</span><span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">opType</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">68</span><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">UDO_INVALID_ARGUMENT</span><span class="p">;</span>
+<span class="linenos">69</span><span class="w">   </span><span class="p">}</span>
+<span class="linenos">70</span><span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">opType</span><span class="p">,</span><span class="w"> </span><span class="n">g_conv2dOpType</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">71</span><span class="w">      </span><span class="cm">/*</span>
+<span class="linenos">72</span><span class="cm">       * add code here</span>
+<span class="linenos">73</span><span class="cm">       */</span>
+<span class="linenos">74</span><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">UDO_NO_ERROR</span><span class="p">;</span>
+<span class="linenos">75</span><span class="w">   </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">76</span><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">UDO_INVALID_ARGUMENT</span><span class="p">;</span>
+<span class="linenos">77</span><span class="w">   </span><span class="p">}</span>
+<span class="linenos">78</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>The function showed above is used by the QNN DSP Backend for createOpFactory, releaseOpFactory, validateOperation
+executeOp. These functions are always named as <em>&lt;op_name&gt;_createOpFactory</em>, <em>&lt;op_name&gt;_releaseOpFactory</em>,
+<em>&lt;op_name&gt;_validateOperation</em> and <em>&lt;op_name&gt;_executeOp</em> respectively. <strong>Users should note that the op name
+must always be a valid C++ identifier, which means it can only contain alphanumeric characters and underscores.</strong>
+Each function is used in the DSP backend, and should be completed by the user to enable accurate functionality.
+Each function to be completed has the <em>add code here</em> comment included in the function body.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">OpParams</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">   </span><span class="n">Udo_OpFactory_t</span><span class="w"> </span><span class="n">opFactory</span><span class="p">;</span>
+<span class="linenos"> 3</span><span class="w">   </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">numInputParams</span><span class="p">;</span>
+<span class="linenos"> 4</span><span class="w">   </span><span class="n">Udo_TensorParam_t</span><span class="w"> </span><span class="o">*</span><span class="n">InputParams</span><span class="p">;</span>
+<span class="linenos"> 5</span><span class="w">   </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">numOutputParams</span><span class="p">;</span>
+<span class="linenos"> 6</span><span class="w">   </span><span class="n">Udo_TensorParam_t</span><span class="w"> </span><span class="o">*</span><span class="n">outputParams</span><span class="p">;</span>
+<span class="linenos"> 7</span><span class="w">   </span><span class="n">Udo_HexNNv2OpInfra_t</span><span class="w"> </span><span class="n">opInfra</span><span class="p">;</span>
+<span class="linenos"> 8</span><span class="p">}</span><span class="w"> </span><span class="n">OpParams_t</span><span class="p">;</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">conv2dOpFactory</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">11</span><span class="w">   </span><span class="n">Udo_String_t</span><span class="w"> </span><span class="n">opType</span><span class="p">;</span>
+<span class="linenos">12</span><span class="w">   </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">numOfStaticParams</span><span class="p">;</span>
+<span class="linenos">13</span><span class="w">   </span><span class="n">Udo_Param_t</span><span class="o">*</span><span class="w"> </span><span class="n">staticParams</span><span class="p">;</span>
+<span class="linenos">14</span><span class="p">}</span><span class="w"> </span><span class="n">conv2dOpFactory_t</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The conv2dOpFactory_t and OpParams_t are defined in <strong>include/DspOp.hpp</strong>.</p>
+</div>
+<div class="section" id="cpu-conv2d-cpp-example">
+<h3>CPU Conv2D.cpp Example<a class="headerlink" href="#cpu-conv2d-cpp-example" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">Qnn_ErrorHandle_t</span><span class="w"> </span><span class="nf">validateOpConfig</span><span class="p">(</span><span class="n">Qnn_OpConfig_t</span><span class="w"> </span><span class="n">opConfig</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">   </span><span class="n">QNN_CUSTOM_BE_ENSURE_EQ</span><span class="p">(</span>
+<span class="linenos"> 3</span><span class="w">       </span><span class="n">strcmp</span><span class="p">(</span><span class="n">opConfig</span><span class="p">.</span><span class="n">typeName</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Conv2D&quot;</span><span class="p">),</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">QNN_OP_PACKAGE_ERROR_INVALID_ARGUMENT</span><span class="p">)</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="w">   </span><span class="n">QNN_CUSTOM_BE_ENSURE_EQ</span><span class="p">(</span><span class="n">opConfig</span><span class="p">.</span><span class="n">numOfInputs</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">QNN_OP_PACKAGE_ERROR_VALIDATION_FAILURE</span><span class="p">)</span>
+<span class="linenos"> 6</span><span class="w">   </span><span class="n">QNN_CUSTOM_BE_ENSURE_EQ</span><span class="p">(</span><span class="n">opConfig</span><span class="p">.</span><span class="n">numOfOutputs</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">QNN_OP_PACKAGE_ERROR_VALIDATION_FAILURE</span><span class="p">)</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">QNN_SUCCESS</span><span class="p">;</span>
+<span class="linenos"> 9</span><span class="p">}</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="n">Qnn_ErrorHandle_t</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="n">CustomOp</span><span class="o">*</span><span class="w"> </span><span class="n">operation</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">12</span><span class="w">   </span><span class="cm">/**</span>
+<span class="linenos">13</span><span class="cm">    * Add code here</span>
+<span class="linenos">14</span><span class="cm">    **/</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">QNN_SUCCESS</span><span class="p">;</span>
+<span class="linenos">17</span><span class="p">}</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="n">CustomOpRegistration_t</span><span class="o">*</span><span class="w"> </span><span class="nf">register_Conv2DCustomOp</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">20</span><span class="w">   </span><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">conv2d</span><span class="p">;</span>
+<span class="linenos">21</span><span class="w">   </span><span class="k">static</span><span class="w"> </span><span class="n">CustomOpRegistration_t</span><span class="w"> </span><span class="n">Conv2DRegister</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">execute</span><span class="p">,</span><span class="w"> </span><span class="n">finalize</span><span class="p">,</span><span class="w"> </span><span class="n">free</span><span class="p">,</span><span class="w"> </span><span class="n">validateOpConfig</span><span class="p">,</span><span class="w"> </span><span class="n">populateFromNode</span><span class="p">};</span>
+<span class="linenos">22</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">Conv2DRegister</span><span class="p">;</span>
+<span class="linenos">23</span><span class="p">}</span>
+<span class="linenos">24</span>
+<span class="linenos">25</span><span class="n">REGISTER_OP</span><span class="p">(</span><span class="n">Conv2D</span><span class="p">,</span><span class="w"> </span><span class="n">register_Conv2DCustomOp</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The registration structure shown above is associated with a custom op package object which is called indirectly
+by the interface functions shown in the previous section. The registration structure is defined below here and can
+also be located in <strong>&lt;QNN_SDK_ROOT&gt;/share/QNN/OpPackageGenerator/CustomOp/CustomOpRegister
+.hpp</strong>.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_CustomOpRegistration_t</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">   </span><span class="n">Qnn_ErrorHandle_t</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">execute</span><span class="p">)(</span><span class="n">utils</span><span class="o">::</span><span class="n">CustomOp</span><span class="o">*</span><span class="w"> </span><span class="n">operation</span><span class="p">);</span>
+<span class="linenos"> 3</span><span class="w">   </span><span class="n">Qnn_ErrorHandle_t</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">finalize</span><span class="p">)(</span><span class="k">const</span><span class="w"> </span><span class="n">utils</span><span class="o">::</span><span class="n">CustomOp</span><span class="o">*</span><span class="w"> </span><span class="n">operation</span><span class="p">);</span>
+<span class="linenos"> 4</span><span class="w">   </span><span class="n">Qnn_ErrorHandle_t</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">free</span><span class="p">)(</span><span class="n">utils</span><span class="o">::</span><span class="n">CustomOp</span><span class="o">&amp;</span><span class="w"> </span><span class="n">op</span><span class="p">);</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="w">   </span><span class="n">QnnOpPackage_ValidateOpConfigFn_t</span><span class="w"> </span><span class="n">validateOpConfig</span><span class="p">;</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="w">   </span><span class="n">Qnn_ErrorHandle_t</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">initialize</span><span class="p">)(</span><span class="k">const</span><span class="w"> </span><span class="n">QnnOpPackage_Node_t</span><span class="w"> </span><span class="n">opNode</span><span class="p">,</span>
+<span class="linenos"> 9</span><span class="w">                                   </span><span class="n">QnnOpPackage_GraphInfrastructure_t</span><span class="w"> </span><span class="n">graphInfrastructure</span><span class="p">,</span>
+<span class="linenos">10</span><span class="w">                                   </span><span class="n">utils</span><span class="o">::</span><span class="n">CustomOp</span><span class="o">*</span><span class="w"> </span><span class="n">operation</span><span class="p">);</span>
+<span class="linenos">11</span><span class="p">}</span><span class="w"> </span><span class="n">CustomOpRegistration_t</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The auto generated skeleton code contains free function definitions for the functions to be registered. Note that users
+can customize the behavior of these functions by completing the function body. Once the functions are fully defined,
+each registration function needs to be associated with an op package instance using the <strong>REGISTER_OP</strong> macro. The
+op package instance is a singleton that holds all registration structures and calls the appropriate function as directed by the QNN API (via the interface)
+based on the op type.</p>
+<p>For example, the <strong>createKernels</strong> function pointer shown in the previous section triggers a
+call to the initialize function defined in the op package registration. Note that the manner in which each
+function is called can be easily observed either in the interface files or within the shared source code. Interested
+users are encouraged to explore the API for finer details. However, users should be aware that modifying the source code
+can adversely effect successful package loading and/or execution.</p>
+<p>Lastly, users should note the <strong>CustomOp</strong> object shown above. This is a simply class that enables storage and retrieval
+of input, output and parameter data between the initialization, execution and finalization stages. This is a helper utility
+that users are free to modify to suit their needs. The utils are always included in the package once it is
+generated, and can also be found in <strong>&lt;QNN_SDK_ROOT&gt;/share/QNN/OpPackageGenerator/CustomOp/utils</strong>.</p>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>Compilation Instructions<a class="headerlink" href="#id6" title="Permalink to this heading">¶</a></h2>
+<p>The following sections describe compilation for each supported backend.</p>
+<div class="section" id="htp-instructions">
+<h3>HTP Instructions<a class="headerlink" href="#htp-instructions" title="Permalink to this heading">¶</a></h3>
+<ol class="arabic">
+<li><p>The path to the QNN HTP include headers and the hexagon installation is set using:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="o">&lt;</span><span class="n">QNN_SDK_ROOT</span><span class="o">&gt;/</span><span class="n">bin</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">envsetup</span><span class="p">.</span><span class="n">sh</span>
+<span class="n">$</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="o">&lt;</span><span class="n">HEXAGON_SDK_PATH</span><span class="o">&gt;/</span><span class="n">setup_sdk_env</span><span class="p">.</span><span class="n">source</span>
+</pre></div>
+</div>
+<p>(Optional) Users can export additional environment <strong>HEXAGON_TOOLS_VERSION</strong>, to overwrite the default hexagon tools version in the Makefile.</p>
+<dl class="simple">
+<dt>Default HEXAGON_SDK_ROOT version:</dt><dd><p>x86:  QNN_HEXAGON_SDK_5.4.0
+v68:  QNN_HEXAGON_SDK_4.2.0
+v69:  QNN_HEXAGON_SDK_4.3.0
+v73:  QNN_HEXAGON_SDK_5.4.0
+v75:  QNN_HEXAGON_SDK_5.4.0</p>
+</dd>
+</dl>
+<p>HEXAGON_SDK_ROOT needs to be exported again if intend to make a different variant.</p>
+<dl class="simple">
+<dt>Default HEXAGON_TOOLS_VERSION:</dt><dd><p>x86: 8.6.02
+v68: 8.4.09
+v69: 8.5.03
+v73: 8.6.02
+v75: 8.7.03</p>
+</dd>
+</dl>
+</li>
+<li><p><strong>Required for x86</strong>: Ensure clang compiler is discoverable in your path, or set X86_CXX in your environment
+to point to a valid clang compiler path. <a class="footnote-reference brackets" href="#id13" id="id7">5</a></p></li>
+<li><p><strong>Required for ARM prepare</strong> Both ARM and hexagon version of the op package should be compiled and registered for ARM prepare</p></li>
+<li><p>The package can then be compiled for a variety of targets using any of the following commands:</p>
+<blockquote>
+<div><ul>
+<li><p>To generate both hexagon and linux targets:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">make</span><span class="w"> </span><span class="n">all</span>
+</pre></div>
+</div>
+<p>Note: “make all” includes htp_v68 as the default hexagon target. For v69 or above, user can replace htp_v68, or use following separate commands.</p>
+</li>
+<li><p>To generate hexagon target only:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">make</span><span class="w"> </span><span class="n">htp_v68</span>
+<span class="n">make</span><span class="w"> </span><span class="n">htp_v69</span>
+<span class="n">make</span><span class="w"> </span><span class="n">htp_v73</span>
+<span class="n">make</span><span class="w"> </span><span class="n">htp_v75</span>
+</pre></div>
+</div>
+</li>
+<li><p>To generate linux targets only:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">make</span><span class="w"> </span><span class="n">htp_x86</span>
+</pre></div>
+</div>
+</li>
+<li><p>To generate ARM targets only:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">make</span><span class="w"> </span><span class="n">htp_aarch64</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+<p>Following any make target selection in Step 4, a shared library would be produced at:
+&lt;current_dir&gt;/build/&lt;target&gt;/lib&lt;package_name&gt;.so.</p>
+</div>
+<div class="section" id="dsp-instructions">
+<h3>DSP Instructions<a class="headerlink" href="#dsp-instructions" title="Permalink to this heading">¶</a></h3>
+<ol class="arabic">
+<li><p>The path to the QNN DSP include headers and the hexagon installation is set using:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="o">&lt;</span><span class="n">QNN_SDK_ROOT</span><span class="o">&gt;/</span><span class="n">bin</span><span class="o">/</span><span class="n">envsetup</span><span class="p">.</span><span class="n">sh</span>
+<span class="n">$</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="o">&lt;</span><span class="n">HEXAGON_SDK_ROOT</span><span class="o">&gt;/</span><span class="n">setup_sdk_env</span><span class="p">.</span><span class="n">source</span>
+</pre></div>
+</div>
+</li>
+<li><p>The package can then be compiled for DSP targets using the following command:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">make</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>After step 2, a shared library would be produced at:
+&lt;current_dir&gt;/build/DSP/libQnn&lt;package_name&gt;.so.</p>
+</div>
+<div class="section" id="cpu-instructions">
+<h3>CPU Instructions<a class="headerlink" href="#cpu-instructions" title="Permalink to this heading">¶</a></h3>
+<p><strong>Linux Platform</strong></p>
+<ol class="arabic">
+<li><p>Setup the QNN environment:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="o">&lt;</span><span class="n">QNN_SDK_ROOT</span><span class="o">&gt;/</span><span class="n">bin</span><span class="o">/</span><span class="n">envsetup</span><span class="p">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Required for x86</strong>: Ensure clang compiler is discoverable in your path, or set CXX in your environment
+to point to a valid clang compiler path. <a class="footnote-reference brackets" href="#id13" id="id8">5</a></p></li>
+<li><p><strong>Required for android</strong>: Ensure android ndk-build compiler is discoverable in your path, and set ANDROID_NDK_ROOT
+to point to the location of the executable.</p></li>
+<li><p>The package can then be compiled for a variety of targets using any of the following commands:</p>
+<blockquote>
+<div><ul>
+<li><p>To generate both android and x86 targets:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">make</span><span class="w"> </span><span class="n">all</span>
+</pre></div>
+</div>
+</li>
+<li><p>To generate x86 target only:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">make</span><span class="w"> </span><span class="n">cpu_x86</span>
+</pre></div>
+</div>
+</li>
+<li><p>To generate android target only:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">make</span><span class="w"> </span><span class="n">cpu_android</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+<p>Following any make target selection in Step 3, a shared library would be produced at:
+&lt;current_dir&gt;/libs/&lt;target&gt;/lib&lt;package_name&gt;Cpu.so.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Steps 1-2 can also be set manually in the makefiles or as a command line option to make without the use of scripts.</p></li>
+<li><p>Step 3 can also be set manually or passed as an option to make.</p></li>
+</ul>
+</div>
+<p><strong>Windows Platform</strong></p>
+<ol class="arabic">
+<li><p>Setup the QNN environment:</p>
+<p>After <a class="reference internal" href="setup.html#id1"><span class="std std-ref">Windows Platform Dependencies</span></a> have been satisfied, the user environment can be set with the provided <strong>envsetup.ps1</strong> script.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="s">&quot;&lt;QNN_SDK_ROOT&gt;</span><span class="se">\b</span><span class="s">in\envsetup.ps1&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><ul class="simple">
+<li><p>To generate for Windows-x86 targets. It must be executed within <code class="docutils literal notranslate"><span class="pre">Developer</span> <span class="pre">PowerShell</span> <span class="pre">for</span> <span class="pre">VS</span> <span class="pre">2022</span></code></p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">cmake</span><span class="w"> </span><span class="o">-</span><span class="n">S</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="o">-</span><span class="n">B</span><span class="w"> </span><span class="o">&lt;</span><span class="n">build_dir</span><span class="o">&gt;</span><span class="w"> </span><span class="o">-</span><span class="n">A</span><span class="w"> </span><span class="n">x64</span>
+<span class="n">cd</span><span class="w"> </span><span class="o">&lt;</span><span class="n">build_dir</span><span class="o">&gt;</span>
+<span class="n">cmake</span><span class="w"> </span><span class="o">--</span><span class="n">build</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="o">--</span><span class="n">config</span><span class="w"> </span><span class="n">release</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When compiling the CPU Op Package for Windows, the user may select either the x64 or arm64 architecture using the following flag when invoking cmake: <code class="docutils literal notranslate"><span class="pre">-A</span> <span class="pre">[x64</span> <span class="pre">|</span> <span class="pre">arm64]</span></code>.</p>
+</div>
+<p>The above CMake operation for the Windows-x86 platform will produce the &lt;package_name&gt;.dll and &lt;package_name&gt;.lib files under
+the build/Release folder.</p>
+<dl class="footnote brackets">
+<dt class="label" id="id9"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>For instructions on QNN tool setup, see <a class="reference internal" href="setup.html"><span class="doc">Setup</span></a>.</p>
+</dd>
+<dt class="label" id="id10"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>If the directory already exists, the tool will only generate new files and attempt to append to existing files.
+To force a new package to be generated, use the <em>–force-generation</em> option.</p>
+</dd>
+<dt class="label" id="id11"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
+<dd><p>The tool currently supports generation only for the HTP and CPU backend.</p>
+</dd>
+<dt class="label" id="id12"><span class="brackets"><a class="fn-backref" href="#id5">4</a></span></dt>
+<dd><p>There may be additional functions generated for each op that may need to be completed, and macros that may need to
+specialized. Users should observe a generated package to see all generated functions and macros.</p>
+</dd>
+<dt class="label" id="id13"><span class="brackets">5</span><span class="fn-backref">(<a href="#id7">1</a>,<a href="#id8">2</a>)</span></dt>
+<dd><p>The script &lt;QNN_SDK_ROOT&gt;/bin/check-linux-dependency.sh can also be used to download
+the appropriate clang version if it is not present.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="op_def_schema.html" class="btn btn-neutral float-right" title="XML OpDef Schema Breakdown" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="generating_op_packages.html" class="btn btn-neutral float-left" title="Generating Custom Op Packages" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

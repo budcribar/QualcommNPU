@@ -1,0 +1,706 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Benchmarking &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Linting Profile" href="linting_profile.html" />
+    <link rel="prev" title="Benchmarking and Accuracy" href="usergroup10.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup1.html">Network Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup6.html">Tutorials and Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="usergroup10.html">Benchmarking and Accuracy</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Benchmarking</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="linting_profile.html">Linting Profile</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="benchmark_mobilenet_ssd.html">MobilenetSSD Benchmarking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="accuracy.html">Inference Accuracy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="usergroup10.html">Benchmarking and Accuracy</a> &raquo;</li>
+        
+      <li>Benchmarking</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="benchmarking">
+<h1>Benchmarking<a class="headerlink" href="#benchmarking" title="Permalink to this heading">¶</a></h1>
+<div class="ui-resizable side-nav-resizable docutils container" id="side-nav">
+<div class="docutils container" id="nav-tree">
+<div class="docutils container" id="nav-tree-contents">
+</div>
+</div>
+</div>
+<div class="docutils container" id="doc-content">
+<div class="header docutils container">
+</div>
+<div class="contents docutils container">
+<div class="textblock docutils container">
+<p class="rubric" id="overview">Overview</p>
+<p>The benchmark shipped in the Qualcomm® Neural Processing SDK consists of a set of
+python scripts that runs a network on a target
+Android/LinuxEmbedded device and collect performance metrics.
+It uses executables and libraries found in the SDK package to
+run a DLC file on target, using a set of inputs for the
+network, and a file that points to that set of inputs.</p>
+<p>The input to the benchmark scripts is a configuration file in
+JSON format. The SDK ships with a configuration file for
+running the Inception_v3 model that is created in the Qualcomm® Neural Processing SDK. SDK
+users are encouraged to create their own configuration files
+and use the benchmark scripts to run on target to collect
+timing and memory consumption measurements.</p>
+<p>The configuration file allows the user to specify:</p>
+<ul class="simple">
+<li><p>Name of the benchmark (i.e., Inception_v3)</p></li>
+<li><p>Host path to use for storing results</p></li>
+<li><p>Device paths to use (where to push the necessary files for
+running the benchmark)</p></li>
+<li><p>Device to run the benchmark on (only one device is supported
+per run)</p></li>
+<li><p>Hostname/IP of remote machine to which devices are connected</p></li>
+<li><p>Number of times to repeat the run</p></li>
+<li><p>Model specifics (name, location of dlc, location of inputs)</p></li>
+<li><p>Qualcomm® Neural Processing SDK runtime configuration(s) to use (combination of CPU,
+GPU, GPU_FP16 and DSP)</p></li>
+<li><p>Which measurements to take (“mem” and/or “timing”)</p></li>
+<li><p>Profiling level of measurements (“off”, “basic”, “moderate”
+or “detailed”)</p></li>
+</ul>
+<p class="rubric" id="command-line-parameters">Command Line Parameters</p>
+<p>To see all of the command line parameters use the “-h” option
+when running snpe_bench.py</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>usage: snpe_bench.py [-h] -c CONFIG_FILE [-o OUTPUT_BASE_DIR_OVERRIDE]
+                     [-v DEVICE_ID_OVERRIDE] [-r HOST_NAME] [-a]
+                     [-t DEVICE_OS_TYPE_OVERRIDE] [-d] [-s SLEEP]
+                     [-b USERBUFFER_MODE] [-p PERFPROFILE] [-l PROFILINGLEVEL]
+                     [-json] [-cache]
+
+Run the snpe_bench
+
+required arguments:
+  -c CONFIG_FILE, --config_file CONFIG_FILE
+                        Path to a valid config file
+                        Refer to sample config file config_help.json for more
+                        detail on how to fill params in config file
+
+optional arguments:
+  -o OUTPUT_BASE_DIR_OVERRIDE, --output_base_dir_override OUTPUT_BASE_DIR_OVERRIDE
+                        Sets the output base directory.
+  -v DEVICE_ID_OVERRIDE, --device_id_override DEVICE_ID_OVERRIDE
+                        Use this device ID instead of the one supplied in config
+                        file. Cannot be used with -a
+  -r HOST_NAME, --host_name HOST_NAME
+                        Hostname/IP of remote machine to which devices are
+                        connected.
+  -a, --run_on_all_connected_devices_override
+                        Runs on all connected devices, currently only support 1.
+                        Cannot be used with -v
+  -t DEVICE_OS_TYPE_OVERRIDE, --device_os_type_override DEVICE_OS_TYPE_OVERRIDE
+                        Specify the target OS type, valid options are
+                        [&#39;android-aarch64&#39;, &#39;le_oe_gcc8.2&#39;, &#39;le64_oe_gcc8.2&#39;]
+  -d, --debug           Set to turn on debug log
+  -s SLEEP, --sleep SLEEP
+                        Set number of seconds to sleep between runs e.g. 20
+                        seconds
+  -b USERBUFFER_MODE, --userbuffer_mode USERBUFFER_MODE
+                        [EXPERIMENTAL] Enable user buffer mode, default to
+                        float, can be tf8exact0
+  -p PERFPROFILE, --perfprofile PERFPROFILE
+                        Set the benchmark operating mode (balanced, default,
+                        sustained_high_performance, high_performance,
+                        power_saver, low_power_saver, high_power_saver,
+                        extreme_power_saver, low_balanced, system_settings)
+  -l PROFILINGLEVEL, --profilinglevel PROFILINGLEVEL
+                        Set the profiling level mode (off, basic, moderate, detailed, linting).
+                        Default is basic.
+  -json, --generate_json
+                        Set to produce json output.
+  -cache, --enable_init_cache
+                        Enable init caching mode to accelerate the network
+                        building process. Defaults to disable.
+</pre></div>
+</div>
+<p class="rubric" id="running-the-benchmark">Running the Benchmark</p>
+<p class="rubric" id="prerequisites">Prerequisites</p>
+<ul class="simple">
+<li><p>The Qualcomm® Neural Processing SDK has been set up following the <a class="reference external" href="setup.html">Qualcomm (R) Neural Processing SDK
+Setup</a> chapter.</p></li>
+<li><p>The <a class="reference external" href="tutorial_setup.html">Tutorials Setup</a> has been
+completed.</p></li>
+<li><p><strong>Optional:</strong> If the device is connected to remote machine,
+the remote adb server setup needs to be done by the user.</p></li>
+</ul>
+<p class="rubric" id="running-inceptionv3-that-is-shipped-with-the-sdk">Running Inceptionv3 that is Shipped with the SDK</p>
+<p>snpe_bench.py is the main benchmark script to measure and
+report performance statistics. Here is how to use it with the
+Inception_v3 model and data that is created in the SDK.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>cd $SNPE_ROOT/benchmarks/SNPE
+python3 snpe_bench.py -c inception_v3_sample.json -a
+
+    where
+        -a benchmarks on the device connected
+</pre></div>
+</div>
+<p class="rubric" id="viewing-the-results-csv-file-or-json-file">Viewing the Results (csv File or json File)</p>
+<p>All results are stored in the “HostResultDir” that is specified
+in the configuration json file. The benchmark creates
+time-stamped directories for each benchmark run. All timing
+results are stored in microseconds.</p>
+<p>For your convenience, a “latest_results” link is created that
+always points to the most recent run.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span># In inception_v3_sample.json, &quot;HostResultDir&quot; is set to &quot;inception_v3/results&quot;
+cd $SNPE_ROOT/benchmarks/SNPE/inception_v3/results
+# Notice the time stamped directories and the &quot;latest_results&quot; link.
+cd $SNPE_ROOT/benchmarks/SNPE/inception_v3/results/latest_results
+# Notice the .csv file, open this file in a csv viewer (Excel, LibreOffice Calc)
+# Notice the .json file, open the file with any text editor
+</pre></div>
+</div>
+<p><strong>CSV Benchmark Results File</strong></p>
+<p>The CSV file contains results similar to the example below.
+Some measurements may not be apparent in the CSV file. To get
+all timing information, profiling level needs to be set to
+detailed. By default, profiling level is basic. Note that
+colored headings have been added for clarity.</p>
+<div class="docutils container">
+<div class="figure align-default">
+<img alt="../images/csv_results.png" src="../images/csv_results.png" />
+</div>
+</div>
+<p><strong>CSV 1: Configuration</strong></p>
+<p>This section contains information about:</p>
+<ul class="simple">
+<li><p>the SDK version used to generate the benchmark run</p></li>
+<li><p>model name and path to the DLC file</p></li>
+<li><p>runtimes selected for the benchmark</p></li>
+<li><p>etc.</p></li>
+</ul>
+<p><strong>CSV 2: Initialization metrics</strong></p>
+<p>This section contains measurements concerning model
+initialization. Profiling level affects the amount of
+measurements collected. No metrics are collected for profiling
+off. Metrics for basic and detailed are shown below.</p>
+<p>Profiling level: Basic</p>
+<ul class="simple">
+<li><p>Load measures the time required to load the model’s
+metadata.</p></li>
+<li><p>Deserialize measures the time required to deserialize the
+model’s buffers.</p></li>
+<li><p>Create measures the time spent to create Qualcomm® Neural Processing SDK network(s) and
+initialize all layers for the given model. Detailed
+breakdown of create time can be retrieved with profiling
+level set to detailed.</p></li>
+<li><p>Init measures the time taken to build and configure Qualcomm® Neural Processing SDK.
+This time includes time measured Load, Deserialize, and
+Create.</p></li>
+<li><p>De-Init measures the time taken to de-initialized Qualcomm® Neural Processing SDK.</p></li>
+</ul>
+<p>Profiling level: Moderate or Detailed</p>
+<ul class="simple">
+<li><p>Load measures the time required to load the model’s
+metadata.</p></li>
+<li><p>Deserialize measures the time required to deserialize the
+model’s buffers.</p></li>
+<li><p>Create measures the time spent to create Qualcomm® Neural Processing SDK network(s) and
+initialize all layers for the given model. Detailed
+breakdown of create time can be retrieved with profiling
+level set to detailed.</p></li>
+<li><p>Init measures the time taken to build and configure Qualcomm® Neural Processing SDK.
+This time includes time measured Load, Deserialize, and
+Create.</p></li>
+<li><p>De-Init measures the time taken to de-initialized Qualcomm® Neural Processing SDK.</p></li>
+<li><p>Create Network(s) measures the total time required to create
+all network(s) for the model. Models that are partitioned
+will result in multiple networks being created.</p></li>
+<li><p>RPC Init Time measures the entire time spent on RPC and
+accelerators used by Qualcomm® Neural Processing SDK. This time includes time measured
+in Snpe Accelerator Init Time and Accelerator Init Time.
+Currently only available for DSP and AIP runtime. Will
+appear as 0 for other runtimes.</p></li>
+<li><p>Snpe Accelerator Init Time measures the total time spent by
+Qualcomm® Neural Processing SDK to prepare the data for the accelerator process such as
+GPU, DSP, AIP. Currently only available for DSP and AIP
+runtime. Will appear as 0 for other runtimes.</p></li>
+<li><p>Accelerator Init Time measures the total processing time
+spent on the accelerator core, which may include different
+hardware resources. Currently only available for DSP and AIP
+runtime. Will appear as 0 for other runtimes.</p></li>
+</ul>
+<p><strong>CSV 3: Execution metrics</strong></p>
+<p>This section contains measurements concerning the execution of
+one inference pass of the neural network model. Profiling level
+affects the amount of measurements collected.</p>
+<p>Profiling level: Basic</p>
+<ul class="simple">
+<li><p>Total Inference Time measures the entire execution time of
+one inference pass. This includes any input and output
+processing, copying of data, etc. This is measured at the
+start and end of the <strong>execute</strong> call.</p></li>
+</ul>
+<p>Profiling level: Moderate or Detailed</p>
+<ul class="simple">
+<li><p>Total Inference Time measures the entire execution time of
+one inference pass. This includes any input and output
+processing, copying of data, etc. This is measured at the
+start and end of the <strong>execute</strong> call.</p></li>
+<li><p>Forward Propogate measures the time spent executing one
+inference pass excluding processing overheads on one of the
+accelerator cores. For example, in the case of the GPU this
+represents the execution time of all the GPU kernels running
+on the GPU HW.</p></li>
+<li><p>RPC Execute measures the entire time spent on RPC and
+accelerators used by Qualcomm® Neural Processing SDK. This time includes time measured
+in Snpe Accelerator and Accelerator. Currently only
+available for DSP and AIP runtime. Will appear as 0 for
+other runtimes.</p></li>
+<li><p>Snpe Accelerator measures the total time spent by Qualcomm® Neural Processing SDK to
+setup processing for the accelerator. Currently only
+available for DSP and AIP runtime. Will appear as 0 for
+other runtimes.</p></li>
+<li><p>Accelerator measures the total execution time spent on the
+accelerator core, which may include different hardware
+resources. Currently only available for DSP and AIP runtime.
+Will appear as 0 for other runtimes.</p></li>
+</ul>
+<p>Profiling level: Detailed</p>
+<ul class="simple">
+<li><p>Misc Accelerator measures the total execution time spent on
+the accelerator core for optimization elements not specified
+by Qualcomm® Neural Processing SDK. For example, in the case of DSP this represents the
+exection time spent on additional layers added by the
+accelerator to acheive optimal performance. Currently only
+available for DSP and AIP runtime. Will appear as 0 for
+other runtimes.</p></li>
+</ul>
+<p>Profiling level: Linting</p>
+<ul class="simple">
+<li><p>Linting profiling mode is an HTP exclusive configuration that provides per op
+cycle count on the main thread as well as background execution information.
+<a class="reference external" href="linting_profile.html">See here</a> for more information.</p></li>
+</ul>
+<p><strong>CSV 4: Model Layer Names</strong></p>
+<p>This section contains the list of names of each layer of the
+neural network model.</p>
+<p>Note that this information will only be present for DSP/GPU
+runtime only if the profiling level is set to detailed.</p>
+<p><strong>CSV 5: Model Layer Times</strong></p>
+<p>Each row in this section represents the execution time of each
+layer of the neural network model. For each runtime the
+average, min and max values are represented. Note that the
+values corresponding to each layer are referring to cycle
+counts, whereas the values for all other components like init,
+ForwardPropagate are in microseconds.</p>
+<p>Note that this information will only be present for DSP/GPU
+runtime only if the profiling level is set to detailed.</p>
+<p>Refer to <a class="reference external" href="benchmarking.html#measurement_methodology">Measurement
+Methodology</a>
+Measurement Methodology for more background on the numbers.</p>
+<p><strong>JSON Benchmark Results File</strong></p>
+<p>The benchmark results published in the CSV file can also be
+made available in JSON format. The contents are the same as in
+the CSV file, structured as key-value pairs, and will help
+parsing the results in a simple and efficient manner. The JSON
+file contains results similar to the example below.</p>
+<div class="docutils container">
+<div class="figure align-default">
+<img alt="../images/json_results.png" src="../images/json_results.png" />
+</div>
+</div>
+<p class="rubric" id="running-the-benchmark-with-your-own-network-and-inputs">Running the Benchmark with Your Own Network and
+Inputs</p>
+<p><strong>Prepare inputs</strong></p>
+<p>Before running the benchmark, a set of inputs need to be ready:</p>
+<ul class="simple">
+<li><p><em>your_model.dlc</em></p></li>
+<li><p>A text file listing all of your input data. For an example,
+see: $SNPE_ROOT/examples/Models/InceptionV3/data/cropped/raw_list.txt</p></li>
+<li><p>All of the input data that is listed in the above text file.
+For an example, see directory
+$SNPE_ROOT/examples/Models/InceptionV3/data/cropped</p></li>
+<li><p>Note: image_list.txt must exactly match the structure of
+your input directory.</p></li>
+<li><p>For more information on preparing your inputs, see: <a class="reference external" href="image_input.html">Input
+Images</a></p></li>
+</ul>
+<p class="rubric" id="create-a-run-configuration">Create a Run Configuration</p>
+<p><strong>Config structure</strong></p>
+<p>The configuration file is a JSON file with a predefined
+structure. Refer to $SNPE_ROOT/benchmarks/SNPE/inception_v3_sample.json
+as an example.</p>
+<p>All fields are required.</p>
+<ul class="simple">
+<li><p><strong>Name:</strong> The name of this configuration, e.g., Inception_v3</p></li>
+<li><p><strong>HostRootPath:</strong> The top level output folder on the host.
+It can be an absolute path or a relative path to the current
+working directory.</p></li>
+<li><p><strong>HostResultDir:</strong> The folder on the host where all
+benchmark results are put. It can be an absolute path or a
+relative path to the current working directory.</p></li>
+<li><p><strong>DevicePath:</strong> The folder on the device where all
+benchmark-related data and artifacts are put, e.g.,
+/data/local/tmp/snpebm</p></li>
+<li><p><strong>Devices:</strong> The serial number of the device that the
+benchmark runs on. Only one device is currently supported.</p></li>
+<li><p><strong>Runs:</strong> The number of times that the benchmark runs for
+each of the “Runtime” and “Measurements” run combinations</p></li>
+<li><p><strong>Model:</strong></p>
+<ul>
+<li><p><strong>Name:</strong> The name of the DNN model, e.g., INCEPTION_V3</p></li>
+<li><p><strong>Dlc:</strong> The folder where the model dlc file is located
+on the host. It can be an absolute path or a relative
+path to the current working directory.</p></li>
+<li><p><strong>InputList:</strong> The text file path that lists all of the
+input data. It can be an absolute path or a relative path
+to the current working directory.</p></li>
+<li><p><strong>Data:</strong> A list of data files or folders that are listed
+in InputList file. It can be an absolute path or a
+relative path to the current working directory. If the
+path is a folder, all contents of that folder will be
+pushed to the device.</p></li>
+</ul>
+</li>
+<li><p><strong>Runtimes:</strong> Possible values are “GPU”, “GPU_FP16”, “DSP”
+and “CPU”. You can use any combination of these.</p></li>
+<li><p><strong>Measurements:</strong> Possible values are “timing” and “mem”.
+You can set either one or both of these values. Each
+measurement type is measured alone for each run.</p></li>
+</ul>
+<p>Optional fields:</p>
+<ul class="simple">
+<li><p><strong>CpuFallback:</strong> Possible values are true and false.
+Indicates whether or not the network can fallback to CPU
+when a layer is not available on a runtime. Default value is
+false.</p></li>
+<li><p><strong>HostName:</strong> Hostname/IP of remote machine to which devices
+are connected. Default value is ‘localhost’.</p></li>
+<li><p><strong>BufferTypes:</strong> List of user buffertypes. Possible values
+are “”(empty string), or any combination of “ub_float” and
+“ub_tf8”. If “” is given, it executes for all the runtimes
+given in RunTimes field. If any userbuffer option is given,
+it executes for all runtimes in RunTimes along with given
+userbuffer variants. If this field is absent, it is executed
+for all possible runtimes(default case).</p></li>
+</ul>
+<p><strong>Architecture support</strong></p>
+<p>In Android, AARCH 64-bit is supported. In
+addition to Android, there is limited support for
+LinuxEmbedded, where only the timing measurement is supported.</p>
+<p>Runtime and measurement are concatenated to make a full run
+combination name, e.g.,</p>
+<ul class="simple">
+<li><p>“GPU_timing”: GPU runtime, timing measurement</p></li>
+<li><p>“CPU_mem”: CPU runtime, memory measurement</p></li>
+</ul>
+<p>Note that for each specified runtime, there are multiple sets
+of timing measurements which differ only in the tensor format
+(<a class="reference external" href="cplus_plus_tutorial.html#cpp_tutorial_load_input_itensors">Using
+ITensors</a>
+and <a class="reference external" href="cplus_plus_tutorial.html#cpp_tutorial_load_input_user_buffers">Using User
+Buffers</a>).
+For example, for the DSP runtime, the following timing
+measurements are taken:</p>
+<ul class="simple">
+<li><p>“DSP_timing”: Timing measurement on DSP runtime using
+ITensors</p></li>
+<li><p>“DSP_ub_tf8_timing”: Timing measurement on DSP runtime using
+UserBuffer with TF8 encoding</p></li>
+<li><p>“DSP_ub_float_timing”: Timing measurement on DSP runtime
+using UserBuffer with float encoding</p></li>
+</ul>
+<p class="rubric" id="run-the-benchmark">Run the Benchmark</p>
+<p>The easiest way to run the benchmark is to specify the -a
+option, which will run the benchmark on the lone device
+connected to your computer.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>cd $SNPE_ROOT/benchmarks/SNPE
+python3 snpe_bench.py -c yourmodel.json -a
+</pre></div>
+</div>
+<p>The benchmark will do an md5sum on the host files (those
+specified in the JSON configuration) and on the device files.
+Because of the md5sum check, files needed for the benchmark run
+has to be available on the host.</p>
+<p>For any file that exists both on host and on the device with
+mismatch md5, the benchmark will copy the file from host to
+target and issue a warning message letting you know that the
+local files do not match the device files. This is done so that
+you can be sure that the results you get from a benchmark run
+accurately reflect the files specified in the JSON file.</p>
+<p><strong>Other options</strong></p>
+<div class="line-block">
+<div class="line"><strong>-v option</strong></div>
+<div class="line">Allows you to override the device ID specified in the config
+file, so that the same config file can be used across
+multiple devices. You can use this instead of -a, if you have
+multiple devices attached.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>-o option</strong></div>
+<div class="line">Result output base directory override applies only if
+relative paths are specified for HostRootPath and
+HostResultsDir. It allows you to pool the output regardless
+of where you run the benchmark from.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>-t option</strong></div>
+<div class="line">OS Type override currently supports Android aarch64 (arm64-v8a), and LinuxEmbedded
+devices.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>-b option</strong></div>
+<div class="line">Allows you to specify type of input and output user buffers.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>-p option</strong></div>
+<div class="line">Allows you to profile performance in different operating
+modes.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>-l option</strong></div>
+<div class="line">Allows you to specify the level of performance profiling.</div>
+</div>
+<p class="rubric" id="reading-the-results">Reading the Results</p>
+<p>Open the results(CSV file or JSON file) in your
+&lt;HostResultsDir&gt;/latest_results folder to view your results.
+(&lt;HostResultsDir&gt; is what you specified in your json
+configuration file.)</p>
+<p class="rubric" id="measurement-methodology">Measurement Methodology</p>
+<p>In all cases, the snpe-net-run executable is used to load a
+model and run inputs through the model.</p>
+<p><strong>Performance (“timing”)</strong></p>
+<p>Timing measurements are taken using internal timing utilities
+inside the Qualcomm® Neural Processing SDK libraries. When snpe-net-run is executed, the
+libraries will log timing info to a file. This file is then
+parsed offline to retrieve total inference times and per-layer
+times.</p>
+<p>The total inference times include both the per-layer
+computation times plus overhead such as data movements between
+layers, as well as into and out of runtimes, whereas the
+per-layer times are strictly computational times for each
+layer. For smaller networks the overhead can be quite
+significant relative to computational time, particularly when
+offloading the networks to run on GPU or DSP.</p>
+<p>As well, further optimizations present on the GPU/DSP may cause
+layer times to be mis-attributed, in the case of neuron
+conv-neuron or fc-neuron pairs. When executing on GPU the total
+time of the pairs would be assigned to convs, whereas for DSP
+they would be assigned to the neurons.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Detailed and Linting Profiling will cause performance impact.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="linting_profile.html" class="btn btn-neutral float-right" title="Linting Profile" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="usergroup10.html" class="btn btn-neutral float-left" title="Benchmarking and Accuracy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

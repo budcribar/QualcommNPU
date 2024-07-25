@@ -1,0 +1,339 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Defining a UDO Package &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Creating a UDO Package" href="creating_udo_package.html" />
+    <link rel="prev" title="Defining a UDO" href="udo_operator_definition.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="usergroup1.html">Network Models</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="network_layers.html">Supported Network Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supported_onnx_ops.html">Supported ONNX Ops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quantized_models.html">Quantized vs Non-Quantized Models</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="usergroup2.html">User-defined Operations</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="udo_overview.html">Overview of UDO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="udo_operator_definition.html">Defining a UDO</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Defining a UDO Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="creating_udo_package.html">Creating a UDO Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="compiling_udo_package.html">Compiling a UDO package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="compiling_udo_package_for_windows.html">Compiling a UDO package for Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="preparing_model_with_udo.html">Preparing a model with UDO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running_model_with_udo.html">Running a model with UDO</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup3.html">Model Conversion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup6.html">Tutorials and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="usergroup1.html">Network Models</a> &raquo;</li>
+        
+          <li><a href="usergroup2.html">User-defined Operations</a> &raquo;</li>
+        
+      <li>Defining a UDO Package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="defining-a-udo-package">
+<h1>Defining a UDO Package<a class="headerlink" href="#defining-a-udo-package" title="Permalink to this heading">¶</a></h1>
+<div class="ui-resizable side-nav-resizable docutils container" id="side-nav">
+<div class="docutils container" id="nav-tree">
+<div class="docutils container" id="nav-tree-contents">
+</div>
+</div>
+</div>
+<div class="docutils container" id="doc-content">
+<div class="header docutils container">
+</div>
+<div class="contents docutils container">
+<div class="textblock docutils container">
+<p>A UDO package consists primarily of a registration library and
+one or more implementation libraries. The main idea is that the
+registration library contains information about the nature of
+the operations, while the implementation(s) contains the
+kernels required to execute the operations (see <a class="reference external" href="udo_overview.html">Overview of
+UDO</a> for more details). A UDO package can
+be defined via a UDO configuration, which contains a text
+specification of the operations and paths that will ultimately
+help define a directory structure that will represent a UDO
+package. The definition of a UDO package will be discussed in
+this section, while the creation of a package once its been
+defined will be deferred to the section on <a class="reference external" href="creating_udo_package.html">Creating a UDO
+Package</a>.</p>
+<p class="rubric" id="udo-package-config-description">UDO Package Config Description</p>
+<p>All the fields found in the <a class="reference external" href="udo_operator_definition.html#udo_config_fields_spec">UDO Config Field
+Description</a>
+are replicated for the UDO package config specification. The
+breakdown of the aforementioned UDO config file is thus a
+combination of the description found in that section with the
+addition of two package specific fields. A generic config is
+included below with the package-specific fields explained.
+Users should see <a class="reference external" href="udo_operator_definition.html#udo_config_fields_spec">UDO Config Field
+Description</a>
+for more detailed descriptions of the replicated fields, as
+well as review the associated notes.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>{
+    &quot;UdoPackage_0&quot;:
+    {
+        &quot;Operators&quot;: [
+            {
+                &quot;type&quot;: &quot;Softmax&quot;,
+                &quot;inputs&quot;:[
+                    {&quot;name&quot;:&quot;Placeholder&quot;, &quot;per_core_data_types&quot;: {&quot;CPU&quot;:&quot;FLOAT_32&quot;, &quot;GPU&quot;:&quot;FLOAT_32&quot;, &quot;DSP&quot;:&quot;UINT_8&quot;},
+                        &quot;quantization_mode&quot;: &quot;TF&quot;}
+                ],
+                &quot;outputs&quot;:[
+                    {&quot;name&quot;:&quot;Output&quot;,&quot;per_core_data_types&quot;: {&quot;CPU&quot;:&quot;FLOAT_32&quot;, &quot;GPU&quot;:&quot;FLOAT_32&quot;, &quot;DSP&quot;:&quot;UINT_8&quot;},
+                        &quot;quantization_mode&quot;: &quot;TF&quot;}
+                ],
+                &quot;core_types&quot;: [&quot;CPU&quot;, &quot;GPU&quot;, &quot;DSP&quot;],
+                &quot;dsp_arch_types&quot;: [&quot;v68&quot;]
+            }
+        ],
+        &quot;UDO_PACKAGE_NAME&quot;: &quot;SoftmaxUdoPackage&quot;
+    }
+}
+</pre></div>
+</div>
+<p>Additional fields are explained below:</p>
+<ul class="simple">
+<li><p><strong>UDO_PACKAGE_NAME:</strong> The name of the package containing the
+UDO.</p></li>
+<li><p><strong>UDO_PACKAGE_PATH:</strong> A path to where the UDO package will
+be saved. If this is not provided the current directory will
+be used.</p></li>
+<li><p><strong>SNPE_UDO_ROOT:</strong> This is an optional variable that lets
+the tool know where the SnpeUdo API directory is located
+within the user’s environment. This can be set here or as an
+environment variable.</p></li>
+</ul>
+<p class="rubric" id="notes">Notes</p>
+<ol class="arabic simple">
+<li><p>The information specified in the config is used to
+instantiate info data structures which are critical to how
+Qualcomm® Neural Processing SDK executes a model containing a UDO. This implies a
+synergy between a UDO package and a model containing a UDO,
+as such, the recommended strategy is to use the same config
+for defining a UDO and its corresponding package.</p></li>
+<li><p>The definition of a package name will determine the names of
+source files and implementation libraries found in a
+generated package.</p></li>
+<li><p>Operation types will determine the names of methods, classes
+and source files contained in a generated package.</p></li>
+<li><p>The package core-types are a set of all core-types mentioned
+for each operator in the package .</p></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="creating_udo_package.html" class="btn btn-neutral float-right" title="Creating a UDO Package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="udo_operator_definition.html" class="btn btn-neutral float-left" title="Defining a UDO" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+diff --git a/source/electron.html b/source/electron.html
+index 2cd8fca..2c263b4 100644
+--- a/source/electron.html
++++ b/source/electron.html
+@@ -21,6 +21,9 @@ body { touch-action: none; overflow: hidden; width: 100%; height: 100%; margin:
+ .icon .border { stroke: #fff; }
+ .icon .stroke { stroke: #808080; }
+ .icon:hover .stroke { stroke: #000000; }
++.strike-icon .border { stroke: #fff; }
++.strike-icon .stroke { stroke: #ff8080; }
++.strike-icon:hover .stroke { stroke: red; }
+ .dropdown { display: none; position: absolute; min-width: 225px; z-index: 1; border-radius: 4px; background-color: #f6f6f6; border: 1px solid rgba(0,0,0,.15); padding-top: 2px; padding-bottom: 2px; margin-left: 2px; overflow: hidden; }
+ .dropdown button { display: block; border: none; border-radius: 0; background-color: transparent; color: black; width: 100%; text-align: left; padding: 4px 12px 5px 12px; white-space: no-wrap; font-size: 12px; }
+ .dropdown button:hover { color: #ffffff; background-color: #2e6bd2; }
+@@ -78,6 +81,9 @@ body { touch-action: none; overflow: hidden; width: 100%; height: 100%; margin:
+ .icon .border { stroke: #1d1d1d; }
+ .icon .stroke { stroke: #aaaaaa; }
+ .icon:hover .stroke { stroke: #dfdfdf; }
++.strike-icon .border { stroke: #1d1d1d; }
++.strike-icon .stroke { stroke: #ffa0a0; }
++.strike-icon:hover .stroke { stroke:#ff8080; }
+ .dropdown { background-color: #373737; border-color: #000000; }
+ .dropdown button { color: #ffffff; }
+ .dropdown button:hover { color: #ffffff; background-color: #1d59d1; }
+@@ -106,6 +112,7 @@ body { touch-action: none; overflow: hidden; width: 100%; height: 100%; margin:
+     <svg id="canvas" class="canvas" preserveaspectratio="xMidYMid meet" width="100%" height="100%"></svg>
+ </div>
+ <div id="sidebar" class="sidebar"></div>
++<div id="qnnsidebar" class="qnnsidebar"></div>
+ <div id="toolbar" class="toolbar">
+     <button id="menu-button" class="toolbar-button" title="Model Properties">
+         <svg class="icon" viewbox="0 0 100 100">
+@@ -141,6 +148,27 @@ body { touch-action: none; overflow: hidden; width: 100%; height: 100%; margin:
+             <line class="stroke" x1="78" y1="78" x2="82" y2="82" stroke-width="8" stroke-linecap="square"></line>
+         </svg>
+     </button>
++    <button id="next" class="toolbar-button" title="Locate the next error">
++            <svg class="strike-icon " viewbox="0 0 100 100">
++                <line class="border" x1="50" y1="0" x2="100" y2="50" stroke-width="8" stroke-linecap="round" ></line>
++                <line class="border" x1="50" y1="100" x2="100" y2="50" stroke-width="8" stroke-linecap="round" ></line>
++                <line class="border" x1="50" y1="50" x2="10" y2="50" stroke-width="8" stroke-linecap="round" ></line>
++                <line class="stroke" x1="50" y1="0" x2="100" y2="50" stroke-width="4" stroke-linecap="round"></line>
++                <line class="stroke" x1="50" y1="100" x2="100" y2="50" stroke-width="4" stroke-linecap="round"></line>
++                <line class="stroke" x1="50" y1="50" x2="10" y2="50" stroke-width="4" stroke-linecap="round" ></line>
++            </svg>
++    </button>
++    <button id="prev" class="toolbar-button" title="Locate the previous error">
++        <svg class="strike-icon " viewbox="0 0 100 100">
++            <line class="border" x1="50" y1="0" x2="0" y2="50" stroke-width="8" stroke-linecap="round" ></line>
++            <line class="border" x1="50" y1="100" x2="0" y2="50" stroke-width="8" stroke-linecap="round" ></line>
++            <line class="border" x1="50" y1="50" x2="90" y2="50" stroke-width="9" stroke-linecap="round" ></line>
++            <line class="stroke" x1="50" y1="0" x2="0" y2="50" stroke-width="4" stroke-linecap="round"></line>
++            <line class="stroke" x1="50" y1="100" x2="0" y2="50" stroke-width="4" stroke-linecap="round"></line>
++            <line class="stroke" x1="50" y1="50" x2="90" y2="50" stroke-width="4" stroke-linecap="round"></line>
++
++        </svg>
++    </button>
+ </div>
+ <div class="center logo">
+     <a href="https://github.com/lutzroeder/netron" target="blank_">
+@@ -286,8 +314,9 @@ body { touch-action: none; overflow: hidden; width: 100%; height: 100%; margin:
+     </a>
+     <span class="center consent-message">This app uses cookies to report errors and anonymous usage information.</span>
+     <button id="consent-accept-button" class="center consent-accept-button">Accept</button>
+-    <button id="open-file-button" class="center open-file-button">Open Model&hellip;</button>
+-    <button id="github-button" class="center github-button">GitHub</button>
++    <button id="open-file-button" class="center open-file-button">Visualize&hellip;</button>
++    <button id="open-diff-button" class=" center github-button">Diff&hellip;</button>
++    <!--<button id="github-button" class="center github-button">GitHub</button> -->
+     <input type="file" id="open-file-dialog" class="open-file-dialog" multiple="false" accept="">
+     <!-- Preload fonts to workaround Chrome SVG layout issue -->
+     <div style="font-weight: normal; color: rgba(0, 0, 0, 0.01); user-select: none;">.</div>

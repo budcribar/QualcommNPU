@@ -1,0 +1,40 @@
+# ===============================================================
+#
+#  Copyright (c) 2021-2024 Qualcomm Technologies, Inc.
+#  All Rights Reserved.
+#  Confidential and Proprietary - Qualcomm Technologies, Inc.
+#
+# ===============================================================
+
+# define directory for the executable
+QNN_TARGET ?= x86_64-linux-clang
+export EXE_DIR := ./$(QNN_TARGET)
+
+# define target architecture if not previously defined, default is x86
+ifndef TARGET_AARCH_VARS
+TARGET_AARCH_VARS:= -march=x86-64
+endif
+
+# Include paths
+# QNN_SDK_ROOT should be set to point to the SDK path,
+ifdef QNN_SDK_ROOT
+INCLUDES =  -I$(QNN_SDK_ROOT)/include/QNN
+LINK_DIRECTORIES = -L$(QNN_SDK_ROOT)/lib/x86_64-linux-clang
+export LD_LIBRARY_PATH := $(QNN_SDK_ROOT)/lib/x86_64-linux-clang:$(LD_LIBRARY_PATH)
+else
+$(error QNN_SDK_ROOT: Please set QNN_SDK_ROOT)
+endif
+
+directories: $(EXE_DIR)
+
+$(EXE_DIR):
+	mkdir -p $(EXE_DIR)
+
+cpu: | directories
+	$(CC) $(SAVER_OUTPUT_FILENAME) $(INCLUDES) $(LINK_DIRECTORIES) -l QnnCpu -o $(EXE_DIR)/saver_output_QnnCpu
+
+htp: | directories
+	$(CC) $(SAVER_OUTPUT_FILENAME) $(INCLUDES) $(LINK_DIRECTORIES) -l QnnHtp -o $(EXE_DIR)/saver_output_QnnHtp
+
+hta: | directories
+	$(CC) $(SAVER_OUTPUT_FILENAME) $(INCLUDES) $(LINK_DIRECTORIES) -l QnnHta -o $(EXE_DIR)/saver_output_QnnHta

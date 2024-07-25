@@ -1,0 +1,592 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Qualcomm® Neural Processing SDK API &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup1.html">Network Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup6.html">Tutorials and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Qualcomm® Neural Processing SDK API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="qualcomm-neural-processing-sdk-api">
+<h1>Qualcomm® Neural Processing SDK API<a class="headerlink" href="#qualcomm-neural-processing-sdk-api" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="class-hierarchy">
+<h2>Class Hierarchy<a class="headerlink" href="#class-hierarchy" title="Permalink to this heading">¶</a></h2>
+<ul class="treeView" id="class-treeView">
+  <li>
+    <ul class="collapsibleList">
+      <li class="lastChild">Namespace <a href="namespace_com.html#namespace-com">com</a><ul><li class="lastChild">Namespace <a href="namespace_com__qualcomm.html#namespace-com-qualcomm">com::qualcomm</a><ul><li class="lastChild">Namespace <a href="namespace_com__qualcomm__qti.html#namespace-com-qualcomm-qti">com::qualcomm::qti</a><ul><li>Namespace <a href="namespace_com__qualcomm__qti__platformvalidator.html#namespace-com-qualcomm-qti-platformvalidator">com::qualcomm::qti::platformvalidator</a><ul><li class="lastChild">Class <a href="classcom_1_1qualcomm_1_1qti_1_1platformvalidator_1_1PlatformValidator.html#exhale-class-classcom-1-1qualcomm-1-1qti-1-1platformvalidator-1-1PlatformValidator">PlatformValidator</a></li></ul></li><li class="lastChild">Namespace <a href="namespace_com__qualcomm__qti__snpe.html#namespace-com-qualcomm-qti-snpe">com::qualcomm::qti::snpe</a><ul><li>Namespace <a href="namespace_com__qualcomm__qti__snpe__internal.html#namespace-com-qualcomm-qti-snpe-internal">com::qualcomm::qti::snpe::internal</a><ul><li>Namespace <a href="namespace_com__qualcomm__qti__snpe__internal__util.html#namespace-com-qualcomm-qti-snpe-internal-util">com::qualcomm::qti::snpe::internal::util</a><ul><li>Class <a href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1util_1_1IOUtil.html#exhale-class-classcom-1-1qualcomm-1-1qti-1-1snpe-1-1internal-1-1util-1-1IOUtil">IOUtil</a></li><li>Class <a href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1util_1_1JniInputBundle.html#exhale-class-classcom-1-1qualcomm-1-1qti-1-1snpe-1-1internal-1-1util-1-1JniInputBundle">JniInputBundle</a></li><li>Class <a href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1util_1_1JniOutputBundle.html#exhale-class-classcom-1-1qualcomm-1-1qti-1-1snpe-1-1internal-1-1util-1-1JniOutputBundle">JniOutputBundle</a></li><li class="lastChild">Class <a href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1util_1_1NativeBufferOutputStream.html#exhale-class-classcom-1-1qualcomm-1-1qti-1-1snpe-1-1internal-1-1util-1-1NativeBufferOutputStream">NativeBufferOutputStream</a></li></ul></li><li>Class <a href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeFloatTensor.html#exhale-class-classcom-1-1qualcomm-1-1qti-1-1snpe-1-1internal-1-1NativeFloatTensor">NativeFloatTensor</a></li><li>Class <a href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork.html#exhale-class-classcom-1-1qualcomm-1-1qti-1-1snpe-1-1internal-1-1NativeNetwork">NativeNetwork</a></li><li>Class <a href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeTF8UserBufferTensor.html#exhale-class-classcom-1-1qualcomm-1-1qti-1-1snpe-1-1internal-1-1NativeTF8UserBufferTensor">NativeTF8UserBufferTensor</a></li><li>Class <a href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1TensorAttributesImpl.html#exhale-class-classcom-1-1qualcomm-1-1qti-1-1snpe-1-1internal-1-1TensorAttributesImpl">TensorAttributesImpl</a></li><li>Class <a href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1TensorAttributesMap.html#exhale-class-classcom-1-1qualcomm-1-1qti-1-1snpe-1-1internal-1-1TensorAttributesMap">TensorAttributesMap</a></li><li class="lastChild">Class <a href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1TensorUtil.html#exhale-class-classcom-1-1qualcomm-1-1qti-1-1snpe-1-1internal-1-1TensorUtil">TensorUtil</a></li></ul></li><li>Class <a href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1FloatTensor.html#exhale-class-classcom-1-1qualcomm-1-1qti-1-1snpe-1-1FloatTensor">FloatTensor</a></li><li>Class <a href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SNPE.html#exhale-class-classcom-1-1qualcomm-1-1qti-1-1snpe-1-1SNPE">SNPE</a><ul><li>Class <a href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SNPE_1_1Logger.html#exhale-class-classcom-1-1qualcomm-1-1qti-1-1snpe-1-1SNPE-1-1Logger">SNPE::Logger</a></li><li class="lastChild">Class <a href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SNPE_1_1NeuralNetworkBuilder.html#exhale-class-classcom-1-1qualcomm-1-1qti-1-1snpe-1-1SNPE-1-1NeuralNetworkBuilder">SNPE::NeuralNetworkBuilder</a><ul><li class="lastChild">Class <a href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SNPE_1_1NeuralNetworkBuilder_1_1ModelNotSet.html#exhale-class-classcom-1-1qualcomm-1-1qti-1-1snpe-1-1SNPE-1-1NeuralNetworkBuilder-1-1ModelNotSet">NeuralNetworkBuilder::ModelNotSet</a></li></ul></li></ul></li><li>Class <a href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SnpeError.html#exhale-class-classcom-1-1qualcomm-1-1qti-1-1snpe-1-1SnpeError">SnpeError</a><ul><li>Class <a href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SnpeError_1_1IllegalArgsOrStateException.html#exhale-class-classcom-1-1qualcomm-1-1qti-1-1snpe-1-1SnpeError-1-1IllegalArgsOrStateException">SnpeError::IllegalArgsOrStateException</a></li><li>Class <a href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SnpeError_1_1InvalidInputException.html#exhale-class-classcom-1-1qualcomm-1-1qti-1-1snpe-1-1SnpeError-1-1InvalidInputException">SnpeError::InvalidInputException</a></li><li>Class <a href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SnpeError_1_1NativeException.html#exhale-class-classcom-1-1qualcomm-1-1qti-1-1snpe-1-1SnpeError-1-1NativeException">SnpeError::NativeException</a></li><li>Class <a href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SnpeError_1_1SnpeException.html#exhale-class-classcom-1-1qualcomm-1-1qti-1-1snpe-1-1SnpeError-1-1SnpeException">SnpeError::SnpeException</a></li><li class="lastChild">Class <a href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SnpeError_1_1SnpeIOException.html#exhale-class-classcom-1-1qualcomm-1-1qti-1-1snpe-1-1SnpeError-1-1SnpeIOException">SnpeError::SnpeIOException</a></li></ul></li><li>Class <a href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1Tensor.html#exhale-class-classcom-1-1qualcomm-1-1qti-1-1snpe-1-1Tensor">Tensor</a></li><li>Class <a href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1TF8UserBufferTensor.html#exhale-class-classcom-1-1qualcomm-1-1qti-1-1snpe-1-1TF8UserBufferTensor">TF8UserBufferTensor</a></li><li class="lastChild">Class <a href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1UserBufferTensor.html#exhale-class-classcom-1-1qualcomm-1-1qti-1-1snpe-1-1UserBufferTensor">UserBufferTensor</a></li></ul></li></ul></li></ul></li></ul></li>
+    </ul>
+  </li><!-- only tree view element -->
+</ul><!-- /treeView class-treeView --></div>
+<div class="section" id="file-hierarchy">
+<h2>File Hierarchy<a class="headerlink" href="#file-hierarchy" title="Permalink to this heading">¶</a></h2>
+<ul class="treeView" id="file-treeView">
+  <li>
+    <ul class="collapsibleList">
+      <li>Directory <a href="dir_internal.html#dir-internal">internal</a><ul><li>Directory <a href="dir_internal_util.html#dir-internal-util">util</a><ul><li>File <a href="file_internal_util_IOUtil.java.html#file-internal-util-IOUtil.java">IOUtil.java</a></li><li>File <a href="file_internal_util_JniInputBundle.java.html#file-internal-util-JniInputBundle.java">JniInputBundle.java</a></li><li>File <a href="file_internal_util_JniOutputBundle.java.html#file-internal-util-JniOutputBundle.java">JniOutputBundle.java</a></li><li class="lastChild">File <a href="file_internal_util_NativeBufferOutputStream.java.html#file-internal-util-NativeBufferOutputStream.java">NativeBufferOutputStream.java</a></li></ul></li><li>File <a href="file_internal_NativeFloatTensor.java.html#file-internal-NativeFloatTensor.java">NativeFloatTensor.java</a></li><li>File <a href="file_internal_NativeNetwork.java.html#file-internal-NativeNetwork.java">NativeNetwork.java</a></li><li>File <a href="file_internal_NativeTF8UserBufferTensor.java.html#file-internal-NativeTF8UserBufferTensor.java">NativeTF8UserBufferTensor.java</a></li><li>File <a href="file_internal_NativeUserBufferHandle.java.html#file-internal-NativeUserBufferHandle.java">NativeUserBufferHandle.java</a></li><li>File <a href="file_internal_TensorAttributesImpl.java.html#file-internal-TensorAttributesImpl.java">TensorAttributesImpl.java</a></li><li>File <a href="file_internal_TensorAttributesMap.java.html#file-internal-TensorAttributesMap.java">TensorAttributesMap.java</a></li><li class="lastChild">File <a href="file_internal_TensorUtil.java.html#file-internal-TensorUtil.java">TensorUtil.java</a></li></ul></li><li>File <a href="file_FloatTensor.java.html#file-FloatTensor.java">FloatTensor.java</a></li><li>File <a href="file_NeuralNetwork.java.html#file-NeuralNetwork.java">NeuralNetwork.java</a></li><li>File <a href="file_PlatformValidator.java.html#file-PlatformValidator.java">PlatformValidator.java</a></li><li>File <a href="file_PlatformValidatorUtil.java.html#file-PlatformValidatorUtil.java">PlatformValidatorUtil.java</a></li><li>File <a href="file_SNPE.java.html#file-SNPE.java">SNPE.java</a></li><li>File <a href="file_SnpeError.java.html#file-SnpeError.java">SnpeError.java</a></li><li>File <a href="file_Tensor.java.html#file-Tensor.java">Tensor.java</a></li><li>File <a href="file_TensorAttributes.java.html#file-TensorAttributes.java">TensorAttributes.java</a></li><li>File <a href="file_TF8UserBufferTensor.java.html#file-TF8UserBufferTensor.java">TF8UserBufferTensor.java</a></li><li class="lastChild">File <a href="file_UserBufferTensor.java.html#file-UserBufferTensor.java">UserBufferTensor.java</a></li>
+    </ul>
+  </li><!-- only tree view element -->
+</ul><!-- /treeView file-treeView --></div>
+<div class="section" id="full-api">
+<h2>Full API<a class="headerlink" href="#full-api" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="namespaces">
+<h3>Namespaces<a class="headerlink" href="#namespaces" title="Permalink to this heading">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="namespace_com.html">Namespace com</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="namespace_com.html#namespaces">Namespaces</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="namespace_com__qualcomm.html">Namespace com::qualcomm</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="namespace_com__qualcomm.html#namespaces">Namespaces</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="namespace_com__qualcomm__qti.html">Namespace com::qualcomm::qti</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="namespace_com__qualcomm__qti.html#namespaces">Namespaces</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="namespace_com__qualcomm__qti__platformvalidator.html">Namespace com::qualcomm::qti::platformvalidator</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="namespace_com__qualcomm__qti__platformvalidator.html#classes">Classes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="namespace_com__qualcomm__qti__snpe.html">Namespace com::qualcomm::qti::snpe</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="namespace_com__qualcomm__qti__snpe.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_com__qualcomm__qti__snpe.html#classes">Classes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="namespace_com__qualcomm__qti__snpe__internal.html">Namespace com::qualcomm::qti::snpe::internal</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="namespace_com__qualcomm__qti__snpe__internal.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_com__qualcomm__qti__snpe__internal.html#classes">Classes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="namespace_com__qualcomm__qti__snpe__internal__util.html">Namespace com::qualcomm::qti::snpe::internal::util</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="namespace_com__qualcomm__qti__snpe__internal__util.html#classes">Classes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="classes-and-structs">
+<h3>Classes and Structs<a class="headerlink" href="#classes-and-structs" title="Permalink to this heading">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1platformvalidator_1_1PlatformValidator.html">Class PlatformValidator</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1platformvalidator_1_1PlatformValidator.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1FloatTensor.html">Class FloatTensor</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1FloatTensor.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1FloatTensor.html#base-type">Base Type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1FloatTensor.html#derived-type">Derived Type</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1FloatTensor.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeFloatTensor.html">Class NativeFloatTensor</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeFloatTensor.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeFloatTensor.html#base-type">Base Type</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeFloatTensor.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork.html">Class NativeNetwork</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork.html#base-type">Base Type</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeTF8UserBufferTensor.html">Class NativeTF8UserBufferTensor</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeTF8UserBufferTensor.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeTF8UserBufferTensor.html#base-types">Base Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeTF8UserBufferTensor.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1TensorAttributesImpl.html">Class TensorAttributesImpl</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1TensorAttributesImpl.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1TensorAttributesImpl.html#base-type">Base Type</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1TensorAttributesImpl.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1TensorAttributesMap.html">Class TensorAttributesMap</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1TensorAttributesMap.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1TensorAttributesMap.html#base-type">Base Type</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1TensorAttributesMap.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1TensorUtil.html">Class TensorUtil</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1TensorUtil.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1util_1_1IOUtil.html">Class IOUtil</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1util_1_1IOUtil.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1util_1_1JniInputBundle.html">Class JniInputBundle</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1util_1_1JniInputBundle.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1util_1_1JniOutputBundle.html">Class JniOutputBundle</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1util_1_1JniOutputBundle.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1util_1_1NativeBufferOutputStream.html">Class NativeBufferOutputStream</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1util_1_1NativeBufferOutputStream.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SNPE.html">Class SNPE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SNPE.html#nested-relationships">Nested Relationships</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SNPE.html#nested-types">Nested Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SNPE.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SNPE_1_1Logger.html">Class SNPE::Logger</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SNPE_1_1Logger.html#nested-relationships">Nested Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SNPE_1_1Logger.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SNPE_1_1NeuralNetworkBuilder.html">Class SNPE::NeuralNetworkBuilder</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SNPE_1_1NeuralNetworkBuilder.html#nested-relationships">Nested Relationships</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SNPE_1_1NeuralNetworkBuilder.html#nested-types">Nested Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SNPE_1_1NeuralNetworkBuilder.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SNPE_1_1NeuralNetworkBuilder_1_1ModelNotSet.html">Class NeuralNetworkBuilder::ModelNotSet</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SNPE_1_1NeuralNetworkBuilder_1_1ModelNotSet.html#nested-relationships">Nested Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SNPE_1_1NeuralNetworkBuilder_1_1ModelNotSet.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SNPE_1_1NeuralNetworkBuilder_1_1ModelNotSet.html#base-type">Base Type</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SNPE_1_1NeuralNetworkBuilder_1_1ModelNotSet.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SnpeError.html">Class SnpeError</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SnpeError.html#nested-relationships">Nested Relationships</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SnpeError.html#nested-types">Nested Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SnpeError.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SnpeError_1_1IllegalArgsOrStateException.html">Class SnpeError::IllegalArgsOrStateException</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SnpeError_1_1IllegalArgsOrStateException.html#nested-relationships">Nested Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SnpeError_1_1IllegalArgsOrStateException.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SnpeError_1_1IllegalArgsOrStateException.html#base-type">Base Type</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SnpeError_1_1IllegalArgsOrStateException.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SnpeError_1_1InvalidInputException.html">Class SnpeError::InvalidInputException</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SnpeError_1_1InvalidInputException.html#nested-relationships">Nested Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SnpeError_1_1InvalidInputException.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SnpeError_1_1InvalidInputException.html#base-type">Base Type</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SnpeError_1_1InvalidInputException.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SnpeError_1_1NativeException.html">Class SnpeError::NativeException</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SnpeError_1_1NativeException.html#nested-relationships">Nested Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SnpeError_1_1NativeException.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SnpeError_1_1NativeException.html#base-type">Base Type</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SnpeError_1_1NativeException.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SnpeError_1_1SnpeException.html">Class SnpeError::SnpeException</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SnpeError_1_1SnpeException.html#nested-relationships">Nested Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SnpeError_1_1SnpeException.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SnpeError_1_1SnpeException.html#base-type">Base Type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SnpeError_1_1SnpeException.html#derived-types">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SnpeError_1_1SnpeException.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SnpeError_1_1SnpeIOException.html">Class SnpeError::SnpeIOException</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SnpeError_1_1SnpeIOException.html#nested-relationships">Nested Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SnpeError_1_1SnpeIOException.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SnpeError_1_1SnpeIOException.html#base-type">Base Type</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SnpeError_1_1SnpeIOException.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1Tensor.html">Class Tensor</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1Tensor.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1Tensor.html#derived-type">Derived Type</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1Tensor.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1TF8UserBufferTensor.html">Class TF8UserBufferTensor</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1TF8UserBufferTensor.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1TF8UserBufferTensor.html#base-type">Base Type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1TF8UserBufferTensor.html#derived-type">Derived Type</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1TF8UserBufferTensor.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1UserBufferTensor.html">Class UserBufferTensor</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1UserBufferTensor.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1UserBufferTensor.html#derived-type">Derived Type</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1UserBufferTensor.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

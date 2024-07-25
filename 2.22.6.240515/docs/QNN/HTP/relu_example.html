@@ -1,0 +1,495 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>QNN HTP Op Package - Relu Op Example &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="QNN HTP-FP16 Op Package - Relu Op Example" href="relu_fp16_example.html" />
+    <link rel="prev" title="Optimization Grammar" href="optimization_grammar.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/setup.html">Setup</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../general/backend.html">Backend</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../general/backend.html#backend-specific-pages">Backend Specific Pages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../general/dsp/dsp_backend.html">DSP</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../general/htp/htp_backend.html">HTP</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#api-specializations">API Specializations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#usage-expectations">Usage Expectations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-supported-operations">QNN HTP Supported Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-variable-batch">QNN HTP Variable Batch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-backend-api">QNN HTP Backend API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-performance-infrastructure-api">QNN HTP Performance Infrastructure API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-precision">QNN HTP Precision</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-fp16-output-difference-between-sm8550-and-sm8650">QNN HTP FP16 output difference between SM8550 and SM8650</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-deep-learning-bandwidth-compression-dlbc">QNN HTP Deep Learning Bandwidth Compression (DLBC)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-setting-number-of-hvx-threads">QNN HTP - Setting Number of HVX Threads</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-backend-extensions">QNN HTP Backend Extensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-profiling">QNN HTP Profiling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-context-binary-size">QNN Context Binary size</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../general/htp/htp_backend.html#op-writing-guidelines">Op Writing Guidelines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#recommendations-for-network-design">Recommendations for Network Design</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#yielding-and-pre-emption">Yielding and Pre-Emption</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#vtcm-sharing">VTCM Sharing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#subsystem-restart-ssr">SubSystem Restart (SSR)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qmem-graph-shared-buffer-only-graph">Qmem Graph (shared_buffer only graph)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#htp-session-artifact-usage-guidlines">HTP Session &amp; Artifact Usage Guidlines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#graph-switching-beta">Graph Switching (Beta)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#benefits-of-batch-inference-and-multi-threaded-inference">Benefits of batch inference and multi-threaded inference</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../general/hta/hta_backend.html">HTA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/lpai/lpai_backend.html">LPAI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/cpu/cpu_backend.html">CPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/gpu/gpu_backend.html">GPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/saver/saver_backend.html">Saver</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../general/backend.html">Backend</a> &raquo;</li>
+        
+          <li><a href="../general/htp/htp_backend.html">HTP</a> &raquo;</li>
+        
+      <li>QNN HTP Op Package - Relu Op Example</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="qnn-htp-op-package-relu-op-example">
+<h1>QNN HTP Op Package - Relu Op Example<a class="headerlink" href="#qnn-htp-op-package-relu-op-example" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">¶</a></h2>
+<p>This document outlines how to write ops in QNN HTP op package with a basic example
+of relu op. Here we will go through procedures of writing op implementations,
+registering ops, defining optimization rules, and registering optimization rules.
+The source code for this example is located at
+examples/OpPackage/HTP/ExampleOpPackageRelu.cpp in QNN SDK.</p>
+<p>For detailed descriptions about writing op implementations, defining optimization
+rules, specifying op parameter orders, please read implementing_ops.html. In additon,
+optimization_grammar.html provides more information on defining optimization rules.</p>
+</div>
+<div class="section" id="writing-relu-op">
+<h2>Writing Relu Op<a class="headerlink" href="#writing-relu-op" title="Permalink to this heading">¶</a></h2>
+<p>ExampleOpPackageRelu.cpp contains a standard Relu op, one variation of Relu op called
+ReluMinMax which clips data to a specified range, and another variation of Relu op
+called ReluTableGen which can be used with tableLookup. The standard Relu op
+demonstrates the basics of reference op implementation, for example, tensor reading
+and writing. ReluMinMax op consists of optimized implementation which heavily depends
+on HVX. ReluTableGen serves as a faster alternative of Relu op, it leverages lookup
+table to achieve fast lookups. Besides, there are many optimization rules associated
+with relu, these rules are used to convert, split and optimize graph around relu,
+thus best performance can be achived.</p>
+<p>This document focuses only on the standard relu op and some of its basic optimization
+rules.</p>
+<div class="section" id="op-implementation-function">
+<h3>Op Implementation Function<a class="headerlink" href="#op-implementation-function" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * @brief                  implementation of relu op</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[out] out         output HTP tensor</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] in           input HTP tensor</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return GraphStatus     error code</span>
+<span class="cm"> */</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T_Ttype</span><span class="o">&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">reluImpl</span><span class="p">(</span><span class="n">T_Ttype</span><span class="w"> </span><span class="o">&amp;</span><span class="n">out</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">T_Ttype</span><span class="w"> </span><span class="o">&amp;</span><span class="n">in</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>This example uses a function template, and the template parameter takes a HTP core
+tensor type. The op implementation function parameter list consists of a series of
+HTP core tensors in the following order: <cite>outputs inputs parameters</cite>. Input tensors
+and parameter tensors shall be marked as const. Please note, in implementation
+fucntions, there is no separation between input tensors and parameters. Also, both
+QNN scalar and tensor parameters are converted into HTP core tensors. In addition,
+HTP core tensors are always 4 dimensions, and the layout is always bhwc. QNN tensors
+with lower dimensions are backfilled into 4-dimensional HTP core tensors. Op
+implementation functions shall return GraphStatus which is an enum defined in
+include/HTP/core/graph_status.h in QNN SDK.</p>
+<div class="section" id="htp-core-tensor-types">
+<h4>HTP Core Tensor Types<a class="headerlink" href="#htp-core-tensor-types" title="Permalink to this heading">¶</a></h4>
+<p>HTP core has a base tensor type <code class="docutils literal notranslate"><span class="pre">Tensor</span></code> and a bunch of <code class="docutils literal notranslate"><span class="pre">ConcreteTensor</span></code> types.
+<code class="docutils literal notranslate"><span class="pre">ConcreteTensor</span></code> types are derived from base <code class="docutils literal notranslate"><span class="pre">Tensor</span></code>, and each ConcreteTensor
+type has a fixed rank, memory layout and data type. Base <code class="docutils literal notranslate"><span class="pre">Tensor</span></code> can be used
+in generic op implementations and served as a fallback option. <code class="docutils literal notranslate"><span class="pre">ConcreteTensor</span></code>
+types can be used to specialize op implementations for faster performance purpose.</p>
+<p>For a list of HTP core tensor types supported in op package, please refer to AllTensors
+defined in include/HTP/core/template_help_tensor_ext.h in QNN SDK. For details about
+HTP core tensors’ usage and their accessor functions, please refer to
+include/HTP/core/tensor.h.</p>
+<p>More descriptions about HTP memory layouts and tensors can be found in
+tensors_and_memory_layout.html.</p>
+</div>
+<div class="section" id="relu-op-implementation">
+<h4>Relu Op Implementation<a class="headerlink" href="#relu-op-implementation" title="Permalink to this heading">¶</a></h4>
+<p>The functionality of relu op is as follows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The implementation is as follows:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T_Ttype</span><span class="o">&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">reluImpl</span><span class="p">(</span><span class="n">T_Ttype</span><span class="w"> </span><span class="o">&amp;</span><span class="n">out</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">T_Ttype</span><span class="w"> </span><span class="o">&amp;</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">out</span><span class="p">.</span><span class="n">set_dims</span><span class="p">(</span><span class="n">in</span><span class="p">);</span><span class="w">  </span><span class="c1">// sets output tensor dimension to be the same as input tensor</span>
+<span class="w">  </span><span class="c1">// loops thru each input and output tensor elements via their four dimensions</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Idx</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">in</span><span class="p">.</span><span class="n">dim</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="n">b</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Idx</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">in</span><span class="p">.</span><span class="n">dim</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="n">h</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Idx</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">in</span><span class="p">.</span><span class="n">dim</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="n">w</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Idx</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">in</span><span class="p">.</span><span class="n">dim</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span><span class="w"> </span><span class="n">d</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="c1">// read input tensor element located at coordinates (b, h, w, d)</span>
+<span class="w">          </span><span class="kt">float</span><span class="w"> </span><span class="n">inval</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">in</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">);</span>
+<span class="w">          </span><span class="c1">// find max(in, 0) and assign to output tensor at coordinates (b, h, w, d)</span>
+<span class="w">          </span><span class="n">out</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fmaxf</span><span class="p">(</span><span class="n">inval</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="op-registration">
+<h3>Op Registration<a class="headerlink" href="#op-registration" title="Permalink to this heading">¶</a></h3>
+<p>Op implementation functions need to be registered with an op name, op cost and flags.
+Op registration can be achieved using HTP core macros listed below, and these macros
+should be placed in global scope in individual op implementation source files.</p>
+<div class="section" id="method-1">
+<h4>Method 1<a class="headerlink" href="#method-1" title="Permalink to this heading">¶</a></h4>
+<p>Registration with default cost value (i.e. GLACIAL) and default flag (Flags::RESOURCE_HVX)</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * F  - op implementation function</span>
+<span class="cm"> *</span>
+<span class="cm"> * OP - op name</span>
+<span class="cm"> */</span>
+<span class="n">DEF_PACKAGE_OP</span><span class="p">(</span><span class="n">F</span><span class="p">,</span><span class="n">OP</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Example</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">DEF_PACKAGE_OP</span><span class="p">((</span><span class="n">reluImpl</span><span class="o">&lt;</span><span class="n">Tensor</span><span class="o">&gt;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Relu&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="method-2">
+<h4>Method 2<a class="headerlink" href="#method-2" title="Permalink to this heading">¶</a></h4>
+<p>Registration with user specified cost value and flags.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * F    - op implementation function</span>
+<span class="cm"> *</span>
+<span class="cm"> * OP   - op name</span>
+<span class="cm"> *</span>
+<span class="cm"> * COST - pre-defined cost value names, one of GLACIAL, SNAIL, FAST, FREE</span>
+<span class="cm"> *        (listed in descending order of value).</span>
+<span class="cm"> *        Op implementation with relatively lower cost will be chosen given all</span>
+<span class="cm"> *        other criteria are met.</span>
+<span class="cm"> *</span>
+<span class="cm"> * ...  - zero or more flags, available flags include IS_CONST, INHIBIT_CONST_PROP,</span>
+<span class="cm"> *        RESOURCE_HVX.</span>
+<span class="cm"> *        IS_CONST is used to mark an op should be treated as a constant op.</span>
+<span class="cm"> *        INHIBIT_CONST_PROP marks an op should not participate in constant propagation.</span>
+<span class="cm"> *        RESOURCE_HVX marks this op will use HVX resources.</span>
+<span class="cm"> */</span>
+<span class="n">DEF_PACKAGE_OP_AND_COST_AND_FLAGS</span><span class="p">(</span><span class="n">F</span><span class="p">,</span><span class="n">OP</span><span class="p">,</span><span class="n">COST</span><span class="p">,...)</span>
+</pre></div>
+</div>
+<p><strong>Example</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">DEF_PACKAGE_OP_AND_COST_AND_FLAGS</span><span class="p">((</span><span class="n">reluImpl</span><span class="o">&lt;</span><span class="n">PlainFloatTensor</span><span class="o">&gt;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Relu&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">SNAIL</span><span class="p">,</span><span class="w"> </span><span class="n">Flags</span><span class="o">::</span><span class="n">RESOURCE_HVX</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="method-3">
+<h4>Method 3<a class="headerlink" href="#method-3" title="Permalink to this heading">¶</a></h4>
+<p>Registration with user specified cost function and flags.
+(not shown in relu op example)</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * F      - op implementation function</span>
+<span class="cm"> *</span>
+<span class="cm"> * OP     - op name</span>
+<span class="cm"> *</span>
+<span class="cm"> * COST_F - user defined cost function</span>
+<span class="cm"> *          cost function pointer type: typedef float (*cost_function) (const Op * op);</span>
+<span class="cm"> *          Op implementation with relatively lower cost will be chosen given all</span>
+<span class="cm"> *          other criteria are met.</span>
+<span class="cm"> *</span>
+<span class="cm"> * ...    - zero or more flags, available flags include IS_CONST, INHIBIT_CONST_PROP,</span>
+<span class="cm"> *          RESOURCE_HVX.</span>
+<span class="cm"> *          IS_CONST is used to mark an op should be treated as a constant op.</span>
+<span class="cm"> *          INHIBIT_CONST_PROP marks an op should not participate in constant propagation.</span>
+<span class="cm"> *          RESOURCE_HVX marks this op will use HVX resources.</span>
+<span class="cm"> */</span>
+<span class="n">DEF_PACKAGE_OP_AND_COST_F_AND_FLAGS</span><span class="p">(</span><span class="n">F</span><span class="p">,</span><span class="n">OP</span><span class="p">,</span><span class="n">COST_F</span><span class="p">,...)</span>
+</pre></div>
+</div>
+<p><strong>Example</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">float</span><span class="w"> </span><span class="nf">reluCost</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Op</span><span class="w"> </span><span class="o">*</span><span class="n">op</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// can use some properties of an op to determine cost</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">DEF_PACKAGE_OP_AND_COST_F_AND_FLAGS</span><span class="p">((</span><span class="n">reluImpl</span><span class="o">&lt;</span><span class="n">PlainFloatTensor</span><span class="o">&gt;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Relu&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">reluCost</span><span class="p">,</span><span class="w"> </span><span class="n">Flags</span><span class="o">::</span><span class="n">RESOURCE_HVX</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="defining-optimization-rules">
+<h3>Defining Optimization Rules<a class="headerlink" href="#defining-optimization-rules" title="Permalink to this heading">¶</a></h3>
+<p>Optimization rules are intended for graph level transformations and will be applied
+in passes during graph preparation in QNN context finalization. Relu optimization rules
+contain examples of splitting op into smaller chuncks, moving data to and from vtcm,
+converting one op to another more optimized op, and more. These rules would transform
+the graph around Relu in order to get best performance.</p>
+<p>Optimization rules can be defined with a HTP core macro listed below, and this macro
+should be placed in global scope in individual op implementation source files.</p>
+<div class="section" id="syntax">
+<h4>Syntax<a class="headerlink" href="#syntax" title="Permalink to this heading">¶</a></h4>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * PRIORITY       - optimization pass priority, smaller number means getting applied earlier</span>
+<span class="cm"> *                  predefined values include EARLY(2000), MIDDLE(3000), LATE(4000)</span>
+<span class="cm"> *</span>
+<span class="cm"> * MATCHCODE      - matching pattern for transformation to occur</span>
+<span class="cm"> *</span>
+<span class="cm"> * CONSTRAINTCODE - constraints which limits the conditions for transformation to occur</span>
+<span class="cm"> *</span>
+<span class="cm"> * REPLACECODE    - tranformed pattern which replaces the original matching pattern</span>
+<span class="cm"> */</span>
+<span class="n">DEF_PACKAGE_OPTIMIZATION</span><span class="p">(</span><span class="n">PRIORITY</span><span class="p">,</span><span class="n">MATCHCODE</span><span class="p">,</span><span class="n">CONSTRAINTCODE</span><span class="p">,</span><span class="n">REPLACECODE</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Example</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">DEF_PACKAGE_OPTIMIZATION</span><span class="p">(</span>
+<span class="w">    </span><span class="n">EARLY</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Op</span><span class="p">(</span><span class="s">&quot;Relu&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;X&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">IS_QUANT_TYPE</span><span class="p">(</span><span class="s">&quot;X&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">Op</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;ReluMinMax&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;X&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">gen_ConstScalar_f32</span><span class="p">(</span><span class="mf">0.0f</span><span class="p">),</span><span class="w"> </span><span class="n">gen_ConstScalar_f32</span><span class="p">(</span><span class="n">INF</span><span class="p">)))</span>
+</pre></div>
+</div>
+<p>In this example, this optimization rule shall be applied at EARLY optimization pass during
+graph finalization, and the pattern this rule matches is a “Relu” op with one input, and we
+temporarily call this input “X”, and the constraint for this rule is that the input data
+must be quantized. If at EARLY optimization pass, there is an “Relu” op with one quantized
+input in the graph, this “Relu” op will get converted to a “ReluMinMax” op with the three
+inputs, the first input is “X”, and the next two inputs are 0.0f and float32 infinity.</p>
+<p>HTP core provides some replacement functions and constraint macros for op package to use,
+for more information about optimization rules, please refer to optimization_grammar.html.</p>
+</div>
+</div>
+</div>
+<div class="section" id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Permalink to this heading">¶</a></h2>
+<p>This is a basic and yet helpful example which outlines how to write an op.</p>
+<p>Please continue to read implementing_ops.html, and read <code class="docutils literal notranslate"><span class="pre">Relu</span></code>, <code class="docutils literal notranslate"><span class="pre">Max</span> <span class="pre">Pool</span></code>
+and <code class="docutils literal notranslate"><span class="pre">Softmax</span></code> example files to view the code more in detail.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="relu_fp16_example.html" class="btn btn-neutral float-right" title="QNN HTP-FP16 Op Package - Relu Op Example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="optimization_grammar.html" class="btn btn-neutral float-left" title="Optimization Grammar" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

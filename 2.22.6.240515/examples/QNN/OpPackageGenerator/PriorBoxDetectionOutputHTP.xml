@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2020 Qualcomm Technologies, Inc.
+All Rights Reserved.
+Confidential and Proprietary - Qualcomm Technologies, Inc.
+-->
+<OpDefCollection
+        PackageName="PriorBoxDetectionOutHTP"
+        Domain="aisw"
+        Version="1.0"
+>
+    <OpDefList>
+        <!--Example Op Package which defines Caffe PriorBox and Detection Output
+        operations-->
+
+        <!--PriorBox-->
+        <OpDef>
+            <Name>PriorBox</Name>
+            <Description>
+                <Content>
+                    Performs Prior box customer layer.
+                </Content>
+            </Description>
+            <Reference Source="Caffe"
+                       Url="PRIOR BOX LAYER &lt;https://github.com/weiliu89/caffe/blob/ssd/include/caffe/layers/prior_box_layer.hpp&gt;"/>
+            <Input>
+                <Name>in[0]</Name>
+                <Description>
+                    <Content>input activation</Content>
+                </Description>
+                <Mandatory>true</Mandatory>
+                <Datatype>BACKEND_SPECIFIC</Datatype>
+                <Shape>
+                    <Rank>4D</Rank>
+                    <Layout>NHWC</Layout>
+                    <Text>[batch, height, width, channel_in]</Text>
+                </Shape>
+            </Input>
+
+            <Input>
+                <Name>in[1]</Name>
+                <Description>
+                    <Content>input activation</Content>
+                </Description>
+                <Mandatory>true</Mandatory>
+                <Datatype>BACKEND_SPECIFIC</Datatype>
+                <Shape>
+                    <Rank>4D</Rank>
+                    <Layout>NHWC</Layout>
+                    <Text>[batch, height, width, channel_in]</Text>
+                </Shape>
+            </Input>
+
+
+            <Output>
+                <Name>out[0]</Name>
+                <Description>
+                    <Content>The output of prior box layer
+                    </Content>
+                </Description>
+                <Mandatory>true</Mandatory>
+                <Datatype>BACKEND_SPECIFIC</Datatype>
+                <Shape>
+                    <Rank>4D</Rank>
+                    <Layout>NONTRIVIAL</Layout>
+                    <Text>[batch, height_out, width_out, channel_out]</Text>
+                </Shape>
+            </Output>
+
+
+            <Parameter>
+                <Name>flip</Name>
+                <Mandatory>false</Mandatory>
+                <Datatype>QNN_DATATYPE_BOOL_8</Datatype>
+                <Shape>
+                    <Rank>SCALAR</Rank>
+                </Shape>
+            </Parameter>
+
+            <Parameter>
+                <Name>min_size</Name>
+                <Mandatory>false</Mandatory>
+                <Datatype>QNN_DATATYPE_FLOAT_32</Datatype>
+                <Shape>
+                    <Rank>1D</Rank>
+                    <Text>N size</Text>
+                </Shape>
+                <Default>{0,..,0}</Default>
+            </Parameter>
+
+
+            <Parameter>
+                <Name>max_size</Name>
+                <Mandatory>false</Mandatory>
+                <Datatype>QNN_DATATYPE_FLOAT_32</Datatype>
+                <Shape>
+                    <Rank>1D</Rank>
+                    <Text>N size</Text>
+                </Shape>
+                <Default>{0,..,0}</Default>
+            </Parameter>
+
+
+            <Parameter>
+                <Name>aspect_ratio</Name>
+                <Mandatory>false</Mandatory>
+                <Datatype>QNN_DATATYPE_FLOAT_32</Datatype>
+                <Shape>
+                    <Rank>1D</Rank>
+                    <Text>N size</Text>
+                </Shape>
+                <Default>{0,..,0}</Default>
+            </Parameter>
+
+            <Parameter>
+                <Name>variance</Name>
+                <Mandatory>false</Mandatory>
+                <Datatype>QNN_DATATYPE_FLOAT_32</Datatype>
+                <Shape>
+                    <Rank>1D</Rank>
+                    <Text>N size</Text>
+                </Shape>
+                <Default>{0,..,0}</Default>
+            </Parameter>
+
+            <Parameter>
+                <Name>clip</Name>
+                <Mandatory>true</Mandatory>
+                <Datatype>QNN_DATATYPE_BOOL_8</Datatype>
+                <Shape>
+                    <Rank>SCALAR</Rank>
+                </Shape>
+            </Parameter>
+
+            <Parameter>
+                <Name>offset</Name>
+                <Mandatory>true</Mandatory>
+                <Datatype>QNN_DATATYPE_FLOAT_32</Datatype>
+                <Shape>
+                    <Rank>SCALAR</Rank>
+                </Shape>
+            </Parameter>
+
+
+
+
+            <!--This Op is implemented on these Backends-->
+            <SupportedBackend>HTP</SupportedBackend>
+        </OpDef>
+
+        <!--DetectionOutput-->
+        <OpDef>
+            <Name>DetectionOutput</Name>
+            <Description>
+                <Content>
+                    Decodes a set of bounding boxes from a set of pre-defined anchors, then filters boxes using
+                    non-max-suppression (NMS).
+                </Content>
+            </Description>
+
+            <Reference Source="Caffe"
+                       Url="DETECTION_OUTPUT_LAYER &lt;https://github.com/weiliu89/caffe/blob/ssd/include/caffe/layers/detection_output_layer.hpp&gt;"/>
+
+            <Input>
+            <Name>in[0]</Name>
+            <Description>
+                <Content>
+                    Input box locations. Elements may be interpreted as [ctr_y, ctr_x, h, w]
+                    where ctr_y and ctr_x give the center position of the box, and h and w are
+                    the height and width of the box.
+                    The number of input boxes is computed as follows:
+                </Content>
+                <Code>
+                   num_boxes = num_anchors if share_location = QNN_OP_DETECTION_OUTPUT_SHARE_LOCATION true
+                   num_boxes = (num_anchors * num_classes) if share_location = QNN_OP_DETECTION_OUTPUT_SHARE_LOCATION false
+                </Code>
+            </Description>
+            <Mandatory>true</Mandatory>
+            <Datatype>BACKEND_SPECIFIC</Datatype>
+            <Shape>
+                <Rank>3D</Rank>
+                <Text>[batch, num_boxes, 4]</Text>
+            </Shape>
+        </Input>
+
+            <Input>
+                <Name>in[1]</Name>
+                <Description>
+                    <Content>Confidence</Content>
+                </Description>
+                <Mandatory>true</Mandatory>
+                <Datatype>BACKEND_SPECIFIC</Datatype>
+                <Shape>
+                    <Rank>4D</Rank>
+                    <Layout>NHWC</Layout>
+                    <Text>[batch, height, width, channel_in]</Text>
+                </Shape>
+            </Input>
+
+            <Input>
+                <Name>in[2]</Name>
+                <Description>
+                    <Content>
+                        Anchor positions. Elements may be interpreted as [ctr_y, ctr_x, h, w] where
+                        ctr_y and ctr_x are the center position, and h and w are the
+                        height and width of the anchor.
+                    </Content>
+                </Description>
+                <Mandatory>true</Mandatory>
+                <Datatype>BACKEND_SPECIFIC</Datatype>
+                <Shape>
+                    <Rank>1D</Rank>
+                    <Text>[num_anchors, 4]</Text>
+                </Shape>
+           </Input>
+            <Output>
+                <Name>out[0]</Name>
+                <Description>
+                    <Content>The output of the detection out layer
+                    </Content>
+                    <Code>
+
+                    </Code>
+                </Description>
+                <Mandatory>true</Mandatory>
+                <Datatype>BACKEND_SPECIFIC</Datatype>
+                <Shape>
+                    <Rank>4D</Rank>
+                    <Layout>NHWC</Layout>
+                    <Text>[boxes, scores, classes, num_detections]</Text>
+                </Shape>
+            </Output>
+
+
+            <Parameter>
+                <Name>num_classes</Name>
+                <Mandatory>false</Mandatory>
+                <Datatype>QNN_DATATYPE_INT_32</Datatype>
+                <Shape>
+                    <Rank>SCALAR</Rank>
+                </Shape>
+                 <Default>4</Default>
+            </Parameter>
+
+            <Parameter>
+                <Name>background_label_id</Name>
+                <Description>
+                    <Content>
+                        The index in num_classes of the "background" class.
+                    </Content>
+                </Description>
+                <Mandatory>false</Mandatory>
+                <Datatype>QNN_DATATYPE_INT_32</Datatype>
+                <Shape>
+                    <Rank>SCALAR</Rank>
+                </Shape>
+                 <Default>0</Default>
+            </Parameter>
+
+            <Parameter>
+                <Name>keep_top_k</Name>
+                <Mandatory>false</Mandatory>
+                <Datatype>QNN_DATATYPE_INT_32</Datatype>
+                <Shape>
+                    <Rank>SCALAR</Rank>
+                </Shape>
+                <Default>16</Default>
+            </Parameter>
+
+
+            <Parameter>
+                <Name>confidence_threshold</Name>
+                <Description>
+                    <Content>
+                        Boxes with scores lower than this threshold are filtered
+                        prior to the application of NMS.
+                    </Content>
+                </Description>
+                <Mandatory>true</Mandatory>
+                <Datatype>QNN_DATATYPE_FLOAT_32</Datatype>
+                <Shape>
+                    <Rank>SCALAR</Rank>
+                </Shape>
+                <Default>0.2</Default>
+            </Parameter>
+
+            <Parameter>
+                <Name>share_location</Name>
+                <Description>
+                    <Content>
+                        Set to true to indicate that the classes all share a common set
+                        of initial bounding boxes, and false to indicate that
+                        they use different initial bounding boxes.
+                    </Content>
+                </Description>
+                <Mandatory>false</Mandatory>
+                <Datatype>QNN_DATATYPE_BOOL_8</Datatype>
+                <Shape>
+                    <Rank>SCALAR</Rank>
+                </Shape>
+                <Default>1</Default>
+            </Parameter>
+
+            <Parameter>
+                <Name>code_type</Name>
+                <Mandatory>true</Mandatory>
+                <Datatype>QNN_DATATYPE_FLOAT_32</Datatype>
+                <Shape>
+                    <Rank>SCALAR</Rank>
+                </Shape>
+            </Parameter>
+
+            <!--This Op is implemented on these Backends-->
+            <SupportedBackend>HTP</SupportedBackend>
+
+        </OpDef>
+    </OpDefList>
+
+
+    <SupplementalOpDefList Backend="HTP">
+        <SupportedOps>
+            <OpName>PriorBox</OpName>
+            <OpName>DetectionOutput</OpName>
+        </SupportedOps>
+
+        <!--PriorBox-->
+        <SupplementalOpDef>
+            <Name>PriorBox</Name>
+
+            <Input>
+                <Name>in[0]</Name>
+                <Datatype>QNN_DATATYPE_FLOAT_32</Datatype>
+                <Datatype>QNN_DATATYPE_UFIXED_POINT_8</Datatype>
+                <Datatype>QNN_DATATYPE_UFIXED_POINT_16</Datatype>
+            </Input>
+
+            <Input>
+                <Name>in[1]</Name>
+                <Datatype>QNN_DATATYPE_FLOAT_32</Datatype>
+                <Datatype>QNN_DATATYPE_UFIXED_POINT_8</Datatype>
+                <Datatype>QNN_DATATYPE_UFIXED_POINT_16</Datatype>
+            </Input>
+
+
+            <Output>
+                <Name>out[0]</Name>
+                <Datatype>QNN_DATATYPE_FLOAT_32</Datatype>
+                <Datatype>QNN_DATATYPE_UFIXED_POINT_8</Datatype>
+                <Datatype>QNN_DATATYPE_UFIXED_POINT_16</Datatype>
+            </Output>
+        </SupplementalOpDef>
+
+          <!--DetectionOutput-->
+        <SupplementalOpDef>
+            <Name>DetectionOutput</Name>
+
+            <Input>
+                <Name>in[0]</Name>
+                <Datatype>QNN_DATATYPE_FLOAT_32</Datatype>
+                <Datatype>QNN_DATATYPE_UFIXED_POINT_8</Datatype>
+                <Datatype>QNN_DATATYPE_UFIXED_POINT_16</Datatype>
+            </Input>
+
+            <Input>
+                <Name>in[1]</Name>
+                <Datatype>QNN_DATATYPE_FLOAT_32</Datatype>
+                <Datatype>QNN_DATATYPE_UFIXED_POINT_8</Datatype>
+                <Datatype>QNN_DATATYPE_UFIXED_POINT_16</Datatype>
+            </Input>
+
+            <Input>
+                <Name>in[2]</Name>
+                <Datatype>QNN_DATATYPE_FLOAT_32</Datatype>
+                <Datatype>QNN_DATATYPE_UFIXED_POINT_8</Datatype>
+                <Datatype>QNN_DATATYPE_UFIXED_POINT_16</Datatype>
+            </Input>
+
+
+            <Output>
+                <Name>out[0]</Name>
+                <Datatype>QNN_DATATYPE_FLOAT_32</Datatype>
+                <Datatype>QNN_DATATYPE_UFIXED_POINT_8</Datatype>
+                <Datatype>QNN_DATATYPE_UFIXED_POINT_16</Datatype>
+            </Output>
+        </SupplementalOpDef>
+
+    </SupplementalOpDefList>
+
+</OpDefCollection>

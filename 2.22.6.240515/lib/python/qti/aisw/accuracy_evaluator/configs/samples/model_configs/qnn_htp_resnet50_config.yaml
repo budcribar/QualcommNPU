@@ -1,0 +1,63 @@
+model:
+    info:
+        desc: Resnet50 v7 reference model used.
+        batchsize: 1
+    globals:
+        count: 50
+        calib: 5 # -1 implies use all calibration images for PGQ.
+
+    dataset:
+        name: ILSVRC2012
+        path: "/home/ml-datasets/imageNet_preproc/"
+        inputlist_file: inputlist.txt
+        calibration:
+            type: raw
+            file: calibration.txt
+
+    inference-engine:
+        model_path: MLPerfModels/ResNetV1.5/modelFiles/ONNX/resnet50_v1.onnx
+        simplify_model: True # default
+
+        inference_schemas:
+            - inference_schema:
+                  name: qnn
+                  precision: fp32
+                  target_arch: x86_64-linux-clang
+                  backend: cpu
+                  tag: qnn_fp32
+
+            - inference_schema:
+                  name: qnn
+                  precision: quant
+                  target_arch: x86_64-linux-clang
+                  backend: htp
+                  tag: qnn_int8
+                  backend_extensions:
+                      vtcm_mb: 4
+                      rpc_control_latency: 100
+                  converter_params:
+                      param_quantizer: tf | enhanced | adjusted | symmetric
+                      algorithms: default | cle
+                      use_per_channel_quantization: True | False
+                      use_per_row_quantization: True | False
+
+        inputs_info:
+            - input_tensor:0:
+                type: float32
+                shape: ["*",3, 224, 224]
+
+        outputs_info:
+            - ArgMax:0:
+                type: int64
+                shape: ["*"]
+            - softmax_tensor_0:
+                type: float32
+                shape: ["*", 1001]
+
+
+    evaluator:
+        comparator:
+            enabled: True #default
+            fetch-top: 1 #default
+            type: snr # default comparator for all outputs
+            tol: 0.001 # default tolerance for all outputs

@@ -1,0 +1,814 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Program Listing for File QnnTypeMacros.hpp &mdash; Qualcomm® AI Engine Direct  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Program Listing for File QnnTypeMacros.hpp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-qnntypemacros-hpp">
+<span id="program-listing-file-share-converter-jni-qnntypemacros-hpp"></span><h1>Program Listing for File QnnTypeMacros.hpp<a class="headerlink" href="#program-listing-for-file-qnntypemacros-hpp" title="Permalink to this heading">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_share_converter_jni_QnnTypeMacros.hpp.html#file-share-converter-jni-qnntypemacros-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">share/converter/jni/QnnTypeMacros.hpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//==============================================================================</span>
+<span class="c1">//</span>
+<span class="c1">//  Copyright (c) 2022-2024 Qualcomm Technologies, Inc.</span>
+<span class="c1">//  All Rights Reserved.</span>
+<span class="c1">//  Confidential and Proprietary - Qualcomm Technologies, Inc.</span>
+<span class="c1">//</span>
+<span class="c1">//==============================================================================</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstdlib&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstring&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;QnnTypes.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;QnnWrapperUtils.hpp&quot;</span>
+
+<span class="k">namespace</span><span class="w"> </span><span class="nn">qnn_wrapper_api</span><span class="w"> </span><span class="p">{</span>
+
+<span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="nf">getQnnTensorName</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_Tensor_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tensor</span><span class="p">);</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="n">ModelError_t</span><span class="w"> </span><span class="nf">validateTensorVersion</span><span class="p">(</span><span class="n">Qnn_Tensor_t</span><span class="w"> </span><span class="n">tensor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">PRINT_ERROR</span><span class="p">(</span><span class="s">&quot;validateTensorVersion() tensor %s, got unsupported version %d.&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="n">getQnnTensorName</span><span class="p">(</span><span class="n">tensor</span><span class="p">),</span>
+<span class="w">                </span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">MODEL_TENSOR_ERROR</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">MODEL_NO_ERROR</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="n">ModelError_t</span><span class="w"> </span><span class="nf">validateOpConfigVersion</span><span class="p">(</span><span class="n">Qnn_OpConfig_t</span><span class="w"> </span><span class="n">opConfig</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">opConfig</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">QNN_OPCONFIG_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">PRINT_ERROR</span><span class="p">(</span><span class="s">&quot;validateOpConfigVersion() op %s, got unsupported version %d.&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="n">opConfig</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">name</span><span class="p">,</span>
+<span class="w">                </span><span class="n">opConfig</span><span class="p">.</span><span class="n">version</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">MODEL_NODES_ERROR</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">MODEL_NO_ERROR</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="nf">getQnnOpConfigName</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_OpConfig_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">opConfig</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">opConfig</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_OPCONFIG_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">opConfig</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">name</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="nf">getQnnOpConfigName</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_OpConfig_t</span><span class="o">*</span><span class="w"> </span><span class="n">opConfig</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">getQnnOpConfigName</span><span class="p">(</span><span class="o">*</span><span class="n">opConfig</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="nf">getQnnOpConfigPackageName</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_OpConfig_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">opConfig</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">opConfig</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_OPCONFIG_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">opConfig</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">packageName</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="nf">getQnnOpConfigPackageName</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_OpConfig_t</span><span class="o">*</span><span class="w"> </span><span class="n">opConfig</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">getQnnOpConfigPackageName</span><span class="p">(</span><span class="o">*</span><span class="n">opConfig</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="nf">getQnnOpConfigTypeName</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_OpConfig_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">opConfig</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">opConfig</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_OPCONFIG_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">opConfig</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">typeName</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="nf">getQnnOpConfigTypeName</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_OpConfig_t</span><span class="o">*</span><span class="w"> </span><span class="n">opConfig</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">getQnnOpConfigTypeName</span><span class="p">(</span><span class="o">*</span><span class="n">opConfig</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="nf">getQnnOpConfigNumParams</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_OpConfig_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">opConfig</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">opConfig</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_OPCONFIG_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">opConfig</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">numOfParams</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0u</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="nf">getQnnOpConfigNumParams</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_OpConfig_t</span><span class="o">*</span><span class="w"> </span><span class="n">opConfig</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">getQnnOpConfigNumParams</span><span class="p">(</span><span class="o">*</span><span class="n">opConfig</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_Param_t</span><span class="o">*</span><span class="w"> </span><span class="nf">getQnnOpConfigParams</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_OpConfig_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">opConfig</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">opConfig</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_OPCONFIG_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">opConfig</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">params</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_Param_t</span><span class="o">*</span><span class="w"> </span><span class="nf">getQnnOpConfigParams</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_OpConfig_t</span><span class="o">*</span><span class="w"> </span><span class="n">opConfig</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">getQnnOpConfigParams</span><span class="p">(</span><span class="o">*</span><span class="n">opConfig</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="nf">getQnnOpConfigNumInputs</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_OpConfig_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">opConfig</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">opConfig</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_OPCONFIG_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">opConfig</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">numOfInputs</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0u</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="nf">getQnnOpConfigNumInputs</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_OpConfig_t</span><span class="o">*</span><span class="w"> </span><span class="n">opConfig</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">getQnnOpConfigNumInputs</span><span class="p">(</span><span class="o">*</span><span class="n">opConfig</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_Tensor_t</span><span class="o">*</span><span class="w"> </span><span class="nf">getQnnOpConfigInputs</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_OpConfig_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">opConfig</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">opConfig</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_OPCONFIG_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">opConfig</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">inputTensors</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_Tensor_t</span><span class="o">*</span><span class="w"> </span><span class="nf">getQnnOpConfigInputs</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_OpConfig_t</span><span class="o">*</span><span class="w"> </span><span class="n">opConfig</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">getQnnOpConfigInputs</span><span class="p">(</span><span class="o">*</span><span class="n">opConfig</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="nf">getQnnOpConfigNumOutputs</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_OpConfig_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">opConfig</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">opConfig</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_OPCONFIG_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">opConfig</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">numOfOutputs</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0u</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="nf">getQnnOpConfigNumOutputs</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_OpConfig_t</span><span class="o">*</span><span class="w"> </span><span class="n">opConfig</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">getQnnOpConfigNumOutputs</span><span class="p">(</span><span class="o">*</span><span class="n">opConfig</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_Tensor_t</span><span class="o">*</span><span class="w"> </span><span class="nf">getQnnOpConfigOutputs</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_OpConfig_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">opConfig</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">opConfig</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_OPCONFIG_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">opConfig</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">outputTensors</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_Tensor_t</span><span class="o">*</span><span class="w"> </span><span class="nf">getQnnOpConfigOutputs</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_OpConfig_t</span><span class="o">*</span><span class="w"> </span><span class="n">opConfig</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">getQnnOpConfigOutputs</span><span class="p">(</span><span class="o">*</span><span class="n">opConfig</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnOpConfigName</span><span class="p">(</span><span class="n">Qnn_OpConfig_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">opConfig</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">opConfig</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_OPCONFIG_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">opConfig</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnOpConfigName</span><span class="p">(</span><span class="n">Qnn_OpConfig_t</span><span class="o">*</span><span class="w"> </span><span class="n">opConfig</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">setQnnOpConfigName</span><span class="p">(</span><span class="o">*</span><span class="n">opConfig</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnOpConfigPackageName</span><span class="p">(</span><span class="n">Qnn_OpConfig_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">opConfig</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">packageName</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">opConfig</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_OPCONFIG_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">opConfig</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">packageName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">packageName</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnOpConfigPackageName</span><span class="p">(</span><span class="n">Qnn_OpConfig_t</span><span class="o">*</span><span class="w"> </span><span class="n">opConfig</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">packageName</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">setQnnOpConfigPackageName</span><span class="p">(</span><span class="o">*</span><span class="n">opConfig</span><span class="p">,</span><span class="w"> </span><span class="n">packageName</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnOpConfigTypeName</span><span class="p">(</span><span class="n">Qnn_OpConfig_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">opConfig</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">typeName</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">opConfig</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_OPCONFIG_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">opConfig</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">typeName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">typeName</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnOpConfigTypeName</span><span class="p">(</span><span class="n">Qnn_OpConfig_t</span><span class="o">*</span><span class="w"> </span><span class="n">opConfig</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">typeName</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">setQnnOpConfigTypeName</span><span class="p">(</span><span class="o">*</span><span class="n">opConfig</span><span class="p">,</span><span class="w"> </span><span class="n">typeName</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnOpConfigParams</span><span class="p">(</span><span class="n">Qnn_OpConfig_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">opConfig</span><span class="p">,</span>
+<span class="w">                                 </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">numOfParams</span><span class="p">,</span>
+<span class="w">                                 </span><span class="n">Qnn_Param_t</span><span class="o">*</span><span class="w"> </span><span class="n">params</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">opConfig</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_OPCONFIG_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">opConfig</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">numOfParams</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numOfParams</span><span class="p">;</span>
+<span class="w">    </span><span class="n">opConfig</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">params</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnOpConfigParams</span><span class="p">(</span><span class="n">Qnn_OpConfig_t</span><span class="o">*</span><span class="w"> </span><span class="n">opConfig</span><span class="p">,</span>
+<span class="w">                                 </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">numOfParams</span><span class="p">,</span>
+<span class="w">                                 </span><span class="n">Qnn_Param_t</span><span class="o">*</span><span class="w"> </span><span class="n">params</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">setQnnOpConfigParams</span><span class="p">(</span><span class="o">*</span><span class="n">opConfig</span><span class="p">,</span><span class="w"> </span><span class="n">numOfParams</span><span class="p">,</span><span class="w"> </span><span class="n">params</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnOpConfigInputs</span><span class="p">(</span><span class="n">Qnn_OpConfig_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">opConfig</span><span class="p">,</span>
+<span class="w">                                 </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">numOfInputs</span><span class="p">,</span>
+<span class="w">                                 </span><span class="n">Qnn_Tensor_t</span><span class="o">*</span><span class="w"> </span><span class="n">inputTensors</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">opConfig</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_OPCONFIG_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">opConfig</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">numOfInputs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">numOfInputs</span><span class="p">;</span>
+<span class="w">    </span><span class="n">opConfig</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">inputTensors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inputTensors</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnOpConfigInputs</span><span class="p">(</span><span class="n">Qnn_OpConfig_t</span><span class="o">*</span><span class="w"> </span><span class="n">opConfig</span><span class="p">,</span>
+<span class="w">                                 </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">numOfInputs</span><span class="p">,</span>
+<span class="w">                                 </span><span class="n">Qnn_Tensor_t</span><span class="o">*</span><span class="w"> </span><span class="n">inputTensors</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">setQnnOpConfigInputs</span><span class="p">(</span><span class="o">*</span><span class="n">opConfig</span><span class="p">,</span><span class="w"> </span><span class="n">numOfInputs</span><span class="p">,</span><span class="w"> </span><span class="n">inputTensors</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnOpConfigOutputs</span><span class="p">(</span><span class="n">Qnn_OpConfig_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">opConfig</span><span class="p">,</span>
+<span class="w">                                  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">numOfOutputs</span><span class="p">,</span>
+<span class="w">                                  </span><span class="n">Qnn_Tensor_t</span><span class="o">*</span><span class="w"> </span><span class="n">outputTensors</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">opConfig</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_OPCONFIG_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">opConfig</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">numOfOutputs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">numOfOutputs</span><span class="p">;</span>
+<span class="w">    </span><span class="n">opConfig</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">outputTensors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">outputTensors</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnOpConfigOutputs</span><span class="p">(</span><span class="n">Qnn_OpConfig_t</span><span class="o">*</span><span class="w"> </span><span class="n">opConfig</span><span class="p">,</span>
+<span class="w">                                  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">numOfOutputs</span><span class="p">,</span>
+<span class="w">                                  </span><span class="n">Qnn_Tensor_t</span><span class="o">*</span><span class="w"> </span><span class="n">outputTensors</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">setQnnOpConfigOutputs</span><span class="p">(</span><span class="o">*</span><span class="n">opConfig</span><span class="p">,</span><span class="w"> </span><span class="n">numOfOutputs</span><span class="p">,</span><span class="w"> </span><span class="n">outputTensors</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// inline Qnn_OpConfig_t</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="nf">getQnnTensorId</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_Tensor_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tensor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">tensor</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">tensor</span><span class="p">.</span><span class="n">v2</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0u</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="nf">getQnnTensorId</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_Tensor_t</span><span class="o">*</span><span class="w"> </span><span class="n">tensor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">getQnnTensorId</span><span class="p">(</span><span class="o">*</span><span class="n">tensor</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="nf">getQnnTensorName</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_Tensor_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tensor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">tensor</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">name</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">tensor</span><span class="p">.</span><span class="n">v2</span><span class="p">.</span><span class="n">name</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0u</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="nf">getQnnTensorName</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_Tensor_t</span><span class="o">*</span><span class="w"> </span><span class="n">tensor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">getQnnTensorName</span><span class="p">(</span><span class="o">*</span><span class="n">tensor</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="n">Qnn_TensorType_t</span><span class="w"> </span><span class="nf">getQnnTensorType</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_Tensor_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tensor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">tensor</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">type</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">tensor</span><span class="p">.</span><span class="n">v2</span><span class="p">.</span><span class="n">type</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">QNN_TENSOR_TYPE_UNDEFINED</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="n">Qnn_TensorType_t</span><span class="w"> </span><span class="nf">getQnnTensorType</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_Tensor_t</span><span class="o">*</span><span class="w"> </span><span class="n">tensor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">getQnnTensorType</span><span class="p">(</span><span class="o">*</span><span class="n">tensor</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="n">Qnn_TensorDataFormat_t</span><span class="w"> </span><span class="nf">getQnnTensorDataFormat</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_Tensor_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tensor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">tensor</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">dataFormat</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">tensor</span><span class="p">.</span><span class="n">v2</span><span class="p">.</span><span class="n">dataFormat</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">QNN_TENSOR_DATA_FORMAT_FLAT_BUFFER</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="n">Qnn_TensorDataFormat_t</span><span class="w"> </span><span class="nf">getQnnTensorDataFormat</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_Tensor_t</span><span class="o">*</span><span class="w"> </span><span class="n">tensor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">getQnnTensorDataFormat</span><span class="p">(</span><span class="o">*</span><span class="n">tensor</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="n">Qnn_DataType_t</span><span class="w"> </span><span class="nf">getQnnTensorDataType</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_Tensor_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tensor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">tensor</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">dataType</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">tensor</span><span class="p">.</span><span class="n">v2</span><span class="p">.</span><span class="n">dataType</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">QNN_DATATYPE_UNDEFINED</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="n">Qnn_DataType_t</span><span class="w"> </span><span class="nf">getQnnTensorDataType</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_Tensor_t</span><span class="o">*</span><span class="w"> </span><span class="n">tensor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">getQnnTensorDataType</span><span class="p">(</span><span class="o">*</span><span class="n">tensor</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="n">Qnn_QuantizeParams_t</span><span class="w"> </span><span class="nf">getQnnTensorQuantParams</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_Tensor_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tensor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">tensor</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">quantizeParams</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">tensor</span><span class="p">.</span><span class="n">v2</span><span class="p">.</span><span class="n">quantizeParams</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">QNN_QUANTIZE_PARAMS_INIT</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="n">Qnn_QuantizeParams_t</span><span class="w"> </span><span class="nf">getQnnTensorQuantParams</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_Tensor_t</span><span class="o">*</span><span class="w"> </span><span class="n">tensor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">getQnnTensorQuantParams</span><span class="p">(</span><span class="o">*</span><span class="n">tensor</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="nf">getQnnTensorRank</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_Tensor_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tensor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">tensor</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">rank</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">tensor</span><span class="p">.</span><span class="n">v2</span><span class="p">.</span><span class="n">rank</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0u</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="nf">getQnnTensorRank</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_Tensor_t</span><span class="o">*</span><span class="w"> </span><span class="n">tensor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">getQnnTensorRank</span><span class="p">(</span><span class="o">*</span><span class="n">tensor</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="nf">getQnnTensorDimensions</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_Tensor_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tensor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">tensor</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">dimensions</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">tensor</span><span class="p">.</span><span class="n">v2</span><span class="p">.</span><span class="n">dimensions</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="nf">getQnnTensorDimensions</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_Tensor_t</span><span class="o">*</span><span class="w"> </span><span class="n">tensor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">getQnnTensorDimensions</span><span class="p">(</span><span class="o">*</span><span class="n">tensor</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">uint8_t</span><span class="o">*</span><span class="w"> </span><span class="nf">getQnnTensorIsDynamicDimensions</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_Tensor_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tensor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">tensor</span><span class="p">.</span><span class="n">v2</span><span class="p">.</span><span class="n">isDynamicDimensions</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">uint8_t</span><span class="o">*</span><span class="w"> </span><span class="nf">getQnnTensorIsDynamicDimensions</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_Tensor_t</span><span class="o">*</span><span class="w"> </span><span class="n">tensor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">getQnnTensorIsDynamicDimensions</span><span class="p">(</span><span class="o">*</span><span class="n">tensor</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="n">Qnn_SparseParams_t</span><span class="w"> </span><span class="nf">getQnnTensorSparseParams</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_Tensor_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tensor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">tensor</span><span class="p">.</span><span class="n">v2</span><span class="p">.</span><span class="n">sparseParams</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">QNN_SPARSE_PARAMS_INIT</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="n">Qnn_SparseParams_t</span><span class="w"> </span><span class="nf">getQnnTensorSparseParams</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_Tensor_t</span><span class="o">*</span><span class="w"> </span><span class="n">tensor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">getQnnTensorSparseParams</span><span class="p">(</span><span class="o">*</span><span class="n">tensor</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+<span class="kr">inline</span><span class="w"> </span><span class="n">Qnn_TensorMemType_t</span><span class="w"> </span><span class="nf">getQnnTensorMemType</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_Tensor_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tensor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">tensor</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">memType</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">tensor</span><span class="p">.</span><span class="n">v2</span><span class="p">.</span><span class="n">memType</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">QNN_TENSORMEMTYPE_UNDEFINED</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="n">Qnn_TensorMemType_t</span><span class="w"> </span><span class="nf">getQnnTensorMemType</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_Tensor_t</span><span class="o">*</span><span class="w"> </span><span class="n">tensor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">getQnnTensorMemType</span><span class="p">(</span><span class="o">*</span><span class="n">tensor</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="n">Qnn_ClientBuffer_t</span><span class="w"> </span><span class="nf">getQnnTensorClientBuf</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_Tensor_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tensor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">tensor</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">clientBuf</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">tensor</span><span class="p">.</span><span class="n">v2</span><span class="p">.</span><span class="n">clientBuf</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">QNN_CLIENT_BUFFER_INIT</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="n">Qnn_ClientBuffer_t</span><span class="w"> </span><span class="nf">getQnnTensorClientBuf</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_Tensor_t</span><span class="o">*</span><span class="w"> </span><span class="n">tensor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">getQnnTensorClientBuf</span><span class="p">(</span><span class="o">*</span><span class="n">tensor</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="n">Qnn_MemHandle_t</span><span class="w"> </span><span class="nf">getQnnTensorMemHandle</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_Tensor_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tensor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">tensor</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">memHandle</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">tensor</span><span class="p">.</span><span class="n">v2</span><span class="p">.</span><span class="n">memHandle</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="n">Qnn_MemHandle_t</span><span class="w"> </span><span class="nf">getQnnTensorMemHandle</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Qnn_Tensor_t</span><span class="o">*</span><span class="w"> </span><span class="n">tensor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">getQnnTensorMemHandle</span><span class="p">(</span><span class="o">*</span><span class="n">tensor</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnTensorId</span><span class="p">(</span><span class="n">Qnn_Tensor_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">tensor</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">tensor</span><span class="p">.</span><span class="n">v2</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnTensorId</span><span class="p">(</span><span class="n">Qnn_Tensor_t</span><span class="o">*</span><span class="w"> </span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">setQnnTensorId</span><span class="p">(</span><span class="o">*</span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnTensorName</span><span class="p">(</span><span class="n">Qnn_Tensor_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">tensor</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">tensor</span><span class="p">.</span><span class="n">v2</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnTensorName</span><span class="p">(</span><span class="n">Qnn_Tensor_t</span><span class="o">*</span><span class="w"> </span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">setQnnTensorName</span><span class="p">(</span><span class="o">*</span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnTensorType</span><span class="p">(</span><span class="n">Qnn_Tensor_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="n">Qnn_TensorType_t</span><span class="w"> </span><span class="n">type</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">tensor</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">type</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">tensor</span><span class="p">.</span><span class="n">v2</span><span class="p">.</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">type</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnTensorType</span><span class="p">(</span><span class="n">Qnn_Tensor_t</span><span class="o">*</span><span class="w"> </span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="n">Qnn_TensorType_t</span><span class="w"> </span><span class="n">type</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">setQnnTensorType</span><span class="p">(</span><span class="o">*</span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnTensorDataFormat</span><span class="p">(</span><span class="n">Qnn_Tensor_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="n">Qnn_TensorDataFormat_t</span><span class="w"> </span><span class="n">format</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">tensor</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">dataFormat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">format</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">tensor</span><span class="p">.</span><span class="n">v2</span><span class="p">.</span><span class="n">dataFormat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">format</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnTensorDataFormat</span><span class="p">(</span><span class="n">Qnn_Tensor_t</span><span class="o">*</span><span class="w"> </span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="n">Qnn_TensorDataFormat_t</span><span class="w"> </span><span class="n">format</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">setQnnTensorDataFormat</span><span class="p">(</span><span class="o">*</span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnTensorDataType</span><span class="p">(</span><span class="n">Qnn_Tensor_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="n">Qnn_DataType_t</span><span class="w"> </span><span class="n">dataType</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">tensor</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">dataType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dataType</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">tensor</span><span class="p">.</span><span class="n">v2</span><span class="p">.</span><span class="n">dataType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dataType</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnTensorDataType</span><span class="p">(</span><span class="n">Qnn_Tensor_t</span><span class="o">*</span><span class="w"> </span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="n">Qnn_DataType_t</span><span class="w"> </span><span class="n">dataType</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">setQnnTensorDataType</span><span class="p">(</span><span class="o">*</span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="n">dataType</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnTensorQuantParams</span><span class="p">(</span><span class="n">Qnn_Tensor_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="n">Qnn_QuantizeParams_t</span><span class="w"> </span><span class="n">params</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">tensor</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">quantizeParams</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">tensor</span><span class="p">.</span><span class="n">v2</span><span class="p">.</span><span class="n">quantizeParams</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnTensorQuantParams</span><span class="p">(</span><span class="n">Qnn_Tensor_t</span><span class="o">*</span><span class="w"> </span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="n">Qnn_QuantizeParams_t</span><span class="w"> </span><span class="n">params</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">setQnnTensorQuantParams</span><span class="p">(</span><span class="o">*</span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="n">params</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnTensorRank</span><span class="p">(</span><span class="n">Qnn_Tensor_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">rank</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">tensor</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">rank</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rank</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">tensor</span><span class="p">.</span><span class="n">v2</span><span class="p">.</span><span class="n">rank</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rank</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnTensorRank</span><span class="p">(</span><span class="n">Qnn_Tensor_t</span><span class="o">*</span><span class="w"> </span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">rank</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">setQnnTensorRank</span><span class="p">(</span><span class="o">*</span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="n">rank</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnTensorDimensions</span><span class="p">(</span><span class="n">Qnn_Tensor_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">dims</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">tensor</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">dimensions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dims</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">tensor</span><span class="p">.</span><span class="n">v2</span><span class="p">.</span><span class="n">dimensions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dims</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnTensorDimensions</span><span class="p">(</span><span class="n">Qnn_Tensor_t</span><span class="o">*</span><span class="w"> </span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">dims</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">setQnnTensorDimensions</span><span class="p">(</span><span class="o">*</span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="n">dims</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnTensorIsDynamicDimensions</span><span class="p">(</span><span class="n">Qnn_Tensor_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="o">*</span><span class="w"> </span><span class="n">isDynamic</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">tensor</span><span class="p">.</span><span class="n">v2</span><span class="p">.</span><span class="n">isDynamicDimensions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">isDynamic</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnTensorIsDynamicDimensions</span><span class="p">(</span><span class="n">Qnn_Tensor_t</span><span class="o">*</span><span class="w"> </span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="o">*</span><span class="w"> </span><span class="n">isDynamic</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">setQnnTensorIsDynamicDimensions</span><span class="p">(</span><span class="o">*</span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="n">isDynamic</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnTensorSparseParams</span><span class="p">(</span><span class="n">Qnn_Tensor_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="n">Qnn_SparseParams_t</span><span class="w"> </span><span class="n">sparseParams</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">tensor</span><span class="p">.</span><span class="n">v2</span><span class="p">.</span><span class="n">sparseParams</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sparseParams</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnTensorSparseParams</span><span class="p">(</span><span class="n">Qnn_Tensor_t</span><span class="o">*</span><span class="w"> </span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="n">Qnn_SparseParams_t</span><span class="w"> </span><span class="n">sparseParams</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">setQnnTensorSparseParams</span><span class="p">(</span><span class="o">*</span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="n">sparseParams</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnTensorMemType</span><span class="p">(</span><span class="n">Qnn_Tensor_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="n">Qnn_TensorMemType_t</span><span class="w"> </span><span class="n">memType</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">tensor</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">memType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">memType</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">tensor</span><span class="p">.</span><span class="n">v2</span><span class="p">.</span><span class="n">memType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">memType</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnTensorMemType</span><span class="p">(</span><span class="n">Qnn_Tensor_t</span><span class="o">*</span><span class="w"> </span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="n">Qnn_TensorMemType_t</span><span class="w"> </span><span class="n">memType</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">setQnnTensorMemType</span><span class="p">(</span><span class="o">*</span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="n">memType</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnTensorClientBuf</span><span class="p">(</span><span class="n">Qnn_Tensor_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="n">Qnn_ClientBuffer_t</span><span class="w"> </span><span class="n">clientBuf</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">tensor</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">clientBuf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clientBuf</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">tensor</span><span class="p">.</span><span class="n">v2</span><span class="p">.</span><span class="n">clientBuf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clientBuf</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnTensorClientBuf</span><span class="p">(</span><span class="n">Qnn_Tensor_t</span><span class="o">*</span><span class="w"> </span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="n">Qnn_ClientBuffer_t</span><span class="w"> </span><span class="n">clientBuf</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">setQnnTensorClientBuf</span><span class="p">(</span><span class="o">*</span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="n">clientBuf</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnTensorMemHandle</span><span class="p">(</span><span class="n">Qnn_Tensor_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="n">Qnn_MemHandle_t</span><span class="w"> </span><span class="n">handle</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">tensor</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">memHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">handle</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tensor</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">QNN_TENSOR_VERSION_2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">tensor</span><span class="p">.</span><span class="n">v2</span><span class="p">.</span><span class="n">memHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">handle</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setQnnTensorMemHandle</span><span class="p">(</span><span class="n">Qnn_Tensor_t</span><span class="o">*</span><span class="w"> </span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="n">Qnn_MemHandle_t</span><span class="w"> </span><span class="n">handle</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">setQnnTensorMemHandle</span><span class="p">(</span><span class="o">*</span><span class="n">tensor</span><span class="p">,</span><span class="w"> </span><span class="n">handle</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Validation</span>
+<span class="cp">#define VALIDATE_TENSOR_VERSION(tensor, err) VALIDATE(validateTensorVersion(tensor), err)</span>
+<span class="cp">#define VALIDATE_OP_CONFIG_VERSION(op, err)  VALIDATE(validateOpConfigVersion(op), err)</span>
+
+<span class="c1">// Accessors for QNN Op Config</span>
+<span class="cp">#define QNN_OP_CFG_GET_NAME(opConfig)         getQnnOpConfigName(opConfig)</span>
+<span class="cp">#define QNN_OP_CFG_GET_PACKAGE_NAME(opConfig) getQnnOpConfigPackageName(opConfig)</span>
+<span class="cp">#define QNN_OP_CFG_GET_TYPE_NAME(opConfig)    getQnnOpConfigTypeName(opConfig)</span>
+<span class="cp">#define QNN_OP_CFG_GET_NUM_PARAMS(opConfig)   getQnnOpConfigNumParams(opConfig)</span>
+<span class="cp">#define QNN_OP_CFG_GET_PARAMS(opConfig)       getQnnOpConfigParams(opConfig)</span>
+<span class="cp">#define QNN_OP_CFG_GET_NUM_INPUTS(opConfig)   getQnnOpConfigNumInputs(opConfig)</span>
+<span class="cp">#define QNN_OP_CFG_GET_INPUTS(opConfig)       getQnnOpConfigInputs(opConfig)</span>
+<span class="cp">#define QNN_OP_CFG_GET_NUM_OUTPUTS(opConfig)  getQnnOpConfigNumOutputs(opConfig)</span>
+<span class="cp">#define QNN_OP_CFG_GET_OUTPUTS(opConfig)      getQnnOpConfigOutputs(opConfig)</span>
+
+<span class="c1">// Modifiers for QNN Op Config</span>
+<span class="cp">#define QNN_OP_CFG_SET_NAME(opConfig, value)         setQnnOpConfigName(opConfig, value)</span>
+<span class="cp">#define QNN_OP_CFG_SET_PACKAGE_NAME(opConfig, value) setQnnOpConfigPackageName(opConfig, value)</span>
+<span class="cp">#define QNN_OP_CFG_SET_TYPE_NAME(opConfig, value)    setQnnOpConfigTypeName(opConfig, value)</span>
+<span class="cp">#define QNN_OP_CFG_SET_PARAMS(opConfig, numOfParams, params) \</span>
+<span class="cp">  setQnnOpConfigParams(opConfig, numOfParams, params)</span>
+<span class="cp">#define QNN_OP_CFG_SET_INPUTS(opConfig, numOfInputs, inputTensors) \</span>
+<span class="cp">  setQnnOpConfigInputs(opConfig, numOfInputs, inputTensors)</span>
+<span class="cp">#define QNN_OP_CFG_SET_OUTPUTS(opConfig, numOfOutputs, outputTensors) \</span>
+<span class="cp">  setQnnOpConfigOutputs(opConfig, numOfOutputs, outputTensors)</span>
+
+<span class="c1">// Accessors for QNN Tensor</span>
+<span class="cp">#define QNN_TENSOR_GET_ID(tensor)           getQnnTensorId(tensor)</span>
+<span class="cp">#define QNN_TENSOR_GET_NAME(tensor)         getQnnTensorName(tensor)</span>
+<span class="cp">#define QNN_TENSOR_GET_TYPE(tensor)         getQnnTensorType(tensor)</span>
+<span class="cp">#define QNN_TENSOR_GET_DATA_FORMAT(tensor)  getQnnTensorDataFormat(tensor)</span>
+<span class="cp">#define QNN_TENSOR_GET_DATA_TYPE(tensor)    getQnnTensorDataType(tensor)</span>
+<span class="cp">#define QNN_TENSOR_GET_QUANT_PARAMS(tensor) getQnnTensorQuantParams(tensor)</span>
+<span class="cp">#define QNN_TENSOR_GET_RANK(tensor)         getQnnTensorRank(tensor)</span>
+<span class="cp">#define QNN_TENSOR_GET_DIMENSIONS(tensor)   getQnnTensorDimensions(tensor)</span>
+<span class="cp">#define QNN_TENSOR_GET_IS_DYNAMIC_DIMENSIONS(tensor)   getQnnTensorIsDynamicDimensions(tensor)</span>
+<span class="cp">#define QNN_TENSOR_GET_SPARSE_PARAMS(tensor) getQnnTensorSparseParams(tensor)</span>
+<span class="cp">#define QNN_TENSOR_GET_MEM_TYPE(tensor)     getQnnTensorMemType(tensor)</span>
+<span class="cp">#define QNN_TENSOR_GET_CLIENT_BUF(tensor)   getQnnTensorClientBuf(tensor)</span>
+<span class="cp">#define QNN_TENSOR_GET_MEM_HANDLE(tensor)   getQnnTensorMemHandle(tensor)</span>
+
+<span class="c1">// Modifiers for QNN Tensor</span>
+<span class="cp">#define QNN_TENSOR_SET_ID(tensor, value)           setQnnTensorId(tensor, value)</span>
+<span class="cp">#define QNN_TENSOR_SET_NAME(tensor, value)         setQnnTensorName(tensor, value)</span>
+<span class="cp">#define QNN_TENSOR_SET_TYPE(tensor, value)         setQnnTensorType(tensor, value)</span>
+<span class="cp">#define QNN_TENSOR_SET_DATA_FORMAT(tensor, value)  setQnnTensorDataFormat(tensor, value)</span>
+<span class="cp">#define QNN_TENSOR_SET_DATA_TYPE(tensor, value)    setQnnTensorDataType(tensor, value)</span>
+<span class="cp">#define QNN_TENSOR_SET_QUANT_PARAMS(tensor, value) setQnnTensorQuantParams(tensor, value)</span>
+<span class="cp">#define QNN_TENSOR_SET_RANK(tensor, value)         setQnnTensorRank(tensor, value)</span>
+<span class="cp">#define QNN_TENSOR_SET_DIMENSIONS(tensor, value)   setQnnTensorDimensions(tensor, value)</span>
+<span class="cp">#define QNN_TENSOR_SET_IS_DYNAMIC_DIMENSIONS(tensor, value)   setQnnTensorIsDynamicDimensions(tensor, value)</span>
+<span class="cp">#define QNN_TENSOR_SET_SPARSE_PARAMS(tensor, value) setQnnTensorSparseParams(tensor, value)</span>
+<span class="cp">#define QNN_TENSOR_SET_MEM_TYPE(tensor, value)     setQnnTensorMemType(tensor, value)</span>
+<span class="cp">#define QNN_TENSOR_SET_CLIENT_BUF(tensor, value)   setQnnTensorClientBuf(tensor, value)</span>
+<span class="cp">#define QNN_TENSOR_SET_MEM_HANDLE(tensor, value)   setQnnTensorMemHandle(tensor, value)</span>
+
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace qnn_wrapper_api</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

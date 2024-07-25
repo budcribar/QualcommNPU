@@ -1,0 +1,370 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Offline Graph Caching for DSP Runtime on HTP &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Qairt Converter" href="qairt_converter.html" />
+    <link rel="prev" title="Quantizing a Model" href="model_conversion.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="usergroup1.html">Network Models</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="network_layers.html">Supported Network Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supported_onnx_ops.html">Supported ONNX Ops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quantized_models.html">Quantized vs Non-Quantized Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup2.html">User-defined Operations</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="usergroup3.html">Model Conversion</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="model_conv_tensorflow.html">TensorFlow Model Conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensorflow_graphs.html">Tensorflow Graph Compatibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model_conv_tflite.html">TFLite Model Conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model_conv_pytorch.html">PyTorch Model Conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model_conv_onnx.html">ONNX Model Conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model_conversion.html">Quantizing a Model</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Offline Graph Caching for DSP Runtime on HTP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qairt_converter.html">Qairt Converter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qairt_quantizer.html">Qairt Quantizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usergroup4.html">Model Tips</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup6.html">Tutorials and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="usergroup1.html">Network Models</a> &raquo;</li>
+        
+          <li><a href="usergroup3.html">Model Conversion</a> &raquo;</li>
+        
+      <li>Offline Graph Caching for DSP Runtime on HTP</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="offline-graph-caching-for-dsp-runtime-on-htp">
+<h1>Offline Graph Caching for DSP Runtime on HTP<a class="headerlink" href="#offline-graph-caching-for-dsp-runtime-on-htp" title="Permalink to this heading">¶</a></h1>
+<div class="ui-resizable side-nav-resizable docutils container" id="side-nav">
+<div class="docutils container" id="nav-tree">
+<div class="docutils container" id="nav-tree-contents">
+</div>
+</div>
+</div>
+<div class="docutils container" id="doc-content">
+<div class="header docutils container">
+</div>
+<div class="contents docutils container">
+<div class="textblock docutils container">
+<p>Qualcomm® Neural Processing SDK DSP runtime on targets having Hexagon Tensor Processor (HTP) supports offline graph caching feature which helps
+to prepare the backend graph on Linux x86-64 platform. This helps to reduce the init time and directly loads the cache
+on device while executing the model.</p>
+<p>The workflow change for Qualcomm® Neural Processing SDK Users:</p>
+<ul class="simple">
+<li><p>model conversions using snpe-&lt;framework&gt;-to-dlc</p></li>
+<li><p>model quantization using snpe-dlc-quant</p></li>
+<li><p>model offline graph cache preparation using snpe-dlc-graph-prepare</p></li>
+<li><p>model execution on target using snpe-net-run or custom application</p></li>
+</ul>
+<div class="docutils container">
+<div class="figure align-default">
+<img alt="../images/create_htp_cache.png" src="../images/create_htp_cache.png" />
+</div>
+</div>
+<p>The DLC Quantize in the above image consists of 2 step process i.e first to quantize the model and then generating the offline cache.
+<a class="reference external" href="tools.html#snpe-dlc-graph-prepare">snpe-dlc-graph-prepare</a> tool is used to generate a DLC cache blob for the Qualcomm® Neural Processing SDK HTP runtime
+after the DLC is quantized by <a class="reference external" href="tools.html#snpe-dlc-quant">snpe-dlc-quant</a> tool.
+<a class="reference external" href="tools.html#snpe-dlc-graph-prepare">snpe-dlc-graph-prepare</a> tool can also be used with the float model to generate the cache for HTP FP16 runtime.</p>
+<p>For example, the following commands convert an Inception v3 DLC file into a quantized Inception v3 DLC file, and generates the HTP graph cache
+and stores in the DLC.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>snpe-dlc-quant --input_dlc inception_v3.dlc --input_list image_file_list.txt --output_dlc inception_v3_quantized.dlc
+
+snpe-dlc-graph-prepare --input_dlc inception_v3_quantized.dlc --output_dlc inception_v3_quantized_cache.dlc --htp_socs sm8650
+</pre></div>
+</div>
+<p>Running <a class="reference external" href="tools.html#snpe-dlc-graph-prepare">snpe-dlc-graph-prepare</a> triggers generation of HTP graph on the model provided, and
+adding the generated cache to HTP records into the DLC. If the HTP compiler cannot process/compile any section of the network,
+<a class="reference external" href="tools.html#snpe-dlc-graph-prepare">snpe-dlc-graph-prepare</a> issues an error message.</p>
+<p><a class="reference external" href="tools.html#snpe-dlc-graph-prepare">snpe-dlc-graph-prepare</a> can help to re-prepare the offline cache for the graph quickly using
+same/different version of Qualcomm® Neural Processing SDK, without re-doing the quantization step which may take significant time if the input dataset is huge.</p>
+<p>Similarly, <a class="reference external" href="tools.html#snpe-dlc-quantize">snpe-dlc-quantize</a> tool uses enable_htp option to generate a DLC cache blob for the
+Qualcomm® Neural Processing SDK HTP runtime as part of the quantization process.</p>
+<p>For example, the following command converts an Inception v3 DLC file into a quantized Inception v3 DLC file, and generates the HTP graph cache and
+stores in the DLC.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>snpe-dlc-quantize --input_dlc inception_v3.dlc --input_list image_file_list.txt --output_dlc inception_v3_quantized.dlc --enable_htp --htp_socs sm8650
+</pre></div>
+</div>
+<p><strong>Notes</strong>:</p>
+<ul>
+<li><p>The offline prepared graph cache and the SNPE object at runtime must specify the same graph outputs. If at runtime the same graph outputs are not as specified in the prepared graph, the prepared graph is considered invalid and will be ignored. Then, graph preparation will done at runtime (called online prepare) thereby rejecting the cache blob in DLC leading to apparent increase in init time in this situation.</p></li>
+<li><p>In order to enable CPU fallback for offline prepare, the DSP subnet that precedes the CPU subnet needs to have all output tensors that are inputs into the subsequent subnets marked as graph outputs.</p></li>
+<li><p>The graph outputs are specified to the snpe-dlc-graph-prepare tool either as:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Output Layer Names (--set_output_layers) in which case all output tensors for that layer are considered graph outputs. Or as</p></li>
+<li><p>Output Tensor Names (--set_output_tensors) if not all outputs from the layer are considered graph outputs</p></li>
+</ul>
+</div></blockquote>
+<p>An example would be if there was an intermediate layer, for which one (or more) of its output tensors should be considered as a graph output. By default, the tool will choose all output tensors from the last layer in the serialized graph.</p>
+</li>
+<li><p>Outputs to the graph can be specified using an optional input_list to snpe-dlc-graph-prepare as well. To specify Output Layer Names
+to snpe-dlc-graph-prepare, a special line starting with “#” is added into the input_list argument that specifies the layer name(s):</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>#&lt;output_op_name&gt;[&lt;space&gt;&lt;output_op_name&gt;]*
+</pre></div>
+</div>
+<p>Alternately, to specify Output Tensor Names to snpe-dlc-graph-prepare, a special line starting with “%” is added into the input_list argument that specifies the output tensor name(s):</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>%&lt;output_tensor_name&gt;[&lt;space&gt;&lt;output_tensor_name&gt;]*
+</pre></div>
+</div>
+</li>
+<li><p>To specify the Output Tensor Names at runtime:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>For <a class="reference external" href="tools.html#snpe-net-run">snpe-net-run</a>, one must pass the names using the --set_output_tensors argument on the command line
+Syntax:  [ --set_output_tensors=&lt;val&gt; ] Specifies a comma separated list of tensors to be output after execution.</p></li>
+<li><p>When using the API - use this SNPE Builder API Snpe_SNPEBuilder_SetOutputTensors() / SNPEBuilder::setOutputTensors() to specify the same output
+tensor names.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>A cache record created for a particular SoC can run on another SoC. Such interoperability is governed by the VTCM size and the DSP architecture of prepared and running SoCs. HTP Offline cache compatibility follows these empirical rules:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>A cache generated for a newer DSP Arch cannot run an SoC with a lower DSP Arch. For example a cache record generated for v69 device (say sm8450) will not run on a v68 device (like sm8350) even if the cache was prepared with 2MB vtcm.</p></li>
+<li><p>For the same DSP Arch, a cache prepared for one SoC can run on another SoC if the prepared with VTCM is less or equals the VTCM of running SoC.</p></li>
+<li><p>A cache generated for v68 or v69 device will not run on a v73 device.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>The --optimization_level command line option in the <a class="reference external" href="tools.html#snpe-dlc-graph-prepare">snpe-dlc-graph-prepare</a> tool has some inherent tradeoffs and non-deterministic behavior:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Default optimization level is 2. Higher optimization levels incur longer offline prepare time but yields more optimal graph and hence faster execution time for most graphs.</p></li>
+<li><p>Level 3 should provide more optimal graph in most cases, but can also result in less optimal graph in some cases.</p></li>
+<li><p>Level 3 might yield a larger HTP offline cache record size and hence can lead to possible degradation on initialization time.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Offline graph prepare using snpe-dlc-quantize will be deprecated in future. Currently, snpe-dlc-quantize is used to support legacy
+work flow. It is recommended to migrate to snpe-dlc-graph-prepare for offline htp graph cache blob preparation.</p></li>
+<li><p>Note that Output Tensor Names is not supported on the AIP runtime for legacy HTA SOCs.</p></li>
+<li><p>It is possible to cache resized networks by making use of the –input_name and –input_dimensions arguments or use the <a class="reference external" href="../c_api-rst/function_SNPEBuilder_8h_1a7554ce9986adc92cf149a109bfa31b77.html">Snpe_SNPEBuilder_SetInputDimensions API</a>.
+Cache records are sensitive to the set of input dimensions they were prepared with.
+Multiple cache records with the same record identifier may coexist if they were prepared with differing input dimensions.
+During execution, a cache record may only be used if the input dimensions during execution match those used to prepare the cache record.
+This also applies to online prepare using both the net-run arguments (–input_name and –input_dimensions) as well as the API for resizing input tensor dimensions (<a class="reference external" href="../c_api-rst/function_SNPEBuilder_8h_1a7554ce9986adc92cf149a109bfa31b77.html">Snpe_SNPEBuilder_SetInputDimensions API</a>).</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>For example, assume a hypothetical network with one input whose original dimensions are 1x3x4x5. If the user resizes this input to 2x3x4x5 during cache preparation and attempts to subsequently run inference without also resizing that input to 2x3x4x5,
+then this otherwise compatible cache record will be rejected on the grounds of mismatching input dimensions.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="qairt_converter.html" class="btn btn-neutral float-right" title="Qairt Converter" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="model_conversion.html" class="btn btn-neutral float-left" title="Quantizing a Model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

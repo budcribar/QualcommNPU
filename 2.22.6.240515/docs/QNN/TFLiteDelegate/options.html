@@ -1,0 +1,509 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>External Delegate Options &mdash; Qualcomm® AI Engine Direct Delegate</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Glossary" href="glossary.html" />
+    <link rel="prev" title="Java Interface" href="java_interface.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Qualcomm® AI Engine Direct Delegate
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qnn_libs.html">Qualcomm® AI Engine Direct Backend Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Acceleration Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom_op.html">Custom Operator Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_version_history.html">API Version History</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="api.html#qualcomm-r-ai-engine-direct-delegate-c-interface">Qualcomm® AI Engine Direct Delegate C Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#qualcomm-r-ai-engine-direct-delegate-java-interface">Qualcomm® AI Engine Direct Delegate Java Interface</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="api.html#external-delegate-interface">External Delegate Interface</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">External Delegate Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Qualcomm® AI Engine Direct Delegate</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="api.html">API</a> &raquo;</li>
+        
+      <li>External Delegate Options</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="external-delegate-options">
+<h1>External Delegate Options<a class="headerlink" href="#external-delegate-options" title="Permalink to this heading">¶</a></h1>
+<p>Since the <a class="reference internal" href="setup.html#external-delegate-interface"><span class="std std-ref">External Delegate Interface</span></a> dynamically loads the Qualcomm® AI Engine Direct
+Delegate, it has no static knowledge of the Qualcomm® AI Engine Direct Delegate options. Instead,
+the External Delegate passes key value pairs of strings down to the Qualcomm® AI Engine Direct Delegate
+to be parsed as the options. As a result, the application using the External
+Delegate Interface requires previous knowledge of the accepted key and value
+options strings. The following table lists the key value option strings that
+are available in Qualcomm® AI Engine Direct Delegate.</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Option Key</p></th>
+<th class="head"><p>Option Value</p></th>
+<th class="head"><p>Default Value</p></th>
+<th class="head"><p>Mandatory</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>backend_type</p></th>
+<td><p>gpu, htp, dsp</p></td>
+<td><p>N/A</p></td>
+<td><p>Yes</p></td>
+<td><p>The backend Qualcomm® AI Engine Direct library to open and execute the graph with.
+See <a class="reference internal" href="support.html"><span class="doc">Acceleration Support</span></a> for the supported backends.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>gpu_precision</p></th>
+<td><p>0, 1, 2, 3</p></td>
+<td><p>2 = Float16 for best performance</p></td>
+<td><p>No</p></td>
+<td><p>Precision for GPU backend that defines the optimization levels of the
+graph tensors that are not input nor output tensors.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>0 = Obey precisions specified in TFLite graph</p></li>
+<li><p>1 = Float32</p></li>
+<li><p>2 = Float16</p></li>
+<li><p>3 = Hybrid</p></li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><th class="stub"><p>gpu_performance_mode</p></th>
+<td><p>0, 1, 2, 3</p></td>
+<td><p>0 = Default</p></td>
+<td><p>No</p></td>
+<td><p>Flag to provide precision modes supported by the GPU backend.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>0 = Default</p></li>
+<li><p>1 = High</p></li>
+<li><p>2 = Normal</p></li>
+<li><p>3 = Low</p></li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>dsp_performance_mode</p></th>
+<td><p>0, 1, 2, 3, 4, 5, 6, 7, 8</p></td>
+<td><p>0 = Default</p></td>
+<td><p>No</p></td>
+<td><p>When performance_mode is used, the delegate will
+vote for the provided performance level during inference and
+will return back to relaxed vote after the inference has completed.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>0 = Default</p></li>
+<li><p>1 = Sustained High Performance</p></li>
+<li><p>2 = Burst</p></li>
+<li><p>3 = High Performance</p></li>
+<li><p>4 = Power Saver</p></li>
+<li><p>5 = Low Power Saver</p></li>
+<li><p>6 = High Power Saver</p></li>
+<li><p>7 = Low Balance</p></li>
+<li><p>8 = Balance</p></li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><th class="stub"><p>dsp_pd_session</p></th>
+<td><p>unsigned, signed, adaptive</p></td>
+<td><p>unsigned</p></td>
+<td><p>No</p></td>
+<td><p>Flag defines the pd session of DSP backend.
+Unsigned is used for unsigned pd while signed is for signed pd.
+For those without knowledge about pd, adaptive is a good option to
+automatically choose the pd session from unsigned and signed pd.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>dsp_perf_ctrl_strategy</p></th>
+<td><p>0, 1</p></td>
+<td><p>0 = Manual</p></td>
+<td><p>No</p></td>
+<td><p>Flag to select DSP perforamnce control strategy. Manual vote the
+performance while the backend is initialized, and release the performance
+at the moment of the backend is destroyed.</p>
+<ul class="simple">
+<li><p>0 = Manual</p></li>
+<li><p>1 = Auto</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><th class="stub"><p>dsp_encoding_mode</p></th>
+<td><p>0, 1</p></td>
+<td><p>0 = Static</p></td>
+<td><p>No</p></td>
+<td><p>Flag to select DSP encoding mode, only support DSP backend. Dynamic encoding is more precise but
+sacrifices a bit of performance.</p>
+<ul class="simple">
+<li><p>0 = Static</p></li>
+<li><p>1 = Dynamic</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>htp_performance_mode</p></th>
+<td><p>0, 1, 2, 3, 4, 5, 6, 7, 8</p></td>
+<td><p>0 = Default</p></td>
+<td><p>No</p></td>
+<td><p>When performance_mode is used, the delegate will
+vote for the provided performance level during inference and
+will return back to relaxed vote after the inference has completed.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>0 = Default</p></li>
+<li><p>1 = Sustained High Performance</p></li>
+<li><p>2 = Burst</p></li>
+<li><p>3 = High Performance</p></li>
+<li><p>4 = Power Saver</p></li>
+<li><p>5 = Low Power Saver</p></li>
+<li><p>6 = High Power Saver</p></li>
+<li><p>7 = Low Balance</p></li>
+<li><p>8 = Balance</p></li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><th class="stub"><p>htp_pd_session</p></th>
+<td><p>unsigned, signed</p></td>
+<td><p>unsigned</p></td>
+<td><p>No</p></td>
+<td><p>Flag defines the pd session of HTP backend.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>htp_precision</p></th>
+<td><p>0, 1</p></td>
+<td><p>0 = Quantized precision</p></td>
+<td><p>No</p></td>
+<td><p>Flag to provide precision modes supported by the HTP backend. The
+default precision mode supports quantized networks. Other precision
+modes may only be supported on certain SoCs.</p>
+<ul class="simple">
+<li><p>0 = Quantized precision</p></li>
+<li><p>1 = FP16 precision</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><th class="stub"><p>htp_optimization_strategy</p></th>
+<td><p>0, 1</p></td>
+<td><p>0 = Optimize for Inference</p></td>
+<td><p>No</p></td>
+<td><p>Flag to select optimization strategy used by the HTP backend. The
+default optimization strategy will optimize the graph for inference.</p>
+<ul class="simple">
+<li><p>0 = Optimize for Inference</p></li>
+<li><p>1 = Optimize for Prepare</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>htp_perf_ctrl_strategy</p></th>
+<td><p>0, 1</p></td>
+<td><p>0 = Manual</p></td>
+<td><p>No</p></td>
+<td><p>Flag to select HTP perforamnce control strategy. Manual vote the
+performance while the backend is initialized, and release the performance
+at the moment of the backend is destroyed.</p>
+<ul class="simple">
+<li><p>0 = Manual</p></li>
+<li><p>1 = Auto</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><th class="stub"><p>htp_use_conv_hmx</p></th>
+<td><p>0, 1</p></td>
+<td><p>1 = enable HMX for short depth conv2d.</p></td>
+<td><p>No</p></td>
+<td><p>Flag to enable HMX for short depth conv2d. Please see C interface or <cite>qnn_delegate.h</cite> for details.</p>
+<ul class="simple">
+<li><p>0 = Don’t enable HMX for short depth conv2d.</p></li>
+<li><p>1 = enable HMX for short depth conv2d.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>htp_use_fold_relu</p></th>
+<td><p>0, 1</p></td>
+<td><p>0 = don’t fuse Relu into conv2d.</p></td>
+<td><p>No</p></td>
+<td><p>Flag to enable fusion of Relu into conv2d. Please see C interface or <cite>qnn_delegate.h</cite> for details.</p>
+<ul class="simple">
+<li><p>0 = Don’t enable fusion Relu into conv2d.</p></li>
+<li><p>1 = enable fusion Relu into conv2d.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><th class="stub"><p>library_path</p></th>
+<td><p>&lt;Path to backend library file&gt;</p></td>
+<td><p>Default library associated with chosen Qualcomm® AI Engine Direct backend</p></td>
+<td><p>No</p></td>
+<td><p>Optional parameter to override the Qualcomm® AI Engine Direct backend library.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>log_level</p></th>
+<td><p>0, 1, 2, 3, 4, 5</p></td>
+<td><p>0 = Off</p></td>
+<td><p>No</p></td>
+<td><p>Logging level of the delegate and the backend between 0-5, higher is
+more verbose.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>0 = Off</p></li>
+<li><p>1 = Error</p></li>
+<li><p>2 = Warn</p></li>
+<li><p>3 = Info</p></li>
+<li><p>4 = Debug</p></li>
+<li><p>5 = Verbose</p></li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><th class="stub"><p>cache_dir</p></th>
+<td><p>&lt;Full path to a directory&gt;</p></td>
+<td><p>N/A</p></td>
+<td><p>No</p></td>
+<td><p>Specifies the directory of a compiled model.  Signals intent to either:</p>
+<ul class="simple">
+<li><p>Save the model if the file doesn’t exist, or</p></li>
+<li><p>Restore model from the file.</p></li>
+</ul>
+<p>Model Cache specific options. Only used when setting
+<code class="xref c c-member docutils literal notranslate"><span class="pre">model_token</span></code>, else will be ignored.</p>
+</td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>model_token</p></th>
+<td><p>&lt;model token name&gt;</p></td>
+<td><p>N/A</p></td>
+<td><p>No</p></td>
+<td><p>The unique null-terminated token string that acts as a ‘namespace’ for
+all serialization entries.
+Should be unique to a particular model (graph &amp; constants).
+For an example of how to generate this from a TFLite model, see
+StrFingerprint() in lite/delegates/serialization.h.
+Model Cache specific options. Only used when setting
+<code class="xref c c-member docutils literal notranslate"><span class="pre">cache_dir</span></code>, else will be ignored.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>profiling</p></th>
+<td><p>0, 1, 2</p></td>
+<td><p>0 = Off</p></td>
+<td><p>No</p></td>
+<td><p>How to profile the delegate execution. Use to add profiling level to
+TFLite/QNN Profiler object. Qnn Profiler will be used unless Tensorflow Lite benchmark_model is used.
+However, note that the behavior of profiling is subjected to change in the future.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>0 = Profiling Off</p></li>
+<li><p>1 = Basic Profiling</p></li>
+<li><p>2 = Per Op Profiling</p></li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>skel_library_dir</p></th>
+<td><p>&lt;Path to dir&gt;</p></td>
+<td><p>N/A</p></td>
+<td><p>No</p></td>
+<td><p>Directory of Qualcomm® AI Engine Direct Skel Library. Optional parameter to directory of the
+Qualcomm® AI Engine Direct Skel library. Only useful for backends which have a Skel library.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="glossary.html" class="btn btn-neutral float-right" title="Glossary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="java_interface.html" class="btn btn-neutral float-left" title="Java Interface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

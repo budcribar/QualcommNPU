@@ -1,0 +1,814 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>File QnnBackend.h &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>File QnnBackend.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="file-qnnbackend-h">
+<span id="file-include-qnn-qnnbackend-h"></span><h1>File QnnBackend.h<a class="headerlink" href="#file-qnnbackend-h" title="Permalink to this heading">¶</a></h1>
+<p>↰ <a class="reference internal" href="dir_include_QNN.html#dir-include-qnn"><span class="std std-ref">Parent directory</span></a> (<code class="docutils literal notranslate"><span class="pre">include/QNN</span></code>)</p>
+<p>Backend component API.</p>
+<div class="contents local topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#definition-include-qnn-qnnbackend-h" id="id1">Definition (<code class="docutils literal notranslate"><span class="pre">include/QNN/QnnBackend.h</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#detailed-description" id="id2">Detailed Description</a></p></li>
+<li><p><a class="reference internal" href="#includes" id="id3">Includes</a></p></li>
+<li><p><a class="reference internal" href="#included-by" id="id4">Included By</a></p></li>
+<li><p><a class="reference internal" href="#classes" id="id5">Classes</a></p></li>
+<li><p><a class="reference internal" href="#enums" id="id6">Enums</a></p></li>
+<li><p><a class="reference internal" href="#functions" id="id7">Functions</a></p></li>
+<li><p><a class="reference internal" href="#defines" id="id8">Defines</a></p></li>
+<li><p><a class="reference internal" href="#typedefs" id="id9">Typedefs</a></p></li>
+<li><p><a class="reference internal" href="#unions" id="id10">Unions</a></p></li>
+<li><p><a class="reference internal" href="#full-file-listing" id="id11">Full File Listing</a></p></li>
+</ul>
+</div>
+<div class="section" id="definition-include-qnn-qnnbackend-h">
+<h2>Definition (<code class="docutils literal notranslate"><span class="pre">include/QNN/QnnBackend.h</span></code>)<a class="headerlink" href="#definition-include-qnn-qnnbackend-h" title="Permalink to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="program_listing_file_include_QNN_QnnBackend.h.html">Program Listing for File QnnBackend.h</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="detailed-description">
+<h2>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><p>This is top level QNN API component.
+Most of the QNN API requires backend to be created first.</p>
+</div></blockquote>
+</div>
+<div class="section" id="includes">
+<h2>Includes<a class="headerlink" href="#includes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">QnnCommon.h</span></code> (<a class="reference internal" href="file_include_QNN_QnnCommon.h.html#file-include-qnn-qnncommon-h"><span class="std std-ref">File QnnCommon.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QnnTypes.h</span></code> (<a class="reference internal" href="file_include_QNN_QnnTypes.h.html#file-include-qnn-qnntypes-h"><span class="std std-ref">File QnnTypes.h</span></a>)</p></li>
+</ul>
+</div>
+<div class="section" id="included-by">
+<h2>Included By<a class="headerlink" href="#included-by" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="file_include_QNN_DSP_QnnDspBackend.h.html#file-include-qnn-dsp-qnndspbackend-h"><span class="std std-ref">File QnnDspBackend.h</span></a></p></li>
+<li><p><a class="reference internal" href="file_include_QNN_GPU_QnnGpuBackend.h.html#file-include-qnn-gpu-qnngpubackend-h"><span class="std std-ref">File QnnGpuBackend.h</span></a></p></li>
+<li><p><a class="reference internal" href="file_include_QNN_HTA_QnnHtaBackend.h.html#file-include-qnn-hta-qnnhtabackend-h"><span class="std std-ref">File QnnHtaBackend.h</span></a></p></li>
+<li><p><a class="reference internal" href="file_include_QNN_LPAI_QnnLpaiBackend.h.html#file-include-qnn-lpai-qnnlpaibackend-h"><span class="std std-ref">File QnnLpaiBackend.h</span></a></p></li>
+<li><p><a class="reference internal" href="file_include_QNN_QnnInterface.h.html#file-include-qnn-qnninterface-h"><span class="std std-ref">File QnnInterface.h</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="structQnnBackend__Config__t.html#exhale-struct-structqnnbackend-config-t"><span class="std std-ref">Struct QnnBackend_Config_t</span></a></p></li>
+<li><p><a class="reference internal" href="structQnnBackend__OperationName__t.html#exhale-struct-structqnnbackend-operationname-t"><span class="std std-ref">Struct QnnBackend_OperationName_t</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="enums">
+<h2>Enums<a class="headerlink" href="#enums" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="enum_QnnBackend_8h_1a185a54f92b3ecaf2cc8fa546e4d1d02b.html#exhale-enum-qnnbackend-8h-1a185a54f92b3ecaf2cc8fa546e4d1d02b"><span class="std std-ref">Enum QnnBackend_ConfigOption_t</span></a></p></li>
+<li><p><a class="reference internal" href="enum_QnnBackend_8h_1a3da48ae867bc80fa3e906f3dcc337a6b.html#exhale-enum-qnnbackend-8h-1a3da48ae867bc80fa3e906f3dcc337a6b"><span class="std std-ref">Enum QnnBackend_Error_t</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="function_QnnBackend_8h_1a495313092040347c75894f8f2db97f97.html#exhale-function-qnnbackend-8h-1a495313092040347c75894f8f2db97f97"><span class="std std-ref">Function QnnBackend_create</span></a></p></li>
+<li><p><a class="reference internal" href="function_QnnBackend_8h_1ac50a3953174657f1bc4affb2be9cc3a5.html#exhale-function-qnnbackend-8h-1ac50a3953174657f1bc4affb2be9cc3a5"><span class="std std-ref">Function QnnBackend_free</span></a></p></li>
+<li><p><a class="reference internal" href="function_QnnBackend_8h_1aa2317e971e9ac56b21cf482552e4bd02.html#exhale-function-qnnbackend-8h-1aa2317e971e9ac56b21cf482552e4bd02"><span class="std std-ref">Function QnnBackend_getApiVersion</span></a></p></li>
+<li><p><a class="reference internal" href="function_QnnBackend_8h_1a463608b6e9568457becaeeb59e115534.html#exhale-function-qnnbackend-8h-1a463608b6e9568457becaeeb59e115534"><span class="std std-ref">Function QnnBackend_getBuildId</span></a></p></li>
+<li><p><a class="reference internal" href="function_QnnBackend_8h_1aa9177d25c957817d7c64b799bdcce71d.html#exhale-function-qnnbackend-8h-1aa9177d25c957817d7c64b799bdcce71d"><span class="std std-ref">Function QnnBackend_getSupportedOperations</span></a></p></li>
+<li><p><a class="reference internal" href="function_QnnBackend_8h_1a95dd59ad0b59872f3649f7c363c23441.html#exhale-function-qnnbackend-8h-1a95dd59ad0b59872f3649f7c363c23441"><span class="std std-ref">Function QnnBackend_registerOpPackage</span></a></p></li>
+<li><p><a class="reference internal" href="function_QnnBackend_8h_1a4773ac68692f18a3ab22249eeba610cd.html#exhale-function-qnnbackend-8h-1a4773ac68692f18a3ab22249eeba610cd"><span class="std std-ref">Function QnnBackend_setConfig</span></a></p></li>
+<li><p><a class="reference internal" href="function_QnnBackend_8h_1aaa4fdee2bfe889e2f825909ed1f8dd39.html#exhale-function-qnnbackend-8h-1aaa4fdee2bfe889e2f825909ed1f8dd39"><span class="std std-ref">Function QnnBackend_validateOpConfig</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="defines">
+<h2>Defines<a class="headerlink" href="#defines" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="define_QnnBackend_8h_1ad4010a8d451bd3cb51d9272173c0e779.html#exhale-define-qnnbackend-8h-1ad4010a8d451bd3cb51d9272173c0e779"><span class="std std-ref">Define QNN_BACKEND_CONFIG_INIT</span></a></p></li>
+<li><p><a class="reference internal" href="define_QnnBackend_8h_1a626ebfcb5c1fa95fa0cb4536b7691fd4.html#exhale-define-qnnbackend-8h-1a626ebfcb5c1fa95fa0cb4536b7691fd4"><span class="std std-ref">Define QNN_BACKEND_OPERATION_NAME_INIT</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="typedefs">
+<h2>Typedefs<a class="headerlink" href="#typedefs" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="typedef_QnnBackend_8h_1a3dd4cae49ebc75297524d41f793b40ae.html#exhale-typedef-qnnbackend-8h-1a3dd4cae49ebc75297524d41f793b40ae"><span class="std std-ref">Typedef QnnBackend_CustomConfig_t</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="unions">
+<h2>Unions<a class="headerlink" href="#unions" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="unionQnnBackend__Config__t_1_1unnamed.html#exhale-union-unionqnnbackend-config-t-1-1unnamed"><span class="std std-ref">Union QnnBackend_Config_t::unnamed</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="full-file-listing">
+<h2>Full File Listing<a class="headerlink" href="#full-file-listing" title="Permalink to this heading">¶</a></h2>
+<p>Backend component API. </p>
+<p><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="n">This</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">top</span><span class="w"> </span><span class="n">level</span><span class="w"> </span><span class="n">QNN</span><span class="w"> </span><span class="n">API</span><span class="w"> </span><span class="n">component</span><span class="p">.</span>
+<span class="w">    </span><span class="n">Most</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">QNN</span><span class="w"> </span><span class="n">API</span><span class="w"> </span><span class="n">requires</span><span class="w"> </span><span class="n">backend</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">created</span><span class="w"> </span><span class="n">first</span><span class="p">.</span>
+</pre></div>
+</div>
+ </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_BACKEND_CONFIG_INIT">
+<span class="target" id="QnnBackend_8h_1ad4010a8d451bd3cb51d9272173c0e779"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_BACKEND_CONFIG_INIT</span></span></span> &#160; <span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span>
+&#160;&#160;&#160; <a class="reference internal" href="#QnnBackend_8h_1a185a54f92b3ecaf2cc8fa546e4d1d02bacc96500f58dad68282d5b79fe2f2ee5c"><span class="std std-ref"><span class="pre">QNN_BACKEND_CONFIG_OPTION_UNDEFINED</span></span></a><p><span class="pre">,</span> <span class="pre">/*option*/</span> <span class="pre">\</span></p>
+<p><span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL</span> <span class="pre">/*customConfig*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">}</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">}</span></p>
+<br /></dt>
+<dd><p><a class="reference internal" href="#structQnnBackend__Config__t"><span class="std std-ref">QnnBackend_Config_t</span></a> initializer macro. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_BACKEND_OPERATION_NAME_INIT">
+<span class="target" id="QnnBackend_8h_1a626ebfcb5c1fa95fa0cb4536b7691fd4"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_BACKEND_OPERATION_NAME_INIT</span></span></span> <p><span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160; <span class="pre">/*packageName*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160; <span class="pre">/*name*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">/*target*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">}</span></p>
+<br /></dt>
+<dd><p><a class="reference internal" href="#structQnnBackend__OperationName__t"><span class="std std-ref">QnnBackend_OperationName_t</span></a> initializer macro. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv425QnnBackend_CustomConfig_t">
+<span id="_CPPv325QnnBackend_CustomConfig_t"></span><span id="_CPPv225QnnBackend_CustomConfig_t"></span><span id="QnnBackend_CustomConfig_t"></span><span class="target" id="QnnBackend_8h_1a3dd4cae49ebc75297524d41f793b40ae"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">QnnBackend_CustomConfig_t</span></span></span><a class="headerlink" href="#_CPPv425QnnBackend_CustomConfig_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Backend specific object for custom configuration. </p>
+<p>Please refer to documentation provided by the backend for usage information </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv418QnnBackend_Error_t">
+<span id="_CPPv318QnnBackend_Error_t"></span><span id="_CPPv218QnnBackend_Error_t"></span><span class="target" id="QnnBackend_8h_1a3da48ae867bc80fa3e906f3dcc337a6b"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnBackend_Error_t</span></span></span><a class="headerlink" href="#_CPPv418QnnBackend_Error_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>QNN Backend API result / error codes. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnBackend_Error_t21QNN_BACKEND_MIN_ERRORE">
+<span id="_CPPv3N18QnnBackend_Error_t21QNN_BACKEND_MIN_ERRORE"></span><span id="_CPPv2N18QnnBackend_Error_t21QNN_BACKEND_MIN_ERRORE"></span><span class="target" id="QnnBackend_8h_1a3da48ae867bc80fa3e906f3dcc337a6ba4a0b1e6cfdfbfa76de1eb27a0d36085d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_BACKEND_MIN_ERROR</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">4000</span></span><a class="headerlink" href="#_CPPv4N18QnnBackend_Error_t21QNN_BACKEND_MIN_ERRORE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnBackend_Error_t20QNN_BACKEND_NO_ERRORE">
+<span id="_CPPv3N18QnnBackend_Error_t20QNN_BACKEND_NO_ERRORE"></span><span id="_CPPv2N18QnnBackend_Error_t20QNN_BACKEND_NO_ERRORE"></span><span class="target" id="QnnBackend_8h_1a3da48ae867bc80fa3e906f3dcc337a6bab190d65ebd357cf093ea48cb99181488"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_BACKEND_NO_ERROR</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N18QnnBackend_Error_t20QNN_BACKEND_NO_ERRORE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Qnn Backend success. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnBackend_Error_t27QNN_BACKEND_ERROR_MEM_ALLOCE">
+<span id="_CPPv3N18QnnBackend_Error_t27QNN_BACKEND_ERROR_MEM_ALLOCE"></span><span id="_CPPv2N18QnnBackend_Error_t27QNN_BACKEND_ERROR_MEM_ALLOCE"></span><span class="target" id="QnnBackend_8h_1a3da48ae867bc80fa3e906f3dcc337a6baa8f4b0a7f92389265f44e9ba8f4dd28b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_BACKEND_ERROR_MEM_ALLOC</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="../general/api_error_codes.html#_CPPv4N17QnnCommon_Error_t26QNN_COMMON_ERROR_MEM_ALLOCE" title="QNN_COMMON_ERROR_MEM_ALLOC"><span class="n"><span class="pre">QNN_COMMON_ERROR_MEM_ALLOC</span></span></a><a class="headerlink" href="#_CPPv4N18QnnBackend_Error_t27QNN_BACKEND_ERROR_MEM_ALLOCE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>General error relating to memory allocation in Backend API. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnBackend_Error_t38QNN_BACKEND_ERROR_UNSUPPORTED_PLATFORME">
+<span id="_CPPv3N18QnnBackend_Error_t38QNN_BACKEND_ERROR_UNSUPPORTED_PLATFORME"></span><span id="_CPPv2N18QnnBackend_Error_t38QNN_BACKEND_ERROR_UNSUPPORTED_PLATFORME"></span><span class="target" id="QnnBackend_8h_1a3da48ae867bc80fa3e906f3dcc337a6ba6f84f16d0503c769f44560d10b03b1d1"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_BACKEND_ERROR_UNSUPPORTED_PLATFORM</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="../general/api_error_codes.html#_CPPv4N17QnnCommon_Error_t39QNN_COMMON_ERROR_PLATFORM_NOT_SUPPORTEDE" title="QNN_COMMON_ERROR_PLATFORM_NOT_SUPPORTED"><span class="n"><span class="pre">QNN_COMMON_ERROR_PLATFORM_NOT_SUPPORTED</span></span></a><a class="headerlink" href="#_CPPv4N18QnnBackend_Error_t38QNN_BACKEND_ERROR_UNSUPPORTED_PLATFORME" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Backend attempted to be created on an unsupported platform. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnBackend_Error_t35QNN_BACKEND_ERROR_CANNOT_INITIALIZEE">
+<span id="_CPPv3N18QnnBackend_Error_t35QNN_BACKEND_ERROR_CANNOT_INITIALIZEE"></span><span id="_CPPv2N18QnnBackend_Error_t35QNN_BACKEND_ERROR_CANNOT_INITIALIZEE"></span><span class="target" id="QnnBackend_8h_1a3da48ae867bc80fa3e906f3dcc337a6baf89c280c08c7eb69af942bf7bc48b484"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_BACKEND_ERROR_CANNOT_INITIALIZE</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">4000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N18QnnBackend_Error_t35QNN_BACKEND_ERROR_CANNOT_INITIALIZEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Backend failed to initialize. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnBackend_Error_t34QNN_BACKEND_ERROR_TERMINATE_FAILEDE">
+<span id="_CPPv3N18QnnBackend_Error_t34QNN_BACKEND_ERROR_TERMINATE_FAILEDE"></span><span id="_CPPv2N18QnnBackend_Error_t34QNN_BACKEND_ERROR_TERMINATE_FAILEDE"></span><span class="target" id="QnnBackend_8h_1a3da48ae867bc80fa3e906f3dcc337a6ba9112be7ab6123a95eea633e10b432f3f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_BACKEND_ERROR_TERMINATE_FAILED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">4000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">2</span></span><a class="headerlink" href="#_CPPv4N18QnnBackend_Error_t34QNN_BACKEND_ERROR_TERMINATE_FAILEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Failed to free allocated resources during termination. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnBackend_Error_t31QNN_BACKEND_ERROR_NOT_SUPPORTEDE">
+<span id="_CPPv3N18QnnBackend_Error_t31QNN_BACKEND_ERROR_NOT_SUPPORTEDE"></span><span id="_CPPv2N18QnnBackend_Error_t31QNN_BACKEND_ERROR_NOT_SUPPORTEDE"></span><span class="target" id="QnnBackend_8h_1a3da48ae867bc80fa3e906f3dcc337a6ba81f3552394e5a9564388c10ef3194ba6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_BACKEND_ERROR_NOT_SUPPORTED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">4000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">3</span></span><a class="headerlink" href="#_CPPv4N18QnnBackend_Error_t31QNN_BACKEND_ERROR_NOT_SUPPORTEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Backend does not support requested functionality. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnBackend_Error_t34QNN_BACKEND_ERROR_INVALID_ARGUMENTE">
+<span id="_CPPv3N18QnnBackend_Error_t34QNN_BACKEND_ERROR_INVALID_ARGUMENTE"></span><span id="_CPPv2N18QnnBackend_Error_t34QNN_BACKEND_ERROR_INVALID_ARGUMENTE"></span><span class="target" id="QnnBackend_8h_1a3da48ae867bc80fa3e906f3dcc337a6bac29df48c6ff183b8412bb1c5732d2e5f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_BACKEND_ERROR_INVALID_ARGUMENT</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">4000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">4</span></span><a class="headerlink" href="#_CPPv4N18QnnBackend_Error_t34QNN_BACKEND_ERROR_INVALID_ARGUMENTE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Invalid function argument. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnBackend_Error_t38QNN_BACKEND_ERROR_OP_PACKAGE_NOT_FOUNDE">
+<span id="_CPPv3N18QnnBackend_Error_t38QNN_BACKEND_ERROR_OP_PACKAGE_NOT_FOUNDE"></span><span id="_CPPv2N18QnnBackend_Error_t38QNN_BACKEND_ERROR_OP_PACKAGE_NOT_FOUNDE"></span><span class="target" id="QnnBackend_8h_1a3da48ae867bc80fa3e906f3dcc337a6ba2ba001ea34ab30f2d131f59e62281d3c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_BACKEND_ERROR_OP_PACKAGE_NOT_FOUND</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">4000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">5</span></span><a class="headerlink" href="#_CPPv4N18QnnBackend_Error_t38QNN_BACKEND_ERROR_OP_PACKAGE_NOT_FOUNDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Could not find specified op package. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnBackend_Error_t50QNN_BACKEND_ERROR_OP_PACKAGE_IF_PROVIDER_NOT_FOUNDE">
+<span id="_CPPv3N18QnnBackend_Error_t50QNN_BACKEND_ERROR_OP_PACKAGE_IF_PROVIDER_NOT_FOUNDE"></span><span id="_CPPv2N18QnnBackend_Error_t50QNN_BACKEND_ERROR_OP_PACKAGE_IF_PROVIDER_NOT_FOUNDE"></span><span class="target" id="QnnBackend_8h_1a3da48ae867bc80fa3e906f3dcc337a6ba9055b070332e1902985233fa8bce7e4f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_BACKEND_ERROR_OP_PACKAGE_IF_PROVIDER_NOT_FOUND</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">4000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">6</span></span><a class="headerlink" href="#_CPPv4N18QnnBackend_Error_t50QNN_BACKEND_ERROR_OP_PACKAGE_IF_PROVIDER_NOT_FOUNDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Could not load interface provider from op package library. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnBackend_Error_t48QNN_BACKEND_ERROR_OP_PACKAGE_REGISTRATION_FAILEDE">
+<span id="_CPPv3N18QnnBackend_Error_t48QNN_BACKEND_ERROR_OP_PACKAGE_REGISTRATION_FAILEDE"></span><span id="_CPPv2N18QnnBackend_Error_t48QNN_BACKEND_ERROR_OP_PACKAGE_REGISTRATION_FAILEDE"></span><span class="target" id="QnnBackend_8h_1a3da48ae867bc80fa3e906f3dcc337a6bac7348c9883cd4cc957dad75e0c4529cf"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_BACKEND_ERROR_OP_PACKAGE_REGISTRATION_FAILED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">4000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">7</span></span><a class="headerlink" href="#_CPPv4N18QnnBackend_Error_t48QNN_BACKEND_ERROR_OP_PACKAGE_REGISTRATION_FAILEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Failed to register op package. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnBackend_Error_t48QNN_BACKEND_ERROR_OP_PACKAGE_UNSUPPORTED_VERSIONE">
+<span id="_CPPv3N18QnnBackend_Error_t48QNN_BACKEND_ERROR_OP_PACKAGE_UNSUPPORTED_VERSIONE"></span><span id="_CPPv2N18QnnBackend_Error_t48QNN_BACKEND_ERROR_OP_PACKAGE_UNSUPPORTED_VERSIONE"></span><span class="target" id="QnnBackend_8h_1a3da48ae867bc80fa3e906f3dcc337a6bab5f1693d49121ce7904361179f583a1e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_BACKEND_ERROR_OP_PACKAGE_UNSUPPORTED_VERSION</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">4000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">8</span></span><a class="headerlink" href="#_CPPv4N18QnnBackend_Error_t48QNN_BACKEND_ERROR_OP_PACKAGE_UNSUPPORTED_VERSIONE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Backend does not support the op config’s interface version. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnBackend_Error_t38QNN_BACKEND_ERROR_OP_PACKAGE_DUPLICATEE">
+<span id="_CPPv3N18QnnBackend_Error_t38QNN_BACKEND_ERROR_OP_PACKAGE_DUPLICATEE"></span><span id="_CPPv2N18QnnBackend_Error_t38QNN_BACKEND_ERROR_OP_PACKAGE_DUPLICATEE"></span><span class="target" id="QnnBackend_8h_1a3da48ae867bc80fa3e906f3dcc337a6ba4ab3b14e8af1d52040e65174e74ab9b5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_BACKEND_ERROR_OP_PACKAGE_DUPLICATE</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">4000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">9</span></span><a class="headerlink" href="#_CPPv4N18QnnBackend_Error_t38QNN_BACKEND_ERROR_OP_PACKAGE_DUPLICATEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An Op with the same package name and op name was already registered. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnBackend_Error_t37QNN_BACKEND_ERROR_INCONSISTENT_CONFIGE">
+<span id="_CPPv3N18QnnBackend_Error_t37QNN_BACKEND_ERROR_INCONSISTENT_CONFIGE"></span><span id="_CPPv2N18QnnBackend_Error_t37QNN_BACKEND_ERROR_INCONSISTENT_CONFIGE"></span><span class="target" id="QnnBackend_8h_1a3da48ae867bc80fa3e906f3dcc337a6ba43b0b003f067335e646a5d5a49b4753f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_BACKEND_ERROR_INCONSISTENT_CONFIG</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">4000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">10</span></span><a class="headerlink" href="#_CPPv4N18QnnBackend_Error_t37QNN_BACKEND_ERROR_INCONSISTENT_CONFIGE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Inconsistent backend configuration. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnBackend_Error_t32QNN_BACKEND_ERROR_INVALID_HANDLEE">
+<span id="_CPPv3N18QnnBackend_Error_t32QNN_BACKEND_ERROR_INVALID_HANDLEE"></span><span id="_CPPv2N18QnnBackend_Error_t32QNN_BACKEND_ERROR_INVALID_HANDLEE"></span><span class="target" id="QnnBackend_8h_1a3da48ae867bc80fa3e906f3dcc337a6ba751faa4e0117c4f6d7494f8d09d1ff30"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_BACKEND_ERROR_INVALID_HANDLE</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">4000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">11</span></span><a class="headerlink" href="#_CPPv4N18QnnBackend_Error_t32QNN_BACKEND_ERROR_INVALID_HANDLEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Invalid backend handle. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnBackend_Error_t32QNN_BACKEND_ERROR_INVALID_CONFIGE">
+<span id="_CPPv3N18QnnBackend_Error_t32QNN_BACKEND_ERROR_INVALID_CONFIGE"></span><span id="_CPPv2N18QnnBackend_Error_t32QNN_BACKEND_ERROR_INVALID_CONFIGE"></span><span class="target" id="QnnBackend_8h_1a3da48ae867bc80fa3e906f3dcc337a6bab85bc6342b7e4a9316e9c96f98b9fdd9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_BACKEND_ERROR_INVALID_CONFIG</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">4000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">12</span></span><a class="headerlink" href="#_CPPv4N18QnnBackend_Error_t32QNN_BACKEND_ERROR_INVALID_CONFIGE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Invalid config. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnBackend_Error_t21QNN_BACKEND_MAX_ERRORE">
+<span id="_CPPv3N18QnnBackend_Error_t21QNN_BACKEND_MAX_ERRORE"></span><span id="_CPPv2N18QnnBackend_Error_t21QNN_BACKEND_MAX_ERRORE"></span><span class="target" id="QnnBackend_8h_1a3da48ae867bc80fa3e906f3dcc337a6ba5e73553232bf711a3349fd706b58bd3c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_BACKEND_MAX_ERROR</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">4999</span></span><a class="headerlink" href="#_CPPv4N18QnnBackend_Error_t21QNN_BACKEND_MAX_ERRORE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnBackend_Error_t27QNN_BACKEND_ERROR_UNDEFINEDE">
+<span id="_CPPv3N18QnnBackend_Error_t27QNN_BACKEND_ERROR_UNDEFINEDE"></span><span id="_CPPv2N18QnnBackend_Error_t27QNN_BACKEND_ERROR_UNDEFINEDE"></span><span class="target" id="QnnBackend_8h_1a3da48ae867bc80fa3e906f3dcc337a6ba8251be5748d8ce1d936c3ee9a5711d43"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_BACKEND_ERROR_UNDEFINED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0x7FFFFFFF</span></span><a class="headerlink" href="#_CPPv4N18QnnBackend_Error_t27QNN_BACKEND_ERROR_UNDEFINEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv425QnnBackend_ConfigOption_t">
+<span id="_CPPv325QnnBackend_ConfigOption_t"></span><span id="_CPPv225QnnBackend_ConfigOption_t"></span><span class="target" id="QnnBackend_8h_1a185a54f92b3ecaf2cc8fa546e4d1d02b"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnBackend_ConfigOption_t</span></span></span><a class="headerlink" href="#_CPPv425QnnBackend_ConfigOption_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This enum defines backend config options. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnBackend_ConfigOption_t32QNN_BACKEND_CONFIG_OPTION_CUSTOME">
+<span id="_CPPv3N25QnnBackend_ConfigOption_t32QNN_BACKEND_CONFIG_OPTION_CUSTOME"></span><span id="_CPPv2N25QnnBackend_ConfigOption_t32QNN_BACKEND_CONFIG_OPTION_CUSTOME"></span><span class="target" id="QnnBackend_8h_1a185a54f92b3ecaf2cc8fa546e4d1d02bab82685178dd6e1c130ad9d7ab3de0fc1"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_BACKEND_CONFIG_OPTION_CUSTOM</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N25QnnBackend_ConfigOption_t32QNN_BACKEND_CONFIG_OPTION_CUSTOME" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets backend custom options via QnnBackend_CustomConfig_t. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnBackend_ConfigOption_t41QNN_BACKEND_CONFIG_OPTION_ERROR_REPORTINGE">
+<span id="_CPPv3N25QnnBackend_ConfigOption_t41QNN_BACKEND_CONFIG_OPTION_ERROR_REPORTINGE"></span><span id="_CPPv2N25QnnBackend_ConfigOption_t41QNN_BACKEND_CONFIG_OPTION_ERROR_REPORTINGE"></span><span class="target" id="QnnBackend_8h_1a185a54f92b3ecaf2cc8fa546e4d1d02baf81478d92ccf5eefd36ad0638e6c1b04"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_BACKEND_CONFIG_OPTION_ERROR_REPORTING</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N25QnnBackend_ConfigOption_t41QNN_BACKEND_CONFIG_OPTION_ERROR_REPORTINGE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets error reporting level. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnBackend_ConfigOption_t34QNN_BACKEND_CONFIG_OPTION_PLATFORME">
+<span id="_CPPv3N25QnnBackend_ConfigOption_t34QNN_BACKEND_CONFIG_OPTION_PLATFORME"></span><span id="_CPPv2N25QnnBackend_ConfigOption_t34QNN_BACKEND_CONFIG_OPTION_PLATFORME"></span><span class="target" id="QnnBackend_8h_1a185a54f92b3ecaf2cc8fa546e4d1d02baafa3b325ead01b2582624a7a11db0320"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_BACKEND_CONFIG_OPTION_PLATFORM</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">2</span></span><a class="headerlink" href="#_CPPv4N25QnnBackend_ConfigOption_t34QNN_BACKEND_CONFIG_OPTION_PLATFORME" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Key-value pair of platform options. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnBackend_ConfigOption_t35QNN_BACKEND_CONFIG_OPTION_UNDEFINEDE">
+<span id="_CPPv3N25QnnBackend_ConfigOption_t35QNN_BACKEND_CONFIG_OPTION_UNDEFINEDE"></span><span id="_CPPv2N25QnnBackend_ConfigOption_t35QNN_BACKEND_CONFIG_OPTION_UNDEFINEDE"></span><span class="target" id="QnnBackend_8h_1a185a54f92b3ecaf2cc8fa546e4d1d02bacc96500f58dad68282d5b79fe2f2ee5c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_BACKEND_CONFIG_OPTION_UNDEFINED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0x7FFFFFFF</span></span><a class="headerlink" href="#_CPPv4N25QnnBackend_ConfigOption_t35QNN_BACKEND_CONFIG_OPTION_UNDEFINEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv417QnnBackend_create15Qnn_LogHandle_tPPK19QnnBackend_Config_tP19Qnn_BackendHandle_t">
+<span id="_CPPv317QnnBackend_create15Qnn_LogHandle_tPPK19QnnBackend_Config_tP19Qnn_BackendHandle_t"></span><span id="_CPPv217QnnBackend_create15Qnn_LogHandle_tPPK19QnnBackend_Config_tP19Qnn_BackendHandle_t"></span><span id="QnnBackend_create__Qnn_LogHandle_t.QnnBackend_Config_tCPP.Qnn_BackendHandle_tP"></span><span class="target" id="QnnBackend_8h_1a495313092040347c75894f8f2db97f97"></span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnBackend_create</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_QnnCommon_8h_1a482a908598834090f74f7eb0103876ea.html#_CPPv415Qnn_LogHandle_t" title="Qnn_LogHandle_t"><span class="n"><span class="pre">Qnn_LogHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">logger</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="structQnnBackend__Config__t.html#_CPPv419QnnBackend_Config_t" title="QnnBackend_Config_t"><span class="n"><span class="pre">QnnBackend_Config_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">config</span></span>, <a class="reference internal" href="typedef_QnnCommon_8h_1aa406469e77ca2c62a1892093d796ce6a.html#_CPPv419Qnn_BackendHandle_t" title="Qnn_BackendHandle_t"><span class="n"><span class="pre">Qnn_BackendHandle_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">backend</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417QnnBackend_create15Qnn_LogHandle_tPPK19QnnBackend_Config_tP19Qnn_BackendHandle_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Initialize a backend library and create a backend handle. Function is re-entrant and thread-safe. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>logger</strong> – <strong>[in]</strong> A handle to the logger, use NULL handle to disable logging. QnnBackend doesn’t manage the lifecycle of logger and must be freed by using <a class="reference internal" href="file_include_QNN_QnnLog.h.html#QnnLog_8h_1aacd47e923c528453f17e46280c96c53e"><span class="std std-ref">QnnLog_free()</span></a>.</p></li>
+<li><p><strong>config</strong> – <strong>[in]</strong> Pointer to a NULL terminated array of config option pointers. NULL is allowed and indicates no config options are provided. All config options have default value, in case not provided. If same config option type is provided multiple times, the last option value will be used.</p></li>
+<li><p><strong>backend</strong> – <strong>[out]</strong> A handle to the created backend.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code:<ul class="simple">
+<li><p>QNN_SUCCESS: No error encountered</p></li>
+<li><p>QNN_BACKEND_ERROR_UNSUPPORTED_PLATFORM: Backend attempted to be created on unsupported platform</p></li>
+<li><p>QNN_BACKEND_ERROR_INCONSISTENT_CONFIG: One or more backend configurations are inconsistent between multiple create calls. Refer to backend headers for which configuration options must be consistent.</p></li>
+<li><p>QNN_BACKEND_ERROR_CANNOT_INITIALIZE: backend failed to initialize</p></li>
+<li><p>QNN_BACKEND_ERROR_MEM_ALLOC: error related to memory allocation</p></li>
+<li><p>QNN_BACKEND_ERROR_INVALID_HANDLE: <em>logger</em> is not a valid handle</p></li>
+<li><p>QNN_BACKEND_ERROR_INVALID_CONFIG: one or more config values is invalid</p></li>
+<li><p>QNN_BACKEND_ERROR_NOT_SUPPORTED: an optional feature is not supported</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use corresponding API through <a class="reference internal" href="file_include_QNN_QnnInterface.h.html#structQnnInterface__t"><span class="std std-ref">QnnInterface_t</span></a>. </p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv420QnnBackend_setConfig19Qnn_BackendHandle_tPPK19QnnBackend_Config_t">
+<span id="_CPPv320QnnBackend_setConfig19Qnn_BackendHandle_tPPK19QnnBackend_Config_t"></span><span id="_CPPv220QnnBackend_setConfig19Qnn_BackendHandle_tPPK19QnnBackend_Config_t"></span><span id="QnnBackend_setConfig__Qnn_BackendHandle_t.QnnBackend_Config_tCPP"></span><span class="target" id="QnnBackend_8h_1a4773ac68692f18a3ab22249eeba610cd"></span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnBackend_setConfig</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_QnnCommon_8h_1aa406469e77ca2c62a1892093d796ce6a.html#_CPPv419Qnn_BackendHandle_t" title="Qnn_BackendHandle_t"><span class="n"><span class="pre">Qnn_BackendHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">backend</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="structQnnBackend__Config__t.html#_CPPv419QnnBackend_Config_t" title="QnnBackend_Config_t"><span class="n"><span class="pre">QnnBackend_Config_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">config</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420QnnBackend_setConfig19Qnn_BackendHandle_tPPK19QnnBackend_Config_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A function to set/modify configuration options on an already generated backend. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>backend</strong> – <strong>[in]</strong> A backend handle.</p></li>
+<li><p><strong>config</strong> – <strong>[in]</strong> Pointer to a NULL terminated array of config option pointers. NULL is allowed and indicates no config options are provided. All config options have default value, in case not provided. If same config option type is provided multiple times, the last option value will be used.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code:<ul class="simple">
+<li><p>QNN_SUCCESS: no error is encountered</p></li>
+<li><p>QNN_BACKEND_ERROR_INVALID_HANDLE: <em>backend</em> is not a valid handle</p></li>
+<li><p>QNN_BACKEND_ERROR_INVALID_CONFIG: at least one config option is invalid</p></li>
+<li><p>QNN_BACKEND_ERROR_NOT_SUPPORTED: an optional feature is not supported</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use corresponding API through <a class="reference internal" href="file_include_QNN_QnnInterface.h.html#structQnnInterface__t"><span class="std std-ref">QnnInterface_t</span></a>. </p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv424QnnBackend_getApiVersionP16Qnn_ApiVersion_t">
+<span id="_CPPv324QnnBackend_getApiVersionP16Qnn_ApiVersion_t"></span><span id="_CPPv224QnnBackend_getApiVersionP16Qnn_ApiVersion_t"></span><span id="QnnBackend_getApiVersion__Qnn_ApiVersion_tP"></span><span class="target" id="QnnBackend_8h_1aa2317e971e9ac56b21cf482552e4bd02"></span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnBackend_getApiVersion</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structQnn__ApiVersion__t.html#_CPPv416Qnn_ApiVersion_t" title="Qnn_ApiVersion_t"><span class="n"><span class="pre">Qnn_ApiVersion_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">pVersion</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424QnnBackend_getApiVersionP16Qnn_ApiVersion_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the QNN API version. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pVersion</strong> – <strong>[out]</strong> Pointer to version object.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code:<ul class="simple">
+<li><p>QNN_SUCCESS: No error encountered</p></li>
+<li><p>QNN_BACKEND_ERROR_INVALID_ARGUMENT: if <em>pVersion</em> was NULL</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Safe to call any time, backend does not have to be created.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use corresponding API through <a class="reference internal" href="file_include_QNN_QnnInterface.h.html#structQnnInterface__t"><span class="std std-ref">QnnInterface_t</span></a>. </p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421QnnBackend_getBuildIdPPKc">
+<span id="_CPPv321QnnBackend_getBuildIdPPKc"></span><span id="_CPPv221QnnBackend_getBuildIdPPKc"></span><span id="QnnBackend_getBuildId__cCPP"></span><span class="target" id="QnnBackend_8h_1a463608b6e9568457becaeeb59e115534"></span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnBackend_getBuildId</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">id</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421QnnBackend_getBuildIdPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get build id for backend library. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> – <strong>[out]</strong> Pointer to string containing the build id.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code:<ul class="simple">
+<li><p>QNN_SUCCESS: No error encountered</p></li>
+<li><p>QNN_BACKEND_ERROR_NOT_SUPPORTED: No build ID is available</p></li>
+<li><p>QNN_BACKEND_ERROR_INVALID_ARGUMENT: if <em>id</em> is NULL</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Safe to call any time, backend does not have to be created.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use corresponding API through <a class="reference internal" href="file_include_QNN_QnnInterface.h.html#structQnnInterface__t"><span class="std std-ref">QnnInterface_t</span></a>. </p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv428QnnBackend_registerOpPackage19Qnn_BackendHandle_tPKcPKcPKc">
+<span id="_CPPv328QnnBackend_registerOpPackage19Qnn_BackendHandle_tPKcPKcPKc"></span><span id="_CPPv228QnnBackend_registerOpPackage19Qnn_BackendHandle_tPKcPKcPKc"></span><span id="QnnBackend_registerOpPackage__Qnn_BackendHandle_t.cCP.cCP.cCP"></span><span class="target" id="QnnBackend_8h_1a95dd59ad0b59872f3649f7c363c23441"></span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnBackend_registerOpPackage</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_QnnCommon_8h_1aa406469e77ca2c62a1892093d796ce6a.html#_CPPv419Qnn_BackendHandle_t" title="Qnn_BackendHandle_t"><span class="n"><span class="pre">Qnn_BackendHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">backend</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">packagePath</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">interfaceProvider</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">target</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv428QnnBackend_registerOpPackage19Qnn_BackendHandle_tPKcPKcPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Register an operation package with the backend handle. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>backend</strong> – <strong>[in]</strong> A backend handle.</p></li>
+<li><p><strong>packagePath</strong> – <strong>[in]</strong> Path on disk to the op package library to load.</p></li>
+<li><p><strong>interfaceProvider</strong> – <strong>[in]</strong> The name of a function in the op package library which satisfies the QnnOpPackage_InterfaceProvider_t interface. The backend will use this function to retrieve the op package’s interface.</p></li>
+<li><p><strong>target</strong> – <strong>[in]</strong> An optional parameter specifying the target platform on which the backend must register the op package. Required in scenarios where an op package is to be loaded on a processing unit that is different from the target on which the backend runs. Ex: loading a DSP op package on ARM for optional online context caching. Refer to additional documentation for a list of permissible target names.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code:<ul class="simple">
+<li><p>QNN_SUCCESS: No error encountered</p></li>
+<li><p>QNN_BACKEND_ERROR_INVALID_ARGUMENT: if <em>packagePath</em> or <em>interfaceProvider</em> is NULL</p></li>
+<li><p>QNN_BACKEND_ERROR_OP_PACKAGE_NOT_FOUND: Could not open <em>packagePath</em></p></li>
+<li><p>QNN_BACKEND_ERROR_OP_PACKAGE_IF_PROVIDER_NOT_FOUND: Could not find <em>interfaceProvider</em> symbol in package library</p></li>
+<li><p>QNN_BACKEND_ERROR_OP_PACKAGE_REGISTRATION_FAILED: Op package registration failed</p></li>
+<li><p>QNN_BACKEND_ERROR_OP_PACKAGE_UNSUPPORTED_VERSION: Op package has interface version not supported by this backend</p></li>
+<li><p>QNN_BACKEND_ERROR_NOT_SUPPORTED: Op package registration is not supported.</p></li>
+<li><p>QNN_BACKEND_ERROR_INVALID_HANDLE: <em>backend</em> is not a valid handle</p></li>
+<li><p>QNN_BACKEND_ERROR_OP_PACKAGE_DUPLICATE: OpPackageName+OpName must be unique. Op package content information can be be obtained with QnnOpPackage interface. Indicates that an Op with the same package name and op name was already registered.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use corresponding API through <a class="reference internal" href="file_include_QNN_QnnInterface.h.html#structQnnInterface__t"><span class="std std-ref">QnnInterface_t</span></a>. </p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv433QnnBackend_getSupportedOperations19Qnn_BackendHandle_tP8uint32_tPPK26QnnBackend_OperationName_t">
+<span id="_CPPv333QnnBackend_getSupportedOperations19Qnn_BackendHandle_tP8uint32_tPPK26QnnBackend_OperationName_t"></span><span id="_CPPv233QnnBackend_getSupportedOperations19Qnn_BackendHandle_tP8uint32_tPPK26QnnBackend_OperationName_t"></span><span id="QnnBackend_getSupportedOperations__Qnn_BackendHandle_t.uint32_tP.QnnBackend_OperationName_tCPP"></span><span class="target" id="QnnBackend_8h_1aa9177d25c957817d7c64b799bdcce71d"></span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnBackend_getSupportedOperations</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_QnnCommon_8h_1aa406469e77ca2c62a1892093d796ce6a.html#_CPPv419Qnn_BackendHandle_t" title="Qnn_BackendHandle_t"><span class="n"><span class="pre">Qnn_BackendHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">backend</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">numOperations</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="structQnnBackend__OperationName__t.html#_CPPv426QnnBackend_OperationName_t" title="QnnBackend_OperationName_t"><span class="n"><span class="pre">QnnBackend_OperationName_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">operations</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv433QnnBackend_getSupportedOperations19Qnn_BackendHandle_tP8uint32_tPPK26QnnBackend_OperationName_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the supported operations registered to a backend handle including built-in ops. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>backend</strong> – <strong>[in]</strong> A backend handle. Can be NULL to obtain the built-in op package.</p></li>
+<li><p><strong>numOperations</strong> – <strong>[out]</strong> Number of supported operations.</p></li>
+<li><p><strong>operations</strong> – <strong>[out]</strong> Array of operation names. Memory is backend owned and de-allocated during QnnBackend_free.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code:<ul class="simple">
+<li><p>QNN_SUCCESS: No error encountered</p></li>
+<li><p>QNN_BACKEND_ERROR_INVALID_ARGUMENT: if <em>numOperations</em> or <em>operations</em> is NULL</p></li>
+<li><p>QNN_BACKEND_ERROR_INVALID_HANDLE: <em>backend</em> is not a valid handle</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use corresponding API through <a class="reference internal" href="file_include_QNN_QnnInterface.h.html#structQnnInterface__t"><span class="std std-ref">QnnInterface_t</span></a>. </p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv427QnnBackend_validateOpConfig19Qnn_BackendHandle_t14Qnn_OpConfig_t">
+<span id="_CPPv327QnnBackend_validateOpConfig19Qnn_BackendHandle_t14Qnn_OpConfig_t"></span><span id="_CPPv227QnnBackend_validateOpConfig19Qnn_BackendHandle_t14Qnn_OpConfig_t"></span><span id="QnnBackend_validateOpConfig__Qnn_BackendHandle_t.Qnn_OpConfig_t"></span><span class="target" id="QnnBackend_8h_1aaa4fdee2bfe889e2f825909ed1f8dd39"></span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnBackend_validateOpConfig</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_QnnCommon_8h_1aa406469e77ca2c62a1892093d796ce6a.html#_CPPv419Qnn_BackendHandle_t" title="Qnn_BackendHandle_t"><span class="n"><span class="pre">Qnn_BackendHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">backend</span></span>, <a class="reference internal" href="structQnn__OpConfig__t.html#_CPPv414Qnn_OpConfig_t" title="Qnn_OpConfig_t"><span class="n"><span class="pre">Qnn_OpConfig_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">opConfig</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv427QnnBackend_validateOpConfig19Qnn_BackendHandle_t14Qnn_OpConfig_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A method to validate op config with an appropriate op package This is a wrapper API around the actual OpPackage interface method that performs op validation. Backend may pick an appropriate op package among ones that are registered with it for validation based on the attributes of the op configuration. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>backend</strong> – <strong>[in]</strong> A backend handle.</p></li>
+<li><p><strong>opConfig</strong> – <strong>[in]</strong> Fully qualified struct containing the configuration of the operation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code<ul class="simple">
+<li><p>QNN_SUCCESS if validation is successful</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_VALIDATION_FAILURE: op config validation failed</p></li>
+<li><p>QNN_BACKEND_ERROR_NOT_SUPPORTED: Validation API not supported</p></li>
+<li><p>QNN_BACKEND_ERROR_OP_PACKAGE_NOT_FOUND: No op package with matching op config attributes found.</p></li>
+<li><p>QNN_BACKEND_ERROR_INVALID_HANDLE: <em>backend</em> is not a valid handle</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>inputTensors</em> and <em>outputTensors</em> inside opConfig must be fully qualified for complete validation. However, their IDs (<em>id</em>) and names (<em>name</em>) are ignored during validation.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use corresponding API through <a class="reference internal" href="file_include_QNN_QnnInterface.h.html#structQnnInterface__t"><span class="std std-ref">QnnInterface_t</span></a>. </p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv415QnnBackend_free19Qnn_BackendHandle_t">
+<span id="_CPPv315QnnBackend_free19Qnn_BackendHandle_t"></span><span id="_CPPv215QnnBackend_free19Qnn_BackendHandle_t"></span><span id="QnnBackend_free__Qnn_BackendHandle_t"></span><span class="target" id="QnnBackend_8h_1ac50a3953174657f1bc4affb2be9cc3a5"></span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnBackend_free</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_QnnCommon_8h_1aa406469e77ca2c62a1892093d796ce6a.html#_CPPv419Qnn_BackendHandle_t" title="Qnn_BackendHandle_t"><span class="n"><span class="pre">Qnn_BackendHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">backend</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415QnnBackend_free19Qnn_BackendHandle_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Free all resources associated with a backend handle. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>backend</strong> – <strong>[in]</strong> handle to be freed.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code:<ul class="simple">
+<li><p>QNN_SUCCESS: No error encountered.</p></li>
+<li><p>QNN_BACKEND_ERROR_MEM_ALLOC: error related to memory deallocation</p></li>
+<li><p>QNN_BACKEND_ERROR_TERMINATE_FAILED: indicates failure to free resources or failure to invalidate handles and pointers allocated by the library</p></li>
+<li><p>QNN_BACKEND_ERROR_INVALID_HANDLE: <em>backend</em> is not a valid handle</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use corresponding API through <a class="reference internal" href="file_include_QNN_QnnInterface.h.html#structQnnInterface__t"><span class="std std-ref">QnnInterface_t</span></a>. </p>
+</div>
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv419QnnBackend_Config_t">
+<span id="_CPPv319QnnBackend_Config_t"></span><span id="_CPPv219QnnBackend_Config_t"></span><span id="QnnBackend_Config_t"></span><span class="target" id="structQnnBackend__Config__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnBackend_Config_t</span></span></span><a class="headerlink" href="#_CPPv419QnnBackend_Config_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnBackend.h&gt;</em></div>
+<p>This struct provides backend configuration. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19QnnBackend_Config_t6optionE">
+<span id="_CPPv3N19QnnBackend_Config_t6optionE"></span><span id="_CPPv2N19QnnBackend_Config_t6optionE"></span><span id="QnnBackend_Config_t::option__QnnBackend_ConfigOption_t"></span><span class="target" id="structQnnBackend__Config__t_1a08d4bea5e9547124b96849728cd773af"></span><a class="reference internal" href="enum_QnnBackend_8h_1a185a54f92b3ecaf2cc8fa546e4d1d02b.html#_CPPv425QnnBackend_ConfigOption_t" title="QnnBackend_ConfigOption_t"><span class="n"><span class="pre">QnnBackend_ConfigOption_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">option</span></span></span><a class="headerlink" href="#_CPPv4N19QnnBackend_Config_t6optionE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<dl class="cpp union">
+<dt class="sig sig-object cpp" id="_CPPv4N19QnnBackend_Config_t7unnamedE">
+<span id="_CPPv3N19QnnBackend_Config_t7unnamedE"></span><span id="_CPPv2N19QnnBackend_Config_t7unnamedE"></span><span class="target" id="unionQnnBackend__Config__t_1_1unnamed"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">unnamed</span></span></span><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnBackend.h&gt;</em></div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19QnnBackend_Config_t7unnamed12customConfigE">
+<span id="_CPPv3N19QnnBackend_Config_t7unnamed12customConfigE"></span><span id="_CPPv2N19QnnBackend_Config_t7unnamed12customConfigE"></span><span id="QnnBackend_Config_t::unnamed::customConfig__QnnBackend_CustomConfig_t"></span><span class="target" id="unionQnnBackend__Config__t_1_1unnamed_1a977d0cd57d233168c0f4b69559e154db"></span><a class="reference internal" href="typedef_QnnBackend_8h_1a3dd4cae49ebc75297524d41f793b40ae.html#_CPPv425QnnBackend_CustomConfig_t" title="QnnBackend_CustomConfig_t"><span class="n"><span class="pre">QnnBackend_CustomConfig_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">customConfig</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19QnnBackend_Config_t7unnamed11errorConfigE">
+<span id="_CPPv3N19QnnBackend_Config_t7unnamed11errorConfigE"></span><span id="_CPPv2N19QnnBackend_Config_t7unnamed11errorConfigE"></span><span id="QnnBackend_Config_t::unnamed::errorConfig__Qnn_ErrorReportingConfig_t"></span><span class="target" id="unionQnnBackend__Config__t_1_1unnamed_1a7a2f119766647a0188432ac3fee5d10a"></span><a class="reference internal" href="structQnn__ErrorReportingConfig__t.html#_CPPv426Qnn_ErrorReportingConfig_t" title="Qnn_ErrorReportingConfig_t"><span class="n"><span class="pre">Qnn_ErrorReportingConfig_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">errorConfig</span></span></span><br /></dt>
+<dd><p>Applies error reporting configuration across backend. All QNN contexts share this common error configuration for APIs that are independent of a context. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19QnnBackend_Config_t7unnamed14platformOptionE">
+<span id="_CPPv3N19QnnBackend_Config_t7unnamed14platformOptionE"></span><span id="_CPPv2N19QnnBackend_Config_t7unnamed14platformOptionE"></span><span id="QnnBackend_Config_t::unnamed::platformOption__cCP"></span><span class="target" id="unionQnnBackend__Config__t_1_1unnamed_1a7d60e7d5ba26fde98b7ca16e8c41b580"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">platformOption</span></span></span><br /></dt>
+<dd><p>Null-terminated platform option key-value pair. Multiple platform options can be specified. Max length is 1024. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv426QnnBackend_OperationName_t">
+<span id="_CPPv326QnnBackend_OperationName_t"></span><span id="_CPPv226QnnBackend_OperationName_t"></span><span id="QnnBackend_OperationName_t"></span><span class="target" id="structQnnBackend__OperationName__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnBackend_OperationName_t</span></span></span><a class="headerlink" href="#_CPPv426QnnBackend_OperationName_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnBackend.h&gt;</em></div>
+<p>Struct which encapsulates the fully-qualified name of an operation. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26QnnBackend_OperationName_t11packageNameE">
+<span id="_CPPv3N26QnnBackend_OperationName_t11packageNameE"></span><span id="_CPPv2N26QnnBackend_OperationName_t11packageNameE"></span><span id="QnnBackend_OperationName_t::packageName__cCP"></span><span class="target" id="structQnnBackend__OperationName__t_1a310812557e8269ae4e4d24da8f48c879"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">packageName</span></span></span><a class="headerlink" href="#_CPPv4N26QnnBackend_OperationName_t11packageNameE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The op package to which the operation belongs. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26QnnBackend_OperationName_t4nameE">
+<span id="_CPPv3N26QnnBackend_OperationName_t4nameE"></span><span id="_CPPv2N26QnnBackend_OperationName_t4nameE"></span><span id="QnnBackend_OperationName_t::name__cCP"></span><span class="target" id="structQnnBackend__OperationName__t_1a1d09561094ebf883f9d3df0105e87494"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">name</span></span></span><a class="headerlink" href="#_CPPv4N26QnnBackend_OperationName_t4nameE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The type name of the operation. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26QnnBackend_OperationName_t6targetE">
+<span id="_CPPv3N26QnnBackend_OperationName_t6targetE"></span><span id="_CPPv2N26QnnBackend_OperationName_t6targetE"></span><span id="QnnBackend_OperationName_t::target__cCP"></span><span class="target" id="structQnnBackend__OperationName__t_1a95ce3a6488843c30719b83f20eda2978"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">target</span></span></span><a class="headerlink" href="#_CPPv4N26QnnBackend_OperationName_t6targetE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The intended target platform for the combination of domain and operation name. Target may be unused (NULL) by some backends. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

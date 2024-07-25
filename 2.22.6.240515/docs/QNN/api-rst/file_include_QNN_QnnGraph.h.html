@@ -1,0 +1,1302 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>File QnnGraph.h &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>File QnnGraph.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="file-qnngraph-h">
+<span id="file-include-qnn-qnngraph-h"></span><h1>File QnnGraph.h<a class="headerlink" href="#file-qnngraph-h" title="Permalink to this heading">¶</a></h1>
+<p>↰ <a class="reference internal" href="dir_include_QNN.html#dir-include-qnn"><span class="std std-ref">Parent directory</span></a> (<code class="docutils literal notranslate"><span class="pre">include/QNN</span></code>)</p>
+<p>Graph component API.</p>
+<div class="contents local topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#definition-include-qnn-qnngraph-h" id="id1">Definition (<code class="docutils literal notranslate"><span class="pre">include/QNN/QnnGraph.h</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#detailed-description" id="id2">Detailed Description</a></p></li>
+<li><p><a class="reference internal" href="#includes" id="id3">Includes</a></p></li>
+<li><p><a class="reference internal" href="#included-by" id="id4">Included By</a></p></li>
+<li><p><a class="reference internal" href="#classes" id="id5">Classes</a></p></li>
+<li><p><a class="reference internal" href="#enums" id="id6">Enums</a></p></li>
+<li><p><a class="reference internal" href="#functions" id="id7">Functions</a></p></li>
+<li><p><a class="reference internal" href="#defines" id="id8">Defines</a></p></li>
+<li><p><a class="reference internal" href="#typedefs" id="id9">Typedefs</a></p></li>
+<li><p><a class="reference internal" href="#unions" id="id10">Unions</a></p></li>
+<li><p><a class="reference internal" href="#full-file-listing" id="id11">Full File Listing</a></p></li>
+</ul>
+</div>
+<div class="section" id="definition-include-qnn-qnngraph-h">
+<h2>Definition (<code class="docutils literal notranslate"><span class="pre">include/QNN/QnnGraph.h</span></code>)<a class="headerlink" href="#definition-include-qnn-qnngraph-h" title="Permalink to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="program_listing_file_include_QNN_QnnGraph.h.html">Program Listing for File QnnGraph.h</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="detailed-description">
+<h2>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><p>Requires Backend to be initialized.
+Provides composable graph API. Graph is created inside Context.
+Nodes are added to the graph. Nodes are connected with Tensors.
+Once finalized graph can be executed.</p>
+</div></blockquote>
+</div>
+<div class="section" id="includes">
+<h2>Includes<a class="headerlink" href="#includes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">QnnCommon.h</span></code> (<a class="reference internal" href="file_include_QNN_QnnCommon.h.html#file-include-qnn-qnncommon-h"><span class="std std-ref">File QnnCommon.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QnnTypes.h</span></code> (<a class="reference internal" href="file_include_QNN_QnnTypes.h.html#file-include-qnn-qnntypes-h"><span class="std std-ref">File QnnTypes.h</span></a>)</p></li>
+</ul>
+</div>
+<div class="section" id="included-by">
+<h2>Included By<a class="headerlink" href="#included-by" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="file_include_QNN_CPU_QnnCpuGraph.h.html#file-include-qnn-cpu-qnncpugraph-h"><span class="std std-ref">File QnnCpuGraph.h</span></a></p></li>
+<li><p><a class="reference internal" href="file_include_QNN_CPU_QnnCpuOpPackage.h.html#file-include-qnn-cpu-qnncpuoppackage-h"><span class="std std-ref">File QnnCpuOpPackage.h</span></a></p></li>
+<li><p><a class="reference internal" href="file_include_QNN_DSP_QnnDspGraph.h.html#file-include-qnn-dsp-qnndspgraph-h"><span class="std std-ref">File QnnDspGraph.h</span></a></p></li>
+<li><p><a class="reference internal" href="file_include_QNN_GPU_QnnGpuGraph.h.html#file-include-qnn-gpu-qnngpugraph-h"><span class="std std-ref">File QnnGpuGraph.h</span></a></p></li>
+<li><p><a class="reference internal" href="file_include_QNN_HTA_QnnHtaGraph.h.html#file-include-qnn-hta-qnnhtagraph-h"><span class="std std-ref">File QnnHtaGraph.h</span></a></p></li>
+<li><p><a class="reference internal" href="file_include_QNN_HTP_QnnHtpGraph.h.html#file-include-qnn-htp-qnnhtpgraph-h"><span class="std std-ref">File QnnHtpGraph.h</span></a></p></li>
+<li><p><a class="reference internal" href="file_include_QNN_QnnInterface.h.html#file-include-qnn-qnninterface-h"><span class="std std-ref">File QnnInterface.h</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="structQnn__NotifyStatus__t.html#exhale-struct-structqnn-notifystatus-t"><span class="std std-ref">Struct Qnn_NotifyStatus_t</span></a></p></li>
+<li><p><a class="reference internal" href="structQnnGraph__Config__t.html#exhale-struct-structqnngraph-config-t"><span class="std std-ref">Struct QnnGraph_Config_t</span></a></p></li>
+<li><p><a class="reference internal" href="structQnnGraph__ExecuteEnvironment__t.html#exhale-struct-structqnngraph-executeenvironment-t"><span class="std std-ref">Struct QnnGraph_ExecuteEnvironment_t</span></a></p></li>
+<li><p><a class="reference internal" href="structQnnGraph__Property__t.html#exhale-struct-structqnngraph-property-t"><span class="std std-ref">Struct QnnGraph_Property_t</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="enums">
+<h2>Enums<a class="headerlink" href="#enums" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="enum_QnnGraph_8h_1a10d10676a69dc0af1434d64d28a4ad99.html#exhale-enum-qnngraph-8h-1a10d10676a69dc0af1434d64d28a4ad99"><span class="std std-ref">Enum QnnGraph_ConfigOption_t</span></a></p></li>
+<li><p><a class="reference internal" href="enum_QnnGraph_8h_1a76e7f2af0befb8992f51aef10b7e9416.html#exhale-enum-qnngraph-8h-1a76e7f2af0befb8992f51aef10b7e9416"><span class="std std-ref">Enum QnnGraph_Error_t</span></a></p></li>
+<li><p><a class="reference internal" href="enum_QnnGraph_8h_1a46ff51785c8e204bb9f92cd4d3fe78f4.html#exhale-enum-qnngraph-8h-1a46ff51785c8e204bb9f92cd4d3fe78f4"><span class="std std-ref">Enum QnnGraph_ExecuteEnvironmentOption_t</span></a></p></li>
+<li><p><a class="reference internal" href="enum_QnnGraph_8h_1a0710eb9035ae3b5e9c342b3f1d7c287e.html#exhale-enum-qnngraph-8h-1a0710eb9035ae3b5e9c342b3f1d7c287e"><span class="std std-ref">Enum QnnGraph_ProfilingState_t</span></a></p></li>
+<li><p><a class="reference internal" href="enum_QnnGraph_8h_1ad28a2c2136b6f5224060835776817b74.html#exhale-enum-qnngraph-8h-1ad28a2c2136b6f5224060835776817b74"><span class="std std-ref">Enum QnnGraph_PropertyOption_t</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="function_QnnGraph_8h_1a1c6363e459cb7092356572f5af1c952b.html#exhale-function-qnngraph-8h-1a1c6363e459cb7092356572f5af1c952b"><span class="std std-ref">Function QnnGraph_addNode</span></a></p></li>
+<li><p><a class="reference internal" href="function_QnnGraph_8h_1acef7b5c50463d8b02bb4abd769ae5ea9.html#exhale-function-qnngraph-8h-1acef7b5c50463d8b02bb4abd769ae5ea9"><span class="std std-ref">Function QnnGraph_create</span></a></p></li>
+<li><p><a class="reference internal" href="function_QnnGraph_8h_1a74ab12cd65928bc26f91cb88e339afaa.html#exhale-function-qnngraph-8h-1a74ab12cd65928bc26f91cb88e339afaa"><span class="std std-ref">Function QnnGraph_createSubgraph</span></a></p></li>
+<li><p><a class="reference internal" href="function_QnnGraph_8h_1a3ea05f42a9295f9a74a2e3a0cdd64228.html#exhale-function-qnngraph-8h-1a3ea05f42a9295f9a74a2e3a0cdd64228"><span class="std std-ref">Function QnnGraph_execute</span></a></p></li>
+<li><p><a class="reference internal" href="function_QnnGraph_8h_1a690b74571029dd9f36e38cd902c86784.html#exhale-function-qnngraph-8h-1a690b74571029dd9f36e38cd902c86784"><span class="std std-ref">Function QnnGraph_executeAsync</span></a></p></li>
+<li><p><a class="reference internal" href="function_QnnGraph_8h_1addff55c1a315d0141c821f771d622d56.html#exhale-function-qnngraph-8h-1addff55c1a315d0141c821f771d622d56"><span class="std std-ref">Function QnnGraph_finalize</span></a></p></li>
+<li><p><a class="reference internal" href="function_QnnGraph_8h_1a8c78a4a56993a243ec4f113131fb90ca.html#exhale-function-qnngraph-8h-1a8c78a4a56993a243ec4f113131fb90ca"><span class="std std-ref">Function QnnGraph_getProperty</span></a></p></li>
+<li><p><a class="reference internal" href="function_QnnGraph_8h_1aeb168f230060f3452c18f023d0bbbc88.html#exhale-function-qnngraph-8h-1aeb168f230060f3452c18f023d0bbbc88"><span class="std std-ref">Function QnnGraph_prepareExecutionEnvironment</span></a></p></li>
+<li><p><a class="reference internal" href="function_QnnGraph_8h_1a7f6a60d5c1e9454a489729b779caba26.html#exhale-function-qnngraph-8h-1a7f6a60d5c1e9454a489729b779caba26"><span class="std std-ref">Function QnnGraph_releaseExecutionEnvironment</span></a></p></li>
+<li><p><a class="reference internal" href="function_QnnGraph_8h_1a126bc4d0a25a5d47c10c44f95e13ba95.html#exhale-function-qnngraph-8h-1a126bc4d0a25a5d47c10c44f95e13ba95"><span class="std std-ref">Function QnnGraph_retrieve</span></a></p></li>
+<li><p><a class="reference internal" href="function_QnnGraph_8h_1ac0ba7ace966622bc3967a29f334b157e.html#exhale-function-qnngraph-8h-1ac0ba7ace966622bc3967a29f334b157e"><span class="std std-ref">Function QnnGraph_setConfig</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="defines">
+<h2>Defines<a class="headerlink" href="#defines" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="define_QnnGraph_8h_1a8f465ead8da40e661ec7cb738dc138f7.html#exhale-define-qnngraph-8h-1a8f465ead8da40e661ec7cb738dc138f7"><span class="std std-ref">Define QNN_GRAPH_CONFIG_INIT</span></a></p></li>
+<li><p><a class="reference internal" href="define_QnnGraph_8h_1a1c0b19bba25b1559d4c001ee95832b65.html#exhale-define-qnngraph-8h-1a1c0b19bba25b1559d4c001ee95832b65"><span class="std std-ref">Define QNN_GRAPH_PROPERTY_INIT</span></a></p></li>
+<li><p><a class="reference internal" href="define_QnnGraph_8h_1a120741337052924e8d72c484ed96d661.html#exhale-define-qnngraph-8h-1a120741337052924e8d72c484ed96d661"><span class="std std-ref">Define QNN_NOTIFY_STATUS_INIT</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="typedefs">
+<h2>Typedefs<a class="headerlink" href="#typedefs" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="typedef_QnnGraph_8h_1a7962dbaaab857587b6b0b15a9d3b87e0.html#exhale-typedef-qnngraph-8h-1a7962dbaaab857587b6b0b15a9d3b87e0"><span class="std std-ref">Typedef Qnn_NotifyFn_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_QnnGraph_8h_1a23c0bcadbde72162bbeba965c6e7e443.html#exhale-typedef-qnngraph-8h-1a23c0bcadbde72162bbeba965c6e7e443"><span class="std std-ref">Typedef QnnGraph_CustomConfig_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_QnnGraph_8h_1ad89051fe9ae140d8426ac9a8a9682799.html#exhale-typedef-qnngraph-8h-1ad89051fe9ae140d8426ac9a8a9682799"><span class="std std-ref">Typedef QnnGraph_CustomProperty_t</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="unions">
+<h2>Unions<a class="headerlink" href="#unions" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="unionQnnGraph__Config__t_1_1unnamed.html#exhale-union-unionqnngraph-config-t-1-1unnamed"><span class="std std-ref">Union QnnGraph_Config_t::unnamed</span></a></p></li>
+<li><p><a class="reference internal" href="unionQnnGraph__ExecuteEnvironment__t_1_1unnamed.html#exhale-union-unionqnngraph-executeenvironment-t-1-1unnamed"><span class="std std-ref">Union QnnGraph_ExecuteEnvironment_t::unnamed</span></a></p></li>
+<li><p><a class="reference internal" href="unionQnnGraph__Property__t_1_1unnamed.html#exhale-union-unionqnngraph-property-t-1-1unnamed"><span class="std std-ref">Union QnnGraph_Property_t::unnamed</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="full-file-listing">
+<h2>Full File Listing<a class="headerlink" href="#full-file-listing" title="Permalink to this heading">¶</a></h2>
+<p>Graph component API. </p>
+<p><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="n">Requires</span><span class="w"> </span><span class="n">Backend</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">initialized</span><span class="p">.</span>
+<span class="w">    </span><span class="n">Provides</span><span class="w"> </span><span class="n">composable</span><span class="w"> </span><span class="n">graph</span><span class="w"> </span><span class="n">API</span><span class="p">.</span><span class="w"> </span><span class="n">Graph</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">created</span><span class="w"> </span><span class="n">inside</span><span class="w"> </span><span class="n">Context</span><span class="p">.</span>
+<span class="w">    </span><span class="n">Nodes</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">added</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">graph</span><span class="p">.</span><span class="w"> </span><span class="n">Nodes</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">connected</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">Tensors</span><span class="p">.</span>
+<span class="w">    </span><span class="n">Once</span><span class="w"> </span><span class="n">finalized</span><span class="w"> </span><span class="n">graph</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">executed</span><span class="p">.</span>
+</pre></div>
+</div>
+ </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_GRAPH_CONFIG_INIT">
+<span class="target" id="QnnGraph_8h_1a8f465ead8da40e661ec7cb738dc138f7"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_CONFIG_INIT</span></span></span> &#160; <span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span>
+&#160;&#160;&#160; <a class="reference internal" href="#QnnGraph_8h_1a10d10676a69dc0af1434d64d28a4ad99a1b2bbf6e3ca1f081fb47f0cf9f2c9aa5"><span class="std std-ref"><span class="pre">QNN_GRAPH_CONFIG_OPTION_UNDEFINED</span></span></a><p><span class="pre">,</span> <span class="pre">/*option*/</span> <span class="pre">\</span></p>
+<p><span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL</span> <span class="pre">/*customConfig*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">}</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">}</span></p>
+<br /></dt>
+<dd><p><a class="reference internal" href="#structQnnGraph__Config__t"><span class="std std-ref">QnnGraph_Config_t</span></a> initializer macro. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_GRAPH_PROPERTY_INIT">
+<span class="target" id="QnnGraph_8h_1a1c0b19bba25b1559d4c001ee95832b65"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_PROPERTY_INIT</span></span></span> &#160; <span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span>
+&#160;&#160;&#160; <a class="reference internal" href="#QnnGraph_8h_1ad28a2c2136b6f5224060835776817b74a982aae9a998bd4364ca99ad4bb06e7d3"><span class="std std-ref"><span class="pre">QNN_GRAPH_PROPERTY_OPTION_UNDEFINED</span></span></a><p><span class="pre">,</span> <span class="pre">/*option*/</span> <span class="pre">\</span></p>
+<p><span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL</span> <span class="pre">/*customProperty*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">}</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">}</span></p>
+<br /></dt>
+<dd><p><a class="reference internal" href="#structQnnGraph__Property__t"><span class="std std-ref">QnnGraph_Property_t</span></a> initializer macro. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_NOTIFY_STATUS_INIT">
+<span class="target" id="QnnGraph_8h_1a120741337052924e8d72c484ed96d661"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_NOTIFY_STATUS_INIT</span></span></span> &#160; <span class="pre">{</span> <span class="pre">0u</span> <span class="pre">/*error*/</span> <span class="pre">}</span><br /></dt>
+<dd><p><a class="reference internal" href="#structQnn__NotifyStatus__t"><span class="std std-ref">Qnn_NotifyStatus_t</span></a> initializer macro. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv423QnnGraph_CustomConfig_t">
+<span id="_CPPv323QnnGraph_CustomConfig_t"></span><span id="_CPPv223QnnGraph_CustomConfig_t"></span><span id="QnnGraph_CustomConfig_t"></span><span class="target" id="QnnGraph_8h_1a23c0bcadbde72162bbeba965c6e7e443"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">QnnGraph_CustomConfig_t</span></span></span><a class="headerlink" href="#_CPPv423QnnGraph_CustomConfig_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Graph specific object for custom configuration. </p>
+<p>Please refer to documentation provided by the backend for usage information </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv425QnnGraph_CustomProperty_t">
+<span id="_CPPv325QnnGraph_CustomProperty_t"></span><span id="_CPPv225QnnGraph_CustomProperty_t"></span><span id="QnnGraph_CustomProperty_t"></span><span class="target" id="QnnGraph_8h_1ad89051fe9ae140d8426ac9a8a9682799"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">QnnGraph_CustomProperty_t</span></span></span><a class="headerlink" href="#_CPPv425QnnGraph_CustomProperty_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Graph specific object for custom property. </p>
+<p>Please refer to documentation provided by the backend for usage information </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv414Qnn_NotifyFn_t">
+<span id="_CPPv314Qnn_NotifyFn_t"></span><span id="_CPPv214Qnn_NotifyFn_t"></span><span id="Qnn_NotifyFn_t"></span><span class="target" id="QnnGraph_8h_1a7962dbaaab857587b6b0b15a9d3b87e0"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">Qnn_NotifyFn_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">notifyParam</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="structQnn__NotifyStatus__t.html#_CPPv418Qnn_NotifyStatus_t" title="Qnn_NotifyStatus_t"><span class="n"><span class="pre">Qnn_NotifyStatus_t</span></span></a><span class="w"> </span><span class="n"><span class="pre">notifyStatus</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv414Qnn_NotifyFn_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A client-defined callback function. It is not guaranteed that a spot in the execution queue is free once this callback is called. i.e. it cannot be inferred that once a callback is received, the next call to <a class="reference internal" href="#QnnGraph_8h_1a690b74571029dd9f36e38cd902c86784"><span class="std std-ref">QnnGraph_executeAsync()</span></a> will not block due to the queue being full. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Param notifyParam</dt>
+<dd class="field-odd"><p><strong>[in]</strong> Client supplied data object which may be used to identify which function this callback applies to.</p>
+</dd>
+<dt class="field-even">Param notifyStatus</dt>
+<dd class="field-even"><p><strong>[in]</strong> Execution status associate with callback.</p>
+</dd>
+<dt class="field-odd">Return</dt>
+<dd class="field-odd"><p>None </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv416QnnGraph_Error_t">
+<span id="_CPPv316QnnGraph_Error_t"></span><span id="_CPPv216QnnGraph_Error_t"></span><span class="target" id="QnnGraph_8h_1a76e7f2af0befb8992f51aef10b7e9416"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGraph_Error_t</span></span></span><a class="headerlink" href="#_CPPv416QnnGraph_Error_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>QNN Graph API result / error codes. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16QnnGraph_Error_t19QNN_GRAPH_MIN_ERRORE">
+<span id="_CPPv3N16QnnGraph_Error_t19QNN_GRAPH_MIN_ERRORE"></span><span id="_CPPv2N16QnnGraph_Error_t19QNN_GRAPH_MIN_ERRORE"></span><span class="target" id="QnnGraph_8h_1a76e7f2af0befb8992f51aef10b7e9416abc9d5df2368991ef025dcca77e748235"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_MIN_ERROR</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">6000</span></span><a class="headerlink" href="#_CPPv4N16QnnGraph_Error_t19QNN_GRAPH_MIN_ERRORE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16QnnGraph_Error_t18QNN_GRAPH_NO_ERRORE">
+<span id="_CPPv3N16QnnGraph_Error_t18QNN_GRAPH_NO_ERRORE"></span><span id="_CPPv2N16QnnGraph_Error_t18QNN_GRAPH_NO_ERRORE"></span><span class="target" id="QnnGraph_8h_1a76e7f2af0befb8992f51aef10b7e9416afec43bd603bcdc3e80be8a2ffd4c15fb"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_NO_ERROR</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N16QnnGraph_Error_t18QNN_GRAPH_NO_ERRORE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Qnn Graph success. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16QnnGraph_Error_t35QNN_GRAPH_ERROR_UNSUPPORTED_FEATUREE">
+<span id="_CPPv3N16QnnGraph_Error_t35QNN_GRAPH_ERROR_UNSUPPORTED_FEATUREE"></span><span id="_CPPv2N16QnnGraph_Error_t35QNN_GRAPH_ERROR_UNSUPPORTED_FEATUREE"></span><span class="target" id="QnnGraph_8h_1a76e7f2af0befb8992f51aef10b7e9416a3ebf3359ac0a898249b4e2d8627fd9ee"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_ERROR_UNSUPPORTED_FEATURE</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="../general/api_error_codes.html#_CPPv4N17QnnCommon_Error_t30QNN_COMMON_ERROR_NOT_SUPPORTEDE" title="QNN_COMMON_ERROR_NOT_SUPPORTED"><span class="n"><span class="pre">QNN_COMMON_ERROR_NOT_SUPPORTED</span></span></a><a class="headerlink" href="#_CPPv4N16QnnGraph_Error_t35QNN_GRAPH_ERROR_UNSUPPORTED_FEATUREE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>There is optional API component that is not supported yet. See QnnProperty. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16QnnGraph_Error_t25QNN_GRAPH_ERROR_MEM_ALLOCE">
+<span id="_CPPv3N16QnnGraph_Error_t25QNN_GRAPH_ERROR_MEM_ALLOCE"></span><span id="_CPPv2N16QnnGraph_Error_t25QNN_GRAPH_ERROR_MEM_ALLOCE"></span><span class="target" id="QnnGraph_8h_1a76e7f2af0befb8992f51aef10b7e9416a5516fedac1254739f6cc6ad4cdc7533a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_ERROR_MEM_ALLOC</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="../general/api_error_codes.html#_CPPv4N17QnnCommon_Error_t26QNN_COMMON_ERROR_MEM_ALLOCE" title="QNN_COMMON_ERROR_MEM_ALLOC"><span class="n"><span class="pre">QNN_COMMON_ERROR_MEM_ALLOC</span></span></a><a class="headerlink" href="#_CPPv4N16QnnGraph_Error_t25QNN_GRAPH_ERROR_MEM_ALLOCE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>General error relating to memory allocation in processing graph API. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16QnnGraph_Error_t23QNN_GRAPH_ERROR_GENERALE">
+<span id="_CPPv3N16QnnGraph_Error_t23QNN_GRAPH_ERROR_GENERALE"></span><span id="_CPPv2N16QnnGraph_Error_t23QNN_GRAPH_ERROR_GENERALE"></span><span class="target" id="QnnGraph_8h_1a76e7f2af0befb8992f51aef10b7e9416a646e5e3f487ab4d0c29a35aee7e07f19"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_ERROR_GENERAL</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="../general/api_error_codes.html#_CPPv4N17QnnCommon_Error_t24QNN_COMMON_ERROR_GENERALE" title="QNN_COMMON_ERROR_GENERAL"><span class="n"><span class="pre">QNN_COMMON_ERROR_GENERAL</span></span></a><a class="headerlink" href="#_CPPv4N16QnnGraph_Error_t23QNN_GRAPH_ERROR_GENERALE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>General type of graph error, which has not been identified as any other error type. Any Graph API can return this error code. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16QnnGraph_Error_t32QNN_GRAPH_ERROR_INVALID_ARGUMENTE">
+<span id="_CPPv3N16QnnGraph_Error_t32QNN_GRAPH_ERROR_INVALID_ARGUMENTE"></span><span id="_CPPv2N16QnnGraph_Error_t32QNN_GRAPH_ERROR_INVALID_ARGUMENTE"></span><span class="target" id="QnnGraph_8h_1a76e7f2af0befb8992f51aef10b7e9416aa3d4b592e95145e686e2ca3e05ef5f90"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_ERROR_INVALID_ARGUMENT</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">6000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N16QnnGraph_Error_t32QNN_GRAPH_ERROR_INVALID_ARGUMENTE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An argument to QNN API is deemed invalid by a backend. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16QnnGraph_Error_t30QNN_GRAPH_ERROR_INVALID_HANDLEE">
+<span id="_CPPv3N16QnnGraph_Error_t30QNN_GRAPH_ERROR_INVALID_HANDLEE"></span><span id="_CPPv2N16QnnGraph_Error_t30QNN_GRAPH_ERROR_INVALID_HANDLEE"></span><span class="target" id="QnnGraph_8h_1a76e7f2af0befb8992f51aef10b7e9416a7525a70d05bca2d27e0ef81432cb7f37"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_ERROR_INVALID_HANDLE</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">6000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N16QnnGraph_Error_t30QNN_GRAPH_ERROR_INVALID_HANDLEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Invalid graph handle. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16QnnGraph_Error_t36QNN_GRAPH_ERROR_GRAPH_DOES_NOT_EXISTE">
+<span id="_CPPv3N16QnnGraph_Error_t36QNN_GRAPH_ERROR_GRAPH_DOES_NOT_EXISTE"></span><span id="_CPPv2N16QnnGraph_Error_t36QNN_GRAPH_ERROR_GRAPH_DOES_NOT_EXISTE"></span><span class="target" id="QnnGraph_8h_1a76e7f2af0befb8992f51aef10b7e9416ae08f994bb7e770f0ac1b2681a33809de"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_ERROR_GRAPH_DOES_NOT_EXIST</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">6000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">2</span></span><a class="headerlink" href="#_CPPv4N16QnnGraph_Error_t36QNN_GRAPH_ERROR_GRAPH_DOES_NOT_EXISTE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>No graph with specified info is registered in the backend. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16QnnGraph_Error_t28QNN_GRAPH_ERROR_INVALID_NAMEE">
+<span id="_CPPv3N16QnnGraph_Error_t28QNN_GRAPH_ERROR_INVALID_NAMEE"></span><span id="_CPPv2N16QnnGraph_Error_t28QNN_GRAPH_ERROR_INVALID_NAMEE"></span><span class="target" id="QnnGraph_8h_1a76e7f2af0befb8992f51aef10b7e9416a3bb7f2cfb3c9782dc62b07f3a671e7a9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_ERROR_INVALID_NAME</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">6000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">3</span></span><a class="headerlink" href="#_CPPv4N16QnnGraph_Error_t28QNN_GRAPH_ERROR_INVALID_NAMEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Invalid or duplicate graph name. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16QnnGraph_Error_t30QNN_GRAPH_ERROR_INVALID_TENSORE">
+<span id="_CPPv3N16QnnGraph_Error_t30QNN_GRAPH_ERROR_INVALID_TENSORE"></span><span id="_CPPv2N16QnnGraph_Error_t30QNN_GRAPH_ERROR_INVALID_TENSORE"></span><span class="target" id="QnnGraph_8h_1a76e7f2af0befb8992f51aef10b7e9416ab681a33a769af11a8a1c776800cec7f2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_ERROR_INVALID_TENSOR</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">6000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">4</span></span><a class="headerlink" href="#_CPPv4N16QnnGraph_Error_t30QNN_GRAPH_ERROR_INVALID_TENSORE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Invalid or NULL QNN tensor. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16QnnGraph_Error_t33QNN_GRAPH_ERROR_INVALID_OP_CONFIGE">
+<span id="_CPPv3N16QnnGraph_Error_t33QNN_GRAPH_ERROR_INVALID_OP_CONFIGE"></span><span id="_CPPv2N16QnnGraph_Error_t33QNN_GRAPH_ERROR_INVALID_OP_CONFIGE"></span><span class="target" id="QnnGraph_8h_1a76e7f2af0befb8992f51aef10b7e9416abbd39a1870e5c372afe27d8e0050f168"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_ERROR_INVALID_OP_CONFIG</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">6000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">5</span></span><a class="headerlink" href="#_CPPv4N16QnnGraph_Error_t33QNN_GRAPH_ERROR_INVALID_OP_CONFIGE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Some elements in the op config data are invalid. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16QnnGraph_Error_t27QNN_GRAPH_ERROR_SET_PROFILEE">
+<span id="_CPPv3N16QnnGraph_Error_t27QNN_GRAPH_ERROR_SET_PROFILEE"></span><span id="_CPPv2N16QnnGraph_Error_t27QNN_GRAPH_ERROR_SET_PROFILEE"></span><span class="target" id="QnnGraph_8h_1a76e7f2af0befb8992f51aef10b7e9416ae8dbe28c46a59afae9d68b4247afa772"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_ERROR_SET_PROFILE</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">6000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">6</span></span><a class="headerlink" href="#_CPPv4N16QnnGraph_Error_t27QNN_GRAPH_ERROR_SET_PROFILEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Failure to set profile. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16QnnGraph_Error_t32QNN_GRAPH_ERROR_UNCONNECTED_NODEE">
+<span id="_CPPv3N16QnnGraph_Error_t32QNN_GRAPH_ERROR_UNCONNECTED_NODEE"></span><span id="_CPPv2N16QnnGraph_Error_t32QNN_GRAPH_ERROR_UNCONNECTED_NODEE"></span><span class="target" id="QnnGraph_8h_1a76e7f2af0befb8992f51aef10b7e9416aee42b32a8380ddedd5315e78f8306c3d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_ERROR_UNCONNECTED_NODE</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">6000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">7</span></span><a class="headerlink" href="#_CPPv4N16QnnGraph_Error_t32QNN_GRAPH_ERROR_UNCONNECTED_NODEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Node added before its dependent node(s) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16QnnGraph_Error_t29QNN_GRAPH_ERROR_CREATE_FAILEDE">
+<span id="_CPPv3N16QnnGraph_Error_t29QNN_GRAPH_ERROR_CREATE_FAILEDE"></span><span id="_CPPv2N16QnnGraph_Error_t29QNN_GRAPH_ERROR_CREATE_FAILEDE"></span><span class="target" id="QnnGraph_8h_1a76e7f2af0befb8992f51aef10b7e9416a5da30df6d85d3a4f081a7a6345bc57b6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_ERROR_CREATE_FAILED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">6000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">20</span></span><a class="headerlink" href="#_CPPv4N16QnnGraph_Error_t29QNN_GRAPH_ERROR_CREATE_FAILEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Failure in creating graph with specified configuration. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16QnnGraph_Error_t35QNN_GRAPH_ERROR_OPTIMIZATION_FAILEDE">
+<span id="_CPPv3N16QnnGraph_Error_t35QNN_GRAPH_ERROR_OPTIMIZATION_FAILEDE"></span><span id="_CPPv2N16QnnGraph_Error_t35QNN_GRAPH_ERROR_OPTIMIZATION_FAILEDE"></span><span class="target" id="QnnGraph_8h_1a76e7f2af0befb8992f51aef10b7e9416a8b3efa421ae6c033587919b46cab997d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_ERROR_OPTIMIZATION_FAILED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">6000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">21</span></span><a class="headerlink" href="#_CPPv4N16QnnGraph_Error_t35QNN_GRAPH_ERROR_OPTIMIZATION_FAILEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Graph couldn’t be optimized with specified list of ops or config. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16QnnGraph_Error_t31QNN_GRAPH_ERROR_FINALIZE_FAILEDE">
+<span id="_CPPv3N16QnnGraph_Error_t31QNN_GRAPH_ERROR_FINALIZE_FAILEDE"></span><span id="_CPPv2N16QnnGraph_Error_t31QNN_GRAPH_ERROR_FINALIZE_FAILEDE"></span><span class="target" id="QnnGraph_8h_1a76e7f2af0befb8992f51aef10b7e9416af3727bae9482c65c71c44a63cb40ccd1"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_ERROR_FINALIZE_FAILED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">6000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">22</span></span><a class="headerlink" href="#_CPPv4N16QnnGraph_Error_t31QNN_GRAPH_ERROR_FINALIZE_FAILEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Graph finalize failed. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16QnnGraph_Error_t35QNN_GRAPH_ERROR_GRAPH_NOT_FINALIZEDE">
+<span id="_CPPv3N16QnnGraph_Error_t35QNN_GRAPH_ERROR_GRAPH_NOT_FINALIZEDE"></span><span id="_CPPv2N16QnnGraph_Error_t35QNN_GRAPH_ERROR_GRAPH_NOT_FINALIZEDE"></span><span class="target" id="QnnGraph_8h_1a76e7f2af0befb8992f51aef10b7e9416a8da37a150615f2bcfa57d626e5ce31c1"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_ERROR_GRAPH_NOT_FINALIZED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">6000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">23</span></span><a class="headerlink" href="#_CPPv4N16QnnGraph_Error_t35QNN_GRAPH_ERROR_GRAPH_NOT_FINALIZEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Attempt to execute graph before finalizing it. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16QnnGraph_Error_t31QNN_GRAPH_ERROR_GRAPH_FINALIZEDE">
+<span id="_CPPv3N16QnnGraph_Error_t31QNN_GRAPH_ERROR_GRAPH_FINALIZEDE"></span><span id="_CPPv2N16QnnGraph_Error_t31QNN_GRAPH_ERROR_GRAPH_FINALIZEDE"></span><span class="target" id="QnnGraph_8h_1a76e7f2af0befb8992f51aef10b7e9416a51dafa86c411f24eb7707de627fe5677"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_ERROR_GRAPH_FINALIZED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">6000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">24</span></span><a class="headerlink" href="#_CPPv4N16QnnGraph_Error_t31QNN_GRAPH_ERROR_GRAPH_FINALIZEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Attempt to modify graph after finalizing it. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16QnnGraph_Error_t41QNN_GRAPH_ERROR_EXECUTION_ASYNC_FIFO_FULLE">
+<span id="_CPPv3N16QnnGraph_Error_t41QNN_GRAPH_ERROR_EXECUTION_ASYNC_FIFO_FULLE"></span><span id="_CPPv2N16QnnGraph_Error_t41QNN_GRAPH_ERROR_EXECUTION_ASYNC_FIFO_FULLE"></span><span class="target" id="QnnGraph_8h_1a76e7f2af0befb8992f51aef10b7e9416a75225508d6a05dafa2f541ab05357365"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_ERROR_EXECUTION_ASYNC_FIFO_FULL</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">6000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">25</span></span><a class="headerlink" href="#_CPPv4N16QnnGraph_Error_t41QNN_GRAPH_ERROR_EXECUTION_ASYNC_FIFO_FULLE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>FIFO queue cannot register any more async execution requests. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16QnnGraph_Error_t29QNN_GRAPH_ERROR_SIGNAL_IN_USEE">
+<span id="_CPPv3N16QnnGraph_Error_t29QNN_GRAPH_ERROR_SIGNAL_IN_USEE"></span><span id="_CPPv2N16QnnGraph_Error_t29QNN_GRAPH_ERROR_SIGNAL_IN_USEE"></span><span class="target" id="QnnGraph_8h_1a76e7f2af0befb8992f51aef10b7e9416a464dc1f62717dfc2c2068e76d267f790"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_ERROR_SIGNAL_IN_USE</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">6000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">30</span></span><a class="headerlink" href="#_CPPv4N16QnnGraph_Error_t29QNN_GRAPH_ERROR_SIGNAL_IN_USEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A control signal object was provided to a call, but that signal object is already in-use by another call. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16QnnGraph_Error_t23QNN_GRAPH_ERROR_ABORTEDE">
+<span id="_CPPv3N16QnnGraph_Error_t23QNN_GRAPH_ERROR_ABORTEDE"></span><span id="_CPPv2N16QnnGraph_Error_t23QNN_GRAPH_ERROR_ABORTEDE"></span><span class="target" id="QnnGraph_8h_1a76e7f2af0befb8992f51aef10b7e9416a0dfda581f69af02e397b46c2674134b6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_ERROR_ABORTED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">6000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">31</span></span><a class="headerlink" href="#_CPPv4N16QnnGraph_Error_t23QNN_GRAPH_ERROR_ABORTEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Call aborted early due to a QnnSignal_trigger call issued to the observed signal object. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16QnnGraph_Error_t30QNN_GRAPH_ERROR_PROFILE_IN_USEE">
+<span id="_CPPv3N16QnnGraph_Error_t30QNN_GRAPH_ERROR_PROFILE_IN_USEE"></span><span id="_CPPv2N16QnnGraph_Error_t30QNN_GRAPH_ERROR_PROFILE_IN_USEE"></span><span class="target" id="QnnGraph_8h_1a76e7f2af0befb8992f51aef10b7e9416abd16c5a0b384b86f9f96e284e8d97061"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_ERROR_PROFILE_IN_USE</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">6000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">32</span></span><a class="headerlink" href="#_CPPv4N16QnnGraph_Error_t30QNN_GRAPH_ERROR_PROFILE_IN_USEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Attempt to bind to a graph a profile handle that is already in-use by another graph. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16QnnGraph_Error_t25QNN_GRAPH_ERROR_TIMED_OUTE">
+<span id="_CPPv3N16QnnGraph_Error_t25QNN_GRAPH_ERROR_TIMED_OUTE"></span><span id="_CPPv2N16QnnGraph_Error_t25QNN_GRAPH_ERROR_TIMED_OUTE"></span><span class="target" id="QnnGraph_8h_1a76e7f2af0befb8992f51aef10b7e9416acc70fde9271190d0555d5f6a940a8c7b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_ERROR_TIMED_OUT</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">6000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">33</span></span><a class="headerlink" href="#_CPPv4N16QnnGraph_Error_t25QNN_GRAPH_ERROR_TIMED_OUTE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Call aborted early due to a QnnSignal timeout. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16QnnGraph_Error_t24QNN_GRAPH_ERROR_SUBGRAPHE">
+<span id="_CPPv3N16QnnGraph_Error_t24QNN_GRAPH_ERROR_SUBGRAPHE"></span><span id="_CPPv2N16QnnGraph_Error_t24QNN_GRAPH_ERROR_SUBGRAPHE"></span><span class="target" id="QnnGraph_8h_1a76e7f2af0befb8992f51aef10b7e9416a0d1258c74f44a4321a5f2ad42903683e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_ERROR_SUBGRAPH</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">6000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">34</span></span><a class="headerlink" href="#_CPPv4N16QnnGraph_Error_t24QNN_GRAPH_ERROR_SUBGRAPHE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Operation not permitted on a subgraph. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16QnnGraph_Error_t24QNN_GRAPH_ERROR_DISABLEDE">
+<span id="_CPPv3N16QnnGraph_Error_t24QNN_GRAPH_ERROR_DISABLEDE"></span><span id="_CPPv2N16QnnGraph_Error_t24QNN_GRAPH_ERROR_DISABLEDE"></span><span class="target" id="QnnGraph_8h_1a76e7f2af0befb8992f51aef10b7e9416a8b69d565d1c969991374d2b44b7fffe2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_ERROR_DISABLED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">6000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">35</span></span><a class="headerlink" href="#_CPPv4N16QnnGraph_Error_t24QNN_GRAPH_ERROR_DISABLEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Graph is not enabled. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16QnnGraph_Error_t36QNN_GRAPH_ERROR_DYNAMIC_TENSOR_SHAPEE">
+<span id="_CPPv3N16QnnGraph_Error_t36QNN_GRAPH_ERROR_DYNAMIC_TENSOR_SHAPEE"></span><span id="_CPPv2N16QnnGraph_Error_t36QNN_GRAPH_ERROR_DYNAMIC_TENSOR_SHAPEE"></span><span class="target" id="QnnGraph_8h_1a76e7f2af0befb8992f51aef10b7e9416a02388c08c3b96620e54eb93ea3e5baef"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_ERROR_DYNAMIC_TENSOR_SHAPE</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">6000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">36</span></span><a class="headerlink" href="#_CPPv4N16QnnGraph_Error_t36QNN_GRAPH_ERROR_DYNAMIC_TENSOR_SHAPEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Dynamic tensor shape error. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16QnnGraph_Error_t31QNN_GRAPH_ERROR_TENSOR_SPARSITYE">
+<span id="_CPPv3N16QnnGraph_Error_t31QNN_GRAPH_ERROR_TENSOR_SPARSITYE"></span><span id="_CPPv2N16QnnGraph_Error_t31QNN_GRAPH_ERROR_TENSOR_SPARSITYE"></span><span class="target" id="QnnGraph_8h_1a76e7f2af0befb8992f51aef10b7e9416a3cd4a3edbf402a483cd2856f0f1b56cf"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_ERROR_TENSOR_SPARSITY</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">6000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">37</span></span><a class="headerlink" href="#_CPPv4N16QnnGraph_Error_t31QNN_GRAPH_ERROR_TENSOR_SPARSITYE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Tensor sparsity error. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16QnnGraph_Error_t33QNN_GRAPH_ERROR_EARLY_TERMINATIONE">
+<span id="_CPPv3N16QnnGraph_Error_t33QNN_GRAPH_ERROR_EARLY_TERMINATIONE"></span><span id="_CPPv2N16QnnGraph_Error_t33QNN_GRAPH_ERROR_EARLY_TERMINATIONE"></span><span class="target" id="QnnGraph_8h_1a76e7f2af0befb8992f51aef10b7e9416a19862b5251090c55f4d9941546c9f6a9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_ERROR_EARLY_TERMINATION</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">6000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">38</span></span><a class="headerlink" href="#_CPPv4N16QnnGraph_Error_t33QNN_GRAPH_ERROR_EARLY_TERMINATIONE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Early termination error. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16QnnGraph_Error_t19QNN_GRAPH_MAX_ERRORE">
+<span id="_CPPv3N16QnnGraph_Error_t19QNN_GRAPH_MAX_ERRORE"></span><span id="_CPPv2N16QnnGraph_Error_t19QNN_GRAPH_MAX_ERRORE"></span><span class="target" id="QnnGraph_8h_1a76e7f2af0befb8992f51aef10b7e9416af396c170a7ae3aa12fa460baaaabe677"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_MAX_ERROR</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">6999</span></span><a class="headerlink" href="#_CPPv4N16QnnGraph_Error_t19QNN_GRAPH_MAX_ERRORE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16QnnGraph_Error_t25QNN_GRAPH_ERROR_UNDEFINEDE">
+<span id="_CPPv3N16QnnGraph_Error_t25QNN_GRAPH_ERROR_UNDEFINEDE"></span><span id="_CPPv2N16QnnGraph_Error_t25QNN_GRAPH_ERROR_UNDEFINEDE"></span><span class="target" id="QnnGraph_8h_1a76e7f2af0befb8992f51aef10b7e9416a226156b1854f0140ea4aa4b505f7b7b6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_ERROR_UNDEFINED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0x7FFFFFFF</span></span><a class="headerlink" href="#_CPPv4N16QnnGraph_Error_t25QNN_GRAPH_ERROR_UNDEFINEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv423QnnGraph_ConfigOption_t">
+<span id="_CPPv323QnnGraph_ConfigOption_t"></span><span id="_CPPv223QnnGraph_ConfigOption_t"></span><span class="target" id="QnnGraph_8h_1a10d10676a69dc0af1434d64d28a4ad99"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGraph_ConfigOption_t</span></span></span><a class="headerlink" href="#_CPPv423QnnGraph_ConfigOption_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This enum defines graph config options. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23QnnGraph_ConfigOption_t30QNN_GRAPH_CONFIG_OPTION_CUSTOME">
+<span id="_CPPv3N23QnnGraph_ConfigOption_t30QNN_GRAPH_CONFIG_OPTION_CUSTOME"></span><span id="_CPPv2N23QnnGraph_ConfigOption_t30QNN_GRAPH_CONFIG_OPTION_CUSTOME"></span><span class="target" id="QnnGraph_8h_1a10d10676a69dc0af1434d64d28a4ad99a0d868f60c34917685182448bd1e70d49"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_CONFIG_OPTION_CUSTOM</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N23QnnGraph_ConfigOption_t30QNN_GRAPH_CONFIG_OPTION_CUSTOME" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets backend custom configs, see backend specific documentation. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23QnnGraph_ConfigOption_t32QNN_GRAPH_CONFIG_OPTION_PRIORITYE">
+<span id="_CPPv3N23QnnGraph_ConfigOption_t32QNN_GRAPH_CONFIG_OPTION_PRIORITYE"></span><span id="_CPPv2N23QnnGraph_ConfigOption_t32QNN_GRAPH_CONFIG_OPTION_PRIORITYE"></span><span class="target" id="QnnGraph_8h_1a10d10676a69dc0af1434d64d28a4ad99a9dfc2b6d2e86d35afba76f2a3d2729e8"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_CONFIG_OPTION_PRIORITY</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">3</span></span><a class="headerlink" href="#_CPPv4N23QnnGraph_ConfigOption_t32QNN_GRAPH_CONFIG_OPTION_PRIORITYE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets priority of a graph within the context. This config overrides QNN_CONTEXT_CONFIG_OPTION_PRIORITY which provides the default graph priority. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23QnnGraph_ConfigOption_t38QNN_GRAPH_CONFIG_OPTION_PROFILE_HANDLEE">
+<span id="_CPPv3N23QnnGraph_ConfigOption_t38QNN_GRAPH_CONFIG_OPTION_PROFILE_HANDLEE"></span><span id="_CPPv2N23QnnGraph_ConfigOption_t38QNN_GRAPH_CONFIG_OPTION_PROFILE_HANDLEE"></span><span class="target" id="QnnGraph_8h_1a10d10676a69dc0af1434d64d28a4ad99af6d05160a0cc6fedd205ba82eb257812"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_CONFIG_OPTION_PROFILE_HANDLE</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">4</span></span><a class="headerlink" href="#_CPPv4N23QnnGraph_ConfigOption_t38QNN_GRAPH_CONFIG_OPTION_PROFILE_HANDLEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Enables continuous profiling of a graph. This can include finalize and execute data. The profile handle will be bound to the graph until a new handle is bound or the graph has been freed. This feature is mutually exclusive with the per-API profile handles. A Qnn_ProfileHandle_t bound to a graph can be concurrently used with QnnProfile_get* APIs. A Qnn_ProfileHandle_t may only be bound to one graph at a time. A different Qnn_ProfileHandle_t may be bound to the graph via QnnGraph_setConfig. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23QnnGraph_ConfigOption_t43QNN_GRAPH_CONFIG_OPTION_SET_PROFILING_STATEE">
+<span id="_CPPv3N23QnnGraph_ConfigOption_t43QNN_GRAPH_CONFIG_OPTION_SET_PROFILING_STATEE"></span><span id="_CPPv2N23QnnGraph_ConfigOption_t43QNN_GRAPH_CONFIG_OPTION_SET_PROFILING_STATEE"></span><span class="target" id="QnnGraph_8h_1a10d10676a69dc0af1434d64d28a4ad99a4ef3be04534cd1934ad3c0ec7af057de"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_CONFIG_OPTION_SET_PROFILING_STATE</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">5</span></span><a class="headerlink" href="#_CPPv4N23QnnGraph_ConfigOption_t43QNN_GRAPH_CONFIG_OPTION_SET_PROFILING_STATEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets the profiling state of a graph. This config should only be used in conjunction with profiling handles bound with QNN_GRAPH_CONFIG_OPTION_PROFILE_HANDLE. The behaviour is that the profiling data is only collected when the state is enabled. Setting the state to disabled causes the profiling data collection to cease. The default state is QNN_GRAPH_PROFILING_STATE_ENABLED. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23QnnGraph_ConfigOption_t52QNN_GRAPH_CONFIG_OPTION_SET_PROFILING_NUM_EXECUTIONSE">
+<span id="_CPPv3N23QnnGraph_ConfigOption_t52QNN_GRAPH_CONFIG_OPTION_SET_PROFILING_NUM_EXECUTIONSE"></span><span id="_CPPv2N23QnnGraph_ConfigOption_t52QNN_GRAPH_CONFIG_OPTION_SET_PROFILING_NUM_EXECUTIONSE"></span><span class="target" id="QnnGraph_8h_1a10d10676a69dc0af1434d64d28a4ad99a7ac0a877a4e3054fbbf815d0cff455ce"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_CONFIG_OPTION_SET_PROFILING_NUM_EXECUTIONS</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">6</span></span><a class="headerlink" href="#_CPPv4N23QnnGraph_ConfigOption_t52QNN_GRAPH_CONFIG_OPTION_SET_PROFILING_NUM_EXECUTIONSE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets the maximum number of QnnGraph_execute/QnnGraph_executeAsync calls that will be profiled. This config should only be used in conjunction with profiling handles bound with QNN_GRAPH_CONFIG_OPTION_PROFILE_HANDLE. The default is the QnnGraph_Config_t::numProfilingExecutions maximum numerical limit. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23QnnGraph_ConfigOption_t33QNN_GRAPH_CONFIG_OPTION_UNDEFINEDE">
+<span id="_CPPv3N23QnnGraph_ConfigOption_t33QNN_GRAPH_CONFIG_OPTION_UNDEFINEDE"></span><span id="_CPPv2N23QnnGraph_ConfigOption_t33QNN_GRAPH_CONFIG_OPTION_UNDEFINEDE"></span><span class="target" id="QnnGraph_8h_1a10d10676a69dc0af1434d64d28a4ad99a1b2bbf6e3ca1f081fb47f0cf9f2c9aa5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_CONFIG_OPTION_UNDEFINED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0x7FFFFFFF</span></span><a class="headerlink" href="#_CPPv4N23QnnGraph_ConfigOption_t33QNN_GRAPH_CONFIG_OPTION_UNDEFINEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv425QnnGraph_ProfilingState_t">
+<span id="_CPPv325QnnGraph_ProfilingState_t"></span><span id="_CPPv225QnnGraph_ProfilingState_t"></span><span class="target" id="QnnGraph_8h_1a0710eb9035ae3b5e9c342b3f1d7c287e"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGraph_ProfilingState_t</span></span></span><a class="headerlink" href="#_CPPv425QnnGraph_ProfilingState_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This enum defines graph profiling states. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnGraph_ProfilingState_t33QNN_GRAPH_PROFILING_STATE_ENABLEDE">
+<span id="_CPPv3N25QnnGraph_ProfilingState_t33QNN_GRAPH_PROFILING_STATE_ENABLEDE"></span><span id="_CPPv2N25QnnGraph_ProfilingState_t33QNN_GRAPH_PROFILING_STATE_ENABLEDE"></span><span class="target" id="QnnGraph_8h_1a0710eb9035ae3b5e9c342b3f1d7c287eac090391476faef08522d25da35efd329"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_PROFILING_STATE_ENABLED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N25QnnGraph_ProfilingState_t33QNN_GRAPH_PROFILING_STATE_ENABLEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Profiling is enabled for the graph. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnGraph_ProfilingState_t34QNN_GRAPH_PROFILING_STATE_DISABLEDE">
+<span id="_CPPv3N25QnnGraph_ProfilingState_t34QNN_GRAPH_PROFILING_STATE_DISABLEDE"></span><span id="_CPPv2N25QnnGraph_ProfilingState_t34QNN_GRAPH_PROFILING_STATE_DISABLEDE"></span><span class="target" id="QnnGraph_8h_1a0710eb9035ae3b5e9c342b3f1d7c287ead8cb36640807ee10a85d49c069112e2b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_PROFILING_STATE_DISABLED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">2</span></span><a class="headerlink" href="#_CPPv4N25QnnGraph_ProfilingState_t34QNN_GRAPH_PROFILING_STATE_DISABLEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Profiling is disabled for the graph. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnGraph_ProfilingState_t35QNN_GRAPH_PROFILING_STATE_UNDEFINEDE">
+<span id="_CPPv3N25QnnGraph_ProfilingState_t35QNN_GRAPH_PROFILING_STATE_UNDEFINEDE"></span><span id="_CPPv2N25QnnGraph_ProfilingState_t35QNN_GRAPH_PROFILING_STATE_UNDEFINEDE"></span><span class="target" id="QnnGraph_8h_1a0710eb9035ae3b5e9c342b3f1d7c287ea087286db5d5749fb403484cd1c1407cf"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_PROFILING_STATE_UNDEFINED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0x7FFFFFFF</span></span><a class="headerlink" href="#_CPPv4N25QnnGraph_ProfilingState_t35QNN_GRAPH_PROFILING_STATE_UNDEFINEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv425QnnGraph_PropertyOption_t">
+<span id="_CPPv325QnnGraph_PropertyOption_t"></span><span id="_CPPv225QnnGraph_PropertyOption_t"></span><span class="target" id="QnnGraph_8h_1ad28a2c2136b6f5224060835776817b74"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGraph_PropertyOption_t</span></span></span><a class="headerlink" href="#_CPPv425QnnGraph_PropertyOption_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This enum defines graph property options. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnGraph_PropertyOption_t32QNN_GRAPH_PROPERTY_OPTION_CUSTOME">
+<span id="_CPPv3N25QnnGraph_PropertyOption_t32QNN_GRAPH_PROPERTY_OPTION_CUSTOME"></span><span id="_CPPv2N25QnnGraph_PropertyOption_t32QNN_GRAPH_PROPERTY_OPTION_CUSTOME"></span><span class="target" id="QnnGraph_8h_1ad28a2c2136b6f5224060835776817b74a95dab51cc36e4c77580b433251e92845"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_PROPERTY_OPTION_CUSTOM</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N25QnnGraph_PropertyOption_t32QNN_GRAPH_PROPERTY_OPTION_CUSTOME" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets backend custom properties, see backend specific documentation. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnGraph_PropertyOption_t35QNN_GRAPH_PROPERTY_OPTION_UNDEFINEDE">
+<span id="_CPPv3N25QnnGraph_PropertyOption_t35QNN_GRAPH_PROPERTY_OPTION_UNDEFINEDE"></span><span id="_CPPv2N25QnnGraph_PropertyOption_t35QNN_GRAPH_PROPERTY_OPTION_UNDEFINEDE"></span><span class="target" id="QnnGraph_8h_1ad28a2c2136b6f5224060835776817b74a982aae9a998bd4364ca99ad4bb06e7d3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_PROPERTY_OPTION_UNDEFINED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0x7FFFFFFF</span></span><a class="headerlink" href="#_CPPv4N25QnnGraph_PropertyOption_t35QNN_GRAPH_PROPERTY_OPTION_UNDEFINEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Value selected to ensure 32 bits. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv435QnnGraph_ExecuteEnvironmentOption_t">
+<span id="_CPPv335QnnGraph_ExecuteEnvironmentOption_t"></span><span id="_CPPv235QnnGraph_ExecuteEnvironmentOption_t"></span><span class="target" id="QnnGraph_8h_1a46ff51785c8e204bb9f92cd4d3fe78f4"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGraph_ExecuteEnvironmentOption_t</span></span></span><a class="headerlink" href="#_CPPv435QnnGraph_ExecuteEnvironmentOption_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This enum defines graph execution environment options. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N35QnnGraph_ExecuteEnvironmentOption_t53QNN_GRAPH_EXECUTE_ENVIRONMENT_OPTION_BIND_MEM_HANDLESE">
+<span id="_CPPv3N35QnnGraph_ExecuteEnvironmentOption_t53QNN_GRAPH_EXECUTE_ENVIRONMENT_OPTION_BIND_MEM_HANDLESE"></span><span id="_CPPv2N35QnnGraph_ExecuteEnvironmentOption_t53QNN_GRAPH_EXECUTE_ENVIRONMENT_OPTION_BIND_MEM_HANDLESE"></span><span class="target" id="QnnGraph_8h_1a46ff51785c8e204bb9f92cd4d3fe78f4a5529fb4709f85d63205ca285e298a381"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_EXECUTE_ENVIRONMENT_OPTION_BIND_MEM_HANDLES</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N35QnnGraph_ExecuteEnvironmentOption_t53QNN_GRAPH_EXECUTE_ENVIRONMENT_OPTION_BIND_MEM_HANDLESE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N35QnnGraph_ExecuteEnvironmentOption_t57QNN_GRAPH_EXECUTE_ENVIRONMENT_OPTION_POPULATE_CLIENT_BUFSE">
+<span id="_CPPv3N35QnnGraph_ExecuteEnvironmentOption_t57QNN_GRAPH_EXECUTE_ENVIRONMENT_OPTION_POPULATE_CLIENT_BUFSE"></span><span id="_CPPv2N35QnnGraph_ExecuteEnvironmentOption_t57QNN_GRAPH_EXECUTE_ENVIRONMENT_OPTION_POPULATE_CLIENT_BUFSE"></span><span class="target" id="QnnGraph_8h_1a46ff51785c8e204bb9f92cd4d3fe78f4afd9500cc6f95bbcbe7e45c27cbca5428"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_EXECUTE_ENVIRONMENT_OPTION_POPULATE_CLIENT_BUFS</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N35QnnGraph_ExecuteEnvironmentOption_t57QNN_GRAPH_EXECUTE_ENVIRONMENT_OPTION_POPULATE_CLIENT_BUFSE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N35QnnGraph_ExecuteEnvironmentOption_t46QNN_GRAPH_EXECUTE_ENVIRONMENT_OPTION_UNDEFINEDE">
+<span id="_CPPv3N35QnnGraph_ExecuteEnvironmentOption_t46QNN_GRAPH_EXECUTE_ENVIRONMENT_OPTION_UNDEFINEDE"></span><span id="_CPPv2N35QnnGraph_ExecuteEnvironmentOption_t46QNN_GRAPH_EXECUTE_ENVIRONMENT_OPTION_UNDEFINEDE"></span><span class="target" id="QnnGraph_8h_1a46ff51785c8e204bb9f92cd4d3fe78f4ae2fb967c9ce8ddbf5099473735e3c041"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GRAPH_EXECUTE_ENVIRONMENT_OPTION_UNDEFINED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0x7FFFFFFF</span></span><a class="headerlink" href="#_CPPv4N35QnnGraph_ExecuteEnvironmentOption_t46QNN_GRAPH_EXECUTE_ENVIRONMENT_OPTION_UNDEFINEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv415QnnGraph_create19Qnn_ContextHandle_tPKcPPK17QnnGraph_Config_tP17Qnn_GraphHandle_t">
+<span id="_CPPv315QnnGraph_create19Qnn_ContextHandle_tPKcPPK17QnnGraph_Config_tP17Qnn_GraphHandle_t"></span><span id="_CPPv215QnnGraph_create19Qnn_ContextHandle_tPKcPPK17QnnGraph_Config_tP17Qnn_GraphHandle_t"></span><span id="QnnGraph_create__Qnn_ContextHandle_t.cCP.QnnGraph_Config_tCPP.Qnn_GraphHandle_tP"></span><span class="target" id="QnnGraph_8h_1acef7b5c50463d8b02bb4abd769ae5ea9"></span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGraph_create</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_QnnCommon_8h_1ae2751b09a1186e90f79e7b89d1903c8f.html#_CPPv419Qnn_ContextHandle_t" title="Qnn_ContextHandle_t"><span class="n"><span class="pre">Qnn_ContextHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">contextHandle</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">graphName</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="structQnnGraph__Config__t.html#_CPPv417QnnGraph_Config_t" title="QnnGraph_Config_t"><span class="n"><span class="pre">QnnGraph_Config_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">config</span></span>, <a class="reference internal" href="typedef_QnnCommon_8h_1aac60af5d8bde388852ae15bd89fbcd3c.html#_CPPv417Qnn_GraphHandle_t" title="Qnn_GraphHandle_t"><span class="n"><span class="pre">Qnn_GraphHandle_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">graphHandle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415QnnGraph_create19Qnn_ContextHandle_tPKcPPK17QnnGraph_Config_tP17Qnn_GraphHandle_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A function to create an empty graph. The function returns an opaque object to be used on all graph APIs (addNode, finalize, execute, …) </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>contextHandle</strong> – <strong>[in]</strong> A handle to the context in which the graph would be created.</p></li>
+<li><p><strong>graphName</strong> – <strong>[in]</strong> A string which identifies the graph. Graph name allows retrieval of the graph after creating the context from cached binary. <em>graphName</em> must be unique within the <em>context</em>.</p></li>
+<li><p><strong>config</strong> – <strong>[in]</strong> Pointer to a NULL terminated array of config option pointers. NULL is allowed and indicates no config options are provided. All config options have default value, in case not provided. If same config option type is provided multiple times, the last option value will be used.</p></li>
+<li><p><strong>graphHandle</strong> – <strong>[out]</strong> The created graph handle.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code:<ul class="simple">
+<li><p>QNN_SUCCESS: the graph was successfully created</p></li>
+<li><p>QNN_GRAPH_ERROR_INVALID_ARGUMENT: <em>graph</em> is NULL or at least one config option was invalid</p></li>
+<li><p>QNN_GRAPH_ERROR_INVALID_NAME: <em>graphName</em> is NULL or not unique within the <em>context</em></p></li>
+<li><p>QNN_GRAPH_ERROR_INVALID_HANDLE: <em>context</em> is not a valid handle</p></li>
+<li><p>QNN_GRAPH_ERROR_MEM_ALLOC: create failed due to memory/resource allocation</p></li>
+<li><p>QNN_GRAPH_ERROR_UNSUPPORTED_FEATURE: some API feature is not supported yet, e.g. config option</p></li>
+<li><p>QNN_GRAPH_ERROR_CREATE_FAILED: create failed due to some other reason</p></li>
+<li><p>QNN_COMMON_ERROR_OPERATION_NOT_PERMITTED: create failed when context is re-created from binary using <a class="reference internal" href="file_include_QNN_QnnContext.h.html#QnnContext_8h_1aa261465dd9bdfe51532a9d33fe4a2fa9"><span class="std std-ref">QnnContext_createFromBinary()</span></a>.</p></li>
+<li><p>QNN_GRAPH_ERROR_PROFILE_IN_USE: when a profile handle is passed as graph config, that profile handle can only be bound to one graph at a time</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use corresponding API through <a class="reference internal" href="file_include_QNN_QnnInterface.h.html#structQnnInterface__t"><span class="std std-ref">QnnInterface_t</span></a>. </p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423QnnGraph_createSubgraph17Qnn_GraphHandle_tPKcP17Qnn_GraphHandle_t">
+<span id="_CPPv323QnnGraph_createSubgraph17Qnn_GraphHandle_tPKcP17Qnn_GraphHandle_t"></span><span id="_CPPv223QnnGraph_createSubgraph17Qnn_GraphHandle_tPKcP17Qnn_GraphHandle_t"></span><span id="QnnGraph_createSubgraph__Qnn_GraphHandle_t.cCP.Qnn_GraphHandle_tP"></span><span class="target" id="QnnGraph_8h_1a74ab12cd65928bc26f91cb88e339afaa"></span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGraph_createSubgraph</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_QnnCommon_8h_1aac60af5d8bde388852ae15bd89fbcd3c.html#_CPPv417Qnn_GraphHandle_t" title="Qnn_GraphHandle_t"><span class="n"><span class="pre">Qnn_GraphHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">graphHandle</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">graphName</span></span>, <a class="reference internal" href="typedef_QnnCommon_8h_1aac60af5d8bde388852ae15bd89fbcd3c.html#_CPPv417Qnn_GraphHandle_t" title="Qnn_GraphHandle_t"><span class="n"><span class="pre">Qnn_GraphHandle_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">subgraphHandle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423QnnGraph_createSubgraph17Qnn_GraphHandle_tPKcP17Qnn_GraphHandle_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A function to create an empty graph which will be a subgraph of another graph. The function returns an opaque object to be used to add nodes to the subgraph. A subgraph can not be explicitly finalized or executed. Only a graph with no parent graphs can be finalized and executed. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graphHandle</strong> – <strong>[in]</strong> Handle to the graph in which the subgraph is created.</p></li>
+<li><p><strong>graphName</strong> – <strong>[in]</strong> A string which identifies the graph. Graph name allows retrieval of the graph after creating the context from cached binary. <em>graphName</em> must be unique within the <em>context</em>.</p></li>
+<li><p><strong>subgraphHandle</strong> – <strong>[out]</strong> The created subgraph handle.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code:<ul class="simple">
+<li><p>QNN_SUCCESS: the graph was successfully created</p></li>
+<li><p>QNN_GRAPH_ERROR_INVALID_ARGUMENT: <em>subgraphHandle</em> is NULL</p></li>
+<li><p>QNN_GRAPH_ERROR_INVALID_NAME: <em>graphName</em> is NULL or not unique within the <em>context</em></p></li>
+<li><p>QNN_GRAPH_ERROR_INVALID_HANDLE: <em>graphHandle</em> is not a valid handle</p></li>
+<li><p>QNN_GRAPH_ERROR_MEM_ALLOC: create failed due to memory/resource allocation</p></li>
+<li><p>QNN_GRAPH_ERROR_UNSUPPORTED_FEATURE: This API is not yet supported</p></li>
+<li><p>QNN_GRAPH_ERROR_CREATE_FAILED: create failed due to some other reason</p></li>
+<li><p>QNN_COMMON_ERROR_OPERATION_NOT_PERMITTED: create failed when context is re-created from binary using <a class="reference internal" href="file_include_QNN_QnnContext.h.html#QnnContext_8h_1aa261465dd9bdfe51532a9d33fe4a2fa9"><span class="std std-ref">QnnContext_createFromBinary()</span></a>.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A subgraph can have another subgraph as a parent.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Nodes and tensors can be added to a subgraph before and/or after the subgraph handle has been included as part of an op config added as a node.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use corresponding API through <a class="reference internal" href="file_include_QNN_QnnInterface.h.html#structQnnInterface__t"><span class="std std-ref">QnnInterface_t</span></a>. </p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv418QnnGraph_setConfig17Qnn_GraphHandle_tPPK17QnnGraph_Config_t">
+<span id="_CPPv318QnnGraph_setConfig17Qnn_GraphHandle_tPPK17QnnGraph_Config_t"></span><span id="_CPPv218QnnGraph_setConfig17Qnn_GraphHandle_tPPK17QnnGraph_Config_t"></span><span id="QnnGraph_setConfig__Qnn_GraphHandle_t.QnnGraph_Config_tCPP"></span><span class="target" id="QnnGraph_8h_1ac0ba7ace966622bc3967a29f334b157e"></span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGraph_setConfig</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_QnnCommon_8h_1aac60af5d8bde388852ae15bd89fbcd3c.html#_CPPv417Qnn_GraphHandle_t" title="Qnn_GraphHandle_t"><span class="n"><span class="pre">Qnn_GraphHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">graphHandle</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="structQnnGraph__Config__t.html#_CPPv417QnnGraph_Config_t" title="QnnGraph_Config_t"><span class="n"><span class="pre">QnnGraph_Config_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">config</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418QnnGraph_setConfig17Qnn_GraphHandle_tPPK17QnnGraph_Config_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A function to set/modify configuration options on an already created graph. Backends are not required to support this API. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graphHandle</strong> – <strong>[in]</strong> A graph handle.</p></li>
+<li><p><strong>config</strong> – <strong>[in]</strong> Pointer to a NULL terminated array of config option pointers. NULL is allowed and indicates no config options are provided. All config options have default value, in case not provided. If same config option type is provided multiple times, the last option value will be used. If a backend cannot support all provided configs it will fail.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code:<ul class="simple">
+<li><p>QNN_SUCCESS: no error is encountered</p></li>
+<li><p>QNN_GRAPH_ERROR_INVALID_HANDLE: <em>graphHandle</em> is not a valid handle</p></li>
+<li><p>QNN_GRAPH_ERROR_INVALID_ARGUMENT: at least one config option is invalid</p></li>
+<li><p>QNN_GRAPH_ERROR_GRAPH_FINALIZED: at least one valid config option is not valid on a finalized graph</p></li>
+<li><p>QNN_GRAPH_ERROR_SUBGRAPH: operation not permitted on a subgraph</p></li>
+<li><p>QNN_GRAPH_ERROR_UNSUPPORTED_FEATURE: at least one valid config option is not supported</p></li>
+<li><p>QNN_GRAPH_ERROR_PROFILE_IN_USE: when a profile handle is passed as graph config, that profile handle can only be bound to one graph at a time</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use corresponding API through <a class="reference internal" href="file_include_QNN_QnnInterface.h.html#structQnnInterface__t"><span class="std std-ref">QnnInterface_t</span></a>. </p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv420QnnGraph_getProperty17Qnn_GraphHandle_tPP19QnnGraph_Property_t">
+<span id="_CPPv320QnnGraph_getProperty17Qnn_GraphHandle_tPP19QnnGraph_Property_t"></span><span id="_CPPv220QnnGraph_getProperty17Qnn_GraphHandle_tPP19QnnGraph_Property_t"></span><span id="QnnGraph_getProperty__Qnn_GraphHandle_t.QnnGraph_Property_tPP"></span><span class="target" id="QnnGraph_8h_1a8c78a4a56993a243ec4f113131fb90ca"></span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGraph_getProperty</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_QnnCommon_8h_1aac60af5d8bde388852ae15bd89fbcd3c.html#_CPPv417Qnn_GraphHandle_t" title="Qnn_GraphHandle_t"><span class="n"><span class="pre">Qnn_GraphHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">graphHandle</span></span>, <a class="reference internal" href="structQnnGraph__Property__t.html#_CPPv419QnnGraph_Property_t" title="QnnGraph_Property_t"><span class="n"><span class="pre">QnnGraph_Property_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">properties</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420QnnGraph_getProperty17Qnn_GraphHandle_tPP19QnnGraph_Property_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A function to get a list of graph properties. Backends are not required to support this API. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graphHandle</strong> – <strong>[in]</strong> A graph handle.</p></li>
+<li><p><strong>[in/out]</strong> – properties Pointer to a null terminated array of pointers containing the properties associated with the passed graphHandle. Memory for this information is owned and managed by the client. Client needs to populate the property options being requested. If <em>graphHandle</em> is not recognized, the pointer <em>properties</em> points to is set to nullptr.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code:<ul class="simple">
+<li><p>QNN_SUCCESS: no error is encountered</p></li>
+<li><p>QNN_GRAPH_ERROR_INVALID_HANDLE: <em>graphHandle</em> is not a valid handle</p></li>
+<li><p>QNN_GRAPH_ERROR_INVALID_ARGUMENT: <em>properties</em> is NULL or at least one property option is invalid</p></li>
+<li><p>QNN_GRAPH_ERROR_UNSUPPORTED_FEATURE: at least one valid property option is not supported</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use corresponding API through <a class="reference internal" href="file_include_QNN_QnnInterface.h.html#structQnnInterface__t"><span class="std std-ref">QnnInterface_t</span></a>. </p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv416QnnGraph_addNode17Qnn_GraphHandle_t14Qnn_OpConfig_t">
+<span id="_CPPv316QnnGraph_addNode17Qnn_GraphHandle_t14Qnn_OpConfig_t"></span><span id="_CPPv216QnnGraph_addNode17Qnn_GraphHandle_t14Qnn_OpConfig_t"></span><span id="QnnGraph_addNode__Qnn_GraphHandle_t.Qnn_OpConfig_t"></span><span class="target" id="QnnGraph_8h_1a1c6363e459cb7092356572f5af1c952b"></span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGraph_addNode</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_QnnCommon_8h_1aac60af5d8bde388852ae15bd89fbcd3c.html#_CPPv417Qnn_GraphHandle_t" title="Qnn_GraphHandle_t"><span class="n"><span class="pre">Qnn_GraphHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">graphHandle</span></span>, <a class="reference internal" href="structQnn__OpConfig__t.html#_CPPv414Qnn_OpConfig_t" title="Qnn_OpConfig_t"><span class="n"><span class="pre">Qnn_OpConfig_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">opConfig</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416QnnGraph_addNode17Qnn_GraphHandle_t14Qnn_OpConfig_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A function to add a node to the graph. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graphHandle</strong> – <strong>[in]</strong> The graph or sub-graph handle to add the node to.</p></li>
+<li><p><strong>opConfig</strong> – <strong>[in]</strong> A struct containing the configuration of the operation which should be added as a node in the graph. The tensor objects in this structure for inputs and outputs to the node must be created with APIs in QnnTensor.h which register them with a backend. Unrecognized tensors in the opConfig result in failure. Since the tensor ID is provided by the backend and is unique, it is sufficient to only specify a valid tensor ID in the <a class="reference internal" href="file_include_QNN_QnnTypes.h.html#structQnn__Tensor__t"><span class="std std-ref">Qnn_Tensor_t</span></a> structures associated with the opConfig. All other fields including any static data are ignored by the backend when parsing these tensors.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code<ul class="simple">
+<li><p>QNN_SUCCESS: the node is successfully added to the graph</p></li>
+<li><p>QNN_GRAPH_ERROR_INVALID_OP_CONFIG: misconfigured operation - invalid op config Thrown when a BE cannot match package name and/or op name with any registered op packages, or when tensor metadata for tensors in opConfig differs from that used in registering them with a graph using <a class="reference internal" href="file_include_QNN_QnnTensor.h.html#QnnTensor_8h_1acf98aa32e9fc9db88e2250f75c7e21ac"><span class="std std-ref">QnnTensor_createGraphTensor()</span></a>.</p></li>
+<li><p>QNN_GRAPH_ERROR_INVALID_TENSOR: when tensor objects within opConfig are invalid</p></li>
+<li><p>QNN_GRAPH_ERROR_INVALID_HANDLE: <em>graph</em> is not a valid handle</p></li>
+<li><p>QNN_GRAPH_ERROR_GRAPH_FINALIZED: add nodes on a finalized graph</p></li>
+<li><p>QNN_GRAPH_ERROR_UNCONNECTED_NODE: node added before its dependent node(s)</p></li>
+<li><p>QNN_GRAPH_ERROR_UNSUPPORTED_FEATURE: some API feature is not supported yet</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The following conditions should be honored by tensors specified as part of opConfig:<ol class="loweralpha simple">
+<li><p>No tensor in the list opConfig.outputTensors can be of type QNN_TENSOR_TYPE_APP_WRITE or QNN_TENSOR_TYPE_STATIC.</p></li>
+<li><p>All parameters in the opConfig that happen to be tensors must be of the type QNN_TENSOR_TYPE_STATIC.</p></li>
+<li><p>Tensors express connectivity between nodes. However, it is permissible for tensors to remain ‘unconsumed’ in a graph, i.e., not act as inputs to any other node in the graph.</p></li>
+</ol>
+</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>QnnGraph does not validate opConfig used in creating node beyond checks for basic sanity. A thorough validation of opConfig for this node defined in a certain op package has to be done via <a class="reference internal" href="file_include_QNN_QnnBackend.h.html#QnnBackend_8h_1aaa4fdee2bfe889e2f825909ed1f8dd39"><span class="std std-ref">QnnBackend_validateOpConfig()</span></a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Nodes must be added in dependency order. i.e. all QNN_TENSOR_TYPE_NATIVE inputs to the node must be outputs of a previously added node.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use corresponding API through <a class="reference internal" href="file_include_QNN_QnnInterface.h.html#structQnnInterface__t"><span class="std std-ref">QnnInterface_t</span></a>. </p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv417QnnGraph_finalize17Qnn_GraphHandle_t19Qnn_ProfileHandle_t18Qnn_SignalHandle_t">
+<span id="_CPPv317QnnGraph_finalize17Qnn_GraphHandle_t19Qnn_ProfileHandle_t18Qnn_SignalHandle_t"></span><span id="_CPPv217QnnGraph_finalize17Qnn_GraphHandle_t19Qnn_ProfileHandle_t18Qnn_SignalHandle_t"></span><span id="QnnGraph_finalize__Qnn_GraphHandle_t.Qnn_ProfileHandle_t.Qnn_SignalHandle_t"></span><span class="target" id="QnnGraph_8h_1addff55c1a315d0141c821f771d622d56"></span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGraph_finalize</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_QnnCommon_8h_1aac60af5d8bde388852ae15bd89fbcd3c.html#_CPPv417Qnn_GraphHandle_t" title="Qnn_GraphHandle_t"><span class="n"><span class="pre">Qnn_GraphHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">graphHandle</span></span>, <a class="reference internal" href="typedef_QnnCommon_8h_1a3d859a5097d3fe96b8d5bad77bf0afd5.html#_CPPv419Qnn_ProfileHandle_t" title="Qnn_ProfileHandle_t"><span class="n"><span class="pre">Qnn_ProfileHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">profileHandle</span></span>, <a class="reference internal" href="typedef_QnnCommon_8h_1a57c5e514635d2d61c8c396974da8999a.html#_CPPv418Qnn_SignalHandle_t" title="Qnn_SignalHandle_t"><span class="n"><span class="pre">Qnn_SignalHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">signalHandle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417QnnGraph_finalize17Qnn_GraphHandle_t19Qnn_ProfileHandle_t18Qnn_SignalHandle_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A function to finalize the graph. If called on a graph that was composed, the runtime will process the graph, validate that all operations are created successfully and that connectivity is correct. If called on a graph that was retrieved from a context binary (subject to backend support, see QNN_PROPERTY_GRAPH_SUPPORT_FINALIZE_DESERIALIZED_GRAPH), the runtime will perform additional setup required before execution. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graphHandle</strong> – <strong>[in]</strong> Handle to the graph to be finalized.</p></li>
+<li><p><strong>profileHandle</strong> – <strong>[in]</strong> The profile handle on which metrics is populated and can be queried. Use NULL handle to disable profile collection. A handle being re-used would reset and is populated with values from the current call. This handle must be NULL when a continuous profile handle has been configured via the QNN_GRAPH_CONFIG_OPTION_PROFILE_HANDLE option</p></li>
+<li><p><strong>signalHandle</strong> – <strong>[in]</strong> Signal object to control the execution of the finalize process. NULL may be passed to indicate that no execution control is requested, and the finalize operation should continue to completion uninterrupted. The signal object, if not NULL, is considered to be in-use for the duration of the call.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code:<ul class="simple">
+<li><p>QNN_SUCCESS: the graph is finalized successfully</p></li>
+<li><p>QNN_GRAPH_ERROR_INVALID_HANDLE: <em>graph</em> is not a valid handle</p></li>
+<li><p>QNN_GRAPH_ERROR_INVALID_ARGUMENT:<ul>
+<li><p>invalid param passed in OR</p></li>
+<li><p>continuous graph profiling is enabled and the per-API handle is not NULL.</p></li>
+</ul>
+</p></li>
+<li><p>QNN_GRAPH_ERROR_CREATE_FAILED: op/kernel creation failed</p></li>
+<li><p>QNN_GRAPH_ERROR_OPTIMIZATION_FAILED: graph optimization failed</p></li>
+<li><p>QNN_GRAPH_ERROR_UNSUPPORTED_FEATURE: some API feature is not supported yet, e.g. signal or profile</p></li>
+<li><p>QNN_GRAPH_ERROR_SET_PROFILE: set profile failed</p></li>
+<li><p>QNN_GRAPH_ERROR_SIGNAL_IN_USE: the supplied control signal is already in-use by another call.</p></li>
+<li><p>QNN_GRAPH_ERROR_ABORTED: the call is aborted before completion due to user cancellation</p></li>
+<li><p>QNN_GRAPH_ERROR_TIMED_OUT: the call is aborted before completion due to a timeout</p></li>
+<li><p>QNN_GRAPH_ERROR_FINALIZE_FAILED: finalize failed for some other reason</p></li>
+<li><p>QNN_GRAPH_ERROR_SUBGRAPH: operation not permitted on a subgraph</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Graphs that contain zero nodes will fail to finalize.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some runtimes may require that this function is called before execution of a graph retrieved from a context binary, refer to backend specific documentation.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use corresponding API through <a class="reference internal" href="file_include_QNN_QnnInterface.h.html#structQnnInterface__t"><span class="std std-ref">QnnInterface_t</span></a>. </p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv417QnnGraph_retrieve19Qnn_ContextHandle_tPKcP17Qnn_GraphHandle_t">
+<span id="_CPPv317QnnGraph_retrieve19Qnn_ContextHandle_tPKcP17Qnn_GraphHandle_t"></span><span id="_CPPv217QnnGraph_retrieve19Qnn_ContextHandle_tPKcP17Qnn_GraphHandle_t"></span><span id="QnnGraph_retrieve__Qnn_ContextHandle_t.cCP.Qnn_GraphHandle_tP"></span><span class="target" id="QnnGraph_8h_1a126bc4d0a25a5d47c10c44f95e13ba95"></span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGraph_retrieve</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_QnnCommon_8h_1ae2751b09a1186e90f79e7b89d1903c8f.html#_CPPv419Qnn_ContextHandle_t" title="Qnn_ContextHandle_t"><span class="n"><span class="pre">Qnn_ContextHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">contextHandle</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">graphName</span></span>, <a class="reference internal" href="typedef_QnnCommon_8h_1aac60af5d8bde388852ae15bd89fbcd3c.html#_CPPv417Qnn_GraphHandle_t" title="Qnn_GraphHandle_t"><span class="n"><span class="pre">Qnn_GraphHandle_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">graphHandle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417QnnGraph_retrieve19Qnn_ContextHandle_tPKcP17Qnn_GraphHandle_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A function to retrieve a graph based on name. This function is typically used when a context was created from cached binary. The re-created context has graph(s) which are also re-created. The function returns the graph handle to be used for all graph APIs (addNode, finalize, execute, …). </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>contextHandle</strong> – <strong>[in]</strong> An opaque ID to the context.</p></li>
+<li><p><strong>graphName</strong> – <strong>[in]</strong> A string which identifies the graph.</p></li>
+<li><p><strong>graphHandle</strong> – <strong>[out]</strong> A pointer to the graph handle that is being retrieved.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code:<ul class="simple">
+<li><p>QNN_SUCCESS: the graph was successfully retrieved</p></li>
+<li><p>QNN_GRAPH_ERROR_INVALID_NAME: <em>graphName</em> or <em>graph</em> is NULL</p></li>
+<li><p>QNN_GRAPH_ERROR_INVALID_HANDLE: <em>context</em> is not a valid handle</p></li>
+<li><p>QNN_GRAPH_ERROR_GRAPH_DOES_NOT_EXIST: graph not found/created</p></li>
+<li><p>QNN_GRAPH_ERROR_SUBGRAPH: operation not permitted on a subgraph</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use corresponding API through <a class="reference internal" href="file_include_QNN_QnnInterface.h.html#structQnnInterface__t"><span class="std std-ref">QnnInterface_t</span></a>. </p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv436QnnGraph_prepareExecutionEnvironment17Qnn_GraphHandle_tPP29QnnGraph_ExecuteEnvironment_t8uint32_t">
+<span id="_CPPv336QnnGraph_prepareExecutionEnvironment17Qnn_GraphHandle_tPP29QnnGraph_ExecuteEnvironment_t8uint32_t"></span><span id="_CPPv236QnnGraph_prepareExecutionEnvironment17Qnn_GraphHandle_tPP29QnnGraph_ExecuteEnvironment_t8uint32_t"></span><span id="QnnGraph_prepareExecutionEnvironment__Qnn_GraphHandle_t.QnnGraph_ExecuteEnvironment_tPP.uint32_t"></span><span class="target" id="QnnGraph_8h_1aeb168f230060f3452c18f023d0bbbc88"></span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGraph_prepareExecutionEnvironment</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_QnnCommon_8h_1aac60af5d8bde388852ae15bd89fbcd3c.html#_CPPv417Qnn_GraphHandle_t" title="Qnn_GraphHandle_t"><span class="n"><span class="pre">Qnn_GraphHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">graphHandle</span></span>, <a class="reference internal" href="structQnnGraph__ExecuteEnvironment__t.html#_CPPv429QnnGraph_ExecuteEnvironment_t" title="QnnGraph_ExecuteEnvironment_t"><span class="n"><span class="pre">QnnGraph_ExecuteEnvironment_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">envs</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">envSize</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv436QnnGraph_prepareExecutionEnvironment17Qnn_GraphHandle_tPP29QnnGraph_ExecuteEnvironment_t8uint32_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A function to optionally prepare an execution environment. Client can provide environment options to a backend such that optimizations can be applied a backend or discovered by the client. The options are: </p>
+<p><ul class="simple">
+<li><p>QNN_GRAPH_EXECUTE_ENVIRONMENT_OPTION_BIND_MEM_HANDLES: An option to achieve zero copy of tensor data during execution. Done by grouping sets of I/O tensors and binding their memory layout to a graph handle before execution.</p></li>
+<li><p>QNN_GRAPH_EXECUTE_ENVIRONMENT_OPTION_POPULATE_CLIENT_BUFS: An option to achieve zero copy of tensor data in cases of backend-allocated memory. Clients should use this option to discover memory layout of input and output tensors allocated by the backend.</p></li>
+</ul>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graphHandle</strong> – <strong>[in]</strong> A handle to the graph that is being prepared for execution</p></li>
+<li><p><strong>[in/out]</strong> – envs An array of pointers to execution environment options of length envSize. The option field is required to be set for all environments in the array. A backend may not support all options provided. If extra environment options are provided, the backend will set them to a default value (e.g. QNN_TENSOR_SET_INIT).</p></li>
+<li><p><strong>envSize</strong> – <strong>[in]</strong> Size of the array pointed to by envs.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code:<ul class="simple">
+<li><p>QNN_SUCCESS: The execution environment was successfully prepared.</p></li>
+<li><p>QNN_GRAPH_ERROR_INVALID_HANDLE: <em>graph</em> is not a valid handle.</p></li>
+<li><p>QNN_GRAPH_ERROR_INVALID_ARGUMENT: One or more fields in the provided envs is NULL or invalid.</p></li>
+<li><p>QNN_GRAPH_ERROR_UNSUPPORTED_FEATURE: One or more env options is not supported by the backend.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See SDK documentation for backend specific behaviour. Backend support for environment options can be determined by querying the corresponding capability.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use corresponding API through <a class="reference internal" href="file_include_QNN_QnnInterface.h.html#structQnnInterface__t"><span class="std std-ref">QnnInterface_t</span></a>. </p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv416QnnGraph_execute17Qnn_GraphHandle_tPK12Qnn_Tensor_t8uint32_tP12Qnn_Tensor_t8uint32_t19Qnn_ProfileHandle_t18Qnn_SignalHandle_t">
+<span id="_CPPv316QnnGraph_execute17Qnn_GraphHandle_tPK12Qnn_Tensor_t8uint32_tP12Qnn_Tensor_t8uint32_t19Qnn_ProfileHandle_t18Qnn_SignalHandle_t"></span><span id="_CPPv216QnnGraph_execute17Qnn_GraphHandle_tPK12Qnn_Tensor_t8uint32_tP12Qnn_Tensor_t8uint32_t19Qnn_ProfileHandle_t18Qnn_SignalHandle_t"></span><span id="QnnGraph_execute__Qnn_GraphHandle_t.Qnn_Tensor_tCP.uint32_t.Qnn_Tensor_tP.uint32_t.Qnn_ProfileHandle_t.Qnn_SignalHandle_t"></span><span class="target" id="QnnGraph_8h_1a3ea05f42a9295f9a74a2e3a0cdd64228"></span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGraph_execute</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_QnnCommon_8h_1aac60af5d8bde388852ae15bd89fbcd3c.html#_CPPv417Qnn_GraphHandle_t" title="Qnn_GraphHandle_t"><span class="n"><span class="pre">Qnn_GraphHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">graphHandle</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="structQnn__Tensor__t.html#_CPPv412Qnn_Tensor_t" title="Qnn_Tensor_t"><span class="n"><span class="pre">Qnn_Tensor_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">inputs</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">numInputs</span></span>, <a class="reference internal" href="structQnn__Tensor__t.html#_CPPv412Qnn_Tensor_t" title="Qnn_Tensor_t"><span class="n"><span class="pre">Qnn_Tensor_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">outputs</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">numOutputs</span></span>, <a class="reference internal" href="typedef_QnnCommon_8h_1a3d859a5097d3fe96b8d5bad77bf0afd5.html#_CPPv419Qnn_ProfileHandle_t" title="Qnn_ProfileHandle_t"><span class="n"><span class="pre">Qnn_ProfileHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">profileHandle</span></span>, <a class="reference internal" href="typedef_QnnCommon_8h_1a57c5e514635d2d61c8c396974da8999a.html#_CPPv418Qnn_SignalHandle_t" title="Qnn_SignalHandle_t"><span class="n"><span class="pre">Qnn_SignalHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">signalHandle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416QnnGraph_execute17Qnn_GraphHandle_tPK12Qnn_Tensor_t8uint32_tP12Qnn_Tensor_t8uint32_t19Qnn_ProfileHandle_t18Qnn_SignalHandle_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Synchronously execute a finalized graph. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graphHandle</strong> – <strong>[in]</strong> Handle of finalized graph to execute.</p></li>
+<li><p><strong>inputs</strong> – <strong>[in]</strong> Array of tensors with which to populate graph inputs.</p></li>
+<li><p><strong>numInputs</strong> – <strong>[in]</strong> Number of input tensors.</p></li>
+<li><p><strong>outputs</strong> – <strong>[out]</strong> Array of output tensors which the graph will populate with output values.</p></li>
+<li><p><strong>numOutputs</strong> – <strong>[in]</strong> Number of output tensors.</p></li>
+<li><p><strong>profileHandle</strong> – <strong>[in]</strong> The profile handle on which metrics is populated and can be queried. Use NULL handle to disable profile collection. A handle being reused would reset and is populated with values from the current call. This handle must be NULL when a continuous profile handle has been configured via the QNN_GRAPH_CONFIG_OPTION_PROFILE_HANDLE option</p></li>
+<li><p><strong>signalHandle</strong> – <strong>[in]</strong> Signal object which may be used to control the execution of this call. NULL indicates execution should proceed as normal. The signal object, if not NULL, is considered to be in-use for the duration of the call.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code:<ul class="simple">
+<li><p>QNN_SUCCESS: the graph was successfully executed</p></li>
+<li><p>QNN_GRAPH_ERROR_INVALID_HANDLE: <em>graph</em> is not a valid handle</p></li>
+<li><p>QNN_GRAPH_ERROR_GRAPH_NOT_FINALIZED: graph was not finalized</p></li>
+<li><p>QNN_GRAPH_ERROR_SUBGRAPH: cannot execute a subgraph</p></li>
+<li><p>QNN_GRAPH_ERROR_INVALID_ARGUMENT:<ul>
+<li><p><em>inputs</em> or <em>outputs</em> is NULL or ill-formed OR</p></li>
+<li><p><em>inputs</em> is NOT NULL and <em>numInputs</em> is 0 OR</p></li>
+<li><p><em>outputs</em> is NOT NULL and <em>numOutputs</em> is 0 OR</p></li>
+<li><p><em>profile</em> handle is invalid OR</p></li>
+<li><p>continuous graph profiling is enabled and the per-API handle is not NULL.</p></li>
+</ul>
+</p></li>
+<li><p>QNN_GRAPH_ERROR_INVALID_TENSOR: one or more tensors in <em>inputs</em> or <em>outputs</em> is invalid or not recognized by graph</p></li>
+<li><p>QNN_GRAPH_ERROR_UNSUPPORTED_FEATURE: graph execution is not supported on this backend or some API feature is not supported yet, e.g. signal, profile, or batch multiplier</p></li>
+<li><p>QNN_GRAPH_ERROR_SET_PROFILE: set profile failed</p></li>
+<li><p>QNN_GRAPH_ERROR_SIGNAL_IN_USE: the supplied control signal is already in-use by another call.</p></li>
+<li><p>QNN_GRAPH_ERROR_ABORTED: the call is aborted before completion due to user cancellation</p></li>
+<li><p>QNN_GRAPH_ERROR_TIMED_OUT: the call is aborted before completion due to a timeout</p></li>
+<li><p>QNN_GRAPH_ERROR_DISABLED: the graph was not enabled when the context was deserialized</p></li>
+<li><p>QNN_GRAPH_ERROR_DYNAMIC_TENSOR_SHAPE: An error occurred that is related to dynamic tensor shape. For example, a tensor maximum dimension was exceeded.</p></li>
+<li><p>QNN_GRAPH_ERROR_TENSOR_SPARSITY: An error occurred that is related to tensor sparsity. For example, the maximum number of specified elements was exceeded.</p></li>
+<li><p>QNN_GRAPH_ERROR_EARLY_TERMINATION: Graph execution terminated early due to defined op behavior.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Tensors in <em>inputs</em> and <em>outputs</em> must carry the same ID that was assigned when they were created. Values for all other attributes in <a class="reference internal" href="file_include_QNN_QnnTypes.h.html#structQnn__Tensor__t"><span class="std std-ref">Qnn_Tensor_t</span></a> are assumed from the point at which they were registered with a backend at the time of tensor creation, with the following exceptions:<ul class="simple">
+<li><p>Tensor data provided by client in structs such as <em>clientBuf</em> can be changed between invocations to execute().</p></li>
+<li><p>Batch multiple: An <em>inputs</em> or <em>outputs</em> tensor <em>dimensions</em> field, if non-null, should match the values provided at tensor creation, with the following exception. The batch dimension, as determined by the op definition, can be an integer multiple of the respective dimension provided at tensor creation. All <em>inputs</em> and <em>outputs</em> tensors must have the same batch multiple.</p></li>
+<li><p>Dynamic output dimensions: An <em>outputs</em> tensor <a class="reference internal" href="file_include_QNN_QnnTypes.h.html#structQnn__TensorV1__t"><span class="std std-ref">Qnn_TensorV1_t</span></a> <em>dimensions</em> field, if non-null, can vary after graph execution. As determined by the op definition, non-batch dimensions may be less than the respective dimension at tensor creation.</p></li>
+<li><p>Dynamic dimensions: If an <em>inputs</em> tensor was created with a non-null <a class="reference internal" href="file_include_QNN_QnnTypes.h.html#structQnn__TensorV2__t"><span class="std std-ref">Qnn_TensorV2_t</span></a> <em>isDynamicDimensions</em> field, the corresponding dynamic dimensions must be provided by the caller. If an <em>outputs</em> tensor was created with a non-null <a class="reference internal" href="file_include_QNN_QnnTypes.h.html#structQnn__TensorV2__t"><span class="std std-ref">Qnn_TensorV2_t</span></a> <em>isDynamicDimensions</em> field, the <em>dimensions</em> must be non-null and the output dimensions will be written by the backend. In a scenario where maximum dimensions will be exceeded, the backend will generate an error code indicating loss of data and will fill the tensor with as much data as possible.</p></li>
+<li><p>Other fields like <em>dataType</em> can also be permitted to change between invocations to <a class="reference internal" href="#QnnGraph_8h_1a3ea05f42a9295f9a74a2e3a0cdd64228"><span class="std std-ref">QnnGraph_execute()</span></a>/QnnGraph_executeAsync() for certain ops that perform data type conversions.</p></li>
+<li><p>Some backends may be able to execute a graph with no <em>inputs</em> provided the graph has no application-writable tensors.</p></li>
+<li><p>Graph I/O Tensors marked optional (i.e. omitted or marked as type=QNN_TENSOR_TYPE_NULL during <a class="reference internal" href="#QnnGraph_8h_1a1c6363e459cb7092356572f5af1c952b"><span class="std std-ref">QnnGraph_addNode()</span></a>) cannot be supplied to <a class="reference internal" href="#QnnGraph_8h_1a3ea05f42a9295f9a74a2e3a0cdd64228"><span class="std std-ref">QnnGraph_execute()</span></a>/QnnGraph_executeAsync(). Clients mark tensors to be of type QNN_TENSOR_TYPE_NULL to indicate that they must be ignored when constructing a node that lists them as optional.</p></li>
+<li><p>Mixing different tensor versions in the same graph (e.g. <a class="reference internal" href="file_include_QNN_QnnTypes.h.html#structQnn__TensorV1__t"><span class="std std-ref">Qnn_TensorV1_t</span></a> and <a class="reference internal" href="file_include_QNN_QnnTypes.h.html#structQnn__TensorV2__t"><span class="std std-ref">Qnn_TensorV2_t</span></a>) may result in performance degradation.</p></li>
+</ul>
+</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If there are simultaneous calls to <a class="reference internal" href="#QnnGraph_8h_1a3ea05f42a9295f9a74a2e3a0cdd64228"><span class="std std-ref">QnnGraph_execute()</span></a> and <a class="reference internal" href="#QnnGraph_8h_1a690b74571029dd9f36e38cd902c86784"><span class="std std-ref">QnnGraph_executeAsync()</span></a>, the priority for enqueuing or executing is equal. Both functions operate on the same queue, the only difference in behavior is whether the function returns when the execution is enqueued, or when the execution finishes. If there are executions already enqueued, the execution will be added to the end of the queue, and <a class="reference internal" href="#QnnGraph_8h_1a3ea05f42a9295f9a74a2e3a0cdd64228"><span class="std std-ref">QnnGraph_execute()</span></a> will block while waiting in the queue.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use corresponding API through <a class="reference internal" href="file_include_QNN_QnnInterface.h.html#structQnnInterface__t"><span class="std std-ref">QnnInterface_t</span></a>. </p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421QnnGraph_executeAsync17Qnn_GraphHandle_tPK12Qnn_Tensor_t8uint32_tP12Qnn_Tensor_t8uint32_t19Qnn_ProfileHandle_t18Qnn_SignalHandle_t14Qnn_NotifyFn_tPv">
+<span id="_CPPv321QnnGraph_executeAsync17Qnn_GraphHandle_tPK12Qnn_Tensor_t8uint32_tP12Qnn_Tensor_t8uint32_t19Qnn_ProfileHandle_t18Qnn_SignalHandle_t14Qnn_NotifyFn_tPv"></span><span id="_CPPv221QnnGraph_executeAsync17Qnn_GraphHandle_tPK12Qnn_Tensor_t8uint32_tP12Qnn_Tensor_t8uint32_t19Qnn_ProfileHandle_t18Qnn_SignalHandle_t14Qnn_NotifyFn_tPv"></span><span id="QnnGraph_executeAsync__Qnn_GraphHandle_t.Qnn_Tensor_tCP.uint32_t.Qnn_Tensor_tP.uint32_t.Qnn_ProfileHandle_t.Qnn_SignalHandle_t.Qnn_NotifyFn_t.voidP"></span><span class="target" id="QnnGraph_8h_1a690b74571029dd9f36e38cd902c86784"></span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGraph_executeAsync</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_QnnCommon_8h_1aac60af5d8bde388852ae15bd89fbcd3c.html#_CPPv417Qnn_GraphHandle_t" title="Qnn_GraphHandle_t"><span class="n"><span class="pre">Qnn_GraphHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">graphHandle</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="structQnn__Tensor__t.html#_CPPv412Qnn_Tensor_t" title="Qnn_Tensor_t"><span class="n"><span class="pre">Qnn_Tensor_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">inputs</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">numInputs</span></span>, <a class="reference internal" href="structQnn__Tensor__t.html#_CPPv412Qnn_Tensor_t" title="Qnn_Tensor_t"><span class="n"><span class="pre">Qnn_Tensor_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">outputs</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">numOutputs</span></span>, <a class="reference internal" href="typedef_QnnCommon_8h_1a3d859a5097d3fe96b8d5bad77bf0afd5.html#_CPPv419Qnn_ProfileHandle_t" title="Qnn_ProfileHandle_t"><span class="n"><span class="pre">Qnn_ProfileHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">profileHandle</span></span>, <a class="reference internal" href="typedef_QnnCommon_8h_1a57c5e514635d2d61c8c396974da8999a.html#_CPPv418Qnn_SignalHandle_t" title="Qnn_SignalHandle_t"><span class="n"><span class="pre">Qnn_SignalHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">signalHandle</span></span>, <a class="reference internal" href="typedef_QnnGraph_8h_1a7962dbaaab857587b6b0b15a9d3b87e0.html#_CPPv414Qnn_NotifyFn_t" title="Qnn_NotifyFn_t"><span class="n"><span class="pre">Qnn_NotifyFn_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">notifyFn</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">notifyParam</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421QnnGraph_executeAsync17Qnn_GraphHandle_tPK12Qnn_Tensor_t8uint32_tP12Qnn_Tensor_t8uint32_t19Qnn_ProfileHandle_t18Qnn_SignalHandle_t14Qnn_NotifyFn_tPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Asynchronously execute a finalized graph. Graphs will be enqueued for execution in FIFO order. There is no guarantee that graphs will finish execution in the same order they were enqueued. If the the execution queue is full, this function will block until space is available. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graphHandle</strong> – <strong>[in]</strong> Handle of finalized graph to execute.</p></li>
+<li><p><strong>inputs</strong> – <strong>[in]</strong> Array of input tensors with which to populate graph inputs.</p></li>
+<li><p><strong>numInputs</strong> – <strong>[in]</strong> Number of input tensors.</p></li>
+<li><p><strong>outputs</strong> – <strong>[out]</strong> Array of tensors which the graph will populate with output values.</p></li>
+<li><p><strong>numOutputs</strong> – <strong>[in]</strong> Number of output tensors.</p></li>
+<li><p><strong>profileHandle</strong> – <strong>[in]</strong> The profile handle on which metrics is populated and can be queried. Use NULL handle to disable profile collection. A handle being reused would reset and is populated with values from the enqueued execute call. Profile handle management/reuse across asynchronous calls is client’s responsibility. Behavior is undefined if same profile handle is used by two enqueued execute instances at the same time. This handle must be NULL when a continuous profile handle has been configured via the QNN_GRAPH_CONFIG_OPTION_PROFILE_HANDLE option</p></li>
+<li><p><strong>signalHandle</strong> – <strong>[in]</strong> Signal object which may be used to control the execution of this call. NULL indicates execution should proceed as normal. All pending executions in the queue are affected by Signal control. Instance executing when Signal control is issued may not be affected. The signal object, if not NULL, is considered to be in-use for the duration of the call. For timeout signals, the timeout duration applies from the QnnGraph_executeAsync call until the callback is called. The same Qnn_GraphHandle_t can be used for multiple calls to QnnGraph_executeAsync, however, different Qnn_SignalHandle_t must be supplied.</p></li>
+<li><p><strong>notifyFn</strong> – <strong>[in]</strong> Pointer to notification function, called when execution is finished. NULL indicates no notification is requested. <em>notifyFn</em> will be called in context of backend owned thread, with priority equal or lower than client’s calling thread. Please note that a failed call to QnnGraph_executeAsync does not call the notification function.</p></li>
+<li><p><strong>notifyParam</strong> – <strong>[in]</strong> Client-supplied data object which will be passed back via <em>notifyFn</em> and can be used to identify asynchronous execution instance. Can be NULL.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code:<ul class="simple">
+<li><p>QNN_SUCCESS: the graph was successfully executed</p></li>
+<li><p>QNN_GRAPH_ERROR_INVALID_HANDLE: <em>graph</em> is not a valid handle</p></li>
+<li><p>QNN_GRAPH_ERROR_GRAPH_NOT_FINALIZED: graph was not finalized</p></li>
+<li><p>QNN_GRAPH_ERROR_SUBGRAPH: cannot execute a subgraph</p></li>
+<li><p>QNN_GRAPH_ERROR_INVALID_ARGUMENT:<ul>
+<li><p><em>inputs</em> or <em>outputs</em> is NULL or ill-formed OR</p></li>
+<li><p><em>inputs</em> is NOT NULL and <em>numInputs</em> is 0 OR</p></li>
+<li><p><em>outputs</em> is NOT NULL and <em>numOutputs</em> is 0 OR</p></li>
+<li><p><em>profile</em> handle is invalid OR</p></li>
+<li><p>continuous graph profiling is enabled and the per-API handle is not NULL.</p></li>
+</ul>
+</p></li>
+<li><p>QNN_GRAPH_ERROR_INVALID_TENSOR: one or more tensors in <em>inputs</em> or <em>outputs</em> is invalid or not recognized by graph</p></li>
+<li><p>QNN_GRAPH_ERROR_UNSUPPORTED_FEATURE: asynchronous graph execution is not supported on this backend or some API feature is not supported yet, e.g. signal, profile, or batch multiplier</p></li>
+<li><p>QNN_GRAPH_ERROR_SIGNAL_IN_USE: the supplied control signal is already in-use by another call.</p></li>
+<li><p>QNN_GRAPH_ERROR_ABORTED: the call is aborted before completion due to user cancellation</p></li>
+<li><p>QNN_GRAPH_ERROR_TIMED_OUT: the call is aborted before completion due to a timeout</p></li>
+<li><p>QNN_GRAPH_ERROR_DISABLED: the graph was not enabled when the context was deserialized</p></li>
+<li><p>QNN_GRAPH_ERROR_DYNAMIC_TENSOR_SHAPE: An error occurred that is related to dynamic tensor shape. For example, a tensor maximum dimension was exceeded.</p></li>
+<li><p>QNN_GRAPH_ERROR_TENSOR_SPARSITY: An error occurred that is related to tensor sparsity. For example, the maximum number of specified elements was exceeded.</p></li>
+<li><p>QNN_GRAPH_ERROR_EARLY_TERMINATION: Graph execution terminated early due to defined op behavior.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Tensors in <em>inputs</em> and <em>outputs</em> must carry the same ID that was assigned when they were created. Values for all other attributes in <a class="reference internal" href="file_include_QNN_QnnTypes.h.html#structQnn__Tensor__t"><span class="std std-ref">Qnn_Tensor_t</span></a> are assumed from the point at which they were registered with a backend at the time of tensor creation, with the following exceptions:<ul class="simple">
+<li><p>Tensor data provided by client in structs such as <em>clientBuf</em> can be changed between invocations to execute().</p></li>
+<li><p>Batch multiple: An <em>inputs</em> or <em>outputs</em> tensor <em>dimensions</em> field, if non-null, should match the values provided at tensor creation, with the following exception. The batch dimension, as determined by the op definition, can be an integer multiple of the respective dimension provided at tensor creation. All <em>inputs</em> and <em>outputs</em> tensors must have the same batch multiple.</p></li>
+<li><p>Dynamic output dimensions: An <em>outputs</em> tensor <a class="reference internal" href="file_include_QNN_QnnTypes.h.html#structQnn__TensorV1__t"><span class="std std-ref">Qnn_TensorV1_t</span></a> <em>dimensions</em> field, if non-null, can vary after graph execution. As determined by the op definition, non-batch dimensions may be less than the respective dimension at tensor creation.</p></li>
+<li><p>Dynamic dimensions: If an <em>inputs</em> tensor was created with a non-null <a class="reference internal" href="file_include_QNN_QnnTypes.h.html#structQnn__TensorV2__t"><span class="std std-ref">Qnn_TensorV2_t</span></a> <em>isDynamicDimensions</em> field, the corresponding dynamic dimensions must be provided by the caller. If an <em>outputs</em> tensor was created with a non-null <a class="reference internal" href="file_include_QNN_QnnTypes.h.html#structQnn__TensorV2__t"><span class="std std-ref">Qnn_TensorV2_t</span></a> <em>isDynamicDimensions</em> field, the <em>dimensions</em> must be non-null and the output dimensions will be written by the backend. In a scenario where maximum dimensions will be exceeded, the backend will generate an error code indicating loss of data and will fill the tensor with as much data as possible.</p></li>
+<li><p>Other fields like <em>dataType</em> can also be permitted to change between invocations to <a class="reference internal" href="#QnnGraph_8h_1a3ea05f42a9295f9a74a2e3a0cdd64228"><span class="std std-ref">QnnGraph_execute()</span></a>/QnnGraph_executeAsync() for certain ops that perform data type conversions.</p></li>
+<li><p>Some backends may be able to execute a graph with no <em>inputs</em> provided the graph has no application-writable tensors.</p></li>
+<li><p>Graph I/O Tensors marked optional (i.e. omitted or marked as type=QNN_TENSOR_TYPE_NULL during <a class="reference internal" href="#QnnGraph_8h_1a1c6363e459cb7092356572f5af1c952b"><span class="std std-ref">QnnGraph_addNode()</span></a>) cannot be supplied to <a class="reference internal" href="#QnnGraph_8h_1a3ea05f42a9295f9a74a2e3a0cdd64228"><span class="std std-ref">QnnGraph_execute()</span></a>/QnnGraph_executeAsync(). Clients mark tensors to be of type QNN_TENSOR_TYPE_NULL to indicate that they must be ignored when constructing a node that lists them as optional.</p></li>
+<li><p>Mixing different tensor versions in the same graph (e.g. <a class="reference internal" href="file_include_QNN_QnnTypes.h.html#structQnn__TensorV1__t"><span class="std std-ref">Qnn_TensorV1_t</span></a> and <a class="reference internal" href="file_include_QNN_QnnTypes.h.html#structQnn__TensorV2__t"><span class="std std-ref">Qnn_TensorV2_t</span></a>) may result in performance degradation.</p></li>
+</ul>
+</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If there are simultaneous calls to <a class="reference internal" href="#QnnGraph_8h_1a3ea05f42a9295f9a74a2e3a0cdd64228"><span class="std std-ref">QnnGraph_execute()</span></a> and <a class="reference internal" href="#QnnGraph_8h_1a690b74571029dd9f36e38cd902c86784"><span class="std std-ref">QnnGraph_executeAsync()</span></a>, the priority for enqueuing or executing is equal. Both functions will add to the same queue, the only difference in behavior is whether the function returns when the execution is enqueued, or when the execution finishes.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use corresponding API through <a class="reference internal" href="file_include_QNN_QnnInterface.h.html#structQnnInterface__t"><span class="std std-ref">QnnInterface_t</span></a>. </p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv436QnnGraph_releaseExecutionEnvironment17Qnn_GraphHandle_tPPK29QnnGraph_ExecuteEnvironment_t8uint32_t">
+<span id="_CPPv336QnnGraph_releaseExecutionEnvironment17Qnn_GraphHandle_tPPK29QnnGraph_ExecuteEnvironment_t8uint32_t"></span><span id="_CPPv236QnnGraph_releaseExecutionEnvironment17Qnn_GraphHandle_tPPK29QnnGraph_ExecuteEnvironment_t8uint32_t"></span><span id="QnnGraph_releaseExecutionEnvironment__Qnn_GraphHandle_t.QnnGraph_ExecuteEnvironment_tCPP.uint32_t"></span><span class="target" id="QnnGraph_8h_1a7f6a60d5c1e9454a489729b779caba26"></span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGraph_releaseExecutionEnvironment</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_QnnCommon_8h_1aac60af5d8bde388852ae15bd89fbcd3c.html#_CPPv417Qnn_GraphHandle_t" title="Qnn_GraphHandle_t"><span class="n"><span class="pre">Qnn_GraphHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">graphHandle</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="structQnnGraph__ExecuteEnvironment__t.html#_CPPv429QnnGraph_ExecuteEnvironment_t" title="QnnGraph_ExecuteEnvironment_t"><span class="n"><span class="pre">QnnGraph_ExecuteEnvironment_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">envs</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">envSize</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv436QnnGraph_releaseExecutionEnvironment17Qnn_GraphHandle_tPPK29QnnGraph_ExecuteEnvironment_t8uint32_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A function to release an execution environment prepared via QnnGraph_prepareExecutionEnvironment. If this API is not called, environments will be released automatically during QnnContext_free. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graphHandle</strong> – <strong>[in]</strong> Handle to the graph that the environment is being released from.</p></li>
+<li><p><strong>envs</strong> – <strong>[in]</strong> An array of pointers to execution environment options previously used for preparation.</p></li>
+<li><p><strong>envSize</strong> – <strong>[in]</strong> Size of the array pointed to by envs.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code:<ul class="simple">
+<li><p>QNN_SUCCESS: The execution environment was successfully released.</p></li>
+<li><p>QNN_GRAPH_ERROR_INVALID_HANDLE: <em>graph</em> is not a valid handle.</p></li>
+<li><p>QNN_GRAPH_ERROR_INVALID_ARGUMENT: Invalid envs provided to be released.</p></li>
+<li><p>QNN_GRAPH_ERROR_UNSUPPORTED_FEATURE: One or more envs options is not supported by the backend.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use corresponding API through <a class="reference internal" href="file_include_QNN_QnnInterface.h.html#structQnnInterface__t"><span class="std std-ref">QnnInterface_t</span></a>. </p>
+</div>
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv417QnnGraph_Config_t">
+<span id="_CPPv317QnnGraph_Config_t"></span><span id="_CPPv217QnnGraph_Config_t"></span><span id="QnnGraph_Config_t"></span><span class="target" id="structQnnGraph__Config__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGraph_Config_t</span></span></span><a class="headerlink" href="#_CPPv417QnnGraph_Config_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnGraph.h&gt;</em></div>
+<p>This struct provides graph configuration. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N17QnnGraph_Config_t6optionE">
+<span id="_CPPv3N17QnnGraph_Config_t6optionE"></span><span id="_CPPv2N17QnnGraph_Config_t6optionE"></span><span id="QnnGraph_Config_t::option__QnnGraph_ConfigOption_t"></span><span class="target" id="structQnnGraph__Config__t_1afeffb39cf65475a91ce4003439e6a8b7"></span><a class="reference internal" href="enum_QnnGraph_8h_1a10d10676a69dc0af1434d64d28a4ad99.html#_CPPv423QnnGraph_ConfigOption_t" title="QnnGraph_ConfigOption_t"><span class="n"><span class="pre">QnnGraph_ConfigOption_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">option</span></span></span><a class="headerlink" href="#_CPPv4N17QnnGraph_Config_t6optionE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<dl class="cpp union">
+<dt class="sig sig-object cpp" id="_CPPv4N17QnnGraph_Config_t7unnamedE">
+<span id="_CPPv3N17QnnGraph_Config_t7unnamedE"></span><span id="_CPPv2N17QnnGraph_Config_t7unnamedE"></span><span class="target" id="unionQnnGraph__Config__t_1_1unnamed"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">unnamed</span></span></span><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnGraph.h&gt;</em></div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N17QnnGraph_Config_t7unnamed12customConfigE">
+<span id="_CPPv3N17QnnGraph_Config_t7unnamed12customConfigE"></span><span id="_CPPv2N17QnnGraph_Config_t7unnamed12customConfigE"></span><span id="QnnGraph_Config_t::unnamed::customConfig__QnnGraph_CustomConfig_t"></span><span class="target" id="unionQnnGraph__Config__t_1_1unnamed_1abffcbb188c704d97e8aaf2bfba9c4d57"></span><a class="reference internal" href="typedef_QnnGraph_8h_1a23c0bcadbde72162bbeba965c6e7e443.html#_CPPv423QnnGraph_CustomConfig_t" title="QnnGraph_CustomConfig_t"><span class="n"><span class="pre">QnnGraph_CustomConfig_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">customConfig</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N17QnnGraph_Config_t7unnamed8priorityE">
+<span id="_CPPv3N17QnnGraph_Config_t7unnamed8priorityE"></span><span id="_CPPv2N17QnnGraph_Config_t7unnamed8priorityE"></span><span id="QnnGraph_Config_t::unnamed::priority__Qnn_Priority_t"></span><span class="target" id="unionQnnGraph__Config__t_1_1unnamed_1abcf6db740045d3db845efc4284efa310"></span><a class="reference internal" href="enum_QnnTypes_8h_1a4394623faa5580a396f83dac19565e4d.html#_CPPv414Qnn_Priority_t" title="Qnn_Priority_t"><span class="n"><span class="pre">Qnn_Priority_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">priority</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N17QnnGraph_Config_t7unnamed13profileHandleE">
+<span id="_CPPv3N17QnnGraph_Config_t7unnamed13profileHandleE"></span><span id="_CPPv2N17QnnGraph_Config_t7unnamed13profileHandleE"></span><span id="QnnGraph_Config_t::unnamed::profileHandle__Qnn_ProfileHandle_t"></span><span class="target" id="unionQnnGraph__Config__t_1_1unnamed_1a34b1e2e2621a3a98dbe6c1c37247415a"></span><a class="reference internal" href="typedef_QnnCommon_8h_1a3d859a5097d3fe96b8d5bad77bf0afd5.html#_CPPv419Qnn_ProfileHandle_t" title="Qnn_ProfileHandle_t"><span class="n"><span class="pre">Qnn_ProfileHandle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">profileHandle</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N17QnnGraph_Config_t7unnamed14profilingStateE">
+<span id="_CPPv3N17QnnGraph_Config_t7unnamed14profilingStateE"></span><span id="_CPPv2N17QnnGraph_Config_t7unnamed14profilingStateE"></span><span id="QnnGraph_Config_t::unnamed::profilingState__QnnGraph_ProfilingState_t"></span><span class="target" id="unionQnnGraph__Config__t_1_1unnamed_1aa82b526dc168175cdc72192350b983c2"></span><a class="reference internal" href="enum_QnnGraph_8h_1a0710eb9035ae3b5e9c342b3f1d7c287e.html#_CPPv425QnnGraph_ProfilingState_t" title="QnnGraph_ProfilingState_t"><span class="n"><span class="pre">QnnGraph_ProfilingState_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">profilingState</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N17QnnGraph_Config_t7unnamed22numProfilingExecutionsE">
+<span id="_CPPv3N17QnnGraph_Config_t7unnamed22numProfilingExecutionsE"></span><span id="_CPPv2N17QnnGraph_Config_t7unnamed22numProfilingExecutionsE"></span><span id="QnnGraph_Config_t::unnamed::numProfilingExecutions__uint32_t"></span><span class="target" id="unionQnnGraph__Config__t_1_1unnamed_1aaf88dac3b06576e8a2463d2853f73a38"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">numProfilingExecutions</span></span></span><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv419QnnGraph_Property_t">
+<span id="_CPPv319QnnGraph_Property_t"></span><span id="_CPPv219QnnGraph_Property_t"></span><span id="QnnGraph_Property_t"></span><span class="target" id="structQnnGraph__Property__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGraph_Property_t</span></span></span><a class="headerlink" href="#_CPPv419QnnGraph_Property_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnGraph.h&gt;</em></div>
+<p>This struct provides graph property. Option is specified by the client. Everything else is written by the backend. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19QnnGraph_Property_t6optionE">
+<span id="_CPPv3N19QnnGraph_Property_t6optionE"></span><span id="_CPPv2N19QnnGraph_Property_t6optionE"></span><span id="QnnGraph_Property_t::option__QnnGraph_PropertyOption_t"></span><span class="target" id="structQnnGraph__Property__t_1a536b84b3086f8cb492c958cbef6e4d40"></span><a class="reference internal" href="enum_QnnGraph_8h_1ad28a2c2136b6f5224060835776817b74.html#_CPPv425QnnGraph_PropertyOption_t" title="QnnGraph_PropertyOption_t"><span class="n"><span class="pre">QnnGraph_PropertyOption_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">option</span></span></span><a class="headerlink" href="#_CPPv4N19QnnGraph_Property_t6optionE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<dl class="cpp union">
+<dt class="sig sig-object cpp" id="_CPPv4N19QnnGraph_Property_t7unnamedE">
+<span id="_CPPv3N19QnnGraph_Property_t7unnamedE"></span><span id="_CPPv2N19QnnGraph_Property_t7unnamedE"></span><span class="target" id="unionQnnGraph__Property__t_1_1unnamed"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">unnamed</span></span></span><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnGraph.h&gt;</em></div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19QnnGraph_Property_t7unnamed14customPropertyE">
+<span id="_CPPv3N19QnnGraph_Property_t7unnamed14customPropertyE"></span><span id="_CPPv2N19QnnGraph_Property_t7unnamed14customPropertyE"></span><span id="QnnGraph_Property_t::unnamed::customProperty__QnnGraph_CustomProperty_t"></span><span class="target" id="unionQnnGraph__Property__t_1_1unnamed_1af8cce3a13436ab820e9765d62e1e5b72"></span><a class="reference internal" href="typedef_QnnGraph_8h_1ad89051fe9ae140d8426ac9a8a9682799.html#_CPPv425QnnGraph_CustomProperty_t" title="QnnGraph_CustomProperty_t"><span class="n"><span class="pre">QnnGraph_CustomProperty_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">customProperty</span></span></span><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv429QnnGraph_ExecuteEnvironment_t">
+<span id="_CPPv329QnnGraph_ExecuteEnvironment_t"></span><span id="_CPPv229QnnGraph_ExecuteEnvironment_t"></span><span id="QnnGraph_ExecuteEnvironment_t"></span><span class="target" id="structQnnGraph__ExecuteEnvironment__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGraph_ExecuteEnvironment_t</span></span></span><a class="headerlink" href="#_CPPv429QnnGraph_ExecuteEnvironment_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnGraph.h&gt;</em></div>
+<p>This struct provides graph execution environment options. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#structQnnGraph__ExecuteEnvironment__t"><span class="std std-ref">QnnGraph_ExecuteEnvironment_t</span></a> is entirely owned by the client. </p>
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N29QnnGraph_ExecuteEnvironment_t6optionE">
+<span id="_CPPv3N29QnnGraph_ExecuteEnvironment_t6optionE"></span><span id="_CPPv2N29QnnGraph_ExecuteEnvironment_t6optionE"></span><span id="QnnGraph_ExecuteEnvironment_t::option__QnnGraph_ExecuteEnvironmentOption_t"></span><span class="target" id="structQnnGraph__ExecuteEnvironment__t_1aa94f4c979636fce3b66164165798e8ce"></span><a class="reference internal" href="enum_QnnGraph_8h_1a46ff51785c8e204bb9f92cd4d3fe78f4.html#_CPPv435QnnGraph_ExecuteEnvironmentOption_t" title="QnnGraph_ExecuteEnvironmentOption_t"><span class="n"><span class="pre">QnnGraph_ExecuteEnvironmentOption_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">option</span></span></span><a class="headerlink" href="#_CPPv4N29QnnGraph_ExecuteEnvironment_t6optionE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<dl class="cpp union">
+<dt class="sig sig-object cpp" id="_CPPv4N29QnnGraph_ExecuteEnvironment_t7unnamedE">
+<span id="_CPPv3N29QnnGraph_ExecuteEnvironment_t7unnamedE"></span><span id="_CPPv2N29QnnGraph_ExecuteEnvironment_t7unnamedE"></span><span class="target" id="unionQnnGraph__ExecuteEnvironment__t_1_1unnamed"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">unnamed</span></span></span><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnGraph.h&gt;</em></div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N29QnnGraph_ExecuteEnvironment_t7unnamed9tensorSetE">
+<span id="_CPPv3N29QnnGraph_ExecuteEnvironment_t7unnamed9tensorSetE"></span><span id="_CPPv2N29QnnGraph_ExecuteEnvironment_t7unnamed9tensorSetE"></span><span id="QnnGraph_ExecuteEnvironment_t::unnamed::tensorSet__Qnn_TensorSet_t"></span><span class="target" id="unionQnnGraph__ExecuteEnvironment__t_1_1unnamed_1ac59788ca9b50025251a541fb5fa4e793"></span><a class="reference internal" href="structQnn__TensorSet__t.html#_CPPv415Qnn_TensorSet_t" title="Qnn_TensorSet_t"><span class="n"><span class="pre">Qnn_TensorSet_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">tensorSet</span></span></span><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv418Qnn_NotifyStatus_t">
+<span id="_CPPv318Qnn_NotifyStatus_t"></span><span id="_CPPv218Qnn_NotifyStatus_t"></span><span id="Qnn_NotifyStatus_t"></span><span class="target" id="structQnn__NotifyStatus__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Qnn_NotifyStatus_t</span></span></span><a class="headerlink" href="#_CPPv418Qnn_NotifyStatus_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnGraph.h&gt;</em></div>
+<p>This struct provides status associated with <a class="reference internal" href="#QnnGraph_8h_1a7962dbaaab857587b6b0b15a9d3b87e0"><span class="std std-ref">Qnn_NotifyFn_t()</span></a> function. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18Qnn_NotifyStatus_t5errorE">
+<span id="_CPPv3N18Qnn_NotifyStatus_t5errorE"></span><span id="_CPPv2N18Qnn_NotifyStatus_t5errorE"></span><span id="Qnn_NotifyStatus_t::error__Qnn_ErrorHandle_t"></span><span class="target" id="structQnn__NotifyStatus__t_1af238ef7fc85a7cfb5577b0ff6b886231"></span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">error</span></span></span><a class="headerlink" href="#_CPPv4N18Qnn_NotifyStatus_t5errorE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

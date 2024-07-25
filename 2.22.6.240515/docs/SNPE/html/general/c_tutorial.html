@@ -1,0 +1,573 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>C Tutorial - Build the Sample &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="C API Guidelines" href="c_api_guidelines.html" />
+    <link rel="prev" title="C++ Tutorial - Build the Sample" href="cplus_plus_tutorial.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup1.html">Network Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="usergroup6.html">Tutorials and Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial_setup.html">Tutorials Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snpe2_migration_guidelines.html">SNPE1 to SNPE2 Migration Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup7.html">Running Nets</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="usergroup8.html">Code Examples</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="cplus_plus_tutorial.html">C++ Tutorial - Build the Sample</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">C Tutorial - Build the Sample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="c_api_guidelines.html">C API Guidelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="android_tutorial.html">Android Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="build_samplecode_windows.html">Windows Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_inceptionv3_udo.html">UDO Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_inceptionv3_udo_dsp.html">UDO DSP tutorial for Quantized DLC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_inceptionv3_udo_dsp_win.html">UDO DSP tutorial on Windows for Quantized DLC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_onnx_udo_weights.html">UDO Tutorial With Weights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_psnpe_introduction.html">PSNPE Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_psnpe_c_tutorial.html">PSNPE C Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_psnpe_cplus_plus_tutorial.html">PSNPE C++ Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_psnpe_android_tutorial.html">PSNPE Android Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dsp_runtime.html">DSP Runtime Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="network_resize.html">Network Resizing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="input_batch.html">Input Image Batch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="init_caching.html">Init Caching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup9.html">Application Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="usergroup6.html">Tutorials and Examples</a> &raquo;</li>
+        
+          <li><a href="usergroup8.html">Code Examples</a> &raquo;</li>
+        
+      <li>C Tutorial - Build the Sample</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="c-tutorial-build-the-sample">
+<h1>C Tutorial - Build the Sample<a class="headerlink" href="#c-tutorial-build-the-sample" title="Permalink to this heading">¶</a></h1>
+<div class="ui-resizable side-nav-resizable docutils container" id="side-nav">
+<div class="docutils container" id="nav-tree">
+<div class="docutils container" id="nav-tree-contents">
+</div>
+</div>
+</div>
+<div class="docutils container" id="doc-content">
+<div class="header docutils container">
+</div>
+<div class="contents docutils container">
+<div class="textblock docutils container">
+<p class="rubric" id="prerequisites">Prerequisites</p>
+<ul class="simple">
+<li><p>The Qualcomm® Neural Processing SDK has been set up following the <a class="reference external" href="setup.html">Qualcomm (R) Neural Processing SDK
+Setup</a> chapter.</p></li>
+<li><p>The <a class="reference external" href="tutorial_setup.html">Tutorials Setup</a> has been
+completed.</p></li>
+</ul>
+<p class="rubric" id="introduction">Introduction</p>
+<p>This tutorial demonstrates how to build a C sample application
+that can execute neural network models on the PC or target
+device. Please note, while this sample code does not do any error
+checking, it is strongly recommended that users check for
+errors when using the Qualcomm® Neural Processing SDK APIs.</p>
+<p>Most applications will follow the following pattern while using
+a neural network:</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="c_tutorial.html#get-available-runtime">Get Available Runtime</a></p></li>
+<li><p><a class="reference external" href="c_tutorial.html#load-network">Load Network</a></p></li>
+<li><p><a class="reference external" href="c_tutorial.html#set-network-builder-options">Set Network Builder Options</a></p></li>
+<li><p><a class="reference external" href="c_tutorial.html#load-network-inputs">Load Network Inputs</a></p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="c_tutorial.html#load-using-user-buffers">Using User Buffers</a></p></li>
+<li><p><a class="reference external" href="c_tutorial.html#load-using-itensors">Using ITensors</a></p></li>
+</ol>
+</li>
+<li><p><a class="reference external" href="c_tutorial.html#execute-the-network-process-output">Execute the Network &amp; Process Output</a></p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="c_tutorial.html#execute-using-user-buffers">Using User Buffers</a></p></li>
+<li><p><a class="reference external" href="c_tutorial.html#execute-using-itensors">Using ITensors</a></p></li>
+</ol>
+</li>
+</ol>
+<p>The below snippet of code provides an overall idea of how to use Qualcomm(R)| Neural Processing SDK APIs.
+For working example code, please refer to the collection of sample apps located at $SNPE_ROOT/examples/SNPE/NativeCpp/SampleCode_CAPI/</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>bool useUserSuppliedBuffers = true;
+int inputListNum = 1;
+//Create runtime
+Snpe_Runtime_t runtime = checkRuntime();
+//Add runtime to runtime list
+Snpe_RuntimeList_Handle_t runtimeListHandle = Snpe_RuntimeList_Create();
+Snpe_RuntimeList_Add(runtimeListHandle, runtime);
+//Load dlc file
+Snpe_DlContainer_Handle_t containerHandle = loadContainerFromFile(dlc);
+//Generate snpe handle from builder options
+Snpe_SNPE_Handle_t snpeHandle = setBuilderOptions(containerHandle, runtimeListHandle, useUserSuppliedBuffers);
+
+Snpe_TensorMap_Handle_t inputTensorMapHandle = loadInputTensor(snpeHandle, fileLine); // ITensor
+loadInputUserBuffer(applicationInputBuffers, snpeHandle, fileLine); // User Buffer
+
+executeNetwork(snpeHandle , inputTensorMapHandle, OutputDir, inputListNum); // ITensor
+executeNetwork(snpeHandle, inputMapHandle, outputMapHandle, applicationOutputBuffers, OutputDir, inputListNum); // User Buffer
+</pre></div>
+</div>
+<p>The sections below describe how to implement each step
+described above.</p>
+<p class="rubric" id="get-available-runtime">Get Available Runtime</p>
+<p>The code excerpt below illustrates how to check if a specific
+runtime is available using the native APIs (the GPU runtime is
+used as an example).</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>Snpe_Runtime_t checkRuntime()
+{
+    Snpe_DlVersion_Handle_t versionHandle = Snpe_Util_GetLibraryVersion();
+    Snpe_Runtime_t Runtime;
+    std::cout &lt;&lt; &quot;Qualcomm (R) Neural Processing SDK Version: &quot; &lt;&lt; Snpe_DlVersion_ToString(versionHandle) &lt;&lt; std::endl; //Print Version number
+    Snpe_DlVersion_Delete(versionHandle);
+    if (Snpe_Util_IsRuntimeAvailable(SNPE_RUNTIME_GPU)) {
+        Runtime = SNPE_RUNTIME_GPU;
+    } else {
+        Runtime = SNPE_RUNTIME_CPU;
+    }
+    return Runtime;
+}
+</pre></div>
+</div>
+<p class="rubric" id="load-network">Load Network</p>
+<p>The code excerpt below illustrates how to load a network from
+the Qualcomm® Neural Processing SDK container file (DLC).</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>Snpe_DlContainer_Handle_t loadContainerFromFile(std::string containerPath)
+{
+    Snpe_DlContainer_Handle_t containerHandle = Snpe_DlContainer_Open(containerPath.c_str());
+    return containerHandle;
+}
+</pre></div>
+</div>
+<p class="rubric" id="set-network-builder-options">Set Network Builder Options</p>
+<p>The following code demonstrates how to instantiate a SNPE
+Builder object, which will be used to execute the network with
+the given parameters.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>Snpe_SNPE_Handle_t setBuilderOptions(Snpe_DlContainer_Handle_t containerHandle,
+                                                   Snpe_RuntimeList_Handle_t runtimeListHandle,
+                                                   bool useUserSuppliedBuffers)
+{
+    Snpe_SNPE_Handle_t snpeHandle;
+    Snpe_SNPEBuilder_Handle_t snpeBuilderHandle = Snpe_SNPEBuilder_Create(containerHandle);
+    Snpe_SNPEBuilder_SetRuntimeProcessorOrder(snpeBuilderHandle, runtimeListHandle)
+    Snpe_SNPEBuilder_SetUseUserSuppliedBuffers(snpeBuilderHandle, useUserSuppliedBuffers)
+    snpeHandle = Snpe_SNPEBuilder_Build(snpeBuilderHandle);
+    return snpeHandle;
+}
+</pre></div>
+</div>
+<p class="rubric" id="load-network-inputs">Load Network Inputs</p>
+<p>Network inputs and outputs can be either user-backed buffers or
+ITensors (built-in Qualcomm® Neural Processing SDK buffers), but not both. The advantage
+of using user-backed buffers is that it eliminates an extra
+copy from user buffers to create ITensors. Both methods of
+loading network inputs are shown below.</p>
+<p class="rubric" id="load-using-user-buffers">Using User Buffers</p>
+<p>Qualcomm® Neural Processing SDK can create its network inputs and outputs from user-backed
+buffers. Note that Qualcomm® Neural Processing SDK expects the values of the buffers to be
+present and valid during the duration of its execution.</p>
+<p>Here is a function for creating a Qualcomm® Neural Processing SDK UserBuffer from a
+user-backed buffer and storing it in a UserBufferMap. These
+maps are a convenient collection of all input or output user
+buffers that can be passed to Qualcomm® Neural Processing SDK to execute the network.</p>
+<p>Disclaimer: The strides of the buffer should already be known
+by the user and should not be calculated as shown below. The
+calculation shown is solely used for executing the example
+code.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>void createUserBuffer(Snpe_UserBufferMap_Handle_t userBufferMapHandle,
+                      std::unordered_map&lt;std::string, std::vector&lt;uint8_t&gt;&gt;&amp; applicationBuffers,
+                      std::vector&lt;Snpe_IUserBuffer_Handle_t&gt; snpeUserBackedBuffersHandle,
+                      Snpe_SNPE_Handle_t snpeHandle,
+                      const char * name)
+{
+   // get attributes of buffer by name
+   Snpe_IBufferAttributes_Handle_t bufferAttributesOptHandle = Snpe_SNPE_GetInputOutputBufferAttributes(snpeHandle, name);
+   if (bufferAttributesOptHandle == nullptr) throw std::runtime_error(std::string(&quot;Error obtaining attributes for input tensor &quot;) + name);
+   // calculate the size of buffer required by the input tensor
+   Snpe_TensorShape_Handle_t bufferShapeHandle = Snpe_IBufferAttributes_GetDims(bufferAttributesOptHandle);
+   // Calculate the stride based on buffer strides, assuming tightly packed.
+   // Note: Strides = Number of bytes to advance to the next element in each dimension.
+   // For example, if a float tensor of dimension 2x4x3 is tightly packed in a buffer of 96 bytes, then the strides would be (48,12,4)
+   // Note: Buffer stride is usually known and does not need to be calculated.
+   std::vector&lt;size_t&gt; strides(Snpe_TensorShape_Rank(bufferShapeHandle));
+   strides[strides.size() - 1] = sizeof(float);
+   size_t stride = strides[strides.size() - 1];
+   for (size_t i = Snpe_TensorShape_Rank(bufferShapeHandle) - 1; i &gt; 0; i--)
+   {
+      stride *= Snpe_TensorShape_At(bufferShapeHandle, i);
+      strides[i-1] = stride;
+   }
+   Snpe_TensorShape_Handle_t stridesHandle = Snpe_TensorShape_CreateDimsSize(strides.data(), Snpe_TensorShape_Rank(bufferShapeHandle));
+   size_t bufferElementSize = Snpe_IBufferAttributes_GetElementSize(bufferAttributesOptHandle);
+   size_t bufSize = calcSizeFromDims(Snpe_TensorShape_GetDimensions(bufferShapeHandle), Snpe_TensorShape_Rank(bufferShapeHandle), bufferElementSize);
+   // set the buffer encoding type
+   Snpe_UserBufferEncoding_Handle_t userBufferEncodingFloatHandle = Snpe_UserBufferEncodingFloat_Create();
+   // create user-backed storage to load input data onto it
+   applicationBuffers.emplace(name, std::vector&lt;uint8_t&gt;(bufSize));
+   // create Qualcomm (R) Neural Processing SDK user buffer from the user-backed buffer
+   ubsHandle.push_back(Snpe_Util_CreateUserBuffer(applicationBuffers.at(name).data(),
+                                                  bufSize,
+                                                  stridesHandle,
+                                                  userBufferEncodingFloatHandle));
+   // add the user-backed buffer to the inputMap, which is later on fed to the network for execution
+   Snpe_UserBufferMap_Add(userBufferMapHandle, name, snpeUserBackedBuffersHandle.back());
+}
+</pre></div>
+</div>
+<p>The following function then shows how to load input data from
+file(s) to user buffers. Note that the input values are simply
+loaded onto user-backed buffers, on top of which Qualcomm® Neural Processing SDK can
+create Qualcomm® Neural Processing SDK UserBuffers, as shown above.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>void loadInputUserBuffer(std::unordered_map&lt;std::string, std::vector&lt;uint8_t&gt;&gt;&amp; applicationBuffers,
+                               Snpe_SNPE_Handle_t snpeHandle,
+                               const std::string&amp; fileLine)
+{
+    // get input tensor names of the network that need to be populated
+    Snpe_StringList_Handle_t inputNamesHandle = Snpe_SNPE_GetInputTensorNames(snpeHandle);
+    if (inputNamesHandle == nullptr) throw std::runtime_error(&quot;Error obtaining input tensor names&quot;);
+    assert(Snpe_StringList_Size(inputNamesHandle) &gt; 0);
+    // treat each line as a space-separated list of input files
+    std::vector&lt;std::string&gt; filePaths;
+    split(filePaths, fileLine, &#39; &#39;);
+    if (Snpe_StringList_Size(inputNamesHandle)) std::cout &lt;&lt; &quot;Processing DNN Input: &quot; &lt;&lt; std::endl;
+    for (size_t i = 0; i &lt; Snpe_StringList_Size(inputNamesHandle); i++) {
+        const char* name = Snpe_StringList_At(inputNamesHandle, i);
+        std::string filePath(filePaths[i]);
+        // print out which file is being processed
+        std::cout &lt;&lt; &quot;\t&quot; &lt;&lt; i + 1 &lt;&lt; &quot;) &quot; &lt;&lt; filePath &lt;&lt; std::endl;
+        // load file content onto application storage buffer,
+        // on top of which, Qualcomm (R) Neural Processing SDK has created a user buffer
+        loadByteDataFile(filePath, applicationBuffers.at(name));
+    };
+}
+</pre></div>
+</div>
+<p class="rubric" id="load-using-itensors">Using ITensors</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>Snpe_TensorMap_Handle_t loadInputTensor (Snpe_SNPE_Handle_t snpeHandle, std::string&amp; fileLine)
+{
+    Snpe_ITensor_Handle_t input;
+    Snpe_StringList_Handle_t strListHandle = Snpe_SNPE_GetInputTensorNames(snpeHandle);
+    if (strListHandle == nullptr) throw std::runtime_error(&quot;Error obtaining Input tensor names&quot;);
+    // Make sure the network requires only a single input
+    assert (Snpe_StringList_Size(strListHandle) == 1);
+    // If the network has a single input, each line represents the input file to be loaded for that input
+    std::string filePath(fileLine);
+    std::cout &lt;&lt; &quot;Processing DNN Input: &quot; &lt;&lt; filePath &lt;&lt; &quot;\n&quot;;
+    std::vector&lt;float&gt; inputVec = loadFloatDataFile(filePath);
+    /* Create an input tensor that is correctly sized to hold the input of the network. Dimensions that have no fixed size will be represented with a value of 0. */
+    auto inputDimsHandle = Snpe_SNPE_GetInputDimensions(snpeHandle, Snpe_StringList_At(strListHandle, 0));
+    /* Calculate the total number of elements that can be stored in the tensor so that we can check that the input contains the expected number of elements.
+       With the input dimensions computed create a tensor to convey the input into the network. */
+    input = Snpe_Util_CreateITensor(inputDimsHandle);
+    /* Copy the loaded input file contents into the networks input tensor.SNPE&#39;s ITensor supports C++ STL functions like std::copy() */
+    std::copy(inputVec.begin(), inputVec.end(), (float*)Snpe_ITensor_GetData(input));
+    Snpe_TensorMap_Handle_t inputTensorMapHandle = Snpe_TensorMap_Create();
+    Snpe_TensorMap_Add(inputTensorMapHandle, Snpe_StringList_At(strListHandle, 0), inputs[i]);
+    return inputTensorMapHandle;
+}
+</pre></div>
+</div>
+<p class="rubric" id="execute-the-network-process-output">Execute the Network &amp; Process Output</p>
+<p>The following snippets of code use the native API to execute
+the network (in UserBuffer or ITensor mode) and show how to
+iterate through the newly populated output tensor.</p>
+<p class="rubric" id="execute-using-user-buffers">Using User Buffers</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>void executeNetwork(Snpe_SNPE_Handle_t snpeHandle,
+                    Snpe_UserBufferMap_Handle_t inputMapHandle,
+                    Snpe_UserBufferMap_Handle_t outputMapHandle,
+                    std::unordered_map&lt;std::string,std::vector&lt;uint8_t&gt;&gt;&amp; applicationOutputBuffers,
+                    const std::string&amp; outputDir,
+                    int num)
+{
+    // Execute the network and store the outputs in user buffers specified in outputMap
+    Snpe_SNPE_ExecuteUserBuffers(snpeHandle, inputMapHandle, outputMapHandle);
+    // Get all output buffer names from the network
+    Snpe_StringList_Handle_t outputBufferNamesHandle = Snpe_UserBufferMap_GetUserBufferNames(outputMapHandle);
+    // Iterate through output buffers and print each output to a raw file
+    std::for_each(Snpe_StringList_Begin(outputBufferNamesHandle), Snpe_StringList_End(outputBufferNamesHandle), [&amp;](const char* name)
+    {
+       std::ostringstream path;
+       path &lt;&lt; outputDir &lt;&lt; &quot;/Result_&quot; &lt;&lt; num &lt;&lt; &quot;/&quot; &lt;&lt; name &lt;&lt; &quot;.raw&quot;;
+       SaveUserBuffer(path.str(), applicationOutputBuffers.at(name));
+    });
+}
+// The following is a partial snippet of the function
+void SaveUserBuffer(const std::string&amp; path, const std::vector&lt;uint8_t&gt;&amp; buffer) {
+   ...
+   std::ofstream os(path, std::ofstream::binary);
+   if (!os)
+   {
+      std::cerr &lt;&lt; &quot;Failed to open output file for writing: &quot; &lt;&lt; path &lt;&lt; &quot;\n&quot;;
+      std::exit(EXIT_FAILURE);
+   }
+   if (!os.write((char*)(buffer.data()), buffer.size()))
+   {
+      std::cerr &lt;&lt; &quot;Failed to write data to: &quot; &lt;&lt; path &lt;&lt; &quot;\n&quot;;
+      std::exit(EXIT_FAILURE);
+   }
+}
+</pre></div>
+</div>
+<p class="rubric" id="execute-using-itensors">Using ITensors</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>void executeNetwork(Snpe_SNPE_Handle_t snpeHandle,
+                    Snpe_TensorMap_Handle_t inputTensorMapHandle,
+                    std::string OutputDir,
+                    int num)
+{
+    // Execute the network and store the outputs that were specified when creating the network in a TensorMap
+    Snpe_TensorMap_Handle_t outputTensorMapHandle = Snpe_TensorMap_Create();
+    Snpe_SNPE_ExecuteITensors(snpeHandle, inputTensorMapHandle, outputTensorMapHandle);
+    Snpe_StringList_Handle_t tensorNamesHandle = Snpe_TensorMap_GetTensorNames(outputTensorMapHandle);
+    // Iterate through the output Tensor map, and print each output layer name
+    std::for_each( Snpe_StringList_Begin(tensorNamesHandle), Snpe_StringList_End(tensorNamesHandle), [&amp;](const char* name)
+    {
+        std::ostringstream path;
+        path &lt;&lt; OutputDir &lt;&lt; &quot;/&quot;
+        &lt;&lt; &quot;Result_&quot; &lt;&lt; num &lt;&lt; &quot;/&quot;
+        &lt;&lt; name &lt;&lt; &quot;.raw&quot;;
+        auto tensorHandle = Snpe_TensorMap_GetTensor_Ref(outputTensorMapHandle, name);
+        SaveITensor(path.str(), tensorHandle);
+    });
+    // Clean up created handles
+    Snpe_TensorMap_Delete(outputTensorMapHandle);
+    Snpe_StringList_Delete(tensorNamesHandle);
+}
+// The following is a partial snippet of the function
+void SaveITensor(const std::string&amp; path, Snpe_ITensor_Handle_t tensorHandle)
+{
+   ...
+   std::ofstream os(path, std::ofstream::binary);
+   if (!os)
+   {
+      std::cerr &lt;&lt; &quot;Failed to open output file for writing: &quot; &lt;&lt; path &lt;&lt; &quot;\n&quot;;
+      std::exit(EXIT_FAILURE);
+   }
+   auto begin = static_cast&lt;float*&gt;(Snpe_ITensor_GetData(tensorHandle));
+   auto size = Snpe_ITensor_GetSize(tensorHandle);
+   for ( auto it = begin; it != begin + size; ++it )
+   {
+      float f = *it;
+      if (!os.write(reinterpret_cast&lt;char*&gt;(&amp;f), sizeof(float)))
+      {
+         std::cerr &lt;&lt; &quot;Failed to write data to: &quot; &lt;&lt; path &lt;&lt; &quot;\n&quot;;
+         std::exit(EXIT_FAILURE);
+      }
+   }
+}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="c_api_guidelines.html" class="btn btn-neutral float-right" title="C API Guidelines" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="cplus_plus_tutorial.html" class="btn btn-neutral float-left" title="C++ Tutorial - Build the Sample" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

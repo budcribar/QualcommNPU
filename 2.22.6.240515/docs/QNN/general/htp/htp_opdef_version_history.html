@@ -1,0 +1,808 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>QNN HTP Op Support Revision History &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="QNN LPAI Op Support Revision History" href="../lpai/lpai_opdef_version_history.html" />
+    <link rel="prev" title="QNN HTA Op Support Revision History" href="../hta/hta_opdef_version_history.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../operations.html">Operations</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../OpDef/SupportedOps.html">Supported Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../OpDef/opdef_version_history.html">Op Definition Revision History</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../OpDef/opdef_version_history.html#backend-specific-revision-history">Backend Specific Revision History</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../cpu/cpu_opdef_version_history.html">QNN CPU Op Definition Revision History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dsp/dsp_opdef_version_history.html">QNN DSP Op Definition Revision History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gpu/gpu_opdef_version_history.html">QNN GPU Op Definition Revision History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hta/hta_opdef_version_history.html">QNN HTA Op Definition Revision History</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">QNN HTP Op Definition Revision History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lpai/lpai_opdef_version_history.html">QNN LPAI Op Definition Revision History</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../operations.html#operation-definitions">Operation Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operations.html#backend-supplements">Backend Supplements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../operations.html">Operations</a> &raquo;</li>
+        
+          <li><a href="../../OpDef/opdef_version_history.html">Op Definition Revision History</a> &raquo;</li>
+        
+      <li>QNN HTP Op Support Revision History</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="qnn-htp-op-support-revision-history">
+<h1>QNN HTP Op Support Revision History<a class="headerlink" href="#qnn-htp-op-support-revision-history" title="Permalink to this heading">¶</a></h1>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 12%" />
+<col style="width: 65%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Introduced in QNN SDK Version</p></th>
+<th class="head"><p>Runtime</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2.22.0</p></td>
+<td><p>Quant</p></td>
+<td><ul class="simple">
+<li><p>ElementwiseUnary</p>
+<ul>
+<li><p>Added QNN_DATATYPE_UFIXED_POINT_16 datatype support for in[0] and out[0] in RSQRT op</p></li>
+</ul>
+</li>
+<li><p>Conv3d, TransposeConv3d</p>
+<ul>
+<li><p>Added QNN_QUANTIZATION_ENCODING_AXIS_SCALE_OFFSET support with only
+channel axis and the weights are expected to be signed and symmetrically quantized</p></li>
+</ul>
+</li>
+<li><p>Reshape</p>
+<ul>
+<li><p>Added constraint that 0D tensors are not supported for in[0] and out[0]</p></li>
+</ul>
+</li>
+<li><p>ElementWiseAdd, ElementWiseAnd, ElementWiseDivide, ElementWiseNotEqual,
+ElementWiseMaximum, ElementWiseMinimum, ElementWiseMultiply, ElementWisePower,
+ElementWiseSquaredDifference, ElementWiseSubtract, ElementWiseEqual, ElementWiseGreater,
+ElementWiseGreaterEqual, ElementWiseLess, ElementWiseLessEqual, ElementWiseBinary,
+ElementWiseFloorDiv</p>
+<ul>
+<li><p>Added constraint that 0D tensors are not supported for inputs and outputs</p></li>
+</ul>
+</li>
+<li><p>ElementWiseAbs</p>
+<ul>
+<li><p>Added QNN_DATATYPE_SFIXED_POINT_8 datatype support for in[0] and out[0]</p></li>
+</ul>
+</li>
+<li><p>TopK</p>
+<ul>
+<li><p>Removed the constraint that for UFIXED_POINT_16 inputs, only k less than or equal to 64
+is supported</p></li>
+</ul>
+</li>
+<li><p>Transpose</p>
+<ul>
+<li><p>Added constraint for in[0] of Tranpose 4D: QNN_DATATYPE_UFIXED_POINT_8,
+QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16,
+QNN_DATATYPE_SFIXED_POINT_16, QNN_DATATYPE_INT_32, QNN_DATATYPE_UINT_32 are supported</p></li>
+<li><p>Added constraint for in[0] of Transpose 5D: QNN_DATATYPE_UFIXED_POINT_8,
+QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16, QNN_DATATYPE_FLOAT_16,
+QNN_DATATYPE_FLOAT_32 are supported</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.21.0</p></td>
+<td><p>Quant</p></td>
+<td><ul class="simple">
+<li><p>Dequantize
+- Added QNN_DATATYPE_FLOAT_16 datatype support for out[0]</p></li>
+<li><p>ElementWiseBinary
+- Added QNN_DATATYPE_BOOL_8 support for all ElementWiseBinary:comparison ops for in[0]
+- Added QNN_DATATYPE_BOOL_8 support for all ElementWiseBinary:comparison ops for out[0]</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>2.20.0</p></td>
+<td><p>Quant</p></td>
+<td><ul>
+<li><p>ElementWiseXor, CreateSparse, GetSparseIndices, GetSparseValues, SparseToDense,
+ElementWiseNeuron
+- Added support</p></li>
+<li><p>ElementWiseSin, ElementWiseCos
+- Added QNN_DATATYPE_UFIXED_POINT_16 datatype support for in[0], out[0]</p></li>
+<li><p>Conv3d
+- Added default handling to ignore reuse_sparse_indicies parameter</p>
+<blockquote>
+<div><p>as HTP doesn’t support sparsity</p>
+</div></blockquote>
+</li>
+<li><p>Resize
+- Fixed constraint on nearest_mode parameter to match the behaviour in HTP core</p></li>
+<li><p>Convert
+- Added QNN_DATATYPE_UINT_8 datatype support for in[0]
+- Added QNN_DATATYPE_BOOL_8 datatype support for out[0]</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.19.0</p></td>
+<td><p>Quant</p></td>
+<td><ul class="simple">
+<li><p>Gather
+- Added constraint to comunicate that HTP does not support negative indices</p></li>
+<li><p>GatherElements
+- Added QNN_DATATYPE_INT_32 support for in[0], out[0]</p></li>
+<li><p>Batchnorm, LayerNorm
+- Added constraint to support 16 bit data types for v73 or beyond architecture only</p></li>
+<li><p>Convert
+- Added max supported rank to 5d for in[0] and out[0]</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>2.18.0</p></td>
+<td><p>Quant</p></td>
+<td><ul class="simple">
+<li><p>Conv2d, DepthWiseConv2d, TransposeConv2d, FullyConnected, MatMul
+- Added constraint to support 16 bit data types for v73 or beyond architecture only</p></li>
+<li><p>GridSample
+- Added max supported rank to 5d for in[0], in[1] and out[0]</p></li>
+<li><p>Lstm
+- Added rest input for in[24]
+- Added input rank constraint of 2 for in[0]
+- Added description of 2d input not applicable for time_major parameter</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.17.0</p></td>
+<td><p>Quant</p></td>
+<td><ul class="simple">
+<li><p>Quantize, Dequantize
+- Added max supported rank to 5d for in[0] and out[0]</p></li>
+<li><p>EltwiseMul
+- Added overflow detect for input scales</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>2.16.0</p></td>
+<td><p>Quant</p></td>
+<td><ul class="simple">
+<li><p>Matmul
+- Corrected supported rank constraints back to 4D</p></li>
+<li><p>Resize
+- Added constraint to match nearest_mode only supporting default value</p></li>
+<li><p>ElementwiseOr support added</p></li>
+<li><p>ElementWiseBinary
+- Enabled OR
+- Added QNN_DATATYPE_BOOL_8 support for in[0], in[1], out[0]</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.15.0</p></td>
+<td><p>Quant</p></td>
+<td><ul class="simple">
+<li><p>Split, ReduceMax, ReduceMean, ReduceMin, Convert, ElementWiseAbs
+- Added 5D constraints for inputs and outputs</p></li>
+<li><p>ElementWiseBinary support added</p></li>
+<li><p>Convert
+- Added QNN_DATATYPE_SFIXED_POINT_16 support for out[0]</p></li>
+<li><p>Tile
+- Added QNN_DATATYPE_FLOAT_32, QNN_DATATYPE_INT_32 support for input and output</p></li>
+<li><p>Batchnorm
+- Added QNN_DATATYPE_SFIXED_POINT_16 support for in[0] and in[1]
+- Added QNN_DATATYPE_UFIXED_POINT_16 support for in[1]</p></li>
+<li><p>Conv2d, DepthWiseConv2d, TransposeConv2
+- Added QNN_DATATYPE_UFIXED_POINT_16 support for in[1]</p></li>
+<li><p>ScatterNd
+- Added QNN_DATATYPE_BOOL_8 support for in[0], in[2] and out[2]</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>2.14.0</p></td>
+<td><p>Quant</p></td>
+<td><ul>
+<li><p>SpaceToDepth
+- Added operations, enabled QNN_DATATYPE_UINT_32 mode</p></li>
+<li><p>ReduceSum
+- Added 5D constraints for inputs and outputs</p></li>
+<li><p>LayerNorm
+- Added QNN_DATATYPE_SFIXED_POINT_16 support for in[1] and in[2]</p></li>
+<li><p>ElementWiseSquaredDifference
+- Added QNN_DATATYPE_UFIXED_POINT_16, QNN_DATATYPE_SFIXED_POINT_16 support for</p>
+<blockquote>
+<div><p>in[0], in[1] and out[0]</p>
+</div></blockquote>
+</li>
+<li><p>FullyConnected, MatMul
+- Added QNN_DATATYPE_UFIXED_POINT_16 support for in[1]</p></li>
+<li><p>ElementWiseRsqrt
+- Added QNN_DATATYPE_UFIXED_POINT_16 support for in[0] and out[0]</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.13.0</p></td>
+<td><p>Quant</p></td>
+<td><ul class="simple">
+<li><p>Convert
+- Added QNN_DATATYPE_BOOL_8 support for inputs</p></li>
+<li><p>GroupNorm support added</p></li>
+<li><p>ElementWiseRsqrt</p>
+<ul>
+<li><p>Added QNN_DATATYPE_UFIXED_POINT_16 datatype support for in[0] and out[0]</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>2.12.0</p></td>
+<td><p>Quant</p></td>
+<td><ul class="simple">
+<li><p>ElementwiseUnary support added</p></li>
+<li><p>Conv2d, DepthWiseConv2d, FullyConnected, MatMul, TransposeConv2d</p>
+<ul>
+<li><p>Added QNN_DATATYPE_SFIXED_POINT_16 datatype support for in[0]</p></li>
+<li><p>Constraint added for in[1]: QNN_DATATYPE_SFIXED_POINT_16 Weight must have
+QNN_DATATYPE_UFIXED_POINT_16 Activation and must be symmetric quantized</p></li>
+</ul>
+</li>
+<li><p>RoiAlign</p>
+<ul>
+<li><p>Added default support for new params: aligned and allow_invalid_roi</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.11.0</p></td>
+<td><p>Quant</p></td>
+<td><ul class="simple">
+<li><p>ElementWiseAsin, ExtractPatches, RoiAlign</p>
+<ul>
+<li><p>Added operations</p></li>
+</ul>
+</li>
+<li><p>Resize</p>
+<ul>
+<li><p>Removed transformation_mode parameter constraint to support Asymmetric Resize Mode</p></li>
+</ul>
+</li>
+<li><p>NonMaxSuppression</p>
+<ul>
+<li><p>Added QNN_DATATYPE_UFIXED_POINT_16 datatype support for in[0] and in[1]</p></li>
+</ul>
+</li>
+<li><p>DetectionOutput, MultiClassNms</p>
+<ul>
+<li><p>Added QNN_DATATYPE_UFIXED_POINT_16 datatype support for all inputs and out[0]</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>2.10.0</p></td>
+<td><p>Quant</p></td>
+<td><ul class="simple">
+<li><p>ElementWiseSin, ElementWiseCos, NonMaxSuppression</p>
+<ul>
+<li><p>Added operations</p></li>
+</ul>
+</li>
+<li><p>Conv2d, DepthWiseConv2d, FullyConnected, MatMul, TransposeConv2d</p>
+<ul>
+<li><p>Added QNN_DATATYPE_SFIXED_POINT_16 datatype support for in[1]</p></li>
+</ul>
+</li>
+<li><p>TopK</p>
+<ul>
+<li><p>Added QNN_DATATYPE_UFIXED_POINT_16 datatype support for in[0] and out[0]</p></li>
+</ul>
+</li>
+<li><p>Transpose</p>
+<ul>
+<li><p>Added QNN_DATATYPE_BOOL_8 datatype support for in[0] and out[0]</p></li>
+</ul>
+</li>
+<li><p>Fully-connected, MatMul</p>
+<ul>
+<li><p>Fixed Axis quantization validation</p></li>
+</ul>
+</li>
+<li><p>Conv2d, DepthWiseConv2d, FullyConnected, MatMul, TransposeConv2d</p>
+<ul>
+<li><p>Removed static tensor check on INT8 axis quantized weights for in[1]</p></li>
+</ul>
+</li>
+<li><p>Conv2d, DepthWiseConv2d, TransposeConv2d</p>
+<ul>
+<li><p>Allowed Non-Zero Bias Encoding with Per-Channel quantization parameters for in[2]</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.9.0</p></td>
+<td><p>Quant</p></td>
+<td><ul class="simple">
+<li><p>L2Norm, LogSoftmax</p>
+<ul>
+<li><p>Added QNN_DATATYPE_UFIXED_POINT_16 datatype support for in[0] and out[0]</p></li>
+</ul>
+</li>
+<li><p>ElementWiseEqual, ElementWiseGreater, ElementWiseGreaterEqual, ElementWiseLess
+ElementWiseLessEqual, ElementWiseNotEqual</p>
+<ul>
+<li><p>Added QNN_DATATYPE_UFIXED_POINT_16 and QNN_DATATYPE_SFIXED_POINT_16 datatype support
+for in[0] and in[1]</p></li>
+</ul>
+</li>
+<li><p>Conv2d, DepthWiseConv2d, FullyConnected, MatMul, TransposeConv2d</p>
+<ul>
+<li><p>Added static tensor constraint for in[1]</p></li>
+</ul>
+</li>
+<li><p>MatMul</p>
+<ul>
+<li><p>Added channel axis constraint for quantization parameters for in[1]</p></li>
+</ul>
+</li>
+<li><p>ElementWiseAdd, ElementWiseDivide, ElementWiseMaximum, ElementWiseMinimum,
+ElementWiseMultiply, ElementWiseSquaredDifference, ElementWiseSubtract, ElementWiseEqual,
+ElementWiseGreater, ElementWiseGreaterEqual, ElementWiseLess, ElementWiseLessEqual,
+ElementWiseNotEqual, ElementWiseSelect, Gather, GatherNd, MatMul, ScatterNd</p>
+<ul>
+<li><p>Fixed rank constraint on incorrect input for in[1]</p></li>
+</ul>
+</li>
+<li><p>ElementWiseSelect, ScatterNd</p>
+<ul>
+<li><p>Fixed rank constraint on incorrect input for in[2]</p></li>
+</ul>
+</li>
+<li><p>ElementWisePower, ExpandDims</p>
+<ul>
+<li><p>Added 5D rank constraint for in[1]</p></li>
+</ul>
+</li>
+<li><p>OneHot</p>
+<ul>
+<li><p>Added max rank constraint of 2 for in[0] and 3 for out[0]</p></li>
+</ul>
+</li>
+<li><p>ReluMinMax</p>
+<ul>
+<li><p>Added max rank constraint of 5 for in[0] and out[0]</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>2.8.0</p></td>
+<td><p>Quant</p></td>
+<td><ul class="simple">
+<li><p>Cast, ElementWiseLog</p>
+<ul>
+<li><p>Added QNN_DATATYPE_UFIXED_POINT_16 datatype support for inputs and outputs</p></li>
+</ul>
+</li>
+<li><p>ElementWiseGreaterEqual, ElementWiseLessEqual, ElementWiseNotEqual</p>
+<ul>
+<li><p>Added QNN_DATATYPE_INT_32 datatype support for inputs</p></li>
+</ul>
+</li>
+<li><p>ReduceSum, TopK</p>
+<ul>
+<li><p>Added QNN_DATATYPE_INT_32 datatype support for inputs and outputs</p></li>
+</ul>
+</li>
+<li><p>ElementWiseGreater, ElementWiseGreaterEqual, ElementWiseLess, ElementWiseLessEqual,
+ElementWiseNotEqual, ElementWisePower, ElementWiseSelect, GatherNd, Softmax</p>
+<ul>
+<li><p>Added 5D constraints for inputs and outputs</p></li>
+</ul>
+</li>
+<li><p>ElementWiseSelect</p>
+<ul>
+<li><p>Added QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_SFIXED_POINT_8,
+QNN_DATATYPE_SFIXED_POINT_16, QNN_DATATYPE_UFIXED_POINT_16, QNN_DATATYPE_INT_32
+datatype support for in[1]</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.7.0</p></td>
+<td><p>Quant</p></td>
+<td><ul class="simple">
+<li><p>Argmax</p>
+<ul>
+<li><p>Added QNN_DATATYPE_UINT_32 datatype support for out[0]</p></li>
+</ul>
+</li>
+<li><p>Transpose</p>
+<ul>
+<li><p>Added QNN_DATATYPE_UINT_32 datatype support for in[0] and out[0]</p></li>
+</ul>
+</li>
+<li><p>DepthWiseConv2d</p>
+<ul>
+<li><p>Added support for dilation parameter with additional stride and kernel size</p></li>
+</ul>
+</li>
+<li><p>ElementWiseAdd, ElementWiseDivide, ElementWiseExp, ElementWiseMaximum,
+ElementWiseMinimum, ElementWiseMultiply, ElementWiseSquaredDifference,
+ElementWiseSubtract, MatMul, Pad, Relu, Sigmoid, Transpose</p>
+<ul>
+<li><p>Fixed 5D constraints for out[0]</p></li>
+</ul>
+</li>
+<li><p>ElementWiseExp, ElementWiseFloor, ReduceMax, ReduceMin, ScatterNd, LayerNorm</p>
+<ul>
+<li><p>Added QNN_DATATYPE_UFIXED_POINT_16 datatype support for all inputs and outputs</p></li>
+</ul>
+</li>
+<li><p>ElementWiseEqual, ElementWiseLess, ElementWiseSelect</p>
+<ul>
+<li><p>Added QNN_DATATYPE_INT_32 datatype support for all inputs and outputs</p></li>
+</ul>
+</li>
+<li><p>ElementWiseGreater</p>
+<ul>
+<li><p>Added QNN_DATATYPE_INT_32 datatype support for in[0] and in[1]</p></li>
+</ul>
+</li>
+<li><p>Reshape</p>
+<ul>
+<li><p>Added QNN_DATATYPE_BOOL_8 datatype support for in[0] and out[0]</p></li>
+</ul>
+</li>
+<li><p>ScatterNd</p>
+<ul>
+<li><p>Added 5D constraints for in[0], in[2] and out[0], and 6D constraint for in[1]</p></li>
+</ul>
+</li>
+<li><p>Softmax</p>
+<ul>
+<li><p>Added QNN_DATATYPE_FLOAT_32 datatype support for out[0]</p></li>
+</ul>
+</li>
+<li><p>InstanceNorm</p>
+<ul>
+<li><p>Added constraint to support in[0] with rank of less than 4D</p></li>
+</ul>
+</li>
+<li><p>Gather, GatherNd</p>
+<ul>
+<li><p>Added support for in[1]</p></li>
+</ul>
+</li>
+<li><p>GatherNd</p>
+<ul>
+<li><p>Added constraint for out[0] for input and output quantization check</p></li>
+</ul>
+</li>
+<li><p>FullyConnected, MatMul</p>
+<ul>
+<li><p>Added constraints to support per-channel tensors</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>2.6.0</p></td>
+<td><p>Quant</p></td>
+<td><ul class="simple">
+<li><p>Cast</p>
+<ul>
+<li><p>Added QNN_DATATYPE_BOOL_8 datatype support for out[0]</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.4.0</p></td>
+<td><p>Quant</p></td>
+<td><ul>
+<li><p>Resize support added</p></li>
+<li><p>Gather</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>constraint added for in[0] and out[0]: “Max Supported rank is 5”</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>2.3.0</p></td>
+<td><p>Quant</p></td>
+<td><ul>
+<li><p>Cast, ExpandDims, Squeeze</p>
+<blockquote>
+<div><p>-Added QNN_DATATYPE_UINT_8 support for in[0] and out[0]</p>
+</div></blockquote>
+</li>
+<li><p>GatherNd</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Added QNN_DATATYPE_INT_32 support for in[0] and out[0]</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>MatMul</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Added QNN_DATATYPE_UFIXED_POINT_8 and QNN_DATATYPE_SFIXED_POINT_32 support for in[2]</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Pad, Relu</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>constraint added for in[0] and out[0]: “Max Supported rank is 5”</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.2.0</p></td>
+<td><p>Quant</p></td>
+<td><ul>
+<li><p>Gelu</p>
+<blockquote>
+<div><p>-Added QNN_DATATYPE_UFIXED_POINT_16 support for in[0] and out[0]</p>
+</div></blockquote>
+</li>
+<li><p>Reshape</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Added QNN_DATATYPE_UINT_8 support for in[0] and out[0]</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>2.1.0</p></td>
+<td><p>Quant</p></td>
+<td><ul>
+<li><p>Concat, ElementWiseAdd, ElementWiseDivide, ElementWiseMaximum, ElementWiseMinimum,
+ElementWiseMultiply, ElementWiseSubtract, ElementWiseSquaredDifference, MatMul,
+Sigmoid, StridedSlice</p>
+<blockquote>
+<div><p>-support for rank 5 added</p>
+</div></blockquote>
+</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>Gather</p>
+<ul>
+<li><p>constraint added for out[0]: “Input quantization must be equal to output quantization”</p></li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../lpai/lpai_opdef_version_history.html" class="btn btn-neutral float-right" title="QNN LPAI Op Support Revision History" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../hta/hta_opdef_version_history.html" class="btn btn-neutral float-left" title="QNN HTA Op Support Revision History" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

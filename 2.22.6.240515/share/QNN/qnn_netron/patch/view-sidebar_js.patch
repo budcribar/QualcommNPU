@@ -1,0 +1,211 @@
+diff --git a/source/view-sidebar.js b/source/view-sidebar.js
+index 5d038f7..bf899f4 100644
+--- a/source/view-sidebar.js
++++ b/source/view-sidebar.js
+@@ -1,8 +1,11 @@
+ /* jshint esversion: 6 */
+ 
++const { rgb } = require('d3');
++
+ var sidebar = sidebar || {};
+ var base = base || require('./base');
+ 
++
+ sidebar.Sidebar = class {
+ 
+     constructor(host, id) {
+@@ -134,6 +137,9 @@ sidebar.NodeSidebar = class {
+         this._inputs = [];
+         this._outputs = [];
+ 
++        //added code
++        this._csvInfo=[];
++
+         if (node.type) {
+             let showDocumentation = null;
+             if (node.metadata) {
+@@ -145,7 +151,6 @@ sidebar.NodeSidebar = class {
+             }
+             this._addProperty('type', new sidebar.ValueTextView(this._host, node.type, showDocumentation));
+         }
+-
+         if (node.name) {
+             this._addProperty('name', new sidebar.ValueTextView(this._host, node.name));
+         }
+@@ -176,6 +181,8 @@ sidebar.NodeSidebar = class {
+             });
+             this._addHeader('Attributes');
+             for (const attribute of sortedAttributes) {
++                console.log(attribute);
++                console.log(attribute.name);
+                 this._addAttribute(attribute.name, attribute);
+             }
+         }
+@@ -196,6 +203,15 @@ sidebar.NodeSidebar = class {
+             }
+         }
+ 
++        //added  code
++       const csvInfo = node.csv;
++       if (csvInfo && csvInfo.length > 0) {
++            this._addHeader('Diff');
++            for(const data of csvInfo){
++                 this._addProperty('', new sidebar.ValueTextView(this._host, data.value,null,data.color))
++           }
++        }
++
+         const separator = this._host.document.createElement('div');
+         separator.className = 'sidebar-view-separator';
+         this._elements.push(separator);
+@@ -221,7 +237,8 @@ sidebar.NodeSidebar = class {
+         const item = new sidebar.NameValueView(this._host, name, new NodeAttributeView(this._host, attribute));
+         this._attributes.push(item);
+         this._elements.push(item.render());
+-    }
++        }
++
+ 
+     _addInput(name, input) {
+         if (input.arguments.length > 0) {
+@@ -445,13 +462,16 @@ sidebar.SelectView = class {
+ 
+ sidebar.ValueTextView = class {
+ 
+-    constructor(host, value, action) {
++    constructor(host, value, action, color) {
+         this._host = host;
+         this._elements = [];
+         const element = this._host.document.createElement('div');
+         element.className = 'sidebar-view-item-value';
+-        this._elements.push(element);
+ 
++        if(color){
++            element.setAttribute('style','background-color:'+color)
++        }
++        this._elements.push(element);
+         if (action) {
+             this._action = this._host.document.createElement('div');
+             this._action.className = 'sidebar-view-item-value-expander';
+@@ -462,10 +482,15 @@ sidebar.ValueTextView = class {
+             element.appendChild(this._action);
+         }
+ 
+-        const line = this._host.document.createElement('div');
+-        line.className = 'sidebar-view-item-value-line';
+-        line.innerText = value;
+-        element.appendChild(line);
++        const list = Array.isArray(value) ? value : [ value ];
++        let className = 'sidebar-view-item-value-line';
++        for (const item of list) {
++            const line = this._host.document.createElement('div');
++            line.className = className;
++            line.innerText = item;
++            element.appendChild(line);
++            className = 'sidebar-view-item-value-line-border';
++        }
+     }
+ 
+     render() {
+@@ -598,6 +623,58 @@ sidebar.ParameterView = class {
+     }
+ };
+ 
++sidebar.LongValueTextView = class {
++    constructor(host, value) {
++        this._longValue = value;
++        this._shortValue = value.slice(0,20);
++        this._elements = [];
++        this._host = host;
++        const element = this._host.document.createElement('div');
++        element.className = 'sidebar-view-item-value';
++        this._elements.push(element);
++        this._itemValue = element;
++        if(value.length > 20){
++            this._expander = this._host.document.createElement('div');
++            this._expander.className = 'sidebar-view-item-value-expander';
++            this._expander.innerText = '+';
++            this._expander.addEventListener('click', () => {
++                this.toggle();
++            });
++            element.appendChild(this._expander);
++            this._shortValue+="...";
++        }
++
++        const line = this._host.document.createElement('div');
++        line.className = 'sidebar-view-item-value-line';
++        line.innerText = this._shortValue;
++        element.appendChild(line);
++    }
++
++    render() {
++        return this._elements;
++    }
++
++    toggle() {
++        if (this._expander) {
++            if (this._expander.innerText == '+') {
++                this._expander.innerText = '-';
++                const valueLine = this._host.document.createElement('div');
++                valueLine.className = 'sidebar-view-item-value-line-border';
++                valueLine.innerText=this._longValue;
++                this._itemValue.appendChild(valueLine);
++
++            }
++            else {
++                this._expander.innerText = '+';
++                while (this._itemValue.childElementCount > 2) {
++                    this._itemValue.removeChild(this._itemValue.lastChild);
++                }
++            }
++        }
++    }
++
++};
++
+ sidebar.ArgumentView = class {
+ 
+     constructor(host, argument) {
+@@ -808,6 +885,28 @@ sidebar.ModelSidebar = class {
+             this._addProperty('runtime', new sidebar.ValueTextView(this._host, this._model.runtime));
+         }
+ 
++        if (this._model.model_cpp) {
++            this._addProperty('model.cpp', new sidebar.ValueTextView(this._host, this._model.model_cpp));
++        }
++        if (this._model.model_bin) {
++            this._addProperty('model.bin', new sidebar.ValueTextView(this._host, this._model.model_bin));
++        }
++        if (this._model.op_types) {
++            this._addProperty('op types', new sidebar.ValueTextView(this._host, this._model.op_types));
++        }
++        if (this._model.total_param) {
++            this._addProperty('Total parameters', new sidebar.ValueTextView(this._host, this._model.total_param));
++        }
++        if (this._model.total_mac) {
++            this._addProperty('Total MACs per inference', new sidebar.ValueTextView(this._host, this._model.total_mac));
++        }
++
++        if (this._model.converter_command) {
++            this._addProperty('converter command', new sidebar.LongValueTextView(this._host, this._model.converter_command));
++        }
++        if (this._model.copyright) {
++            this._addProperty('copyright', new sidebar.LongValueTextView(this._host, this._model.copyright));
++        }
+         const metadata = this._model.metadata;
+         if (metadata) {
+             for (const property of this._model.metadata) {
+@@ -850,6 +949,14 @@ sidebar.ModelSidebar = class {
+                     this.addArgument(output.name, output);
+                 }
+             }
++            const csvInfo = graph.csv;
++            if (csvInfo && csvInfo.length > 0) {
++                this._addHeader('Diff');
++                for(const data of csvInfo){
++                    this._addProperty('', new sidebar.ValueTextView(this._host, data.value,null,data.color))
++                }
++            }
++
+         }
+ 
+         const separator = this._host.document.createElement('div');

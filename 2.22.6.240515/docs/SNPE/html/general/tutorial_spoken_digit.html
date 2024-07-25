@@ -1,0 +1,615 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Running the Spoken Digit Recognition Model &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Running a VGG Model" href="tutorial_onnx.html" />
+    <link rel="prev" title="Running the Word-RNN Model" href="tutorial_word_rnn.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup1.html">Network Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="usergroup6.html">Tutorials and Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial_setup.html">Tutorials Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snpe2_migration_guidelines.html">SNPE1 to SNPE2 Migration Guide</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="usergroup7.html">Running Nets</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="tutorial_inceptionv3.html">Running the Inception v3 Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_inceptionv3_win.html">Running the Inception v3 Model in Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_word_rnn.html">Running the Word-RNN Model</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Running the Spoken Digit Recognition Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_onnx.html">Running a VGG Model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup8.html">Code Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup9.html">Application Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="usergroup6.html">Tutorials and Examples</a> &raquo;</li>
+        
+          <li><a href="usergroup7.html">Running Nets</a> &raquo;</li>
+        
+      <li>Running the Spoken Digit Recognition Model</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="running-the-spoken-digit-recognition-model">
+<h1>Running the Spoken Digit Recognition Model<a class="headerlink" href="#running-the-spoken-digit-recognition-model" title="Permalink to this heading">¶</a></h1>
+<div class="ui-resizable side-nav-resizable docutils container" id="side-nav">
+<div class="docutils container" id="nav-tree">
+<div class="docutils container" id="nav-tree-contents">
+</div>
+</div>
+</div>
+<div class="docutils container" id="doc-content">
+<div class="header docutils container">
+</div>
+<div class="contents docutils container">
+<div class="textblock docutils container">
+<p class="rubric" id="overview">Overview</p>
+<p>The example C++ application in this tutorial is called
+<a class="reference external" href="tools.html#snpe-net-run">snpe-net-run</a>. It is a command line executable that executes
+a neural network using Qualcomm® Neural Processing SDK APIs.</p>
+<p>The required arguments to snpe-net-run are:</p>
+<ul class="simple">
+<li><p>A neural network model in the DLC file format</p></li>
+<li><p>An input list file with paths to the input data.</p></li>
+</ul>
+<p>Optional arguments to snpe-net-run are:</p>
+<ul class="simple">
+<li><p>Choice of GPU or DSP runtime (default is CPU)</p></li>
+<li><p>Output directory (default is ./output)</p></li>
+<li><p>Show help description</p></li>
+</ul>
+<p>snpe-net-run creates and populates an output directory with the
+results of executing the neural network on the input data.</p>
+<div class="docutils container">
+<div class="figure align-default">
+<img alt="../images/neural_network.png" src="../images/neural_network.png" />
+</div>
+</div>
+<p>The Qualcomm® Neural Processing SDK provides Linux and Android binaries of
+<strong>snpe-net-run</strong> under</p>
+<ul class="simple">
+<li><p>$SNPE_ROOT/bin/x86_64-linux-clang</p></li>
+<li><p>$SNPE_ROOT/bin/aarch64-android</p></li>
+<li><p>$SNPE_ROOT/bin/aarch64-oe-linux-gcc8.2</p></li>
+<li><p>$SNPE_ROOT/bin/aarch64-oe-linux-gcc9.3</p></li>
+<li><p>$SNPE_ROOT/bin/aarch64-ubuntu-gcc7.5</p></li>
+</ul>
+<p class="rubric" id="introduction">Introduction</p>
+<p>This chapter will show an example of recognizing the 10 classes
+in the free spoken digit dataset, with data processing and a
+4-layer neural network, through Qualcomm® Neural Processing SDK. The step-by-step example
+will create, train, convert, and execute a TensorFlow-Keras
+audio model with Qualcomm® Neural Processing SDK.</p>
+<p>As a prerequisite, users should download the <strong>Free Spoken
+Digit Dataset (FSDD)</strong>.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>cd $SNPE_ROOT/examples/Models/spoken_digit
+git clone https://github.com/Jakobovski/free-spoken-digit-dataset
+</pre></div>
+</div>
+<p>The external python3 packages required for this example are:</p>
+<ul class="simple">
+<li><p>librosa (0.8.0)</p></li>
+<li><p>tensorflow (1.11.0)</p></li>
+<li><p>tflearn (0.3.2)</p></li>
+</ul>
+<p>There are five files and a single directory in the
+$SNPE_ROOT/examples/Models/spoken_digit folder</p>
+<ul class="simple">
+<li><p>free-spoken-digit-dataset (download from git)</p></li>
+<li><p>input_list.txt</p></li>
+<li><p>interpretRawDNNOutput.py</p></li>
+<li><p>processSpokenDigitInput.py</p></li>
+<li><p>spoken_digit.py</p></li>
+<li><p>NOTICE.txt</p></li>
+</ul>
+<p>The <strong>interpretRawDNNOutput.py</strong> will translate Qualcomm® Neural Processing SDK output and
+display the prediction.</p>
+<p>The <strong>processSpokenDigitInput.py</strong> processes user input wav
+audio file into raw format for snpe-net-run.</p>
+<p>The <strong>spoken_digit.py</strong> python3 script creates and trains a
+4-layer neural network model. After training is done, the
+corresponding frozen protobuf file will be generated.</p>
+<p>The <strong>free-spoken-digit-dataset</strong> directory is the dataset
+downloaded by the user.</p>
+<p class="rubric" id="prerequisites">Prerequisites</p>
+<ul class="simple">
+<li><p>The Qualcomm® Neural Processing SDK has been set up following the <a class="reference external" href="setup.html">Qualcomm (R) Neural Processing SDK
+Setup</a> chapter.</p></li>
+<li><p>The <a class="reference external" href="tutorial_setup.html">Tutorials Setup</a> has been
+completed.</p></li>
+<li><p>TensorFlow is installed (see <a class="reference external" href="setup.html#tensorflow-setup">TensorFlow
+Setup</a>)</p></li>
+</ul>
+<p class="rubric" id="create-train-and-convert-spoken-digit-model">Create, Train, and Convert Spoken Digit Model</p>
+<p>Run spoken_digit.py to create and train the Word-RNN model.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>cd $SNPE_ROOT/examples/Models/spoken_digit
+python3 spoken_digit.py
+</pre></div>
+</div>
+<p>The terminal will show the following messages.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>Successfully split free-spoken-digit-dataset training/testing data.
+Training data created.
+---------------------------------
+Run id: 9ONBRF
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 512
+Validation samples: 512
+--
+Training Step: 4  | total loss: 2.26091 | time: 1.110s
+| Adam | epoch: 001 | loss: 2.26091 | val_loss: 2.32154 -- iter: 512/512
+--
+Training Step: 8  | total loss: 2.23880 | time: 1.016s
+| Adam | epoch: 002 | loss: 2.23880 | val_loss: 2.33806 -- iter: 512/512
+--
+Training Step: 12  | total loss: 2.08599 | time: 1.014s
+| Adam | epoch: 003 | loss: 2.08599 | val_loss: 2.43664 -- iter: 512/512
+--
+...
+...
+...
+--
+Training Step: 72  | total loss: 0.46716 | time: 1.016s
+| Adam | epoch: 018 | loss: 0.46716 | val_loss: 6.70030 -- iter: 512/512
+--
+Training Step: 76  | total loss: 0.35405 | time: 1.015s
+| Adam | epoch: 019 | loss: 0.35405 | val_loss: 7.70446 -- iter: 512/512
+--
+Training Step: 80  | total loss: 0.95591 | time: 1.013s
+| Adam | epoch: 020 | loss: 0.95591 | val_loss: 7.41716 -- iter: 512/512
+--
+Optimization done.
+Save frozen graph in spoken_digit.pb.
+</pre></div>
+</div>
+<p>Next, convert the frozen graph model with
+snpe-tensorflow-to-dlc.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>snpe-tensorflow-to-dlc --input_network spoken_digit.pb \
+                       --input_dim InputData/X &quot;1, 20, 35&quot; \
+                       --out_node &quot;FullyConnected_3/Softmax&quot; \
+                       --output_path spoken_digit.dlc
+</pre></div>
+</div>
+<p>After DLC conversion, we can view the converted dlc
+architecture with <strong>snpe-dlc-info</strong> and <strong>snpe-dlc-viewer</strong> as
+follows:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>snpe-dlc-info -i spoken_digit.dlc
+</pre></div>
+</div>
+<p>The output will be:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Id | Name                     | Type           | Inputs                                | Outputs                               | Out Dims | Runtimes | Parameters                             |
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| 0  | FullyConnected/MatMul    | FullyConnected | InputData/X:0 (Float_32) [NW Input]   | FullyConnected/BiasAdd:0 (Float_32)   | 1x256    | A D G C  | bias_op_name: FullyConnected/BiasAdd   |
+|    |                          |                | FullyConnected/W/read:0 (Float_32)    |                                       |          |          | packageName: qti.aisw                  |
+|    |                          |                | FullyConnected/b/read:0 (Float_32)    |                                       |          |          | param count: 179k (81.1%)              |
+|    |                          |                |                                       |                                       |          |          | MACs per inference: 179k (81.2%)       |
+| 1  | FullyConnected/Relu      | Neuron         | FullyConnected/BiasAdd:0 (Float_32)   | FullyConnected/Relu:0 (Float_32)      | 1x256    | A D G C  | neuron_type: Relu                      |
+|    |                          |                |                                       |                                       |          |          | packageName: qti.aisw                  |
+| 2  | FullyConnected_1/MatMul  | FullyConnected | FullyConnected/Relu:0 (Float_32)      | FullyConnected_1/BiasAdd:0 (Float_32) | 1x128    | A D G C  | bias_op_name: FullyConnected_1/BiasAdd |
+|    |                          |                | FullyConnected_1/W/read:0 (Float_32)  |                                       |          |          | packageName: qti.aisw                  |
+|    |                          |                | FullyConnected_1/b/read:0 (Float_32)  |                                       |          |          | param count: 32k (14.9%)               |
+|    |                          |                |                                       |                                       |          |          | MACs per inference: 32k (14.8%)        |
+| 3  | FullyConnected_1/Relu    | Neuron         | FullyConnected_1/BiasAdd:0 (Float_32) | FullyConnected_1/Relu:0 (Float_32)    | 1x128    | A D G C  | neuron_type: Relu                      |
+|    |                          |                |                                       |                                       |          |          | packageName: qti.aisw                  |
+| 4  | FullyConnected_2/MatMul  | FullyConnected | FullyConnected_1/Relu:0 (Float_32)    | FullyConnected_2/BiasAdd:0 (Float_32) | 1x64     | A D G C  | bias_op_name: FullyConnected_2/BiasAdd |
+|    |                          |                | FullyConnected_2/W/read:0 (Float_32)  |                                       |          |          | packageName: qti.aisw                  |
+|    |                          |                | FullyConnected_2/b/read:0 (Float_32)  |                                       |          |          | param count: 8k (3.73%)                |
+|    |                          |                |                                       |                                       |          |          | MACs per inference: 8k (3.71%)         |
+| 5  | FullyConnected_2/Relu    | Neuron         | FullyConnected_2/BiasAdd:0 (Float_32) | FullyConnected_2/Relu:0 (Float_32)    | 1x64     | A D G C  | neuron_type: Relu                      |
+|    |                          |                |                                       |                                       |          |          | packageName: qti.aisw                  |
+| 6  | FullyConnected_3/MatMul  | FullyConnected | FullyConnected_2/Relu:0 (Float_32)    | FullyConnected_3/BiasAdd:0 (Float_32) | 1x10     | A D G C  | bias_op_name: FullyConnected_3/BiasAdd |
+|    |                          |                | FullyConnected_3/W/read:0 (Float_32)  |                                       |          |          | packageName: qti.aisw                  |
+|    |                          |                | FullyConnected_3/b/read:0 (Float_32)  |                                       |          |          | param count: 650 (0.294%)              |
+|    |                          |                |                                       |                                       |          |          | MACs per inference: 640 (0.29%)        |
+| 7  | FullyConnected_3/Softmax | Softmax        | FullyConnected_3/BiasAdd:0 (Float_32) | FullyConnected_3/Softmax:0 (Float_32) | 1x10     | A D G C  | axis: 1                                |
+|    |                          |                |                                       |                                       |          |          | packageName: qti.aisw                  |
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>snpe-dlc-viewer -i spoken_digit.dlc
+</pre></div>
+</div>
+<p>The output network model HTML file will be saved at
+/tmp/spoken_digit.html.</p>
+<p class="rubric" id="run-on-linux-host">Run on Linux Host</p>
+<p>First, <strong>processSpokenDigitInput.py</strong> script needs to be run in
+order to process the audio input data <strong>test/5_jackson_0.wav</strong>
+to raw format. The output name will be <strong>input.raw</strong></p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>python3 processSpokenDigitInput.py test/5_jackson_0.wav
+</pre></div>
+</div>
+<p>Next, run <strong>snpe-net-run</strong> to get the inference result.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>snpe-net-run --container spoken_digit.dlc --input_list input_list.txt
+</pre></div>
+</div>
+<p>After snpe-net-run completes, verify that the results are
+populated in the $SNPE_ROOT/examples/Models/spoken_digit/output
+directory. There should be one or more .log files and several
+Result_X directories.</p>
+<p>The raw output prediction will be located in
+$SNPE_ROOT/examples/Models/spoken_digit/output/Result_0/FullyConnected_3/Softmax:0.raw.
+It holds the output tensor data of 10 probabilities for the 10
+categories. The element with the highest value represents the
+top classification. We can use a python3 script to interpret
+the classification results as follows:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>python3 interpretRawDNNOutput.py output/Result_0/FullyConnected_3/Softmax:0.raw
+</pre></div>
+</div>
+<p>The output should look like the following, showing
+classification results for all the images.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span> 0 : 0.000110
+ 1 : 0.012185
+ 2 : 0.000011
+ 3 : 0.000593
+ 4 : 0.002053
+ 5 : 0.814478
+ 6 : 0.002425
+ 7 : 0.043664
+ 8 : 0.003228
+ 9 : 0.121254
+Classification Result: Class 5.
+</pre></div>
+</div>
+<p>The final output shows the audio file was classified as “Class
+5” (from a total of 10 labels) with a probability of 0.814478.
+Look at the rest of the output to see the model’s
+classification on other classes.</p>
+<p><strong>Binary data input</strong></p>
+<p>Note that the spoken digit classification model does not accept
+wav files as input. The model expects its input tensor
+dimension to be <strong>1 x 20 x 35</strong> as a float array. The
+processSpokenDigitInput.py script performs a wav to binary data
+conversion. The script is an example of how wav audio files can
+be preprocessed to generate input for the classification model.</p>
+<p class="rubric" id="run-on-target-platform">Run on Target Platform ( Android/LE/UBUN )</p>
+<p><strong>Select target architecture</strong></p>
+<p>Qualcomm® Neural Processing SDK provides binaries for different target platforms.
+Android binaries are  compiled with clang using libc++ STL implementation.
+Below are examples for aarch64-android (Android platform)  and
+aarch64-oe-linux-gcc11.2 toolchain (LE platform).
+Similarly other toolchains for different platforms can be set as SNPE_TARGET_ARCH</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span># For Android targets: architecture: arm64-v8a - compiler: clang - STL: libc++
+export SNPE_TARGET_ARCH=aarch64-android
+
+# Example for LE targets
+export SNPE_TARGET_ARCH=aarch64-oe-linux-gcc11.2
+</pre></div>
+</div>
+<p>For simplicity, this tutorial sets the target binaries to
+aarch64-android.</p>
+<p><strong>Push libraries and binaries to target</strong></p>
+<p>Push Qualcomm® Neural Processing SDK libraries and the prebuilt snpe-net-run executable to
+/data/local/tmp/snpeexample on the Android target. Set SNPE_TARGET_DSPARCH
+to the DSP architecture of the target Android device.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>export SNPE_TARGET_ARCH=aarch64-android
+export SNPE_TARGET_DSPARCH=hexagon-v73
+
+adb shell &quot;mkdir -p /data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/bin&quot;
+adb shell &quot;mkdir -p /data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/lib&quot;
+adb shell &quot;mkdir -p /data/local/tmp/snpeexample/dsp/lib&quot;
+
+adb push $SNPE_ROOT/lib/$SNPE_TARGET_ARCH/*.so \
+      /data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/lib
+adb push $SNPE_ROOT/lib/$SNPE_TARGET_DSPARCH/unsigned/*.so \
+      /data/local/tmp/snpeexample/dsp/lib
+adb push $SNPE_ROOT/bin/$SNPE_TARGET_ARCH/snpe-net-run \
+      /data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/bin
+</pre></div>
+</div>
+<p><strong>Set up enviroment variables</strong></p>
+<p>Set up the library path, the path variable, and the target
+architecture in adb shell to run the executable with the -h
+argument to see its description.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>adb shell
+export SNPE_TARGET_ARCH=aarch64-android
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/lib
+export PATH=$PATH:/data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/bin
+snpe-net-run -h
+exit
+</pre></div>
+</div>
+<p><strong>Push model data to Android target</strong></p>
+<p>To execute the spoken digit classification model on your Android target follow these steps:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>adb shell &quot;mkdir -p /data/local/tmp/spoken_digit&quot;
+adb push input.raw /data/local/tmp/spoken_digit
+adb push input_list.txt /data/local/tmp/spoken_digit
+adb push spoken_digit.dlc /data/local/tmp/spoken_digit
+</pre></div>
+</div>
+<p><strong>Note:</strong> It may take some time to push the DLC file to your target.</p>
+<p class="rubric" id="running-on-android-using-cpu-runtime">Running on Android using CPU Runtime</p>
+<p>Run the Android C++ executable with the following commands:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>adb shell
+export SNPE_TARGET_ARCH=aarch64-android
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/lib
+export PATH=$PATH:/data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/bin
+cd /data/local/tmp/spoken_digit
+snpe-net-run --container spoken_digit.dlc --input_list input_list.txt
+exit
+</pre></div>
+</div>
+<p>The executable will create the results folder:
+/data/local/tmp/spoken_digit/output. To pull the output:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>adb pull /data/local/tmp/spoken_digit/output output_android
+</pre></div>
+</div>
+<p>Check the classification results by running the interpret
+python3 script.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>python3 interpretRawDNNOutput.py output_android/Result_0/FullyConnected_3/Softmax:0.raw
+</pre></div>
+</div>
+<p>The output should look like the following, showing
+classification results for all the images.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span> 0 : 0.000110
+ 1 : 0.012185
+ 2 : 0.000011
+ 3 : 0.000593
+ 4 : 0.002053
+ 5 : 0.814478
+ 6 : 0.002425
+ 7 : 0.043664
+ 8 : 0.003228
+ 9 : 0.121254
+Classification Result: Class 5.
+</pre></div>
+</div>
+<p class="rubric" id="running-on-android-using-gpu-runtime">Running on Android using GPU Runtime</p>
+<p>Try running on an Android target with the <strong>–use_gpu</strong> option
+as follows. By default, the GPU runtime runs in
+GPU_FLOAT32_16_HYBRID (math: full float and data storage: half
+float) mode. We can change the mode to GPU_FLOAT16 (math: half
+float and data storage: half float) using <strong>–gpu_mode</strong> option.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>adb shell
+export SNPE_TARGET_ARCH=aarch64-android
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/lib
+export PATH=$PATH:/data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/bin
+cd /data/local/tmp/spoken_digit
+snpe-net-run --container spoken_digit.dlc --input_list input_list.txt --use_gpu
+exit
+</pre></div>
+</div>
+<p>Pull the output into an output_android_gpu directory.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>adb pull /data/local/tmp/spoken_digit/output output_android_gpu
+</pre></div>
+</div>
+<p>Again, we can run the interpret script to see the
+classification results.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>python3 interpretRawDNNOutput.py output_android_gpu/Result_0/FullyConnected_3/Softmax:0.raw
+</pre></div>
+</div>
+<p>The output should look like the following, showing
+classification results for all the images.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span> 0 : 0.000113
+ 1 : 0.012330
+ 2 : 0.000011
+ 3 : 0.000604
+ 4 : 0.002087
+ 5 : 0.813591
+ 6 : 0.002461
+ 7 : 0.043883
+ 8 : 0.003279
+ 9 : 0.121640
+Classification Result: Class 5.
+</pre></div>
+</div>
+<p>Review the output for the classification results.
+Classification results are identical to the run with CPU
+runtime, but there are differences in the probabilities
+associated with the output labels due to floating point
+precision differences.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="tutorial_onnx.html" class="btn btn-neutral float-right" title="Running a VGG Model" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="tutorial_word_rnn.html" class="btn btn-neutral float-left" title="Running the Word-RNN Model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

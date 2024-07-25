@@ -1,0 +1,535 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Creating a UDO Package &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Compiling a UDO package" href="compiling_udo_package.html" />
+    <link rel="prev" title="Defining a UDO Package" href="udo_package_definition.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="usergroup1.html">Network Models</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="network_layers.html">Supported Network Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supported_onnx_ops.html">Supported ONNX Ops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quantized_models.html">Quantized vs Non-Quantized Models</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="usergroup2.html">User-defined Operations</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="udo_overview.html">Overview of UDO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="udo_operator_definition.html">Defining a UDO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="udo_package_definition.html">Defining a UDO Package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Creating a UDO Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="compiling_udo_package.html">Compiling a UDO package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="compiling_udo_package_for_windows.html">Compiling a UDO package for Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="preparing_model_with_udo.html">Preparing a model with UDO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running_model_with_udo.html">Running a model with UDO</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup3.html">Model Conversion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup6.html">Tutorials and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="usergroup1.html">Network Models</a> &raquo;</li>
+        
+          <li><a href="usergroup2.html">User-defined Operations</a> &raquo;</li>
+        
+      <li>Creating a UDO Package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="creating-a-udo-package">
+<h1>Creating a UDO Package<a class="headerlink" href="#creating-a-udo-package" title="Permalink to this heading">¶</a></h1>
+<div class="ui-resizable side-nav-resizable docutils container" id="side-nav">
+<div class="docutils container" id="nav-tree">
+<div class="docutils container" id="nav-tree-contents">
+</div>
+</div>
+</div>
+<div class="docutils container" id="doc-content">
+<div class="header docutils container">
+</div>
+<div class="contents docutils container">
+<div class="textblock docutils container">
+<p>This section describes the process of creating a UDO package
+from a simple text specification of a user-defined operation
+using the
+<a class="reference external" href="tools.html#snpe-udo-package-generator">snpe-udo-package-generator</a>.
+From the Qualcomm® Neural Processing SDK API standpoint, a UDO package consists of a
+registration library and one or more implementation libraries.
+As such, while a user can create a UDO package independent of
+this prescription, this section describes the process of
+creating a partially defined UDO package which can be easily
+implemented and compiled to produce the relevant libraries.</p>
+<p class="rubric" id="generating-udo-skeleton-code">Generating UDO Skeleton Code</p>
+<p>To generate a package using Qualcomm® Neural Processing SDK tools, it is necessary to
+create a UDO configuration describing the operation and the
+package details. See <a class="reference external" href="udo_package_definition.html">Defining a UDO
+Package</a> for more information.
+Once a configuration has been specified to adequately represent
+the desired UDO, it can be supplied as an argument to the Qualcomm® Neural Processing SDK
+UDO package generator tool described in
+<a class="reference external" href="tools.html#snpe-udo-package-generator">snpe-udo-package-generator</a>.
+The intention of the tool is to generate partial skeleton code
+to aid rapid prototyping. This section describes the usage of
+the package generator tool and the artifacts it generates.</p>
+<p>In order to run the
+<a class="reference external" href="tools.html#snpe-udo-package-generator">snpe-udo-package-generator</a>,
+the user is expected to have followed the setup instructions at
+<a class="reference external" href="setup.html">Qualcomm (R) Neural Processing SDK Setup</a>. The tool also has a dependency on
+the Mako Template Library, which can be found here:
+<a class="reference external" href="https://www.makotemplates.org/download.html">https://www.makotemplates.org/download.html</a>. Additionally, we
+need an extracted Qualcomm® AI Direct SDK (no need of Qualcomm® AI Direct SDK setup) for
+generating the skeleton code. For Qualcomm® AI Direct SDK details, refer to the
+Qualcomm® AI Direct SDK documentation at <code class="docutils literal notranslate"><span class="pre">$QNN_SDK_ROOT/docs/index.html</span></code> page,
+where <code class="docutils literal notranslate"><span class="pre">QNN_SDK_ROOT</span></code> is the location of the Qualcomm® AI Direct SDK
+installation. Set the <code class="docutils literal notranslate"><span class="pre">$QNN_SDK_ROOT</span></code> to the unzipped Qualcomm® AI Direct SDK
+location. Once setup is complete, the following command can be
+used to generate a package:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>snpe-udo-package-generator -p $SNPE_ROOT/examples/SNPE/NativeCpp/UdoExample/Softmax/config/Softmax_Htp.json -o &lt;my-dir&gt;
+</pre></div>
+</div>
+<p>The above command will create a UDO package which will be a
+directory composed of skeleton code and build files that can be
+used to compile the package contents into stand-alone shared
+libraries. The config file referenced in <a class="reference external" href="tutorial_inceptionv3_udo.html">UDO
+Tutorial</a> has been used to
+generate the udo package contents below:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>|-- Makefile
+|-- common.mk
+|-- config
+|   `-- Softmax_Htp.json
+|-- include
+|   `-- utils
+|       |-- IUdoOpDefinition.hpp
+|       |-- UdoMacros.hpp
+|       `-- UdoUtil.hpp
+`-- jni
+    |-- Android.mk
+    |-- Application.mk
+    `-- src
+        |-- CPU
+        |   |-- Makefile
+        |   |-- makefiles
+        |   |   |-- Android.mk
+        |   |   |-- Application.mk
+        |   |   `-- Makefile.linux-x86_64
+        |   `-- src
+        |       |-- CpuCustomOpPackage.cpp
+        |       |-- SoftmaxUdoPackageInterface.cpp
+        |       |-- ops
+        |       |   `-- Softmax.cpp
+        |       `-- utils
+        |           |-- BackendUtils.hpp
+        |           |-- CPU
+        |           |   |-- CpuBackendUtils.cpp
+        |           |   `-- CpuBackendUtils.hpp
+        |           `-- CustomOpUtils.hpp
+        |-- DSP_V68
+        |   |-- Makefile
+        |    `-- src
+        |       |-- SoftmaxUdoPackageInterface.cpp
+        |       `-- ops
+        |           `-- Softmax.cpp
+        |-- GPU
+        |   |-- Makefile
+        |   |-- include
+        |   |   |-- GpuCustomOpPackage.hpp
+        |   |   `-- Operation.hpp
+        |   |-- makefiles
+        |   |   |-- Android.mk
+        |   |   `-- Application.mk
+        |   `-- src
+        |       |-- GpuCustomOpPackage.cpp
+        |       |-- SoftmaxUdoPackageInterface.cpp
+        |       `-- ops
+        |           `-- Softmax.cpp
+        |-- reg
+        |   |-- Makefile
+        |   `-- SoftmaxUdoPackageRegLib.cpp
+        `-- utils
+            `-- UdoUtil.cpp
+</pre></div>
+</div>
+<p class="rubric" id="contents-of-a-udo-package">Contents of a UDO package</p>
+<ul class="simple">
+<li><p>The package can be compiled using the make build system for
+a Linux host machine or the Android-NDK build system for an
+Android device. Briefly, the make system is configured using
+the top level <strong>Makefile</strong>, <strong>common.mk</strong> and the individual
+makefiles in each runtime directory. The android-build
+system is configured using <strong>jni/Android.mk</strong> and
+<strong>jni/Application.mk</strong>. See <a class="reference external" href="compiling_udo_package.html">Compiling a UDO
+package</a> for more compilation
+details.</p></li>
+<li><p>The config directory contains the JSON configuration used to
+create the package.</p></li>
+<li><p>The include directory contains three kinds of files: headers
+from the Qualcomm® Neural Processing SDK UDO API, header files specific to the UDO
+package and its operations, and a directory of C++ helper
+utils which wrap the Qualcomm® Neural Processing SDK UDO API calls. Users should note
+that the utils API is included simply for convenience in
+creating implementation source code. The use of the utils is
+not a prerequisite for constructing or executing a UDO
+package.</p></li>
+<li><p>The relevant source files for the package are organized
+under the <strong>jni/src</strong> directory. There will be a
+sub-directory for each core-type specified in the config.
+The registration (reg) directory contains files necessary to
+create the registration library, which is generally the
+point of entry for the Qualcomm® Neural Processing SDK API. There is also source code
+from the previously mentioned C++ helper utils. In general,
+users are only expected to edit code contained in
+runtime-specific or registration directories.</p></li>
+</ul>
+<p class="rubric" id="generated-source-code">Generated Source Code</p>
+<p>This section and the following sub-sections cover the source
+code generated in a package using the package contents
+displayed in <a class="reference external" href="creating_udo_package.html#generating-udo-implementation-stubs">Generating UDO Skeleton
+Code</a>.
+When finalized, a UDO package is expected to contain a
+registration library and one or more implementation libraries.
+To produce the registration library, the source code in
+<strong>jni/src/reg</strong> is compiled. The implementation library is
+compiled using source code from each core-type specific
+directory. Recall that the package created by the tool will
+still need to be implemented. The following subsections will
+address the files that need to be implemented. All generated
+source code will have the tag <strong>Auto-generated</strong> in the header.
+The source code is considered partially complete in the
+generation stage, and it is the user’s responsibility to
+implement certain files as needed to ensure proper
+compatibility and functionality with the Qualcomm® Neural Processing SDK API. All code to
+be implemented will have the tag <strong>add code here</strong> in the body
+to indicate that it needs to be implemented. Note that all
+libraries link against the C++ utils source code.</p>
+<p class="rubric" id="completing-the-registration-skeleton-code">Completing the Registration Skeleton Code</p>
+<p>As mentioned previously, the registration library is created
+from source code in <strong>jni/src/reg</strong>. The directory contains a
+Makefile to compile the package and the package specific file:
+<strong>SoftmaxUdoPackageRegLib.cpp</strong> which contains the function
+symbols that get resolved by the Qualcomm® Neural Processing SDK UDO API when the library
+is opened. The registration library file contains API calls
+that provide the Qualcomm® Neural Processing SDK UDO API with information about the nature
+of the operations in the model, as well as the implementation
+libraries they belong to.</p>
+<p class="rubric" id="completing-the-implementation-skeleton-code">Completing the Implementation Skeleton Code</p>
+<p>The implementation library is created per core-type, from
+source code that lives under the core-type specific directory
+within <strong>jni/src</strong>. Using the CPU runtime as an example, the
+<strong>jni/src/CPU</strong> directory contains a Makefile to build the CPU
+implementation library, a package-specific source file:
+<strong>SoftmaxUdoPackageInterface.cpp</strong> for all operations to be
+contained in the library, and a per operation source file:
+<strong>Softmax.cpp</strong> that should contain the runtime implementation.
+As in the registration case, the package-specific source file
+should not be edited in the general case. Similarly this file
+contains methods that return information about the operations
+contained in the implementation library, and methods that act
+as a layer of indirection above the code that is ultimately
+executed in the per operation file. In the CPU case, the three
+methods in <strong>Softmax.cpp</strong> namely: <strong>finalize</strong>, <strong>execute</strong>,
+and <strong>free</strong> are the user’s responsibility to edit. Note these
+methods create the operation, execute its implementation, and
+free the operation respectively. As such, these are completely
+determined by the user. A sample generated version of the
+implementation library is included below:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>Qnn_ErrorHandle_t execute(CustomOp* operation) {
+
+  /**
+   * Add code here
+   **/
+
+  return QNN_SUCCESS;
+}
+
+Qnn_ErrorHandle_t finalize(const CustomOp* operation) {
+  QNN_CUSTOM_BE_ENSURE_EQ(operation-&gt;numInput(), 1, QNN_OP_PACKAGE_ERROR_VALIDATION_FAILURE)
+  QNN_CUSTOM_BE_ENSURE_EQ(operation-&gt;numOutput(), 1, QNN_OP_PACKAGE_ERROR_VALIDATION_FAILURE)
+
+  /**
+   * Add code here
+   **/
+
+  return QNN_SUCCESS;
+}
+
+Qnn_ErrorHandle_t free(CustomOp&amp; operation) {
+
+    /**
+    * Add code here
+    **/
+
+    return QNN_SUCCESS;
+}
+</pre></div>
+</div>
+<p id="avoid-using-heap-memory-allocation">To have good performance and stability, it is required to
+avoid heap memory allocation in the completed op execution
+functions, that is, <strong>&lt;op_name&gt;Impl</strong>,
+<strong>&lt;op_name&gt;_executeOp</strong>, <strong>&lt;op_name&gt;Operation</strong> and
+<strong>execute</strong> functions for DSP V68 and later, DSP V66 / V65,
+GPU, and CPU respectively which are executed during graph
+execution. The heap memory allocation includes but not
+limited to calling <code class="code docutils literal notranslate"><span class="pre">malloc</span></code>, <code class="code docutils literal notranslate"><span class="pre">operator</span> <span class="pre">new</span></code>,
+constructing STL container objects like <code class="code docutils literal notranslate"><span class="pre">std::vector</span></code>
+with default allocator, and adding items like calling
+<code class="code docutils literal notranslate"><span class="pre">std::vector::push_back</span></code> to STL container objects
+with default allocator.</p>
+<p>The reason to avoid heap memory allocation is because the
+time to finish heap memory allocation is unbounded and may
+have huge variance. Especially for DSP and HTP, the heap
+memory allocation can trigger CPU request in some cases and
+significantly impact the inference speed. Also, the heap
+memory allocation can fail and return null pointers or throw
+exceptions. In such case, there is usually no good way to
+continue the execution. In applications with strict
+functional safety requirements, heap memory allocation after
+initialization is not even permitted.</p>
+<p>If a working buffer is required to carry out the op
+computation, here are some potential alternatives:</p>
+<ul class="simple">
+<li><p><strong>construct std::array instead of std::vector for local variables</strong>:
+Unlike <code class="code docutils literal notranslate"><span class="pre">std::vector</span></code>, <code class="code docutils literal notranslate"><span class="pre">std::array</span></code> uses stack
+memory. This works if the maximum memory size can be known
+in advance and the size is not large.</p></li>
+<li><p><strong>use output tensor space as scratch memory</strong>: Each
+execution function has at least one output tensor. You
+can use the space of the output tensor as the scratch buffer
+before you fill in the real output data. Please note that
+the output tensor space can only be safely written in the
+execution function which owns the output tensor.</p></li>
+</ul>
+<p class="rubric" id="notes">Notes</p>
+<ul class="simple">
+<li><p>In the general case, the package should only require
+functional edits that enable proper execution. The initial
+un-implemented package is guaranteed to compile.</p></li>
+<li><p>One subtle distinction is that the generated DSP V65 or DSP
+V66 implementation source code expects one operation per
+implementation library. While in the CPU, GPU, and DSP V68
+or later cases, there may be an arbitrary number of
+operations in a library.</p></li>
+<li><p>There are differences between the implementation source
+files for each runtime. In the GPU case, the <strong>execute</strong>
+workflow is already implemented and the user is only
+expected to implement the <strong>&lt;OpName&gt;Operation</strong> and
+<strong>setKernelInfo</strong> methods. In contrast to CPU and GPU, DSP
+uses API which does not depend on C++ helper utils discussed
+in the <a class="reference external" href="creating_udo_package.html#udo_generated_source_code">Generated Source
+Code</a>
+section. This means that certain helper methods and
+constructors may not be available in the DSP case. For DSP
+case, the user is expected to implement <strong>softmaxImpl</strong>
+method.</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="compiling_udo_package.html" class="btn btn-neutral float-right" title="Compiling a UDO package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="udo_package_definition.html" class="btn btn-neutral float-left" title="Defining a UDO Package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,347 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>QNN HTP Optimization Utility Functions Usage Examples &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="HTP Core Headers for Op Packages" href="htp_core_headers.html" />
+    <link rel="prev" title="QNN HTP Op Package - Common Default Package Ops Usage Examples" href="common_default_package_ops_usage_examples.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/setup.html">Setup</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../general/backend.html">Backend</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../general/backend.html#backend-specific-pages">Backend Specific Pages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../general/dsp/dsp_backend.html">DSP</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../general/htp/htp_backend.html">HTP</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#api-specializations">API Specializations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#usage-expectations">Usage Expectations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-supported-operations">QNN HTP Supported Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-variable-batch">QNN HTP Variable Batch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-backend-api">QNN HTP Backend API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-performance-infrastructure-api">QNN HTP Performance Infrastructure API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-precision">QNN HTP Precision</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-fp16-output-difference-between-sm8550-and-sm8650">QNN HTP FP16 output difference between SM8550 and SM8650</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-deep-learning-bandwidth-compression-dlbc">QNN HTP Deep Learning Bandwidth Compression (DLBC)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-setting-number-of-hvx-threads">QNN HTP - Setting Number of HVX Threads</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-backend-extensions">QNN HTP Backend Extensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-profiling">QNN HTP Profiling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-context-binary-size">QNN Context Binary size</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../general/htp/htp_backend.html#op-writing-guidelines">Op Writing Guidelines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#recommendations-for-network-design">Recommendations for Network Design</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#yielding-and-pre-emption">Yielding and Pre-Emption</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#vtcm-sharing">VTCM Sharing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#subsystem-restart-ssr">SubSystem Restart (SSR)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qmem-graph-shared-buffer-only-graph">Qmem Graph (shared_buffer only graph)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#htp-session-artifact-usage-guidlines">HTP Session &amp; Artifact Usage Guidlines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#graph-switching-beta">Graph Switching (Beta)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#benefits-of-batch-inference-and-multi-threaded-inference">Benefits of batch inference and multi-threaded inference</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../general/hta/hta_backend.html">HTA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/lpai/lpai_backend.html">LPAI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/cpu/cpu_backend.html">CPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/gpu/gpu_backend.html">GPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/saver/saver_backend.html">Saver</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../general/backend.html">Backend</a> &raquo;</li>
+        
+          <li><a href="../general/htp/htp_backend.html">HTP</a> &raquo;</li>
+        
+      <li>QNN HTP Optimization Utility Functions Usage Examples</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="qnn-htp-optimization-utility-functions-usage-examples">
+<span id="opt-utility-funcs-usage"></span><h1>QNN HTP Optimization Utility Functions Usage Examples<a class="headerlink" href="#qnn-htp-optimization-utility-functions-usage-examples" title="Permalink to this heading">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="#opt-utility-funcs-usage-op-iter"><span class="std std-ref">OP_ITER</span></a></p></li>
+<li><p><a class="reference internal" href="#opt-utility-funcs-usage-with-size"><span class="std std-ref">WITH_SIZE</span></a></p></li>
+</ul>
+<div class="section" id="op-iter">
+<span id="opt-utility-funcs-usage-op-iter"></span><h2>OP_ITER<a class="headerlink" href="#op-iter" title="Permalink to this heading">¶</a></h2>
+<p>Create a multi-output Op by iterating over expression</p>
+<p><strong>Usage Hint</strong></p>
+<p>Often used with multi-outputs ops such as “Concat”</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * op_base         - &#39;Reference&#39; Op supplying the name and fixed inputs</span>
+<span class="cm"> * tag             - A string indentifying the split context</span>
+<span class="cm"> * lo_index        - the first input index</span>
+<span class="cm"> * hi_index        - the last input index+1</span>
+<span class="cm"> * f               - The subexpression to iterate</span>
+<span class="cm"> */</span>
+<span class="w"> </span><span class="n">OP_ITER</span><span class="p">(</span><span class="w"> </span><span class="n">op_base</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;tag&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">lo_index</span><span class="p">,</span><span class="w"> </span><span class="n">hi_index</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Example</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Original Sequence</span>
+<span class="c1">// In[1,16,8,32] -&gt; Relu[1,16,8,32]</span>
+
+<span class="c1">// Tiled on height by 8</span>
+<span class="c1">//               /-&gt; SlicePad_shape(start=[0,0,0,0])[1,8,8,32] -&gt; Relu[1,8,8,32] \</span>
+<span class="c1">// In[1,16,8,32]                                                                   --&gt; Concat(axis=1)[1,16,8,32]</span>
+<span class="c1">//               \-&gt; SlicePad_shape(start=[0,8,0,0])[1,8,8,32] -&gt; Relu[1,8,8,32] /</span>
+<span class="n">DEF_OPT</span><span class="p">(</span><span class="n">TILING</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Op</span><span class="p">(</span><span class="s">&quot;Relu&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;In&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">OK</span><span class="p">,</span>
+<span class="w">    </span><span class="n">OP_ITER</span><span class="p">(</span>
+<span class="w">        </span><span class="n">Op</span><span class="p">(</span><span class="n">FROM_DEFAULT_PACKAGE</span><span class="p">(</span><span class="s">&quot;Concat&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">gen_ConstScalar_i32</span><span class="p">(</span><span class="mi">1</span><span class="p">)),</span><span class="w">   </span><span class="c1">// Height is axis 1, that&#39;s the axis we want to Concat back on</span>
+<span class="w">        </span><span class="s">&quot;I&quot;</span><span class="p">,</span><span class="w">                                    </span><span class="c1">// Iterator I</span>
+<span class="w">        </span><span class="mi">0</span><span class="p">,</span><span class="w">                                      </span><span class="c1">// Iterator initialize to 0</span>
+<span class="w">        </span><span class="mi">2</span><span class="p">,</span><span class="w">                                      </span><span class="c1">// Iteration termination</span>
+<span class="w">        </span><span class="n">WITH_SIZE</span><span class="p">(</span><span class="w">              </span><span class="c1">// Here the size is the tiled Op output size</span>
+<span class="w">            </span><span class="n">gen_Shape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">32</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Op</span><span class="p">(</span><span class="s">&quot;Relu&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="n">WITH_SIZE</span><span class="p">(</span><span class="w">      </span><span class="c1">// Here the size is the shape of the tiled input to the Op</span>
+<span class="w">                    </span><span class="n">gen_Shape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">32</span><span class="p">),</span><span class="w">    </span><span class="c1">// WITH_SIZE is needed because the default size is the shape of the original pattern output</span>
+<span class="w">                </span><span class="p">),</span>
+<span class="w">                </span><span class="n">Op</span><span class="p">(</span><span class="n">FROM_DEFAULT_PACKAGE</span><span class="p">(</span><span class="s">&quot;SlicePad_shape&quot;</span><span class="p">),</span>
+<span class="w">                    </span><span class="s">&quot;In&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">gen_Shape</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w">                     </span><span class="c1">// no padding before</span>
+<span class="w">                    </span><span class="n">gen_Shape</span><span class="p">(</span>
+<span class="w">                        </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">MUL</span><span class="p">(</span><span class="n">SPLIT_START</span><span class="p">(</span><span class="s">&quot;I&quot;</span><span class="p">),</span><span class="mi">8</span><span class="p">),</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">    </span><span class="c1">// Start slicing at (0,0,0,0) for thefirst tile,</span>
+<span class="w">                                                            </span><span class="c1">// and (0,8,0,0,) for the second tile</span>
+<span class="w">                    </span><span class="p">),</span>
+<span class="w">                    </span><span class="n">gen_Shape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">32</span><span class="p">)</span><span class="w">                     </span><span class="c1">// Size of each In tile is [1,8,8,32]</span>
+<span class="w">                    </span><span class="n">gen_ConstScalar_i32</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w">                  </span><span class="c1">// Pad val of 0</span>
+<span class="w">                </span><span class="p">)</span>
+<span class="w">            </span><span class="p">)</span>
+<span class="w">        </span><span class="p">)</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="with-size">
+<span id="opt-utility-funcs-usage-with-size"></span><h2>WITH_SIZE<a class="headerlink" href="#with-size" title="Permalink to this heading">¶</a></h2>
+<p>Specify the reference output size</p>
+<p><strong>Usage Hint</strong></p>
+<p>Often used with gen_Shape</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * ref                 -  reference OpDef with some rank and shape</span>
+<span class="cm"> * target              -  evaluate &#39;target&#39; with ref as output size</span>
+<span class="cm"> */</span>
+<span class="w"> </span><span class="n">WITH_SIZE</span><span class="p">(</span><span class="n">ref</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Example</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Same as above OP_ITER example</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="htp_core_headers.html" class="btn btn-neutral float-right" title="HTP Core Headers for Op Packages" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="common_default_package_ops_usage_examples.html" class="btn btn-neutral float-left" title="QNN HTP Op Package - Common Default Package Ops Usage Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

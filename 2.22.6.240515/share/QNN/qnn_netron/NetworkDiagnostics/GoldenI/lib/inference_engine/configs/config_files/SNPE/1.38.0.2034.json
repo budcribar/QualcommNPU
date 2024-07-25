@@ -1,0 +1,122 @@
+{
+    "inference_engine": {
+        "snpe_lib_python": "lib/python",
+        "snpe_dlc_utils_package": "lib/python/snpe/dlc_utils",
+        "converter_location": "{engine_path}/bin/x86_64-linux-clang",
+        "binary_paths": [
+            [
+                "{engine_path}/bin/{target_arch}/",
+                "{target_path}/bin/{target_arch}/"
+            ],
+            [
+                "{engine_path}/lib/{target_arch}/",
+                "{target_path}/lib/{target_arch}/"
+            ],
+            [
+                "{engine_path}/lib/dsp/",
+                "{target_path}/lib/dsp/"
+            ]
+        ]
+    },
+    "devices": {
+        "host": ["x86"],
+        "target": ["x86", "linux-embedded", "android"]
+    },
+    "converter": {
+        "onnx": {
+            "executable": "snpe-onnx-to-dlc",
+            "arguments": {
+                "flags": [
+                    "--disable_batchnorm_folding"
+                ],
+                "model_path_flags": [
+                    "-i"
+                ],
+                "input_tensor_flag": "",
+                "output_tensor_flag": "",
+                "output_path_flag": "--output_path"
+            }
+        },
+        "tensorflow": {
+            "executable": "snpe-tensorflow-to-dlc",
+            "arguments": {
+                "flags": [
+                    "--allow_unconsumed_nodes"
+                ],
+                "model_path_flags": [
+                    "-i"
+                ],
+                "input_tensor_flag": "--input_dim",
+                "output_tensor_flag": "--out_node",
+                "output_path_flag": "-o"
+            }
+        },
+        "caffe": {
+            "executable": "snpe-caffe-to-dlc",
+            "arguments": {
+                "flags": [
+                    "--disable_batchnorm_folding"
+                ],
+                "model_path_flags": [
+                    "-i",
+                    "-b"
+                ],
+                "input_tensor_flag": "",
+                "output_tensor_flag": "",
+                "output_path_flag": "-o"
+            }
+        },
+        "tflite": {
+            "executable": "snpe-tflite-to-dlc",
+            "arguments": {
+                "flags": [
+                    "--show_unconsumed_nodes"
+                ],
+                "model_path_flags": [
+                    "-i"
+                ],
+                "input_tensor_flag": "--input_dim",
+                "output_tensor_flag": "--out_node",
+                "output_path_flag": "-o"
+            }
+        }
+    },
+    "snpe_quantizer": {
+        "executable": "snpe-dlc-quantize",
+        "arguments": {
+            "flags": [
+            ],
+            "dlc_path":"--input_dlc",
+            "input_list": "--input_list",
+            "weights_bitwidth": "--weights_bitwidth",
+            "act_bitwidth": "--act_bitwidth",
+            "bias_bitwidth": "--bias_bitwidth",
+            "output_path": "--output_dlc",
+            "use_symmetric_quantize_weights": "--use_symmetric_quantize_weights",
+            "use_adjusted_weights_quantizer": "--use_adjusted_weights_quantizer",
+            "no_weight_quantization": "--no_weight_quantization",
+            "use_enhanced_quantizer": "--use_enhanced_quantizer",
+            "override_params": "--override_params",
+            "enable_htp": "--enable_htp"
+        }
+    },
+    "executor": {
+        "executable":"snpe-net-run",
+        "arguments": {
+            "container": "--container",
+            "input_list": "--input_list",
+            "runtime": {
+                "cpu": "",
+                "gpu": "--use_gpu",
+                "dsp": "--use_dsp",
+                "aip": "--use_aip"
+            }
+        },
+        "environment_variables": {
+            "LD_LIBRARY_PATH": "{target_path}/lib/{target_arch}:$LD_LIBRARY_PATH",
+            "PATH": "{target_path}/bin/{target_arch}:$PATH",
+            "ADSP_LIBRARY_PATH": "{target_path}/lib/dsp;/system/lib/rfsa/adsp;/system/vendor/lib/rfsa/adsp;/dsp"
+        },
+        "target_path": "/data/local/tmp/network_diagnosis"
+    }
+}

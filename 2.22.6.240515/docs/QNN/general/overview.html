@@ -1,0 +1,667 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Overview &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Setup" href="setup.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#features">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#supported-snapdragon-devices">Supported Snapdragon Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#software-architecture">Software Architecture</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#device">Device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#backend">Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#context">Context</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#graph">Graph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#operation-package-registry">Operation Package Registry</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#integration-workflow">Integration Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#developers-on-linux">Developers on Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#integration-workflow-on-windows">Integration Workflow  on Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#developers-on-windows">Developers on Windows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#wsl-platform">WSL platform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#windows-platform">Windows Platform</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Overview</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">¶</a></h1>
+<p>Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> is Qualcomm Technologies Inc. (QTI) software architecture for AI/ML use cases
+on QTIs chipsets and AI acceleration cores.</p>
+<p>Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> architecture is designed to provide an unified API and modular and extensible
+per-accelerator libraries which form a reusable basis for full stack AI solutions,
+both QTI’s own and third party frameworks (as illustrated with <a class="reference internal" href="#qnn-sw-stack-figure"><span class="std std-ref">AI Software Stack with Qualcomm AI Engine Direct</span></a> diagram).</p>
+<p class="centered" id="qnn-sw-stack-figure">
+<strong><strong>AI Software Stack with Qualcomm AI Engine Direct</strong></strong></p><div class="figure align-default">
+<img alt="../_static/resources/qnn_software_stack.png" src="../_static/resources/qnn_software_stack.png" />
+</div>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this heading">¶</a></h2>
+<p><strong>Modularity based on hardware accelerators</strong></p>
+<p>The Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> architecture is designed to be modular and allows for clean separation in the software
+for different hardware cores/accelerators such as the CPU, GPU and DSP that are designated as
+<em>backends</em>. Learn more about Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> backends <a class="reference internal" href="backend.html"><span class="doc">here</span></a>.</p>
+<p>The Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> backends for different hardware cores/accelerators are compiled into
+individual core-specific libraries that come packaged with the SDK.</p>
+<p><strong>Unified API across IP Cores</strong></p>
+<p>One of the key highlights of Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> is that it provides a unified API to delegate operations
+such as graph creation and execution across all hardware accelerator backends. This allows users
+to treat Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> as a hardware abstraction API and port applications easily to different cores.</p>
+<p><strong>Right level of abstraction</strong></p>
+<p>The Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> API is designed to support an efficient execution model
+with capabilities such as graph optimizations to be taken care of internally.
+At the same time however, it leaves out broader functionality such as model parsing and
+network partitioning to higher level frameworks.</p>
+<p><strong>Flexibility in composition</strong></p>
+<p>With Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a>, users can choose appropriate tradeoffs between capabilities provided by the backends
+and the footprint in terms of library size and memory utilization. This offers the ability to
+compose a Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> operation package with only operations required to serve a set of models
+targeted by a use-case <a class="footnote-reference brackets" href="#id4" id="id1">1</a>. With this, users can create nimble applications with
+low memory footprint that fits a wide variety of hardware products.</p>
+<p><strong>Extensible Operation Support</strong></p>
+<p>Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> also provides support for clients to integrate custom operations to work seamlessly alongside
+the built-in operations.</p>
+<p><strong>Improved Execution Performance</strong></p>
+<p>With optimized network loading and asynchronous execution support Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> serves to provide a highly
+efficient interface for ML frameworks and applications to load and execute network graphs on
+their desired hardware accelerator.</p>
+</div>
+<div class="section" id="supported-snapdragon-devices">
+<h2>Supported Snapdragon Devices<a class="headerlink" href="#supported-snapdragon-devices" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 41%" />
+<col style="width: 25%" />
+<col style="width: 20%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Snapdragon Device/Chip</p></th>
+<th class="head"><p>Supported Toolchains</p></th>
+<th class="head"><p>SOC Model <a class="footnote-reference brackets" href="#id5" id="id2">2</a></p></th>
+<th class="head"><p>Hexagon Arch</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Snapdragon 8cx Gen 4 (SC8380XP)</p></td>
+<td><p>aarch64-windows-msvc</p>
+<p>arm64x-windows-msvc</p>
+</td>
+<td><p>60</p></td>
+<td><p>V73</p></td>
+</tr>
+<tr class="row-odd"><td><p>Snapdragon 8cx Gen 3 (SC8280X)</p></td>
+<td><p>aarch64-windows-msvc</p></td>
+<td><p>37</p></td>
+<td><p>V68</p></td>
+</tr>
+<tr class="row-even"><td><p>Snapdragon 7c Gen 2 (SC7280X)</p></td>
+<td><p>aarch64-windows-msvc</p></td>
+<td><p>44</p></td>
+<td><p>V68</p></td>
+</tr>
+<tr class="row-odd"><td><p>SD 8 Gen 3 (SM8650)</p></td>
+<td><p>aarch64-android</p></td>
+<td><p>57</p></td>
+<td><p>V75</p></td>
+</tr>
+<tr class="row-even"><td><p>SD 8 Gen 2 (SM8550)</p></td>
+<td><p>aarch64-android</p></td>
+<td><p>43</p></td>
+<td><p>V73</p></td>
+</tr>
+<tr class="row-odd"><td><p>SD 8+ Gen 1 (SM8475)</p></td>
+<td><p>aarch64-android</p></td>
+<td><p>42</p></td>
+<td><p>V69</p></td>
+</tr>
+<tr class="row-even"><td><p>SD 8 Gen 1 (SM8450)</p></td>
+<td><p>aarch64-android</p></td>
+<td><p>36</p></td>
+<td><p>V69</p></td>
+</tr>
+<tr class="row-odd"><td><p>888+ (SM8350P)</p>
+<p>888 (SM8350)</p>
+</td>
+<td><p>aarch64-android</p></td>
+<td><p>30</p></td>
+<td><p>V68</p></td>
+</tr>
+<tr class="row-even"><td><p>7 Gen 1 (SM7450)</p></td>
+<td><p>aarch64-android</p></td>
+<td><p>41</p></td>
+<td><p>V69</p></td>
+</tr>
+<tr class="row-odd"><td><p>778G (SM7325)</p></td>
+<td><p>aarch64-android</p></td>
+<td><p>35</p></td>
+<td><p>V68</p></td>
+</tr>
+<tr class="row-even"><td><p>QCM6490</p></td>
+<td><p>aarch64-android</p>
+<p>aarch64-ubuntu-gcc9.4</p>
+<p>aarch64-oe-linux-gcc11.2</p>
+</td>
+<td><p>35</p></td>
+<td><p>V68</p></td>
+</tr>
+<tr class="row-odd"><td><p>865 (SM8250)</p></td>
+<td><p>aarch64-android</p></td>
+<td><p>21</p></td>
+<td><p>V66</p></td>
+</tr>
+<tr class="row-even"><td><p>765 (SM7250)</p></td>
+<td><p>aarch64-android</p></td>
+<td><p>25</p></td>
+<td><p>V66</p></td>
+</tr>
+<tr class="row-odd"><td><p>750G (SM7225)</p>
+<p>690 (SM6350)</p>
+</td>
+<td><p>aarch64-android</p></td>
+<td><p>29</p></td>
+<td><p>V66</p>
+<p>V66</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRB5165</p></td>
+<td><p>aarch64-ubuntu-gcc7.5</p>
+<p>aarch64-oe-linux-gcc9.3</p>
+</td>
+<td><p>21</p></td>
+<td><p>V66</p></td>
+</tr>
+<tr class="row-odd"><td><p>QCS7230</p></td>
+<td><p>aarch64-android</p>
+<p>aarch64-oe-linux-gcc9.3</p>
+</td>
+<td><p>51</p></td>
+<td><p>V66</p></td>
+</tr>
+<tr class="row-even"><td><p>680 (SM6225)</p></td>
+<td><p>aarch64-android</p></td>
+<td><p>40</p></td>
+<td><p>V66</p></td>
+</tr>
+<tr class="row-odd"><td><p>480 (SM4350)</p>
+<p>695 (SM6375)</p>
+</td>
+<td><p>aarch64-android</p></td>
+<td><p>31</p></td>
+<td><p>V66</p>
+<p>V66</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>460 (SM4250)</p>
+<p>662 (SM6115)</p>
+<p>QCM4290</p>
+</td>
+<td><p>aarch64-android</p></td>
+<td><p>28</p></td>
+<td><p>V66</p>
+<p>V66</p>
+<p>V66</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QCS610</p></td>
+<td><p>aarch64-android</p>
+<p>aarch64-oe-linux-gcc9.3</p>
+</td>
+<td><p>16</p></td>
+<td><p>V66</p></td>
+</tr>
+<tr class="row-even"><td><p>QCS410</p></td>
+<td><p>aarch64-android</p>
+<p>aarch64-oe-linux-gcc9.3</p>
+</td>
+<td><p>33</p></td>
+<td><p>V66</p></td>
+</tr>
+<tr class="row-odd"><td><p>QCM6125</p></td>
+<td><p>aarch64-android</p></td>
+<td><p>19</p></td>
+<td><p>V66</p></td>
+</tr>
+<tr class="row-even"><td><p>QRB4210</p></td>
+<td><p>aarch64-oe-linux-gcc9.3</p></td>
+<td><p>49</p></td>
+<td><p>V66</p></td>
+</tr>
+<tr class="row-odd"><td><p>QCM4490</p></td>
+<td><p>aarch64-android</p></td>
+<td><p>59</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>780G (SM7350)</p></td>
+<td><p>aarch64-android</p></td>
+<td><p>32</p></td>
+<td><p>V68</p></td>
+</tr>
+<tr class="row-odd"><td><p>SM8325</p></td>
+<td><p>aarch64-android</p></td>
+<td><p>34</p></td>
+<td><p>V68</p></td>
+</tr>
+<tr class="row-even"><td><p>SM7315</p></td>
+<td><p>aarch64-android</p></td>
+<td><p>38</p></td>
+<td><p>V68</p></td>
+</tr>
+<tr class="row-odd"><td><p>6 Gen 1 (SM6450)</p></td>
+<td><p>aarch64-android</p></td>
+<td><p>50</p></td>
+<td><p>V73</p></td>
+</tr>
+<tr class="row-even"><td><p>7+ Gen 2 (SM7475)</p></td>
+<td><p>aarch64-android</p></td>
+<td><p>54</p></td>
+<td><p>V69</p></td>
+</tr>
+<tr class="row-odd"><td><p>4 Gen 2 (SM4450)</p></td>
+<td><p>aarch64-android</p></td>
+<td><p>59</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>8s Gen 3 (SM8635)</p></td>
+<td><p>aarch64-android</p></td>
+<td><p>68</p></td>
+<td><p>V73</p></td>
+</tr>
+<tr class="row-odd"><td><p>7+ Gen 3 (SM7675)</p></td>
+<td><p>aarch64-android</p></td>
+<td><p>70</p></td>
+<td><p>V73</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="software-architecture">
+<h2>Software Architecture<a class="headerlink" href="#software-architecture" title="Permalink to this heading">¶</a></h2>
+<p>Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> API and the associated software stack provides all the constructs required by an application
+to construct, optimize and execute network models on the desired hardware accelerator core.
+Key constructs are illustrated by the <a class="reference internal" href="#qnn-highlevel-view-figure"><span class="std std-ref">Qualcomm AI Engine Direct Components - High Level View</span></a> diagram.</p>
+<p class="centered" id="qnn-highlevel-view-figure">
+<strong><strong>Qualcomm AI Engine Direct Components - High Level View</strong></strong></p><div class="figure align-default">
+<img alt="../_static/resources/qnn_highlevel_view.png" src="../_static/resources/qnn_highlevel_view.png" />
+</div>
+<div class="section" id="device">
+<h3>Device<a class="headerlink" href="#device" title="Permalink to this heading">¶</a></h3>
+<p>Software abstraction of a hardware accelerator platform. Provides all constructs required to associate desired hardware
+accelerator resources for execution of user composed graphs. A platform is broken down into potentially multiple
+devices. Devices may have multiple cores.</p>
+</div>
+<div class="section" id="backend">
+<h3>Backend<a class="headerlink" href="#backend" title="Permalink to this heading">¶</a></h3>
+<p>The backend is a top level API component which hosts and manages most of the backend resources required for graph
+composition and execution, including an operation registry that stores all available operations.
+Learn more about Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> backends <a class="reference internal" href="backend.html"><span class="doc">here</span></a>.</p>
+</div>
+<div class="section" id="context">
+<h3>Context<a class="headerlink" href="#context" title="Permalink to this heading">¶</a></h3>
+<p>A construct that represents all Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> components required to sustain a user application. Hosts networks provided by the
+user and allows constructed entities to be cached into serialized objects for future use. It enables interoperability
+between multiple graphs by providing a shareable memory space in which tensors can be exchanged between graphs.</p>
+</div>
+<div class="section" id="graph">
+<h3>Graph<a class="headerlink" href="#graph" title="Permalink to this heading">¶</a></h3>
+<p>The Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> way of representing a loadable network model. Consists of nodes that represent
+operations and tensors that interconnect them to compose a directed acyclic graph.
+The Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> graph construct supports APIs that perform initialization, optimization and execution of
+network models.</p>
+</div>
+<div class="section" id="operation-package-registry">
+<h3>Operation Package Registry<a class="headerlink" href="#operation-package-registry" title="Permalink to this heading">¶</a></h3>
+<p>A registry that maintains record of all operations available to execute a model.
+These operations can be built-in or supplied by the user as Custom Operations.
+Learn more about operation packages <a class="reference internal" href="op_packages.html"><span class="doc">here</span></a>.</p>
+</div>
+</div>
+<div class="section" id="integration-workflow">
+<h2>Integration Workflow<a class="headerlink" href="#integration-workflow" title="Permalink to this heading">¶</a></h2>
+<p>The Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> SDK provides tools and extensible per-accelerator libraries with uniform API enabling
+flexible integration and efficient execution of ML/DL neural networks on QTI chipsets. The Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> API
+is designed to support inference of trained neural networks and as such clients are responsible for
+training a ML/DL network in a training framework of their choice. The training process is normally
+done on server hosts, off-device. Once network is trained clients can use Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> to get it ready to
+deploy and run on-device. This workflow is illustrated with the
+<a class="reference internal" href="#training-inference-workflow-figure"><span class="std std-ref">Training vs. Inference Workflow</span></a> diagram.</p>
+<p class="centered" id="training-inference-workflow-figure">
+<strong><strong>Training vs. Inference Workflow</strong></strong></p><div class="figure align-default">
+<img alt="../_static/resources/training_inference_workflow.png" src="../_static/resources/training_inference_workflow.png" />
+</div>
+<p>The Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> SDK includes tools to aid clients in integrating trained DL networks into their
+applications. The basic integration workflow is illustrated with the
+<a class="reference internal" href="#qnn-basic-workflow-figure"><span class="std std-ref">Qualcomm AI Engine Direct Integration Workflow</span></a> diagram.</p>
+<p class="centered" id="qnn-basic-workflow-figure">
+<strong><strong>Qualcomm AI Engine Direct Integration Workflow</strong></strong></p><div class="figure align-default">
+<img alt="../_static/resources/qnn_basic_workflow.png" src="../_static/resources/qnn_basic_workflow.png" />
+</div>
+<ol class="arabic">
+<li><p>Clients call Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> converter tool by providing their trained network model file as input.
+The network must be trained in a framework supported by Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> converter tools.
+See <a class="reference internal" href="tools.html"><span class="doc">Tools</span></a> section for more details on Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> converters.</p></li>
+<li><p>When source models contain operations that are not supported natively by Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> backend,
+clients need to provide OpPackage definition files to the converter, expressing custom / client
+defined operations. Optionally, they can use the OpPackage generator tool in order to generate
+skeleton code to implement and compile their custom operations into OpPackage libraries.
+See <a class="reference internal" href="tools.html#qnn-op-package-generator"><span class="std std-ref">qnn-op-package-generator</span></a> for usage details.</p></li>
+<li><p>Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> model converter is a tool aiding clients in writing a sequence of Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a>
+API calls to construct Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> graph representation of a trained network which was provided as input to the tool.
+The converter outputs the following files:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.cpp</span></code> source file (e.g. <code class="docutils literal notranslate"><span class="pre">model.cpp</span></code>) containing required Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> API calls to construct a
+network graph</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.bin</span></code> binary file (e.g. <code class="docutils literal notranslate"><span class="pre">model.bin</span></code>) containing network weights and biases as float32 data</p></li>
+</ul>
+<p>Clients can optionally direct converter to output a quantized model instead of the default one,
+as indicated in the diagram as <em>quantized model.cpp</em>. In this case <code class="docutils literal notranslate"><span class="pre">model.bin</span></code> file will
+contain quantized data, and <code class="docutils literal notranslate"><span class="pre">model.cpp</span></code> will reference quantized tensor data types and
+include quantization encodings. Quantized models may be required by some Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> backend libraries,
+e.g. HTP or DSP (see <span class="xref std std-ref">general/api:Backend Supplements</span> for information on supported
+data types). For details on converter quantization function and options see
+<a class="reference internal" href="tools.html#quantization-support"><span class="std std-ref">Quantization Support</span></a>.</p>
+</li>
+<li><p>Clients optionally can use Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> model library generator tool to produce a model library.
+See <a class="reference internal" href="tools.html#qnn-model-lib-generator"><span class="std std-ref">qnn-model-lib-generator</span></a> for usage details.</p></li>
+<li><p>Clients integrate Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> model into their application by either dynamically loading model library
+or compiling and statically linking <code class="docutils literal notranslate"><span class="pre">model.cpp</span></code> and <code class="docutils literal notranslate"><span class="pre">model.bin</span></code>.
+In order to prepare and execute model (i.e. run inference), clients also need to load required
+Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> backend accelerator and OpPackage libraries. Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> OpPackage libraries are registered with and
+loaded by the backend.</p></li>
+<li><p>Clients can optionally save context binary cache with prepared and finalized graphs. See
+<a class="reference internal" href="api_overview.html#context-caching"><span class="std std-ref">Context Caching</span></a> for reference.
+Such graphs can be repeatedly loaded from the cache without the need for model .cpp / library
+any further. Loading model graph from the cache is significantly faster than preparing through
+a sequence of graph composition API calls provided in model .cpp / library. Cached graphs cannot
+be further modified; they are meant for deployment of prepared graphs, enabling faster
+initialization of client applications.</p></li>
+<li><p>Clients can optionally utilize Deep Learning Containers (DLCs) produced from <a class="reference external" href="https://docs.qualcomm.com/bundle/publicresource/topics/80-63442-2/introduction.html">Qualcomm Neural Processing SDK</a>
+in conjunction with the provided <code class="docutils literal notranslate"><span class="pre">libQnnModelDlc.so</span></code> library to produce QNN graph handles from DLC paths in their application. This provides a single format
+for use across products and support for large models that cannot be compiled into a shared model library. Details on usage
+can be found in <a class="reference internal" href="tutorial5.html"><span class="doc">Utilizing DLCs</span></a>.</p></li>
+</ol>
+</div>
+<div class="section" id="developers-on-linux">
+<h2>Developers on Linux<a class="headerlink" href="#developers-on-linux" title="Permalink to this heading">¶</a></h2>
+<p>Executables and libraries can be found under the target folder of the SDK with “linux”, “ubuntu” or “android” in the name.
+See <span class="xref std std-ref">Release Folder for Different Platforms</span> for reference.
+Operation mentioned above can be run under Linux OS such as Ubuntu system.</p>
+</div>
+<div class="section" id="integration-workflow-on-windows">
+<h2>Integration Workflow  on Windows<a class="headerlink" href="#integration-workflow-on-windows" title="Permalink to this heading">¶</a></h2>
+</div>
+<div class="section" id="developers-on-windows">
+<span id="workflow-wsl"></span><h2>Developers on Windows<a class="headerlink" href="#developers-on-windows" title="Permalink to this heading">¶</a></h2>
+<p>The Qualcomm SDK provide three different platforms for Windows host. For users familiar to Linux operation,
+we suggest using WSL (Windows Subsystem for Linux) on Windows. For developers who want to use tools on Windows-PC directly through the PowerShell environment,
+Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> provides tools based on x86_64-windows. Please check the following prerequisites.</p>
+<div class="section" id="wsl-platform">
+<h3>WSL platform<a class="headerlink" href="#wsl-platform" title="Permalink to this heading">¶</a></h3>
+<p>For WSL developers:
+The workflow on a Windows host is the same as on a Linux host, though some steps will require execution on WSL (x86)
+and others will be executed natively on Windows as outlined below. Because WSL is run on GNU/Linux environment, model tools
+and libraries should get from x86_64-linux-clang respectively.
+To understand more about WSL setup visit <a class="reference internal" href="setup.html#linux-platform-dependency"><span class="std std-ref">Linux Platform Dependency</span></a>.</p>
+</div>
+<div class="section" id="windows-platform">
+<h3>Windows Platform<a class="headerlink" href="#windows-platform" title="Permalink to this heading">¶</a></h3>
+<p>For Windows native/x86_64 PC developers:
+The tools and libraries are located within the “x86_64-windows-msvc” folder. Tools are highly related to Python version and setting. Therefore,
+the environment setup for PowerShell is required before operation. Please refer to the setting for the Windows
+<a class="reference internal" href="setup.html#id1"><span class="std std-ref">Windows Platform Dependencies</span></a></p>
+<p>For Windows on Snapdragon developers:
+The tools and libraries are located within the “aarch64-windows-msvc” folder. The environment setup for PowerShell is required before operation.
+Please refer to the setting for the Windows
+<a class="reference internal" href="setup.html#id1"><span class="std std-ref">Windows Platform Dependencies</span></a></p>
+<ol class="arabic simple">
+<li><p>For OP Customization, the op package skeleton code is generated by running the Linux OpPackage Generator Tool on WSL (x86).</p></li>
+<li><p>For Context Binary Generation, clients can use either Linux Context Binary Generator Tool on WSL (x86)
+or windows-native PowerShell. The tool executable and libraries used need to be from corresponding folder, as mentioned in <a class="reference internal" href="introduction.html#release-folder-for-different-platforms"><span class="std std-ref">Release Folder for Different Platforms</span></a>.</p></li>
+<li><p>For Model Library Generation, the model library is produced by running the Windows Model Library Generator Tool natively on Windows.</p></li>
+<li><p>Tools mentioned in “Integration Workflow” can be applied through WSL or Windows native x86.
+The supporting list of the tools by platform is demonstrated in the <a class="reference internal" href="tools.html"><span class="doc">Tools</span></a>.</p></li>
+<li><p>The ARM64X package format is supported for CPU and HTP backend on SC8380XP. The tools and libraries are located within the “arm64x-windows-msvc” folder.
+See <a class="reference internal" href="arm64x_tutorial1.html"><span class="doc">ARM64X Tutorial</span></a> for the usage and details.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When using WSL, the Model Tools must be obtained from the <code class="docutils literal notranslate"><span class="pre">linux</span></code> folder as it is a subsystem for Linux.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When run on Windows natively, the Model Library Generation Tool must be run with python.
+See <a class="reference internal" href="tutorial3.html#windows-model-lib-generator"><span class="std std-ref">Model Build on Windows Host</span></a> section for an example.</p>
+</div>
+<p><strong>Notes</strong></p>
+<dl class="footnote brackets">
+<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Future feature.</p>
+</dd>
+<dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>The SOC Model number is intended to be used in QNN API calls, for example when <a class="reference internal" href="htp/htp_backend.html#htp-soc-config"><span class="std std-ref">configuring the QNN HTP backend</span></a>.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="setup.html" class="btn btn-neutral float-right" title="Setup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="introduction.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

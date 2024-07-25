@@ -1,0 +1,560 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>QNN HTP API Revision History &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="QNN LPAI API Revision History" href="../lpai/lpai_api_version_history.html" />
+    <link rel="prev" title="QNN HTA API Revision History" href="../hta/hta_api_version_history.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../operations.html">Operations</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api_overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api_usage_guidelines.html">Usage Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api_version_history.html">QNN API Revision History</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api_version_history.html#backend-specific-revision-history">Backend Specific Revision History</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../cpu/cpu_api_version_history.html">CPU Version History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dsp/dsp_api_version_history.html">DSP Version History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gpu/gpu_api_version_history.html">GPU Version History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hta/hta_api_version_history.html">HTA Version History</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">HTP Version History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lpai/lpai_api_version_history.html">LPAI Version History</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api_version_history.html#qnn-system-api-revision-history">QNN System API Revision History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../supported_api.html">Supported APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../supported_capabilities.html">Supported Capabilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#c">C</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../api.html">API</a> &raquo;</li>
+        
+          <li><a href="../api_version_history.html">QNN API Revision History</a> &raquo;</li>
+        
+      <li>QNN HTP API Revision History</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="qnn-htp-api-revision-history">
+<h1>QNN HTP API Revision History<a class="headerlink" href="#qnn-htp-api-revision-history" title="Permalink to this heading">¶</a></h1>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 22%" />
+<col style="width: 62%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>QNN HTP API Version</p></th>
+<th class="head"><p>Introduced in QNN SDK Version</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>5.22.0</p></td>
+<td><p>2.22.0</p></td>
+<td><ul class="simple">
+<li><p>QnnHtpPerfInfrastructure.h</p>
+<ul>
+<li><p>Introduced HMX frequency vote to allow clients to place a separate vote just for
+HMX frequency alongside HVX frequency</p></li>
+</ul>
+</li>
+<li><p>Please regenerate op package when moving to a new SDK version</p>
+<ul>
+<li><p>See <a class="reference internal" href="../../HTP/opPackage_API_version_guide.html"><span class="doc">Op Package API Revision History</span></a></p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>5.21.0</p></td>
+<td><p>2.21.0</p></td>
+<td><ul class="simple">
+<li><p>Please regenerate op package when moving to a new SDK version</p>
+<ul>
+<li><p>See <a class="reference internal" href="../../HTP/opPackage_API_version_guide.html"><span class="doc">Op Package API Revision History</span></a></p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>5.20.0</p></td>
+<td><p>2.20.0</p></td>
+<td><ul class="simple">
+<li><p>QnnHtpCommon.h</p>
+<ul>
+<li><p>Updated DSP Context blob version</p></li>
+</ul>
+</li>
+<li><p>QnnHtpGraph.h</p>
+<ul>
+<li><p>Added new config macro to represent to use the maximum available number of resource</p></li>
+</ul>
+</li>
+<li><p>Introduced backward incompatible changes to HTP core API for custom op development</p>
+<ul>
+<li><p>See <a class="reference internal" href="../../HTP/opPackage_API_version_guide.html"><span class="doc">Op Package API Revision History</span></a></p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>5.19.0</p></td>
+<td><p>2.19.0</p></td>
+<td><ul class="simple">
+<li><p>Introduced backward incompatible changes to HTP core API for custom op development</p>
+<ul>
+<li><p>See <a class="reference internal" href="../../HTP/opPackage_API_version_guide.html"><span class="doc">Op Package API Revision History</span></a></p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>5.18.0</p></td>
+<td><p>2.18.0</p></td>
+<td><ul class="simple">
+<li><p>QnnHtpContext.h</p>
+<ul>
+<li><p>Added new context config parameter to turn on the peak avoidance memcpy</p></li>
+</ul>
+</li>
+<li><p>QnnHtpSystemContext.h</p>
+<ul>
+<li><p>Introduced QnnHtpSystemContext.h to supplement QnnSystemContext.h for HTP backend</p></li>
+<li><p>Updated the spillFill variable type from size_t to uint64_t to prevent misalignment</p></li>
+</ul>
+</li>
+<li><p>Introduced backward incompatible changes to HTP core API for custom op development</p>
+<ul>
+<li><p>See <a class="reference internal" href="../../HTP/opPackage_API_version_guide.html"><span class="doc">Op Package API Revision History</span></a></p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>5.17.0</p></td>
+<td><p>2.17.0</p></td>
+<td><ul class="simple">
+<li><p>QnnHtpProfile.h</p>
+<ul>
+<li><p>Added true accelerator time event type for detailed profiling</p></li>
+</ul>
+</li>
+<li><p>Introduced backward incompatible changes to HTP core API for custom op development</p>
+<ul>
+<li><p>See <a class="reference internal" href="../../HTP/opPackage_API_version_guide.html"><span class="doc">Op Package API Revision History</span></a></p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>5.16.0</p></td>
+<td><p>2.16.0</p></td>
+<td><ul class="simple">
+<li><p>QnnHtpContext.h</p>
+<ul>
+<li><p>Added custom config for weight sharing</p></li>
+<li><p>Added custom config for spill-fill buffer sharing</p></li>
+</ul>
+</li>
+<li><p>QnnHtpMem.h</p>
+<ul>
+<li><p>Added custom memory type for multi tensor shared buffer</p></li>
+</ul>
+</li>
+<li><p>Introduced backward incompatible changes to HTP core API for custom op development</p>
+<ul>
+<li><p>See <a class="reference internal" href="../../HTP/opPackage_API_version_guide.html"><span class="doc">Op Package API Revision History</span></a></p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>5.15.0</p></td>
+<td><p>2.15.0</p></td>
+<td><ul class="simple">
+<li><p>QnnHtpCommon.h</p>
+<ul>
+<li><p>Updated DSP Context blob Version</p></li>
+</ul>
+</li>
+<li><p>Introduced backward incompatible changes to HTP core API for custom op development</p>
+<ul>
+<li><p>See <a class="reference internal" href="../../HTP/opPackage_API_version_guide.html"><span class="doc">Op Package API Revision History</span></a></p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>5.14.0</p></td>
+<td><p>2.14.0</p></td>
+<td><ul class="simple">
+<li><p>QnnHtpGraph.h, QnnHtpDevice.h</p>
+<ul>
+<li><p>Updated description of graph finalize optimization options</p></li>
+</ul>
+</li>
+<li><p>Introduced backward incompatible changes to HTP core API for custom op development</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>5.13.0</p></td>
+<td><p>2.13.0</p></td>
+<td><ul class="simple">
+<li><p>QnnHtpGraph.h</p>
+<ul>
+<li><p>Updated description of graph finalize optimization options</p></li>
+</ul>
+</li>
+<li><p>Introduced backward incompatible changes to HTP core API for custom op development</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>5.12.0</p></td>
+<td><p>2.12.0</p></td>
+<td><ul class="simple">
+<li><p>Introduced backward incompatible changes to HTP core API for custom op development</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>5.11.0</p></td>
+<td><p>2.11.0</p></td>
+<td><ul class="simple">
+<li><p>Introduced backward incompatible changes to HTP core API for custom op development</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>5.10.0</p></td>
+<td><p>2.10.0</p></td>
+<td><ul class="simple">
+<li><p>Introduced backward incompatible changes to HTP core API for custom op development</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>5.9.0</p></td>
+<td><p>2.9.0</p></td>
+<td><ul class="simple">
+<li><p>QnnHtpCommon.h</p>
+<ul>
+<li><p>Added library security versioning</p></li>
+</ul>
+</li>
+<li><p>QnnHtpPerfInfrastructure.h</p>
+<ul>
+<li><p>Added support to configure Turbo L2 and L3 power levels</p></li>
+</ul>
+</li>
+<li><p>Introduced backward incompatible changes to HTP core API for custom op development</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>5.8.0</p></td>
+<td><p>2.8.0</p></td>
+<td><ul class="simple">
+<li><p>QnnHtpProfile.h</p>
+<ul>
+<li><p>Added support to configure number of HVX threads in profiling</p></li>
+</ul>
+</li>
+<li><p>Introduced backward incompatible changes to HTP core API for custom op development</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>5.7.0</p></td>
+<td><p>2.7.0</p></td>
+<td><ul class="simple">
+<li><p>Introduced backward incompatible changes internal to HTP core opPackage and HTP core API</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>5.6.0</p></td>
+<td><p>2.6.0</p></td>
+<td><ul class="simple">
+<li><p>Introduced backward incompatible changes internal to HTP core API</p>
+<ul>
+<li><p>shape.h - increased shape_reduce_map size to 7 for 6D tensor support</p></li>
+</ul>
+</li>
+<li><p>QnnHtpDevice.h</p>
+<ul>
+<li><p>Deprecated PCIe device</p></li>
+</ul>
+</li>
+<li><p>QnnHtpGraph.h</p>
+<ul>
+<li><p>Added support to configure number of HVX threads</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>5.5.0</p></td>
+<td><p>2.5.0</p></td>
+<td><ul class="simple">
+<li><p>Introduced backward incompatible changes internal to HTP core opPackage and HTP core API</p>
+<ul>
+<li><p>optimize.h - conv_s2d_shape function added</p></li>
+<li><p>tensor.h  - CoreTensors type updated</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>5.4.0</p></td>
+<td><p>2.4.0</p></td>
+<td><ul class="simple">
+<li><p>Introduced backward incompatible changes internal to HTP core opPackage</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>5.3.0</p></td>
+<td><p>2.3.0</p></td>
+<td><ul class="simple">
+<li><p>Introduced backward incompatible changes internal to HTP core opPackage</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>5.2.0</p></td>
+<td><p>2.2.0</p></td>
+<td><ul class="simple">
+<li><p>Added QnnHtpMem.h to support VTCM sharing</p></li>
+<li><p>Introduced backward incompatible changes internal to HTP core API</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>5.1.0</p></td>
+<td><p>2.1.0</p></td>
+<td><ul>
+<li><p>QnnHtpProfile.h</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Node specific profile event types have been added.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Introduced backward incompatible changes internal to HTP core API</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>5.0.0</p></td>
+<td><p>2.0.0</p></td>
+<td><ul class="simple">
+<li><p>Branched from QNN SDK version 1.10.0</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../lpai/lpai_api_version_history.html" class="btn btn-neutral float-right" title="QNN LPAI API Revision History" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../hta/hta_api_version_history.html" class="btn btn-neutral float-left" title="QNN HTA API Revision History" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

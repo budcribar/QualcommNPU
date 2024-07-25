@@ -1,0 +1,525 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>snpe-diagview &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup1.html">Network Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup6.html">Tutorials and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>snpe-diagview</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="snpe-diagview">
+<h1>snpe-diagview<a class="headerlink" href="#snpe-diagview" title="Permalink to this heading">¶</a></h1>
+<p>snpe-diagview loads a DiagLog file generated by snpe-net-run
+whenever it operates on input tensor data. The DiagLog file
+contains timing information information for each layer as well
+as the entire forward propagate time. If the run uses an input
+list of input tensors, the timing info reported by
+snpe-diagview is an average over the entire input set.</p>
+<p>The snpe-net-run generates a file called “SNPEDiag_0.log”,
+“SNPEDiag_1.log” … , “SNPEDiag_n.log”, where n corresponds to
+the nth iteration of the snpe-net-run execution.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>usage: snpe-diagview --input_log DIAG_LOG [-h] [--output CSV_FILE]
+
+Reads a diagnostic log and output the contents to stdout
+
+required arguments:
+    --input_log     DIAG_LOG
+                Diagnostic log file (required)
+optional arguments:
+    --output        CSV_FILE
+                Output CSV file with all diagnostic data (optional)
+
+    --chrometrace   CHROMETRACE_FILE
+                Output chrometrace JSON filename (w/out extension) for logs made using profiling level linting (optional)
+</pre></div>
+</div>
+<p>The output generated has timings collected at different layers of the stack. Below is the description of the timing markers:</p>
+<p>(Please note: Certain backends like DSP or GPU sometimes splits an op into multiple ops in the backend. Sometimes the backends fuse multiple ops into one. Hence a detailed profiling log can display mismatching no of ops and layer mapping.)</p>
+<div class="docutils container">
+<div class="figure align-default">
+<img alt="../images/snpe_diagview_timing_diagram.png" src="../images/snpe_diagview_timing_diagram.png" />
+</div>
+</div>
+</div>
+<div class="section" id="snpe-dlc-diff">
+<h1>snpe-dlc-diff<a class="headerlink" href="#snpe-dlc-diff" title="Permalink to this heading">¶</a></h1>
+<p>snpe-dlc-diff compares two DLCs and by default outputs some of
+the following differences in them in a tabular format:</p>
+<ul class="simple">
+<li><p>unique layers between the two DLCs</p></li>
+<li><p>parameter differences in common layers</p></li>
+<li><p>differences in dimensions of buffers associated with common
+layers</p></li>
+<li><p>weight differences in common layers</p></li>
+<li><p>output tensor names differences in common layers</p></li>
+<li><p>unique records between the two DLCs (currently checks for
+AIP records only)</p></li>
+</ul>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>usage: snpe-dlc-diff [-h] -i1 INPUT_DLC_ONE -i2 INPUT_DLC_TWO [-c] [-l] [-p]
+                        [-d] [-w] [-o] [-i] [-x] [-s SAVE]
+
+required arguments:
+    -i1 INPUT_DLC_ONE, --input_dlc_one INPUT_DLC_ONE
+                        path to the first dl container archive
+    -i2 INPUT_DLC_TWO, --input_dlc_two INPUT_DLC_TWO
+                        path to the second dl container archive
+
+optional arguments:
+    -h, --help            show this help message and exit
+    -c, --copyrights      compare copyrights between models
+    -l, --layers          compare unique layers between models
+    -p, --parameters      compare parameter differences between identically
+                        named layers
+    -d, --dimensions      compare dimension differences between identically
+                        named layers
+    -w, --weights         compare weight differences between identically named
+                        layers.
+    -o, --outputs         compare output_tensor name differences names between
+                        identically named layers
+    -i, --diff_by_id      Overrides the default comparison strategy for diffing
+                        2 models components. By default comparison is made
+                        between identically named layers. With this option the
+                        models are ordered by id and diff is done in order as
+                        long as no more than 1 consecutive layers have
+                        different layer types.
+    -x, --hta             compare HTA records differences in Models
+    -s SAVE, --save SAVE  Save the output to a csv file. Specify a target file
+                        path.
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="snpe-dlc-info">
+<h1>snpe-dlc-info<a class="headerlink" href="#snpe-dlc-info" title="Permalink to this heading">¶</a></h1>
+<p>snpe-dlc-info outputs layer information from a DLC file, which
+provides information about the network model.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>usage: snpe-dlc-info [-h] -i INPUT_DLC [-s SAVE]
+
+required arguments:
+    -i INPUT_DLC, --input_dlc INPUT_DLC
+                        path to a DLC file
+
+optional arguments:
+    -s SAVE, --save SAVE
+                        Save the output to a csv file. Specify a target file path.
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="snpe-dlc-viewer">
+<h1>snpe-dlc-viewer<a class="headerlink" href="#snpe-dlc-viewer" title="Permalink to this heading">¶</a></h1>
+<p>snpe-dlc-viewer visualizes the network structure of a DLC in a
+web browser.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>usage: snpe-dlc-viewer [-h] -i INPUT_DLC [-s]
+
+required arguments:
+    -i INPUT_DLC, --input_dlc INPUT_DLC
+                        Path to a DLC file
+
+optional arguments:
+    -s, --save            Save HTML file. Specify a file name and/or target save path
+    -h, --help            Shows this help message and exits
+</pre></div>
+</div>
+<p>Additional details:</p>
+<p>The DLC viewer tool renders the specified network DLC in HTML
+format that may be viewed on a web browser. On installations
+that support a native web browser, a browser instance is opened
+on which the network is automatically rendered. Users can
+optionally save the HTML content anywhere on their systems
+and open on a chosen web browser independently at a later time.</p>
+<ul>
+<li><p>Features:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Graph-based representation of network model with nodes
+depicting layers and edges depicting buffer connections.</p></li>
+<li><p>Colored legend to indicate layer types.</p></li>
+<li><p>Zoom and drag options available for ease of
+visualization.</p></li>
+<li><p>Tool-tips upon mouse hover to describe detailed layer
+parameters.</p></li>
+<li><p>Sections showing metadata from DLC records</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Supported browsers:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Google Chrome</p></li>
+<li><p>Firefox</p></li>
+<li><p>Internet Explorer on Windows</p></li>
+<li><p>Microsoft Edge Browser on Windows</p></li>
+<li><p>Safari on Mac</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="snpe-platform-validator">
+<h1>snpe-platform-validator<a class="headerlink" href="#snpe-platform-validator" title="Permalink to this heading">¶</a></h1>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>DESCRIPTION:
+------------
+snpe-platform-validator is a tool to check the capabilities of a device. This tool runs on the device,
+rather than on the host, and requires a few additional files to be pushed to the device besides its own executable.
+Additional details below.
+
+
+REQUIRED ARGUMENTS:
+-------------------
+    --runtime &lt;RUNTIME&gt;   Specify the runtime to validate. &lt;RUNTIME&gt; : gpu, dsp, aip, all.
+
+OPTIONAL ARGUMENTS:
+-------------------
+    --coreVersion         Query the runtime core descriptor.
+    --libVersion          Query the runtime core library API.
+    --testRuntime         Run diagnostic tests on the specified runtime.
+    --targetPath &lt;DIR&gt;    The directory to save output on the device. Defaults to /data/local/tmp/platformValidator/output.
+    --debug               Turn on verbose logging.
+    --help                Show this help message.
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Additional details:</div>
+</div>
+<ul>
+<li><p><em>Files needed to be pushed to device (Please note, we have to push the
+Stub.so and Skel.so of appropriate DSP architecture version, e.g., v68, v73) :</em></p>
+<blockquote>
+<div><div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>// Android
+bin/aarch64-android/snpe-platform-validator
+lib/aarch64-android/libSnpeHtpV73CalculatorStub.so
+lib/aarch64-android/libSnpeHtpV73Stub.so
+lib/hexagon-${DSP_ARCH}/unsigned/libCalculator_skel.so
+lib/hexagon-${DSP_ARCH}/unsigned/libSnpeHtpV73Skel.so
+
+// Windows
+bin/aarch64-windows-msvc/snpe-platform-validator.exe
+lib/aarch64-windows-msvc/calculator_htp.dll
+lib/aarch64-windows-msvc/SnpeHtpV73Stub.dll
+lib/hexagon-${DSP_ARCH}/unsigned/libCalculator_skel.so
+lib/hexagon-${DSP_ARCH}/unsigned/libSnpeHtpV73Skel.so
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>example: for pushing aarch64-android variant to /data/local/tmp/platformValidator</p>
+<blockquote>
+<div><div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>adb push $SNPE_ROOT/bin/aarch64-android/snpe-platform-validator /data/local/tmp/platformValidator/bin/snpe-platform-validator
+adb push $SNPE_ROOT/lib/aarch64-android/ /data/local/tmp/platformValidator/lib
+adb push $SNPE_ROOT/lib/dsp /data/local/tmp/platformValidator/dsp
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="snpe-platform-validator-py">
+<h1>snpe-platform-validator-py<a class="headerlink" href="#snpe-platform-validator-py" title="Permalink to this heading">¶</a></h1>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>DESCRIPTION:
+------------
+snpe-platform-validator is a tool to check the capabilities of a device. The output is saved in a CSV file in the
+&quot;Output&quot; directory, in a csv format. Basic logs are also displayed on the console.
+
+REQUIRED ARGUMENTS:
+-------------------
+    --runtime &lt;RUNTIME&gt;      Specify the runtime to validate. &lt;RUNTIME&gt; : gpu, dsp, aip, all.
+    --directory &lt;ARTIFACTS&gt;  Path to the root of the unpacked SDK directory containing the executable and library files.
+
+OPTIONAL ARGUMENTS:
+-------------------
+    --buildVariant &lt;VARIANT&gt;      Specify the build variant (e.g: aarch64-android) to be validated.
+    --deviceId                    Uses the device for running the adb command. Defaults to first device in the adb devices list.
+    --coreVersion                 Outputs the version of the runtime that is present on the target.
+    --libVersion                  Outputs the library version of the runtime that is present on the target.
+    --testRuntime                 Run diagnostic tests on the specified runtime.
+    --targetPath &lt;PATH&gt;           The path to be used on the device. Defaults to /data/local/tmp/platformValidator
+                                NOTE that this directory will be deleted before proceeding with validation.
+    --remoteHost &lt;REMOTEHOST&gt;     Run on remote host through remote adb server. Defaults to localhost.
+    --debug                       Set to turn on debug log.
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="snpe-bench-py">
+<h1>snpe_bench.py<a class="headerlink" href="#snpe-bench-py" title="Permalink to this heading">¶</a></h1>
+<p>python script snpe_bench.py runs a DLC neural network and
+collects benchmark performance information.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>usage: snpe_bench.py [-h] -c CONFIG_FILE [-o OUTPUT_BASE_DIR_OVERRIDE]
+                        [-v DEVICE_ID_OVERRIDE] [-r HOST_NAME] [-a]
+                        [-t DEVICE_OS_TYPE_OVERRIDE] [-d] [-s SLEEP]
+                        [-b USERBUFFER_MODE] [-p PERFPROFILE] [-l PROFILINGLEVEL]
+                        [-json] [-cache]
+
+Run the snpe_bench
+
+required arguments:
+    -c CONFIG_FILE, --config_file CONFIG_FILE
+                        Path to a valid config file
+                        Refer to sample config file config_help.json for more
+                        detail on how to fill params in config file
+
+optional arguments:
+    -o OUTPUT_BASE_DIR_OVERRIDE, --output_base_dir_override OUTPUT_BASE_DIR_OVERRIDE
+                        Sets the output base directory.
+    -v DEVICE_ID_OVERRIDE, --device_id_override DEVICE_ID_OVERRIDE
+                        Use this device ID instead of the one supplied in config
+                        file. Cannot be used with -a
+    -r HOST_NAME, --host_name HOST_NAME
+                        Hostname/IP of remote machine to which devices are
+                        connected.
+    -a, --run_on_all_connected_devices_override
+                        Runs on all connected devices, currently only support 1.
+                        Cannot be used with -v
+    -t DEVICE_OS_TYPE_OVERRIDE, --device_os_type_override DEVICE_OS_TYPE_OVERRIDE
+                        Specify the target OS type, valid options are
+                        [&#39;android-aarch64&#39;, &#39;le&#39;, &#39;le64_gcc4.9&#39;,
+                        &#39;le_oe_gcc6.4&#39;, &#39;le64_oe_gcc6.4&#39;]
+    -d, --debug           Set to turn on debug log
+    -s SLEEP, --sleep SLEEP
+                        Set number of seconds to sleep between runs e.g. 20
+                        seconds
+    -b USERBUFFER_MODE, --userbuffer_mode USERBUFFER_MODE
+                        [EXPERIMENTAL] Enable user buffer mode, default to
+                        float, can be tf8exact0
+    -p PERFPROFILE, --perfprofile PERFPROFILE
+                        Set the benchmark operating mode (balanced, default,
+                        sustained_high_performance, high_performance,
+                        power_saver, low_power_saver, high_power_saver,
+                        extreme_power_saver, low_balanced, system_settings)
+    -l PROFILINGLEVEL, --profilinglevel PROFILINGLEVEL
+                        Set the profiling level mode (off, basic, moderate, detailed).
+                        Default is basic.
+    -json, --generate_json
+                        Set to produce json output.
+    -cache, --enable_init_cache
+                        Enable init caching mode to accelerate the network
+                        building process. Defaults to disable.
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

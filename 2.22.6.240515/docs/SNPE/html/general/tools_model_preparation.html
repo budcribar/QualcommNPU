@@ -1,0 +1,818 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>snpe-dlc-graph-prepare &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup1.html">Network Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup6.html">Tutorials and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>snpe-dlc-graph-prepare</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="snpe-dlc-graph-prepare">
+<h1>snpe-dlc-graph-prepare<a class="headerlink" href="#snpe-dlc-graph-prepare" title="Permalink to this heading">¶</a></h1>
+<p>snpe-dlc-graph-prepare is used to perform offline graph preparation on quantized dlcs to run on DSP/HTP runtimes.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>Command Line Options:
+  [ -h, --help ]        Displays this help message.
+  [ --version ]         Displays version information.
+  [ --verbose ]         Enable verbose user messages.
+  [ --quiet ]           Disables some user messages.
+  [ --silent ]          Disables all but fatal user messages.
+  [ --debug=&lt;val&gt; ]     Sets the debug log level.
+  [ --debug1 ]          Enables level 1 debug messages.
+  [ --debug2 ]          Enables level 2 debug messages.
+  [ --debug3 ]          Enables level 3 debug messages.
+  [ --log-mask=&lt;val&gt; ]  Sets the debug log mask to set the log level for one or more areas.
+                        Example: &quot;.*=USER_ERROR, .*=INFO, NDK=DEBUG2, NCC=DEBUG3&quot;
+  [ --log-file=&lt;val&gt; ]  Overrides the default name for the debug log file.
+  [ --log-dir=&lt;val&gt; ]   Overrides the default directory path where debug log files are written.
+  [ --log-file-include-hostname ]
+                        Appends the name of this host to the log file name.
+  --input_dlc=&lt;val&gt;     Path to the dlc container containing the model for which graph cache
+                        should be generated. This argument is required.
+  [ --output_dlc=&lt;val&gt; ]
+                        Path at which the cached data included model container should be written.
+                        If this argument is omitted, the quantized model will be written at
+                        &lt;input_model_name&gt;_cached.dlc.
+  [ --set_output_tensors=&lt;val&gt; ]
+                        Specifies a comma separated list of tensors to be output after execution
+                        without whitespace.
+  [ --set_output_layers=&lt;val&gt; ]
+                        Specifies a comma separated list of layers whose output buffers should be
+                        output after execution, without whitespace.
+  [ --input_list=&lt;val&gt; ]
+                        Path to a file specifying input images as passed to snpe-net-run. Only
+                        the graph output buffers information specified in the input list (line starting
+                        with # or %, if any) will be used. Paths to the input images will be ignored
+  [ --htp_socs=&lt;val&gt; ]  Specify SoC(s) to generate HTP Offline Cache for. SoCs are specified with an
+                        ASIC identifier, in a comma seperated list without whitespace.
+                        For example --htp_socs sm8350,sm8450,sm8550,sm8650,qcs6490,qcs8550.
+                        This flag and --htp_archs are mutually exclusive.
+                        Default ASIC identifier: sm8650
+  [ --htp_archs=&lt;val&gt; ]
+                        Specify DSP Architecture(s) to generate general HTP Offline Cache for.
+                        Architectures are specified with an ASIC identifier, in a comma seperated list
+                        without whitespace. For example, --htp_archs v68,v73. This flag cannot be
+                        coupled with --htp_socs or --vtcm_override
+  [ --vtcm_override=&lt;val&gt; ]
+                        Specify a single value representing the VTCM size in MB for the generated HTP Offline Caches.
+                        For example, --vtcm_override 4. When set to 0, the SoC maximum VTCM size is used and if cache
+                        compatibility mode is set to STRICT the maximum value is checked. This flag can be used with
+                        --htp_socs to override the default SOC VTCM size setting
+  [ --optimization_level=&lt;val&gt; ]
+                        Specify an optimization level. Valid values are 1, 2 and 3. Default is 2. Higher optimization levels incur
+                        longer offline prepare time but yields more optimal graph and hence faster execution time for most graphs
+  [ --buffer_data_type=&lt;val&gt; ]
+                        Sets data type of IO buffers during prepare. Data Type can be the following:
+                        float32, fixedPoint8, fixedPoint16. Arguments should be formatted as follows:
+                        --buffer_data_type buffer_name1=buffer_name1_data_type
+                        --buffer_data_type buffer_name2=buffer_name2_data_type
+                        (Note: deprecated)
+  [ --overwrite_cache_records ]
+                        Allow this tool to overwrite over any cache record that exactly matches the requested SoC(s).
+                        Default behavior is to skip (re)generating cache records when a matching cache already exists
+  [ --use_float_io ]    Prepare quantized HTP Graph to operate with floating point inputs/outputs (Note: deprecated)
+  [ --htp_dlbc=&lt;val&gt; ]  Specify Deep Learning Bandwidth Compression (DLBC) for this HTP graph. The default setting is OFF.
+                        To turn on, specify it as --htp_dlbc=true
+  [ --num_hvx_threads=&lt;val&gt; ]
+                        Specify the number of HVX threads to reserve for this HTP graph. Must be greater than 0.
+  [ --input_name=&lt;val&gt; ]
+                        Specifies the name of input for which dimensions are specified.
+  [ --input_dimensions=&lt;val&gt; ]
+                        Specifies new dimensions for input whose name is specified in input_name. e.g. &quot;1,224,224,3&quot;.
+                        For multiple inputs, specify --input_name and --input_dimensions multiple times.
+  [ --memorymapped_buffer_hint=&lt;val&gt; ]
+                        Specifies memory-mapped buffers hint. The default setting is OFF.
+                        To turn on, specify it as --memorymapped_buffer_hint=true
+  [ --udo_package_path=&lt;val&gt; ]
+                        Use this option to specify path to the Registration Library for UDO Package(s). Usage is:
+                        --udo_package_path=&lt;path_to_reg_lib&gt;
+                        Optionally, user can provide multiple packages as a comma-separated list.
+                        This option must be specified for Networks with UDO. All UDO&#39;s in Network must have host executable CPU Implementation
+</pre></div>
+</div>
+<p>For detailed information on how to use the tool, please refer to <a class="reference external" href="offline_graph_caching.html">Offline Graph Caching for DSP Runtime on HTP</a></p>
+</div>
+<div class="section" id="snpe-dlc-quant">
+<h1>snpe-dlc-quant<a class="headerlink" href="#snpe-dlc-quant" title="Permalink to this heading">¶</a></h1>
+<p>snpe-dlc-quant converts non-quantized DLC models into quantized
+DLC models.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>Command Line Options:
+    [ -h,--help ]         Displays this help message.
+    [ --version ]         Displays version information.
+    [ --verbose ]         Enable verbose user messages.
+    [ --quiet ]           Disables some user messages.
+    [ --silent ]          Disables all but fatal user messages.
+    [ --debug=&lt;val&gt; ]     Sets the debug log level.
+    [ --debug1 ]          Enables level 1 debug messages.
+    [ --debug2 ]          Enables level 2 debug messages.
+    [ --debug3 ]          Enables level 3 debug messages.
+    [ --log-mask=&lt;val&gt; ]  Sets the debug log mask to set the log level for one or more areas.
+                        Example: &quot;.*=USER_ERROR, .*=INFO, NDK=DEBUG2, NCC=DEBUG3&quot;
+    [ --log-file=&lt;val&gt; ]  Overrides the default name for the debug log file.
+    [ --log-dir=&lt;val&gt; ]   Overrides the default directory path where debug log files are written.
+    [ --log-file-include-hostname ]
+                        Appends the name of this host to the log file name.
+    [ --input_dlc=&lt;val&gt; ]
+                        Path to the dlc container containing the model for which fixed-point encoding
+                        metadata should be generated. This argument is required.
+    [ --input_list=&lt;val&gt; ]
+                        Path to a file specifying the trial inputs. This file should be a plain text file,
+                        containing one or more absolute file paths per line. These files will be taken to constitute
+                        the trial set. Each path is expected to point to a binary file containing one trial input
+                        in the &#39;raw&#39; format, ready to be consumed by the tool without any further modifications.
+                        This is similar to how input is provided to snpe-net-run application.
+    [ --no_weight_quantization ]
+                        Generate and add the fixed-point encoding metadata but keep the weights in
+                        floating point. This argument is optional.
+    [ --output_dlc=&lt;val&gt; ]
+                        Path at which the metadata-included quantized model container should be written.
+                        If this argument is omitted, the quantized model will be written at &lt;unquantized_model_name&gt;_quantized.dlc.
+    [ --use_enhanced_quantizer ]
+                        Use the enhanced quantizer feature when quantizing the model.  Regular quantization determines the range using the actual
+                        values of min and max of the data being quantized.  Enhanced quantization uses an algorithm to determine optimal range.  It can be
+                        useful for quantizing models that have long tails in the distribution of the data being quantized.
+    [ --use_adjusted_weights_quantizer ]
+                        Use the adjusted tf quantizer for quantizing the weights only. This might be helpful for improving the accuracy of some models,
+                        such as denoise model as being tested. This option is only used when quantizing the weights with 8 bit.
+    [ --optimizations ]   Use this option to enable new optimization algorithms. Usage is:
+                        --optimizations &lt;algo_name1&gt; --optimizations &lt;algo_name2&gt;
+                        The available optimization algorithms are:
+                        cle - Cross layer equalization includes a number of methods for equalizing weights and biases across layers in order to rectify imbalances that cause quantization errors.
+    [ --override_params ]
+                        Use this option to override quantization parameters when quantization was provided from the original source framework (eg TF fake quantization)
+    [ --use_encoding_optimizations ]
+                        Use this option to enable quantization encoding optimizations. This can reduce requantization in the graph and may improve accuracy for some models
+                        (Note: deprecated).
+    [ --use_symmetric_quantize_weights ]
+                        Use the symmetric quantizer feature when quantizing the weights of the model. It makes sure min and max have the
+                        same absolute values about zero. Symmetrically quantized data will also be stored as int#_t data such that the offset is always 0.
+    [ --use_native_dtype ]
+                        Note: This option is deprecated, use --use_native_input_files option in future.
+                          Use this option to indicate how to read input files,
+                           1. float (default): reads inputs as floats and quantizes if necessary based on quantization parameters in the model.
+                           2. native:          reads inputs assuming the data type to be native to the model. For ex., uint8_t.
+    [ --use_native_input_files ]
+                        Use this option to indicate how to read input files,
+                           1. float (default): reads inputs as floats and quantizes if necessary based on quantization parameters in the model.
+                           2. native:          reads inputs assuming the data type to be native to the model. For ex., uint8_t.
+    [ --use_native_output_files ]
+                        Use this option to indicate the data type of the output files,
+                           1. float (default): generates the output file as float data.
+                           2. native:          generates the output file as datatype native to the source model. i.e. uint8_t.
+    [ --bias_bitwidth=&lt;val&gt; ]
+                        Use the --bias_bitdwith option to select the bitwidth to use when quantizing the biases, either 8 (default) or 32. Using 32 bit biases may
+                        sometimes provide a small improvement in accuracy. Can&#39;t mix with --bitwidth.
+    [ --float_bitwidth=&lt;val&gt; ]
+                        Use the --float_bitwidth option to select the bitwidth to use when using float
+                        for parameters(weights/bias) and activations for all ops or specific
+                        Op (via encodings) selected through encoding, either 32 (default) or 16.
+    [ --float_bias_bitwidth=&lt;val&gt; ]
+                            Use this option to specify the bitwidth for float bias tensors, either 32 or 16.
+                            If not provided and bias is overridden to float in Quantizer, the overriding float tensor&#39;s bw will be used
+    [ --act_bitwidth=&lt;val&gt; ]
+                        Use the --act_bitwidth option to select the bitwidth to use when quantizing the activations, either 8 (default) or 16. 8w/16a is only supported
+                        by the HTA currently. Can&#39;t mix with --bitwidth.
+    [ --weights_bitwidth=&lt;val&gt; ]
+                        Use the --weights_bitwidth option to select the bitwidth to use when quantizing the weights, either 8 (default) or 16. 8w/16a is only supported
+                        by the HTA currently. Can&#39;t mix with --bitwidth.
+    [ --bitwidth=&lt;val&gt; ]
+                        Use the --bitwidth option to select the bitwidth to use when quantizing the weights/activation/bias, either 8 (default) or 16. Can&#39;t mix with
+                        --weights_bitwidth or --act_bitwidth or --bias_bitdwith.
+    [ --udo_package_path=&lt;val&gt; ]
+                        Use this option to specify path to the Registration Library for a UDO Package. Usage is:
+                        --udo_package_path=&lt;path_to_reg_lib&gt;
+                        This option must be specified for Networks with UDO. All UDO&#39;s in Network must have host-executable CPU Implementation
+    [ --axis_quant ]
+                        Use the --axis_quant option to select per-axis-element quantization for the weights and biases of certain layer types.
+                        Currently only Convolution, Deconvolution and FullyConnected are supported.
+
+
+Description:
+Generate 8 or 16 bit TensorFlow style fixed point weight and activations encodings for a floating point DLC.
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">Additional details:</div>
+</div>
+<ul>
+<li><p>For specifying input_list, refer to input_list
+argument in
+<a class="reference external" href="tools.html#snpe-net-run">snpe-net-run</a> for
+supported input formats (in order to calculate output
+activation encoding information for all layers, <strong>do not</strong>
+include the line which specifies desired outputs).</p></li>
+<li><p>The tool requires the batch dimension of the DLC input file
+to be set to 1 during the original model conversion step.</p>
+<blockquote>
+<div><ul>
+<li><p>An example of quantization using snpe-dlc-quant can be found
+in the C/C++ Tutorial section: <a class="reference external" href="tutorial_inceptionv3.html">Running the Inception v3
+Model</a>. For details on
+quantization see <a class="reference external" href="quantized_models.html">Quantized vs Non-Quantized
+Models</a>.</p></li>
+<li><p>Outputs can be specified for snpe-dlc-quant by modifying the
+input_list in the following ways:</p>
+<blockquote>
+<div><div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>#&lt;output_layer_name&gt;[&lt;space&gt;&lt;output_layer_name&gt;]
+%&lt;output_tensor_name&gt;[&lt;space&gt;&lt;output_tensor_name&gt;]
+&lt;input_layer_name&gt;:=&lt;input_layer_path&gt;[&lt;space&gt;&lt;input_layer_name&gt;:=&lt;input_layer_path&gt;]
+…
+</pre></div>
+</div>
+<p><strong>Note:</strong> Output tensors and layers can be specified
+individually, but when specifying both, the order shown must
+be used to specify each.</p>
+</div></blockquote>
+</li>
+<li><p>When using the Qualcomm® Neural Processing SDK API:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Any output layers specified when snpe-dlc-quant was
+called, need to be specified using the
+<span class="xref std std-ref">Snpe_SNPEBuilder_SetOutputLayers()</span>
+function.</p></li>
+<li><p>Any output tensors specified when snpe-dlc-quant was
+called, need to be specified using the
+<span class="xref std std-ref">Snpe_SNPEBuilder_SetOutputTensors()</span>
+function.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="snpe-dlc-quantize">
+<h1>snpe-dlc-quantize<a class="headerlink" href="#snpe-dlc-quantize" title="Permalink to this heading">¶</a></h1>
+<p>snpe-dlc-quantize converts non-quantized DLC models into
+quantized DLC models.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>Command Line Options:
+    [ -h,--help ]         Displays this help message.
+    [ --version ]         Displays version information.
+    [ --verbose ]         Enable verbose user messages.
+    [ --quiet ]           Disables some user messages.
+    [ --silent ]          Disables all but fatal user messages.
+    [ --debug=&lt;val&gt; ]     Sets the debug log level.
+    [ --debug1 ]          Enables level 1 debug messages.
+    [ --debug2 ]          Enables level 2 debug messages.
+    [ --debug3 ]          Enables level 3 debug messages.
+    [ --log-mask=&lt;val&gt; ]  Sets the debug log mask to set the log level for one or more areas.
+                        Example: &quot;.*=USER_ERROR, .*=INFO, NDK=DEBUG2, NCC=DEBUG3&quot;
+    [ --log-file=&lt;val&gt; ]  Overrides the default name for the debug log file.
+    [ --log-dir=&lt;val&gt; ]   Overrides the default directory path where debug log files are written.
+    [ --log-file-include-hostname ]
+                        Appends the name of this host to the log file name.
+    [ --input_dlc=&lt;val&gt; ]
+                        Path to the dlc container containing the model for which fixed-point encoding
+                        metadata should be generated. This argument is required.
+    [ --input_list=&lt;val&gt; ]
+                        Path to a file specifying the trial inputs. This file should be a plain text file,
+                        containing one or more absolute file paths per line. These files will be taken to constitute
+                        the trial set. Each path is expected to point to a binary file containing one trial input
+                        in the &#39;raw&#39; format, ready to be consumed by the tool without any further modifications.
+                        This is similar to how input is provided to snpe-net-run application.
+    [ --no_weight_quantization ]
+                        Generate and add the fixed-point encoding metadata but keep the weights in
+                        floating point. This argument is optional.
+    [ --output_dlc=&lt;val&gt; ]
+                        Path at which the metadata-included quantized model container should be written.
+                        If this argument is omitted, the quantized model will be written at &lt;unquantized_model_name&gt;_quantized.dlc.
+    [ --enable_htp ]      Pack HTP information in quantized DLC.
+    [ --htp_socs=&lt;val&gt; ]  Specify SoC to generate HTP Offline Cache for.
+                        SoCs are specified with an ASIC identifier, in a comma separated list.
+                        For example, --htp_socs sm8650
+    [ --overwrite_cache_records ]
+                        Overwrite HTP cache records present in the DLC.
+    [ --use_float_io ]
+                        Pack HTP information in quantized DLC (Note: deprecated).
+    [ --use_enhanced_quantizer ]
+                        Use the enhanced quantizer feature when quantizing the model.  Regular quantization determines the range using the actual
+                        values of min and max of the data being quantized.  Enhanced quantization uses an algorithm to determine optimal range.  It can be
+                        useful for quantizing models that have long tails in the distribution of the data being quantized.
+    [ --use_adjusted_weights_quantizer ]
+                        Use the adjusted tf quantizer for quantizing the weights only. This might be helpful for improving the accuracy of some models,
+                        such as denoise model as being tested. This option is only used when quantizing the weights with 8 bit.
+    [ --optimizations ]   Use this option to enable new optimization algorithms. Usage is:
+                        --optimizations &lt;algo_name1&gt; --optimizations &lt;algo_name2&gt;
+                        The available optimization algorithms are:
+                        cle - Cross layer equalization includes a number of methods for equalizing weights and biases across layers in order to rectify imbalances that cause quantization errors.
+    [ --override_params ]
+                        Use this option to override quantization parameters when quantization was provided from the original source framework (eg TF fake quantization)
+    [ --use_encoding_optimizations ]
+                        Use this option to enable quantization encoding optimizations. This can reduce requantization in the graph and may improve accuracy for some models
+                        (Note: this flag can be passed in, but is a no-op. Recognition of this flag will be removed in the future).
+    [ --use_symmetric_quantize_weights ]
+                        Use the symmetric quantizer feature when quantizing the weights of the model. It makes sure min and max have the
+                        same absolute values about zero. Symmetrically quantized data will also be stored as int#_t data such that the offset is always 0.
+    [ --use_native_dtype ]
+                        Note: This option is deprecated, use --use_native_input_files option in future.
+                          Use this option to indicate how to read input files,
+                           1. float (default): reads inputs as floats and quantizes if necessary based on quantization parameters in the model.
+                           2. native:          reads inputs assuming the data type to be native to the model. For ex., uint8_t.
+    [ --use_native_input_files ]
+                        Use this option to indicate how to read input files,
+                           1. float (default): reads inputs as floats and quantizes if necessary based on quantization parameters in the model.
+                           2. native:          reads inputs assuming the data type to be native to the model. For ex., uint8_t.
+    [ --use_native_output_files ]
+                        Use this option to indicate the data type of the output files,
+                           1. float (default): generates the output file as float data.
+                           2. native:          generates the output file as datatype native to the source model. i.e. uint8_t.
+    [ --bias_bitwidth=&lt;val&gt; ]
+                        Use the --bias_bitdwith option to select the bitwidth to use when quantizing the biases, either 8 (default) or 32. Using 32 bit biases may
+                        sometimes provide a small improvement in accuracy. Can&#39;t mix with --bitwidth.
+    [ --float_bitwidth=&lt;val&gt; ]
+                        Use the --float_bitwidth option to select the bitwidth to use when using float
+                        for parameters(weights/bias) and activations for all ops or specific
+                        Op (via encodings) selected through encoding, either 32 (default) or 16.
+    [ --float_bias_bitwidth=&lt;val&gt; ]
+                            Use this option to specify the bitwidth for float bias tensors, either 32 or 16.
+                            If not provided and bias is overridden to float in Quantizer, the overriding float tensor&#39;s bw will be used
+    [ --act_bitwidth=&lt;val&gt; ]
+                        Use the --act_bitwidth option to select the bitwidth to use when quantizing the activations, either 8 (default) or 16. 8w/16a is only supported
+                        by the HTA currently. Can&#39;t mix with --bitwidth.
+    [ --weights_bitwidth=&lt;val&gt; ]
+                        Use the --weights_bitwidth option to select the bitwidth to use when quantizing the weights, either 8 (default) or 16. 8w/16a is only supported
+                        by the HTA currently. Can&#39;t mix with --bitwidth.
+    [ --bitwidth=&lt;val&gt; ]
+                        Use the --bitwidth option to select the bitwidth to use when quantizing the weights/activation/bias, either 8 (default) or 16. Can&#39;t mix with
+                        --weights_bitwidth or --act_bitwidth or --bias_bitdwith.
+    [ --udo_package_path=&lt;val&gt; ]
+                        Use this option to specify path to the Registration Library for a UDO Package. Usage is:
+                        --udo_package_path=&lt;path_to_reg_lib&gt;
+                        This option must be specified for Networks with UDO. All UDO&#39;s in Network must have host-executable CPU Implementation
+    [ --axis_quant ]
+                        Use the --axis_quant option to select per-axis-element quantization for the weights and biases of certain layer types.
+                        Currently only Convolution, Deconvolution and FullyConnected are supported.
+
+
+Description:
+Generate 8 or 16 bit TensorFlow style fixed point weight and activations encodings for a floating point DLC model.
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">Additional details:</div>
+</div>
+<ul>
+<li><p>For specifying input_list, refer to input_list
+argument in
+<a class="reference external" href="tools.html#snpe-net-run">snpe-net-run</a> for
+supported input formats (in order to calculate output
+activation encoding information for all layers, <strong>do not</strong>
+include the line which specifies desired outputs).</p></li>
+<li><p>The tool requires the batch dimension of the DLC input file
+to be set to 1 during the original model conversion step.</p></li>
+<li><p>An example of quantization using snpe-dlc-quantize can be
+found in the C/C++ Tutorial section: <a class="reference external" href="tutorial_inceptionv3.html">Running the Inception
+v3 Model</a>. For details on
+quantization see <a class="reference external" href="quantized_models.html">Quantized vs Non-Quantized
+Models</a>.</p></li>
+<li><p>Using snpe-dlc-quantize is mandatory for running on HTA.</p></li>
+<li><p>Using snpe-dlc-quantize is mandatory for running on DSP
+runtime on Snapdragon 865. It is recommended that offline
+cache generation be used. It is specified by using
+<strong>–enable_htp</strong> option for snpe-dlc-quantize.</p></li>
+<li><p>When using offline cache generation for HTP, the same
+input(s) tensors or layers and output(s) tensors or layers
+should be specified when using snpe-dlc-quantize and to run
+inference on the model using Qualcomm® Neural Processing SDK APIs or snpe-net-run. Not
+doing so will cause the cache to be invalidated, and graph
+initialization will take longer.</p></li>
+<li><p>Outputs can be specified for snpe-dlc-quantize by modifying
+the input_list in the following ways:</p>
+<blockquote>
+<div><div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>#&lt;output_layer_name&gt;[&lt;space&gt;&lt;output_layer_name&gt;]
+%&lt;output_tensor_name&gt;[&lt;space&gt;&lt;output_tensor_name&gt;]
+&lt;input_layer_name&gt;:=&lt;input_layer_path&gt;[&lt;space&gt;&lt;input_layer_name&gt;:=&lt;input_layer_path&gt;]
+…
+</pre></div>
+</div>
+<p><strong>Note:</strong> Output tensors and layers can be specified
+individually, but when specifying both, the order shown must
+be used to specify each.</p>
+</div></blockquote>
+</li>
+<li><p>When running a model with an offline generated cache using
+snpe-net-run:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Any output layers specified when snpe-dlc-quantize was
+called, need to be specified using the input list as
+shown in the input_list argument to
+<a class="reference external" href="tools.html#snpe-net-run">snpe-net-run</a>.</p></li>
+<li><p>Any output tensors specified when snpe-dlc-quantized was
+called, need to be specified using the
+<em>–set_output_tensors</em> argument to snpe-net-run. Refer to
+<a class="reference external" href="tools.html#snpe-net-run">snpe-net-run</a> for
+documentation.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>When using the Qualcomm® Neural Processing SDK API:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Any output layers specified when snpe-dlc-quantize was
+called, need to be specified using the
+<span class="xref std std-ref">Snpe_SNPEBuilder_SetOutputLayers()</span>
+function.</p></li>
+<li><p>Any output tensors specified when snpe-dlc-quantize was
+called, need to be specified using the
+<span class="xref std std-ref">Snpe_SNPEBuilder_SetOutputTensors()</span>
+function.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="snpe-udo-package-generator">
+<h1>snpe-udo-package-generator<a class="headerlink" href="#snpe-udo-package-generator" title="Permalink to this heading">¶</a></h1>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>DESCRIPTION:
+------------
+This tool generates a UDO (User Defined Operation) package using a
+user provided config file.
+
+USAGE:
+------------
+snpe-udo-package-generator [-h] --config_path CONFIG_PATH [--debug]
+                                    [--output_path OUTPUT_PATH] [-f]
+OPTIONAL ARGUMENTS:
+-------------------
+    -h, --help            show this help message and exit
+    --debug               Returns debugging information from generating the package
+    --output_path OUTPUT_PATH, -o OUTPUT_PATH
+                        Path where the package should be saved
+    -f, --force-generation
+                        This option will delete the existing package
+                        Note appropriate file permissions must be set to use
+                        this option.
+
+REQUIRED_ARGUMENTS:
+-------------------
+    --config_path CONFIG_PATH, -p CONFIG_PATH
+                        The path to a config file that defines a UDO.
+</pre></div>
+</div>
+</div>
+<div class="section" id="qairt-quantizer">
+<h1>qairt-quantizer<a class="headerlink" href="#qairt-quantizer" title="Permalink to this heading">¶</a></h1>
+<p>The <strong>qairt-quantizer</strong> tool converts non-quantized DLC models into quantized DLC models.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Basic</span> <span class="n">command</span> <span class="n">line</span> <span class="n">usage</span> <span class="n">looks</span> <span class="n">like</span><span class="p">:</span>
+
+<span class="n">usage</span><span class="p">:</span> <span class="n">qairt</span><span class="o">-</span><span class="n">quantizer</span> <span class="o">--</span><span class="n">input_dlc</span> <span class="n">INPUT_DLC</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">output_dlc</span> <span class="n">OUTPUT_DLC</span><span class="p">]</span>
+                   <span class="p">[</span><span class="o">--</span><span class="n">input_list</span> <span class="n">INPUT_LIST</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">float_fallback</span><span class="p">]</span>
+                   <span class="p">[</span><span class="o">--</span><span class="n">algorithms</span> <span class="n">ALGORITHMS</span> <span class="p">[</span><span class="n">ALGORITHMS</span> <span class="o">...</span><span class="p">]]</span> <span class="p">[</span><span class="o">--</span><span class="n">bias_bitwidth</span> <span class="n">BIAS_BITWIDTH</span><span class="p">]</span>
+                   <span class="p">[</span><span class="o">--</span><span class="n">act_bitwidth</span> <span class="n">ACT_BITWIDTH</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">weights_bitwidth</span> <span class="n">WEIGHTS_BITWIDTH</span><span class="p">]</span>
+                   <span class="p">[</span><span class="o">--</span><span class="n">float_bitwidth</span> <span class="n">FLOAT_BITWIDTH</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">float_bias_bitwidth</span> <span class="n">FLOAT_BIAS_BITWIDTH</span><span class="p">]</span>
+                   <span class="p">[</span><span class="o">--</span><span class="n">ignore_encodings</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">use_per_channel_quantization</span><span class="p">]</span>
+                   <span class="p">[</span><span class="o">--</span><span class="n">use_per_row_quantization</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">use_native_input_files</span><span class="p">]</span>
+                   <span class="p">[</span><span class="o">--</span><span class="n">use_native_output_files</span><span class="p">]</span>
+                   <span class="p">[</span><span class="o">--</span><span class="n">restrict_quantization_steps</span> <span class="n">ENCODING_MIN</span><span class="p">,</span> <span class="n">ENCODING_MAX</span><span class="p">]</span>
+                   <span class="p">[</span><span class="o">--</span><span class="n">act_quantizer_calibration</span> <span class="n">ACT_QUANTIZER_CALIBRATION</span><span class="p">]</span>
+                   <span class="p">[</span><span class="o">--</span><span class="n">param_quantizer_calibration</span> <span class="n">PARAM_QUANTIZER_CALIBRATION</span><span class="p">]</span>
+                   <span class="p">[</span><span class="o">--</span><span class="n">act_quantizer_schema</span> <span class="n">ACT_QUANTIZER_SCHEMA</span><span class="p">]</span>
+                   <span class="p">[</span><span class="o">--</span><span class="n">param_quantizer_schema</span> <span class="n">PARAM_QUANTIZER_SCHEMA</span><span class="p">]</span>
+                   <span class="p">[</span><span class="o">--</span><span class="n">percentile_calibration_value</span> <span class="n">PERCENTILE_CALIBRATION_VALUE</span><span class="p">]</span>
+                   <span class="p">[</span><span class="o">--</span><span class="n">use_aimet_quantizer</span><span class="p">]</span>
+                   <span class="p">[</span><span class="o">--</span><span class="n">op_package_lib</span> <span class="n">OP_PACKAGE_LIB</span><span class="p">]</span>
+                   <span class="p">[</span><span class="o">--</span><span class="n">dump_encoding_json</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">debug</span> <span class="p">[</span><span class="n">DEBUG</span><span class="p">]]</span>
+
+<span class="n">required</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="o">--</span><span class="n">input_dlc</span> <span class="n">INPUT_DLC</span>
+                        <span class="n">Path</span> <span class="n">to</span> <span class="n">the</span> <span class="n">dlc</span> <span class="n">container</span> <span class="n">containing</span> <span class="n">the</span> <span class="n">model</span> <span class="k">for</span> <span class="n">which</span> <span class="n">fixed</span><span class="o">-</span><span class="n">point</span>
+                        <span class="n">encoding</span> <span class="n">metadata</span> <span class="n">should</span> <span class="n">be</span> <span class="n">generated</span><span class="o">.</span> <span class="n">This</span> <span class="n">argument</span> <span class="ow">is</span> <span class="n">required</span>
+
+<span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>            <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+  <span class="o">--</span><span class="n">output_dlc</span> <span class="n">OUTPUT_DLC</span>
+                        <span class="n">Path</span> <span class="n">at</span> <span class="n">which</span> <span class="n">the</span> <span class="n">metadata</span><span class="o">-</span><span class="n">included</span> <span class="n">quantized</span> <span class="n">model</span> <span class="n">container</span> <span class="n">should</span> <span class="n">be</span>
+                        <span class="n">written</span><span class="o">.</span><span class="n">If</span> <span class="n">this</span> <span class="n">argument</span> <span class="ow">is</span> <span class="n">omitted</span><span class="p">,</span> <span class="n">the</span> <span class="n">quantized</span> <span class="n">model</span> <span class="n">will</span> <span class="n">be</span> <span class="n">written</span> <span class="n">at</span>
+                        <span class="o">&lt;</span><span class="n">unquantized_model_name</span><span class="o">&gt;</span><span class="n">_quantized</span><span class="o">.</span><span class="n">dlc</span>
+  <span class="o">--</span><span class="n">input_list</span> <span class="n">INPUT_LIST</span>
+                        <span class="n">Path</span> <span class="n">to</span> <span class="n">a</span> <span class="n">file</span> <span class="n">specifying</span> <span class="n">the</span> <span class="nb">input</span> <span class="n">data</span><span class="o">.</span> <span class="n">This</span> <span class="n">file</span> <span class="n">should</span> <span class="n">be</span> <span class="n">a</span> <span class="n">plain</span> <span class="n">text</span>
+                        <span class="n">file</span><span class="p">,</span> <span class="n">containing</span> <span class="n">one</span> <span class="ow">or</span> <span class="n">more</span> <span class="n">absolute</span> <span class="n">file</span> <span class="n">paths</span> <span class="n">per</span> <span class="n">line</span><span class="o">.</span> <span class="n">Each</span> <span class="n">path</span> <span class="ow">is</span>
+                        <span class="n">expected</span> <span class="n">to</span> <span class="n">point</span> <span class="n">to</span> <span class="n">a</span> <span class="n">binary</span> <span class="n">file</span> <span class="n">containing</span> <span class="n">one</span> <span class="nb">input</span> <span class="ow">in</span> <span class="n">the</span> <span class="s2">&quot;raw&quot;</span> <span class="nb">format</span><span class="p">,</span>
+                        <span class="n">ready</span> <span class="n">to</span> <span class="n">be</span> <span class="n">consumed</span> <span class="n">by</span> <span class="n">the</span> <span class="n">quantizer</span> <span class="n">without</span> <span class="nb">any</span> <span class="n">further</span> <span class="n">preprocessing</span><span class="o">.</span>
+                        <span class="n">Multiple</span> <span class="n">files</span> <span class="n">per</span> <span class="n">line</span> <span class="n">separated</span> <span class="n">by</span> <span class="n">spaces</span> <span class="n">indicate</span> <span class="n">multiple</span> <span class="n">inputs</span> <span class="n">to</span> <span class="n">the</span>
+                        <span class="n">network</span><span class="o">.</span> <span class="n">See</span> <span class="n">documentation</span> <span class="k">for</span> <span class="n">more</span> <span class="n">details</span><span class="o">.</span> <span class="n">Must</span> <span class="n">be</span> <span class="n">specified</span> <span class="k">for</span>
+                        <span class="n">quantization</span><span class="o">.</span> <span class="n">All</span> <span class="n">subsequent</span> <span class="n">quantization</span> <span class="n">options</span> <span class="n">are</span> <span class="n">ignored</span> <span class="n">when</span> <span class="n">this</span> <span class="ow">is</span>
+                        <span class="ow">not</span> <span class="n">provided</span><span class="o">.</span>
+  <span class="o">--</span><span class="n">float_fallback</span>      <span class="n">Use</span> <span class="n">this</span> <span class="n">option</span> <span class="n">to</span> <span class="n">enable</span> <span class="n">fallback</span> <span class="n">to</span> <span class="n">floating</span> <span class="n">point</span> <span class="p">(</span><span class="n">FP</span><span class="p">)</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">fixed</span>
+                        <span class="n">point</span><span class="o">.</span>
+                        <span class="n">This</span> <span class="n">option</span> <span class="n">can</span> <span class="n">be</span> <span class="n">paired</span> <span class="k">with</span> <span class="o">--</span><span class="n">float_bitwidth</span> <span class="n">to</span> <span class="n">indicate</span> <span class="n">the</span> <span class="n">bitwidth</span> <span class="k">for</span>
+                        <span class="n">FP</span> <span class="p">(</span><span class="n">by</span> <span class="n">default</span> <span class="mi">32</span><span class="p">)</span><span class="o">.</span>
+                        <span class="n">If</span> <span class="n">this</span> <span class="n">option</span> <span class="ow">is</span> <span class="n">enabled</span><span class="p">,</span> <span class="n">then</span> <span class="nb">input</span> <span class="nb">list</span> <span class="n">must</span> <span class="ow">not</span> <span class="n">be</span> <span class="n">provided</span> <span class="ow">and</span>
+                        <span class="o">--</span><span class="n">ignore_encodings</span> <span class="n">must</span> <span class="ow">not</span> <span class="n">be</span> <span class="n">provided</span><span class="o">.</span>
+                        <span class="n">The</span> <span class="n">external</span> <span class="n">quantization</span> <span class="n">encodings</span> <span class="p">(</span><span class="n">encoding</span> <span class="n">file</span><span class="o">/</span><span class="n">FakeQuant</span> <span class="n">encodings</span><span class="p">)</span>
+                        <span class="n">might</span> <span class="n">be</span> <span class="n">missing</span> <span class="n">quantization</span> <span class="n">parameters</span> <span class="k">for</span> <span class="n">some</span> <span class="n">interim</span> <span class="n">tensors</span><span class="o">.</span>
+                        <span class="n">First</span> <span class="n">it</span> <span class="n">will</span> <span class="k">try</span> <span class="n">to</span> <span class="n">fill</span> <span class="n">the</span> <span class="n">gaps</span> <span class="n">by</span> <span class="n">propagating</span> <span class="n">across</span> <span class="n">math</span><span class="o">-</span><span class="n">invariant</span>
+                        <span class="n">functions</span><span class="o">.</span> <span class="n">If</span> <span class="n">the</span> <span class="n">quantization</span> <span class="n">params</span> <span class="n">are</span> <span class="n">still</span> <span class="n">missing</span><span class="p">,</span>
+                        <span class="n">then</span> <span class="n">it</span> <span class="n">will</span> <span class="n">apply</span> <span class="n">fallback</span> <span class="n">to</span> <span class="n">nodes</span> <span class="n">to</span> <span class="n">floating</span> <span class="n">point</span><span class="o">.</span>
+  <span class="o">--</span><span class="n">algorithms</span> <span class="n">ALGORITHMS</span> <span class="p">[</span><span class="n">ALGORITHMS</span> <span class="o">...</span><span class="p">]</span>
+                        <span class="n">Use</span> <span class="n">this</span> <span class="n">option</span> <span class="n">to</span> <span class="n">enable</span> <span class="n">new</span> <span class="n">optimization</span> <span class="n">algorithms</span><span class="o">.</span> <span class="n">Usage</span> <span class="ow">is</span><span class="p">:</span>
+                        <span class="o">--</span><span class="n">algorithms</span> <span class="o">&lt;</span><span class="n">algo_name1</span><span class="o">&gt;</span> <span class="o">...</span> <span class="n">The</span> <span class="n">available</span> <span class="n">optimization</span> <span class="n">algorithms</span> <span class="n">are</span><span class="p">:</span>
+                        <span class="s2">&quot;cle&quot;</span> <span class="o">-</span> <span class="n">Cross</span> <span class="n">layer</span> <span class="n">equalization</span> <span class="n">includes</span> <span class="n">a</span> <span class="n">number</span> <span class="n">of</span> <span class="n">methods</span> <span class="k">for</span> <span class="n">equalizing</span>
+                        <span class="n">weights</span> <span class="ow">and</span> <span class="n">biases</span> <span class="n">across</span> <span class="n">layers</span> <span class="ow">in</span> <span class="n">order</span> <span class="n">to</span> <span class="n">rectify</span> <span class="n">imbalances</span> <span class="n">that</span> <span class="n">cause</span>
+                        <span class="n">quantization</span> <span class="n">errors</span><span class="o">.</span>
+  <span class="o">--</span><span class="n">bias_bitwidth</span> <span class="n">BIAS_BITWIDTH</span>
+                        <span class="n">Use</span> <span class="n">the</span> <span class="o">--</span><span class="n">bias_bitwidth</span> <span class="n">option</span> <span class="n">to</span> <span class="n">select</span> <span class="n">the</span> <span class="n">bitwidth</span> <span class="n">to</span> <span class="n">use</span> <span class="n">when</span> <span class="n">quantizing</span>
+                        <span class="n">the</span> <span class="n">biases</span><span class="p">,</span> <span class="n">either</span> <span class="mi">8</span> <span class="p">(</span><span class="n">default</span><span class="p">)</span> <span class="ow">or</span> <span class="mf">32.</span>
+  <span class="o">--</span><span class="n">act_bitwidth</span> <span class="n">ACT_BITWIDTH</span>
+                        <span class="n">Use</span> <span class="n">the</span> <span class="o">--</span><span class="n">act_bitwidth</span> <span class="n">option</span> <span class="n">to</span> <span class="n">select</span> <span class="n">the</span> <span class="n">bitwidth</span> <span class="n">to</span> <span class="n">use</span> <span class="n">when</span> <span class="n">quantizing</span>
+                        <span class="n">the</span> <span class="n">activations</span><span class="p">,</span> <span class="n">either</span> <span class="mi">8</span> <span class="p">(</span><span class="n">default</span><span class="p">)</span> <span class="ow">or</span> <span class="mf">16.</span>
+  <span class="o">--</span><span class="n">weights_bitwidth</span> <span class="n">WEIGHTS_BITWIDTH</span>
+                        <span class="n">Use</span> <span class="n">the</span> <span class="o">--</span><span class="n">weights_bitwidth</span> <span class="n">option</span> <span class="n">to</span> <span class="n">select</span> <span class="n">the</span> <span class="n">bitwidth</span> <span class="n">to</span> <span class="n">use</span> <span class="n">when</span>
+                        <span class="n">quantizing</span> <span class="n">the</span> <span class="n">weights</span><span class="p">,</span> <span class="n">either</span> <span class="mi">4</span> <span class="ow">or</span> <span class="mi">8</span> <span class="p">(</span><span class="n">default</span><span class="p">)</span><span class="o">.</span>
+  <span class="o">--</span><span class="n">float_bitwidth</span> <span class="n">FLOAT_BITWIDTH</span>
+                        <span class="n">Use</span> <span class="n">the</span> <span class="o">--</span><span class="n">float_bitwidth</span> <span class="n">option</span> <span class="n">to</span> <span class="n">select</span> <span class="n">the</span> <span class="n">bitwidth</span> <span class="n">to</span> <span class="n">use</span> <span class="k">for</span> <span class="nb">float</span>
+                        <span class="n">tensors</span><span class="p">,</span><span class="n">either</span> <span class="mi">32</span> <span class="p">(</span><span class="n">default</span><span class="p">)</span> <span class="ow">or</span> <span class="mf">16.</span>
+  <span class="o">--</span><span class="n">float_bias_bitwidth</span> <span class="n">FLOAT_BIAS_BITWIDTH</span>
+                        <span class="n">Use</span> <span class="n">the</span> <span class="o">--</span><span class="n">float_bias_bitwidth</span> <span class="n">option</span> <span class="n">to</span> <span class="n">select</span> <span class="n">the</span> <span class="n">bitwidth</span> <span class="n">to</span> <span class="n">use</span> <span class="n">when</span>
+                        <span class="n">biases</span> <span class="n">are</span> <span class="ow">in</span> <span class="nb">float</span><span class="p">,</span> <span class="n">either</span> <span class="mi">32</span> <span class="ow">or</span> <span class="mf">16.</span>
+  <span class="o">--</span><span class="n">ignore_encodings</span>    <span class="n">Use</span> <span class="n">only</span> <span class="n">quantizer</span> <span class="n">generated</span> <span class="n">encodings</span><span class="p">,</span> <span class="n">ignoring</span> <span class="nb">any</span> <span class="n">user</span> <span class="ow">or</span> <span class="n">model</span> <span class="n">provided</span>
+                        <span class="n">encodings</span><span class="o">.</span>
+                        <span class="n">Note</span><span class="p">:</span> <span class="n">Cannot</span> <span class="n">use</span> <span class="o">--</span><span class="n">ignore_encodings</span> <span class="k">with</span> <span class="o">--</span><span class="n">quantization_overrides</span>
+  <span class="o">--</span><span class="n">use_per_channel_quantization</span>
+                        <span class="n">Use</span> <span class="n">this</span> <span class="n">option</span> <span class="n">to</span> <span class="n">enable</span> <span class="n">per</span><span class="o">-</span><span class="n">channel</span> <span class="n">quantization</span> <span class="k">for</span> <span class="n">convolution</span><span class="o">-</span><span class="n">based</span> <span class="n">op</span>
+                        <span class="n">weights</span><span class="o">.</span>
+                        <span class="n">Note</span><span class="p">:</span> <span class="n">This</span> <span class="n">will</span> <span class="n">replace</span> <span class="n">built</span><span class="o">-</span><span class="ow">in</span> <span class="n">model</span> <span class="n">QAT</span> <span class="n">encodings</span> <span class="n">when</span> <span class="n">used</span> <span class="k">for</span> <span class="n">a</span> <span class="n">given</span>
+                        <span class="n">weight</span><span class="o">.</span>
+  <span class="o">--</span><span class="n">use_per_row_quantization</span>
+                        <span class="n">Use</span> <span class="n">this</span> <span class="n">option</span> <span class="n">to</span> <span class="n">enable</span> <span class="n">rowwise</span> <span class="n">quantization</span> <span class="n">of</span> <span class="n">Matmul</span> <span class="ow">and</span> <span class="n">FullyConnected</span>
+                        <span class="n">ops</span><span class="o">.</span>
+  <span class="o">--</span><span class="n">use_native_input_files</span>
+                        <span class="n">Boolean</span> <span class="n">flag</span> <span class="n">to</span> <span class="n">indicate</span> <span class="n">how</span> <span class="n">to</span> <span class="n">read</span> <span class="nb">input</span> <span class="n">files</span><span class="p">:</span>
+                        <span class="mf">1.</span> <span class="nb">float</span> <span class="p">(</span><span class="n">default</span><span class="p">):</span> <span class="n">reads</span> <span class="n">inputs</span> <span class="k">as</span> <span class="n">floats</span> <span class="ow">and</span> <span class="n">quantizes</span> <span class="k">if</span> <span class="n">necessary</span> <span class="n">based</span>
+                        <span class="n">on</span> <span class="n">quantization</span> <span class="n">parameters</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">model</span><span class="o">.</span>
+                        <span class="mf">2.</span> <span class="n">native</span><span class="p">:</span>          <span class="n">reads</span> <span class="n">inputs</span> <span class="n">assuming</span> <span class="n">the</span> <span class="n">data</span> <span class="nb">type</span> <span class="n">to</span> <span class="n">be</span> <span class="n">native</span> <span class="n">to</span> <span class="n">the</span>
+                        <span class="n">model</span><span class="o">.</span> <span class="n">For</span> <span class="n">ex</span><span class="o">.</span><span class="p">,</span> <span class="n">uint8_t</span><span class="o">.</span>
+  <span class="o">--</span><span class="n">use_native_output_files</span>
+                        <span class="n">Use</span> <span class="n">this</span> <span class="n">option</span> <span class="n">to</span> <span class="n">indicate</span> <span class="n">the</span> <span class="n">data</span> <span class="nb">type</span> <span class="n">of</span> <span class="n">the</span> <span class="n">output</span> <span class="n">files</span>
+                        <span class="mf">1.</span> <span class="nb">float</span> <span class="p">(</span><span class="n">default</span><span class="p">):</span> <span class="n">output</span> <span class="n">the</span> <span class="n">file</span> <span class="k">as</span> <span class="n">floats</span><span class="o">.</span>
+                        <span class="mf">2.</span> <span class="n">native</span><span class="p">:</span>          <span class="n">outputs</span> <span class="n">the</span> <span class="n">file</span> <span class="n">that</span> <span class="ow">is</span> <span class="n">native</span> <span class="n">to</span> <span class="n">the</span> <span class="n">model</span><span class="o">.</span> <span class="n">For</span> <span class="n">ex</span><span class="o">.</span><span class="p">,</span>
+                        <span class="n">uint8_t</span><span class="o">.</span>
+  <span class="o">--</span><span class="n">restrict_quantization_steps</span> <span class="n">ENCODING_MIN</span><span class="p">,</span> <span class="n">ENCODING_MAX</span>
+                        <span class="n">Specifies</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">steps</span> <span class="n">to</span> <span class="n">use</span> <span class="k">for</span> <span class="n">computing</span> <span class="n">quantization</span> <span class="n">encodings</span>
+                        <span class="n">such</span> <span class="n">that</span> <span class="n">scale</span> <span class="o">=</span> <span class="p">(</span><span class="nb">max</span> <span class="o">-</span> <span class="nb">min</span><span class="p">)</span> <span class="o">/</span> <span class="n">number</span> <span class="n">of</span> <span class="n">quantization</span> <span class="n">steps</span><span class="o">.</span>
+                        <span class="n">The</span> <span class="n">option</span> <span class="n">should</span> <span class="n">be</span> <span class="n">passed</span> <span class="k">as</span> <span class="n">a</span> <span class="n">space</span> <span class="n">separated</span> <span class="n">pair</span> <span class="n">of</span> <span class="n">hexadecimal</span> <span class="n">string</span>
+                        <span class="n">minimum</span> <span class="ow">and</span> <span class="n">maximum</span> <span class="n">valuesi</span><span class="o">.</span><span class="n">e</span><span class="o">.</span> <span class="o">--</span><span class="n">restrict_quantization_steps</span> <span class="s2">&quot;MIN MAX&quot;</span><span class="o">.</span>
+                         <span class="n">Please</span> <span class="n">note</span> <span class="n">that</span> <span class="n">this</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">hexadecimal</span> <span class="n">string</span> <span class="n">literal</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">a</span> <span class="n">signed</span>
+                        <span class="n">integer</span><span class="p">,</span> <span class="n">to</span> <span class="n">supply</span> <span class="n">a</span> <span class="n">negative</span> <span class="n">value</span> <span class="n">an</span> <span class="n">explicit</span> <span class="n">minus</span> <span class="n">sign</span> <span class="ow">is</span> <span class="n">required</span><span class="o">.</span>
+                        <span class="n">E</span><span class="o">.</span><span class="n">g</span><span class="o">.--</span><span class="n">restrict_quantization_steps</span> <span class="s2">&quot;-0x80 0x7F&quot;</span> <span class="n">indicates</span> <span class="n">an</span> <span class="n">example</span> <span class="mi">8</span> <span class="n">bit</span>
+                        <span class="nb">range</span><span class="p">,</span>
+                            <span class="o">--</span><span class="n">restrict_quantization_steps</span> <span class="s2">&quot;-0x8000 0x7F7F&quot;</span> <span class="n">indicates</span> <span class="n">an</span> <span class="n">example</span> <span class="mi">16</span>
+                        <span class="n">bit</span> <span class="nb">range</span><span class="o">.</span>
+                        <span class="n">This</span> <span class="n">argument</span> <span class="ow">is</span> <span class="n">required</span> <span class="k">for</span> <span class="mi">16</span><span class="o">-</span><span class="n">bit</span> <span class="n">Matmul</span> <span class="n">operations</span><span class="o">.</span>
+  <span class="o">--</span><span class="n">act_quantizer_calibration</span> <span class="n">ACT_QUANTIZER_CALIBRATION</span>
+                        <span class="n">Specify</span> <span class="n">which</span> <span class="n">quantization</span> <span class="n">calibration</span> <span class="n">method</span> <span class="n">to</span> <span class="n">use</span> <span class="k">for</span> <span class="n">activations</span>
+                        <span class="n">supported</span> <span class="n">values</span><span class="p">:</span> <span class="nb">min</span><span class="o">-</span><span class="nb">max</span> <span class="p">(</span><span class="n">default</span><span class="p">),</span> <span class="n">sqnr</span><span class="p">,</span> <span class="n">entropy</span><span class="p">,</span> <span class="n">mse</span><span class="p">,</span> <span class="n">percentile</span>
+                        <span class="n">This</span> <span class="n">option</span> <span class="n">can</span> <span class="n">be</span> <span class="n">paired</span> <span class="k">with</span> <span class="o">--</span><span class="n">act_quantizer_schema</span> <span class="n">to</span> <span class="n">override</span> <span class="n">the</span>
+                        <span class="n">quantization</span>
+                        <span class="n">schema</span> <span class="n">to</span> <span class="n">use</span> <span class="k">for</span> <span class="n">activations</span> <span class="n">otherwise</span> <span class="n">default</span> <span class="n">schema</span><span class="p">(</span><span class="n">asymmetric</span><span class="p">)</span> <span class="n">will</span> <span class="n">be</span>
+                        <span class="n">used</span>
+  <span class="o">--</span><span class="n">param_quantizer_calibration</span> <span class="n">PARAM_QUANTIZER_CALIBRATION</span>
+                        <span class="n">Specify</span> <span class="n">which</span> <span class="n">quantization</span> <span class="n">calibration</span> <span class="n">method</span> <span class="n">to</span> <span class="n">use</span> <span class="k">for</span> <span class="n">parameters</span>
+                        <span class="n">supported</span> <span class="n">values</span><span class="p">:</span> <span class="nb">min</span><span class="o">-</span><span class="nb">max</span> <span class="p">(</span><span class="n">default</span><span class="p">),</span> <span class="n">sqnr</span><span class="p">,</span> <span class="n">entropy</span><span class="p">,</span> <span class="n">mse</span><span class="p">,</span> <span class="n">percentile</span>
+                        <span class="n">This</span> <span class="n">option</span> <span class="n">can</span> <span class="n">be</span> <span class="n">paired</span> <span class="k">with</span> <span class="o">--</span><span class="n">param_quantizer_schema</span> <span class="n">to</span> <span class="n">override</span> <span class="n">the</span>
+                        <span class="n">quantization</span>
+                        <span class="n">schema</span> <span class="n">to</span> <span class="n">use</span> <span class="k">for</span> <span class="n">parameters</span> <span class="n">otherwise</span> <span class="n">default</span> <span class="n">schema</span><span class="p">(</span><span class="n">asymmetric</span><span class="p">)</span> <span class="n">will</span> <span class="n">be</span>
+                        <span class="n">used</span>
+  <span class="o">--</span><span class="n">act_quantizer_schema</span> <span class="n">ACT_QUANTIZER_SCHEMA</span>
+                        <span class="n">Specify</span> <span class="n">which</span> <span class="n">quantization</span> <span class="n">schema</span> <span class="n">to</span> <span class="n">use</span> <span class="k">for</span> <span class="n">activations</span>
+                        <span class="n">supported</span> <span class="n">values</span><span class="p">:</span> <span class="n">asymmetric</span> <span class="p">(</span><span class="n">default</span><span class="p">),</span> <span class="n">symmetric</span>
+  <span class="o">--</span><span class="n">param_quantizer_schema</span> <span class="n">PARAM_QUANTIZER_SCHEMA</span>
+                        <span class="n">Specify</span> <span class="n">which</span> <span class="n">quantization</span> <span class="n">schema</span> <span class="n">to</span> <span class="n">use</span> <span class="k">for</span> <span class="n">parameters</span>
+                        <span class="n">supported</span> <span class="n">values</span><span class="p">:</span> <span class="n">asymmetric</span> <span class="p">(</span><span class="n">default</span><span class="p">),</span> <span class="n">symmetric</span>
+  <span class="o">--</span><span class="n">percentile_calibration_value</span> <span class="n">PERCENTILE_CALIBRATION_VALUE</span>
+                        <span class="n">Specify</span> <span class="n">the</span> <span class="n">percentile</span> <span class="n">value</span> <span class="n">to</span> <span class="n">be</span> <span class="n">used</span> <span class="k">with</span> <span class="n">Percentile</span> <span class="n">calibration</span> <span class="n">method</span>
+                        <span class="n">The</span> <span class="n">specified</span> <span class="nb">float</span> <span class="n">value</span> <span class="n">must</span> <span class="n">lie</span> <span class="n">within</span> <span class="mi">90</span> <span class="ow">and</span> <span class="mi">100</span><span class="p">,</span> <span class="n">default</span><span class="p">:</span> <span class="mf">99.99</span>
+  <span class="o">--</span><span class="n">use_aimet_quantizer</span>
+                        <span class="n">Use</span> <span class="n">AIMET</span> <span class="n">Quantizer</span> <span class="ow">in</span> <span class="n">place</span> <span class="n">of</span> <span class="n">IR</span> <span class="n">Quantizer</span><span class="o">.</span> <span class="n">The</span> <span class="n">following</span> <span class="n">arguments</span> <span class="n">are</span>
+                        <span class="ow">not</span> <span class="n">allowed</span> <span class="n">together</span> <span class="k">with</span> <span class="n">this</span> <span class="n">option</span><span class="p">,</span> <span class="o">--</span><span class="n">float_bw</span><span class="p">,</span> <span class="o">--</span><span class="n">float_bitwidth</span><span class="p">,</span> <span class="o">--</span><span class="n">float_bias_bw</span>
+                        <span class="o">--</span><span class="n">float_bias_bitwidth</span><span class="p">,</span> <span class="o">--</span><span class="n">disable_relu_squashing</span><span class="p">,</span> <span class="o">--</span><span class="n">restrict_quantization_steps</span><span class="p">,</span>
+                        <span class="o">--</span><span class="n">float_fallback</span><span class="p">,</span> <span class="o">--</span><span class="n">use_dynamic_16_bit_weights</span><span class="p">,</span> <span class="o">--</span><span class="n">pack_4_bit_weights</span><span class="p">,</span> <span class="o">--</span><span class="n">op_package_lib</span>
+  <span class="o">--</span><span class="n">op_package_lib</span> <span class="n">OP_PACKAGE_LIB</span><span class="p">,</span> <span class="o">-</span><span class="n">opl</span> <span class="n">OP_PACKAGE_LIB</span>
+                        <span class="n">Use</span> <span class="n">this</span> <span class="n">argument</span> <span class="n">to</span> <span class="k">pass</span> <span class="n">an</span> <span class="n">op</span> <span class="n">package</span> <span class="n">library</span> <span class="k">for</span> <span class="n">quantization</span><span class="o">.</span> <span class="n">Must</span> <span class="n">be</span> <span class="ow">in</span>
+                        <span class="n">the</span> <span class="n">form</span> <span class="o">&lt;</span><span class="n">op_package_lib_path</span><span class="p">:</span><span class="n">interfaceProviderName</span><span class="o">&gt;</span> <span class="ow">and</span> <span class="n">be</span> <span class="n">separated</span> <span class="n">by</span> <span class="n">a</span>
+                        <span class="n">comma</span> <span class="k">for</span> <span class="n">multiple</span> <span class="n">package</span> <span class="n">libs</span>
+  <span class="o">--</span><span class="n">dump_encoding_json</span>  <span class="n">Use</span> <span class="n">this</span> <span class="n">argument</span> <span class="n">to</span> <span class="n">dump</span> <span class="n">encoding</span> <span class="n">of</span> <span class="nb">all</span> <span class="n">the</span> <span class="n">tensors</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">json</span> <span class="n">file</span>
+  <span class="o">--</span><span class="n">debug</span> <span class="p">[</span><span class="n">DEBUG</span><span class="p">]</span>       <span class="n">Run</span> <span class="n">the</span> <span class="n">quantizer</span> <span class="ow">in</span> <span class="n">debug</span> <span class="n">mode</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

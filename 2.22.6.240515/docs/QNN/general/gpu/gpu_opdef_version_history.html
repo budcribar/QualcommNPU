@@ -1,0 +1,357 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>QNN GPU Op Support Revision History &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="QNN HTA Op Support Revision History" href="../hta/hta_opdef_version_history.html" />
+    <link rel="prev" title="QNN DSP Op Support Revision History" href="../dsp/dsp_opdef_version_history.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../operations.html">Operations</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../OpDef/SupportedOps.html">Supported Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../OpDef/opdef_version_history.html">Op Definition Revision History</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../OpDef/opdef_version_history.html#backend-specific-revision-history">Backend Specific Revision History</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../cpu/cpu_opdef_version_history.html">QNN CPU Op Definition Revision History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dsp/dsp_opdef_version_history.html">QNN DSP Op Definition Revision History</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">QNN GPU Op Definition Revision History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hta/hta_opdef_version_history.html">QNN HTA Op Definition Revision History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../htp/htp_opdef_version_history.html">QNN HTP Op Definition Revision History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lpai/lpai_opdef_version_history.html">QNN LPAI Op Definition Revision History</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../operations.html#operation-definitions">Operation Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operations.html#backend-supplements">Backend Supplements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../operations.html">Operations</a> &raquo;</li>
+        
+          <li><a href="../../OpDef/opdef_version_history.html">Op Definition Revision History</a> &raquo;</li>
+        
+      <li>QNN GPU Op Support Revision History</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="qnn-gpu-op-support-revision-history">
+<h1>QNN GPU Op Support Revision History<a class="headerlink" href="#qnn-gpu-op-support-revision-history" title="Permalink to this heading">¶</a></h1>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 74%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Introduced in QNN SDK Version</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2.22.0</p></td>
+<td><ul class="simple">
+<li><p>Support QNN_DATATYPE_UFIXED_POINT_4 in ElementwiseSelect op.</p></li>
+<li><p>Support QNN_DATATYPE_UFIXED_POINT_4 in BinaryElementwise ops.</p></li>
+<li><p>Support Concat op with input rank 5 and axis = 1 if batch = 1</p></li>
+<li><p>Support QNN_DATATYPE_UFIXED_POINT_4 in Gather op.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.21.0</p></td>
+<td><ul class="simple">
+<li><p>Support QNN_DATATYPE_BOOL_8 inputs/outputs to Reshape op.</p></li>
+<li><p>Support QNN_DATATYPE_BOOL_8 outputs to Cast op.</p></li>
+<li><p>Support QNN_DATATYPE_INT_32 in Concat op.</p></li>
+<li><p>Support QNN_DATATYPE_INT_32 in BinaryElementwise op.</p></li>
+<li><p>Support QNN_DATATYPE_UFIXED_POINT_4 in Dequantize op.</p></li>
+<li><p>Support ScatterND Operation.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>2.20.0</p></td>
+<td><ul class="simple">
+<li><p>Support GroupNorm with input rank = {3,4}</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.18.0</p></td>
+<td><ul class="simple">
+<li><p>Support LayerNorm non-depth axis normalization and batch != 1</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>2.16.0</p></td>
+<td><ul class="simple">
+<li><p>Support 5D inputs in StridedSlice operation.</p></li>
+<li><p>Support Concat op for input rank = 5 and axis &gt; 1.</p></li>
+<li><p>Support ElementWiseNeuron Operation</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.14.0</p></td>
+<td><ul class="simple">
+<li><p>Support BOOL_8 inputs to Cast operation.</p></li>
+<li><p>Support CRD Mode in DepthToSpace Operation.</p></li>
+<li><p>Support ElementWiseUnary Operation</p></li>
+<li><p>Support ElementWiseBinary Operation</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>2.13.0</p></td>
+<td><ul class="simple">
+<li><p>Support LayerNorm for input rank &lt; 4 and batch &gt; 1 for rank 4 input.</p></li>
+<li><p>Support Batch Broadcasting in MatMul Operation.</p></li>
+<li><p>Support QNN_DATATYPE_INT_64 input datatype in Cast Operation.</p></li>
+<li><p>Support reduction across batch</p></li>
+<li><p>Support Broadcasting for ElementwiseSelect Operation.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.12.0</p></td>
+<td><ul class="simple">
+<li><p>Support InstanceNorm Operation with 3D inputs</p></li>
+<li><p>Support GELU Operation</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>2.10.0</p></td>
+<td><ul class="simple">
+<li><p>Support Pack operation with 1 input.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.9.0</p></td>
+<td><ul class="simple">
+<li><p>Support FLOAT_16 inputs/outputs in Lstm Operation</p></li>
+<li><p>Support non multiple of 4 inputs size in Lstm Operation</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>2.3.0</p></td>
+<td><ul class="simple">
+<li><p>Support INT_8 inputs/outputs in Cast Operation.</p></li>
+<li><p>Support UINT_32 inputs/outputs in StridedSlice Operation.</p></li>
+<li><p>Support INT_32 inputs/outputs in Transpose Operation.</p></li>
+<li><p>Support UINT_8 inputs/outputs in Reshape Operation.</p></li>
+<li><p>Update Tile operation validation to disallow tiling across batch dimension.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.0.0</p></td>
+<td><ul class="simple">
+<li><p>Branched from QNN SDK version 1.15.0</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../hta/hta_opdef_version_history.html" class="btn btn-neutral float-right" title="QNN HTA Op Support Revision History" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../dsp/dsp_opdef_version_history.html" class="btn btn-neutral float-left" title="QNN DSP Op Support Revision History" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

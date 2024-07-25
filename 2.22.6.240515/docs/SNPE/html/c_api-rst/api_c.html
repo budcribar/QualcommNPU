@@ -1,0 +1,243 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>C API &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup1.html">Network Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup6.html">Tutorials and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>C API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="c-api">
+<h1>C API<a class="headerlink" href="#c-api" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="class-hierarchy">
+<h2>Class Hierarchy<a class="headerlink" href="#class-hierarchy" title="Permalink to this heading">¶</a></h2>
+<ul class="treeView" id="class-treeView">
+  <li>
+    <ul class="collapsibleList">
+      <li>Struct <a href="structSnpe__UserBufferData__t.html#exhale-struct-structSnpe-UserBufferData-t">Snpe_UserBufferData_t</a></li><li>Struct <a href="structSnpeUdo__ImpInfo__t.html#exhale-struct-structSnpeUdo-ImpInfo-t">SnpeUdo_ImpInfo_t</a></li><li>Struct <a href="structSnpeUdo__LibraryInfo__t.html#exhale-struct-structSnpeUdo-LibraryInfo-t">SnpeUdo_LibraryInfo_t</a></li><li>Struct <a href="structSnpeUdo__LibVersion__t.html#exhale-struct-structSnpeUdo-LibVersion-t">SnpeUdo_LibVersion_t</a></li><li>Struct <a href="structSnpeUdo__OpCoreInfo__t.html#exhale-struct-structSnpeUdo-OpCoreInfo-t">SnpeUdo_OpCoreInfo_t</a></li><li>Struct <a href="structSnpeUdo__OpDefinition__t.html#exhale-struct-structSnpeUdo-OpDefinition-t">SnpeUdo_OpDefinition_t</a></li><li>Struct <a href="structSnpeUdo__OperationInfo__t.html#exhale-struct-structSnpeUdo-OperationInfo-t">SnpeUdo_OperationInfo_t</a></li><li>Struct <a href="structSnpeUdo__Param__t.html#exhale-struct-structSnpeUdo-Param-t">SnpeUdo_Param_t</a></li><li>Struct <a href="structSnpeUdo__PerCoreDatatype__t.html#exhale-struct-structSnpeUdo-PerCoreDatatype-t">SnpeUdo_PerCoreDatatype_t</a></li><li>Struct <a href="structSnpeUdo__QuantizeParams__t.html#exhale-struct-structSnpeUdo-QuantizeParams-t">SnpeUdo_QuantizeParams_t</a></li><li>Struct <a href="structSnpeUdo__RegInfo__t.html#exhale-struct-structSnpeUdo-RegInfo-t">SnpeUdo_RegInfo_t</a></li><li>Struct <a href="structSnpeUdo__ScalarParam__t.html#exhale-struct-structSnpeUdo-ScalarParam-t">SnpeUdo_ScalarParam_t</a></li><li>Struct <a href="structSnpeUdo__TensorInfo__t.html#exhale-struct-structSnpeUdo-TensorInfo-t">SnpeUdo_TensorInfo_t</a></li><li>Struct <a href="structSnpeUdo__TensorParam__t.html#exhale-struct-structSnpeUdo-TensorParam-t">SnpeUdo_TensorParam_t</a></li><li>Struct <a href="structSnpeUdo__TFQuantize__t.html#exhale-struct-structSnpeUdo-TFQuantize-t">SnpeUdo_TFQuantize_t</a></li><li>Struct <a href="structSnpeUdo__Version__t.html#exhale-struct-structSnpeUdo-Version-t">SnpeUdo_Version_t</a></li><li>Struct <a href="structUdo__PkgVersion__t.html#exhale-struct-structUdo-PkgVersion-t">Udo_PkgVersion_t</a></li><li>Enum <a href="enum_DlEnums_8h_1a13ae607b488079df75f899a0cbabe0dd.html#exhale-enum-DlEnums-8h-1a13ae607b488079df75f899a0cbabe0dd">Snpe_CacheCompatibility_t</a></li><li>Enum <a href="enum_DlEnums_8h_1a82b6ce404384a720c2cf00e4f63e6090.html#exhale-enum-DlEnums-8h-1a82b6ce404384a720c2cf00e4f63e6090">Snpe_DspPerf_PowerMode_t</a></li><li>Enum <a href="enum_DlEnums_8h_1a72e511266d1a6e4a91b92385ecf1c1cc.html#exhale-enum-DlEnums-8h-1a72e511266d1a6e4a91b92385ecf1c1cc">Snpe_DspPerf_VoltageCorner_t</a></li><li>Enum <a href="enum_DlError_8h_1aa40d44ade537087ac80f867eb4e7d50f.html#exhale-enum-DlError-8h-1aa40d44ade537087ac80f867eb4e7d50f">Snpe_ErrorCode_t</a></li><li>Enum <a href="enum_DlEnums_8h_1a5cdef49ab6a3d845d5da0089bda28fce.html#exhale-enum-DlEnums-8h-1a5cdef49ab6a3d845d5da0089bda28fce">Snpe_ExecutionPriorityHint_t</a></li><li>Enum <a href="enum_DlEnums_8h_1a7be6c70ddf7eb36043a75789554da047.html#exhale-enum-DlEnums-8h-1a7be6c70ddf7eb36043a75789554da047">Snpe_ImageEncoding_t</a></li><li>Enum <a href="enum_DlEnums_8h_1acf0d8cb125f583245b27d62ae299f0a9.html#exhale-enum-DlEnums-8h-1acf0d8cb125f583245b27d62ae299f0a9">Snpe_IOBufferDataType_t</a></li><li>Enum <a href="enum_DlEnums_8h_1a4f988c3d3afbaf6e886d9d853e9ea651.html#exhale-enum-DlEnums-8h-1a4f988c3d3afbaf6e886d9d853e9ea651">Snpe_LogLevel_t</a></li><li>Enum <a href="enum_DlEnums_8h_1a2bbf863c52b6010323663938721ed29a.html#exhale-enum-DlEnums-8h-1a2bbf863c52b6010323663938721ed29a">Snpe_PerformanceProfile_t</a></li><li>Enum <a href="enum_PlatformConfig_8h_1ae334d2f4b000086a48b381368fadd576.html#exhale-enum-PlatformConfig-8h-1ae334d2f4b000086a48b381368fadd576">Snpe_PlatformConfig_PlatformType_t</a></li><li>Enum <a href="enum_DlEnums_8h_1a56dcaf62bd867a86649e4cab49a4aadd.html#exhale-enum-DlEnums-8h-1a56dcaf62bd867a86649e4cab49a4aadd">Snpe_ProfilingLevel_t</a></li><li>Enum <a href="enum_PSNPE_8h_1a865198b31282b1a758ea837d27e32fc4.html#exhale-enum-PSNPE-8h-1a865198b31282b1a758ea837d27e32fc4">Snpe_PSNPE_BuildMode_t</a></li><li>Enum <a href="enum_PSNPE_8h_1a8f98c10c4be7163a816d5b7e5d4c9893.html#exhale-enum-PSNPE-8h-1a8f98c10c4be7163a816d5b7e5d4c9893">Snpe_PSNPE_InputOutputTransmissionMode_t</a></li><li>Enum <a href="enum_DlEnums_8h_1a851ce6c63b2bd5515681a906330f7d01.html#exhale-enum-DlEnums-8h-1a851ce6c63b2bd5515681a906330f7d01">Snpe_Runtime_t</a></li><li>Enum <a href="enum_DlEnums_8h_1acdec3885743492063797091205a08274.html#exhale-enum-DlEnums-8h-1acdec3885743492063797091205a08274">Snpe_RuntimeCheckOption_t</a></li><li>Enum <a href="enum_IUserBuffer_8h_1a14deba0524ffaede522cfeb820fb4c74.html#exhale-enum-IUserBuffer-8h-1a14deba0524ffaede522cfeb820fb4c74">Snpe_UserBufferEncoding_ElementType_t</a></li><li>Enum <a href="enum_IUserBuffer_8h_1a7cc7a3b17366f31e43994d87f54581ad.html#exhale-enum-IUserBuffer-8h-1a7cc7a3b17366f31e43994d87f54581ad">Snpe_UserBufferSource_SourceType_t</a></li><li>Enum <a href="enum_group__c__plus__plus__apis_1ga9ee718ab1d7e3422532434c22af9ab6f.html#exhale-enum-group-c-plus-plus-apis-1ga9ee718ab1d7e3422532434c22af9ab6f">SnpeUdo_CoreType_t</a></li><li>Enum <a href="enum_group__c__plus__plus__apis_1ga629ab0e5dcda1a3f5d878e6a0aa33fe5.html#exhale-enum-group-c-plus-plus-apis-1ga629ab0e5dcda1a3f5d878e6a0aa33fe5">SnpeUdo_DataType_t</a></li><li>Enum <a href="enum_group__c__plus__plus__apis_1ga1f02bf39ff236da33ba951188e94b2ea.html#exhale-enum-group-c-plus-plus-apis-1ga1f02bf39ff236da33ba951188e94b2ea">SnpeUdo_ErrorType_t</a></li><li>Enum <a href="enum_group__c__plus__plus__apis_1gaafb3f03ea2c30e0d13b6bdc1198e8c08.html#exhale-enum-group-c-plus-plus-apis-1gaafb3f03ea2c30e0d13b6bdc1198e8c08">SnpeUdo_ParamType_t</a></li><li>Enum <a href="enum_group__c__plus__plus__apis_1gab2c4271bafb2a63b9df8785387b7e583.html#exhale-enum-group-c-plus-plus-apis-1gab2c4271bafb2a63b9df8785387b7e583">SnpeUdo_QuantizationType_t</a></li><li>Enum <a href="enum_group__c__plus__plus__apis_1ga00d2bc98fcace38b177f41157b19180d.html#exhale-enum-group-c-plus-plus-apis-1ga00d2bc98fcace38b177f41157b19180d">SnpeUdo_TensorLayout_t</a></li><li class="lastChild">Union <a href="unionSnpeUdo__Value__t.html#exhale-union-unionSnpeUdo-Value-t">SnpeUdo_Value_t</a></li>
+    </ul>
+  </li><!-- only tree view element -->
+</ul><!-- /treeView class-treeView --></div>
+<div class="section" id="file-hierarchy">
+<h2>File Hierarchy<a class="headerlink" href="#file-hierarchy" title="Permalink to this heading">¶</a></h2>
+<ul class="treeView" id="file-treeView">
+  <li>
+    <ul class="collapsibleList">
+      <li>Directory <a href="dir_DiagLog.html#dir-DiagLog">DiagLog</a><ul><li>File <a href="file_DiagLog_IDiagLog.h.html#file-DiagLog-IDiagLog.h">IDiagLog.h</a></li><li class="lastChild">File <a href="file_DiagLog_Options.h.html#file-DiagLog-Options.h">Options.h</a></li></ul></li><li>Directory <a href="dir_DlContainer.html#dir-DlContainer">DlContainer</a><ul><li class="lastChild">File <a href="file_DlContainer_DlContainer.h.html#file-DlContainer-DlContainer.h">DlContainer.h</a></li></ul></li><li>Directory <a href="dir_DlSystem.html#dir-DlSystem">DlSystem</a><ul><li>File <a href="file_DlSystem_DlEnums.h.html#file-DlSystem-DlEnums.h">DlEnums.h</a></li><li>File <a href="file_DlSystem_DlError.h.html#file-DlSystem-DlError.h">DlError.h</a></li><li>File <a href="file_DlSystem_DlErrorInternal.h.html#file-DlSystem-DlErrorInternal.h">DlErrorInternal.h</a></li><li>File <a href="file_DlSystem_DlVersion.h.html#file-DlSystem-DlVersion.h">DlVersion.h</a></li><li>File <a href="file_DlSystem_IBufferAttributes.h.html#file-DlSystem-IBufferAttributes.h">IBufferAttributes.h</a></li><li>File <a href="file_DlSystem_IOBufferDataTypeMap.h.html#file-DlSystem-IOBufferDataTypeMap.h">IOBufferDataTypeMap.h</a></li><li>File <a href="file_DlSystem_ITensor.h.html#file-DlSystem-ITensor.h">ITensor.h</a></li><li>File <a href="file_DlSystem_IUserBuffer.h.html#file-DlSystem-IUserBuffer.h">IUserBuffer.h</a></li><li>File <a href="file_DlSystem_PlatformConfig.h.html#file-DlSystem-PlatformConfig.h">PlatformConfig.h</a></li><li>File <a href="file_DlSystem_RuntimeList.h.html#file-DlSystem-RuntimeList.h">RuntimeList.h</a></li><li>File <a href="file_DlSystem_SnpeApiExportDefine.h.html#file-DlSystem-SnpeApiExportDefine.h">SnpeApiExportDefine.h</a></li><li>File <a href="file_DlSystem_SNPEPerfProfile.h.html#file-DlSystem-SNPEPerfProfile.h">SNPEPerfProfile.h</a></li><li>File <a href="file_DlSystem_StringList.h.html#file-DlSystem-StringList.h">StringList.h</a></li><li>File <a href="file_DlSystem_TensorMap.h.html#file-DlSystem-TensorMap.h">TensorMap.h</a></li><li>File <a href="file_DlSystem_TensorShape.h.html#file-DlSystem-TensorShape.h">TensorShape.h</a></li><li>File <a href="file_DlSystem_TensorShapeMap.h.html#file-DlSystem-TensorShapeMap.h">TensorShapeMap.h</a></li><li>File <a href="file_DlSystem_UserBufferMap.h.html#file-DlSystem-UserBufferMap.h">UserBufferMap.h</a></li><li class="lastChild">File <a href="file_DlSystem_UserMemoryMap.h.html#file-DlSystem-UserMemoryMap.h">UserMemoryMap.h</a></li></ul></li><li>Directory <a href="dir_PlatformValidator.html#dir-PlatformValidator">PlatformValidator</a><ul><li class="lastChild">File <a href="file_PlatformValidator_PlatformValidator.h.html#file-PlatformValidator-PlatformValidator.h">PlatformValidator.h</a></li></ul></li><li>Directory <a href="dir_SNPE.html#dir-SNPE">SNPE</a><ul><li>File <a href="file_SNPE_ApplicationBufferMap.h.html#file-SNPE-ApplicationBufferMap.h">ApplicationBufferMap.h</a></li><li>File <a href="file_SNPE_PSNPE.h.html#file-SNPE-PSNPE.h">PSNPE.h</a></li><li>File <a href="file_SNPE_RuntimeConfigList.h.html#file-SNPE-RuntimeConfigList.h">RuntimeConfigList.h</a></li><li>File <a href="file_SNPE_SNPE.h.html#file-SNPE-SNPE.h">SNPE.h</a></li><li>File <a href="file_SNPE_SNPEBuilder.h.html#file-SNPE-SNPEBuilder.h">SNPEBuilder.h</a></li><li>File <a href="file_SNPE_SNPEUtil.h.html#file-SNPE-SNPEUtil.h">SNPEUtil.h</a></li><li class="lastChild">File <a href="file_SNPE_UserBufferList.h.html#file-SNPE-UserBufferList.h">UserBufferList.h</a></li></ul></li><li class="lastChild">Directory <a href="dir_SnpeUdo.html#dir-SnpeUdo">SnpeUdo</a><ul><li>File <a href="file_SnpeUdo_UdoBase.h.html#file-SnpeUdo-UdoBase.h">UdoBase.h</a></li><li>File <a href="file_SnpeUdo_UdoReg.h.html#file-SnpeUdo-UdoReg.h">UdoReg.h</a></li><li class="lastChild">File <a href="file_SnpeUdo_UdoShared.h.html#file-SnpeUdo-UdoShared.h">UdoShared.h</a></li></ul></li>
+    </ul>
+  </li><!-- only tree view element -->
+</ul><!-- /treeView file-treeView --></div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

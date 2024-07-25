@@ -1,0 +1,1371 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>snpe-onnx-to-dlc &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup1.html">Network Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup6.html">Tutorials and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>snpe-onnx-to-dlc</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="snpe-onnx-to-dlc">
+<h1>snpe-onnx-to-dlc<a class="headerlink" href="#snpe-onnx-to-dlc" title="Permalink to this heading">¶</a></h1>
+<p>snpe-onnx-to-dlc converts a serialized ONNX model into a
+DLC file.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>usage: snpe-onnx-to-dlc [--out_node OUT_NAMES] [--input_type INPUT_NAME INPUT_TYPE]
+                        [--input_dtype INPUT_NAME INPUT_DTYPE] [--input_encoding INPUT_ENCODING [INPUT_ENCODING ...]]
+                        [--input_layout INPUT_NAME INPUT_LAYOUT] [--custom_io CUSTOM_IO]
+                        [--dry_run [DRY_RUN]] [-d INPUT_NAME INPUT_DIM] [-n] [-b BATCH]
+                        [-s SYMBOL_NAME VALUE]
+                        [--dump_custom_io_config_template DUMP_CUSTOM_IO_CONFIG_TEMPLATE]
+                        [--quantization_overrides QUANTIZATION_OVERRIDES] [--keep_quant_nodes]
+                        [--disable_batchnorm_folding] [--keep_disconnected_nodes] --input_network
+                        INPUT_NETWORK [-h] [--debug [DEBUG]] [-o OUTPUT_PATH]
+                        [--copyright_file COPYRIGHT_FILE] [--float_bw FLOAT_BW]
+                        [--model_version MODEL_VERSION]
+                        [--validation_target RUNTIME_TARGET PROCESSOR_TARGET] [--strict]
+                        [--udo_config_paths CUSTOM_OP_CONFIG_PATHS [CUSTOM_OP_CONFIG_PATHS ...]]
+                        [--op_package_lib OP_PACKAGE_LIB]
+                        [--converter_op_package_lib CONVERTER_OP_PACKAGE_LIB]
+                        [-p PACKAGE_NAME | --op_package_config CUSTOM_OP_CONFIG_PATHS [CUSTOM_OP_CONFIG_PATHS ...]]
+
+Script to convert ONNX model into a DLC file.
+
+required arguments:
+    --input_network INPUT_NETWORK, -i INPUT_NETWORK
+                        Path to the source framework model.
+
+optional arguments:
+    --out_node OUT_NAMES, --out_name OUT_NAMES
+                        Name of the graph&#39;s output Tensor Names. Multiple output names should be
+                        provided separately like:
+                            --out_name out_1 --out_name out_2
+    --input_type INPUT_NAME INPUT_TYPE, -t INPUT_NAME INPUT_TYPE
+                        Type of data expected by each input op/layer. Type for each input is
+                        |default| if not specified. For example: &quot;data&quot; image.Note that the quotes
+                        should always be included in order to handle special characters, spaces,etc.
+                        For multiple inputs specify multiple --input_type on the command line.
+                        Eg:
+                            --input_type &quot;data1&quot; image --input_type &quot;data2&quot; opaque
+                        These options get used by DSP runtime and following descriptions state how
+                        input will be handled for each option.
+                        Image:
+                        Input is float between 0-255 and the input&#39;s mean is 0.0f and the input&#39;s
+                        max is 255.0f. We will cast the float to uint8ts and pass the uint8ts to the
+                        DSP.
+                        Default:
+                        Pass the input as floats to the dsp directly and the DSP will quantize it.
+                        Opaque:
+                        Assumes input is float because the consumer layer(i.e next layer) requires
+                        it as float, therefore it won&#39;t be quantized.
+                        Choices supported:
+                            image
+                            default
+                            opaque
+    --input_dtype INPUT_NAME INPUT_DTYPE
+                        The names and datatype of the network input layers specified in the format
+                        [input_name datatype], for example:
+                            &#39;data&#39; &#39;float32&#39;
+                        Default is float32 if not specified
+                        Note that the quotes should always be included in order to handlespecial
+                        characters, spaces, etc.
+                        For multiple inputs specify multiple --input_dtype on the command line like:
+                            --input_dtype &#39;data1&#39; &#39;float32&#39; --input_dtype &#39;data2&#39; &#39;float32&#39;
+    --input_encoding INPUT_ENCODING [INPUT_ENCODING ...], -e INPUT_ENCODING [INPUT_ENCODING ...]
+                        Usage:     --input_encoding &quot;INPUT_NAME&quot; INPUT_ENCODING_IN
+                        [INPUT_ENCODING_OUT]
+                        Input encoding of the network inputs. Default is bgr.
+                        e.g.
+                            --input_encoding &quot;data&quot; rgba
+                        Quotes must wrap the input node name to handle special characters,
+                        spaces, etc. To specify encodings for multiple inputs, invoke
+                        --input_encoding for each one.
+                        e.g.
+                            --input_encoding &quot;data1&quot; rgba --input_encoding &quot;data2&quot; other
+                        Optionally, an output encoding may be specified for an input node by
+                        providing a second encoding. The default output encoding is bgr.
+                        e.g.
+                            --input_encoding &quot;data3&quot; rgba rgb
+                        Input encoding types:
+                            image color encodings: bgr,rgb, nv21, nv12, ...
+                            time_series: for inputs of rnn models;
+                            other: not available above or is unknown.
+                        Supported encodings:
+                            bgr
+                            rgb
+                            rgba
+                            argb32
+                            nv21
+                            nv12
+                            time_series
+                            other
+    --input_layout INPUT_NAME INPUT_LAYOUT, -l INPUT_NAME INPUT_LAYOUT
+                        Layout of each input tensor. If not specified, it will use the default
+                        based on the Source Framework, shape of input and input encoding.
+                        Accepted values are-
+                            NCDHW, NDHWC, NCHW, NHWC, NFC, NCF, NTF, TNF, NF, NC, F, NONTRIVIAL
+                        N = Batch, C = Channels, D = Depth, H = Height, W = Width, F = Feature, T =
+                        Time
+                        NDHWC/NCDHW used for 5d inputs
+                        NHWC/NCHW used for 4d image-like inputs
+                        NFC/NCF used for inputs to Conv1D or other 1D ops
+                        NTF/TNF used for inputs with time steps like the ones used for LSTM op
+                        NF used for 2D inputs, like the inputs to Dense/FullyConnected layers
+                        NC used for 2D inputs with 1 for batch and other for Channels (rarely used)
+                        F used for 1D inputs, e.g. Bias tensor
+                        NONTRIVIAL for everything elseFor multiple inputs specify multiple
+                        --input_layout on the command line.
+                        Eg:
+                            --input_layout &quot;data1&quot; NCHW --input_layout &quot;data2&quot; NCHW
+                        Note: This flag does not set the layout of the input tensor in the converted DLC.
+                        Please use --custom_io for that.
+    --custom_io CUSTOM_IO
+                        Use this option to specify a yaml file for custom IO.
+    --dry_run [DRY_RUN] Evaluates the model without actually converting any ops, and returns
+                        unsupported ops/attributes as well as unused inputs and/or outputs if any.
+                        Leave empty or specify &quot;info&quot; to see dry run as a table, or specify &quot;debug&quot;
+                        to show more detailed messages only&quot;
+    -d INPUT_NAME INPUT_DIM, --input_dim INPUT_NAME INPUT_DIM
+                        The name and dimension of all the input buffers to the network specified in
+                        the format [input_name comma-separated-dimensions],
+                        for example: &#39;data&#39; 1,224,224,3.
+                        Note that the quotes should always be included in order to handle special
+                        characters, spaces, etc.
+                        NOTE: This feature works only with Onnx 1.6.0 and above
+    -n, --no_simplification
+                        Do not attempt to simplify the model automatically. This may prevent some
+                        models from properly converting
+                        when sequences of unsupported static operations are present.
+    -b BATCH, --batch BATCH
+                        The batch dimension override. This will take the first dimension of all
+                        inputs and treat it as a batch dim, overriding it with the value provided
+                        here. For example:
+                        --batch 6
+                        will result in a shape change from [1,3,224,224] to [6,3,224,224].
+                        If there are inputs without batch dim this should not be used and each input
+                        should be overridden independently using -d option for input dimension
+                        overrides.
+    -s SYMBOL_NAME VALUE, --define_symbol SYMBOL_NAME VALUE
+                        This option allows overriding specific input dimension symbols. For instance
+                        you might see input shapes specified with variables such as :
+                        data: [1,3,height,width]
+                        To override these simply pass the option as:
+                        --define_symbol height 224 --define_symbol width 448
+                        which results in dimensions that look like:
+                        data: [1,3,224,448]
+    --dump_custom_io_config_template DUMP_CUSTOM_IO_CONFIG_TEMPLATE
+                        Dumps the yaml template for Custom I/O configuration. This file canbe edited
+                        as per the custom requirements and passed using the option --custom_ioUse
+                        this option to specify a yaml file to which the custom IO config template is
+                        dumped.
+    --disable_batchnorm_folding
+    --keep_disconnected_nodes
+                        Disable Optimization that removes Ops not connected to the main graph.
+                        This optimization uses output names provided over commandline OR
+                        inputs/outputs extracted from the Source model to determine the main graph
+    -h, --help          show this help message and exit
+    --debug [DEBUG]     Run the converter in debug mode.
+    -o OUTPUT_PATH, --output_path OUTPUT_PATH
+                        Path where the converted Output model should be saved.If not specified, the
+                        converter model will be written to a file with same name as the input model
+    --copyright_file COPYRIGHT_FILE
+                        Path to copyright file. If provided, the content of the file will be added
+                        to the output model.
+    --float_bw FLOAT_BW Use the --float_bw option to select the bitwidth to use when using float for
+                        parameters(weights/bias) and activations for all ops  or specific Op (via
+                        encodings) selected through encoding, either 32 (default) or 16.
+    --model_version MODEL_VERSION
+                        User-defined ASCII string to identify the model, only first 64 bytes will be
+                        stored
+    --validation_target RUNTIME_TARGET PROCESSOR_TARGET
+                        A combination of processor and runtime target against which model will be
+                        validated.
+                        Choices for RUNTIME_TARGET:
+                           {cpu, gpu, dsp}.
+                        Choices for PROCESSOR_TARGET:
+                           {snapdragon_801, snapdragon_820, snapdragon_835}.
+                        If not specified, will validate model against {snapdragon_820,
+                        snapdragon_835} across all runtime targets.
+    --strict            If specified, will validate in strict mode whereby model will not be
+                        produced if it violates constraints of the specified validation target. If
+                        not specified, will validate model in permissive mode against the specified
+                        validation target.
+    --udo_config_paths CUSTOM_OP_CONFIG_PATHS [CUSTOM_OP_CONFIG_PATHS ...], -udo CUSTOM_OP_CONFIG_PATHS [CUSTOM_OP_CONFIG_PATHS ...]
+                        Path to the UDO configs (space separated, if multiple)
+
+Quantizer Options:
+    --quantization_overrides QUANTIZATION_OVERRIDES
+                        Use this option to specify a json file with parameters to use for
+                        quantization. These will override any quantization data carried from
+                        conversion (eg TF fake quantization) or calculated during the normal
+                        quantization process. Format defined as per AIMET specification.
+    --keep_quant_nodes  Use this option to keep activation quantization nodes in the graph rather
+                        than stripping them.
+
+Custom Op Package Options:
+    --op_package_lib OP_PACKAGE_LIB, -opl OP_PACKAGE_LIB
+                        Use this argument to pass an op package library for quantization. Must be in
+                        the form &lt;op_package_lib_path:interfaceProviderName&gt; and be separated by a
+                        comma for multiple package libs
+    --converter_op_package_lib CONVERTER_OP_PACKAGE_LIB, -cpl CONVERTER_OP_PACKAGE_LIB
+                        Path to converter op package library compiled by the OpPackage generator.
+    -p PACKAGE_NAME, --package_name PACKAGE_NAME
+                        A global package name to be used for each node in the Model.cpp file.
+                        Defaults to Qnn header defined package name
+    --op_package_config CUSTOM_OP_CONFIG_PATHS [CUSTOM_OP_CONFIG_PATHS ...], -opc CUSTOM_OP_CONFIG_PATHS [CUSTOM_OP_CONFIG_PATHS ...]
+                        Path to a Qnn Op Package XML configuration file that contains user defined
+                        custom operations.
+
+Note: Only one of: {&#39;op_package_config&#39;, &#39;package_name&#39;} can be specified
+</pre></div>
+</div>
+<p>For more information, see <a class="reference external" href="model_conv_onnx.html">ONNX Model
+Conversion</a></p>
+<div class="line-block">
+<div class="line">Additional details:</div>
+</div>
+<blockquote>
+<div><ul>
+<li><p><em>input_layout argument:</em></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Used with TF2Onnx or Keras2Onnx models when the input layout is NHWC.
+Onnx converter assumes that 4D inputs to the model are used by CNNs and are in NCHW format.
+For Keras2Onnx or TF2Onnx models, where the input is NHWC followed most likely by a transpose
+to NCHW, the converter will fail to successfully convert and optimize the model without the
+use of this argument.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="snpe-pytorch-to-dlc">
+<h1>snpe-pytorch-to-dlc<a class="headerlink" href="#snpe-pytorch-to-dlc" title="Permalink to this heading">¶</a></h1>
+<p>snpe-pytorch-to-dlc converts a serialized PyTorch model into a
+DLC file.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>usage: snpe-pytorch-to-dlc -d INPUT_NAME INPUT_DIM [--out_node OUT_NAMES]
+                           [--input_type INPUT_NAME INPUT_TYPE]
+                           [--input_dtype INPUT_NAME INPUT_DTYPE] [--input_encoding INPUT_ENCODING [INPUT_ENCODING ...]]
+                           [--input_layout INPUT_NAME INPUT_LAYOUT] [--custom_io CUSTOM_IO]
+                           [--dump_relay DUMP_RELAY]
+                           [--quantization_overrides QUANTIZATION_OVERRIDES] [--keep_quant_nodes]
+                           [--disable_batchnorm_folding] [--keep_disconnected_nodes] --input_network
+                           INPUT_NETWORK [-h] [--debug [DEBUG]] [-o OUTPUT_PATH]
+                           [--copyright_file COPYRIGHT_FILE] [--float_bw FLOAT_BW]
+                           [--model_version MODEL_VERSION]
+                           [--validation_target RUNTIME_TARGET PROCESSOR_TARGET] [--strict]
+                           [--udo_config_paths CUSTOM_OP_CONFIG_PATHS [CUSTOM_OP_CONFIG_PATHS ...]]
+                           [--op_package_lib OP_PACKAGE_LIB]
+                           [--converter_op_package_lib CONVERTER_OP_PACKAGE_LIB]
+                           [-p PACKAGE_NAME | --op_package_config CUSTOM_OP_CONFIG_PATHS [CUSTOM_OP_CONFIG_PATHS ...]]
+
+
+Script to convert PyTorch model into DLC
+
+required arguments:
+    -d INPUT_NAME INPUT_DIM, --input_dim INPUT_NAME INPUT_DIM
+                        The names and dimensions of the network input layers specified in the format
+                        [input_name comma-separated-dimensions], for example:
+                            &#39;data&#39; 1,3,224,224
+                        Note that the quotes should always be included in order to handle special
+                        characters, spaces, etc. For multiple inputs specify multiple --input_dim on the command line like:
+                            --input_dim &#39;data1&#39; 1,3,224,224 --input_dim &#39;data2&#39; 1,50,100,3
+    --input_network INPUT_NETWORK, -i INPUT_NETWORK
+                        Path to the source framework model.
+
+optional arguments:
+    --out_node OUT_NAMES, --out_name OUT_NAMES
+                        Name of the graph&#39;s output Tensor Names. Multiple output names should be
+                        provided separately like:
+                            --out_name out_1 --out_name out_2
+    --input_type INPUT_NAME INPUT_TYPE, -t INPUT_NAME INPUT_TYPE
+                        Type of data expected by each input op/layer. Type for each input is
+                        |default| if not specified. For example: &quot;data&quot; image.Note that the quotes
+                        should always be included in order to handle special characters, spaces,etc.
+                        For multiple inputs specify multiple --input_type on the command line.
+                        Eg:
+                           --input_type &quot;data1&quot; image --input_type &quot;data2&quot; opaque
+                        These options get used by DSP runtime and following descriptions state how
+                        input will be handled for each option.
+                        Image:
+                        Input is float between 0-255 and the input&#39;s mean is 0.0f and the input&#39;s
+                        max is 255.0f. We will cast the float to uint8ts and pass the uint8ts to the
+                        DSP.
+                        Default:
+                        Pass the input as floats to the dsp directly and the DSP will quantize it.
+                        Opaque:
+                        Assumes input is float because the consumer layer(i.e next layer) requires
+                        it as float, therefore it won&#39;t be quantized.
+                        Choices supported:
+                           image
+                           default
+                           opaque
+    --input_dtype INPUT_NAME INPUT_DTYPE
+                        The names and datatype of the network input layers specified in the format
+                        [input_name datatype], for example:
+                            &#39;data&#39; &#39;float32&#39;
+                        Default is float32 if not specified.
+                        Note that the quotes should always be included in order to handle special
+                        characters, spaces, etc.
+                        For multiple inputs specify multiple --input_dtype on the command line like:
+                            --input_dtype &#39;data1&#39; &#39;float32&#39; --input_dtype &#39;data2&#39; &#39;float32&#39;
+  --input_encoding INPUT_ENCODING [INPUT_ENCODING ...], -e INPUT_ENCODING [INPUT_ENCODING ...]
+                        Usage:     --input_encoding &quot;INPUT_NAME&quot; INPUT_ENCODING_IN
+                        [INPUT_ENCODING_OUT]
+                        Input encoding of the network inputs. Default is bgr.
+                        e.g.
+                           --input_encoding &quot;data&quot; rgba
+                        Quotes must wrap the input node name to handle special characters,
+                        spaces, etc. To specify encodings for multiple inputs, invoke
+                        --input_encoding for each one.
+                        e.g.
+                            --input_encoding &quot;data1&quot; rgba --input_encoding &quot;data2&quot; other
+                        Optionally, an output encoding may be specified for an input node by
+                        providing a second encoding. The default output encoding is bgr.
+                        e.g.
+                            --input_encoding &quot;data3&quot; rgba rgb
+                        Input encoding types:
+                             image color encodings: bgr,rgb, nv21, nv12, ...
+                            time_series: for inputs of rnn models;
+                            other: not available above or is unknown.
+                        Supported encodings:
+                            bgr
+                            rgb
+                            rgba
+                            argb32
+                            nv21
+                            nv12
+                            time_series
+                            other
+    --input_layout INPUT_NAME INPUT_LAYOUT, -l INPUT_NAME INPUT_LAYOUT
+                        Layout of each input tensor. If not specified, it will use the default
+                        based on the Source Framework, shape of input and input encoding.
+                        Accepted values are-
+                            NCDHW, NDHWC, NCHW, NHWC, NFC, NCF, NTF, TNF, NF, NC, F, NONTRIVIAL
+                        N = Batch, C = Channels, D = Depth, H = Height, W = Width, F = Feature, T = Time
+                        NDHWC/NCDHW used for 5d inputs
+                        NHWC/NCHW used for 4d image-like inputs
+                        NFC/NCF used for inputs to Conv1D or other 1D ops
+                        NTF/TNF used for inputs with time steps like the ones used for LSTM op
+                        NF used for 2D inputs, like the inputs to Dense/FullyConnected layers
+                        NC used for 2D inputs with 1 for batch and other for Channels (rarely used)
+                        F used for 1D inputs, e.g. Bias tensor
+                        NONTRIVIAL for everything elseFor multiple inputs specify multiple
+                        --input_layout on the command line.
+                        Eg:
+                            --input_layout &quot;data1&quot; NCHW --input_layout &quot;data2&quot; NCHW
+                        Note: This flag does not set the layout of the input tensor in the converted DLC.
+    --custom_io CUSTOM_IO
+                        Use this option to specify a yaml file for custom IO.
+    --dump_relay DUMP_RELAY
+                        Dump Relay ASM and Params at the path provided with the argument
+                        Usage: --dump_relay &lt;path_to_dump&gt;
+    --disable_batchnorm_folding
+    --keep_disconnected_nodes
+                        Disable Optimization that removes Ops not connected to the main graph.
+                        This optimization uses output names provided over commandline OR
+                        inputs/outputs extracted from the Source model to determine the main graph
+    -h, --help            show this help message and exit
+    -o OUTPUT_PATH, --output_path OUTPUT_PATH
+                        Path where the converted Output model should be saved.If not specified, the
+                        converter model will be written to a file with same name as the input model
+    --copyright_file COPYRIGHT_FILE
+                        Path to copyright file. If provided, the content of the file will be added
+                        to the output model.
+    --model_version MODEL_VERSION
+                        User-defined ASCII string to identify the model, only first 64 bytes will be
+                        stored
+    --validation_target RUNTIME_TARGET PROCESSOR_TARGET
+                        A combination of processor and runtime target against which model will be
+                        validated.
+                        Choices for RUNTIME_TARGET:
+                           {cpu, gpu, dsp}.
+                        Choices for PROCESSOR_TARGET:
+                           {snapdragon_801, snapdragon_820, snapdragon_835}.
+                        If not specified, will validate model against {snapdragon_820,
+                        snapdragon_835} across all runtime targets.
+    --strict            If specified, will validate in strict mode whereby model will not be
+                        produced if it violates constraints of the specified validation target. If
+                        not specified, will validate model in permissive mode against the specified
+                        validation target.
+    --udo_config_paths  UDO_CONFIG_PATHS [UDO_CONFIG_PATHS ...], -udo UDO_CONFIG_PATHS
+                        [UDO_CONFIG_PATHS ...]
+                            Path to the UDO configs (space separated, if multiple)
+
+Quantizer Options:
+    --quantization_overrides QUANTIZATION_OVERRIDES
+                        Use this option to specify a json file with parameters to use for
+                        quantization. These will override any quantization data carried from
+                        conversion (eg TF fake quantization) or calculated during the normal
+                        quantization process. Format defined as per AIMET specification.
+    --keep_quant_nodes  Use this option to keep activation quantization nodes in the graph rather
+                        than stripping them.
+
+Custom Op Package Options:
+    --op_package_lib OP_PACKAGE_LIB, -opl OP_PACKAGE_LIB
+                        Use this argument to pass an op package library for quantization. Must be in
+                        the form &lt;op_package_lib_path:interfaceProviderName&gt; and be separated by a
+                        comma for multiple package libs
+    --converter_op_package_lib CONVERTER_OP_PACKAGE_LIB, -cpl CONVERTER_OP_PACKAGE_LIB
+                        Path to converter op package library compiled by the OpPackage generator.
+    -p PACKAGE_NAME, --package_name PACKAGE_NAME
+                        A global package name to be used for each node in the Model.cpp file.
+                        Defaults to Qnn header defined package name
+    --op_package_config CUSTOM_OP_CONFIG_PATHS [CUSTOM_OP_CONFIG_PATHS ...], -opc CUSTOM_OP_CONFIG_PATHS [CUSTOM_OP_CONFIG_PATHS ...]
+                        Path to a Qnn Op Package XML configuration file that contains user defined
+                        custom operations.
+
+Note: Only one of: {&#39;package_name&#39;, &#39;op_package_config&#39;} can be specified
+</pre></div>
+</div>
+<p>For more information, see <a class="reference external" href="model_conv_pytorch.html">PyTorch Model
+Conversion</a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="snpe-tensorflow-to-dlc">
+<h1>snpe-tensorflow-to-dlc<a class="headerlink" href="#snpe-tensorflow-to-dlc" title="Permalink to this heading">¶</a></h1>
+<p>snpe-tensorflow-to-dlc converts a TensorFlow model into a
+DLC file.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>usage: snpe-tensorflow-to-dlc -d INPUT_NAME INPUT_DIM --out_node OUT_NAMES
+                              [--input_type INPUT_NAME INPUT_TYPE]
+                              [--input_dtype INPUT_NAME INPUT_DTYPE] [--input_encoding  [ ...]]
+                              [--input_layout INPUT_NAME INPUT_LAYOUT] [--custom_io CUSTOM_IO]
+                              [--show_unconsumed_nodes] [--saved_model_tag SAVED_MODEL_TAG]
+                              [--saved_model_signature_key SAVED_MODEL_SIGNATURE_KEY]
+                              [--quantization_overrides QUANTIZATION_OVERRIDES] [--keep_quant_nodes]
+                              [--disable_batchnorm_folding] [--keep_disconnected_nodes]
+                              --input_network INPUT_NETWORK [-h] [--debug [DEBUG]] [-o OUTPUT_PATH]
+                              [--copyright_file COPYRIGHT_FILE] [--float_bw FLOAT_BW]
+                              [--model_version MODEL_VERSION]
+                              [--validation_target RUNTIME_TARGET PROCESSOR_TARGET] [--strict]
+                              [--udo_config_paths CUSTOM_OP_CONFIG_PATHS [CUSTOM_OP_CONFIG_PATHS ...]]
+                              [--op_package_lib OP_PACKAGE_LIB]
+                              [--converter_op_package_lib CONVERTER_OP_PACKAGE_LIB]
+                              [-p PACKAGE_NAME | --op_package_config CUSTOM_OP_CONFIG_PATHS [CUSTOM_OP_CONFIG_PATHS ...]]
+
+Script to convert TF model into DLC.
+
+required arguments:
+    -d INPUT_NAME INPUT_DIM, --input_dim INPUT_NAME INPUT_DIM
+                        The names and dimensions of the network input layers specified in the format
+                        [input_name comma-separated-dimensions], for example:
+                            &#39;data&#39; 1,224,224,3
+                        Note that the quotes should always be included in order to handle special
+                        characters, spaces, etc.
+                        For multiple inputs specify multiple --input_dim on the command line like:
+                            --input_dim &#39;data1&#39; 1,224,224,3 --input_dim &#39;data2&#39; 1,50,100,3
+    --out_node OUT_NAMES, --out_name OUT_NAMES
+                        Name of the graph&#39;s output Tensor Names. Multiple output names should be
+                        provided separately like:
+                            --out_name out_1 --out_name out_2
+    --input_network INPUT_NETWORK, -i INPUT_NETWORK
+                        Path to the source framework model.
+
+optional arguments:
+    --input_type INPUT_NAME INPUT_TYPE, -t INPUT_NAME INPUT_TYPE
+                        Type of data expected by each input op/layer. Type for each input is
+                        |default| if not specified. For example: &quot;data&quot; image.Note that the quotes
+                        should always be included in order to handle special characters, spaces,etc.
+                        For multiple inputs specify multiple --input_type on the command line.
+                        Eg:
+                           --input_type &quot;data1&quot; image --input_type &quot;data2&quot; opaque
+                        These options get used by DSP runtime and following descriptions state how
+                        input will be handled for each option.
+                        Image:
+                        Input is float between 0-255 and the input&#39;s mean is 0.0f and the input&#39;s
+                        max is 255.0f. We will cast the float to uint8ts and pass the uint8ts to the
+                        DSP.
+                        Default:
+                        Pass the input as floats to the dsp directly and the DSP will quantize it.
+                        Opaque:
+                        Assumes input is float because the consumer layer(i.e next layer) requires
+                        it as float, therefore it won&#39;t be quantized.
+                        Choices supported:
+                           image
+                           default
+                           opaque
+    --input_dtype INPUT_NAME INPUT_DTYPE
+                        The names and datatype of the network input layers specified in the format
+                        [input_name datatype], for example:
+                            &#39;data&#39; &#39;float32&#39;
+                        Default is float32 if not specified
+                        Note that the quotes should always be included in order to handlespecial
+                        characters, spaces, etc.
+                        For multiple inputs specify multiple --input_dtype on the command line like:
+                            --input_dtype &#39;data1&#39; &#39;float32&#39; --input_dtype &#39;data2&#39; &#39;float32&#39;
+    --input_encoding INPUT_ENCODING [INPUT_ENCODING ...], -e INPUT_ENCODING [INPUT_ENCODING ...]
+                        Usage:     --input_encoding &quot;INPUT_NAME&quot; INPUT_ENCODING_IN
+                        [INPUT_ENCODING_OUT]
+                        Input encoding of the network inputs. Default is bgr.
+                        e.g.
+                           --input_encoding &quot;data&quot; rgba
+                        Quotes must wrap the input node name to handle special characters,
+                        spaces, etc. To specify encodings for multiple inputs, invoke
+                        --input_encoding for each one.
+                        e.g.
+                            --input_encoding &quot;data1&quot; rgba --input_encoding &quot;data2&quot; other
+                        Optionally, an output encoding may be specified for an input node by
+                        providing a second encoding. The default output encoding is bgr.
+                        e.g.
+                            --input_encoding &quot;data3&quot; rgba rgb
+                        Input encoding types:
+                            image color encodings: bgr,rgb, nv21, nv12, ...
+                            time_series: for inputs of rnn models;
+                            other: not available above or is unknown.
+                        Supported encodings:
+                            bgr
+                            rgb
+                            rgba
+                            argb32
+                            nv21
+                            nv12
+                            time_series
+                            other
+    --input_layout INPUT_NAME INPUT_LAYOUT, -l INPUT_NAME INPUT_LAYOUT
+                        Layout of each input tensor. If not specified, it will use the default
+                        based on the Source Framework, shape of input and input encoding.
+                        Accepted values are-
+                            NCDHW, NDHWC, NCHW, NHWC, NFC, NCF, NTF, TNF, NF, NC, F, NONTRIVIAL
+                        N = Batch, C = Channels, D = Depth, H = Height, W = Width, F = Feature, T = Time
+                        NDHWC/NCDHW used for 5d inputs
+                        NHWC/NCHW used for 4d image-like inputs
+                        NFC/NCF used for inputs to Conv1D or other 1D ops
+                        NTF/TNF used for inputs with time steps like the ones used for LSTM op
+                        NF used for 2D inputs, like the inputs to Dense/FullyConnected layers
+                        NC used for 2D inputs with 1 for batch and other for Channels (rarely used)
+                        F used for 1D inputs, e.g. Bias tensor
+                        NONTRIVIAL for everything elseFor multiple inputs specify multiple
+                        --input_layout on the command line.
+                        Eg:
+                            --input_layout &quot;data1&quot; NCHW --input_layout &quot;data2&quot; NCHW
+                        Note: This flag does not set the layout of the input tensor in the converted DLC.
+    --custom_io CUSTOM_IO
+                        Use this option to specify a yaml file for custom IO.
+    --show_unconsumed_nodes
+                        Displays a list of unconsumed nodes, if there any are found. Nodes which are
+                        unconsumed do not violate the structural fidelity of the generated graph.
+    --saved_model_tag SAVED_MODEL_TAG
+                        Specify the tag to seletet a MetaGraph from savedmodel. ex:
+                        --saved_model_tag serve. Default value will be &#39;serve&#39; when it is not
+                        assigned.
+    --saved_model_signature_key SAVED_MODEL_SIGNATURE_KEY
+                        Specify signature key to select input and output of the model. ex:
+                        --saved_model_signature_key serving_default. Default value will be
+                        &#39;serving_default&#39; when it is not assigned
+    --disable_batchnorm_folding
+    --keep_disconnected_nodes
+                        Disable Optimization that removes Ops not connected to the main graph.
+                        This optimization uses output names provided over commandline OR
+                        inputs/outputs extracted from the Source model to determine the main graph
+    -h, --help          show this help message and exit
+    --debug [DEBUG]     Run the converter in debug mode.
+    -o OUTPUT_PATH, --output_path OUTPUT_PATH
+                        Path where the converted Output model should be saved.If not specified, the
+                        converter model will be written to a file with same name as the input model
+    --copyright_file COPYRIGHT_FILE
+                        Path to copyright file. If provided, the content of the file will be added
+                        to the output model.
+    --float_bw FLOAT_BW   Use the --float_bw option to select the bitwidth to use when using float for
+                        parameters(weights/bias) and activations for all ops  or specific Op (via
+                        encodings) selected through encoding, either 32 (default) or 16.
+    --model_version MODEL_VERSION
+                        User-defined ASCII string to identify the model, only first 64 bytes will be
+                        stored
+    --validation_target RUNTIME_TARGET PROCESSOR_TARGET
+                        A combination of processor and runtime target against which model will be
+                        validated.
+                        Choices for RUNTIME_TARGET:
+                           {cpu, gpu, dsp}.
+                        Choices for PROCESSOR_TARGET:
+                           {snapdragon_801, snapdragon_820, snapdragon_835}.
+                        If not specified, will validate model against {snapdragon_820,
+                        snapdragon_835} across all runtime targets.
+    --strict              If specified, will validate in strict mode whereby model will not be
+                        produced if it violates constraints of the specified validation target. If
+                        not specified, will validate model in permissive mode against the specified
+                        validation target.
+    --udo_config_paths CUSTOM_OP_CONFIG_PATHS [CUSTOM_OP_CONFIG_PATHS ...], -udo CUSTOM_OP_CONFIG_PATHS
+                        [CUSTOM_OP_CONFIG_PATHS ...]
+                        Path to the UDO configs (space separated, if multiple)
+
+Quantizer Options:
+    --quantization_overrides QUANTIZATION_OVERRIDES
+                        Use this option to specify a json file with parameters to use for
+                        quantization. These will override any quantization data carried from
+                        conversion (eg TF fake quantization) or calculated during the normal
+                        quantization process. Format defined as per AIMET specification.
+    --keep_quant_nodes    Use this option to keep activation quantization nodes in the graph rather
+                        than stripping them.
+
+Custom Op Package Options:
+    --op_package_lib OP_PACKAGE_LIB, -opl OP_PACKAGE_LIB
+                        Use this argument to pass an op package library for quantization. Must be in
+                        the form &lt;op_package_lib_path:interfaceProviderName&gt; and be separated by a
+                        comma for multiple package libs
+    --converter_op_package_lib CONVERTER_OP_PACKAGE_LIB, -cpl CONVERTER_OP_PACKAGE_LIB
+                        Path to converter op package library compiled by the OpPackage generator.
+    -p PACKAGE_NAME, --package_name PACKAGE_NAME
+                        A global package name to be used for each node in the Model.cpp file.
+                        Defaults to Qnn header defined package name
+    --op_package_config CUSTOM_OP_CONFIG_PATHS [CUSTOM_OP_CONFIG_PATHS ...], -opc CUSTOM_OP_CONFIG_PATHS [CUSTOM_OP_CONFIG_PATHS ...]
+                        Path to a Qnn Op Package XML configuration file that contains user defined
+                        custom operations.
+
+Note: Only one of: {&#39;package_name&#39;, &#39;op_package_config&#39;} can be specified
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">For more information, see <a class="reference external" href="model_conv_tensorflow.html">TensorFlow Model Conversion</a></div>
+<div class="line">Additional details:</div>
+</div>
+<ul>
+<li><p><em>input_network argument:</em></p>
+<blockquote>
+<div><ul>
+<li><p>The converter supports a single frozen graph .pb file, a
+path to a pair of graph meta and checkpoint files, or the
+path to a SavedModel directory (TF 2.x).</p></li>
+<li><p>If you are using the TensorFlow
+Saver to save your graph during training, 3 files will be
+generated as described below:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>&lt;model-name&gt;.meta</p></li>
+<li><p>&lt;model-name&gt;</p></li>
+<li><p>checkpoint</p></li>
+</ol>
+</div></blockquote>
+</li>
+<li><p>The converter –input_network option specifies the path
+to the graph meta file. The converter will also use the
+checkpoint file to read the graph nodes parameters during
+conversion. The checkpoint file must have the same name
+without the .meta suffix.</p></li>
+<li><p>This argument is required.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><em>input_dim argument:</em></p>
+<blockquote>
+<div><ul>
+<li><p>Specifies the input dimensions of the graph’s input
+node(s)</p></li>
+<li><p>The converter requires a node name along with dimensions
+as input from which it will create an input layer by
+using the node output tensor dimensions. When defining a
+graph, there is typically a placeholder name used as
+input during training in the graph. The placeholder
+tensor name is the name you must use as the argument. It
+is also possible to use other types of nodes as input,
+however the node used as input will not be used as part
+of a layer other than the input layer.</p></li>
+<li><p><strong>Multiple Inputs</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Networks with multiple inputs must provide
+–<strong>input_dim</strong> INPUT_NAME INPUT_DIM, one for each
+input node.</p></li>
+<li><p>This argument is required.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><em>out_node argument:</em></p>
+<blockquote>
+<div><ul>
+<li><p>The name of the last node in your TensorFlow graph which
+will represent the output layer of your network.</p></li>
+<li><p><strong>Multiple Outputs</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Networks with multiple outputs must provide several
+–<strong>out_node</strong> arguments, one for each output node.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><em>output_path argument:</em></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Specifies the output DLC file name.</p></li>
+<li><p>This argument is optional. If not provided the converter
+will create a DLC file with the same name as the graph
+file name, with a .dlc file extension.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>SavedModel is the default model format in TensorFlow 2 and
+can been supported in Qualcomm® Neural Processing SDK TensorFlow Converter now.</p></li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="snpe-tflite-to-dlc">
+<h1>snpe-tflite-to-dlc<a class="headerlink" href="#snpe-tflite-to-dlc" title="Permalink to this heading">¶</a></h1>
+<p>snpe-tflite-to-dlc converts a TFLite model into a DLC
+file.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>usage: snpe-tflite-to-dlc -d INPUT_NAME INPUT_DIM [--out_node OUT_NAMES]
+                          [--input_type INPUT_NAME INPUT_TYPE]
+                          [--input_dtype INPUT_NAME INPUT_DTYPE] [--input_encoding  [ ...]]
+                          [--input_layout INPUT_NAME INPUT_LAYOUT] [--custom_io CUSTOM_IO]
+                          [--dump_relay DUMP_RELAY]
+                          [--quantization_overrides QUANTIZATION_OVERRIDES] [--keep_quant_nodes]
+                          [--disable_batchnorm_folding] [--keep_disconnected_nodes] --input_network
+                          INPUT_NETWORK [-h] [--debug [DEBUG]] [-o OUTPUT_PATH]
+                          [--copyright_file COPYRIGHT_FILE] [--float_bw FLOAT_BW]
+                          [--model_version MODEL_VERSION]
+                          [--validation_target RUNTIME_TARGET PROCESSOR_TARGET] [--strict]
+                          [--udo_config_paths CUSTOM_OP_CONFIG_PATHS [CUSTOM_OP_CONFIG_PATHS ...]]
+                          [--op_package_lib OP_PACKAGE_LIB]
+                          [--converter_op_package_lib CONVERTER_OP_PACKAGE_LIB]
+                          [-p PACKAGE_NAME | --op_package_config CUSTOM_OP_CONFIG_PATHS [CUSTOM_OP_CONFIG_PATHS ...]]
+
+Script to convert TFLite model into DLC
+
+required arguments:
+    -d INPUT_NAME INPUT_DIM, --input_dim INPUT_NAME INPUT_DIM
+                        The names and dimensions of the network input layers specified in the format
+                        [input_name comma-separated-dimensions], for example:
+                            &#39;data&#39; 1,224,224,3
+                        Note that the quotes should always be included in order to handlespecial
+                        characters, spaces, etc.
+                        For multiple inputs specify multiple --input_dim on the command line like:
+                            --input_dim &#39;data1&#39; 1,224,224,3 --input_dim &#39;data2&#39; 1,50,100,3
+    --input_network INPUT_NETWORK, -i INPUT_NETWORK
+                        Path to the source framework model.
+
+optional arguments:
+optional arguments:
+    --out_node OUT_NAMES, --out_name OUT_NAMES
+                        Name of the graph&#39;s output Tensor Names. Multiple output names should be
+                        provided separately like:
+                            --out_name out_1 --out_name out_2
+    --input_type INPUT_NAME INPUT_TYPE, -t INPUT_NAME INPUT_TYPE
+                        Type of data expected by each input op/layer. Type for each input is
+                        |default| if not specified. For example: &quot;data&quot; image.Note that the quotes
+                        should always be included in order to handle special characters, spaces,etc.
+                        For multiple inputs specify multiple --input_type on the command line.
+                        Eg:
+                           --input_type &quot;data1&quot; image --input_type &quot;data2&quot; opaque
+                        These options get used by DSP runtime and following descriptions state how
+                        input will be handled for each option.
+                        Image:
+                        Input is float between 0-255 and the input&#39;s mean is 0.0f and the input&#39;s
+                        max is 255.0f. We will cast the float to uint8ts and pass the uint8ts to the
+                        DSP.
+                        Default:
+                        Pass the input as floats to the dsp directly and the DSP will quantize it.
+                        Opaque:
+                        Assumes input is float because the consumer layer(i.e next layer) requires
+                        it as float, therefore it won&#39;t be quantized.
+                        Choices supported:
+                           image
+                           default
+                           opaque
+    --input_dtype INPUT_NAME INPUT_DTYPE
+                        The names and datatype of the network input layers specified in the format
+                        [input_name datatype], for example:
+                            &#39;data&#39; &#39;float32&#39;
+                        Default is float32 if not specified
+                        Note that the quotes should always be included in order to handlespecial
+                        characters, spaces, etc.
+                        For multiple inputs specify multiple --input_dtype on the command line like:
+                            --input_dtype &#39;data1&#39; &#39;float32&#39; --input_dtype &#39;data2&#39; &#39;float32&#39;
+    --input_encoding INPUT_ENCODING [INPUT_ENCODING ...], -e INPUT_ENCODING [INPUT_ENCODING ...]
+                        Usage:     --input_encoding &quot;INPUT_NAME&quot; INPUT_ENCODING_IN
+                        [INPUT_ENCODING_OUT]
+                        Input encoding of the network inputs. Default is bgr.
+                        e.g.
+                           --input_encoding &quot;data&quot; rgba
+                        Quotes must wrap the input node name to handle special characters,
+                        spaces, etc. To specify encodings for multiple inputs, invoke
+                        --input_encoding for each one.
+                        e.g.
+                            --input_encoding &quot;data1&quot; rgba --input_encoding &quot;data2&quot; other
+                        Optionally, an output encoding may be specified for an input node by
+                        providing a second encoding. The default output encoding is bgr.
+                        e.g.
+                            --input_encoding &quot;data3&quot; rgba rgb
+                        Input encoding types:
+                             image color encodings: bgr,rgb, nv21, nv12, ...
+                            time_series: for inputs of rnn models;
+                            other: not available above or is unknown.
+                        Supported encodings:
+                            bgr
+                            rgb
+                            rgba
+                            argb32
+                            nv21
+                            nv12
+                            time_series
+                            other
+    --input_layout INPUT_NAME INPUT_LAYOUT, -l INPUT_NAME INPUT_LAYOUT
+                        Layout of each input tensor. If not specified, it will use the default
+                        based on the Source Framework, shape of input and input encoding.
+                        Accepted values are-
+                            NCDHW, NDHWC, NCHW, NHWC, NFC, NCF, NTF, TNF, NF, NC, F, NONTRIVIAL
+                        N = Batch, C = Channels, D = Depth, H = Height, W = Width, F = Feature, T = Time
+                        NDHWC/NCDHW used for 5d inputs
+                        NHWC/NCHW used for 4d image-like inputs
+                        NFC/NCF used for inputs to Conv1D or other 1D ops
+                        NTF/TNF used for inputs with time steps like the ones used for LSTM op
+                        NF used for 2D inputs, like the inputs to Dense/FullyConnected layers
+                        NC used for 2D inputs with 1 for batch and other for Channels (rarely used)
+                        F used for 1D inputs, e.g. Bias tensor
+                        NONTRIVIAL for everything elseFor multiple inputs specify multiple
+                        --input_layout on the command line.
+                        Eg:
+                            --input_layout &quot;data1&quot; NCHW --input_layout &quot;data2&quot; NCHW
+                        Note: This flag does not set the layout of the input tensor in the converted DLC.
+    --custom_io CUSTOM_IO
+                        Use this option to specify a yaml file for custom IO.
+    --dump_relay DUMP_RELAY
+                        Dump Relay ASM and Params at the path provided with the argument
+                        Usage: --dump_relay &lt;path_to_dump&gt;
+    --disable_batchnorm_folding
+    --keep_disconnected_nodes
+                        Disable Optimization that removes Ops not connected to the main graph.
+                        This optimization uses output names provided over commandline OR
+                        inputs/outputs extracted from the Source model to determine the main graph
+    -h, --help          show this help message and exit
+    --debug [DEBUG]     Run the converter in debug mode.
+    -o OUTPUT_PATH, --output_path OUTPUT_PATH
+                        Path where the converted Output model should be saved.If not specified, the
+                        converter model will be written to a file with same name as the input model
+    --copyright_file COPYRIGHT_FILE
+                        Path to copyright file. If provided, the content of the file will be added
+                        to the output model.
+    --model_version MODEL_VERSION
+                        User-defined ASCII string to identify the model, only first 64 bytes will be
+                        stored
+    --validation_target RUNTIME_TARGET PROCESSOR_TARGET
+                        A combination of processor and runtime target against which model will be
+                        validated.
+                        Choices for RUNTIME_TARGET:
+                           {cpu, gpu, dsp}.
+                        Choices for PROCESSOR_TARGET:
+                           {snapdragon_801, snapdragon_820, snapdragon_835}.
+                        If not specified, will validate model against {snapdragon_820,
+                        snapdragon_835} across all runtime targets.
+    --strict            If specified, will validate in strict mode whereby model will not
+                        be produced if it violates constraints of the specified validation target. If
+                        not specified, will validate model in permissive mode against the specified
+                        validation target.
+    --udo_config_paths CUSTOM_OP_CONFIG_PATHS [CUSTOM_OP_CONFIG_PATHS ...], -udo CUSTOM_OP_CONFIG_PATHS
+                        [CUSTOM_OP_CONFIG_PATHS ...]
+                        Path to the UDO configs (space separated, if multiple)
+
+Quantizer Options:
+    --quantization_overrides QUANTIZATION_OVERRIDES
+                        Use this option to specify a json file with parameters to use for
+                        quantization. These will override any quantization data carried from
+                        conversion (eg TF fake quantization) or calculated during the normal
+                        quantization process. Format defined as per AIMET specification.
+    --keep_quant_nodes  Use this option to keep activation quantization nodes in the graph rather
+                        than stripping them.
+
+Custom Op Package Options:
+    --op_package_lib OP_PACKAGE_LIB, -opl OP_PACKAGE_LIB
+                        Use this argument to pass an op package library for quantization. Must be in
+                        the form &lt;op_package_lib_path:interfaceProviderName&gt; and be separated by a
+                        comma for multiple package libs
+    --converter_op_package_lib CONVERTER_OP_PACKAGE_LIB, -cpl CONVERTER_OP_PACKAGE_LIB
+                        Path to converter op package library compiled by the OpPackage generator.
+    -p PACKAGE_NAME, --package_name PACKAGE_NAME
+                        A global package name to be used for each node in the Model.cpp file.
+                        Defaults to Qnn header defined package name
+    --op_package_config CUSTOM_OP_CONFIG_PATHS [CUSTOM_OP_CONFIG_PATHS ...], -opc CUSTOM_OP_CONFIG_PATHS [CUSTOM_OP_CONFIG_PATHS ...]
+                        Path to a Qnn Op Package XML configuration file that contains user defined
+                        custom operations.
+
+Note: Only one of: {&#39;package_name&#39;, &#39;op_package_config&#39;} can be specified
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">For more information, see <a class="reference external" href="model_conv_tflite.html">TFLite Model Conversion</a></div>
+<div class="line">Additional details:</div>
+</div>
+<ul>
+<li><p><em>input_network argument:</em></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The converter supports a single .tflite file.</p></li>
+<li><p>The converter –input_network option specifies the path
+to the .tflite file.</p></li>
+<li><p>This argument is required.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><em>input_dim argument:</em></p>
+<blockquote>
+<div><ul>
+<li><p>Specifies the input dimensions of the graph’s input
+node(s)</p></li>
+<li><p>The converter requires a node name along with dimensions
+as input from which it will create an input layer by
+using the node output tensor dimensions. When defining a
+graph, there is typically a placeholder name used as
+input during training in the graph. The placeholder
+tensor name is the name you must use as the argument. It
+is also possible to use other types of nodes as input,
+however the node used as input will not be used as part
+of a layer other than the input layer.</p></li>
+<li><p><strong>Multiple Inputs</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Networks with multiple inputs must provide
+–<strong>input_dim</strong> INPUT_NAME INPUT_DIM, one for each
+input node.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>This argument is required.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><em>output_path argument:</em></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Specifies the output DLC file name.</p></li>
+<li><p>This argument is optional. If not provided the converter
+will create a DLC file with the same name as the tflite
+file name, with a .dlc file extension.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>saved_model_tag:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>For Tensorflow 2.x networks, this option allows a
+MetaGraph to be selected from the SavedModel specified by
+input_network.</p></li>
+<li><p>This argument is optional and will default to “serve” if left unset.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>saved_model_signature:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>For Tensorflow 2.x networks, this option specifies the
+signature key for selecting inputs and outputs of a
+Tensorflow 2.x SavedModel.</p></li>
+<li><p>This argument is optional and will default to “serving_default” if unspecified.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="qairt-converter">
+<h1>qairt-converter<a class="headerlink" href="#qairt-converter" title="Permalink to this heading">¶</a></h1>
+<p>The <strong>qairt-converter</strong> tool converts a model from the one of Onnx/TensorFlow/TFLite/PyTorch framework to
+a DLC file representing the QNN graph format that can enable inference on Qualcomm AI IP/HW. The converter auto detects
+the framework based on the source model extension.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Basic command line usage looks like:
+
+usage: qairt-converter [--desired_input_shape INPUT_NAME INPUT_DIM] [--out_tensor_node OUT_NAMES]
+                       [--source_model_input_datatype INPUT_NAME INPUT_DTYPE]
+                       [--source_model_input_layout INPUT_NAME INPUT_LAYOUT]
+                       [--desired_input_color_encoding  [ ...]]
+                       [--dump_io_config_template DUMP_IO_CONFIG_TEMPLATE] [--io_config IO_CONFIG]
+                       [--dry_run [DRY_RUN]] [--quantization_overrides QUANTIZATION_OVERRIDES]
+                       [--onnx_no_simplification] [--onnx_batch BATCH]
+                       [--onnx_define_symbol SYMBOL_NAME VALUE] [--tf_no_optimization]
+                       [--tf_show_unconsumed_nodes] [--tf_saved_model_tag SAVED_MODEL_TAG]
+                       [--tf_saved_model_signature_key SAVED_MODEL_SIGNATURE_KEY]
+                       [--tf_validate_models] [--tflite_signature_name SIGNATURE_NAME]
+                       --input_network INPUT_NETWORK [-h] [--debug [DEBUG]]
+                       [--output_path OUTPUT_PATH] [--copyright_file COPYRIGHT_FILE]
+                       [--float_bitwidth FLOAT_BITWIDTH] [--float_bias_bitwidth FLOAT_BIAS_BITWIDTH]
+                       [--model_version MODEL_VERSION] [--converter_op_package_lib CONVERTER_OP_PACKAGE_LIB]
+                       [--package_name PACKAGE_NAME | --op_package_config CUSTOM_OP_CONFIG_PATHS [CUSTOM_OP_CONFIG_PATHS ...]]
+
+required arguments:
+  --input_network INPUT_NETWORK, -i INPUT_NETWORK
+                        Path to the source framework model.
+
+optional arguments:
+  --desired_input_shape INPUT_NAME INPUT_DIM, -d INPUT_NAME INPUT_DIM
+                        The name and dimension of all the input buffers to the network specified in
+                        the format [input_name comma-separated-dimensions],
+                        for example: &#39;data&#39; 1,224,224,3.
+                        Note that the quotes should always be included in order to handle special
+                        characters, spaces, etc.
+                        NOTE: Required for TensorFlow and PyTorch. Optional for Onnx and Tflite
+                        In case of Onnx, this feature works only with Onnx 1.6.0 and above
+  --out_tensor_node OUT_NAMES, --out_tensor_name OUT_NAMES
+                        Name of the graph&#39;s output Tensor Names. Multiple output names should be
+                        provided separately like:
+                            --out_name out_1 --out_name out_2
+                        NOTE: Required for TensorFlow. Optional for Onnx, Tflite and PyTorch
+  --source_model_input_datatype INPUT_NAME INPUT_DTYPE
+                        The names and datatype of the network input layers specified in the format
+                        [input_name datatype], for example:
+                            &#39;data&#39; &#39;float32&#39;
+                        Default is float32 if not specified
+                        Note that the quotes should always be included in order to handlespecial
+                        characters, spaces, etc.
+                        For multiple inputs specify multiple --input_dtype on the command line like:
+                            --input_dtype &#39;data1&#39; &#39;float32&#39; --input_dtype &#39;data2&#39; &#39;float32&#39;
+  --source_model_input_layout INPUT_NAME INPUT_LAYOUT, -l INPUT_NAME INPUT_LAYOUT
+                        Layout of each input tensor. If not specified, it will use the default
+                        based on the Source Framework, shape of input and input encoding.
+                        Accepted values are-
+                            NCDHW, NDHWC, NCHW, NHWC, NFC, NCF, NTF, TNF, NF, NC, F, NONTRIVIAL
+                        N = Batch, C = Channels, D = Depth, H = Height, W = Width, F = Feature, T =
+                        Time
+                        NDHWC/NCDHW used for 5d inputs
+                        NHWC/NCHW used for 4d image-like inputs
+                        NFC/NCF used for inputs to Conv1D or other 1D ops
+                        NTF/TNF used for inputs with time steps like the ones used for LSTM op
+                        NF used for 2D inputs, like the inputs to Dense/FullyConnected layers
+                        NC used for 2D inputs with 1 for batch and other for Channels (rarely used)
+                        F used for 1D inputs, e.g. Bias tensor
+                        NONTRIVIAL for everything elseFor multiple inputs specify multiple
+                        --input_layout on the command line.
+                        Eg:
+                            --input_layout &quot;data1&quot; NCHW --input_layout &quot;data2&quot; NCHW
+  --desired_input_color_encoding  [ ...], -e  [ ...]
+                        Usage:     --input_color_encoding &quot;INPUT_NAME&quot; INPUT_ENCODING_IN
+                        [INPUT_ENCODING_OUT]
+                        Input encoding of the network inputs. Default is bgr.
+                        e.g.
+                           --input_color_encoding &quot;data&quot; rgba
+                        Quotes must wrap the input node name to handle special characters,
+                        spaces, etc. To specify encodings for multiple inputs, invoke
+                        --input_color_encoding for each one.
+                        e.g.
+                            --input_color_encoding &quot;data1&quot; rgba --input_color_encoding &quot;data2&quot; other
+                        Optionally, an output encoding may be specified for an input node by
+                        providing a second encoding. The default output encoding is bgr.
+                        e.g.
+                            --input_color_encoding &quot;data3&quot; rgba rgb
+                        Input encoding types:
+                             image color encodings: bgr,rgb, nv21, nv12, ...
+                            time_series: for inputs of rnn models;
+                            other: not available above or is unknown.
+                        Supported encodings:
+                           bgr
+                           rgb
+                           rgba
+                           argb32
+                           nv21
+                           nv12
+  --dump_io_config_template DUMP_IO_CONFIG_TEMPLATE
+                        Dumps the yaml template for I/O configuration. This file can be edited as
+                        per the custom requirements and passed using the option --io_configUse this
+                        option to specify a yaml file to which the IO config template is dumped.
+  --io_config IO_CONFIG
+                        Use this option to specify a yaml file for input and output options.
+  --dry_run [DRY_RUN]   Evaluates the model without actually converting any ops, and returns
+                        unsupported ops/attributes as well as unused inputs and/or outputs if any.
+  -h, --help            show this help message and exit
+  --debug [DEBUG]       Run the converter in debug mode.
+  --output_path OUTPUT_PATH, -o OUTPUT_PATH
+                        Path where the converted Output model should be saved.If not specified, the
+                        converter model will be written to a file with same name as the input model
+  --copyright_file COPYRIGHT_FILE
+                        Path to copyright file. If provided, the content of the file will be added
+                        to the output model.
+  --float_bitwidth FLOAT_BITWIDTH
+                        Use the --float_bitwidth option to convert the graph to the specified float
+                        bitwidth, either 32 (default) or 16.
+  --float_bias_bitwidth FLOAT_BIAS_BITWIDTH
+                        Use the --float_bias_bitwidth option to select the bitwidth to use for float
+                        bias tensor
+  --model_version MODEL_VERSION
+                        User-defined ASCII string to identify the model, only first 64 bytes will be
+                        stored
+
+Custom Op Package Options:
+  --converter_op_package_lib CONVERTER_OP_PACKAGE_LIB, -cpl CONVERTER_OP_PACKAGE_LIB
+                        Absolute path to converter op package library compiled by the OpPackage
+                        generator. Must be separated by a comma for multiple package libraries.
+                        Note: Order of converter op package libraries must follow the order of xmls.
+                        Ex1: --converter_op_package_lib absolute_path_to/libExample.so
+                        Ex2: -cpl absolute_path_to/libExample1.so,absolute_path_to/libExample2.so
+  --package_name PACKAGE_NAME, -p PACKAGE_NAME
+                        A global package name to be used for each node in the Model.cpp file.
+                        Defaults to Qnn header defined package name
+  --op_package_config CUSTOM_OP_CONFIG_PATHS [CUSTOM_OP_CONFIG_PATHS ...], -opc CUSTOM_OP_CONFIG_PATHS [CUSTOM_OP_CONFIG_PATHS ...]
+                        Path to a Qnn Op Package XML configuration file that contains user defined
+                        custom operations.
+
+Quantizer Options:
+  --quantization_overrides QUANTIZATION_OVERRIDES
+                        Use this option to specify a json file with parameters to use for
+                        quantization. These will override any quantization data carried from
+                        conversion (eg TF fake quantization) or calculated during the normal
+                        quantization process. Format defined as per AIMET specification.
+
+Onnx Converter Options:
+  --onnx_no_simplification
+                        Do not attempt to simplify the model automatically. This may prevent some
+                        models from properly converting
+                        when sequences of unsupported static operations are present.
+  --onnx_batch BATCH    The batch dimension override. This will take the first dimension of all
+                        inputs and treat it as a batch dim, overriding it with the value provided
+                        here. For example:
+                        --batch 6
+                        will result in a shape change from [1,3,224,224] to [6,3,224,224].
+                        If there are inputs without batch dim this should not be used and each input
+                        should be overridden independently using -d option for input dimension
+                        overrides.
+  --onnx_define_symbol SYMBOL_NAME VALUE
+                        This option allows overriding specific input dimension symbols. For instance
+                        you might see input shapes specified with variables such as :
+                        data: [1,3,height,width]
+                        To override these simply pass the option as:
+                        --define_symbol height 224 --define_symbol width 448
+                        which results in dimensions that look like:
+                        data: [1,3,224,448]
+
+TensorFlow Converter Options:
+  --tf_no_optimization  Do not attempt to optimize the model automatically.
+  --tf_show_unconsumed_nodes
+                        Displays a list of unconsumed nodes, if there any are found. Nodeswhich are
+                        unconsumed do not violate the structural fidelity of thegenerated graph.
+  --tf_saved_model_tag SAVED_MODEL_TAG
+                        Specify the tag to seletet a MetaGraph from savedmodel. ex:
+                        --saved_model_tag serve. Default value will be &#39;serve&#39; when it is not
+                        assigned.
+  --tf_saved_model_signature_key SAVED_MODEL_SIGNATURE_KEY
+                        Specify signature key to select input and output of the model. ex:
+                        --saved_model_signature_key serving_default. Default value will be
+                        &#39;serving_default&#39; when it is not assigned
+  --tf_validate_models  Validate the original TF model against optimized TF model.
+                        Constant inputs with all value 1s will be generated and will be used
+                        by both models and their outputs are checked against each other.
+                        The % average error and 90th percentile of output differences will be
+                        calculated for this.
+                        Note: Usage of this flag will incur extra time due to inference of the
+                        models.
+
+Tflite Converter Options:
+  --tflite_signature_name SIGNATURE_NAME
+                        Use this option to specify a specific Subgraph signature to convert
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

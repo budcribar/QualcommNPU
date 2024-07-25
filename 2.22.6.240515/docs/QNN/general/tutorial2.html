@@ -1,0 +1,1237 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Tutorial: Converting and executing a CNN model with QNN &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Tutorial: Converting and executing a CNN model with QNN</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tutorial-converting-and-executing-a-cnn-model-with-qnn">
+<h1>Tutorial: Converting and executing a CNN model with QNN<a class="headerlink" href="#tutorial-converting-and-executing-a-cnn-model-with-qnn" title="Permalink to this heading">¶</a></h1>
+<p>The following tutorial will demonstrate the end to end usage of <a class="reference internal" href="tools.html"><span class="doc">QNN Tools</span></a>
+and the <a class="reference internal" href="api.html"><span class="doc">QNN API</span></a>. This process begins with a trained source framework model,
+which is converted and built into a series of QNN API calls using the QNN Converter, which are then executed on a particular
+backend.</p>
+<p>The tutorial will use Inception V3 as the source framework model and the <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code> executable as
+the example application. The execution will show usage on the CPU, GPU, DSP, and HTP backends on both host (for CPU
+and HTP) and device.</p>
+<p>The sections of the tutorial are as follows:</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#id1">Tutorial Setup</a></p></li>
+<li><p><a class="reference internal" href="#model-conversion">Model Conversion</a></p></li>
+<li><p><a class="reference internal" href="#model-build">Model Build</a></p></li>
+<li><p><a class="reference internal" href="#executing-example-model">Executing Example Model</a></p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<div class="line-block">
+<div class="line">* On a Windows host, the Tutorial Setup and Model Conversion sections should be completed in the WSL (x86) environment or in the Windows-x86 native environment.</div>
+<div class="line-block">
+<div class="line">Separate Linux and Windows sections are provided for the Model Build and Execution steps. Windows developers can refer to <span class="xref std std-ref">Integration Workflow on Windows</span> to see an overview of the workflow.</div>
+</div>
+</div>
+</div>
+<div class="section" id="tutorial-setup">
+<span id="id1"></span><h2>Tutorial Setup<a class="headerlink" href="#tutorial-setup" title="Permalink to this heading">¶</a></h2>
+<p>The tutorial assumes general setup instructions have been followed
+at <a class="reference internal" href="setup.html"><span class="doc">Setup</span></a>.</p>
+<p>Additionally, this tutorial requires the acquisition of the Inception V3 Tensorflow model file and
+sample images. This is handled by the provided setup script <code class="docutils literal notranslate"><span class="pre">setup_inceptionv3.py</span></code>. The script is located at:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">setup_inceptionv3</span><span class="p">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Usage is as follows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="nl">usage</span><span class="p">:</span><span class="w"> </span><span class="n">setup_inceptionv3</span><span class="p">.</span><span class="n">py</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="n">a</span><span class="w"> </span><span class="n">ASSETS_DIR</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="n">d</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="n">c</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="n">q</span><span class="p">]</span>
+
+<span class="n">Prepares</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">inception_v3</span><span class="w"> </span><span class="n">assets</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">tutorial</span><span class="w"> </span><span class="n">examples</span><span class="p">.</span>
+
+<span class="n">required</span><span class="w"> </span><span class="n">arguments</span><span class="o">:</span>
+<span class="w">  </span><span class="o">-</span><span class="n">a</span><span class="w"> </span><span class="n">ASSETS_DIR</span><span class="p">,</span><span class="w"> </span><span class="o">--</span><span class="n">assets_dir</span><span class="w"> </span><span class="n">ASSETS_DIR</span>
+<span class="w">                        </span><span class="n">directory</span><span class="w"> </span><span class="n">containing</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">inception_v3</span><span class="w"> </span><span class="n">assets</span>
+
+<span class="n">optional</span><span class="w"> </span><span class="n">arguments</span><span class="o">:</span>
+<span class="w">  </span><span class="o">-</span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="o">--</span><span class="n">download</span><span class="w">        </span><span class="n">Download</span><span class="w"> </span><span class="n">inception_v3</span><span class="w"> </span><span class="n">assets</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">inception_v3</span><span class="w"> </span><span class="n">example</span>
+<span class="w">                        </span><span class="n">directory</span>
+<span class="w">  </span><span class="o">-</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="o">--</span><span class="n">convert_model</span><span class="w">   </span><span class="n">Convert</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">compile</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="n">once</span><span class="w"> </span><span class="n">acquired</span><span class="p">.</span>
+<span class="w">  </span><span class="o">-</span><span class="n">q</span><span class="p">,</span><span class="w"> </span><span class="o">--</span><span class="n">quantize_model</span><span class="w">  </span><span class="n">Quantize</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="n">during</span><span class="w"> </span><span class="n">conversion</span><span class="p">.</span><span class="w"> </span><span class="n">Only</span><span class="w"> </span><span class="n">available</span>
+<span class="w">                        </span><span class="k">if</span><span class="w"> </span><span class="o">--</span><span class="n">c</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="o">--</span><span class="n">convert_model</span><span class="w"> </span><span class="n">option</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">chosen</span>
+</pre></div>
+</div>
+<p>Before using the script, please set the environment variable <code class="docutils literal notranslate"><span class="pre">TENSORFLOW_HOME</span></code> to point to the
+location where TensorFlow package is installed. The script uses TensorFlow utilities like
+<code class="docutils literal notranslate"><span class="pre">optimize_for_inference.py</span></code>, which are present in the TensorFlow installation directory.
+To find the location of the TensorFlow package run the following command:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">python3</span><span class="w"> </span><span class="o">-</span><span class="n">m</span><span class="w"> </span><span class="n">pip</span><span class="w"> </span><span class="n">show</span><span class="w"> </span><span class="n">tensorflow</span>
+</pre></div>
+</div>
+<p>Set the environment variable using the Location field from the output of the above command:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">TENSORFLOW_HOME</span><span class="o">=&lt;</span><span class="n">tensorflow</span><span class="o">-</span><span class="n">location</span><span class="o">&gt;/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">core</span>
+</pre></div>
+</div>
+<p>To run the script use:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">python3</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">setup_inceptionv3</span><span class="p">.</span><span class="n">py</span><span class="w"> </span><span class="o">-</span><span class="n">a</span><span class="w"> </span><span class="o">~/</span><span class="n">tmpdir</span><span class="w"> </span><span class="o">-</span><span class="n">d</span>
+</pre></div>
+</div>
+<p>This will populate the model file at:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">inception_v3_2016_08_28_frozen</span><span class="p">.</span><span class="n">pb</span>
+</pre></div>
+</div>
+<p>And the raw images at:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">cropped</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="model-conversion">
+<span id="model-setup"></span><h2>Model Conversion<a class="headerlink" href="#model-conversion" title="Permalink to this heading">¶</a></h2>
+<p>After the model assets have been acquired the model can be converted to a series of invocations of QNN API,
+and subsequently built for use by an application.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A quantized model is needed for use on the HTP and DSP backend. See <a class="reference internal" href="#id2">Model Quantization</a> to generate a quantized model.</p>
+</div>
+<p>For model conversion in x86_64-windows, please execute the Python script with <code class="docutils literal notranslate"><span class="pre">py</span> <span class="pre">-3</span></code> command ahead of the command after setting the python dependency <a class="reference internal" href="setup.html#id1"><span class="std std-ref">Windows Platform Dependencies</span></a>.
+An example below:
+$ py -3 qnn-tensorflow-converter &lt;options&gt;</p>
+<p>Check more details with Inception V3 model below in x86_64-windows code block:</p>
+<p>To convert the Inception V3 model use the <code class="docutils literal notranslate"><span class="pre">qnn-tensorflow-converter</span></code>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">tensorflow</span><span class="o">-</span><span class="n">converter</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">input_network</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">inception_v3_2016_08_28_frozen</span><span class="p">.</span><span class="n">pb</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">input_dim</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">299</span><span class="p">,</span><span class="mi">299</span><span class="p">,</span><span class="mi">3</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">out_node</span><span class="w"> </span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">Predictions</span><span class="o">/</span><span class="n">Reshape_1</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">output_path</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">model</span><span class="o">/</span><span class="n">Inception_v3</span><span class="p">.</span><span class="n">cpp</span><span class="w"> </span>\
+</pre></div>
+</div>
+<p>In x86_64-windows,</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ py -3 ${QNN_SDK_ROOT}\bin\x86_64-windows-msvc\qnn-tensorflow-converter `
+  --input_network ${QNN_SDK_ROOT}/examples/Models/InceptionV3/tensorflow/inception_v3_2016_08_28_frozen.pb `
+  --input_dim input 1,299,299,3 `
+  --out_node InceptionV3/Predictions/Reshape_1 `
+  --output_path ${QNN_SDK_ROOT}/examples/Models/InceptionV3/model/Inception_v3.cpp `
+</pre></div>
+</div>
+<p>This will produce the following artifacts:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/Models/InceptionV3/model/Inception_v3.cpp</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/Models/InceptionV3/model/Inception_v3.bin</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/Models/InceptionV3/model/Inception_v3_net.json</span></code></p></li>
+</ul>
+<p>The artifacts include .cpp file containing the sequence of API calls, and a .bin file containing
+the static data associated with the model.</p>
+<div class="section" id="id2">
+<h3>Model Quantization<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
+<p>To use a quantized model instead of a floating point model follow the below steps:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">tensorflow</span><span class="o">-</span><span class="n">converter</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">input_network</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">inception_v3_2016_08_28_frozen</span><span class="p">.</span><span class="n">pb</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">input_dim</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">299</span><span class="p">,</span><span class="mi">299</span><span class="p">,</span><span class="mi">3</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">out_node</span><span class="w"> </span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">Predictions</span><span class="o">/</span><span class="n">Reshape_1</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">output_path</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">model</span><span class="o">/</span><span class="n">Inception_v3_quantized</span><span class="p">.</span><span class="n">cpp</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">input_list</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">cropped</span><span class="o">/</span><span class="n">raw_list</span><span class="p">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>This will produce the following artifacts:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/Models/InceptionV3/model/Inception_v3_quantized.cpp</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/Models/InceptionV3/model/Inception_v3_quantized.bin</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/Models/InceptionV3/model/Inception_v3_quantized_net.json</span></code></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When quantizing a model during conversion the input list must contain absolute
+path to input data.</p>
+</div>
+</div>
+</div>
+<div class="section" id="model-build">
+<h2>Model Build<a class="headerlink" href="#model-build" title="Permalink to this heading">¶</a></h2>
+<p>Once the model is converted it is built with <code class="docutils literal notranslate"><span class="pre">qnn-model-lib-generator</span></code>:</p>
+<div class="section" id="model-build-on-linux-host">
+<h3>Model Build on Linux Host<a class="headerlink" href="#model-build-on-linux-host" title="Permalink to this heading">¶</a></h3>
+<p>Select target architecture</p>
+<p>In order to run on a particular target platform, the libraries compiled for that target must be used.
+Below are examples for aarch64-android (Android platform)  and aarch64-oe-linux-gcc11.2 toolchain (LE platform)
+The QNN_TARGET_ARCH varirable can be used to specify the appropriate library for the target.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp"># Example for Android targets</span>
+<span class="n">$</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">QNN_TARGET_ARCH</span><span class="o">=</span><span class="n">aarch64</span><span class="o">-</span><span class="n">android</span>
+
+<span class="cp"># Example for LE targets</span>
+<span class="n">$</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">QNN_TARGET_ARCH</span><span class="o">=</span><span class="n">aarch64</span><span class="o">-</span><span class="n">oe</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gcc11</span><span class="mf">.2</span>
+</pre></div>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span># For Android and x86
+$ ${QNN_SDK_ROOT}/bin/x86_64-linux-clang/qnn-model-lib-generator \
+  -c ${QNN_SDK_ROOT}/examples/Models/InceptionV3/model/Inception_v3.cpp \
+  -b ${QNN_SDK_ROOT}/examples/Models/InceptionV3/model/Inception_v3.bin \
+  -o ${QNN_SDK_ROOT}/examples/Models/InceptionV3/model_libs # This can be any path
+</pre></div>
+</div>
+<p>This will produce the following artifacts:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/Models/InceptionV3/model_libs/aarch64-android/libInception_v3.so</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/Models/InceptionV3/model_libs/x86_64-linux-clang/libInception_v3.so</span></code></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By default libraries are built for android and x86 targets. To compile for a specific target, use the
+-t &lt;target&gt; option with qnn-model-lib-generator. In case of offline prepare usecase on HTP BE extensions, it
+requires artifacts from x86_64-linux-clang, so run model build with default toolchain option like mentioned above
+and also with a specific toolchain name like mentioned below for LE target.</p>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span># For LE targets (Example for aarch64-oe-linux-gcc11.2 toochain )
+$ export QNN_AARCH64_LINUX_OE_GCC_112=&lt;path of toolchain&gt;
+$ ${QNN_SDK_ROOT}/bin/x86_64-linux-clang/qnn-model-lib-generator \
+  -c ${QNN_SDK_ROOT}/examples/Models/InceptionV3/model/Inception_v3.cpp \
+  -b ${QNN_SDK_ROOT}/examples/Models/InceptionV3/model/Inception_v3.bin \
+  -o ${QNN_SDK_ROOT}/examples/Models/InceptionV3/model_libs # This can be any path
+  -t aarch64-oe-linux-gcc11.2
+</pre></div>
+</div>
+<p>This will produce the following artifacts:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/Models/InceptionV3/model_libs/${QNN_TARGET_ARCH}/libInception_v3.so</span></code></p></li>
+</ul>
+<p>Optionally, the above steps (model conversion &amp; model build) can be completed with the provided setup script. To convert and build
+the Inception v3 model using the script run:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">python3</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">setup_inceptionv3</span><span class="p">.</span><span class="n">py</span><span class="w"> </span><span class="o">-</span><span class="n">a</span><span class="w"> </span><span class="o">~/</span><span class="n">tmpdir</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="o">-</span><span class="n">c</span>
+</pre></div>
+</div>
+<p>This will produce the same artifacts as above.</p>
+<p>To build the quantized model, the steps are the same as above:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ ${QNN_SDK_ROOT}/bin/x86_64-linux-clang/qnn-model-lib-generator \
+  -c ${QNN_SDK_ROOT}/examples/Models/InceptionV3/model/Inception_v3_quantized.cpp \
+  -b ${QNN_SDK_ROOT}/examples/Models/InceptionV3/model/Inception_v3_quantized.bin \
+  -o ${QNN_SDK_ROOT}/examples/Models/InceptionV3/model_libs # This can be any path
+</pre></div>
+</div>
+<p>This will produce the following artifacts:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/Models/InceptionV3/model_libs/aarch64-android/libInception_v3_quantized.so</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/Models/InceptionV3/model_libs/x86_64-linux-clang/libInception_v3_quantized.so</span></code></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By default libraries are built for android and x86 targets. To compile for a specific target, use the
+-t &lt;target&gt; option with qnn-model-lib-generator. In case of offline prepare usecase on HTP BE extensions, it
+requires artifacts from x86_64-linux-clang, so run model build with default toolchain option like mentioned above
+and also with a specifc toolchain name like mentioned below for LE target.</p>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span># For LE targets (Example for aarch64-oe-linux-gcc11.2 toochain )
+$ export QNN_AARCH64_LINUX_OE_GCC_112=&lt;path of toolchain&gt;
+$ ${QNN_SDK_ROOT}/bin/x86_64-linux-clang/qnn-model-lib-generator \
+  -c ${QNN_SDK_ROOT}/examples/Models/InceptionV3/model/Inception_v3_quantized.cpp \
+  -b ${QNN_SDK_ROOT}/examples/Models/InceptionV3/model/Inception_v3_quantized.bin \
+  -o ${QNN_SDK_ROOT}/examples/Models/InceptionV3/model_libs # This can be any path
+  -t aarch64-oe-linux-gcc11.2
+</pre></div>
+</div>
+<p>This will produce the following artifacts:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/Models/InceptionV3/model_libs/${QNN_TARGET_ARCH}/libInception_v3_quantized.so</span></code></p></li>
+</ul>
+<p>Optionally, the above steps can be completed with the provided setup script. To convert, quantize, and build
+the model Inception V3 using the script run:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">python3</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">setup_inceptionv3</span><span class="p">.</span><span class="n">py</span><span class="w"> </span><span class="o">-</span><span class="n">a</span><span class="w"> </span><span class="o">~/</span><span class="n">tmpdir</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="o">-</span><span class="n">q</span>
+</pre></div>
+</div>
+<p>This will produce the same artifacts as above.</p>
+</div>
+<div class="section" id="model-build-on-windows-host">
+<h3>Model Build on Windows Host<a class="headerlink" href="#model-build-on-windows-host" title="Permalink to this heading">¶</a></h3>
+<p>To build the model files into a DLL library on a Windows host, we need to open <code class="docutils literal notranslate"><span class="pre">Developer</span> <span class="pre">PowerShell</span> <span class="pre">for</span> <span class="pre">VS</span> <span class="pre">2022</span></code> and use
+qnn-model-lib-generator tool.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ mkdir C:\tmp\qnn_tmp
+</pre></div>
+</div>
+<p>Copy the following files to <code class="docutils literal notranslate"><span class="pre">c:\tmp\qnn_tmp</span></code></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">model</span><span class="o">/</span><span class="n">Inception_v3</span><span class="p">.</span><span class="n">cpp</span>
+<span class="o">-</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">model</span><span class="o">/</span><span class="n">Inception_v3</span><span class="p">.</span><span class="n">bin</span>
+</pre></div>
+</div>
+<p>Make sure you have setup <code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}</span></code> environment variable with <a class="reference internal" href="setup.html#environment-setup-windows"><span class="std std-ref">Environment Setup for Windows</span></a>.</p>
+<p id="windows-model-lib-generator">Windows developers can specify the output library target platform using the “-t” config with either the ‘windows-x86_64’ or ‘windows-aarch64’ option to
+qnn-model-lib-generator. The corresponding model DLL library will reside in the model_libsx64 or model_libsARM64 folder.
+When performing inference on a Windows on Snapdragon device, developers should use ‘windows-aarch64’ as the target platform option.
+For more options, pass the “-h” or “–help” arguments to the qnn-model-lib-generator Python script.</p>
+<p><strong>For Windows native/x86_64 PC developers</strong></p>
+<p>We can generate our model DLL library via:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ cd C:\tmp\qnn_tmp
+
+$ py -3 ${QNN_SDK_ROOT}\bin\x86_64-windows-msvc\qnn-model-lib-generator `
+    -c .\Inception_v3.cpp `
+    -b .\Inception_v3.bin `
+    -o model_libs `
+    -t windows-x86_64
+</pre></div>
+</div>
+<p><strong>For Windows on Snapdragon developers</strong></p>
+<p>We can generate our model DLL library via:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ cd C:\tmp\qnn_tmp
+
+$ py -3 ${QNN_SDK_ROOT}\bin\aarch64-windows-msvc\qnn-model-lib-generator `
+    -c .\Inception_v3.cpp `
+    -b .\Inception_v3.bin `
+    -o model_libs `
+    -t windows-x86_64
+</pre></div>
+</div>
+<p>Now you will have Inception_v3.dll under <code class="docutils literal notranslate"><span class="pre">C:\tmp\qnn_tmp\model_libs\x64</span></code>, and are ready to perform inference.</p>
+<p>Similarly, to build the quantized model files into a DLL library on a Windows host, we need to open <code class="docutils literal notranslate"><span class="pre">Developer</span> <span class="pre">PowerShell</span> <span class="pre">for</span> <span class="pre">VS</span> <span class="pre">2022</span></code>.
+Developers must make sure the input model.cpp and model.bin were converted with quantization.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ mkdir C:\tmp\qnn_tmp
+</pre></div>
+</div>
+<p>Copy the following files to <code class="docutils literal notranslate"><span class="pre">c:\tmp\qnn_tmp</span></code></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">model</span><span class="o">/</span><span class="n">Inception_v3_quantized</span><span class="p">.</span><span class="n">cpp</span>
+<span class="o">-</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">model</span><span class="o">/</span><span class="n">Inception_v3_quantized</span><span class="p">.</span><span class="n">bin</span>
+</pre></div>
+</div>
+<p>Make sure you have setup <code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}</span></code> environment variable with <a class="reference internal" href="setup.html#environment-setup-windows"><span class="std std-ref">Environment Setup for Windows</span></a>.</p>
+<p><strong>For Windows native/x86_64 PC developers</strong></p>
+<p>We can generate our model DLL library via:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ cd C:\tmp\qnn_tmp
+
+$ py -3 ${QNN_SDK_ROOT}\bin\x86_64-windows-msvc\qnn-model-lib-generator `
+    -c .\Inception_v3_quantized.cpp `
+    -b .\Inception_v3_quantized.bin `
+    -o model_libs `
+    -t windows-x86_64
+</pre></div>
+</div>
+<p><strong>For Windows on Snapdragon developers</strong></p>
+<p>We can generate our model DLL library via:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ cd C:\tmp\qnn_tmp
+
+$ py -3 ${QNN_SDK_ROOT}\bin\aarch64-windows-msvc\qnn-model-lib-generator `
+    -c .\Inception_v3_quantized.cpp `
+    -b .\Inception_v3_quantized.bin `
+    -o model_libs `
+    -t windows-x86_64
+</pre></div>
+</div>
+<p>Now you will have <code class="docutils literal notranslate"><span class="pre">Inception_v3_quantized.dll</span></code> under <code class="docutils literal notranslate"><span class="pre">C:\tmp\qnn_tmp\model_libs\x64</span></code>.</p>
+<p>To perform inference on the Windows host, the input data needs to be copied over.</p>
+<p>Copy the following files and directories to the Windows host <code class="docutils literal notranslate"><span class="pre">C:\tmp\qnn_tmp</span></code>.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">cropped</span>
+<span class="o">-</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">target_raw_list</span><span class="p">.</span><span class="n">txt</span>
+<span class="o">-</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">imagenet_slim_labels</span>
+<span class="o">-</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">show_inceptionv3_classifications</span><span class="p">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>We are now ready for the Execution on Windows Host sections.</p>
+</div>
+</div>
+<div class="section" id="cpu-backend-execution">
+<span id="executing-example-model"></span><h2>CPU Backend Execution<a class="headerlink" href="#cpu-backend-execution" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="execution-on-linux-host">
+<h3>Execution on Linux Host<a class="headerlink" href="#execution-on-linux-host" title="Permalink to this heading">¶</a></h3>
+<p>With the model library compiled, the model can be executed using <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code> with the following:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span>
+<span class="n">$</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">net</span><span class="o">-</span><span class="n">run</span><span class="w"> </span>\
+<span class="w">              </span><span class="o">--</span><span class="n">backend</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">libQnnCpu</span><span class="p">.</span><span class="n">so</span><span class="w"> </span>\
+<span class="w">              </span><span class="o">--</span><span class="n">model</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">model_libs</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">libInception_v3</span><span class="p">.</span><span class="n">so</span><span class="w"> </span>\
+<span class="w">              </span><span class="o">--</span><span class="n">input_list</span><span class="w"> </span><span class="n">data</span><span class="o">/</span><span class="n">cropped</span><span class="o">/</span><span class="n">raw_list</span><span class="p">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>This will produce the results at:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/Models/InceptionV3/output</span></code></p></li>
+</ul>
+<p>To view the results use:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">python3</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">show_inceptionv3_classifications</span><span class="p">.</span><span class="n">py</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="n">data</span><span class="o">/</span><span class="n">cropped</span><span class="o">/</span><span class="n">raw_list</span><span class="p">.</span><span class="n">txt</span><span class="w"> </span>\
+<span class="w">                                                                               </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="n">output</span><span class="o">/</span><span class="w"> </span>\
+<span class="w">                                                                               </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">data</span><span class="o">/</span><span class="n">imagenet_slim_labels</span><span class="p">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="execution-on-target-platform-android-le-ubun">
+<h3>Execution on Target Platform ( Android/LE/UBUN )<a class="headerlink" href="#execution-on-target-platform-android-le-ubun" title="Permalink to this heading">¶</a></h3>
+<p>Running the CPU Backend on an Android target is largely
+similar to running on the Linux x86 target.</p>
+<p>First, create a directory for the example on device:</p>
+<p>For OE-Linux target:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">shell</span><span class="w"> </span><span class="n">mount</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="n">remount</span><span class="p">,</span><span class="n">rw</span><span class="w"> </span><span class="o">/</span>
+<span class="n">$</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span>
+<span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span>
+<span class="n">$</span><span class="w"> </span><span class="n">ln</span><span class="w"> </span><span class="o">-</span><span class="n">s</span><span class="w"> </span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span>
+<span class="n">$</span><span class="w"> </span><span class="n">chmod</span><span class="w"> </span><span class="o">-</span><span class="n">R</span><span class="w"> </span><span class="mi">777</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span>
+<span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">shell</span><span class="w"> </span><span class="s">&quot;mkdir -p /data/local/tmp/inception_v3&quot;</span>
+</pre></div>
+</div>
+<p>For android target:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp"># make inception_v3 if necessary</span>
+<span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">shell</span><span class="w"> </span><span class="s">&quot;mkdir -p /data/local/tmp/inception_v3&quot;</span>
+</pre></div>
+</div>
+<p>Select target architecture</p>
+<p>In order to run on a particular target platform, the libraries compiled for that target must be used.
+Below are examples for aarch64-android (Android platform)  and aarch64-oe-linux-gcc11.2 toolchain (LE platform)
+The QNN_TARGET_ARCH varirable can be used to specify the appropriate library for the target.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp"># Example for Android targets</span>
+<span class="n">$</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">QNN_TARGET_ARCH</span><span class="o">=</span><span class="n">aarch64</span><span class="o">-</span><span class="n">android</span>
+
+<span class="cp"># Example for LE targets</span>
+<span class="n">$</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">QNN_TARGET_ARCH</span><span class="o">=</span><span class="n">aarch64</span><span class="o">-</span><span class="n">oe</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gcc11</span><span class="mf">.2</span>
+</pre></div>
+</div>
+<p>Now push the necessary libraries to device:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ adb push ${QNN_SDK_ROOT}/lib/${QNN_TARGET_ARCH}/libQnnCpu.so /data/local/tmp/inception_v3
+$ adb push ${QNN_SDK_ROOT}/examples/Models/InceptionV3/model_libs/${QNN_TARGET_ARCH}/*.so /data/local/tmp/inception_v3
+</pre></div>
+</div>
+<p>Now push the input data and input lists to device:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">cropped</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">inception_v3</span>
+<span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">target_raw_list</span><span class="p">.</span><span class="n">txt</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">inception_v3</span>
+</pre></div>
+</div>
+<p>Push the <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code> tool:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">$</span><span class="p">{</span><span class="n">QNN_TARGET_ARCH</span><span class="p">}</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">net</span><span class="o">-</span><span class="n">run</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">inception_v3</span>
+</pre></div>
+</div>
+<p>Now set up the environment on device:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">shell</span>
+<span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">inception_v3</span>
+<span class="n">$</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">LD_LIBRARY_PATH</span><span class="o">=/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">inception_v3</span>
+</pre></div>
+</div>
+<p>Finally, use <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code> with the following:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="p">.</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">net</span><span class="o">-</span><span class="n">run</span><span class="w"> </span><span class="o">--</span><span class="n">backend</span><span class="w"> </span><span class="n">libQnnCpu</span><span class="p">.</span><span class="n">so</span><span class="w"> </span><span class="o">--</span><span class="n">model</span><span class="w"> </span><span class="n">libInception_v3</span><span class="p">.</span><span class="n">so</span><span class="w"> </span><span class="o">--</span><span class="n">input_list</span><span class="w"> </span><span class="n">target_raw_list</span><span class="p">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>Outputs from the run will be located at the default ./output directory. Exit the device and view the results:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">exit</span>
+<span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span>
+<span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">pull</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">inception_v3</span><span class="o">/</span><span class="n">output</span><span class="w"> </span><span class="n">output</span>
+<span class="n">$</span><span class="w"> </span><span class="n">python3</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">show_inceptionv3_classifications</span><span class="p">.</span><span class="n">py</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="n">data</span><span class="o">/</span><span class="n">cropped</span><span class="o">/</span><span class="n">raw_list</span><span class="p">.</span><span class="n">txt</span><span class="w"> </span>\
+<span class="w">                                                                               </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="n">output</span><span class="o">/</span><span class="w"> </span>\
+<span class="w">                                                                               </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">data</span><span class="o">/</span><span class="n">imagenet_slim_labels</span><span class="p">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="execution-on-windows-host">
+<h3>Execution on Windows Host<a class="headerlink" href="#execution-on-windows-host" title="Permalink to this heading">¶</a></h3>
+<p>Please ensure the <a class="reference internal" href="#model-build-on-windows-host">Model Build on Windows Host</a> section has been completed before proceeding.</p>
+<p>First, create the following folder on the Windows host: <code class="docutils literal notranslate"><span class="pre">C:\qnn_test_package</span></code>.</p>
+<p>Now, copy the necessary libraries to the working directory: <code class="docutils literal notranslate"><span class="pre">C:\qnn_test_package</span></code></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>- ${QNN_SDK_ROOT}\lib\x86_64-windows-msvc\QnnCpu.dll
+- C:\tmp\qnn_tmp\model_lib\x64\Inception_v3.dll (generated above)
+</pre></div>
+</div>
+<p>Now, copy the input data and input list to <code class="docutils literal notranslate"><span class="pre">C:\qnn_test_package</span></code></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>- C:\tmp\qnn_tmp\cropped
+- C:\tmp\qnn_tmp\target_raw_list.txt
+- C:\tmp\qnn_tmp\imagenet_slim_labels
+- C:\tmp\qnn_tmp\show_inceptionv3_classifications.py
+</pre></div>
+</div>
+<p>Now, copy the <code class="docutils literal notranslate"><span class="pre">qnn-net-run.exe</span></code> tool to <code class="docutils literal notranslate"><span class="pre">C:\qnn_test_package</span></code>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>- ${QNN_SDK_ROOT}\bin\x86_64-windows-msvc\qnn-net-run.exe
+</pre></div>
+</div>
+<p>To run <code class="docutils literal notranslate"><span class="pre">qnn-net-run.exe</span></code> tool, please open <code class="docutils literal notranslate"><span class="pre">&quot;Developer</span> <span class="pre">PowerShell</span> <span class="pre">for</span> <span class="pre">VS</span> <span class="pre">2022&quot;</span></code>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ cd C:\qnn_test_package
+
+$ .\qnn-net-run.exe `
+   --model .\Inception_v3.dll `
+   --input_list .\target_raw_list.txt `
+   --backend .\QnnCpu.dll
+</pre></div>
+</div>
+<p>After the inference, we can check the classification result. By default, outputs from the run
+will be located in the <code class="docutils literal notranslate"><span class="pre">.\output</span></code> directory.</p>
+<p>Then, open <code class="docutils literal notranslate"><span class="pre">&quot;Developer</span> <span class="pre">PowerShell</span> <span class="pre">for</span> <span class="pre">VS</span> <span class="pre">2022&quot;</span></code> to run:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ cd C:\qnn_test_package
+
+$ py -3 .\show_inceptionv3_classifications.py `
+     -i .\cropped\raw_list.txt `
+     -o output `
+     -l .\imagenet_slim_labels.txt
+</pre></div>
+</div>
+<p>The classification results should be:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">cropped</span><span class="o">/</span><span class="n">trash_bin</span><span class="p">.</span><span class="n">raw</span><span class="w">   </span><span class="mf">0.777344</span><span class="w"> </span><span class="mi">413</span><span class="w"> </span><span class="n">ashcan</span>
+<span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">cropped</span><span class="o">/</span><span class="n">chairs</span><span class="p">.</span><span class="n">raw</span><span class="w">      </span><span class="mf">0.253906</span><span class="w"> </span><span class="mi">832</span><span class="w"> </span><span class="n">studio</span><span class="w"> </span><span class="n">couch</span>
+<span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">cropped</span><span class="o">/</span><span class="n">plastic_cup</span><span class="p">.</span><span class="n">raw</span><span class="w"> </span><span class="mf">0.980469</span><span class="w"> </span><span class="mi">648</span><span class="w"> </span><span class="n">measuring</span><span class="w"> </span><span class="n">cup</span>
+<span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">cropped</span><span class="o">/</span><span class="n">notice_sign</span><span class="p">.</span><span class="n">raw</span><span class="w"> </span><span class="mf">0.167969</span><span class="w"> </span><span class="mi">459</span><span class="w"> </span><span class="n">brass</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="dsp-backend-execution">
+<h2>DSP Backend Execution<a class="headerlink" href="#dsp-backend-execution" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id3">
+<h3>Execution on Target Platform ( Android/LE/UBUN )<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h3>
+<p>Running the DSP Backend on an Android target is largely
+similar to running the CPU, HTP and GPU backend on Android target. The remainder of
+this section will assume the target has a v66 DSP.</p>
+<p>Similar to HTP backend, DSP backend also requires a quantized model. To generate quantized model,
+see <a class="reference internal" href="#id2">Model Quantization</a>.
+First, create a directory for the example on device:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp"># make inception_v3 if necessary</span>
+<span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">shell</span><span class="w"> </span><span class="s">&quot;mkdir /data/local/tmp/inception_v3&quot;</span>
+</pre></div>
+</div>
+<p>Select target architecture</p>
+<p>In order to run on a particular target platform, the libraries compiled for that target must be used.
+Below are examples for aarch64-android (Android platform)  and aarch64-oe-linux-gcc11.2 toolchain (LE platform)
+The QNN_TARGET_ARCH varirable can be used to specify the appropriate library for the target.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp"># Example for Android targets</span>
+<span class="n">$</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">QNN_TARGET_ARCH</span><span class="o">=</span><span class="n">aarch64</span><span class="o">-</span><span class="n">android</span>
+
+<span class="cp"># Example for LE targets</span>
+<span class="n">$</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">QNN_TARGET_ARCH</span><span class="o">=</span><span class="n">aarch64</span><span class="o">-</span><span class="n">oe</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gcc11</span><span class="mf">.2</span>
+
+<span class="cp"># For DSP arch type</span>
+<span class="n">$</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">DSP_ARCH</span><span class="o">=</span><span class="n">hexagon</span><span class="o">-</span><span class="n">v66</span>
+</pre></div>
+</div>
+<p>Now push the necessary libraries to device:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ adb push ${QNN_SDK_ROOT}/lib/${QNN_TARGET_ARCH}/libQnnDsp.so /data/local/tmp/inception_v3
+$ adb push ${QNN_SDK_ROOT}/lib/${DSP_ARCH}/unsigned/libQnnDspV66Skel.so /data/local/tmp/inception_v3
+$ adb push ${QNN_SDK_ROOT}/lib/${QNN_TARGET_ARCH}/libQnnDspV66Stub.so /data/local/tmp/inception_v3
+$ adb push ${QNN_SDK_ROOT}/examples/Models/InceptionV3/model_libs/${QNN_TARGET_ARCH}/* /data/local/tmp/inception_v3
+</pre></div>
+</div>
+<p>Now push the input data and input lists to device:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">cropped</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">inception_v3</span>
+<span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">target_raw_list</span><span class="p">.</span><span class="n">txt</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">inception_v3</span>
+</pre></div>
+</div>
+<p>Push the <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code> tool:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">$</span><span class="p">{</span><span class="n">QNN_TARGET_ARCH</span><span class="p">}</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">net</span><span class="o">-</span><span class="n">run</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">inception_v3</span>
+</pre></div>
+</div>
+<p>Now set up the environment on device:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ adb shell
+$ cd /data/local/tmp/inception_v3
+$ export VENDOR_LIB=/vendor/lib/ # /vendor/lib64/ if aarch64
+$ export LD_LIBRARY_PATH=/data/local/tmp/inception_v3:/vendor/dsp/cdsp:$VENDOR_LIB
+$ export ADSP_LIBRARY_PATH=&quot;/data/local/tmp/inception_v3;/vendor/dsp/cdsp;/vendor/lib/rfsa/adsp;/system/lib/rfsa/adsp;/dsp&quot;
+</pre></div>
+</div>
+<p>Finally, use <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code> with the following:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="p">.</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">net</span><span class="o">-</span><span class="n">run</span><span class="w"> </span><span class="o">--</span><span class="n">backend</span><span class="w"> </span><span class="n">libQnnDsp</span><span class="p">.</span><span class="n">so</span><span class="w"> </span><span class="o">--</span><span class="n">model</span><span class="w"> </span><span class="n">libInception_v3_quantized</span><span class="p">.</span><span class="n">so</span><span class="w"> </span><span class="o">--</span><span class="n">input_list</span><span class="w"> </span><span class="n">target_raw_list</span><span class="p">.</span><span class="n">txt</span><span class="w"> </span><span class="o">--</span><span class="n">output_dir</span><span class="w"> </span><span class="n">output</span>
+</pre></div>
+</div>
+<p>Outputs from the run will be located at the ./output directory. Exit the device and view the results:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">exit</span>
+<span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span>
+<span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">pull</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">inception_v3</span><span class="o">/</span><span class="n">output</span>
+<span class="n">$</span><span class="w"> </span><span class="n">python3</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">show_inceptionv3_classifications</span><span class="p">.</span><span class="n">py</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="n">data</span><span class="o">/</span><span class="n">cropped</span><span class="o">/</span><span class="n">raw_list</span><span class="p">.</span><span class="n">txt</span><span class="w"> </span>\
+<span class="w">                                                                               </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="n">output</span><span class="o">/</span><span class="w"> </span>\
+<span class="w">                                                                               </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">data</span><span class="o">/</span><span class="n">imagenet_slim_labels</span><span class="p">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="execution-on-windows-device">
+<h3>Execution on Windows Device<a class="headerlink" href="#execution-on-windows-device" title="Permalink to this heading">¶</a></h3>
+<p>This section describes performing inference on a Windows host with a v66 DSP backend. The steps are
+similar to execution on a Windows host with a CPU or HTP backend.</p>
+<p>Execution with the DSP backend requires a quantized model. Please complete the steps to build the quantized model
+in the section <a class="reference internal" href="#model-build-on-windows-host">Model Build on Windows Host</a> above.</p>
+<p>First, connect to the windows device with:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">mstsc</span><span class="w"> </span><span class="o">-</span><span class="n">v</span><span class="w"> </span><span class="o">&lt;</span><span class="n">your</span><span class="w"> </span><span class="n">device</span><span class="w"> </span><span class="n">IP</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Then, create the folder <code class="docutils literal notranslate"><span class="pre">C:\qnn_test_package</span></code> on the device.</p>
+<p>Now, copy the necessary libraries from the Windows host to the Windows device <code class="docutils literal notranslate"><span class="pre">C:\qnn_test_package</span></code></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>- ${QNN_SDK_ROOT}\lib\aarch64-windows-msvc\QnnDsp.dll
+- ${QNN_SDK_ROOT}\lib\aarch64-windows-msvc\QnnDspV66Stub.dll
+- ${QNN_SDK_ROOT}\lib\${DSP_ARCH}\unsigned\libQnnDspV66Skel.so
+- C:\tmp\qnn_tmp\model_lib\ARM64\Inception_v3_quantized.dll (generated above)
+</pre></div>
+</div>
+<p>Now, copy the input data and input list from the Windows host to the Windows device <code class="docutils literal notranslate"><span class="pre">C:\qnn_test_package</span></code></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>- C:\tmp\qnn_tmp\cropped
+- C:\tmp\qnn_tmp\target_raw_list.txt
+</pre></div>
+</div>
+<p>Now, copy the <code class="docutils literal notranslate"><span class="pre">qnn-net-run.exe</span></code> tool to the Windows device:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>- ${QNN_SDK_ROOT}\bin\aarch64-windows-msvc\qnn-net-run.exe
+</pre></div>
+</div>
+<p>To run <code class="docutils literal notranslate"><span class="pre">qnn-net-run.exe</span></code> tool, please open <code class="docutils literal notranslate"><span class="pre">&quot;Administrator:Windows</span> <span class="pre">Power</span> <span class="pre">Shell&quot;</span></code>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ cd C:\qnn_test_package
+
+$ .\qnn-net-run.exe `
+   --model .\Inception_v3_quantized.dll `
+   --input_list .\target_raw_list.txt `
+   --backend .\QnnDsp.dll
+</pre></div>
+</div>
+<p>After the inference, we can check the classification result. By default, outputs from the run
+will be located in the <code class="docutils literal notranslate"><span class="pre">.\output</span></code> directory. We will need to copy the results back to the Windows host.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>copy C:\qnn_test_package\output to C:\tmp\qnn_tmp
+</pre></div>
+</div>
+<p>Then, open <code class="docutils literal notranslate"><span class="pre">&quot;Developer</span> <span class="pre">PowerShell</span> <span class="pre">for</span> <span class="pre">VS</span> <span class="pre">2022&quot;</span></code> to run:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ cd C:\tmp\qnn_tmp
+
+$ py -3 .\show_inceptionv3_classifications.py `
+     -i .\cropped\raw_list.txt `
+     -o output `
+     -l .\imagenet_slim_labels.txt
+</pre></div>
+</div>
+<p>The classification results should be:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">cropped</span><span class="o">/</span><span class="n">trash_bin</span><span class="p">.</span><span class="n">raw</span><span class="w">   </span><span class="mf">0.777344</span><span class="w"> </span><span class="mi">413</span><span class="w"> </span><span class="n">ashcan</span>
+<span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">cropped</span><span class="o">/</span><span class="n">chairs</span><span class="p">.</span><span class="n">raw</span><span class="w">      </span><span class="mf">0.253906</span><span class="w"> </span><span class="mi">832</span><span class="w"> </span><span class="n">studio</span><span class="w"> </span><span class="n">couch</span>
+<span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">cropped</span><span class="o">/</span><span class="n">plastic_cup</span><span class="p">.</span><span class="n">raw</span><span class="w"> </span><span class="mf">0.980469</span><span class="w"> </span><span class="mi">648</span><span class="w"> </span><span class="n">measuring</span><span class="w"> </span><span class="n">cup</span>
+<span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">cropped</span><span class="o">/</span><span class="n">notice_sign</span><span class="p">.</span><span class="n">raw</span><span class="w"> </span><span class="mf">0.167969</span><span class="w"> </span><span class="mi">459</span><span class="w"> </span><span class="n">brass</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="gpu-backend-execution">
+<h2>GPU Backend Execution<a class="headerlink" href="#gpu-backend-execution" title="Permalink to this heading">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Running the GPU Backend on a Windows device is not supported.</p>
+</div>
+<div class="section" id="id4">
+<h3>Execution on Target Platform ( Android/LE/UBUN )<a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h3>
+<p>Running the GPU Backend on an Android target is largely
+similar to running the CPU backend on Android target.</p>
+<p>First, create a directory for the example on device:</p>
+<p>For OE-Linux target:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">shell</span><span class="w"> </span><span class="n">mount</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="n">remount</span><span class="p">,</span><span class="n">rw</span><span class="w"> </span><span class="o">/</span>
+<span class="n">$</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span>
+<span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span>
+<span class="n">$</span><span class="w"> </span><span class="n">ln</span><span class="w"> </span><span class="o">-</span><span class="n">s</span><span class="w"> </span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span>
+<span class="n">$</span><span class="w"> </span><span class="n">chmod</span><span class="w"> </span><span class="o">-</span><span class="n">R</span><span class="w"> </span><span class="mi">777</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span>
+<span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">shell</span><span class="w"> </span><span class="s">&quot;mkdir -p /data/local/tmp/inception_v3&quot;</span>
+</pre></div>
+</div>
+<p>For android target:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp"># make inception_v3 if necessary</span>
+<span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">shell</span><span class="w"> </span><span class="s">&quot;mkdir -p /data/local/tmp/inception_v3&quot;</span>
+</pre></div>
+</div>
+<p>Select target architecture</p>
+<p>In order to run on a particular target platform, the libraries compiled for that target must be used.
+Below are examples for aarch64-android (Android platform)  and aarch64-oe-linux-gcc11.2 toolchain (LE platform)
+The QNN_TARGET_ARCH varirable can be used to specify the appropriate library for the target.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp"># Example for Android targets</span>
+<span class="n">$</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">QNN_TARGET_ARCH</span><span class="o">=</span><span class="n">aarch64</span><span class="o">-</span><span class="n">android</span>
+
+<span class="cp"># Example for LE targets</span>
+<span class="n">$</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">QNN_TARGET_ARCH</span><span class="o">=</span><span class="n">aarch64</span><span class="o">-</span><span class="n">oe</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gcc11</span><span class="mf">.2</span>
+</pre></div>
+</div>
+<p>Now push the necessary libraries to device:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ adb push ${QNN_SDK_ROOT}/lib/${QNN_TARGET_ARCH}/libQnnGpu.so /data/local/tmp/inception_v3
+$ adb push ${QNN_SDK_ROOT}/examples/Models/InceptionV3/model_libs/${QNN_TARGET_ARCH}/*.so /data/local/tmp/inception_v3
+</pre></div>
+</div>
+<p>Now push the input data and input lists to device:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">cropped</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">inception_v3</span>
+<span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">target_raw_list</span><span class="p">.</span><span class="n">txt</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">inception_v3</span>
+</pre></div>
+</div>
+<p>Push the <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code> tool:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">$</span><span class="p">{</span><span class="n">QNN_TARGET_ARCH</span><span class="p">}</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">net</span><span class="o">-</span><span class="n">run</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">inception_v3</span>
+</pre></div>
+</div>
+<p>Now set up the environment on device:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">shell</span>
+<span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">inception_v3</span>
+<span class="n">$</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">LD_LIBRARY_PATH</span><span class="o">=/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">inception_v3</span>
+</pre></div>
+</div>
+<p>Finally, use <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code> with the following:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="p">.</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">net</span><span class="o">-</span><span class="n">run</span><span class="w"> </span><span class="o">--</span><span class="n">backend</span><span class="w"> </span><span class="n">libQnnGpu</span><span class="p">.</span><span class="n">so</span><span class="w"> </span><span class="o">--</span><span class="n">model</span><span class="w"> </span><span class="n">libInception_v3</span><span class="p">.</span><span class="n">so</span><span class="w"> </span><span class="o">--</span><span class="n">input_list</span><span class="w"> </span><span class="n">target_raw_list</span><span class="p">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>Outputs from the run will be located at the default ./output directory. Exit the device and view the results:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">exit</span>
+<span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span>
+<span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">pull</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">inception_v3</span><span class="o">/</span><span class="n">output</span><span class="w"> </span><span class="n">output</span>
+<span class="n">$</span><span class="w"> </span><span class="n">python3</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">show_inceptionv3_classifications</span><span class="p">.</span><span class="n">py</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="n">data</span><span class="o">/</span><span class="n">cropped</span><span class="o">/</span><span class="n">raw_list</span><span class="p">.</span><span class="n">txt</span><span class="w"> </span>\
+<span class="w">                                                                               </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="n">output</span><span class="o">/</span><span class="w"> </span>\
+<span class="w">                                                                               </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">data</span><span class="o">/</span><span class="n">imagenet_slim_labels</span><span class="p">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="htp-backend-execution">
+<h2>HTP Backend Execution<a class="headerlink" href="#htp-backend-execution" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id5">
+<h3>Execution on Linux Host<a class="headerlink" href="#id5" title="Permalink to this heading">¶</a></h3>
+<p>The HTP backend can be exercised on Linux Host through the use of the HTP Emulation backend. With
+the model library compiled, the model can be executed using <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code> with the following:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span>
+<span class="n">$</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">net</span><span class="o">-</span><span class="n">run</span><span class="w"> </span>\
+<span class="w">              </span><span class="o">--</span><span class="n">backend</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">libQnnHtp</span><span class="p">.</span><span class="n">so</span><span class="w"> </span>\
+<span class="w">              </span><span class="o">--</span><span class="n">model</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">model_libs</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">libInception_v3_quantized</span><span class="p">.</span><span class="n">so</span><span class="w"> </span>\
+<span class="w">              </span><span class="o">--</span><span class="n">input_list</span><span class="w"> </span><span class="n">data</span><span class="o">/</span><span class="n">cropped</span><span class="o">/</span><span class="n">raw_list</span><span class="p">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>in order to use the HTP Emulation backend, a quantized model is required. For more information
+on quantization see <a class="reference internal" href="#id2">Model Quantization</a>.</p>
+</div>
+<p>This will produce the results at:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/Models/InceptionV3/output</span></code></p></li>
+</ul>
+<p>To view the results use:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">python3</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">show_inceptionv3_classifications</span><span class="p">.</span><span class="n">py</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="n">data</span><span class="o">/</span><span class="n">cropped</span><span class="o">/</span><span class="n">raw_list</span><span class="p">.</span><span class="n">txt</span><span class="w"> </span>\
+<span class="w">                                                                               </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="n">output</span><span class="o">/</span><span class="w"> </span>\
+<span class="w">                                                                               </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">data</span><span class="o">/</span><span class="n">imagenet_slim_labels</span><span class="p">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>Execution on Target Platform ( Android/LE/UBUN )<a class="headerlink" href="#id6" title="Permalink to this heading">¶</a></h3>
+<p>Running the HTP Backend on a Target Platform is largely
+similar to running the CPU and GPU backend on a target platform.</p>
+<p>One distinction is the HTP backend requires a quantized model. For more information
+on quantization see <a class="reference internal" href="#id2">Model Quantization</a>. Additionally, running the HTP on device requires
+the generation of a serialized context. To generate the context run:</p>
+<div class="highlight-c notranslate" id="context-generator"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">context</span><span class="o">-</span><span class="n">binary</span><span class="o">-</span><span class="n">generator</span><span class="w"> </span>\
+<span class="w">              </span><span class="o">--</span><span class="n">backend</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">libQnnHtp</span><span class="p">.</span><span class="n">so</span><span class="w"> </span>\
+<span class="w">              </span><span class="o">--</span><span class="n">model</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">model_libs</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">libInception_v3_quantized</span><span class="p">.</span><span class="n">so</span><span class="w"> </span>\
+<span class="w">              </span><span class="o">--</span><span class="n">binary_file</span><span class="w"> </span><span class="n">Inception_v3_quantized</span><span class="p">.</span><span class="n">serialized</span>
+<span class="w">              </span><span class="o">--</span><span class="n">config_file</span><span class="w"> </span><span class="o">&lt;</span><span class="n">path</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">JSON</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">backend</span><span class="w"> </span><span class="n">extensions</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>The above config file with minimum parameters such as backend extensions config specified through JSON is given below:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="s">&quot;backend_extensions&quot;</span><span class="w"> </span><span class="o">:</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="s">&quot;shared_library_path&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">&quot;path_to_shared_library&quot;</span><span class="p">,</span><span class="w">  </span><span class="c1">// give path to shared extensions library (.so)</span>
+<span class="w">        </span><span class="s">&quot;config_file_path&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">&quot;path_to_config_file&quot;</span><span class="w">         </span><span class="c1">// give path to backend config</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Users can set the custom options and different performance modes to HTP Backend through the backend config. Please refer to
+<a class="reference external" href="htp/htp_backend.html#qnn-htp-backend-extensions">QNN HTP Backend Extensions</a> for various options available in the config.</p>
+<p>Refer below example for creating backend config file for QCS6490/QCM6490 target with mandatory options to be passed.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="s">&quot;graphs&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s">&quot;graph_names&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s">&quot;Inception_v3_quantized&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="s">&quot;vtcm_mb&quot;</span><span class="o">:</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="s">&quot;devices&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s">&quot;dsp_arch&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;v68&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This creates the context at:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/Models/InceptionV3/output/Inception_v3_quantized.serialized.bin</span></code></p></li>
+</ul>
+<p>First, create a directory for the example on device:</p>
+<p>For OE-Linux target:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">shell</span><span class="w"> </span><span class="n">mount</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="n">remount</span><span class="p">,</span><span class="n">rw</span><span class="w"> </span><span class="o">/</span>
+<span class="n">$</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span>
+<span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span>
+<span class="n">$</span><span class="w"> </span><span class="n">ln</span><span class="w"> </span><span class="o">-</span><span class="n">s</span><span class="w"> </span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span>
+<span class="n">$</span><span class="w"> </span><span class="n">chmod</span><span class="w"> </span><span class="o">-</span><span class="n">R</span><span class="w"> </span><span class="mi">777</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span>
+<span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">shell</span><span class="w"> </span><span class="s">&quot;mkdir -p /data/local/tmp/inception_v3&quot;</span>
+</pre></div>
+</div>
+<p>For android target:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp"># make inception_v3 if necessary</span>
+<span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">shell</span><span class="w"> </span><span class="s">&quot;mkdir -p /data/local/tmp/inception_v3&quot;</span>
+</pre></div>
+</div>
+<p>Select target architecture</p>
+<p>In order to run on a particular target platform, the libraries compiled for that target must be used.
+Below are examples for aarch64-android (Android platform)  and aarch64-oe-linux-gcc11.2 toolchain (LE platform)
+The QNN_TARGET_ARCH varirable can be used to specify the appropriate library for the target.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp"># Example for Android targets</span>
+<span class="n">$</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">QNN_TARGET_ARCH</span><span class="o">=</span><span class="n">aarch64</span><span class="o">-</span><span class="n">android</span>
+
+<span class="cp"># Example for LE targets</span>
+<span class="n">$</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">QNN_TARGET_ARCH</span><span class="o">=</span><span class="n">aarch64</span><span class="o">-</span><span class="n">oe</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gcc11</span><span class="mf">.2</span>
+
+<span class="cp"># For DSP arch type</span>
+<span class="n">$</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">DSP_ARCH</span><span class="o">=</span><span class="n">hexagon</span><span class="o">-</span><span class="n">v68</span>
+</pre></div>
+</div>
+<p>Now push the necessary libraries to device:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">$</span><span class="p">{</span><span class="n">DSP_ARCH</span><span class="p">}</span><span class="o">/</span><span class="kt">unsigned</span><span class="cm">/* /data/local/tmp/inception_v3</span>
+<span class="cm">$ adb push ${QNN_SDK_ROOT}/lib/${QNN_TARGET_ARCH}/libQnnHtpV68Stub.so /data/local/tmp/inception_v3</span>
+<span class="cm">$ adb push ${QNN_SDK_ROOT}/lib/${QNN_TARGET_ARCH}/libQnnHtp.so /data/local/tmp/inception_v3</span>
+<span class="cm">$ adb push ${QNN_SDK_ROOT}/examples/Models/InceptionV3/output/Inception_v3_quantized.serialized.bin /data/local/tmp/inception_v3</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This section is to demonstrate HTP execution on Target Platform with offline prepared graph steps.
+If we would like to execute on-device(online) prepared graph, push on-device prepare libray
+to device as well.</p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">adb</span> <span class="pre">push</span> <span class="pre">${QNN_SDK_ROOT}/lib/${QNN_TARGET_ARCH}/libQnnHtpPrepare.so</span> <span class="pre">/data/local/tmp/inception_v3</span></code></p>
+</div>
+<p>Now push the input data and input lists to device:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">cropped</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">inception_v3</span>
+<span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">target_raw_list</span><span class="p">.</span><span class="n">txt</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">inception_v3</span>
+</pre></div>
+</div>
+<p>Push the <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code> tool:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">$</span><span class="p">{</span><span class="n">QNN_TARGET_ARCH</span><span class="p">}</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">net</span><span class="o">-</span><span class="n">run</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">inception_v3</span>
+</pre></div>
+</div>
+<p>Now set up the environment on device:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">shell</span>
+<span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">inception_v3</span>
+<span class="n">$</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">LD_LIBRARY_PATH</span><span class="o">=/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">inception_v3</span>
+<span class="n">$</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">ADSP_LIBRARY_PATH</span><span class="o">=</span><span class="s">&quot;/data/local/tmp/inception_v3&quot;</span>
+</pre></div>
+</div>
+<p>Finally, use <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code> with the following:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="p">.</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">net</span><span class="o">-</span><span class="n">run</span><span class="w"> </span><span class="o">--</span><span class="n">backend</span><span class="w"> </span><span class="n">libQnnHtp</span><span class="p">.</span><span class="n">so</span><span class="w"> </span><span class="o">--</span><span class="n">input_list</span><span class="w"> </span><span class="n">target_raw_list</span><span class="p">.</span><span class="n">txt</span><span class="w"> </span><span class="o">--</span><span class="n">retrieve_context</span><span class="w"> </span><span class="n">Inception_v3_quantized</span><span class="p">.</span><span class="n">serialized</span><span class="p">.</span><span class="n">bin</span>
+</pre></div>
+</div>
+<p>Outputs from the run will be located at the default ./output directory. Exit the device and view the results:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">exit</span>
+<span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span>
+<span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">pull</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">inception_v3</span><span class="o">/</span><span class="n">output</span><span class="w"> </span><span class="n">output</span>
+<span class="n">$</span><span class="w"> </span><span class="n">python3</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">show_inceptionv3_classifications</span><span class="p">.</span><span class="n">py</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="n">data</span><span class="o">/</span><span class="n">cropped</span><span class="o">/</span><span class="n">raw_list</span><span class="p">.</span><span class="n">txt</span><span class="w"> </span>\
+<span class="w">                                                                               </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="n">output</span><span class="o">/</span><span class="w"> </span>\
+<span class="w">                                                                               </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="n">data</span><span class="o">/</span><span class="n">imagenet_slim_labels</span><span class="p">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h3>Execution on Windows Device<a class="headerlink" href="#id7" title="Permalink to this heading">¶</a></h3>
+<dl class="simple">
+<dt>This section illustrates how to run end-to-end inference on HTP using <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code> in 2 different ways:</dt><dd><ol class="arabic simple">
+<li><p>Running HTP Backend on windows-aarch64 using an offline prepared graph</p></li>
+<li><p>Running HTP Backend on windows-aarch64 using an on-device prepared graph</p></li>
+</ol>
+</dd>
+</dl>
+<p><strong>Executing with HTP Backend Using an Offline Prepared Graph</strong></p>
+<p>First, prepare the serialized context by following the steps <a class="reference internal" href="tutorial5.html#context-generator"><span class="std std-ref">here</span></a>.
+The following assumes the Windows device has a v68 DSP.</p>
+<p>Connect to the windows device with:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">mstsc</span><span class="w"> </span><span class="o">-</span><span class="n">v</span><span class="w"> </span><span class="o">&lt;</span><span class="n">your</span><span class="w"> </span><span class="n">device</span><span class="w"> </span><span class="n">IP</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Create the folder <code class="docutils literal notranslate"><span class="pre">C:\qnn_test_package</span></code> on the device.</p>
+<p>Now, copy the necessary libraries from the Windows host to the Windows device <code class="docutils literal notranslate"><span class="pre">C:\qnn_test_package</span></code></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>- ${QNN_SDK_ROOT}\lib\aarch64-windows-msvc\QnnHtp.dll
+- ${QNN_SDK_ROOT}\lib\aarch64-windows-msvc\QnnHtpV68Stub.dll
+- ${QNN_SDK_ROOT}\lib\${DSP_ARCH}\unsigned\*
+- Inception_v3_quantized.serialized.bin (serialized context prepared above)
+</pre></div>
+</div>
+<p>Now, copy the input data and input list from the Windows host to the Windows device <code class="docutils literal notranslate"><span class="pre">C:\qnn_test_package</span></code></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>- C:\tmp\qnn_tmp\cropped
+- C:\tmp\qnn_tmp\target_raw_list.txt
+</pre></div>
+</div>
+<p>Now, copy the <code class="docutils literal notranslate"><span class="pre">qnn-net-run.exe</span></code> tool to the Windows device:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>- ${QNN_SDK_ROOT}\bin\aarch64-windows-msvc\qnn-net-run.exe
+</pre></div>
+</div>
+<p>To run <code class="docutils literal notranslate"><span class="pre">qnn-net-run.exe</span></code> tool, please open <code class="docutils literal notranslate"><span class="pre">&quot;Administrator:Windows</span> <span class="pre">Power</span> <span class="pre">Shell&quot;</span></code>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ cd C:\qnn_test_package
+
+$ .\qnn-net-run.exe `
+   --retrieve_context .\Inception_v3_quantized.serialized.bin `
+   --input_list .\target_raw_list.txt `
+   --backend .\QnnHtp.dll
+</pre></div>
+</div>
+<p>After performing the inference, we can check the classification result. By default, outputs from the run
+will be located in the <code class="docutils literal notranslate"><span class="pre">.\output</span></code> directory. We will need to copy the results back to the Windows Host.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>copy C:\qnn_test_package\output to C:\tmp\qnn_tmp
+</pre></div>
+</div>
+<p>Then, open <code class="docutils literal notranslate"><span class="pre">&quot;Developer</span> <span class="pre">PowerShell</span> <span class="pre">for</span> <span class="pre">VS</span> <span class="pre">2022&quot;</span></code> to run:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ cd C:\tmp\qnn_tmp
+
+$ py -3 .\show_inceptionv3_classifications.py `
+     -i .\cropped\raw_list.txt `
+     -o output `
+     -l .\imagenet_slim_labels.txt
+</pre></div>
+</div>
+<p>Then, the classification results should be:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">cropped</span><span class="o">/</span><span class="n">trash_bin</span><span class="p">.</span><span class="n">raw</span><span class="w">   </span><span class="mf">0.777344</span><span class="w"> </span><span class="mi">413</span><span class="w"> </span><span class="n">ashcan</span>
+<span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">cropped</span><span class="o">/</span><span class="n">chairs</span><span class="p">.</span><span class="n">raw</span><span class="w">      </span><span class="mf">0.253906</span><span class="w"> </span><span class="mi">832</span><span class="w"> </span><span class="n">studio</span><span class="w"> </span><span class="n">couch</span>
+<span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">cropped</span><span class="o">/</span><span class="n">plastic_cup</span><span class="p">.</span><span class="n">raw</span><span class="w"> </span><span class="mf">0.980469</span><span class="w"> </span><span class="mi">648</span><span class="w"> </span><span class="n">measuring</span><span class="w"> </span><span class="n">cup</span>
+<span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">cropped</span><span class="o">/</span><span class="n">notice_sign</span><span class="p">.</span><span class="n">raw</span><span class="w"> </span><span class="mf">0.167969</span><span class="w"> </span><span class="mi">459</span><span class="w"> </span><span class="n">brass</span>
+</pre></div>
+</div>
+<p><strong>Executing with HTP Backend Using an On-Device Prepared Graph</strong></p>
+<p>First, build the quantized model following the steps in the <a class="reference internal" href="#model-build-on-windows-host">Model Build on Windows Host</a> section.
+This will produce the required DLL library.</p>
+<p>The following assumes the Windows device has a v68 DSP.</p>
+<p>Connect to the windows device with:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">mstsc</span><span class="w"> </span><span class="o">-</span><span class="n">v</span><span class="w"> </span><span class="o">&lt;</span><span class="n">your</span><span class="w"> </span><span class="n">device</span><span class="w"> </span><span class="n">IP</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Create the folder <code class="docutils literal notranslate"><span class="pre">C:\qnn_test_package</span></code> on the device.</p>
+<p>Copy the following libraries from the Windows host to the Windows device in the folder: <code class="docutils literal notranslate"><span class="pre">C:\qnn_test_package</span></code></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>- ${QNN_SDK_ROOT}\lib\aarch64-windows-msvc\QnnHtp.dll
+- ${QNN_SDK_ROOT}\lib\aarch64-windows-msvc\QnnHtpV68Stub.dll
+- ${QNN_SDK_ROOT}\lib\aarch64-windows-msvc\QnnHtpPrepare.dll
+- ${QNN_SDK_ROOT}\lib\hexagon-v68\unsigned\libQnnHtpV68Skel.so
+- Inception_v3_quantized.dll (Quantized model (*.dll) as described in prerequisite)
+</pre></div>
+</div>
+<p>Now, copy the input data and input list from the Windows host to the Windows device <code class="docutils literal notranslate"><span class="pre">C:\qnn_test_package</span></code></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>- C:\tmp\qnn_tmp\cropped
+- C:\tmp\qnn_tmp\target_raw_list.txt
+</pre></div>
+</div>
+<p>Now, copy the <code class="docutils literal notranslate"><span class="pre">qnn-net-run.exe</span></code> tool to the Windows device:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>- ${QNN_SDK_ROOT}\bin\aarch64-windows-msvc\qnn-net-run.exe
+</pre></div>
+</div>
+<p>To run <code class="docutils literal notranslate"><span class="pre">qnn-net-run.exe</span></code> tool, please open <code class="docutils literal notranslate"><span class="pre">&quot;Administrator:Windows</span> <span class="pre">Power</span> <span class="pre">Shell&quot;</span></code>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ cd C:\qnn_test_package
+
+$ .\qnn-net-run.exe `
+   --model .\Inception_v3_quantized.dll `
+   --input_list .\target_raw_list.txt `
+   --backend .\QnnHtp.dll
+</pre></div>
+</div>
+<p>After performing the inference, we can check the classification result. By default, outputs from the run
+will be located in the <code class="docutils literal notranslate"><span class="pre">.\output</span></code> directory. We will need to copy the results back to the Windows Host.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>copy C:\qnn_test_package\output to C:\tmp\qnn_tmp
+</pre></div>
+</div>
+<p>Then, open <code class="docutils literal notranslate"><span class="pre">&quot;Developer</span> <span class="pre">PowerShell</span> <span class="pre">for</span> <span class="pre">VS</span> <span class="pre">2022&quot;</span></code> to run:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ cd C:\tmp\qnn_tmp
+
+$ py -3 .\show_inceptionv3_classifications.py `
+     -i .\cropped\raw_list.txt `
+     -o output `
+     -l .\imagenet_slim_labels.txt
+</pre></div>
+</div>
+<p>Then, the classification results should be:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">cropped</span><span class="o">/</span><span class="n">trash_bin</span><span class="p">.</span><span class="n">raw</span><span class="w">   </span><span class="mf">0.777344</span><span class="w"> </span><span class="mi">413</span><span class="w"> </span><span class="n">ashcan</span>
+<span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">cropped</span><span class="o">/</span><span class="n">chairs</span><span class="p">.</span><span class="n">raw</span><span class="w">      </span><span class="mf">0.253906</span><span class="w"> </span><span class="mi">832</span><span class="w"> </span><span class="n">studio</span><span class="w"> </span><span class="n">couch</span>
+<span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">cropped</span><span class="o">/</span><span class="n">plastic_cup</span><span class="p">.</span><span class="n">raw</span><span class="w"> </span><span class="mf">0.980469</span><span class="w"> </span><span class="mi">648</span><span class="w"> </span><span class="n">measuring</span><span class="w"> </span><span class="n">cup</span>
+<span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">InceptionV3</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">cropped</span><span class="o">/</span><span class="n">notice_sign</span><span class="p">.</span><span class="n">raw</span><span class="w"> </span><span class="mf">0.167969</span><span class="w"> </span><span class="mi">459</span><span class="w"> </span><span class="n">brass</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="lpai-backend-execution">
+<h2>LPAI Backend Execution<a class="headerlink" href="#lpai-backend-execution" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="preparing-lpai-configuration-files">
+<h3>Preparing LPAI Configuration Files<a class="headerlink" href="#preparing-lpai-configuration-files" title="Permalink to this heading">¶</a></h3>
+<p>Prepare Json file with appropriate parameters to generate model for appropriate hardware</p>
+<p>EXAMPLE of <code class="docutils literal notranslate"><span class="pre">config.json</span></code> file:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="s">&quot;backend_extensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="s">&quot;shared_library_path&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;${QNN_SDK_ROOT}/lib/x86_64-linux-clang/libQnnLpaiNetRunExtentions.so&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="s">&quot;config_file_path&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;./lpaiParams.conf&quot;</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>EXAMPLE of <code class="docutils literal notranslate"><span class="pre">lpaiParams.conf</span></code> file:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="s">&quot;target_env&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;x86&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="s">&quot;enable_hw_ver&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;v5&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="s">&quot;enable_layer_fusion&quot;</span><span class="o">:</span><span class="w"> </span><span class="nb">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">lpaiParams.conf</span></code> file can include one or several parameters different from default values as mentioned below:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;target_env&quot;</span><span class="w">              </span><span class="s">&quot;arm/adsp/x86/tensilica, default adsp&quot;</span>
+<span class="s">&quot;enable_hw_ver&quot;</span><span class="w">           </span><span class="s">&quot;v1/v2/v3/v4/v5, default v5&quot;</span>
+<span class="s">&quot;enable_layer_fusion&quot;</span><span class="w">     </span><span class="s">&quot;true/false,     default true&quot;</span>
+<span class="s">&quot;enable_batchnorm_fold&quot;</span><span class="w">   </span><span class="s">&quot;true/false,     default true&quot;</span>
+<span class="s">&quot;enable_channel_align&quot;</span><span class="w">    </span><span class="s">&quot;true/false,     default false&quot;</span>
+<span class="s">&quot;pad_split&quot;</span><span class="w">               </span><span class="s">&quot;true/false,     default false&quot;</span>
+<span class="s">&quot;exclude_io&quot;</span><span class="w">              </span><span class="s">&quot;true/false,     default false&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="running-lpai-emulation-backend-on-linux-x86">
+<h3>Running LPAI Emulation Backend on Linux x86<a class="headerlink" href="#running-lpai-emulation-backend-on-linux-x86" title="Permalink to this heading">¶</a></h3>
+<p>With the appropriate libraries compiled, <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code> is used with the following:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">converter</span><span class="o">/</span><span class="n">models</span>
+<span class="n">$</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">net</span><span class="o">-</span><span class="n">run</span><span class="w"> </span>\
+<span class="w">              </span><span class="o">--</span><span class="n">backend</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">libQnnLpai</span><span class="p">.</span><span class="n">so</span><span class="w"> </span>\
+<span class="w">              </span><span class="o">--</span><span class="n">model</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">example_libs</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">libqnn_model_8bit_quantized</span><span class="p">.</span><span class="n">so</span><span class="w"> </span>\
+<span class="w">              </span><span class="o">--</span><span class="n">input_list</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">converter</span><span class="o">/</span><span class="n">models</span><span class="o">/</span><span class="n">input_list_float</span><span class="p">.</span><span class="n">txt</span><span class="w"> </span>\
+<span class="w">              </span><span class="o">--</span><span class="n">config_file</span><span class="w"> </span><span class="o">&lt;</span><span class="n">config</span><span class="p">.</span><span class="n">json</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Outputs from the run will be located at the default ./output directory.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If full paths are not given to <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code>, all libraries must be added to
+LD_LIBRARY_PATH and be discoverable by the system library loader.</p>
+</div>
+</div>
+<div class="section" id="running-lpai-backend-on-android-using-offline-prepared-graph">
+<h3>Running LPAI Backend on Android using offline prepared graph<a class="headerlink" href="#running-lpai-backend-on-android-using-offline-prepared-graph" title="Permalink to this heading">¶</a></h3>
+<p>Running the LPAI Backend on an Android target is supported only for offline prepared graphs.
+In this tutorial, we first prepare the graph on x86 host, then pass the serialized context binary to the device
+LPAI Backend to execute.</p>
+<p>To generate the context, run:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">converter</span><span class="o">/</span><span class="n">models</span>
+<span class="n">$</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">context</span><span class="o">-</span><span class="n">binary</span><span class="o">-</span><span class="n">generator</span><span class="w"> </span>\
+<span class="w">              </span><span class="o">--</span><span class="n">backend</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">libQnnLpai</span><span class="p">.</span><span class="n">so</span><span class="w"> </span>\
+<span class="w">              </span><span class="o">--</span><span class="n">model</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">example_libs</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">libqnn_model_8bit_quantized</span><span class="p">.</span><span class="n">so</span><span class="w"> </span>\
+<span class="w">              </span><span class="o">--</span><span class="n">config_file</span><span class="w"> </span><span class="o">&lt;</span><span class="n">config</span><span class="p">.</span><span class="n">json</span><span class="o">&gt;</span><span class="w"> </span>\
+<span class="w">              </span><span class="o">--</span><span class="n">binary_file</span><span class="w"> </span><span class="n">qnn_model_8bit_quantized</span><span class="p">.</span><span class="n">serialized</span>
+</pre></div>
+</div>
+<p>This creates the context at:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">./output/qnn_model_8bit_quantized.serialized.bin</span></code></p></li>
+</ul>
+<p>Now push the necessary libraries to device:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ adb push ${QNN_SDK_ROOT}/lib/aarch64-android/libQnnLpai.so /data/local/tmp/LPAI
+$ adb push ${QNN_SDK_ROOT}/lib/aarch64-android/libQnnLpaiV73Stub.so /data/local/tmp/LPAI
+$ adb push ./output/qnn_model_8bit_quantized.serialized.bin /data/local/tmp/LPAI
+$ # Additionally, the LPAI requires Hexagon specific libraries
+$ adb push ${QNN_SDK_ROOT}/lib/hexagon-v73/unsigned/libQnnLpaiV73Skel_v5.so /data/local/tmp/LPAI
+</pre></div>
+</div>
+<p>Now push the input data and input lists to device:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">converter</span><span class="o">/</span><span class="n">models</span><span class="o">/</span><span class="n">input_data_float</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">LPAI</span>
+<span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">converter</span><span class="o">/</span><span class="n">models</span><span class="o">/</span><span class="n">input_list_float</span><span class="p">.</span><span class="n">txt</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">LPAI</span>
+</pre></div>
+</div>
+<p>Push the <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code> tool:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">aarch64</span><span class="o">-</span><span class="n">android</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">net</span><span class="o">-</span><span class="n">run</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">LPAI</span>
+</pre></div>
+</div>
+<p>Now set up the environment on device:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">adb</span><span class="w"> </span><span class="n">shell</span>
+<span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">LPAI</span>
+<span class="n">$</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">LD_LIBRARY_PATH</span><span class="o">=/</span><span class="n">data</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">LPAI</span>
+<span class="n">$</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">ADSP_LIBRARY_PATH</span><span class="o">=</span><span class="s">&quot;/data/local/tmp/LPAI&quot;</span>
+</pre></div>
+</div>
+<p>Finally, use <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code> with the following:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="p">.</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">net</span><span class="o">-</span><span class="n">run</span><span class="w"> </span><span class="o">--</span><span class="n">backend</span><span class="w"> </span><span class="n">libQnnLpai</span><span class="p">.</span><span class="n">so</span><span class="w"> </span><span class="o">--</span><span class="n">retrieve_context</span><span class="w"> </span><span class="n">qnn_model_8bit_quantized</span><span class="p">.</span><span class="n">serialized</span><span class="p">.</span><span class="n">bin</span><span class="w"> </span><span class="o">--</span><span class="n">input_list</span><span class="w"> </span><span class="n">input_list_float</span><span class="p">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,650 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>File UdoImpl.h &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>File UdoImpl.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="file-udoimpl-h">
+<span id="file-include-qnn-dsp-udo-udoimpl-h"></span><h1>File UdoImpl.h<a class="headerlink" href="#file-udoimpl-h" title="Permalink to this heading">¶</a></h1>
+<p>↰ <a class="reference internal" href="dir_include_QNN_DSP_Udo.html#dir-include-qnn-dsp-udo"><span class="std std-ref">Parent directory</span></a> (<code class="docutils literal notranslate"><span class="pre">include/QNN/DSP/Udo</span></code>)</p>
+<div class="contents local topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#definition-include-qnn-dsp-udo-udoimpl-h" id="id1">Definition (<code class="docutils literal notranslate"><span class="pre">include/QNN/DSP/Udo/UdoImpl.h</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#includes" id="id2">Includes</a></p></li>
+<li><p><a class="reference internal" href="#included-by" id="id3">Included By</a></p></li>
+<li><p><a class="reference internal" href="#functions" id="id4">Functions</a></p></li>
+<li><p><a class="reference internal" href="#typedefs" id="id5">Typedefs</a></p></li>
+<li><p><a class="reference internal" href="#full-file-listing" id="id6">Full File Listing</a></p></li>
+</ul>
+</div>
+<div class="section" id="definition-include-qnn-dsp-udo-udoimpl-h">
+<h2>Definition (<code class="docutils literal notranslate"><span class="pre">include/QNN/DSP/Udo/UdoImpl.h</span></code>)<a class="headerlink" href="#definition-include-qnn-dsp-udo-udoimpl-h" title="Permalink to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="program_listing_file_include_QNN_DSP_Udo_UdoImpl.h.html">Program Listing for File UdoImpl.h</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="includes">
+<h2>Includes<a class="headerlink" href="#includes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DSP/Udo/UdoShared.h</span></code> (<a class="reference internal" href="file_include_QNN_DSP_Udo_UdoShared.h.html#file-include-qnn-dsp-udo-udoshared-h"><span class="std std-ref">File UdoShared.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stdbool.h</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="included-by">
+<h2>Included By<a class="headerlink" href="#included-by" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="file_include_QNN_DSP_Udo_UdoImplDsp.h.html#file-include-qnn-dsp-udo-udoimpldsp-h"><span class="std std-ref">File UdoImplDsp.h</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="function_group__c__plus__plus__apis_1ga48bc2273c147eb5e67b4de7af5c2d750.html#exhale-function-group-c-plus-plus-apis-1ga48bc2273c147eb5e67b4de7af5c2d750"><span class="std std-ref">Function SnpeUdo_createOperation</span></a></p></li>
+<li><p><a class="reference internal" href="function_group__c__plus__plus__apis_1gaf42c8dd2647aa713cb87e57a614a3f53.html#exhale-function-group-c-plus-plus-apis-1gaf42c8dd2647aa713cb87e57a614a3f53"><span class="std std-ref">Function SnpeUdo_createOpFactory</span></a></p></li>
+<li><p><a class="reference internal" href="function_group__c__plus__plus__apis_1gabfc1c092667f22b0095837425d16438e.html#exhale-function-group-c-plus-plus-apis-1gabfc1c092667f22b0095837425d16438e"><span class="std std-ref">Function SnpeUdo_executeOp</span></a></p></li>
+<li><p><a class="reference internal" href="function_group__c__plus__plus__apis_1ga160e77a4f94928d4b7ef46dcf604af00.html#exhale-function-group-c-plus-plus-apis-1ga160e77a4f94928d4b7ef46dcf604af00"><span class="std std-ref">Function SnpeUdo_getImpInfo</span></a></p></li>
+<li><p><a class="reference internal" href="function_group__c__plus__plus__apis_1ga395ef6f2578d74c674e49f0b9944c06b.html#exhale-function-group-c-plus-plus-apis-1ga395ef6f2578d74c674e49f0b9944c06b"><span class="std std-ref">Function SnpeUdo_getImplVersion</span></a></p></li>
+<li><p><a class="reference internal" href="function_group__c__plus__plus__apis_1ga124c9a41ddde13a1d515f70f6984b36d.html#exhale-function-group-c-plus-plus-apis-1ga124c9a41ddde13a1d515f70f6984b36d"><span class="std std-ref">Function SnpeUdo_initImplLibrary</span></a></p></li>
+<li><p><a class="reference internal" href="function_group__c__plus__plus__apis_1gafc3dbce3de6f1adca97c4a01a89b2897.html#exhale-function-group-c-plus-plus-apis-1gafc3dbce3de6f1adca97c4a01a89b2897"><span class="std std-ref">Function SnpeUdo_profileOp</span></a></p></li>
+<li><p><a class="reference internal" href="function_group__c__plus__plus__apis_1gafdf5f635e7acd737a58e467bf935c502.html#exhale-function-group-c-plus-plus-apis-1gafdf5f635e7acd737a58e467bf935c502"><span class="std std-ref">Function SnpeUdo_releaseOp</span></a></p></li>
+<li><p><a class="reference internal" href="function_group__c__plus__plus__apis_1gab86f3b6be911ad1628a812e8500de7c2.html#exhale-function-group-c-plus-plus-apis-1gab86f3b6be911ad1628a812e8500de7c2"><span class="std std-ref">Function SnpeUdo_releaseOpFactory</span></a></p></li>
+<li><p><a class="reference internal" href="function_group__c__plus__plus__apis_1gacc38d630731863ac7f861ddff99b6778.html#exhale-function-group-c-plus-plus-apis-1gacc38d630731863ac7f861ddff99b6778"><span class="std std-ref">Function SnpeUdo_setOpIO</span></a></p></li>
+<li><p><a class="reference internal" href="function_group__c__plus__plus__apis_1ga6577c989667fb87fd4dece6c455e6b08.html#exhale-function-group-c-plus-plus-apis-1ga6577c989667fb87fd4dece6c455e6b08"><span class="std std-ref">Function SnpeUdo_terminateImplLibrary</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="typedefs">
+<h2>Typedefs<a class="headerlink" href="#typedefs" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="typedef_group__c__plus__plus__apis_1ga553cfa3832ff2b88e23ce780b69f2749.html#exhale-typedef-group-c-plus-plus-apis-1ga553cfa3832ff2b88e23ce780b69f2749"><span class="std std-ref">Typedef SnpeUdo_CreateOperationFunction_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_group__c__plus__plus__apis_1ga56d62075e2916a13f74bc565050a3f9f.html#exhale-typedef-group-c-plus-plus-apis-1ga56d62075e2916a13f74bc565050a3f9f"><span class="std std-ref">Typedef SnpeUdo_CreateOpFactoryFunction_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_group__c__plus__plus__apis_1ga9d6e2213454152291c4fcbbdd15b39bb.html#exhale-typedef-group-c-plus-plus-apis-1ga9d6e2213454152291c4fcbbdd15b39bb"><span class="std std-ref">Typedef SnpeUdo_ExecuteOpFunction_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_group__c__plus__plus__apis_1gac36650a9d17f6b285034f9e3af8c0a3c.html#exhale-typedef-group-c-plus-plus-apis-1gac36650a9d17f6b285034f9e3af8c0a3c"><span class="std std-ref">Typedef SnpeUdo_ExternalNotify_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_group__c__plus__plus__apis_1gaef48833ccca24590e3ef8ec496352f11.html#exhale-typedef-group-c-plus-plus-apis-1gaef48833ccca24590e3ef8ec496352f11"><span class="std std-ref">Typedef SnpeUdo_GetImpInfoFunction_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_group__c__plus__plus__apis_1ga841a35cf3983e4cf8b1b108e8bb79d74.html#exhale-typedef-group-c-plus-plus-apis-1ga841a35cf3983e4cf8b1b108e8bb79d74"><span class="std std-ref">Typedef SnpeUdo_getImplVersion_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_group__c__plus__plus__apis_1ga4548b8b070ecdfbb175609dc0bdd8f57.html#exhale-typedef-group-c-plus-plus-apis-1ga4548b8b070ecdfbb175609dc0bdd8f57"><span class="std std-ref">Typedef SnpeUdo_InitImplLibraryFunction_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_group__c__plus__plus__apis_1gaa07059574fa16d6ead5089c4da6d6dc6.html#exhale-typedef-group-c-plus-plus-apis-1gaa07059574fa16d6ead5089c4da6d6dc6"><span class="std std-ref">Typedef SnpeUdo_Operation_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_group__c__plus__plus__apis_1ga538d3141d4fa06b0e022b7ba5b0a1a40.html#exhale-typedef-group-c-plus-plus-apis-1ga538d3141d4fa06b0e022b7ba5b0a1a40"><span class="std std-ref">Typedef SnpeUdo_OpFactory_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_group__c__plus__plus__apis_1ga7e7d3f1d131fbfb04f5d7910025e8c6f.html#exhale-typedef-group-c-plus-plus-apis-1ga7e7d3f1d131fbfb04f5d7910025e8c6f"><span class="std std-ref">Typedef SnpeUdo_ProfileOpFunction_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_group__c__plus__plus__apis_1gad43950219786a0196cdb2089fccdba18.html#exhale-typedef-group-c-plus-plus-apis-1gad43950219786a0196cdb2089fccdba18"><span class="std std-ref">Typedef SnpeUdo_ReleaseOpFactoryFunction_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_group__c__plus__plus__apis_1ga3b1d65a28f8bcf4fb247a328969a8f3a.html#exhale-typedef-group-c-plus-plus-apis-1ga3b1d65a28f8bcf4fb247a328969a8f3a"><span class="std std-ref">Typedef SnpeUdo_ReleaseOpFunction_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_group__c__plus__plus__apis_1gae3c31e007dd9f534fc720db807370054.html#exhale-typedef-group-c-plus-plus-apis-1gae3c31e007dd9f534fc720db807370054"><span class="std std-ref">Typedef SnpeUdo_SetOpIOFunction_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_group__c__plus__plus__apis_1ga53957ae19e446d6f36c388f1fb9e1ff5.html#exhale-typedef-group-c-plus-plus-apis-1ga53957ae19e446d6f36c388f1fb9e1ff5"><span class="std std-ref">Typedef SnpeUdo_TerminateImplLibraryFunction_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_group__c__plus__plus__apis_1gad687a8badc7916ad60c80a4569f3944f.html#exhale-typedef-group-c-plus-plus-apis-1gad687a8badc7916ad60c80a4569f3944f"><span class="std std-ref">Typedef Udo_CreateOperationFunction_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_group__c__plus__plus__apis_1ga047a230f658a57444779f6bf7929a872.html#exhale-typedef-group-c-plus-plus-apis-1ga047a230f658a57444779f6bf7929a872"><span class="std std-ref">Typedef Udo_CreateOpFactoryFunction_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_group__c__plus__plus__apis_1ga8820b668d2767ae8382c833d76eebac0.html#exhale-typedef-group-c-plus-plus-apis-1ga8820b668d2767ae8382c833d76eebac0"><span class="std std-ref">Typedef Udo_ExecuteOpFunction_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_group__c__plus__plus__apis_1ga0cc77f67bc472b9de066856700aab326.html#exhale-typedef-group-c-plus-plus-apis-1ga0cc77f67bc472b9de066856700aab326"><span class="std std-ref">Typedef Udo_ExternalNotify_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_group__c__plus__plus__apis_1ga75c7a999e52b8620668e9f5030802bcf.html#exhale-typedef-group-c-plus-plus-apis-1ga75c7a999e52b8620668e9f5030802bcf"><span class="std std-ref">Typedef Udo_GetImpInfoFunction_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_group__c__plus__plus__apis_1gac2d020cce23b0f29d70be1ac3b914903.html#exhale-typedef-group-c-plus-plus-apis-1gac2d020cce23b0f29d70be1ac3b914903"><span class="std std-ref">Typedef Udo_Operation_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_group__c__plus__plus__apis_1ga0e4284ca859d975aabc7c00d9b04a660.html#exhale-typedef-group-c-plus-plus-apis-1ga0e4284ca859d975aabc7c00d9b04a660"><span class="std std-ref">Typedef Udo_OpFactory_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_group__c__plus__plus__apis_1ga7eb0b608f993ecaf36361286dd88b2f1.html#exhale-typedef-group-c-plus-plus-apis-1ga7eb0b608f993ecaf36361286dd88b2f1"><span class="std std-ref">Typedef Udo_ProfileOpFunction_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_group__c__plus__plus__apis_1ga1a76c8f10f78945d2b03d9203073e881.html#exhale-typedef-group-c-plus-plus-apis-1ga1a76c8f10f78945d2b03d9203073e881"><span class="std std-ref">Typedef Udo_ReleaseOpFactoryFunction_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_group__c__plus__plus__apis_1gab07a102477ee032247de98f82c1b6bfa.html#exhale-typedef-group-c-plus-plus-apis-1gab07a102477ee032247de98f82c1b6bfa"><span class="std std-ref">Typedef Udo_ReleaseOpFunction_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_group__c__plus__plus__apis_1ga3d2f5accce2f9c47c5cf079b64451ce7.html#exhale-typedef-group-c-plus-plus-apis-1ga3d2f5accce2f9c47c5cf079b64451ce7"><span class="std std-ref">Typedef Udo_SetOpIOFunction_t</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="full-file-listing">
+<h2>Full File Listing<a class="headerlink" href="#full-file-listing" title="Permalink to this heading">¶</a></h2>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv419SnpeUdo_OpFactory_t">
+<span id="_CPPv319SnpeUdo_OpFactory_t"></span><span id="_CPPv219SnpeUdo_OpFactory_t"></span><span id="SnpeUdo_OpFactory_t"></span><span class="target" id="group__c__plus__plus__apis_1ga538d3141d4fa06b0e022b7ba5b0a1a40"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">_SnpeUdo_OpFactory_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">SnpeUdo_OpFactory_t</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv419SnpeUdo_Operation_t">
+<span id="_CPPv319SnpeUdo_Operation_t"></span><span id="_CPPv219SnpeUdo_Operation_t"></span><span id="SnpeUdo_Operation_t"></span><span class="target" id="group__c__plus__plus__apis_1gaa07059574fa16d6ead5089c4da6d6dc6"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">_SnpeUdo_Operation_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">SnpeUdo_Operation_t</span></span></span><a class="headerlink" href="#_CPPv419SnpeUdo_Operation_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv415Udo_OpFactory_t">
+<span id="_CPPv315Udo_OpFactory_t"></span><span id="_CPPv215Udo_OpFactory_t"></span><span id="Udo_OpFactory_t"></span><span class="target" id="group__c__plus__plus__apis_1ga0e4284ca859d975aabc7c00d9b04a660"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="typedef_group__c__plus__plus__apis_1ga538d3141d4fa06b0e022b7ba5b0a1a40.html#_CPPv419SnpeUdo_OpFactory_t" title="SnpeUdo_OpFactory_t"><span class="n"><span class="pre">SnpeUdo_OpFactory_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Udo_OpFactory_t</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv415Udo_Operation_t">
+<span id="_CPPv315Udo_Operation_t"></span><span id="_CPPv215Udo_Operation_t"></span><span id="Udo_Operation_t"></span><span class="target" id="group__c__plus__plus__apis_1gac2d020cce23b0f29d70be1ac3b914903"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="typedef_group__c__plus__plus__apis_1gaa07059574fa16d6ead5089c4da6d6dc6.html#_CPPv419SnpeUdo_Operation_t" title="SnpeUdo_Operation_t"><span class="n"><span class="pre">SnpeUdo_Operation_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Udo_Operation_t</span></span></span><a class="headerlink" href="#_CPPv415Udo_Operation_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv433SnpeUdo_InitImplLibraryFunction_t">
+<span id="_CPPv333SnpeUdo_InitImplLibraryFunction_t"></span><span id="_CPPv233SnpeUdo_InitImplLibraryFunction_t"></span><span id="SnpeUdo_InitImplLibraryFunction_t"></span><span class="target" id="group__c__plus__plus__apis_1ga4548b8b070ecdfbb175609dc0bdd8f57"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="enum_group__c__plus__plus__apis_1ga1f02bf39ff236da33ba951188e94b2ea.html#_CPPv419SnpeUdo_ErrorType_t" title="SnpeUdo_ErrorType_t"><span class="n"><span class="pre">SnpeUdo_ErrorType_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">SnpeUdo_InitImplLibraryFunction_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">)</span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv424SnpeUdo_getImplVersion_t">
+<span id="_CPPv324SnpeUdo_getImplVersion_t"></span><span id="_CPPv224SnpeUdo_getImplVersion_t"></span><span id="SnpeUdo_getImplVersion_t"></span><span class="target" id="group__c__plus__plus__apis_1ga841a35cf3983e4cf8b1b108e8bb79d74"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="enum_group__c__plus__plus__apis_1ga1f02bf39ff236da33ba951188e94b2ea.html#_CPPv419SnpeUdo_ErrorType_t" title="SnpeUdo_ErrorType_t"><span class="n"><span class="pre">SnpeUdo_ErrorType_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">SnpeUdo_getImplVersion_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="structSnpeUdo__LibVersion__t.html#_CPPv420SnpeUdo_LibVersion_t" title="SnpeUdo_LibVersion_t"><span class="n"><span class="pre">SnpeUdo_LibVersion_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv424SnpeUdo_getImplVersion_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv438SnpeUdo_TerminateImplLibraryFunction_t">
+<span id="_CPPv338SnpeUdo_TerminateImplLibraryFunction_t"></span><span id="_CPPv238SnpeUdo_TerminateImplLibraryFunction_t"></span><span id="SnpeUdo_TerminateImplLibraryFunction_t"></span><span class="target" id="group__c__plus__plus__apis_1ga53957ae19e446d6f36c388f1fb9e1ff5"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="enum_group__c__plus__plus__apis_1ga1f02bf39ff236da33ba951188e94b2ea.html#_CPPv419SnpeUdo_ErrorType_t" title="SnpeUdo_ErrorType_t"><span class="n"><span class="pre">SnpeUdo_ErrorType_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">SnpeUdo_TerminateImplLibraryFunction_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv428SnpeUdo_GetImpInfoFunction_t">
+<span id="_CPPv328SnpeUdo_GetImpInfoFunction_t"></span><span id="_CPPv228SnpeUdo_GetImpInfoFunction_t"></span><span id="SnpeUdo_GetImpInfoFunction_t"></span><span class="target" id="group__c__plus__plus__apis_1gaef48833ccca24590e3ef8ec496352f11"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="enum_group__c__plus__plus__apis_1ga1f02bf39ff236da33ba951188e94b2ea.html#_CPPv419SnpeUdo_ErrorType_t" title="SnpeUdo_ErrorType_t"><span class="n"><span class="pre">SnpeUdo_ErrorType_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">SnpeUdo_GetImpInfoFunction_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="structSnpeUdo__ImpInfo__t.html#_CPPv417SnpeUdo_ImpInfo_t" title="SnpeUdo_ImpInfo_t"><span class="n"><span class="pre">SnpeUdo_ImpInfo_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">implementationInfo</span></span><span class="p"><span class="pre">)</span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv424Udo_GetImpInfoFunction_t">
+<span id="_CPPv324Udo_GetImpInfoFunction_t"></span><span id="_CPPv224Udo_GetImpInfoFunction_t"></span><span id="Udo_GetImpInfoFunction_t"></span><span class="target" id="group__c__plus__plus__apis_1ga75c7a999e52b8620668e9f5030802bcf"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="typedef_group__c__plus__plus__apis_1gaef48833ccca24590e3ef8ec496352f11.html#_CPPv428SnpeUdo_GetImpInfoFunction_t" title="SnpeUdo_GetImpInfoFunction_t"><span class="n"><span class="pre">SnpeUdo_GetImpInfoFunction_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Udo_GetImpInfoFunction_t</span></span></span><a class="headerlink" href="#_CPPv424Udo_GetImpInfoFunction_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv433SnpeUdo_CreateOpFactoryFunction_t">
+<span id="_CPPv333SnpeUdo_CreateOpFactoryFunction_t"></span><span id="_CPPv233SnpeUdo_CreateOpFactoryFunction_t"></span><span id="SnpeUdo_CreateOpFactoryFunction_t"></span><span class="target" id="group__c__plus__plus__apis_1ga56d62075e2916a13f74bc565050a3f9f"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="enum_group__c__plus__plus__apis_1ga1f02bf39ff236da33ba951188e94b2ea.html#_CPPv419SnpeUdo_ErrorType_t" title="SnpeUdo_ErrorType_t"><span class="n"><span class="pre">SnpeUdo_ErrorType_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">SnpeUdo_CreateOpFactoryFunction_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="enum_group__c__plus__plus__apis_1ga9ee718ab1d7e3422532434c22af9ab6f.html#_CPPv418SnpeUdo_CoreType_t" title="SnpeUdo_CoreType_t"><span class="n"><span class="pre">SnpeUdo_CoreType_t</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="typedef_group__c__plus__plus__apis_1ga1efd1795e7cb10d2c818c2a06e62cbda.html#_CPPv416SnpeUdo_String_t" title="SnpeUdo_String_t"><span class="n"><span class="pre">SnpeUdo_String_t</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="structSnpeUdo__Param__t.html#_CPPv415SnpeUdo_Param_t" title="SnpeUdo_Param_t"><span class="n"><span class="pre">SnpeUdo_Param_t</span></span></a><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="typedef_group__c__plus__plus__apis_1ga538d3141d4fa06b0e022b7ba5b0a1a40.html#_CPPv419SnpeUdo_OpFactory_t" title="SnpeUdo_OpFactory_t"><span class="n"><span class="pre">SnpeUdo_OpFactory_t</span></span></a><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv433SnpeUdo_CreateOpFactoryFunction_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv429Udo_CreateOpFactoryFunction_t">
+<span id="_CPPv329Udo_CreateOpFactoryFunction_t"></span><span id="_CPPv229Udo_CreateOpFactoryFunction_t"></span><span id="Udo_CreateOpFactoryFunction_t"></span><span class="target" id="group__c__plus__plus__apis_1ga047a230f658a57444779f6bf7929a872"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="typedef_group__c__plus__plus__apis_1ga56d62075e2916a13f74bc565050a3f9f.html#_CPPv433SnpeUdo_CreateOpFactoryFunction_t" title="SnpeUdo_CreateOpFactoryFunction_t"><span class="n"><span class="pre">SnpeUdo_CreateOpFactoryFunction_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Udo_CreateOpFactoryFunction_t</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv434SnpeUdo_ReleaseOpFactoryFunction_t">
+<span id="_CPPv334SnpeUdo_ReleaseOpFactoryFunction_t"></span><span id="_CPPv234SnpeUdo_ReleaseOpFactoryFunction_t"></span><span id="SnpeUdo_ReleaseOpFactoryFunction_t"></span><span class="target" id="group__c__plus__plus__apis_1gad43950219786a0196cdb2089fccdba18"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="enum_group__c__plus__plus__apis_1ga1f02bf39ff236da33ba951188e94b2ea.html#_CPPv419SnpeUdo_ErrorType_t" title="SnpeUdo_ErrorType_t"><span class="n"><span class="pre">SnpeUdo_ErrorType_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">SnpeUdo_ReleaseOpFactoryFunction_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="typedef_group__c__plus__plus__apis_1ga538d3141d4fa06b0e022b7ba5b0a1a40.html#_CPPv419SnpeUdo_OpFactory_t" title="SnpeUdo_OpFactory_t"><span class="n"><span class="pre">SnpeUdo_OpFactory_t</span></span></a><span class="p"><span class="pre">)</span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv430Udo_ReleaseOpFactoryFunction_t">
+<span id="_CPPv330Udo_ReleaseOpFactoryFunction_t"></span><span id="_CPPv230Udo_ReleaseOpFactoryFunction_t"></span><span id="Udo_ReleaseOpFactoryFunction_t"></span><span class="target" id="group__c__plus__plus__apis_1ga1a76c8f10f78945d2b03d9203073e881"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="typedef_group__c__plus__plus__apis_1gad43950219786a0196cdb2089fccdba18.html#_CPPv434SnpeUdo_ReleaseOpFactoryFunction_t" title="SnpeUdo_ReleaseOpFactoryFunction_t"><span class="n"><span class="pre">SnpeUdo_ReleaseOpFactoryFunction_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Udo_ReleaseOpFactoryFunction_t</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv433SnpeUdo_CreateOperationFunction_t">
+<span id="_CPPv333SnpeUdo_CreateOperationFunction_t"></span><span id="_CPPv233SnpeUdo_CreateOperationFunction_t"></span><span id="SnpeUdo_CreateOperationFunction_t"></span><span class="target" id="group__c__plus__plus__apis_1ga553cfa3832ff2b88e23ce780b69f2749"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="enum_group__c__plus__plus__apis_1ga1f02bf39ff236da33ba951188e94b2ea.html#_CPPv419SnpeUdo_ErrorType_t" title="SnpeUdo_ErrorType_t"><span class="n"><span class="pre">SnpeUdo_ErrorType_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">SnpeUdo_CreateOperationFunction_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="typedef_group__c__plus__plus__apis_1ga538d3141d4fa06b0e022b7ba5b0a1a40.html#_CPPv419SnpeUdo_OpFactory_t" title="SnpeUdo_OpFactory_t"><span class="n"><span class="pre">SnpeUdo_OpFactory_t</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="structSnpeUdo__TensorParam__t.html#_CPPv421SnpeUdo_TensorParam_t" title="SnpeUdo_TensorParam_t"><span class="n"><span class="pre">SnpeUdo_TensorParam_t</span></span></a><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="structSnpeUdo__TensorParam__t.html#_CPPv421SnpeUdo_TensorParam_t" title="SnpeUdo_TensorParam_t"><span class="n"><span class="pre">SnpeUdo_TensorParam_t</span></span></a><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="typedef_group__c__plus__plus__apis_1gaa07059574fa16d6ead5089c4da6d6dc6.html#_CPPv419SnpeUdo_Operation_t" title="SnpeUdo_Operation_t"><span class="n"><span class="pre">SnpeUdo_Operation_t</span></span></a><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">)</span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv429Udo_CreateOperationFunction_t">
+<span id="_CPPv329Udo_CreateOperationFunction_t"></span><span id="_CPPv229Udo_CreateOperationFunction_t"></span><span id="Udo_CreateOperationFunction_t"></span><span class="target" id="group__c__plus__plus__apis_1gad687a8badc7916ad60c80a4569f3944f"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="typedef_group__c__plus__plus__apis_1ga553cfa3832ff2b88e23ce780b69f2749.html#_CPPv433SnpeUdo_CreateOperationFunction_t" title="SnpeUdo_CreateOperationFunction_t"><span class="n"><span class="pre">SnpeUdo_CreateOperationFunction_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Udo_CreateOperationFunction_t</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv424SnpeUdo_ExternalNotify_t">
+<span id="_CPPv324SnpeUdo_ExternalNotify_t"></span><span id="_CPPv224SnpeUdo_ExternalNotify_t"></span><span id="SnpeUdo_ExternalNotify_t"></span><span class="target" id="group__c__plus__plus__apis_1gac36650a9d17f6b285034f9e3af8c0a3c"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="enum_group__c__plus__plus__apis_1ga1f02bf39ff236da33ba951188e94b2ea.html#_CPPv419SnpeUdo_ErrorType_t" title="SnpeUdo_ErrorType_t"><span class="n"><span class="pre">SnpeUdo_ErrorType_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">SnpeUdo_ExternalNotify_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">ID</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv424SnpeUdo_ExternalNotify_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A pointer to notification function. </p>
+<p><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">   </span><span class="n">The</span><span class="w"> </span><span class="n">notification</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">supports</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">non</span><span class="o">-</span><span class="n">blocking</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">g</span><span class="p">.</span><span class="w"> </span><span class="n">asynchronous</span><span class="p">)</span><span class="w"> </span><span class="n">execution</span><span class="w"> </span><span class="n">use</span><span class="o">-</span><span class="k">case</span><span class="p">.</span>
+<span class="w">   </span><span class="no">In</span><span class="w"> </span><span class="no">case</span><span class="w"> </span><span class="no">an</span><span class="w"> </span><span class="s">&quot;executeUdoOp&quot;</span><span class="w"> </span><span class="no">function</span><span class="w"> </span><span class="no">is</span><span class="w"> </span><span class="no">called</span><span class="w"> </span><span class="no">with</span><span class="w"> </span><span class="s">&quot;blocking&quot;</span><span class="w"> </span><span class="no">set</span><span class="w"> </span><span class="no">to</span><span class="w"> </span><span class="no">zero</span><span class="p">,</span><span class="w"> </span><span class="no">and</span><span class="w"> </span><span class="no">a</span>
+<span class="w">   </span><span class="no">notify</span><span class="w"> </span><span class="no">function</span><span class="p">,</span><span class="w"> </span><span class="no">this</span><span class="w"> </span><span class="no">function</span><span class="w"> </span><span class="no">will</span><span class="w"> </span><span class="no">be</span><span class="w"> </span><span class="no">called</span><span class="w"> </span><span class="no">by</span><span class="w"> </span><span class="no">the</span><span class="w"> </span><span class="no">implementation</span><span class="w"> </span><span class="no">library</span><span class="w"> </span><span class="no">at</span><span class="w"> </span><span class="no">the</span>
+<span class="w">   </span><span class="no">end</span><span class="w"> </span><span class="no">of</span><span class="w"> </span><span class="no">execution</span><span class="p">.</span><span class="w"> </span><span class="no">The</span><span class="w"> </span><span class="no">implementation</span><span class="w"> </span><span class="no">library</span><span class="w"> </span><span class="no">will</span><span class="w"> </span><span class="no">pass</span><span class="w"> </span><span class="no">the</span><span class="w"> </span><span class="no">notify</span><span class="w"> </span><span class="no">function</span><span class="w"> </span><span class="no">the</span><span class="w"> </span><span class="no">ID</span>
+<span class="w">   </span><span class="no">that</span><span class="w"> </span><span class="no">was</span><span class="w"> </span><span class="no">provided</span><span class="w"> </span><span class="no">to</span><span class="w"> </span><span class="no">it</span><span class="w"> </span><span class="no">when</span><span class="w"> </span><span class="s">&quot;executeUdoOp&quot;</span><span class="w"> </span><span class="no">was</span><span class="w"> </span><span class="no">called</span><span class="p">.</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Param ID</dt>
+<dd class="field-odd"><p><strong>[in]</strong> 32-bit value, that was provided to executeUdoOp by the calling entity. Can be used to track the notifications, in case of multiple execute calls issued.</p>
+</dd>
+<dt class="field-even">Return</dt>
+<dd class="field-even"><p>Error code </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv420Udo_ExternalNotify_t">
+<span id="_CPPv320Udo_ExternalNotify_t"></span><span id="_CPPv220Udo_ExternalNotify_t"></span><span id="Udo_ExternalNotify_t"></span><span class="target" id="group__c__plus__plus__apis_1ga0cc77f67bc472b9de066856700aab326"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="typedef_group__c__plus__plus__apis_1gac36650a9d17f6b285034f9e3af8c0a3c.html#_CPPv424SnpeUdo_ExternalNotify_t" title="SnpeUdo_ExternalNotify_t"><span class="n"><span class="pre">SnpeUdo_ExternalNotify_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Udo_ExternalNotify_t</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv427SnpeUdo_ExecuteOpFunction_t">
+<span id="_CPPv327SnpeUdo_ExecuteOpFunction_t"></span><span id="_CPPv227SnpeUdo_ExecuteOpFunction_t"></span><span id="SnpeUdo_ExecuteOpFunction_t"></span><span class="target" id="group__c__plus__plus__apis_1ga9d6e2213454152291c4fcbbdd15b39bb"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="enum_group__c__plus__plus__apis_1ga1f02bf39ff236da33ba951188e94b2ea.html#_CPPv419SnpeUdo_ErrorType_t" title="SnpeUdo_ErrorType_t"><span class="n"><span class="pre">SnpeUdo_ErrorType_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">SnpeUdo_ExecuteOpFunction_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="typedef_group__c__plus__plus__apis_1gaa07059574fa16d6ead5089c4da6d6dc6.html#_CPPv419SnpeUdo_Operation_t" title="SnpeUdo_Operation_t"><span class="n"><span class="pre">SnpeUdo_Operation_t</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="typedef_group__c__plus__plus__apis_1gac36650a9d17f6b285034f9e3af8c0a3c.html#_CPPv424SnpeUdo_ExternalNotify_t" title="SnpeUdo_ExternalNotify_t"><span class="n"><span class="pre">SnpeUdo_ExternalNotify_t</span></span></a><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv427SnpeUdo_ExecuteOpFunction_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv423Udo_ExecuteOpFunction_t">
+<span id="_CPPv323Udo_ExecuteOpFunction_t"></span><span id="_CPPv223Udo_ExecuteOpFunction_t"></span><span id="Udo_ExecuteOpFunction_t"></span><span class="target" id="group__c__plus__plus__apis_1ga8820b668d2767ae8382c833d76eebac0"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="typedef_group__c__plus__plus__apis_1ga9d6e2213454152291c4fcbbdd15b39bb.html#_CPPv427SnpeUdo_ExecuteOpFunction_t" title="SnpeUdo_ExecuteOpFunction_t"><span class="n"><span class="pre">SnpeUdo_ExecuteOpFunction_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Udo_ExecuteOpFunction_t</span></span></span><a class="headerlink" href="#_CPPv423Udo_ExecuteOpFunction_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv425SnpeUdo_SetOpIOFunction_t">
+<span id="_CPPv325SnpeUdo_SetOpIOFunction_t"></span><span id="_CPPv225SnpeUdo_SetOpIOFunction_t"></span><span id="SnpeUdo_SetOpIOFunction_t"></span><span class="target" id="group__c__plus__plus__apis_1gae3c31e007dd9f534fc720db807370054"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="enum_group__c__plus__plus__apis_1ga1f02bf39ff236da33ba951188e94b2ea.html#_CPPv419SnpeUdo_ErrorType_t" title="SnpeUdo_ErrorType_t"><span class="n"><span class="pre">SnpeUdo_ErrorType_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">SnpeUdo_SetOpIOFunction_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="typedef_group__c__plus__plus__apis_1gaa07059574fa16d6ead5089c4da6d6dc6.html#_CPPv419SnpeUdo_Operation_t" title="SnpeUdo_Operation_t"><span class="n"><span class="pre">SnpeUdo_Operation_t</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="structSnpeUdo__TensorParam__t.html#_CPPv421SnpeUdo_TensorParam_t" title="SnpeUdo_TensorParam_t"><span class="n"><span class="pre">SnpeUdo_TensorParam_t</span></span></a><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="structSnpeUdo__TensorParam__t.html#_CPPv421SnpeUdo_TensorParam_t" title="SnpeUdo_TensorParam_t"><span class="n"><span class="pre">SnpeUdo_TensorParam_t</span></span></a><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">)</span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv421Udo_SetOpIOFunction_t">
+<span id="_CPPv321Udo_SetOpIOFunction_t"></span><span id="_CPPv221Udo_SetOpIOFunction_t"></span><span id="Udo_SetOpIOFunction_t"></span><span class="target" id="group__c__plus__plus__apis_1ga3d2f5accce2f9c47c5cf079b64451ce7"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="typedef_group__c__plus__plus__apis_1gae3c31e007dd9f534fc720db807370054.html#_CPPv425SnpeUdo_SetOpIOFunction_t" title="SnpeUdo_SetOpIOFunction_t"><span class="n"><span class="pre">SnpeUdo_SetOpIOFunction_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Udo_SetOpIOFunction_t</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv427SnpeUdo_ProfileOpFunction_t">
+<span id="_CPPv327SnpeUdo_ProfileOpFunction_t"></span><span id="_CPPv227SnpeUdo_ProfileOpFunction_t"></span><span id="SnpeUdo_ProfileOpFunction_t"></span><span class="target" id="group__c__plus__plus__apis_1ga7e7d3f1d131fbfb04f5d7910025e8c6f"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="enum_group__c__plus__plus__apis_1ga1f02bf39ff236da33ba951188e94b2ea.html#_CPPv419SnpeUdo_ErrorType_t" title="SnpeUdo_ErrorType_t"><span class="n"><span class="pre">SnpeUdo_ErrorType_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">SnpeUdo_ProfileOpFunction_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="typedef_group__c__plus__plus__apis_1gaa07059574fa16d6ead5089c4da6d6dc6.html#_CPPv419SnpeUdo_Operation_t" title="SnpeUdo_Operation_t"><span class="n"><span class="pre">SnpeUdo_Operation_t</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv427SnpeUdo_ProfileOpFunction_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv423Udo_ProfileOpFunction_t">
+<span id="_CPPv323Udo_ProfileOpFunction_t"></span><span id="_CPPv223Udo_ProfileOpFunction_t"></span><span id="Udo_ProfileOpFunction_t"></span><span class="target" id="group__c__plus__plus__apis_1ga7eb0b608f993ecaf36361286dd88b2f1"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="typedef_group__c__plus__plus__apis_1ga7e7d3f1d131fbfb04f5d7910025e8c6f.html#_CPPv427SnpeUdo_ProfileOpFunction_t" title="SnpeUdo_ProfileOpFunction_t"><span class="n"><span class="pre">SnpeUdo_ProfileOpFunction_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Udo_ProfileOpFunction_t</span></span></span><a class="headerlink" href="#_CPPv423Udo_ProfileOpFunction_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv427SnpeUdo_ReleaseOpFunction_t">
+<span id="_CPPv327SnpeUdo_ReleaseOpFunction_t"></span><span id="_CPPv227SnpeUdo_ReleaseOpFunction_t"></span><span id="SnpeUdo_ReleaseOpFunction_t"></span><span class="target" id="group__c__plus__plus__apis_1ga3b1d65a28f8bcf4fb247a328969a8f3a"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="enum_group__c__plus__plus__apis_1ga1f02bf39ff236da33ba951188e94b2ea.html#_CPPv419SnpeUdo_ErrorType_t" title="SnpeUdo_ErrorType_t"><span class="n"><span class="pre">SnpeUdo_ErrorType_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">SnpeUdo_ReleaseOpFunction_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="typedef_group__c__plus__plus__apis_1gaa07059574fa16d6ead5089c4da6d6dc6.html#_CPPv419SnpeUdo_Operation_t" title="SnpeUdo_Operation_t"><span class="n"><span class="pre">SnpeUdo_Operation_t</span></span></a><span class="p"><span class="pre">)</span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv423Udo_ReleaseOpFunction_t">
+<span id="_CPPv323Udo_ReleaseOpFunction_t"></span><span id="_CPPv223Udo_ReleaseOpFunction_t"></span><span id="Udo_ReleaseOpFunction_t"></span><span class="target" id="group__c__plus__plus__apis_1gab07a102477ee032247de98f82c1b6bfa"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="typedef_group__c__plus__plus__apis_1ga3b1d65a28f8bcf4fb247a328969a8f3a.html#_CPPv427SnpeUdo_ReleaseOpFunction_t" title="SnpeUdo_ReleaseOpFunction_t"><span class="n"><span class="pre">SnpeUdo_ReleaseOpFunction_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Udo_ReleaseOpFunction_t</span></span></span><a class="headerlink" href="#_CPPv423Udo_ReleaseOpFunction_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423SnpeUdo_initImplLibraryPv">
+<span id="_CPPv323SnpeUdo_initImplLibraryPv"></span><span id="_CPPv223SnpeUdo_initImplLibraryPv"></span><span id="SnpeUdo_initImplLibrary__voidP"></span><span class="target" id="group__c__plus__plus__apis_1ga124c9a41ddde13a1d515f70f6984b36d"></span><a class="reference internal" href="enum_group__c__plus__plus__apis_1ga1f02bf39ff236da33ba951188e94b2ea.html#_CPPv419SnpeUdo_ErrorType_t" title="SnpeUdo_ErrorType_t"><span class="n"><span class="pre">SnpeUdo_ErrorType_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SnpeUdo_initImplLibrary</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">globalInfrastructure</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423SnpeUdo_initImplLibraryPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Initialize the shared library’s data structures. Calling any other library function before this one will result in error. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>globalInfrastructure</strong> – <strong>[in]</strong> Global core-specific infrastructure to be used by operations created in this library. The definition and semantics of this object will be defined in the corresponding implementation header for the core type. </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422SnpeUdo_getImplVersionPP20SnpeUdo_LibVersion_t">
+<span id="_CPPv322SnpeUdo_getImplVersionPP20SnpeUdo_LibVersion_t"></span><span id="_CPPv222SnpeUdo_getImplVersionPP20SnpeUdo_LibVersion_t"></span><span id="SnpeUdo_getImplVersion__SnpeUdo_LibVersion_tPP"></span><span class="target" id="group__c__plus__plus__apis_1ga395ef6f2578d74c674e49f0b9944c06b"></span><a class="reference internal" href="enum_group__c__plus__plus__apis_1ga1f02bf39ff236da33ba951188e94b2ea.html#_CPPv419SnpeUdo_ErrorType_t" title="SnpeUdo_ErrorType_t"><span class="n"><span class="pre">SnpeUdo_ErrorType_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SnpeUdo_getImplVersion</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structSnpeUdo__LibVersion__t.html#_CPPv420SnpeUdo_LibVersion_t" title="SnpeUdo_LibVersion_t"><span class="n"><span class="pre">SnpeUdo_LibVersion_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">version</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422SnpeUdo_getImplVersionPP20SnpeUdo_LibVersion_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A function to query the API version of the UDO implementation library. The function populates a <a class="reference internal" href="file_include_QNN_DSP_Udo_UdoBase.h.html#structSnpeUdo__LibVersion__t"><span class="std std-ref">SnpeUdo_LibVersion_t</span></a> struct, which contains a <a class="reference internal" href="file_include_QNN_DSP_Udo_UdoBase.h.html#structSnpeUdo__Version__t"><span class="std std-ref">SnpeUdo_Version_t</span></a> struct for API version and library version. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>version</strong> – <strong>[inout]</strong> A pointer to struct which contains major, minor, teeny information for library and api versions.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv428SnpeUdo_terminateImplLibraryv">
+<span id="_CPPv328SnpeUdo_terminateImplLibraryv"></span><span id="_CPPv228SnpeUdo_terminateImplLibraryv"></span><span id="SnpeUdo_terminateImplLibrary__void"></span><span class="target" id="group__c__plus__plus__apis_1ga6577c989667fb87fd4dece6c455e6b08"></span><a class="reference internal" href="enum_group__c__plus__plus__apis_1ga1f02bf39ff236da33ba951188e94b2ea.html#_CPPv419SnpeUdo_ErrorType_t" title="SnpeUdo_ErrorType_t"><span class="n"><span class="pre">SnpeUdo_ErrorType_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SnpeUdo_terminateImplLibrary</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv428SnpeUdo_terminateImplLibraryv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Release the shared library’s data structures, and invalidate any handles returned by the library. The behavior of any outstanding asynchronous calls made to this library when this function is called are undefined. All library functions (except SnpeUdo_initImplLibrary) will return an error after this function has been successfully called. </p>
+<p>It should be possible to call SnpeUdo_initImplLibrary after calling this function, and re-initialize the library.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Error code </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv418SnpeUdo_getImpInfoPP17SnpeUdo_ImpInfo_t">
+<span id="_CPPv318SnpeUdo_getImpInfoPP17SnpeUdo_ImpInfo_t"></span><span id="_CPPv218SnpeUdo_getImpInfoPP17SnpeUdo_ImpInfo_t"></span><span id="SnpeUdo_getImpInfo__SnpeUdo_ImpInfo_tPP"></span><span class="target" id="group__c__plus__plus__apis_1ga160e77a4f94928d4b7ef46dcf604af00"></span><a class="reference internal" href="enum_group__c__plus__plus__apis_1ga1f02bf39ff236da33ba951188e94b2ea.html#_CPPv419SnpeUdo_ErrorType_t" title="SnpeUdo_ErrorType_t"><span class="n"><span class="pre">SnpeUdo_ErrorType_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SnpeUdo_getImpInfo</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structSnpeUdo__ImpInfo__t.html#_CPPv417SnpeUdo_ImpInfo_t" title="SnpeUdo_ImpInfo_t"><span class="n"><span class="pre">SnpeUdo_ImpInfo_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">implementationInfo</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418SnpeUdo_getImpInfoPP17SnpeUdo_ImpInfo_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A function to query info on the UDO implementation library. The function populates a structure which contains information about operations that are part of this library. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>implementationInfo</strong> – <strong>[inout]</strong> A pointer to struct which contains information on the operations</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>error code </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423SnpeUdo_createOpFactory18SnpeUdo_CoreType_tPv16SnpeUdo_String_t8uint32_tP15SnpeUdo_Param_tP19SnpeUdo_OpFactory_t">
+<span id="_CPPv323SnpeUdo_createOpFactory18SnpeUdo_CoreType_tPv16SnpeUdo_String_t8uint32_tP15SnpeUdo_Param_tP19SnpeUdo_OpFactory_t"></span><span id="_CPPv223SnpeUdo_createOpFactory18SnpeUdo_CoreType_tPv16SnpeUdo_String_t8uint32_tP15SnpeUdo_Param_tP19SnpeUdo_OpFactory_t"></span><span id="SnpeUdo_createOpFactory__SnpeUdo_CoreType_t.voidP.SnpeUdo_String_t.uint32_t.SnpeUdo_Param_tP.SnpeUdo_OpFactory_tP"></span><span class="target" id="group__c__plus__plus__apis_1gaf42c8dd2647aa713cb87e57a614a3f53"></span><a class="reference internal" href="enum_group__c__plus__plus__apis_1ga1f02bf39ff236da33ba951188e94b2ea.html#_CPPv419SnpeUdo_ErrorType_t" title="SnpeUdo_ErrorType_t"><span class="n"><span class="pre">SnpeUdo_ErrorType_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SnpeUdo_createOpFactory</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="enum_group__c__plus__plus__apis_1ga9ee718ab1d7e3422532434c22af9ab6f.html#_CPPv418SnpeUdo_CoreType_t" title="SnpeUdo_CoreType_t"><span class="n"><span class="pre">SnpeUdo_CoreType_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">udoCoreType</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">perFactoryInfrastructure</span></span>, <a class="reference internal" href="typedef_group__c__plus__plus__apis_1ga1efd1795e7cb10d2c818c2a06e62cbda.html#_CPPv416SnpeUdo_String_t" title="SnpeUdo_String_t"><span class="n"><span class="pre">SnpeUdo_String_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">operationType</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">numOfStaticParams</span></span>, <a class="reference internal" href="structSnpeUdo__Param__t.html#_CPPv415SnpeUdo_Param_t" title="SnpeUdo_Param_t"><span class="n"><span class="pre">SnpeUdo_Param_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">staticParams</span></span>, <a class="reference internal" href="typedef_group__c__plus__plus__apis_1ga538d3141d4fa06b0e022b7ba5b0a1a40.html#_CPPv419SnpeUdo_OpFactory_t" title="SnpeUdo_OpFactory_t"><span class="n"><span class="pre">SnpeUdo_OpFactory_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">opFactory</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423SnpeUdo_createOpFactory18SnpeUdo_CoreType_tPv16SnpeUdo_String_t8uint32_tP15SnpeUdo_Param_tP19SnpeUdo_OpFactory_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A function to create an operation factory. The function receives the operation type, and an array of static parameters, and returns operation factory handler. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>udoCoreType</strong> – <strong>[in]</strong> The Core type to create the operation on. An error will be returned if this does not match the core type of the library.</p></li>
+<li><p><strong>perFactoryInfrastructure</strong> – <strong>[in]</strong> CreateOpFactory infrastructure appropriate to this core type. The definition and semantics of this object will be defined in the corresponding implementation header for the core type.</p></li>
+<li><p><strong>operationType</strong> – <strong>[in]</strong> A string containing Operation type. for example “MY_CONV”</p></li>
+<li><p><strong>numOfStaticParams</strong> – <strong>[in]</strong> The number of static parameters.</p></li>
+<li><p><strong>staticParams</strong> – <strong>[in]</strong> Array of static parameters</p></li>
+<li><p><strong>opFactory</strong> – <strong>[inout]</strong> Handler to Operation Factory, to be used when creating operations</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error Code </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv424SnpeUdo_releaseOpFactory19SnpeUdo_OpFactory_t">
+<span id="_CPPv324SnpeUdo_releaseOpFactory19SnpeUdo_OpFactory_t"></span><span id="_CPPv224SnpeUdo_releaseOpFactory19SnpeUdo_OpFactory_t"></span><span id="SnpeUdo_releaseOpFactory__SnpeUdo_OpFactory_t"></span><span class="target" id="group__c__plus__plus__apis_1gab86f3b6be911ad1628a812e8500de7c2"></span><a class="reference internal" href="enum_group__c__plus__plus__apis_1ga1f02bf39ff236da33ba951188e94b2ea.html#_CPPv419SnpeUdo_ErrorType_t" title="SnpeUdo_ErrorType_t"><span class="n"><span class="pre">SnpeUdo_ErrorType_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SnpeUdo_releaseOpFactory</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_group__c__plus__plus__apis_1ga538d3141d4fa06b0e022b7ba5b0a1a40.html#_CPPv419SnpeUdo_OpFactory_t" title="SnpeUdo_OpFactory_t"><span class="n"><span class="pre">SnpeUdo_OpFactory_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">opFactory</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424SnpeUdo_releaseOpFactory19SnpeUdo_OpFactory_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A function to release the resources allocated for an operation factory created by this library. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>opFactory</strong> – <strong>[in]</strong> The operation factory to release. Upon success this handle will be invalidated.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error Code </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423SnpeUdo_createOperation19SnpeUdo_OpFactory_tPv8uint32_tP21SnpeUdo_TensorParam_t8uint32_tP21SnpeUdo_TensorParam_tP19SnpeUdo_Operation_t">
+<span id="_CPPv323SnpeUdo_createOperation19SnpeUdo_OpFactory_tPv8uint32_tP21SnpeUdo_TensorParam_t8uint32_tP21SnpeUdo_TensorParam_tP19SnpeUdo_Operation_t"></span><span id="_CPPv223SnpeUdo_createOperation19SnpeUdo_OpFactory_tPv8uint32_tP21SnpeUdo_TensorParam_t8uint32_tP21SnpeUdo_TensorParam_tP19SnpeUdo_Operation_t"></span><span id="SnpeUdo_createOperation__SnpeUdo_OpFactory_t.voidP.uint32_t.SnpeUdo_TensorParam_tP.uint32_t.SnpeUdo_TensorParam_tP.SnpeUdo_Operation_tP"></span><span class="target" id="group__c__plus__plus__apis_1ga48bc2273c147eb5e67b4de7af5c2d750"></span><a class="reference internal" href="enum_group__c__plus__plus__apis_1ga1f02bf39ff236da33ba951188e94b2ea.html#_CPPv419SnpeUdo_ErrorType_t" title="SnpeUdo_ErrorType_t"><span class="n"><span class="pre">SnpeUdo_ErrorType_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SnpeUdo_createOperation</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_group__c__plus__plus__apis_1ga538d3141d4fa06b0e022b7ba5b0a1a40.html#_CPPv419SnpeUdo_OpFactory_t" title="SnpeUdo_OpFactory_t"><span class="n"><span class="pre">SnpeUdo_OpFactory_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">opFactory</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">perOpInfrastructure</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">numOfInputs</span></span>, <a class="reference internal" href="structSnpeUdo__TensorParam__t.html#_CPPv421SnpeUdo_TensorParam_t" title="SnpeUdo_TensorParam_t"><span class="n"><span class="pre">SnpeUdo_TensorParam_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">inputs</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">numOfOutputs</span></span>, <a class="reference internal" href="structSnpeUdo__TensorParam__t.html#_CPPv421SnpeUdo_TensorParam_t" title="SnpeUdo_TensorParam_t"><span class="n"><span class="pre">SnpeUdo_TensorParam_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">outputs</span></span>, <a class="reference internal" href="typedef_group__c__plus__plus__apis_1gaa07059574fa16d6ead5089c4da6d6dc6.html#_CPPv419SnpeUdo_Operation_t" title="SnpeUdo_Operation_t"><span class="n"><span class="pre">SnpeUdo_Operation_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">operation</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423SnpeUdo_createOperation19SnpeUdo_OpFactory_tPv8uint32_tP21SnpeUdo_TensorParam_t8uint32_tP21SnpeUdo_TensorParam_tP19SnpeUdo_Operation_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A function to create an operation from the factory. The function receives array of inputs and array of outputs, and creates an operation instance, returning the operation instance handler. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>opFactory</strong> – <strong>[in]</strong> OpFactory instance containing the parameters for this operation.</p></li>
+<li><p><strong>perOpInfrastructure</strong> – <strong>[in]</strong> Per-Op infrastructure for this operation. The definition and semantics of this object will be defined in the implementation header appropriate to this core type.</p></li>
+<li><p><strong>numOfInputs</strong> – <strong>[in]</strong> The number of input tensors this operation will receive.</p></li>
+<li><p><strong>inputs</strong> – <strong>[in]</strong> Array of input tensors, providing both the sizes and initial location of the data.</p></li>
+<li><p><strong>numOfOutputs</strong> – <strong>[in]</strong> Number of output tensors this operation will produce.</p></li>
+<li><p><strong>outputs</strong> – <strong>[in]</strong> Array of output tensors, providing both the sizes and initial location of the data.</p></li>
+<li><p><strong>operation</strong> – <strong>[inout]</strong> Handle for newly created operation instance.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error Code </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv417SnpeUdo_executeOp19SnpeUdo_Operation_tbK8uint32_t24SnpeUdo_ExternalNotify_t">
+<span id="_CPPv317SnpeUdo_executeOp19SnpeUdo_Operation_tbK8uint32_t24SnpeUdo_ExternalNotify_t"></span><span id="_CPPv217SnpeUdo_executeOp19SnpeUdo_Operation_tbK8uint32_t24SnpeUdo_ExternalNotify_t"></span><span id="SnpeUdo_executeOp__SnpeUdo_Operation_t.b.uint32_tC.SnpeUdo_ExternalNotify_t"></span><span class="target" id="group__c__plus__plus__apis_1gabfc1c092667f22b0095837425d16438e"></span><a class="reference internal" href="enum_group__c__plus__plus__apis_1ga1f02bf39ff236da33ba951188e94b2ea.html#_CPPv419SnpeUdo_ErrorType_t" title="SnpeUdo_ErrorType_t"><span class="n"><span class="pre">SnpeUdo_ErrorType_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SnpeUdo_executeOp</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_group__c__plus__plus__apis_1gaa07059574fa16d6ead5089c4da6d6dc6.html#_CPPv419SnpeUdo_Operation_t" title="SnpeUdo_Operation_t"><span class="n"><span class="pre">SnpeUdo_Operation_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">operation</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">blocking</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">ID</span></span>, <a class="reference internal" href="typedef_group__c__plus__plus__apis_1gac36650a9d17f6b285034f9e3af8c0a3c.html#_CPPv424SnpeUdo_ExternalNotify_t" title="SnpeUdo_ExternalNotify_t"><span class="n"><span class="pre">SnpeUdo_ExternalNotify_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">notifyFunc</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417SnpeUdo_executeOp19SnpeUdo_Operation_tbK8uint32_t24SnpeUdo_ExternalNotify_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Operation execution function. </p>
+<p><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">   </span><span class="n">Calling</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">operation</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">set</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">inputs</span><span class="p">,</span><span class="w"> </span><span class="n">generating</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">set</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">outputs</span><span class="p">.</span>
+<span class="w">   </span><span class="n">The</span><span class="w"> </span><span class="n">call</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">blocking</span><span class="w"> </span><span class="p">(</span><span class="n">synchronous</span><span class="p">)</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="n">non</span><span class="o">-</span><span class="n">blocking</span><span class="w"> </span><span class="p">(</span><span class="n">asynchronous</span><span class="p">).</span><span class="w"> </span><span class="n">To</span><span class="w"> </span><span class="n">support</span><span class="w"> </span><span class="n">the</span>
+<span class="w">   </span><span class="n">non</span><span class="o">-</span><span class="n">blocking</span><span class="w"> </span><span class="n">mode</span><span class="p">,</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">calling</span><span class="w"> </span><span class="n">entity</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">pass</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">ID</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">notification</span><span class="w"> </span><span class="n">function</span><span class="p">.</span>
+<span class="w">   </span><span class="n">At</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">execution</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">notification</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">would</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">called</span><span class="p">,</span><span class="w"> </span><span class="n">passing</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">ID</span><span class="p">.</span>
+<span class="w">   </span><span class="o">&lt;</span><span class="n">b</span><span class="o">&gt;</span><span class="w"> </span><span class="n">NOTE</span><span class="o">:</span><span class="w"> </span><span class="n">Asynchronous</span><span class="w"> </span><span class="n">execution</span><span class="w"> </span><span class="n">mode</span><span class="w"> </span><span class="n">not</span><span class="w"> </span><span class="n">supported</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">release</span><span class="p">.</span><span class="w"> </span><span class="o">&lt;/</span><span class="n">b</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>operation</strong> – <strong>[in]</strong> handle to the operation on which execute is invoked </p></li>
+<li><p><strong>blocking</strong> – <strong>[in]</strong> flag to indicate execution mode. If set, execution is blocking, e.g SnpeUdo_executeOp call does not return until execution is done. If not set, SnpeUdo_executeOp returns immediately, and the library will call the notification function (if set) when execution is done.</p></li>
+<li><p><strong>ID</strong> – <strong>[in]</strong> 32-bit number that can be used by the calling entity to track execution in case of non-blocking execution. For example, it can be a sequence number, increased by one on each call.</p></li>
+<li><p><strong>notifyFunc</strong> – <strong>[in]</strong> Pointer to notification function. if the pointer is set, and execution is non-blocking, the library will call this function at end of execution, passing the number provided as ID</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv415SnpeUdo_setOpIO19SnpeUdo_Operation_tP21SnpeUdo_TensorParam_tP21SnpeUdo_TensorParam_t">
+<span id="_CPPv315SnpeUdo_setOpIO19SnpeUdo_Operation_tP21SnpeUdo_TensorParam_tP21SnpeUdo_TensorParam_t"></span><span id="_CPPv215SnpeUdo_setOpIO19SnpeUdo_Operation_tP21SnpeUdo_TensorParam_tP21SnpeUdo_TensorParam_t"></span><span id="SnpeUdo_setOpIO__SnpeUdo_Operation_t.SnpeUdo_TensorParam_tP.SnpeUdo_TensorParam_tP"></span><span class="target" id="group__c__plus__plus__apis_1gacc38d630731863ac7f861ddff99b6778"></span><a class="reference internal" href="enum_group__c__plus__plus__apis_1ga1f02bf39ff236da33ba951188e94b2ea.html#_CPPv419SnpeUdo_ErrorType_t" title="SnpeUdo_ErrorType_t"><span class="n"><span class="pre">SnpeUdo_ErrorType_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SnpeUdo_setOpIO</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_group__c__plus__plus__apis_1gaa07059574fa16d6ead5089c4da6d6dc6.html#_CPPv419SnpeUdo_Operation_t" title="SnpeUdo_Operation_t"><span class="n"><span class="pre">SnpeUdo_Operation_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">operation</span></span>, <a class="reference internal" href="structSnpeUdo__TensorParam__t.html#_CPPv421SnpeUdo_TensorParam_t" title="SnpeUdo_TensorParam_t"><span class="n"><span class="pre">SnpeUdo_TensorParam_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">inputs</span></span>, <a class="reference internal" href="structSnpeUdo__TensorParam__t.html#_CPPv421SnpeUdo_TensorParam_t" title="SnpeUdo_TensorParam_t"><span class="n"><span class="pre">SnpeUdo_TensorParam_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">outputs</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415SnpeUdo_setOpIO19SnpeUdo_Operation_tP21SnpeUdo_TensorParam_tP21SnpeUdo_TensorParam_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A function to setting the inputs &amp; outputs. part of SnpeUdo_Operation struct, returned from creation of a new operation instance. <strong> Not supported in this release. </strong> </p>
+<p>This function allows the calling entity to change some of the inputs and outputs between calls to execute. Note that the change is limited to changing the <strong> pointer </strong> to the tensor data only. Any other change may be rejected by the implementation library, causing immediate invalidation of the operation instance</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>operation</strong> – <strong>[in]</strong> Operation on which IO tensors are set</p></li>
+<li><p><strong>inputs</strong> – <strong>[in]</strong> array of tensor parameters. The calling entity may provide a subset of the operation inputs, providing only those that it wants to change.</p></li>
+<li><p><strong>outputs</strong> – <strong>[in]</strong> array of tensor parameters. The calling entity may provide a subset of the operation outputs, providing only those that it wants to change.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv417SnpeUdo_profileOp19SnpeUdo_Operation_tP8uint32_t">
+<span id="_CPPv317SnpeUdo_profileOp19SnpeUdo_Operation_tP8uint32_t"></span><span id="_CPPv217SnpeUdo_profileOp19SnpeUdo_Operation_tP8uint32_t"></span><span id="SnpeUdo_profileOp__SnpeUdo_Operation_t.uint32_tP"></span><span class="target" id="group__c__plus__plus__apis_1gafc3dbce3de6f1adca97c4a01a89b2897"></span><a class="reference internal" href="enum_group__c__plus__plus__apis_1ga1f02bf39ff236da33ba951188e94b2ea.html#_CPPv419SnpeUdo_ErrorType_t" title="SnpeUdo_ErrorType_t"><span class="n"><span class="pre">SnpeUdo_ErrorType_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SnpeUdo_profileOp</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_group__c__plus__plus__apis_1gaa07059574fa16d6ead5089c4da6d6dc6.html#_CPPv419SnpeUdo_Operation_t" title="SnpeUdo_Operation_t"><span class="n"><span class="pre">SnpeUdo_Operation_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">operation</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">executionTime</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417SnpeUdo_profileOp19SnpeUdo_Operation_tP8uint32_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A function to return execution times. </p>
+<p><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">   </span><span class="n">This</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">called</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">operation</span><span class="w"> </span><span class="n">execution</span><span class="w"> </span><span class="n">times</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">IP</span><span class="w"> </span><span class="n">core</span>
+<span class="w">   </span><span class="n">on</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">operation</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">run</span><span class="p">.</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="n">time</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">provided</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">micro</span><span class="o">-</span><span class="n">seconds</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>operation</strong> – <strong>[in]</strong> Handle to operation whose execution time is being profiled</p></li>
+<li><p><strong>executionTime</strong> – <strong>[inout]</strong> pointer to a uint32 value.This function writes the operation execution time in usec into this value.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv417SnpeUdo_releaseOp19SnpeUdo_Operation_t">
+<span id="_CPPv317SnpeUdo_releaseOp19SnpeUdo_Operation_t"></span><span id="_CPPv217SnpeUdo_releaseOp19SnpeUdo_Operation_t"></span><span id="SnpeUdo_releaseOp__SnpeUdo_Operation_t"></span><span class="target" id="group__c__plus__plus__apis_1gafdf5f635e7acd737a58e467bf935c502"></span><a class="reference internal" href="enum_group__c__plus__plus__apis_1ga1f02bf39ff236da33ba951188e94b2ea.html#_CPPv419SnpeUdo_ErrorType_t" title="SnpeUdo_ErrorType_t"><span class="n"><span class="pre">SnpeUdo_ErrorType_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SnpeUdo_releaseOp</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_group__c__plus__plus__apis_1gaa07059574fa16d6ead5089c4da6d6dc6.html#_CPPv419SnpeUdo_Operation_t" title="SnpeUdo_Operation_t"><span class="n"><span class="pre">SnpeUdo_Operation_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">operation</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417SnpeUdo_releaseOp19SnpeUdo_Operation_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><p>A function to release the operation instance</p>
+<p>When it is called, the implementation library needs to release all resources allocated for this operation instance.</p>
+
+ Note that all function pointers which are part of SnpeUdo_Operation become <strong> invalid </strong> once releaseUdoOp call returns. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>operation</strong> – <strong>[in]</strong> Handle to operation to be released </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

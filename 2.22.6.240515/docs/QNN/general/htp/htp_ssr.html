@@ -1,0 +1,362 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>SubSystem Restart (SSR) &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="QNN HTP Qmem Graph" href="htp_qmem_graph.html" />
+    <link rel="prev" title="HTP VTCM Sharing" href="htp_vtcm_sharing.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup.html">Setup</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../backend.html">Backend</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../backend.html#backend-specific-pages">Backend Specific Pages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../dsp/dsp_backend.html">DSP</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="htp_backend.html">HTP</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="htp_backend.html#api-specializations">API Specializations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="htp_backend.html#usage-expectations">Usage Expectations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="htp_backend.html#qnn-htp-supported-operations">QNN HTP Supported Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="htp_backend.html#qnn-htp-variable-batch">QNN HTP Variable Batch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="htp_backend.html#qnn-htp-backend-api">QNN HTP Backend API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="htp_backend.html#qnn-htp-performance-infrastructure-api">QNN HTP Performance Infrastructure API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="htp_backend.html#qnn-htp-precision">QNN HTP Precision</a></li>
+<li class="toctree-l4"><a class="reference internal" href="htp_backend.html#qnn-htp-fp16-output-difference-between-sm8550-and-sm8650">QNN HTP FP16 output difference between SM8550 and SM8650</a></li>
+<li class="toctree-l4"><a class="reference internal" href="htp_backend.html#qnn-htp-deep-learning-bandwidth-compression-dlbc">QNN HTP Deep Learning Bandwidth Compression (DLBC)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="htp_backend.html#qnn-htp-setting-number-of-hvx-threads">QNN HTP - Setting Number of HVX Threads</a></li>
+<li class="toctree-l4"><a class="reference internal" href="htp_backend.html#qnn-htp-backend-extensions">QNN HTP Backend Extensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="htp_backend.html#qnn-htp-profiling">QNN HTP Profiling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="htp_backend.html#qnn-context-binary-size">QNN Context Binary size</a></li>
+<li class="toctree-l4"><a class="reference internal" href="htp_backend.html#op-writing-guidelines">Op Writing Guidelines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="htp_backend.html#recommendations-for-network-design">Recommendations for Network Design</a></li>
+<li class="toctree-l4"><a class="reference internal" href="htp_backend.html#yielding-and-pre-emption">Yielding and Pre-Emption</a></li>
+<li class="toctree-l4"><a class="reference internal" href="htp_backend.html#vtcm-sharing">VTCM Sharing</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="htp_backend.html#subsystem-restart-ssr">SubSystem Restart (SSR)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="htp_backend.html#qmem-graph-shared-buffer-only-graph">Qmem Graph (shared_buffer only graph)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="htp_backend.html#htp-session-artifact-usage-guidlines">HTP Session &amp; Artifact Usage Guidlines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="htp_backend.html#graph-switching-beta">Graph Switching (Beta)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="htp_backend.html#benefits-of-batch-inference-and-multi-threaded-inference">Benefits of batch inference and multi-threaded inference</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../hta/hta_backend.html">HTA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lpai/lpai_backend.html">LPAI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cpu/cpu_backend.html">CPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gpu/gpu_backend.html">GPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../saver/saver_backend.html">Saver</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../backend.html">Backend</a> &raquo;</li>
+        
+          <li><a href="htp_backend.html">HTP</a> &raquo;</li>
+        
+      <li>SubSystem Restart (SSR)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="subsystem-restart-ssr">
+<h1>SubSystem Restart (SSR)<a class="headerlink" href="#subsystem-restart-ssr" title="Permalink to this heading">¶</a></h1>
+<p>SSR is a feature of the QNN HTP BE that enables QNN to automatically recover the connection to the DSP after
+detecting it has crashed. With the connection restored, the QNN client can clean up any invalidated
+resources, and re-create them to continue utilizing the same instance of QNN. This feature is only enabled for
+the ARM based skel / stub QNN variant.</p>
+<p><strong>SSR Handling as a QNN Customer</strong></p>
+<p>The error code QNN_COMMON_ERR_SYSTEM_COMMUNICATION tells the client that the DSP has crashed, and QNN has
+successfully recovered a connection to the DSP (as well as proceeded to invalidate CPU side registries to
+prevent the use of now stale QNN API objects). Any attempt by a client to call a QNN API that will either
+attempt to cross the boundary between the CPU and the DSP, or simply reference an invalidated API object
+will receive the same error code mentioned prior. This is the case for single-threaded or multi-threaded
+applications alike, such that each client can cleanup and recover at its own pace with no thread-to-thread
+coordination.</p>
+<p>A simple example of the recovery process is outlined below, where a crash occurence during inference of a
+graph is responsible for triggering the SSR routine.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">Qnn_ErrorHandle_t</span><span class="w"> </span><span class="n">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">graphExecute</span><span class="p">(</span><span class="n">htpGraphHandle</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span><span class="w"> </span><span class="c1">// SSR Error Code Returned</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="c1">// &lt;DETECT QNN_COMMON_ERR_SYSTEM_COMMUNICATION ERROR CODE&gt;</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="c1">// ----- QNN Client Recovery Start -----</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="c1">// Remove invalidated Qnn_ContextHandle_t</span>
+<span class="linenos"> 8</span><span class="n">contextFree</span><span class="p">(</span><span class="n">contextHandle</span><span class="p">,</span><span class="w"> </span><span class="n">profileHandle</span><span class="p">);</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="c1">// Create new (overwrite) Qnn_ContextHandle_t</span>
+<span class="linenos">11</span><span class="n">contextCreate</span><span class="p">(</span><span class="n">backendHandle</span><span class="p">,</span><span class="w"> </span><span class="n">deviceHandle</span><span class="p">,</span><span class="w"> </span><span class="n">contextConfig</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">contextHandle</span><span class="p">);</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="c1">// Create new (overwrite) Qnn_GraphHandle_t</span>
+<span class="linenos">14</span><span class="n">graphCreate</span><span class="p">(</span><span class="n">contextHandle</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;htpGraphName&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">htpGraphConfig</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">htpGraphHandle</span><span class="p">);</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="c1">// API calls to set up the graph (number of calls made is use-case specific)</span>
+<span class="linenos">17</span><span class="n">tensorCreateGraphTensor</span><span class="p">(</span><span class="n">htpGraphHandle</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tensor</span><span class="p">);</span><span class="w"> </span><span class="c1">// Called N times</span>
+<span class="linenos">18</span><span class="n">graphAddNode</span><span class="p">(</span><span class="n">htpGraphHandle</span><span class="p">,</span><span class="w"> </span><span class="n">opConfig</span><span class="p">);</span><span class="w"> </span><span class="c1">// Called M times</span>
+<span class="linenos">19</span>
+<span class="linenos">20</span><span class="c1">// Finalize the graph</span>
+<span class="linenos">21</span><span class="n">graphFinalize</span><span class="p">(</span><span class="n">htpGraphHandle</span><span class="p">,</span><span class="w"> </span><span class="n">profileHandle</span><span class="p">,</span><span class="w"> </span><span class="n">signalHandle</span><span class="p">);</span>
+<span class="linenos">22</span>
+<span class="linenos">23</span><span class="c1">// ----- QNN Client Recovery Finished -----</span>
+<span class="linenos">24</span>
+<span class="linenos">25</span><span class="c1">// Ready for inference once more</span>
+<span class="linenos">26</span><span class="n">graphExecute</span><span class="p">(</span><span class="n">htpGraphHandle</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span>
+</pre></div>
+</div>
+<p><strong>QNN API Object Validity</strong></p>
+<p>The list of objects affected by SSR are outlined below alongside what is required of the client to finish the
+recovery from a DSP crash and SSR occurence. Please note that all information on the DSP will be lost after a
+crash / SSR occurence, the table simply depicts a subset of QNN API objects related to the SSR process.</p>
+<table class="colwidths-auto docutils align-default" id="htp-api-object-validity-table">
+<thead>
+<tr class="row-odd"><th class="head"><p>QNN API Object</p></th>
+<th class="head"><p>Lifecycle after SSR</p></th>
+<th class="head"><p>How to Recover</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Qnn_BackendHandle_t</p></td>
+<td><p>Valid</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Qnn_ContextHandle_t</p></td>
+<td><p>Invalid</p></td>
+<td><p>QnnContext_free and QnnContext_create</p></td>
+</tr>
+<tr class="row-even"><td><p>Qnn_DeviceHandle_t</p></td>
+<td><p>Valid</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Qnn_GraphHandle_t</p></td>
+<td><p>Invalid</p></td>
+<td><p>QnnGraph_create</p></td>
+</tr>
+<tr class="row-even"><td><p>Qnn_LogHandle_t</p></td>
+<td><p>Valid</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Qnn_MemHandle_t</p></td>
+<td><p>Invalid</p></td>
+<td><p>QnnMem_deRegister and QnnMem_register</p></td>
+</tr>
+<tr class="row-even"><td><p>Qnn_ProfileHandle_t</p></td>
+<td><p>Valid</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>QnnHtpPerfInfrastructure_PowerConfig_t</p></td>
+<td><p>Invalid</p></td>
+<td><p>Client needs to pass config to PerfInfra setPowerConfig API again</p></td>
+</tr>
+<tr class="row-even"><td><p>QnnHtpPerfInfrastructure_MemoryConfig_t</p></td>
+<td><p>Invalid</p></td>
+<td><p>Client needs to pass config to PerfInfra setMemoryConfig API again</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="htp_qmem_graph.html" class="btn btn-neutral float-right" title="QNN HTP Qmem Graph" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="htp_vtcm_sharing.html" class="btn btn-neutral float-left" title="HTP VTCM Sharing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

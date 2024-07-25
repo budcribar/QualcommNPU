@@ -1,0 +1,392 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Tools &mdash; Qualcomm® AI Engine Direct Delegate</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Custom Operator Support" href="custom_op.html" />
+    <link rel="prev" title="Acceleration Support" href="support.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Qualcomm® AI Engine Direct Delegate
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qnn_libs.html">Qualcomm® AI Engine Direct Backend Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Acceleration Support</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#qtld-net-run">qtld-net-run</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="custom_op.html">Custom Operator Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_version_history.html">API Version History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Qualcomm® AI Engine Direct Delegate</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Tools</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tools">
+<h1>Tools<a class="headerlink" href="#tools" title="Permalink to this heading">¶</a></h1>
+<p>This page describes the various tools included in the Qualcomm® AI Engine Direct Delegate and
+their features.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#qtld-net-run">qtld-net-run</a></p></li>
+</ul>
+<div class="section" id="qtld-net-run">
+<h2>qtld-net-run<a class="headerlink" href="#qtld-net-run" title="Permalink to this heading">¶</a></h2>
+<p>The <strong>qtld-net-run</strong> tool is used to perform inference with a model using an input
+list, while saving the model’s output tensors to disk. This tool can run using
+TFLite’s own CPU runtime or it may utilize the Qualcomm® AI Engine Direct Delegate and perform
+inference using a specific backend.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please check qtld-net-run –help for latest options.</p>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>DESCRIPTION:
+------------
+Example application to load a TFLite model and perform inference with the QNN Delegate
+or the TFLite CPU.
+
+REQUIRED ARGUMENTS:
+-------------------
+
+  --model                     &lt;tflite model&gt;                Path to TFLite model.
+  --input                     &lt;input list file&gt;             A text file that contains paths to
+                                                            pre-processed raw input data.
+OPTIONAL ARGUMENTS:
+-------------------
+  --output                    &lt;output directory path&gt;       Path of directory to save output tensor data.
+                                                            Default is ./outputs
+  --backend                   &lt;backend type&gt;                What QNN Backend to use. Supported backends:
+                                                            gpu,
+                                                            htp,
+                                                            dsp.
+                                                            Please do not enter more than 1 backend.
+                                                            Not given will fall back to TFLite CPU runtime.
+  --library_path              &lt;file path&gt;                   Path to QNN Library.
+  --skel_library_dir          &lt;Skel directory&gt;              Directory of QNN Skel Library.
+  --log_level                 &lt;log level&gt;                   Log Level between 0-4, higher is more verbose.
+  --gpu_precision             &lt;gpu precision&gt;               Precision for GPU backend. 0 = User Specified,
+                                                            1 = Float32, 2 = Float16, 3 = Hybrid.
+  --gpu_performance_mode      &lt;gpu performance mode&gt;        Flag to enable gpu performance mode for gpu
+                                                            backend, 0 = Default, 1 = High,
+                                                            2 = Normal, 3 = Low.
+  --htp_use_conv_hmx                                        This is a default option. With --htp_disable_conv_hmx, this flag
+                                                            will be ignored. With using short conv hmx, we might have better
+                                                            performance, but convolution that have short depth and/or weights
+                                                            that are not symmetric could exhibit inaccurate results.
+  --htp_disable_conv_hmx                                    Disable short conv hmx. Clients that have graphs where weights are
+                                                            not symmetric and have Convolution with short depths should set this
+                                                            flag to guarantee accurate results.&quot;
+  --htp_use_fold_relu                                       With using fold relu, we might have better performance, this
+                                                            optimization is correct when quantization ranges for convolution are
+                                                            equal or subset of the Relu operation.
+  --htp_performance_mode      &lt;htp performance mode&gt;        Flag to enable htp performance mode for htp
+                                                            backend, 0 = Default,
+                                                            1 = Sustained High Performance,
+                                                            2 = Burst, 3 = High Performance,
+                                                            4 = Power Saver, 5 = Low Power Saver,
+                                                            6 = High Power Saver, 7 = Low Balance,
+                                                            8 = Balance.
+  --htp_precision             &lt;htp precision&gt;               Precision for HTP backend. 0 = Quantized,
+                                                            1 = Float16
+  --htp_optimization_strategy &lt;htp optimization strategy&gt;   HTP optimization_strategy 0 = optimize for inference,
+                                                            1 = optimize for prepare
+  --htp_vtcm_size             &lt;htp vtcm size&gt;               Set HTP VTCM Size in MB
+  --htp_num_hvx_threads       &lt;htp hvx threads&gt;             Set HTP number of HVX threads
+  --dsp_performance_mode      &lt;dsp performance mode&gt;        Flag to enable dsp performance mode for dsp
+                                                            backend, 0 = Default,
+                                                            1 = Sustained High Performance,
+                                                            2 = Burst, 3 = High Performance,
+                                                            4 = Power Saver, 5 = Low Power Saver,
+                                                            6 = High Power Saver, 7 = Low Balance,
+                                                            8 = Balance.
+  --dsp_pd_session            &lt;dsp pd session&gt;              Flag to enable pd session mode for dsp,
+                                                            Supported mode: unsigned, signed, adaptive.
+  --skip_delegate_ops         &lt;id0,id1,id2&gt;                 Set ops not to be delegated manually based on the op id(s).
+                                                            To obtain all the op ids, please refer to tensorflow/lite/builtin_ops.h.
+                                                            Notice that we skip ALL same type in the array.
+                                                            For example, if you set skip SquaredDifference in your model,
+                                                            all of SquaredDifference ops in models will not be delegated.
+  --skip_delegate_node_ids    &lt;id0,id1,id2&gt;                 Set node not to be delegated manually based on the node id(s).
+                                                            Node id can be obtained by node&#39;s location information in .tflite.
+  --graph_priority &lt;priority level&gt;                         Sets the graph priority. 0 = QNN_PRIORITY_DEFAULT,
+                                                            1 = QNN_PRIORITY_LOW, 2 = QNN_PRIORITY_NORMAL(Default),
+                                                            3 = QNN_PRIORITY_NORMAL_HIGH, 4 = QNN_PRIORITY_HIGH
+  --cache_dir                 &lt;cache_dir path&gt;              Path of directory to save or restore with cache data.
+  --model_token               &lt;token&gt;                       Unique token with model cache.
+  --verbose                   &lt;verbose if 1, else 0&gt;        Print verbose inference messages.
+  --profiling                 &lt;profiling&gt;                   0 = no profiling, 1 = basic profiling, 2 = detailed profiling.
+  --profiling_output_dir      &lt;output binary path&gt;          Path to output binary file.
+  --help                                                    Show help message with all possible arguments.
+</pre></div>
+</div>
+<p>An example input file list is shown below, demonstrating the format needed for
+inputs to qtld-net-run:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>inputs/1.raw
+inputs/2.raw
+inputs/3.raw
+inputs/4.raw
+inputs/5.raw
+</pre></div>
+</div>
+<p>This input list file showcases relative file paths (from where qtld-net-run is
+being executed) to the preprocessed input tensors on the device. In this
+example, there are 5 preprocessed input tensors within a folder called <em>inputs</em>
+in the same directory as the text file list.</p>
+<p>Below is another example of an input list for a model with two inputs.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>inputs/1_a.raw input/1_b.raw
+inputs/2_a.raw input/2_b.raw
+inputs/3_a.raw input/3_b.raw
+inputs/4_a.raw input/4_b.raw
+inputs/5_a.raw input/5_b.raw
+</pre></div>
+</div>
+<p>Like above, each line coincides to one inference. However, the space separated
+list indicates that two input files should be loaded and passed to the model.
+The order of the input files, from left to right, should be the same as the
+order of the input tensors in the TFLite model.</p>
+<p>This input list file showcases relative file paths (from where qtld-net-run is
+being executed) to the preprocessed input tensors on the device. In this
+example, there are 5 preprocessed input tensors within a folder called <em>inputs</em>
+in the same directory as the text file list.</p>
+<p>Another way to provide the relative file path in the input list is by specifying the input layer name.
+This can be specified with the below format:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;input_layer_name&gt;:=&lt;input_layer_path&gt;[&lt;space&gt;&lt;input_layer_name&gt;:=&lt;input_layer_path&gt;]
+[&lt;input_layer_name&gt;:=&lt;input_layer_path&gt;[&lt;space&gt;&lt;input_layer_name&gt;:=&lt;input_layer_path&gt;]]
+...
+</pre></div>
+</div>
+<p>Below is an example containing 3 sets of inputs with layer names “Input_1” and “Input_2”,
+and files located in the relative path “inputs/” and “input/”:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Input_1:=inputs/1_a.raw Input_2:=input/1_b.raw
+Input_1:=inputs/2_a.raw Input_2:=input/2_b.raw
+Input_1:=inputs/3_a.raw Input_2:=input/3_b.raw
+</pre></div>
+</div>
+<p>Below is an example of how to run inference on a model through TFLite CPU
+Runtime:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>adb<span class="w"> </span>shell<span class="w"> </span><span class="s1">&#39;/data/local/tmp/qnn_delegate/qtld-net-run \</span>
+<span class="s1">    --model &lt;path to model on device&gt; \</span>
+<span class="s1">    --input &lt;path to input file list&gt; \</span>
+<span class="s1">    --output &lt;output directory path on device&gt;&#39;</span>
+</pre></div>
+</div>
+<p>Below is an example of how to run inference on a model through a Qualcomm® AI Engine Direct backend
+with Qualcomm® AI Engine Direct Delegate. Options regarding profiling is optional, default will be
+no profiling. Note that using the delegate requires setting environment variables like
+$LD_LIBRARY_PATH or $ADSP_LIBRARY_PATH, as mentioned
+in <a class="reference internal" href="setup.html#on-device-environment-setup"><span class="std std-ref">On Device Environment Setup</span></a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>adb<span class="w"> </span>shell<span class="w"> </span><span class="s1">&#39;LD_LIBRARY_PATH=/data/local/tmp/qnn_delegate/:$LD_LIBRARY_PATH \</span>
+<span class="s1">    ADSP_LIBRARY_PATH=&quot;/data/local/tmp/qnn_delegate/&quot; \</span>
+<span class="s1">    /data/local/tmp/qnn_delegate/qtld-net-run \</span>
+<span class="s1">    --model &lt;path to model on device&gt; \</span>
+<span class="s1">    --input &lt;path to input file list&gt; \</span>
+<span class="s1">    --output &lt;output directory path on device&gt; \</span>
+<span class="s1">    --backend &lt;backend type&gt; \</span>
+<span class="s1">    --profiling &lt;profiling&gt; \</span>
+<span class="s1">    --profiling_output_dir &lt;output binary path&gt; \</span>
+<span class="s1">    --library_path &lt;path to QNN Library on device&gt;&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="custom_op.html" class="btn btn-neutral float-right" title="Custom Operator Support" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="support.html" class="btn btn-neutral float-left" title="Acceleration Support" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

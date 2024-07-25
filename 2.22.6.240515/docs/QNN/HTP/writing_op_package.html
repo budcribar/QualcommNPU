@@ -1,0 +1,523 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Writing QNN HTP Op Package &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="General OpPackage Central Migration Guidance" href="migration/central_migration_guidance.html" />
+    <link rel="prev" title="Tensors and Memory Layout" href="tensors_and_memory_layout.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/setup.html">Setup</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../general/backend.html">Backend</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../general/backend.html#backend-specific-pages">Backend Specific Pages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../general/dsp/dsp_backend.html">DSP</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../general/htp/htp_backend.html">HTP</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#api-specializations">API Specializations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#usage-expectations">Usage Expectations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-supported-operations">QNN HTP Supported Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-variable-batch">QNN HTP Variable Batch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-backend-api">QNN HTP Backend API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-performance-infrastructure-api">QNN HTP Performance Infrastructure API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-precision">QNN HTP Precision</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-fp16-output-difference-between-sm8550-and-sm8650">QNN HTP FP16 output difference between SM8550 and SM8650</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-deep-learning-bandwidth-compression-dlbc">QNN HTP Deep Learning Bandwidth Compression (DLBC)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-setting-number-of-hvx-threads">QNN HTP - Setting Number of HVX Threads</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-backend-extensions">QNN HTP Backend Extensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-profiling">QNN HTP Profiling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-context-binary-size">QNN Context Binary size</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../general/htp/htp_backend.html#op-writing-guidelines">Op Writing Guidelines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#recommendations-for-network-design">Recommendations for Network Design</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#yielding-and-pre-emption">Yielding and Pre-Emption</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#vtcm-sharing">VTCM Sharing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#subsystem-restart-ssr">SubSystem Restart (SSR)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qmem-graph-shared-buffer-only-graph">Qmem Graph (shared_buffer only graph)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#htp-session-artifact-usage-guidlines">HTP Session &amp; Artifact Usage Guidlines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#graph-switching-beta">Graph Switching (Beta)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#benefits-of-batch-inference-and-multi-threaded-inference">Benefits of batch inference and multi-threaded inference</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../general/hta/hta_backend.html">HTA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/lpai/lpai_backend.html">LPAI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/cpu/cpu_backend.html">CPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/gpu/gpu_backend.html">GPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/saver/saver_backend.html">Saver</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../general/backend.html">Backend</a> &raquo;</li>
+        
+          <li><a href="../general/htp/htp_backend.html">HTP</a> &raquo;</li>
+        
+      <li>Writing QNN HTP Op Package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="writing-qnn-htp-op-package">
+<h1>Writing QNN HTP Op Package<a class="headerlink" href="#writing-qnn-htp-op-package" title="Permalink to this heading">¶</a></h1>
+<p>Writing QNN HTP op packages can be divided into two major sections:</p>
+<ul class="simple">
+<li><p>writing op package interface</p></li>
+<li><p>writing op implementations and optimization rules</p></li>
+</ul>
+<p>In the QNN HTP op package example located at examples/OpPackage/HTP/ in QNN SDK,
+these sections are divided into separate source files:</p>
+<ul class="simple">
+<li><p>One op package interface file is needed per package: ExampleOpPackageInterface.cpp</p></li>
+<li><p>Any number of individual op implementation files can be included:
+ExampleOpPackageRelu.cpp, ExampleOpPackageSoftmax.cpp, ExampleOpPackageMaxPool.cpp</p></li>
+</ul>
+<p>This document explains the general rules and approaches to compose QNN HTP op packages,
+and it focuses on op package interface section, and it uses ExampleOpPackageInterface.cpp
+as the example file. For descriptions on how to write op implementations and optimization
+rules, please refer to other documents located at the same locations. For descriptions
+on ExampleOpPackageRelu.cpp, please refer to relu_example.html.</p>
+<p>ExampleOpPackageInterface.cpp can be used as a template for any QNN HTP op package.</p>
+<div class="section" id="api-s-in-qnnoppackage-h">
+<h2>API’s in QnnOpPackage.h<a class="headerlink" href="#api-s-in-qnnoppackage-h" title="Permalink to this heading">¶</a></h2>
+<p>To write a QNN op package, please exam QnnOpPackage.h located at include/ directory in
+QNN SDK first for data structure and API definitions. ExampleOpPackageInterface.cpp
+defines HTP specific op package structures and QNN op package API functions listed in
+QnnOpPackage.h. Currently HTP only supports and requires the following API’s:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="n">Qnn_ErrorHandle_t</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">QnnOpPackage_InterfaceProvider_t</span><span class="p">)(</span><span class="n">QnnOpPackage_Interface_t</span><span class="o">*</span><span class="w"> </span><span class="n">interface</span><span class="p">);</span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="n">Qnn_ErrorHandle_t</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">QnnOpPackage_InitFn_t</span><span class="p">)(</span><span class="n">QnnOpPackage_GlobalInfrastructure_t</span><span class="w"> </span><span class="n">infrastructure</span><span class="p">);</span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="n">Qnn_ErrorHandle_t</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">QnnOpPackage_GetInfoFn_t</span><span class="p">)(</span><span class="k">const</span><span class="w"> </span><span class="n">QnnOpPackage_Info_t</span><span class="o">**</span><span class="w"> </span><span class="n">info</span><span class="p">);</span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="n">Qnn_ErrorHandle_t</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">QnnOpPackage_LogInitializeFn_t</span><span class="p">)(</span><span class="n">QnnLog_Callback_t</span><span class="w"> </span><span class="n">callback</span><span class="p">,</span><span class="w"> </span><span class="n">QnnLog_Level_t</span><span class="w"> </span><span class="n">maxLogLevel</span><span class="p">);</span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="n">Qnn_ErrorHandle_t</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">QnnOpPackage_LogSetLevelFn_t</span><span class="p">)(</span><span class="n">QnnLog_Level_t</span><span class="w"> </span><span class="n">maxLogLevel</span><span class="p">);</span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="n">Qnn_ErrorHandle_t</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">QnnOpPackage_LogTerminateFn_t</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="n">Qnn_ErrorHandle_t</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">QnnOpPackage_TerminateFn_t</span><span class="p">)();</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p><strong>Aside</strong>: Following structs listed in QnnOpPackage.h are not
+defined or used in HTP backend
+:
+<code class="docutils literal notranslate"><span class="pre">QnnOpPackage_GlobalInfrastructure_t</span></code>,
+<code class="docutils literal notranslate"><span class="pre">QnnOpPackage_GraphInfrastructure_t</span></code>, <code class="docutils literal notranslate"><span class="pre">QnnOpPackage_Kernel_t</span></code>,
+<code class="docutils literal notranslate"><span class="pre">QnnOpPackage_Node_t</span></code>, <code class="docutils literal notranslate"><span class="pre">QnnOpPackage_Optimization_t</span></code></p>
+</div></blockquote>
+</div>
+<div class="section" id="htp-headers">
+<h2>HTP Headers<a class="headerlink" href="#htp-headers" title="Permalink to this heading">¶</a></h2>
+<p>HTP core provides a list of headers which HTP op packages can and shall use to implement
+ops, to define optimization rules, to register ops and optimization rules, to specify op
+parameter orders and more. These headers can be found in QNN SDK under include/HTP/core/,
+and more info can be found in htp_core_headers.html. Please directly include the following
+headers in HTP op package source files.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;QnnOpPackage.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;constraints.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;op_package_feature_support.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;op_register_ext.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;optimize.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;HTP/core/simple_reg.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;HTP/core/unique_types.h&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="htp-macros">
+<h2>HTP Macros<a class="headerlink" href="#htp-macros" title="Permalink to this heading">¶</a></h2>
+<p>HTP op package shall utilize a series of macros defined in HTP core headers to register
+ops, to define and register optimization rules, to list op parameter orders, to list
+axis parameters, and to list per-channel scale ops.</p>
+<p><strong>Op registration</strong></p>
+<p>Besides defining op execution functions for each op package op, HTP also requires op
+packages to register the ops.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * op initialization</span>
+<span class="cm"> *</span>
+<span class="cm"> * needs to be global in the package</span>
+<span class="cm"> * one initialization per package before any op definitions</span>
+<span class="cm"> */</span>
+<span class="n">INIT_PACKAGE_OP_DEF</span><span class="p">()</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * op registration</span>
+<span class="cm"> *</span>
+<span class="cm"> * unified core init function containing ops/opts registration</span>
+<span class="cm"> * needs to be global in the package</span>
+<span class="cm"> */</span>
+<span class="n">INIT_PKG_CORE_INIT_FUNC</span><span class="p">()</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * op definition</span>
+<span class="cm"> *</span>
+<span class="cm"> * shall be used in individual op implementation source files</span>
+<span class="cm"> * needs to be global in the package</span>
+<span class="cm"> * one definition per op</span>
+<span class="cm"> * please refer to implementing_ops.html for more descriptions</span>
+<span class="cm"> */</span>
+<span class="n">DEF_PACKAGE_OP</span><span class="p">(</span><span class="n">F</span><span class="p">,</span><span class="n">OP</span><span class="p">)</span>
+<span class="n">DEF_PACKAGE_OP_AND_COST_AND_FLAGS</span><span class="p">(</span><span class="n">F</span><span class="p">,</span><span class="n">OP</span><span class="p">,</span><span class="n">COST</span><span class="p">,...)</span>
+<span class="n">DEF_PACKAGE_OP_AND_COST_F_AND_FLAGS</span><span class="p">(</span><span class="n">F</span><span class="p">,</span><span class="n">OP</span><span class="p">,</span><span class="n">COST_F</span><span class="p">,...)</span>
+</pre></div>
+</div>
+<p><strong>Set tensor properties</strong></p>
+<p>Define op tensor properties to centralize the
+decision-making on the Layout and Memory Placement of our tensors</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">DEF_TENSOR_PROPERTIES</span><span class="p">(</span><span class="n">Op</span><span class="p">(</span><span class="s">&quot;Op&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;in&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;in2&quot;</span><span class="p">),</span>
+<span class="w">          </span><span class="n">Flat</span><span class="p">(</span><span class="s">&quot;*&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;in2&quot;</span><span class="p">),</span>
+<span class="w">          </span><span class="n">MainMemory</span><span class="p">(</span><span class="s">&quot;...&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="section" id="constraint-terms">
+<h3>Constraint terms:<a class="headerlink" href="#constraint-terms" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Flat: flat layout</p></li>
+<li><p>Crouton: crouton layout</p></li>
+<li><p>Tcm: in TCM</p></li>
+<li><p>MainMemory: in main memory.</p></li>
+</ul>
+<p>Specify the requirements for operators
+<strong>Optimization rule registration</strong></p>
+<p>Op packages can define optimization rules which alter HTP graphs in desired ways.
+For more info, please refer to optimization_grammar.html.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * optimization initialization</span>
+<span class="cm"> *</span>
+<span class="cm"> * needs to be global in the package</span>
+<span class="cm"> * one initialization per package before any optimization definitions</span>
+<span class="cm"> */</span>
+<span class="n">INIT_PACKAGE_OPTIMIZATION_DEF</span><span class="p">()</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * optimization definition</span>
+<span class="cm"> *</span>
+<span class="cm"> * shall be used in individual op implementation source files</span>
+<span class="cm"> * needs to be global in the package</span>
+<span class="cm"> * one definition per optimization</span>
+<span class="cm"> * please refer to implementing_ops.html for more descriptions</span>
+<span class="cm"> */</span>
+<span class="n">DEF_PACKAGE_OPTIMIZATION</span><span class="p">(</span><span class="n">PRIORITY</span><span class="p">,</span><span class="n">MATCHCODE</span><span class="p">,</span><span class="n">CONSTRAINTCODE</span><span class="p">,</span><span class="n">REPLACECODE</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Op parameter order</strong></p>
+<p>Op packages can specify parameter orders and define default parameter values for
+any ops defined in the current package. This is optional in op packages, if no
+parameter order has been specified for an op, then the parameter order depends
+on the order provided at QnnGraph_addNode.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * op parameter order initialization</span>
+<span class="cm"> *</span>
+<span class="cm"> * needs to be global in the package</span>
+<span class="cm"> * one initialization per package before any op parameter order definitions</span>
+<span class="cm"> */</span>
+<span class="n">INIT_PACKAGE_PARAM_ORDER_DEF</span><span class="p">()</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * op parameter order registration</span>
+<span class="cm"> *</span>
+<span class="cm"> * needs to placed in op package initialization function</span>
+<span class="cm"> * registers all defined op parameter orders in the package</span>
+<span class="cm"> */</span>
+<span class="n">REGISTER_PACKAGE_PARAM_ORDERS</span><span class="p">()</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * op parameter order definition</span>
+<span class="cm"> *</span>
+<span class="cm"> * shall be used in individual op implementation source files</span>
+<span class="cm"> * needs to be global in the package</span>
+<span class="cm"> * one definition per op, and this is optional</span>
+<span class="cm"> * please refer to implementing_ops.html for more descriptions</span>
+<span class="cm"> */</span>
+<span class="n">DEF_PACKAGE_PARAM_ORDER</span><span class="p">(</span><span class="n">OP</span><span class="p">,</span><span class="n">PARAM1</span><span class="p">,</span><span class="n">MANDATORY1</span><span class="p">,</span><span class="n">DEFAULT1</span><span class="p">,</span><span class="n">PARAM2</span><span class="p">,</span><span class="n">MANDATORY2</span><span class="p">,</span><span class="n">DEFAULT2</span><span class="p">...)</span>
+</pre></div>
+</div>
+<p><strong>Axis parameter (optional)</strong></p>
+<p>HTP currently only supports 4-dimensional tensors, however, QNN supports tensors of
+any dimensions, so HTP backend does tensor dimension backfilling. Due to this discrepancy,
+any op parameters that refer to axes need to be adjusted in HTP backend. HTP allows
+op packages to list the op parameter names which should be identified as axis parameter,
+and HTP backend does auto-adjustment to fit axis into 4-dimensional tensors. This is
+optional in op packages.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * axis parameter name list</span>
+<span class="cm"> *</span>
+<span class="cm"> * optional</span>
+<span class="cm"> * needs to be global in the package</span>
+<span class="cm"> * one list per package</span>
+<span class="cm"> * e.g. LIST_PACKAGE_AXIS_PARAMS(&quot;Axis&quot;, &quot;AXIS&quot;, &quot;axis&quot;)</span>
+<span class="cm"> */</span>
+<span class="n">LIST_PACKAGE_AXIS_PARAMS</span><span class="p">(...)</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * op axis parameter name registration</span>
+<span class="cm"> *</span>
+<span class="cm"> * optional</span>
+<span class="cm"> * uses with LIST_PACKAGE_AXIS_PARAMS(...)</span>
+<span class="cm"> * needs to placed in op package initialization function</span>
+<span class="cm"> * registers all axis parameter names in the package</span>
+<span class="cm"> */</span>
+<span class="n">REGISTER_PACKAGE_AXIS_PARAMS</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Per-channel scale op (optional)</strong></p>
+<p>HTP supports usage of per-axis quantized tensors in op packages, however, the support
+limits to per-channel scale tensors only. That means the axis used in per-axis quantized
+tensors can only be along the last dimension, and the quantization offset value can only
+be zero. In QNN tensors, per-axis quantization info is packed into the tensors if
+QNN_QUANTIZATION_ENCODING_AXIS_SCALE_OFFSET is set as the quantization encoding type.
+In HTP backend, per-channel scale values come in as separate HTP tensors, in addition to
+the HTP tensors containing data values.</p>
+<p>Op packages shall list the op names which support per-channel scale tensors using the
+macros shown below. For ops listed using the macros below, when any of the input tensors,
+parameters, and output tensors used in QnnGraph_addNode has QNN_QUANTIZATION_ENCODING_AXIS_SCALE_OFFSET
+quantization encoding type, HTP backend passes additional HTP tensors to op execution
+functions to represent per-channel scale values. For regular ops, HTP tensors passed into
+op execution functions are outputs, inputs, parameters. For per-channel scale ops, HTP
+tensors passed into op execution functions are outputs, inputs, parameters, output per-
+channel scale values, input per-channel scale values, parameter per-channel scale values.
+HTP fills default per-channel scale value of 1 for any non-QNN_QUANTIZATION_ENCODING_AXIS_SCALE_OFFSET
+tensors in the above case. Per-channel scale values of an output or an input or a parameter
+in op implementation functions can be accessed by <cite>tensor(0,0,0,d)</cite>, given <cite>tensor</cite>
+being the corresponding per-channel scale value tensor, and given d being the channel
+of interest.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * per-channel quantized op name list</span>
+<span class="cm"> *</span>
+<span class="cm"> * optional</span>
+<span class="cm"> * needs to be global in the package</span>
+<span class="cm"> * one list per package</span>
+<span class="cm"> */</span>
+<span class="w"> </span><span class="n">LIST_PACKAGE_PER_CHANNEL_QUANTIZED_OPS</span><span class="p">(...)</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * per-channel scale op name registration</span>
+<span class="cm"> *</span>
+<span class="cm"> * optional</span>
+<span class="cm"> * uses with LIST_PACKAGE_PER_CHANNEL_QUANTIZED_OPS(...)</span>
+<span class="cm"> * needs to placed in op package initialization function</span>
+<span class="cm"> * registers all per-channel scale op names in the package</span>
+<span class="cm"> */</span>
+<span class="w"> </span><span class="n">REGISTER_PACKAGE_PER_CHANNEL_QUANTIZED_OPS</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="compilation">
+<h2>Compilation<a class="headerlink" href="#compilation" title="Permalink to this heading">¶</a></h2>
+<p>Name of a QNN HTP op package is independent from source code, and the name must be passed
+as a compilation flag using the following format:</p>
+<p><code class="docutils literal notranslate"><span class="pre">-DTHIS_PKG_NAME=YOUR_PACKAGE_NAME</span></code></p>
+<p>Current QNN HTP op packages are required to be re-compiled after every QNN SDK release.</p>
+<p>For example makefile, please refer to makefile located at examples/OpPackage/HTP/ in
+QNN SDK.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="migration/central_migration_guidance.html" class="btn btn-neutral float-right" title="General OpPackage Central Migration Guidance" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="tensors_and_memory_layout.html" class="btn btn-neutral float-left" title="Tensors and Memory Layout" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

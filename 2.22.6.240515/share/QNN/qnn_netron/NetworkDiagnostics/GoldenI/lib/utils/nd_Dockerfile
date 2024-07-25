@@ -1,0 +1,47 @@
+#Base image is Ubuntu 16.04
+FROM ubuntu:16.04
+
+# Update Ubuntu Software repository:
+RUN apt-get update && \
+    apt-get install -y software-properties-common \
+    apt-utils && \
+#Python 3.5:
+    add-apt-repository ppa:deadsnakes/ppa && \
+    apt-get update && \
+    apt-get install -y python3.5 \
+    python3.5-dev \
+    python3-pip \
+#Python 3.6:
+    python3.6 \
+    python3.6-dev \
+    python3-pip \
+#Python3.4:
+    python3.4 \
+    python3.4-dev \
+    python3-pip \
+#Other tools:
+    unzip \
+    wget \
+    vim
+
+RUN pip3 install --upgrade pip
+
+#Install Android SDK to get adb:
+#Get SDK version 26.0, as that has adb v1.0.39 (as we want)
+RUN mkdir /android-sdk && \
+    cd /android-sdk && \
+    wget http://dl.google.com/android/repository/platform-tools_r26.0.0-linux.zip && \
+    unzip platform-tools_r26.0.0-linux.zip && \
+    rm -f platform-tools_r26.0.0-linux.zip && \
+    #Add path to adb to main path:
+    ln -s /android-sdk/platform-tools/adb /usr/bin/adb
+
+#Add the network_diagnosis package to our image, and install venvs:
+ARG filepath
+ADD ${filepath} /
+RUN packname=`basename ${filepath}` && \
+    unzipped=`basename ${packname} .zip` && \
+    unzip ${packname} && \
+    rm ${packname} && \
+    cd ${unzipped} && \
+    python3 bin/nd_install_dependencies.py -j lib/utils/install_dependencies_*.json

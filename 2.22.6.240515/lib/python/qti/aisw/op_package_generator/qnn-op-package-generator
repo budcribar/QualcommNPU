@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+# -*- mode: python -*-
+# ==============================================================================
+#
+#  Copyright (c) 2020-2023 Qualcomm Technologies, Inc.
+#  All Rights Reserved.
+#  Confidential and Proprietary - Qualcomm Technologies, Inc.
+#
+# ==============================================================================
+
+import sys
+try:
+    import qti.aisw
+except ImportError as ie1:
+    print("Failed to find necessary python package")
+    print(str(ie1))
+    print("Please ensure that $QNN_ROOT/lib/python is in your PYTHONPATH")
+    sys.exit(1)
+
+from qti.aisw.op_package_generator.parser import CodeGenerator
+
+if __name__ == '__main__':
+    qnn_code_generator = CodeGenerator()
+    qnn_code_generator.setup()
+    qnn_code_generator.finalize()

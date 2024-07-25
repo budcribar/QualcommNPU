@@ -1,0 +1,467 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Running the Inception v3 Model in Windows &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Running the Word-RNN Model" href="tutorial_word_rnn.html" />
+    <link rel="prev" title="Running the Inception v3 Model" href="tutorial_inceptionv3.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup1.html">Network Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="usergroup6.html">Tutorials and Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial_setup.html">Tutorials Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snpe2_migration_guidelines.html">SNPE1 to SNPE2 Migration Guide</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="usergroup7.html">Running Nets</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="tutorial_inceptionv3.html">Running the Inception v3 Model</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Running the Inception v3 Model in Windows</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#run-on-windows-host">Run on Windows Host</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#run-on-windows-target">Run on Windows Target</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-on-windows-using-dsp-runtime">Running on Windows using DSP Runtime</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_word_rnn.html">Running the Word-RNN Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_spoken_digit.html">Running the Spoken Digit Recognition Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_onnx.html">Running a VGG Model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup8.html">Code Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup9.html">Application Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="usergroup6.html">Tutorials and Examples</a> &raquo;</li>
+        
+          <li><a href="usergroup7.html">Running Nets</a> &raquo;</li>
+        
+      <li>Running the Inception v3 Model in Windows</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="running-the-inception-v3-model-in-windows">
+<h1>Running the Inception v3 Model in Windows<a class="headerlink" href="#running-the-inception-v3-model-in-windows" title="Permalink to this heading">¶</a></h1>
+<div class="ui-resizable side-nav-resizable docutils container" id="side-nav">
+<div class="docutils container" id="nav-tree">
+<div class="docutils container" id="nav-tree-contents">
+</div>
+</div>
+</div>
+<div class="docutils container" id="doc-content">
+<div class="header docutils container">
+</div>
+<div class="contents docutils container">
+</div>
+</div>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><p>The example C++ application in this tutorial is called <strong>snpe-net-run.exe</strong>.  It is a command line executable that executes a neural network using Qualcomm® Neural Processing SDK APIs.</p>
+<p>The required arguments to snpe-net-run are:</p>
+<ul class="simple">
+<li><p>A neural network model in the DLC file format</p></li>
+<li><p>An input list file with paths to the input data.</p></li>
+</ul>
+<p>Optional arguments to snpe-net-run.exe are:</p>
+<ul class="simple">
+<li><p>Choice of CPU, DSP runtimes (default is CPU)</p></li>
+<li><p>Output directory (default is .\output)</p></li>
+<li><p>Show help description</p></li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>snpe-net-run creates and populates an output directory with the results of executing the neural network on the input data.</p>
+<a class="reference internal image-reference" href="../images/neural_network.png"><img alt="../images/neural_network.png" src="../images/neural_network.png" style="width: 40.0%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The Qualcomm® Neural Processing SDK provides Windows binaries of <strong>snpe-net-run.exe</strong> under</p>
+<ul class="simple">
+<li><p>$SNPE_ROOT/bin/x86_64-windows-msvc</p></li>
+<li><p>$SNPE_ROOT/bin/aarch64-windows-msvc</p></li>
+</ul>
+<p>The Qualcomm® Neural Processing SDK also provides <strong>SNPE.dll</strong> under</p>
+<ul class="simple">
+<li><p>$SNPE_ROOT/lib/x86_64-windows-msvc/SNPE.dll</p></li>
+<li><p>$SNPE_ROOT/lib/aarch64-windows-msvc/SNPE.dll</p></li>
+</ul>
+<p class="rubric" id="tutorial-inceptionv3-prerequisites">Prerequisites</p>
+<ul class="simple">
+<li><p>The Qualcomm® Neural Processing SDK (Linux Version) has been set up following the <a class="reference external" href="setup.html">Qualcomm (R) Neural Processing SDK Setup</a>.</p></li>
+<li><p>The <a class="reference external" href="tutorial_setup.html">Tutorials Setup</a> has been completed on the Linux host.</p></li>
+<li><p>TensorFlow is installed on the Linux host(see <a class="reference external" href="setup.html#tensorflow-setup">TensorFlow Setup</a>)</p></li>
+<li><p>The Qualcomm® Neural Processing SDK (Windows Version) installed.</p></li>
+<li><p>Python3.x is installed on the Windows host.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><p>The Inception v3 Imagenet classification model is trained to classify images with 1000 labels.</p>
+<p>The DLC for the model used in this tutorial was generated and optimized using
+the TensorFlow optimizer tool, during the <a class="reference external" href="tutorial_setup.html#tutorial_setup_inception_v3">Getting Inception v3</a> portion
+of the <a class="reference external" href="tutorial_setup.html">Tutorials Setup</a> , by the script
+$SNPE_ROOT/examples/Models/InceptionV3/scripts/setup_inceptionv3_snpe.py.
+Additionally, if a fixed-point runtime such as DSP was selected when
+running the setup script, the model was quantized by snpe-dlc-quantize.</p>
+<p><a class="reference external" href="quantized_models.html">Learn more about a quantized model</a>.</p>
+</div></blockquote>
+</div>
+<div class="section" id="run-on-windows-host">
+<h2>Run on Windows Host<a class="headerlink" href="#run-on-windows-host" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><p>At this point, you should have an InceptionV3 folder in $SNPE_ROOT/examples/Models/InceptionV3 on the Linux host.
+Copy it to the Windows host or the device where you are going to run snpe-net-run.exe.
+Before you run snpe-net-run.exe, you need to modify the input file list:</p>
+<p>InceptionV3/data/cropped/raw_list.txt</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>data/cropped/notice_sign.raw
+data/cropped/trash_bin.raw
+data/cropped/chairs.raw
+data/cropped/plastic_cup.raw
+</pre></div>
+</div>
+<div class="notes docutils container">
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<div class="line-block">
+<div class="line">Please note that paths with spaces are not supported in input lists. If you are using $SNPE_ROOT/examples/Models/InceptionV3/scripts/create_file_list.py
+to generate the input list, using the -r option will enable usage of relative paths instead of absolute paths, which can be helpful to get around this.</div>
+</div>
+</div>
+</div>
+<p>Execute the following command to setup essential components(<code class="docutils literal notranslate"><span class="pre">$SDK_ROOT</span></code> is the location of Qualcomm® Neural Processing SDK):</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>&amp; &quot;$SDK_ROOT\bin\envsetup.ps1&quot;
+</pre></div>
+</div>
+<p>Navigate to the InceptionV3 folder and run <strong>snpe-net-run.exe</strong> in the same session powershell that had setup the environment with envsetup.ps1</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>cd InceptionV3
+snpe-net-run --container dlc/inception_v3.dlc --input_list data/cropped/raw_list.txt
+</pre></div>
+</div>
+<p>After few seconds, you should see the results in InceptionV3/output/.</p>
+<p>One of the inputs is data/cropped/chairs.raw and it was created from
+data/cropped/chairs.jpg which looks like the following:</p>
+<a class="reference internal image-reference" href="../images/chairs.jpg"><img alt="../images/chairs.jpg" src="../images/chairs.jpg" style="width: 30.0%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>With this input, snpe-net-run created the output file
+$SNPE_ROOT/examples/Models/InceptionV3/output/Result_0/InceptionV3/Predictions/Reshape_1_0.raw.
+It holds the output tensor data of 1000 probabilities for the 1000 categories.
+The element with the highest value represents the top classification.  A python script to
+interpret the classification results is provided and can be used as follows:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>python3 scripts/show_inceptionv3_classifications_snpe.py -i data/cropped/raw_list.txt \
+                                                    -o output/ \
+                                                    -l data/imagenet_slim_labels.txt
+</pre></div>
+</div>
+<p>The output should look like the following, showing classification results for all the images.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>Classification results
+./data/cropped/notice_sign.raw 0.167454 459 brass
+./data/cropped/trash_bin.raw   0.684571 413 ashcan
+./data/cropped/chairs.raw      0.382223 832 studio couch
+./data/cropped/plastic_cup.raw 0.990612 648 measuring cup
+</pre></div>
+</div>
+<p><strong>Binary data input</strong></p>
+<p>Note that the Inception v3 image classification model does not accept jpg files
+as input. The model expects its input tensor dimension to be 299x299x3 as a float
+array. The scripts/setup_inception_v3_snpe.py script performs a jpg to binary
+data conversion by calling scripts/create_inception_v3_raws.py. The scripts are
+an example of how jpg images can be preprocessed to generate input for the
+Inception v3 model.</p>
+</div></blockquote>
+</div>
+<div class="section" id="run-on-windows-target">
+<h2>Run on Windows Target<a class="headerlink" href="#run-on-windows-target" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Select target architecture</strong></p>
+<p>Qualcomm® Neural Processing SDK provides Windows binaries for arm64-v8a architectures. The Qualcomm® Neural Processing SDK provides Windows
+binaries of <strong>snpe-net-run.exe</strong> and <strong>SNPE.dll</strong> under the paths mentioned above. You
+also need to manually upload msvcp140.dll and vcruntime140.dll - which are provided
+by Visual Studio - to your device so that snpe-net-run.exe has complete runtime support.</p>
+<p><strong>Push binaries to target</strong></p>
+<p>Push the Qualcomm® Neural Processing SDK libraries and the prebuilt snpe-net-run.exe executable to the InceptionV3
+folder and then copy the folder to your Windows device.
+For example, you can copy the InceptionV3 folder using tshell or network.</p>
+<p>After this you can run as is on the Windows host. If you have no Python3.x installed on
+the Windows device, you need to copy the output folder back to the Windows host.</p>
+<p>After executing, check the classification results by running the following python script:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>python3 scripts/show_inceptionv3_classifications_snpe.py -i data/target_raw_list.txt \
+                                          -o output/ \
+                                          -l data/imagenet_slim_labels.txt
+</pre></div>
+</div>
+<p>The output should appear as shown above, showing classification results for all the images.</p>
+</div></blockquote>
+</div>
+<div class="section" id="running-on-windows-using-dsp-runtime">
+<h2>Running on Windows using DSP Runtime<a class="headerlink" href="#running-on-windows-using-dsp-runtime" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><div class="notes docutils container">
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You need to put the following files in the directory where SNPE.dll resides.</p>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="simple">
+<dt>dsp shared object file:</dt><dd><ul>
+<li><p>SC8180X:  $SNPE_ROOT/lib/hexagon-v66/unsigned/libSnpeDspV66Skel.so</p></li>
+<li><p>SC8280X:  $SNPE_ROOT/lib/hexagon-v68/unsigned/libSnpeHtpV68Skel.so</p></li>
+<li><p>SC8380XP: $SNPE_ROOT/lib/hexagon-v73/unsigned/libSnpeHtpV73Skel.so</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>dsp dynamic link library file:</dt><dd><ul>
+<li><p>SC8180X : $SNPE_ROOT/lib/aarch64-windows-msvc/SnpeDspV66Stub.dll</p></li>
+<li><p>SC8280X : $SNPE_ROOT/lib/aarch64-windows-msvc/SnpeHtpV68Stub.dll</p></li>
+<li><p>SC8380XP: $SNPE_ROOT/lib/aarch64-windows-msvc/SnpeHtpV73Stub.dll</p></li>
+<li><p>SC8380XP: $SNPE_ROOT/lib/arm64x-windows-msvc/SnpeHtpV73Stub.dll</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>on-device prepared graph library (required by HTP backend):</dt><dd><ul>
+<li><p>SC8280X : $SNPE_ROOT/lib/aarch64-windows-msvc/SnpeHtpPrepare.dll</p></li>
+<li><p>SC8380XP: $SNPE_ROOT/lib/aarch64-windows-msvc/SnpeHtpPrepare.dll</p></li>
+<li><p>SC8380XP: $SNPE_ROOT/lib/arm64x-windows-msvc/SnpeHtpPrepare.dll</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<p>Try running on a Windows target with the --use_dsp option as follows:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>snpe-net-run.exe --container inception_v3_quantized.dlc --input_list target_raw_list.txt --use_dsp
+</pre></div>
+</div>
+<p>Check the classification results by running the following python script:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>python3 scripts/show_inceptionv3_classifications_snpe.py -i data/target_raw_list.txt \
+                                    -o output/ \
+                                    -l data/imagenet_slim_labels.txt
+</pre></div>
+</div>
+<p>The output should look like the one as cpu runtime outputs, showing classification results
+for all the images.</p>
+<p>Classification results are identical to the run with CPU runtime, but there are
+differences in the probabilities associated with the output labels due to
+floating point precision differences.</p>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="tutorial_word_rnn.html" class="btn btn-neutral float-right" title="Running the Word-RNN Model" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="tutorial_inceptionv3.html" class="btn btn-neutral float-left" title="Running the Inception v3 Model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,745 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>snpe-net-run &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup1.html">Network Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup6.html">Tutorials and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>snpe-net-run</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="snpe-net-run">
+<h1>snpe-net-run<a class="headerlink" href="#snpe-net-run" title="Permalink to this heading">¶</a></h1>
+<p>snpe-net-run loads a DLC file, loads the data for the input
+tensor(s), and executes the network on the specified runtime.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>DESCRIPTION:
+------------
+Tool that loads and executes a neural network using the SDK API.
+
+
+REQUIRED ARGUMENTS:
+-------------------
+--container  &lt;FILE&gt; Path to the DL container containing the network.
+--input_list &lt;FILE&gt; Path to a file listing the inputs for the network.
+                    Optionally the file can have &quot;#&quot; starting line to specify the layer names or &quot;%&quot; to sepecify the output tensor
+                    names for which output tensor files are to be produced. For more details about the input_list file format,
+                    please refer to SDK html documentation (docs/general/tools.html#snpe-net-run input_list argument).
+
+
+OPTIONAL ARGUMENTS:
+-------------------
+--use_gpu           Use the GPU runtime.
+--use_dsp           Use the DSP fixed point runtime.
+--use_aip           Use the AIP fixed point runtime.
+--debug             Specifies that output from all layers of the network
+                    will be saved.
+--output_dir=&lt;val&gt;
+                    The directory to save output to. Defaults to ./output
+--storage_dir=&lt;val&gt;
+                    The directory to store metadata files
+--encoding_type=&lt;val&gt;
+                    Specifies the encoding type of input file. Valid settings are &quot;nv21&quot;.
+                    Cannot be combined with --userbuffer*.
+--use_native_input_files
+                    Specifies to consume the input file(s) in their native data type(s).
+                    Must be used with --userbuffer_xxx.
+--use_native_output_files
+                    Specifies to write the output file(s) in their native data type(s).
+                    Must be used with --userbuffer_xxx.
+--userbuffer_auto
+                    Specifies to use userbuffer for input and output, with auto detection of types enabled.
+                    Must be used with user specified buffer. Cannot be combined with --encoding_type.
+--userbuffer_float
+                    Specifies to use userbuffer for inference, and the input type is float.
+                    Cannot be combined with --encoding_type.
+--userbuffer_floatN=&lt;val&gt;
+                    Specifies to use userbuffer for inference, and the input type is float 16 or float 32.
+                    Cannot be combined with --encoding_type.
+--userbuffer_tf8      Specifies to use userbuffer for inference, and the input type is tf8exact0.
+                    Cannot be combined with --encoding_type.
+--userbuffer_tfN=&lt;val&gt;
+                    Overrides the userbuffer output used for inference, and the output type is tf8exact0 or tf16exact0.
+                    Must be used with user specified buffer.
+--userbuffer_float_output
+                    Overrides the userbuffer output used for inference, and the output type is float. Must be used with user
+                    specified buffer.
+--userbuffer_floatN_output=&lt;val&gt;
+                    Overrides the userbuffer output used for inference, and the output type is float 16 or float 32. Must be used with user
+                    specified buffer.
+--userbuffer_tfN_output=&lt;val&gt;
+                    Overrides the userbuffer output used for inference, and the output type is tf8exact0 or tf16exact0.
+                    Must be used with user specified buffer.
+--userbuffer_tf8_output
+                    Overrides the userbuffer output used for inference, and the output type is tf8exact0.
+--userbuffer_uintN_output=&lt;val&gt;
+                    Overrides the userbuffer output used for inference, and the output type is Uint N. Must be used with user
+                    specified buffer.
+--userbuffer_memorymapped
+                    Specifies to use memory-mapped (zero-copy) user buffer. Must be used with --userbuffer_float or
+                    --userbuffer_tf8 or userbuffer_tfN or userbuffer_auto etc. Cannot be combined with --encoding_type.
+                    Note: Passing this option will turn all input and output userbuffers into memory mapped buffer.
+--static_min_max  Specifies to use quantization parameters from the model instead of
+                    input specific quantization. Used in conjunction with --userbuffer_tf8.
+--resizable_dim=&lt;val&gt;
+                    Specifies the maximum number that resizable dimensions can grow into.
+                    Used as a hint to create UserBuffers for models with dynamic sized outputs. Should be a
+                    positive integer and is not applicable when using ITensor.
+--userbuffer_glbuffer
+                    [EXPERIMENTAL]  Specifies to use userbuffer for inference, and the input source is OpenGL buffer.
+                    Cannot be combined with --encoding_type.
+                    GL buffer mode is only supported on Android OS.
+--data_type_map=&lt;val&gt;
+                    Sets data type of IO buffers during prepare.
+                    Arguments should be provided in the following format:
+                    --data_type_map buffer_name1=buffer_name1_data_type --data_type_map buffer_name2=buffer_name2_data_type
+                    Data Type can have the following values: float16, float32, fixedPoint8, fixedPoint16, int8, int16, int32, int64, uint8, uint16, uint32, uint64, bool8
+                    Note: Must use this option with --tensor_mode.
+--tensor_mode=&lt;val&gt;
+                    Sets type of tensor to use.
+                    Arguments should be provided in the following format:
+                    --tensor_mode itensor
+                    Data Type can have the following values: userBuffer, itensor
+--perf_profile=&lt;val&gt;
+                    Specifies perf profile to set. Valid settings are &quot;low_balanced&quot; , &quot;balanced&quot; , &quot;default&quot;,
+                    &quot;high_performance&quot; ,&quot;sustained_high_performance&quot;, &quot;burst&quot;, &quot;low_power_saver&quot;, &quot;power_saver&quot;,
+                    &quot;high_power_saver&quot;, &quot;extreme_power_saver&quot;, and &quot;system_settings&quot;.
+--perf_config_yaml  Specifies the path to the yaml file containing the perf profile settings.
+--profiling_level=&lt;val&gt;
+                    Specifies the profiling level.  Valid settings are &quot;off&quot;, &quot;basic&quot;, &quot;moderate&quot;, &quot;detailed&quot;, and &quot;linting&quot;.
+                    Default is detailed.
+--enable_cpu_fallback
+                    Enables cpu fallback functionality. Defaults to disable mode.
+--input_name=&lt;val&gt;
+                    Specifies the name of graph and the name of input for which dimensions are specified
+                    e.g. --input_name=&quot;&lt;graph name&gt; &lt;input name&gt;&quot;
+--input_dimensions=&lt;val&gt;
+                    Specifies new dimensions for input whose name is specified in input_name. e.g. --input_dimension 1,224,224,3
+                    For multiple inputs, specify --input_name=&quot;&lt;graph name&gt; &lt;input name&gt;&quot; and --input_dimensions multiple times.&quot;
+--gpu_mode=&lt;val&gt;  Specifies gpu operation mode. Valid settings are &quot;default&quot;, &quot;float16&quot;.
+                    default = float32 math and float16 storage (equiv. use_gpu arg).
+                    float16 = float16 math and float16 storage.
+--enable_init_cache
+                    Enable init caching mode to accelerate the network building process. Defaults to disable.
+--platform_options=&lt;val&gt;
+                    Specifies value to pass as platform options.
+--priority_hint=&lt;val&gt;
+                    Specifies hint for priority level.  Valid settings are &quot;low&quot;, &quot;normal&quot;, &quot;normal_high&quot;, &quot;high&quot;. Defaults to normal.
+                    Note: &quot;normal_high&quot; is only available on DSP.
+--inferences_per_duration=&lt;val&gt;
+                    Specifies the number of inferences in specific duration (in seconds). e.g. &quot;10,20&quot;.
+--runtime_order=&lt;val&gt;
+                    Specifies the order of precedence for runtime e.g  cpu_float32, dsp_fixed8_tf etc
+                    Valid values are:-
+                    cpu_float32 (Snapdragon CPU)       = Data &amp; Math: float 32bit
+                    gpu_float32_16_hybrid (Adreno GPU) = Data: float 16bit Math: float 32bit
+                    dsp_fixed8_tf (Hexagon DSP)        = Data &amp; Math: 8bit fixed point Tensorflow style format
+                    gpu_float16 (Adreno GPU)           = Data: float 16bit Math: float 16bit
+--set_output_tensors=&lt;val&gt;
+                    Optionally, Specifies a comma separated list of tensors to be output after execution.
+                    If using Multi Graph DLC, use --set_output_tensors for each graph.
+                    e.g --set_output_tensors=&quot;graphA tensorA1,tensorA2&quot; --set_output_tensors=&quot;graphB tensorB1,tensorB2&quot;
+--set_unconsumed_as_output
+                    Sets all unconsumed tensors as outputs.
+                    aip_fixed8_tf (Snapdragon HTA+HVX) = Data &amp; Math: 8bit fixed point Tensorflow style format
+                    cpu (Snapdragon CPU)               = Same as cpu_float32
+                    gpu (Adreno GPU)                   = Same as gpu_float32_16_hybrid
+                    dsp (Hexagon DSP)                  = Same as dsp_fixed8_tf
+                    aip (Snapdragon HTA+HVX)           = Same as aip_fixed8_tf
+--udo_package_path=&lt;val&gt;
+                    Path to the registration library for UDO package(s).
+                    Optionally, user can provide multiple packages as a comma-separated list.
+--duration=&lt;val&gt;    Specified the duration of the run in seconds. Loops over the input_list until this amount of time has transpired.
+--dbglogs
+--timeout=&lt;val&gt;     Execution terminated when exceeding time limit (in microseconds). Only valid for HTP (dsp v68+) runtime.
+--userlogs=&lt;val&gt;    Specifies the user level logging as level,&lt;optional logPath&gt;.
+                    Valid values are: &quot;warn&quot;, &quot;verbose&quot;, &quot;info&quot;, &quot;error&quot;, &quot;fatal&quot;
+--cache_compatibility_mode=&lt;val&gt;
+                    Specifies the cache compatibility check mode; valid values are: &quot;permissive&quot; (default), &quot;strict&quot;, and &quot;always_generate_new&quot;.
+                    Only valid for HTP (dsp v68+) runtime.
+--validate_cache    Perform an additional validation step just before building SNPE to check the validity of the selected cache record in the DLC.
+                    Upon success, app will proceed as usual. On validation failure, the app will report the validation error before exiting.
+--graph_init=&lt;val&gt;
+                    List of comma seperated graphs in the current DLC that is set to be inited.
+--graph_execute=&lt;val&gt;
+                    List of comma seperated graphs in the current DLC that is set to be executed.
+--help              Show this help message.
+--version           Show SDK Version Number.
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">This binary outputs raw output tensors into the output folder
+by default. Examples of using snpe-net-run can be found in
+<a class="reference external" href="tutorial_inceptionv3.html">Running the Inception v3 Model</a> tutorial.</div>
+<div class="line">Additional details:</div>
+</div>
+<ul>
+<li><p><em>Running batched inputs:</em></p>
+<blockquote>
+<div><ul>
+<li><p>snpe-net-run is able to automatically batch the input
+data. The batch size is indicated in the model container
+(DLC file) but can also be set using the
+“input_dimensions” argument passed to snpe-net-run. Users
+do not need to batch their input data. If the input data
+is not batch, the input size needs to be a multiple of
+the size of the input data files. snpe-net-run would
+group the provided inputs into batches and pad the
+incomplete batches (if present) with zeros.</p>
+<p>In the example below, the model is set to accept batches
+of three inputs. So, the inputs are automatically grouped
+together to form batches by snpe-net-run and padding is
+done to the final batch. Note that there are five output
+files generated by snpe-net-run:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span> …
+Processing DNN input(s):
+cropped/notice_sign.raw
+cropped/trash_bin.raw
+cropped/plastic_cup.raw
+Processing DNN input(s):
+cropped/handicap_sign.raw
+cropped/chairs.raw
+Applying padding
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><em>input_list argument:</em></p>
+<blockquote>
+<div><ul>
+<li><p>snpe-net-run can take multiple input files as input data
+per iteration, and specify multiple output names, in an
+input list file formated as below:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>#&lt;output_name&gt;[&lt;space&gt;&lt;output_name&gt;]
+&lt;input_layer_name&gt;:=&lt;input_layer_path&gt;[&lt;space&gt;&lt;input_layer_name&gt;:=&lt;input_layer_path&gt;]
+…
+</pre></div>
+</div>
+<p>The first line starting with a “#” specifies the output
+layers’ names. If there is more than one output, a
+whitespace should be used as a delimiter. Following the
+first line, you can use multiple lines to supply input
+files, one line per iteration, and each line only supply
+one layer. If there is more than one input per line, a
+whitespace should be used as a delimiter.</p>
+<p>Here is an example, where the layer names are “Input_1”
+and “Input_2”, and inputs are located in the path
+“Placeholder_1/real_input_inputs_1/”. Its input list file
+should look like this:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>#Output_1 Output_2
+Input_1:=Placeholder_1/real_input_inputs_1/0-0#e6fb51.rawtensor Input_2:=Placeholder_1/real_input_inputs_1/0-1#8a171b.rawtensor
+Input_1:=Placeholder_1/real_input_inputs_1/1-0#67c965.rawtensor Input_2:=Placeholder_1/real_input_inputs_1/1-1#54f1ff.rawtensor
+Input_1:=Placeholder_1/real_input_inputs_1/2-0#b42dc6.rawtensor Input_2:=Placeholder_1/real_input_inputs_1/2-1#346a0e.rawtensor
+</pre></div>
+</div>
+<p>Similar to above a first line starting with “%” specifies the output tensor names</p>
+<p><strong>Note:</strong> If the batch dimension of the model is greater
+than 1, the number of batch elements in the input file
+has to either match the batch dimension specified in the
+DLC or it has to be one. In the latter case, snpe-net-run
+will combine multiple lines into a single input tensor.</p>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><em>Running AIP Runtime:</em></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>AIP Runtime requires a DLC which was quantized, and HTA
+sections were generated offline.</p></li>
+<li><p>AIP Runtime does not support debug_mode</p></li>
+<li><p>AIP Runtime requires a DLC with all the layers
+partitioned to HTA to support batched inputs</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><em>Set cache compatibility mode:</em></p>
+<blockquote>
+<div><ul>
+<li><p>A DLC can include more than one cache record and users can set
+the compatibility mode to check whether the best cache record is
+optimal for the device. The available modes indicate binary cache
+compatibility as follows.</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>permissive – Compatible if it could run on the device.</p></li>
+<li><p>strict – Compatible if it could run on the device and
+fully utilize hardware capability.</p></li>
+<li><p>always_generate_new – Always incompatible; SNPE will
+generate a new cache.</p></li>
+</ol>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="snpe-parallel-run">
+<h1>snpe-parallel-run<a class="headerlink" href="#snpe-parallel-run" title="Permalink to this heading">¶</a></h1>
+<p>snpe-parallel-run loads a DLC file, loads the data for the
+input tensor(s), and executes the network on the specified
+runtime. This app is similar to snpe-net-run, but is able to
+run multiple threads of inference on the same network for
+benchmarking purposes.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>DESCRIPTION:
+------------
+Tool that loads and executes one or more neural networks on different threads with optional asynchronous input/output processing using SDK APIs.
+
+
+REQUIRED ARGUMENTS:
+-------------------
+--container  &lt;FILE&gt;   Path to the DL container containing the network.
+--input_list &lt;FILE&gt;   Path to a file listing the inputs for the network.
+--perf_profile &lt;VAL&gt;
+                    Specifies perf profile to set. Valid settings are &quot;balanced&quot; , &quot;default&quot; , &quot;high_performance&quot; , &quot;sustained_high_performance&quot; , &quot;burst&quot; , &quot;power_saver&quot;, &quot;low_power_saver&quot;, &quot;high_power_saver&quot;, &quot;extreme_power_saver&quot;, &quot;low_balanced&quot;, and &quot;system_settings&quot;.
+                    NOTE: &quot;balanced&quot; and &quot;default&quot; are the same.  &quot;default&quot; is being deprecated in the future.
+--cpu_fallback        Enables cpu fallback functionality. Valid settings are &quot;false&quot;, &quot;true&quot;.
+--runtime_order &lt;VAL,VAL,VAL,..&gt;
+                    Specifies the order of precedence for runtime e.g cpu,gpu etc. Valid values are:-
+                                cpu_float32 (Snapdragon CPU)       = Data &amp; Math: float 32bit
+                                gpu_float32_16_hybrid (Adreno GPU) = Data: float 16bit Math: float 32bit
+                                dsp_fixed8_tf (Hexagon DSP)        = Data &amp; Math: 8bit fixed point Tensorflow style format
+                                gpu_float16 (Adreno GPU)           = Data: float 16bit Math: float 16bit
+                                aip_fixed8_tf (Snapdragon HTA+HVX) = Data &amp; Math: 8bit fixed point Tensorflow style format
+                                cpu (Snapdragon CPU)               = Same as cpu_float32
+                                gpu (Adreno GPU)                   = Same as gpu_float32_16_hybrid
+                                dsp (Hexagon DSP)                  = Same as dsp_fixed8_tf
+                                aip (Snapdragon HTA+HVX)           = Same as aip_fixed8_tf
+--use_cpu             Use the CPU runtime.
+--use_gpu             Use the GPU float32 runtime.
+--use_gpu_fp16        Use the GPU float16 runtime.
+--use_dsp             Use the DSP fixed point runtime.
+--use_aip             Use the AIP fixed point runtime.
+
+
+OPTIONAL ARGUMENTS:
+-------------------
+--userbuffer_float    Specifies to use userbuffer for inference, and the input type is float.
+--userbuffer_tf8      Specifies to use userbuffer for inference, and the input type is tf8exact0.
+--userbuffer_auto     Specifies to use userbuffer with automatic input and output type detection for inference.
+--use_native_input_files
+                    Specifies to consume the input file(s) in their native data type(s).
+                    Must be used with --userbuffer_xxx.
+--use_native_output_files
+                    Specifies to write the output file(s) in their native data type(s).
+                    Must be used with --userbuffer_xxx.
+--input_name &lt;INPUT_NAME&gt;
+                    Specifies the name of input for which dimensions are specified.
+--input_dimensions &lt;INPUT_DIM&gt;
+                    Specifies new dimensions for input whose name is specified in input_name. e.g. &quot;1,224,224,3&quot;.
+--output_dir &lt;DIR&gt;    The directory to save result files
+--static_min_max      Specifies to use quantization parameters from the model instead of
+                    input specific quantization. Used in conjunction with --userbuffer_tf8.
+--userbuffer_float_output
+                    Overrides the userbuffer output used for inference, and the output type is float.
+                    Must be used with user specified buffer.
+--userbuffer_tf8_output
+                    Overrides the userbuffer output used for inference, and the output type is tf8exact0.
+                    Must be used with user specified buffer.
+--userbuffer_memorymapped
+                    Specifies to use memory-mapped (zero-copy) user buffer. Must be used with --userbuffer_float or
+                    --userbuffer_tf8 or userbuffer_tfN or userbuffer_auto etc. Cannot be combined with --encoding_type.
+                    Note: Passing this option will turn all input and output userbuffers into memory mapped buffer.
+--userbuffer_memorymapped_shared
+                    Specifies to use memory-mapped (zero-copy) user buffer with shared memory chunk.
+                    Must be used with --userbuffer_float or --userbuffer_tf8 or userbuffer_tfN or
+                    userbuffer_auto etc. Cannot be combined with --encoding_type or --userbuffer_memorymapped.
+                    Note: Passing this option will turn all input and output userbuffers into memory mapped buffer
+--enable_init_cache   Enable init caching mode to accelerate the network building process. Defaults to disable.
+--profiling_level     Specifies the profiling level.  Valid settings are &quot;off&quot;, &quot;basic&quot;, &quot;moderate&quot;, &quot;detailed&quot;, and &quot;linting&quot;.
+                      Default is off.
+--platform_options    Specifies value to pass as platform options.  Valid settings: &quot;HtaDLBC:ON/OFF&quot;, &quot;unsignedPD:ON/OFF&quot;.
+--platform_options_local
+                      Specifies the value to pass for the current SNPE instance. Valid settings: &quot;HtpDLBC:ON/OFF&quot;, &quot;HtaDLBC:ON/OFF;HtpDLBC:ON/OFF&quot;.
+--set_output_tensors  Specifies a comma separated list of tensors to be output after execution.
+--userlogs &lt;VAL&gt;      Specifies the user level logging as level,&lt;optional logPath&gt;.
+--version             Show SDK Version Number.
+--help                Show this help message.
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Additional details:</div>
+</div>
+<ul>
+<li><p><em>Required runtime argument:</em></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>For the required arguments pertaining to runtime
+specification, either –runtime_order OR –use_cpu OR –use_gpu etc.
+needs to be specified. The following example demonstrates
+an equivalent command using either of these options.</p></li>
+</ul>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>snpe-parallel-run --container container.dlc --input_list input_list.txt
+--perf_profile burst --cpu_fallback true --use_dsp --use_gpu --userbuffer_auto
+</pre></div>
+</div>
+<p>is equivalent to</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>snpe-parallel-run --container container.dlc --input_list input_list.txt
+--perf_profile burst --cpu_fallback true --runtime_order dsp,gpu --userbuffer_auto
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p><em>Spawning multiple threads:</em></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>snpe-parallel-run is able to create multiple threads to
+execute identical inference passes.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>In the example below, the given command has the required
+arguments for container and input list given. After these
+2 options, the remaining options form a repeating
+sequence that corresponds to each thread. In this
+example, we have varied the runtimes specified for each
+thread (one for dsp, another for gpu, and the last one
+for dsp).</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>snpe-parallel-run --container container.dlc --input_list input_list.txt
+--perf_profile burst --cpu_fallback true --use_dsp --userbuffer_auto
+--perf_profile burst --cpu_fallback true --use_gpu --userbuffer_auto
+--perf_profile burst --cpu_fallback true --use_dsp --userbuffer_auto
+</pre></div>
+</div>
+<p>When this command is executed, the following section of
+output is observed:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>...
+Processing DNN input(s):
+input.raw
+PSNPE start executing...
+runtimes: dsp_fixed8_tf gpu_float32_16_hybrid dsp_fixed8_tf - Mode :0- Number of images processed: x
+    Build time: x seconds.
+...
+</pre></div>
+</div>
+<p>Note that the number of runtimes listed corresponds to
+the number of threads specified, as well as the order in
+which those threads were specified.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="snpe-throughput-net-run">
+<h1>snpe-throughput-net-run<a class="headerlink" href="#snpe-throughput-net-run" title="Permalink to this heading">¶</a></h1>
+<p>snpe-throughput-net-run concurrently runs multiple instances of
+SNPE for a certain duration of time and measures inference
+throughput. Each instance of SNPE can have its own model,
+designated runtime and performance profile. Please note that
+the <cite>–duration</cite> parameter is common for all instances of SNPE
+created.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>DESCRIPTION:
+------------
+Tool to load and execute concurrent SNPE objects using the SDK API.
+
+
+REQUIRED ARGUMENTS:
+-------------------
+    --container  &lt;FILE&gt;              Path to the DL container containing the network.
+    --duration   &lt;VAL&gt;               Duration of time (in seconds) to run network execution.
+    --use_cpu                        Use the CPU runtime.
+    --use_gpu                        Use the GPU float32 runtime.
+    --use_gpu_fp16                   Use the GPU float16 runtime.
+    --use_dsp                        Use the DSP fixed point runtime.
+    --use_aip                        Use the AIP fixed point runtime.
+    --perf_profile &lt;VAL&gt;             Specifies perf profile to set. Valid settings are &quot;balanced&quot; , &quot;default&quot; , &quot;high_performance&quot; ,
+                                     &quot;sustained_high_performance&quot; , &quot;burst&quot; , &quot;power_saver&quot;, &quot;low_power_saver&quot;, &quot;high_power_saver&quot;, &quot;extreme_power_saver&quot;, &quot;low_balanced&quot;, and &quot;system_settings&quot;.
+                                     NOTE: &quot;balanced&quot; and &quot;default&quot; are the same.  &quot;default&quot; is being deprecated in the future.
+    --runtime_order &lt;VAL,VAL,VAL,..&gt; Specifies the order of precedence for runtime e.g cpu,gpu etc. Valid values are:-
+                                     cpu_float32 (Snapdragon CPU)       = Data &amp; Math: float 32bit
+                                     gpu_float32_16_hybrid (Adreno GPU) = Data: float 16bit Math: float 32bit
+                                     dsp_fixed8_tf (Hexagon DSP)        = Data &amp; Math: 8bit fixed point Tensorflow style format
+                                     gpu_float16 (Adreno GPU)           = Data: float 16bit Math: float 16bit
+                                     aip_fixed8_tf (Snapdragon HTA+HVX) = Data &amp; Math: 8bit fixed point Tensorflow style format
+                                     cpu (Snapdragon CPU)               = Same as cpu_float32
+                                     gpu (Adreno GPU)                   = Same as gpu_float32_16_hybrid
+                                     dsp (Hexagon DSP)                  = Same as dsp_fixed8_tf
+                                     aip (Snapdragon HTA+HVX)           = Same as aip_fixed8_tf
+
+OPTIONAL ARGUMENTS:
+-------------------
+    --debug                             Specifies that output from all layers of the network
+                                        will be saved.
+    --userbuffer_auto                   Specifies to use userbuffer for input and output, with auto detection of types enabled.
+                                        Must be used with user specified buffer.
+    --userbuffer_float                  Specifies to use userbuffer for inference, and the input type is float.
+                                        Must be used with user specified buffer.
+    --userbuffer_floatN                 Specifies to use userbuffer for inference, and the input type is float16 or float32.
+                                        Must be used with user specified buffer.
+    --userbuffer_tf8                    Specifies to use userbuffer for inference, and the input type is tf8exact0.
+                                        Must be used with user specified buffer.
+    --userbuffer_tfN                    Specifies to use userbuffer for inference, and the input type is tf8exact0 or tf16exact0.
+                                        Must be used with user specified buffer.
+    --userbuffer_memorymapped           Specifies to use memory-mapped (zero-copy) user buffer. Must be used with --userbuffer_float or
+                                        --userbuffer_tf8 or userbuffer_tfN or userbuffer_auto etc. Cannot be combined with --encoding_type.
+                                        Note: Passing this option will turn all input and output userbuffers into memory mapped buffer.
+    --userbuffer_float_output           Overrides the userbuffer output used for inference, and the output type is float.
+                                        Must be used with user specified buffer.
+    --userbuffer_floatN_output          Overrides the userbuffer output used for inference, and the output type is float16 or float32.
+                                        Must be used with user specified buffer.
+    --userbuffer_tf8_output             Overrides the userbuffer output used for inference, and the output type is tf8exact0.
+                                        Must be used with user specified buffer.
+    --userbuffer_tfN_output             Overrides the userbuffer output used for inference, and the output type is tf8exact0 or tf16exact0.
+                                        Must be used with user specified buffer.
+    --storage_dir &lt;DIR&gt;                 The directory to store metadata files
+    --version                           Show SDK Version Number.
+    --iterations &lt;VAL&gt;                  Number of times to iterate through entire input list
+    --verbose                           Print more debug information.
+    --skip_execute                      Don&#39;t do execution (just graph build/teardown)
+    --enable_cpu_fallback               Enables cpu fallback functionality. Defaults to disable mode.
+    --json  &lt;FILE&gt;                      Generated JSON report.
+    --input_raw &lt;FILE&gt;                  Path to raw inputs for the network, seperated by &quot;,&quot;.
+    --fixed_fps &lt;VAL&gt;                   Fix fps so as to control system loading, total FPS will be limited to around &lt;VAL&gt; Ex: 30,20,0(free run)
+    --udo_package_path &lt;VAL,VAL&gt;        Path to UDO package with registration library for UDOs.
+                                        Optionally, user can provide multiple packages as a comma-separated list.
+    --enable_init_cache                 Enable init caching mode to accelerate the network building process. Defaults to disable.
+    --platform_options &lt;VAL&gt;            Specifies value to pass as platform options for all SNPE instances.
+    --platform_options_local &lt;VAL&gt;      Specifies the value to pass as per SNPE instance platform options for the current SNPE instance.
+                                        if --platform_options is specified then it overwrites the global platform options for the current SNPE instance.
+    --priority_hint &lt;VAL&gt;               Specifies hint for priority level. Valid settings are &quot;low&quot;, &quot;normal&quot;, &quot;normal_high&quot;, &quot;high&quot;. Defaults to normal.
+                                        Note: &quot;normal_high&quot; is only available on DSP.
+    --groupDuration &lt;VAL&gt;               Duration (in ms) of execution before next sleep.(Optional)
+    --groupSleep &lt;VAL&gt;                  Sleep interval (in ms) after execution of group.(Optional)
+    --set_output_layers &lt;VAL&gt;           Optionally, user can provide a comma separated list of layers to be output after execution.
+                                        If using multi-graph DLC, provide &lt;graph name&gt; &lt;comma separated layers&gt; in double quotes.
+                                        It should be defined for all instances or none at all.
+                                        Use empty string for instances that doesn&#39;t need any layer outputs.
+                                        e.g --set_output_layers &quot;graphA layer1,layer2,layer3&quot;
+    --set_output_tensors &lt;VAL&gt;          Optionally, user can provide a comma separated list of tensors to be output after execution.
+                                        If using multi-graph DLC, provide &lt;graph name&gt; &lt;comma separated tensors&gt; in double quotes.
+                                        It should be defined for all instances or none at all.
+                                        Use empty string for instances that doesn&#39;t need any layer outputs.
+                                        e.g --set_output_tensors &quot;graphA tensor1,tensor2,tensor3&quot;
+    --userlogs=&lt;val&gt;                    Specifies the user level logging as level,&lt;optional logPath&gt;.
+                                        Valid values are: &quot;warn&quot;, &quot;verbose&quot;, &quot;info&quot;, &quot;error&quot;, &quot;fatal&quot;
+    --enable_cpu_fxp                    Enable the fixed point execution on CPU runtime.
+    --model_name &lt;VAL&gt;                  To add the model name to the logs (Optional)
+    --cache_compatibility_mode=&lt;val&gt;    Specifies the cache compatibility check mode; valid values are: &quot;permissive&quot; (default), &quot;strict&quot;, and &quot;always_generate_new&quot;.
+                                        Only valid for HTP (dsp v68+) runtime.
+    --validate_cache                    Perform an additional validation step just before building SNPE to check the validity of the selected cache record in the DLC.
+                                        Upon success, app will proceed as usual. On validation failure, the app will report the validation error before exiting.
+    --graph_init                        Optionally, Specifies a comma separated list of specified graphs in the current DLC that is set to be inited.
+                                        e.g --graph_init graph1, graph2, graph3
+    --graph_execute                     Optionally, Specifies a comma separated list of specified graphs in the current DLC that is set to be executed.
+                                        e.g --graph_execute graph1, graph2, graph3
+    --help                              Show this help message.
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

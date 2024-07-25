@@ -1,0 +1,75 @@
+diff --git a/source/electron.js b/source/electron.js
+index b69295e..119920b 100644
+--- a/source/electron.js
++++ b/source/electron.js
+@@ -10,6 +10,8 @@ const process = require('process');
+ const path = require('path');
+ const querystring = require('querystring');
+ 
++
++
+ host.ElectronHost = class {
+ 
+     constructor() {
+@@ -56,7 +58,8 @@ host.ElectronHost = class {
+     initialize(view) {
+         this._view = view;
+         electron.ipcRenderer.on('open', (_, data) => {
+-            this._openFile(data.file);
++           // added data.csv and data.binFile
++            this._openFile(data.file,data.csv,data.binFile,data.verifierThreshold);
+         });
+         return new Promise((resolve /*, reject */) => {
+             const accept = () => {
+@@ -164,6 +167,16 @@ host.ElectronHost = class {
+             this._view.showModelProperties();
+         });
+ 
++        this.document.getElementById('next').addEventListener('click', () => {
++            this._view.showNextErrorNode();
++        });
++
++        this.document.getElementById('prev').addEventListener('click', () => {
++            this._view.showPrevErrorNode();
++        });
++        this.document.getElementById('next').style.visibility = "hidden";
++        this.document.getElementById('prev').style.visibility = "hidden";
++
+         const openFileButton = this.document.getElementById('open-file-button');
+         if (openFileButton) {
+             openFileButton.style.opacity = 1;
+@@ -171,6 +184,14 @@ host.ElectronHost = class {
+                 electron.ipcRenderer.send('open-file-dialog', {});
+             });
+         }
++        // added open diff button option
++        const openDiffButton = this.document.getElementById('open-diff-button');
++        if (openDiffButton) {
++            openDiffButton.style.opacity = 1;
++            openDiffButton.addEventListener('click', () => {
++                   electron.ipcRenderer.send('open-diff-dialog', {});
++            });
++        }
+         const githubButton = this.document.getElementById('github-button');
+         const githubLink = this.document.getElementById('logo-github');
+         if (githubButton && githubLink) {
+@@ -348,7 +369,8 @@ host.ElectronHost = class {
+         }
+     }
+ 
+-    _openFile(file) {
++    // added csv and binFile option
++    _openFile(file,csv,binFile,verifierThreshold) {
+         if (this._queue) {
+             this._queue.push(file);
+             return;
+@@ -359,7 +381,8 @@ host.ElectronHost = class {
+             const basename = path.basename(file);
+             this.request(basename, null, dirname).then((stream) => {
+                 const context = new host.ElectronHost.ElectonContext(this, dirname, basename, stream);
+-                this._view.open(context).then((model) => {
++                // added csv and binFile
++                this._view.open(context,csv,binFile,verifierThreshold).then((model) => {
+                     this._view.show(null);
+                     if (model) {
+                         this._update('path', file);

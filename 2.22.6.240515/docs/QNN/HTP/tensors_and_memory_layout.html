@@ -1,0 +1,607 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Tensors and Memory Layout &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Writing QNN HTP Op Package" href="writing_op_package.html" />
+    <link rel="prev" title="Allocate Memory for Scratch Buffers" href="scratch_buffer.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/setup.html">Setup</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../general/backend.html">Backend</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../general/backend.html#backend-specific-pages">Backend Specific Pages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../general/dsp/dsp_backend.html">DSP</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../general/htp/htp_backend.html">HTP</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#api-specializations">API Specializations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#usage-expectations">Usage Expectations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-supported-operations">QNN HTP Supported Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-variable-batch">QNN HTP Variable Batch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-backend-api">QNN HTP Backend API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-performance-infrastructure-api">QNN HTP Performance Infrastructure API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-precision">QNN HTP Precision</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-fp16-output-difference-between-sm8550-and-sm8650">QNN HTP FP16 output difference between SM8550 and SM8650</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-deep-learning-bandwidth-compression-dlbc">QNN HTP Deep Learning Bandwidth Compression (DLBC)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-setting-number-of-hvx-threads">QNN HTP - Setting Number of HVX Threads</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-backend-extensions">QNN HTP Backend Extensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-profiling">QNN HTP Profiling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-context-binary-size">QNN Context Binary size</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../general/htp/htp_backend.html#op-writing-guidelines">Op Writing Guidelines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#recommendations-for-network-design">Recommendations for Network Design</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#yielding-and-pre-emption">Yielding and Pre-Emption</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#vtcm-sharing">VTCM Sharing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#subsystem-restart-ssr">SubSystem Restart (SSR)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qmem-graph-shared-buffer-only-graph">Qmem Graph (shared_buffer only graph)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#htp-session-artifact-usage-guidlines">HTP Session &amp; Artifact Usage Guidlines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#graph-switching-beta">Graph Switching (Beta)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#benefits-of-batch-inference-and-multi-threaded-inference">Benefits of batch inference and multi-threaded inference</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../general/hta/hta_backend.html">HTA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/lpai/lpai_backend.html">LPAI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/cpu/cpu_backend.html">CPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/gpu/gpu_backend.html">GPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/saver/saver_backend.html">Saver</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../general/backend.html">Backend</a> &raquo;</li>
+        
+          <li><a href="../general/htp/htp_backend.html">HTP</a> &raquo;</li>
+        
+      <li>Tensors and Memory Layout</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tensors-and-memory-layout">
+<h1>Tensors and Memory Layout<a class="headerlink" href="#tensors-and-memory-layout" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="details-about-memory-layout">
+<h2>Details about Memory Layout<a class="headerlink" href="#details-about-memory-layout" title="Permalink to this heading">¶</a></h2>
+<p>Memory layouts are how data for Tensors are laid out in memory in HTP
+Core. There are many different memory layouts. There is
+<code class="docutils literal notranslate"><span class="pre">d32</span> <span class="pre">layout,</span> <span class="pre">crouton</span> <span class="pre">layout,</span> <span class="pre">flat</span> <span class="pre">layout</span></code>, and <code class="docutils literal notranslate"><span class="pre">specific</span> <span class="pre">layouts</span></code>
+for weights in convolutions. Memory layouts have a rank, an optional
+strided order of dimensions should be chunked out, and an order of how
+chunks should be laid out beside each other.</p>
+<div class="section" id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h3>
+<div class="section" id="flat-layout">
+<h4><em>Flat Layout</em><a class="headerlink" href="#flat-layout" title="Permalink to this heading">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">FlatMemoryLayout&lt;4&gt;</span></code> can be thought of as
+<code class="docutils literal notranslate"><span class="pre">ChunkedMemoryLayout&lt;4,</span> <span class="pre">0,0,</span> <span class="pre">1,0,</span> <span class="pre">2,0,</span> <span class="pre">3,0&gt;</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">4</span></code>, the zeroth parameter, is the <code class="docutils literal notranslate"><span class="pre">rank</span></code> of the layout</p></li>
+<li><p>The rest of the parameters are done in <code class="docutils literal notranslate"><span class="pre">(dimension,size)</span></code> pairs,
+and it’s easiest to explain the pairs right-to-left:</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">3,0</span></code> means “all the rest of dimension <code class="docutils literal notranslate"><span class="pre">3</span></code>”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2,0</span></code> means “all the rest of dimension <code class="docutils literal notranslate"><span class="pre">2</span></code>”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1,0</span></code> means “all the rest of dimension <code class="docutils literal notranslate"><span class="pre">1</span></code>”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0,0</span></code> means “all the rest of dimension <code class="docutils literal notranslate"><span class="pre">0</span></code>”</p></li>
+</ul>
+<p>What the above explanation means is that dimension <code class="docutils literal notranslate"><span class="pre">3</span></code> is the fastest
+moving dimension, dimension <code class="docutils literal notranslate"><span class="pre">2</span></code> is <code class="docutils literal notranslate"><span class="pre">2nd</span> <span class="pre">fastest</span></code>, then <code class="docutils literal notranslate"><span class="pre">1</span></code>, then
+<code class="docutils literal notranslate"><span class="pre">0</span></code>. If dimension of the tensor is <code class="docutils literal notranslate"><span class="pre">2x3x5x30</span></code> then the data is laid
+out like the following:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">29</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">29</span><span class="p">),</span>
+<span class="p">...</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">29</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">29</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">29</span><span class="p">),</span>
+<span class="p">...</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">29</span><span class="p">),</span>
+<span class="p">...</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">29</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">29</span><span class="p">),</span>
+<span class="p">...</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">29</span><span class="p">),</span>
+</pre></div>
+</div>
+<p>Most commonly rank of <code class="docutils literal notranslate"><span class="pre">4</span></code> tensors with “<code class="docutils literal notranslate"><span class="pre">NHWC</span></code>” format is used: -
+dimension <code class="docutils literal notranslate"><span class="pre">3</span></code> is <code class="docutils literal notranslate"><span class="pre">depth</span></code> or <code class="docutils literal notranslate"><span class="pre">channels</span></code> - dimension <code class="docutils literal notranslate"><span class="pre">2</span></code> is
+<code class="docutils literal notranslate"><span class="pre">width</span></code> - dimension <code class="docutils literal notranslate"><span class="pre">1</span></code> is <code class="docutils literal notranslate"><span class="pre">height</span></code> - dimension <code class="docutils literal notranslate"><span class="pre">0</span></code> is
+<code class="docutils literal notranslate"><span class="pre">batches</span></code>.</p>
+<p>So in the above example, the numbers indicate:
+(<code class="docutils literal notranslate"><span class="pre">batch</span> <span class="pre">index,</span> <span class="pre">height</span> <span class="pre">index,</span> <span class="pre">width</span> <span class="pre">index,</span> <span class="pre">depth</span> <span class="pre">index</span></code>). Ellipses
+indicate non contiguous data. Newlines are still contiguous, only there
+for readability.</p>
+<p>If user wants the dimensions to mean “<code class="docutils literal notranslate"><span class="pre">NHWC</span></code>” format, but really want
+it laid out in memory as “<code class="docutils literal notranslate"><span class="pre">NCHW</span></code>”, user can use the Memory Layout to
+do this. <code class="docutils literal notranslate"><span class="pre">ChunkedMemoryLayout&lt;4,</span> <span class="pre">0,0,</span> <span class="pre">3,0,</span> <span class="pre">1,0,</span> <span class="pre">2,0&gt;</span></code> is a to
+represent this.</p>
+<p>By changing the <code class="docutils literal notranslate"><span class="pre">MemoryLayout</span></code> user can change how data is organized
+in memory, without changing how ops using the basic tensor interfaces
+work, and while having the <code class="docutils literal notranslate"><span class="pre">C++</span></code> infrastructure guarantee type safety
+(so that user don’t feed <code class="docutils literal notranslate"><span class="pre">NHWC</span></code> data to an op expecting <code class="docutils literal notranslate"><span class="pre">NCHW</span></code>
+format, for example).</p>
+</div>
+</div>
+<div class="section" id="crouton-layout">
+<h3><em>Crouton Layout</em><a class="headerlink" href="#crouton-layout" title="Permalink to this heading">¶</a></h3>
+<p>While the flat memory format is good for interaction with other
+environments, user might like memory to be in a format highly amenable
+to how hardware is able to work with it. This requires making the data
+more uniform in size and ensuring that the data being run through
+computation together is contiguous in memory.</p>
+<p>Crouton layout <code class="docutils literal notranslate"><span class="pre">R4CroutonLayout</span></code> is
+<code class="docutils literal notranslate"><span class="pre">ChunkedMemoryLayout&lt;4,</span> <span class="pre">0,0,</span> <span class="pre">1,0,</span> <span class="pre">2,0,</span> <span class="pre">3,0,</span> <span class="pre">1,8,</span> <span class="pre">2,8,</span> <span class="pre">3,32&gt;</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">4</span></code>, the zeroth parameter, is the rank of the layout</p></li>
+<li><p>The rest of the parameters are done in <code class="docutils literal notranslate"><span class="pre">(dimension,size)</span></code> pairs,
+and it’s easiest to explain the pairs right-to-left:</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">3,32</span></code> means <code class="docutils literal notranslate"><span class="pre">32</span></code> elements in dimension <code class="docutils literal notranslate"><span class="pre">3</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2,8</span></code> means <code class="docutils literal notranslate"><span class="pre">8</span></code> contiguous chunks of everything to the right in
+dimension <code class="docutils literal notranslate"><span class="pre">2</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1,8</span></code> means <code class="docutils literal notranslate"><span class="pre">8</span></code> contiguous chunks of everything to the right in
+dimension <code class="docutils literal notranslate"><span class="pre">1</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">3,0</span></code> means “all the rest of dimension <code class="docutils literal notranslate"><span class="pre">3</span></code>”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2,0</span></code> means “all the rest of dimension <code class="docutils literal notranslate"><span class="pre">2</span></code>”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1,0</span></code> means “all the rest of dimension <code class="docutils literal notranslate"><span class="pre">1</span></code>”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0,0</span></code> means “all the rest of dimension <code class="docutils literal notranslate"><span class="pre">0</span></code>”</p></li>
+</ul>
+<p>The numbers <code class="docutils literal notranslate"><span class="pre">1,8,</span> <span class="pre">2,8,</span> <span class="pre">3,32</span></code> mean that the croutons have a chunk size
+of <code class="docutils literal notranslate"><span class="pre">1x8x8x32</span></code>. If the dimensions is less than <code class="docutils literal notranslate"><span class="pre">8</span></code> or <code class="docutils literal notranslate"><span class="pre">32</span></code>, it is
+<strong>padded</strong> to the respective dimensions.</p>
+<p>For example, if the tensor dimension is <code class="docutils literal notranslate"><span class="pre">1x3x5x30</span></code>, the data gets
+padded to <code class="docutils literal notranslate"><span class="pre">1x8x8x32</span></code>, and then the data is laid out like the
+following:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">29</span><span class="p">),</span><span class="w">  </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">31</span><span class="p">),</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">(0,0,0,0)</span> <span class="pre">to</span> <span class="pre">(0,0,0,29)</span></code> is valid data, <code class="docutils literal notranslate"><span class="pre">(0,0,0,30)</span> <span class="pre">(0,0,0,31)</span></code>
+is pad introduced by the memory layout</p>
+</div></blockquote>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">29</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">31</span><span class="p">),</span>
+<span class="p">...</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">29</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">30</span><span class="w"> </span><span class="p">),(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">31</span><span class="p">),</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">(0,0,4,0)</span> <span class="pre">to</span> <span class="pre">(0,0,4,29)</span></code> is valid data,
+<code class="docutils literal notranslate"><span class="pre">(0,0,4,30</span> <span class="pre">),</span> <span class="pre">(0,0,4,31),</span> <span class="pre">(0,0,5,0</span> <span class="pre">)...(0,0,7,31)</span></code> is pad
+introduced by the memory layout</p>
+</div></blockquote>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">31</span><span class="p">),</span>
+<span class="p">...</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">31</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">31</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">31</span><span class="p">),</span>
+<span class="p">...</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">31</span><span class="p">),</span>
+<span class="p">...</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">29</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">30</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">31</span><span class="p">)</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">(0,2,4,0)</span></code> to <code class="docutils literal notranslate"><span class="pre">(0,2,4,29)</span></code> is valid data,
+<code class="docutils literal notranslate"><span class="pre">(0,2,4,30)</span> <span class="pre">...(0,2,7,31),(0,3,0,0</span> <span class="pre">)...(0,7,7,31)</span></code> is pad
+introduced by the memory layout</p>
+</div></blockquote>
+<p>This explains what <code class="docutils literal notranslate"><span class="pre">1,8,</span> <span class="pre">2,8,</span> <span class="pre">3,32</span></code>means. It means how data is laid
+out in fixed size chunks. However, the order of those chunks in memory
+also needs to be determined.</p>
+<p>Similar to the <code class="docutils literal notranslate"><span class="pre">FlatMemoryLayout</span></code> above, user can define an arbitrary
+order for those chunks to be ordered. That is what the 0-sized
+dimensions mean in the <code class="docutils literal notranslate"><span class="pre">MemoryLayout</span></code>.</p>
+<p>So given the example here, where the ordering is <code class="docutils literal notranslate"><span class="pre">0,0,</span> <span class="pre">1,0,</span> <span class="pre">2,0,</span> <span class="pre">3,0</span></code>,
+groups along dimension <code class="docutils literal notranslate"><span class="pre">3</span></code> to be ordered “together”, followed by all
+the groups required to do dimension <code class="docutils literal notranslate"><span class="pre">2</span></code>, and so on.</p>
+<p>If there is <code class="docutils literal notranslate"><span class="pre">2x9x20x50</span></code> tensor, for example, it gets padded to
+<code class="docutils literal notranslate"><span class="pre">2x16x24x64</span></code>. It would go in memory:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">31</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">31</span><span class="p">)</span>
+<span class="p">...</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">31</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">31</span><span class="p">)</span>
+<span class="p">...</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">31</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">chunk</span>
+
+
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">32</span><span class="p">)</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">63</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">chunk</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">32</span><span class="p">)</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">63</span><span class="p">)</span>
+<span class="p">...</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">32</span><span class="p">)</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">63</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">32</span><span class="p">)</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">63</span><span class="p">)</span>
+<span class="p">...</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">32</span><span class="p">)</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">63</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">chunk</span><span class="p">,</span><span class="w"> </span><span class="n">finished</span><span class="w"> </span><span class="n">traversing</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">dimension</span><span class="w"> </span><span class="mi">3</span><span class="p">}</span>
+
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">...</span><span class="w">  </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">31</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">...</span><span class="w">  </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">31</span><span class="p">)</span>
+<span class="p">...</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">31</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">...</span><span class="w">  </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">31</span><span class="p">)</span>
+<span class="p">...</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">...</span><span class="w">  </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">31</span><span class="p">)</span>
+
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">32</span><span class="p">)</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">63</span><span class="p">)</span>
+<span class="p">...</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">32</span><span class="p">)</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">63</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">63</span><span class="p">)</span>
+<span class="p">...</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">32</span><span class="p">)</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">63</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">finished</span><span class="w"> </span><span class="n">traversing</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">dimension</span><span class="w"> </span><span class="mi">2</span>
+
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">63</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">63</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">finished</span><span class="w"> </span><span class="n">traversing</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">dimension</span><span class="w"> </span><span class="mi">1</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">63</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">63</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">memory</span><span class="w"> </span><span class="n">layout</span>
+</pre></div>
+</div>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">FlatMemoryLayout</span></code> is just the special case of
+<code class="docutils literal notranslate"><span class="pre">ChunkedMemoryLayout</span></code> where the Chunk Size is the minimal one (1
+element in every dimension).</p>
+</div>
+<div class="section" id="practical-tips-working-with-crouton">
+<h3>Practical tips working with Crouton:<a class="headerlink" href="#practical-tips-working-with-crouton" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>chunks are not consecutive in memory (i.e. there’s gap in memory
+between each chunk)</p></li>
+<li><p>usually use <code class="docutils literal notranslate"><span class="pre">get_raw(first</span> <span class="pre">element's</span> <span class="pre">idx</span> <span class="pre">in</span> <span class="pre">chunk)</span></code> to retrieve the
+start memory location for such chunk</p></li>
+<li><p>operations such as aligned copy can’t go across chunks</p></li>
+<li><p>crouton padding is automatic and is <code class="docutils literal notranslate"><span class="pre">31</span></code> (not <code class="docutils literal notranslate"><span class="pre">0</span></code>)</p></li>
+<li><p>user padding need to be explicitly set to quantized <code class="docutils literal notranslate"><span class="pre">0</span></code> (or other
+specified value)</p></li>
+</ul>
+</div>
+<div class="section" id="a-more-complicated-example-of-memory-layout">
+<h3>A More complicated example of Memory Layout<a class="headerlink" href="#a-more-complicated-example-of-memory-layout" title="Permalink to this heading">¶</a></h3>
+<p>For convolution, the weight layout is
+<code class="docutils literal notranslate"><span class="pre">ChunkedMemoryLayout&lt;4,</span> <span class="pre">3,0,</span> <span class="pre">2,0,</span> <span class="pre">0,0,</span> <span class="pre">1,0,</span> <span class="pre">2,8,</span> <span class="pre">3,32,</span> <span class="pre">2,4&gt;</span></code> In HTP
+Core, the weight dimension 0 is considered to be filter height,
+dimension <code class="docutils literal notranslate"><span class="pre">1</span></code> to be filter width, dimension <code class="docutils literal notranslate"><span class="pre">2</span></code> to match the number
+of input channels, and dimension <code class="docutils literal notranslate"><span class="pre">3</span></code> to be the number of output
+channels.</p>
+<p>So in the case below,
+<code class="docutils literal notranslate"><span class="pre">ChunkedMemoryLayout&lt;4,</span> <span class="pre">3,0,</span> <span class="pre">2,0,</span> <span class="pre">0,0,</span> <span class="pre">1,0,</span> <span class="pre">2,8,</span> <span class="pre">3,32,</span> <span class="pre">2,4&gt;</span></code>, it
+means: * <code class="docutils literal notranslate"><span class="pre">4</span></code>, the zeroth parameter, is the rank of the layout * The
+rest of the parameters are done in <code class="docutils literal notranslate"><span class="pre">(dimension,size)</span></code> pairs, and it’s
+easiest to explain the pairs right-to-left: * <code class="docutils literal notranslate"><span class="pre">2,4</span></code> means <code class="docutils literal notranslate"><span class="pre">4</span></code>
+contiguous elements in dimension <code class="docutils literal notranslate"><span class="pre">2</span></code> (which matches the input depth)
+* <code class="docutils literal notranslate"><span class="pre">3,32</span></code> means <code class="docutils literal notranslate"><span class="pre">32</span></code> contiguous chunks of everything to the right in
+dimension <code class="docutils literal notranslate"><span class="pre">3</span></code> (the output depth) * <code class="docutils literal notranslate"><span class="pre">2,8</span></code> means <code class="docutils literal notranslate"><span class="pre">8</span></code> contiguous
+chunks of everything to the right in dimension 2 * <code class="docutils literal notranslate"><span class="pre">1,0</span></code> means “all
+the rest of dimension <code class="docutils literal notranslate"><span class="pre">1</span></code>” * <code class="docutils literal notranslate"><span class="pre">0,0</span></code> means “all the rest of dimension
+<code class="docutils literal notranslate"><span class="pre">0</span></code>” * <code class="docutils literal notranslate"><span class="pre">2,0</span></code> means “all the rest of dimension <code class="docutils literal notranslate"><span class="pre">2</span></code>” * <code class="docutils literal notranslate"><span class="pre">3,0</span></code>
+means “all the rest of dimension <code class="docutils literal notranslate"><span class="pre">3</span></code>”</p>
+<p>So if there is a <code class="docutils literal notranslate"><span class="pre">3x3x32x32</span></code> filter, the memory is laid out as
+follows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">...</span><span class="w">                    </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">31</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">31</span><span class="p">),</span><span class="w"> </span><span class="p">...</span><span class="w">   </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">31</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="p">...</span><span class="w">       </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">31</span><span class="p">),</span>
+<span class="p">...</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="p">...</span><span class="w">                  </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">31</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="p">...</span><span class="w">                  </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">31</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>So the rightmost fixed-size things indicate the block size of a
+“<code class="docutils literal notranslate"><span class="pre">chunk</span></code>”. Then those chunks are ordered in the desired way for
+computation. The <code class="docutils literal notranslate"><span class="pre">3,0,</span> <span class="pre">2,0,</span> <span class="pre">0,0,</span> <span class="pre">1,0</span></code>, just means that if there is
+more output channels (dimension <code class="docutils literal notranslate"><span class="pre">3</span></code>) or more input channels (dimension
+<code class="docutils literal notranslate"><span class="pre">2</span></code>) those happen after the group of <code class="docutils literal notranslate"><span class="pre">blocks</span> <span class="pre">x</span> <span class="pre">width</span> <span class="pre">x</span> <span class="pre">height</span></code>, and
+that the input channels (dim <code class="docutils literal notranslate"><span class="pre">2</span></code>) is more contiguous than output
+channels (dim <code class="docutils literal notranslate"><span class="pre">3</span></code>). “0” here means “not a fixed size, just all the
+rest of this dimension”</p>
+<p>So a <code class="docutils literal notranslate"><span class="pre">3x3x32x50</span></code> tensor is just fine. It will get padded into
+<code class="docutils literal notranslate"><span class="pre">3x3x32x64</span></code>. But the format says do <code class="docutils literal notranslate"><span class="pre">(0,0,0,0)...(2,2,31,31)</span></code> and
+then do <code class="docutils literal notranslate"><span class="pre">(0,0,0,32)...(2,2,31,63)</span></code></p>
+<p>For even more clarity in this example, if there is <code class="docutils literal notranslate"><span class="pre">3x3x64x96</span></code> tensor,
+it would go in memory:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)...(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">31</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">0</span><span class="p">)...(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">63</span><span class="p">,</span><span class="mi">31</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">32</span><span class="p">)...(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">63</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">32</span><span class="p">)...(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">63</span><span class="p">,</span><span class="mi">63</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">64</span><span class="p">)...(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">95</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">64</span><span class="p">)...(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">63</span><span class="p">,</span><span class="mi">95</span><span class="p">),</span>
+</pre></div>
+</div>
+<p>Because dimension <code class="docutils literal notranslate"><span class="pre">2</span></code> is “more major” than dimension <code class="docutils literal notranslate"><span class="pre">3</span></code>.</p>
+<div class="section" id="different-memory-layouts">
+<h4>Different memory layouts<a class="headerlink" href="#different-memory-layouts" title="Permalink to this heading">¶</a></h4>
+<p>Based on the above description, here is a quick summary of how each of
+the croutons are laid out in memory:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Memory Layout</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">R4FlatMemoryLayout</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FlatMemoryLayout&lt;4&gt;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">R4NCHWMemoryLayout</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ChunkedMemoryLayout&lt;4,</span> <span class="pre">0,0,</span> <span class="pre">3,0,</span> <span class="pre">2,0,</span> <span class="pre">1,0&gt;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">R4Depth32MemoryLayout</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ChunkedMemoryLayout&lt;4,</span> <span class="pre">0,0,</span> <span class="pre">1,0,</span> <span class="pre">3,0,</span> <span class="pre">2,0,</span> <span class="pre">2,4,</span> <span class="pre">3,32&gt;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">R4CroutonLayout</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ChunkedMemoryLayout&lt;4,</span> <span class="pre">0,0,</span> <span class="pre">1,0,</span> <span class="pre">2,0,</span> <span class="pre">3,0,</span> <span class="pre">1,8,</span> <span class="pre">2,8,</span> <span class="pre">3,32&gt;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">R4Crouton4x1Layout</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ChunkedMemoryLayout&lt;4,</span> <span class="pre">0,0,</span> <span class="pre">1,0,</span> <span class="pre">2,0,</span> <span class="pre">3,0,</span> <span class="pre">1,8,</span> <span class="pre">2,2,</span> <span class="pre">3,32,</span> <span class="pre">2,4&gt;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">R4Crouton2x2Layout</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ChunkedMemoryLayout&lt;4,</span> <span class="pre">0,0,</span> <span class="pre">1,0,</span> <span class="pre">2,0,</span> <span class="pre">3,0,</span> <span class="pre">1,4,</span> <span class="pre">2,4,</span> <span class="pre">3,32,</span> <span class="pre">1,2,</span> <span class="pre">2,2&gt;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">R4Crouton2Layout</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ChunkedMemoryLayout&lt;4,</span> <span class="pre">0,0,</span> <span class="pre">1,0,</span> <span class="pre">2,0,</span> <span class="pre">3,0,</span> <span class="pre">1,8,</span> <span class="pre">2,2,</span> <span class="pre">3,32,</span> <span class="pre">2,2&gt;</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="details-about-tensors">
+<h2>Details about Tensors<a class="headerlink" href="#details-about-tensors" title="Permalink to this heading">¶</a></h2>
+<p>Concrete tensors (real ones) have things like an underlying type,
+interface, padding, and memory layout.</p>
+<p>The underlying type is just that: what kind of data is actually kept in
+the tensor.</p>
+<p>The interface is the way information is encoded/decoded into the
+underlying data type. For example, <code class="docutils literal notranslate"><span class="pre">PlainInterface</span></code> just returns the
+value, but <code class="docutils literal notranslate"><span class="pre">ScaleOffsetInterface</span></code> applies the offset and scale value
+(for quantized types).</p>
+<p>One of the more interesting parts of a tensor is the Memory Layout. In
+HTP core, user can have arbitrary memory layouts.</p>
+<p>Memory Layouts have a set of fixed sizes, which define the size of each
+chunk. They also have the ordering those chunks are arranged to fill out
+the entire set of the tensor.</p>
+<p>Let’s look at an example Crouton formats:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ChunkedMemoryLayout</span><span class="o">&lt;</span>
+<span class="w">    </span><span class="cm">/* RANK */</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">    </span><span class="cm">/* Least Major: Batch Dim, all the rest */</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="cm">/* Next least major: height, all the rest */</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="cm">/* Next least major: width, all the rest */</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="cm">/* Next least major: depth, all the rest */</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="cm">/* 8 rows high */</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span>
+<span class="w">    </span><span class="cm">/* 8 columns wide */</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span>
+<span class="w">    </span><span class="cm">/* 32 channels deep */</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="mi">32</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ChannelMajorCrouton</span><span class="p">;</span>
+
+<span class="n">ChunkedMemoryLayout</span><span class="o">&lt;</span>
+<span class="w">    </span><span class="cm">/* RANK */</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">    </span><span class="cm">/* Least Major: Batch Dim, all the rest */</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="cm">/* Next least major: height, all the rest */</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="cm">/* Next least major: width, all the rest */</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="cm">/* Next least major: depth, all the rest */</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="cm">/* 4 high */</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span>
+<span class="w">    </span><span class="cm">/* 4 wide */</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span>
+<span class="w">    </span><span class="cm">/* 32 channels deep */</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span>
+<span class="w">    </span><span class="cm">/* 2 rows */</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span>
+<span class="w">    </span><span class="cm">/* 2 cols */</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">SpatialXYMajor</span><span class="p">;</span>
+
+<span class="n">ChunkedMemoryLayout</span><span class="o">&lt;</span>
+<span class="w">    </span><span class="cm">/* RANK */</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">    </span><span class="cm">/* Least Major: Batch Dim, all the rest */</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="cm">/* Next least major: height, all the rest */</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="cm">/* Next least major: width, all the rest */</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="cm">/* Next least major: depth, all the rest */</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="cm">/* 8 high */</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span>
+<span class="w">    </span><span class="cm">/* 2 wide */</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span>
+<span class="w">    </span><span class="cm">/* 32 channels deep */</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span>
+<span class="w">    </span><span class="cm">/* 4 cols */</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="o">&gt;</span><span class="w"> </span><span class="n">SpatialXMajor</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The infrastructure supports the use of all of these formats. Generic ops
+can use any of the formats indicated here.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="writing_op_package.html" class="btn btn-neutral float-right" title="Writing QNN HTP Op Package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="scratch_buffer.html" class="btn btn-neutral float-left" title="Allocate Memory for Scratch Buffers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+Getting Started
+==============
+Follow "To set up your environment" instruction from ${QNN_SDK_ROOT}/README.
+
+
+Building an Example HTP Op Package
+=================================
+This section covers steps for building libQnnHtpOpPackageExample.so with package name examples.OpPackage.
+
+1. Go to op package example folder
+      cd ${QNN_SDK_ROOT}/examples/QNN/OpPackage/HTP
+
+2. Build shared library
+   (Note: for building on linux-x86_64, please install clang++ first, path to clang++ can either be set via make argument(using X86_CXX optional argument) or environment setup)
+   (Note: To build op-package using makefile for multiple architechtures all the hexagon sdks should be present at same root directory where hexagon-sdk-4.2.0 is present. Pass abosulute path for one hexagon-sdk in HEXAGON_SDK as shown below and makefile will use the base directory to check for other hexagon-sdks)
+   make X86_CXX=path/to/X-86/clang++ QNN_INCLUDE=${QNN_SDK_ROOT}/include/QNN HEXAGON_SDK_ROOT=/path/to/hexagon-sdk-4.2.0 ANDROID_NDK_ROOT=/path/to/android-ndk
+   Please refer Android NDK section from https://docs.qualcomm.com/bundle/publicresource/topics/80-63442-2/setup.html for the correct android ndk version to be used.
+   (Note. make 'all' will build for hexagon-v68, hexagon-v69, hexagon-v73, hexagon-v75, X-86 and android)
+
+3. find generated shared library
+   a. building on linux-x86_64:
+      ls build/x86_64-linux-clang/libQnnHtpOpPackageExample.so
+   b. building on hexagon-v68:
+      ls build/hexagon-v68/libQnnHtpOpPackageExample.so
+   c. building on aarch64-android (ARM):
+      ls build/aarch64-android/libQnnHtpOpPackageExample.so
+
+
+Running qnn-net-run with Example Op Package
+==========================================
+This section covers usage for running Qnn models with the generated example op package using qnn-net-run. Note: follow previous instructions to run envsetup.sh, if not already done.
+
+Running on linux-x86_64
+qnn-net-run  --backend libQnnHtp.so
+             --model <model.so>
+             --input_list <path_to_input_list.txt>
+             --op_packages ${QNN_SDK_ROOT}/examples/QNN/OpPackage/HTP/build/x86_64-linux-clang/libQnnHtpOpPackageExample.so:exampleInterfaceProvider
+
+Running on hexagon-v68 with ARM prepare (prepare on ARM, execute on hexagon-v68)
+(Note: files required need to be pushed on to device and environment variables need to be set up first)
+qnn-net-run  --backend libQnnHtp.so
+             --model <model.so>
+             --input_list <path_to_input_list.txt>
+             --op_packages <path to ARM libQnnHtpOpPackageExample.so>:exampleInterfaceProvider:CPU,<path to v68 libQnnHtpOpPackageExample.so>:exampleInterfaceProvider:HTP

@@ -1,0 +1,755 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Setup &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Backend" href="backend.html" />
+    <link rel="prev" title="Overview" href="overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#linux-platform-dependencies">Linux Platform Dependencies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#host-os">Host OS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#python">Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#linux">Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ml-frameworks">ML Frameworks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#toolchains">Toolchains</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#windows-platform-dependencies">Windows Platform Dependencies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Host OS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#windows">Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#environment-setup">Environment Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#environment-setup-linux">Linux</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tensorflow-setup">TensorFlow Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#onnx-setup">ONNX Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#onnx-runtime-setup">ONNX Runtime Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#onnx-simplifier-setup">ONNX Simplifier Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tflite-setup">TFLite Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pytorch-setup">PyTorch Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#torchvision-setup">Torchvision Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#environment-setup-windows">Windows</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Setup</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="setup">
+<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">¶</a></h1>
+<p>This page will outline the setup required for using the Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> SDK.
+The page is split into <a class="reference internal" href="#linux-platform-dependencies">Linux Platform Dependencies</a> , <a class="reference internal" href="#windows-platform-dependencies">Windows Platform Dependencies</a> and <a class="reference internal" href="#environment-setup">Environment Setup</a>.</p>
+<div class="section" id="linux-platform-dependencies">
+<h2>Linux Platform Dependencies<a class="headerlink" href="#linux-platform-dependencies" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="host-os">
+<span id="linux-platform-dependency"></span><h3>Host OS<a class="headerlink" href="#host-os" title="Permalink to this heading">¶</a></h3>
+<p>The Linux host operating system that Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> SDK is verified with is <strong>Ubuntu 22.04 LTS (Jammy)</strong>.
+Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> SDK is also verified to work in the Windows Subsystem for Linux (WSL2)
+environment version 1.1.3.0, currently limited to Linux host runnable artifacts such as converters,
+model generation and run tools (see <a class="reference internal" href="tools.html"><span class="doc">Tools</span></a> for more details). If you wish to set up your own WSL2 environment, you can follow
+the instructions at <a class="reference external" href="https://learn.microsoft.com/en-us/windows/wsl/install">https://learn.microsoft.com/en-us/windows/wsl/install</a>.</p>
+</div>
+<div class="section" id="python">
+<h3>Python<a class="headerlink" href="#python" title="Permalink to this heading">¶</a></h3>
+<p>This Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> SDK distribution is supported on python3 only.
+Download and installation instructions vary based on the host OS. The SDK has been tested with python3.10. If python3.10
+is not already installed on your system, you may install it with the following commands:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="o">-</span><span class="n">get</span><span class="w"> </span><span class="n">update</span>
+<span class="n">$</span><span class="w"> </span><span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="o">-</span><span class="n">get</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">python3</span><span class="mf">.10</span><span class="w"> </span><span class="n">python3</span><span class="o">-</span><span class="n">distutils</span><span class="w"> </span><span class="n">libpython3</span><span class="mf">.10</span>
+</pre></div>
+</div>
+<p><strong>Virtual Environment (VENV)</strong></p>
+<p>Whether managing multiple python installations or just to keep your system python
+installation clean we recommend using python virtual environments.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="o">-</span><span class="n">get</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">python3</span><span class="mf">.10</span><span class="o">-</span><span class="n">venv</span>
+<span class="n">$</span><span class="w"> </span><span class="n">python3</span><span class="mf">.10</span><span class="w"> </span><span class="o">-</span><span class="n">m</span><span class="w"> </span><span class="n">venv</span><span class="w"> </span><span class="s">&quot;&lt;PYTHON3.10_VENV_ROOT&gt;&quot;</span>
+<span class="n">$</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="o">&lt;</span><span class="n">PYTHON3</span><span class="mf">.10</span><span class="n">_VENV_ROOT</span><span class="o">&gt;/</span><span class="n">bin</span><span class="o">/</span><span class="n">activate</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If your environment is in WSL, &lt;PYTHON3.10_VENV_ROOT&gt; must be under $HOME.</p>
+</div>
+<p><strong>Additional Packages</strong></p>
+<p>Some additional python packages need to be available in your environment in order to be able to
+interact with Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> components and tools.
+This Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> release is verified to work with the versions of the packages specified below:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Package</p></th>
+<th class="head"><p>Version</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>absl-py</p></td>
+<td><p>2.1.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>attrs</p></td>
+<td><p>23.2.0</p></td>
+</tr>
+<tr class="row-even"><td><p>dash</p></td>
+<td><p>2.12.1</p></td>
+</tr>
+<tr class="row-odd"><td><p>decorator</p></td>
+<td><p>4.4.2</p></td>
+</tr>
+<tr class="row-even"><td><p>invoke</p></td>
+<td><p>1.7.3</p></td>
+</tr>
+<tr class="row-odd"><td><p>joblib</p></td>
+<td><p>1.4.0</p></td>
+</tr>
+<tr class="row-even"><td><p>jsonschema</p></td>
+<td><p>4.19.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>lxml</p></td>
+<td><p>5.2.1</p></td>
+</tr>
+<tr class="row-even"><td><p>Mako</p></td>
+<td><p>1.1.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>matplotlib</p></td>
+<td><p>3.3.4</p></td>
+</tr>
+<tr class="row-even"><td><p>mock</p></td>
+<td><p>3.0.5</p></td>
+</tr>
+<tr class="row-odd"><td><p>numpy</p></td>
+<td><p>1.26.4</p></td>
+</tr>
+<tr class="row-even"><td><p>opencv-python</p></td>
+<td><p>4.5.4.58</p></td>
+</tr>
+<tr class="row-odd"><td><p>optuna</p></td>
+<td><p>3.3.0</p></td>
+</tr>
+<tr class="row-even"><td><p>packaging</p></td>
+<td><p>24.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>pandas</p></td>
+<td><p>2.0.1</p></td>
+</tr>
+<tr class="row-even"><td><p>paramiko</p></td>
+<td><p>3.4.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>pathlib2</p></td>
+<td><p>2.3.6</p></td>
+</tr>
+<tr class="row-even"><td><p>Pillow</p></td>
+<td><p>10.2.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>plotly</p></td>
+<td><p>5.20.0</p></td>
+</tr>
+<tr class="row-even"><td><p>protobuf</p></td>
+<td><p>3.19.6</p></td>
+</tr>
+<tr class="row-odd"><td><p>psutil</p></td>
+<td><p>5.6.4</p></td>
+</tr>
+<tr class="row-even"><td><p>pytest</p></td>
+<td><p>8.1.1</p></td>
+</tr>
+<tr class="row-odd"><td><p>PyYAML</p></td>
+<td><p>5.3</p></td>
+</tr>
+<tr class="row-even"><td><p>scikit-optimize</p></td>
+<td><p>0.9.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>scipy</p></td>
+<td><p>1.10.1</p></td>
+</tr>
+<tr class="row-even"><td><p>six</p></td>
+<td><p>1.16.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>tabulate</p></td>
+<td><p>0.9.0</p></td>
+</tr>
+<tr class="row-even"><td><p>typing-extensions</p></td>
+<td><p>4.10.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>xlsxwriter</p></td>
+<td><p>1.2.2</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Matplotlib with 3.5.0 and Pandas with 2.0.2 have been verified on Windows</p>
+</div>
+<p>Run the following script to check and install missing dependencies:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">python3</span><span class="w"> </span><span class="o">-</span><span class="n">m</span><span class="w"> </span><span class="n">pip</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">--</span><span class="n">upgrade</span><span class="w"> </span><span class="n">pip</span>
+<span class="n">$</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">check</span><span class="o">-</span><span class="n">python</span><span class="o">-</span><span class="n">dependency</span>
+</pre></div>
+</div>
+<p id="optional-python-packages"><strong>Optional packages</strong></p>
+<p>Some additional model- and dataset-specific python packages need to be installed to interact with the accuracy evaluator.
+The following table lists the packages and the recommended version.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Package</p></th>
+<th class="head"><p>Version</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>pycocotools</p></td>
+<td><p>2.0.6</p></td>
+</tr>
+<tr class="row-odd"><td><p>transformers</p></td>
+<td><p>4.31.0</p></td>
+</tr>
+<tr class="row-even"><td><p>sacrebleu</p></td>
+<td><p>2.3.1</p></td>
+</tr>
+<tr class="row-odd"><td><p>scikit-learn</p></td>
+<td><p>1.3.0</p></td>
+</tr>
+<tr class="row-even"><td><p>OpenNMT-py</p></td>
+<td><p>2.3.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>sentencepiece</p></td>
+<td><p>0.1.98</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To set <code class="docutils literal notranslate"><span class="pre">QNN_SDK_ROOT</span></code> see <a class="reference internal" href="#environment-setup-linux"><span class="std std-ref">Environment Setup for Linux</span></a>.</p>
+</div>
+</div>
+<div class="section" id="linux">
+<span id="linux-dependency"></span><h3>Linux<a class="headerlink" href="#linux" title="Permalink to this heading">¶</a></h3>
+<p>Compiling artifacts for the x86_64 target requires clang++.
+This Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> SDK release is verified to work with clang-14.</p>
+<p>Run the following script to check and install missing linux dependencies:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp"># Note: the following command should be run as administrator/root to be able to install system libraries</span>
+
+<span class="n">$</span><span class="w"> </span><span class="n">sudo</span><span class="w"> </span><span class="n">bash</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">check</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">dependency</span><span class="p">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To set <code class="docutils literal notranslate"><span class="pre">QNN_SDK_ROOT</span></code> see <a class="reference internal" href="#environment-setup-linux"><span class="std std-ref">Environment Setup for Linux</span></a>.</p>
+</div>
+</div>
+<div class="section" id="ml-frameworks">
+<h3>ML Frameworks<a class="headerlink" href="#ml-frameworks" title="Permalink to this heading">¶</a></h3>
+<p>In order to convert ML models trained on different frameworks into intermediate representations
+consumable by Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> you may need to download and install the corresponding frameworks on your
+host machine.</p>
+<p>This Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> release is verified to work with the following versions of the ML training frameworks.</p>
+<ul class="simple">
+<li><p><strong>TensorFlow:</strong> tf-2.10.1</p></li>
+<li><p><strong>TFLite:</strong> tflite-2.3.0</p></li>
+<li><p><strong>PyTorch:</strong> torch-1.13.1</p></li>
+<li><p><strong>Torchvision:</strong> torchvision-0.14.1</p></li>
+<li><p><strong>ONNX:</strong> onnx-1.12.0</p></li>
+<li><p><strong>ONNX Runtime:</strong> onnxruntime-1.17.1</p></li>
+<li><p><strong>ONNX Simplifier:</strong> onnxsim-0.4.36</p></li>
+</ul>
+</div>
+<div class="section" id="toolchains">
+<span id="linux-toolchains"></span><h3>Toolchains<a class="headerlink" href="#toolchains" title="Permalink to this heading">¶</a></h3>
+<p>The Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> SDK allows users to compile custom operation packages to be used with the different
+backends such as the CPU, GPU, HTP, DSP, and others. You may need to install appropriate cross-compilation
+toolchains in order to compile such packages for a particular backend.</p>
+<p><strong>MAKE</strong></p>
+<p>Operation packages are compiled with a front-end that is written with Makefiles. If make is
+not available on your host machine install it using the following command:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="o">-</span><span class="n">get</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">make</span>
+</pre></div>
+</div>
+<p id="android-ndk-dependency"><strong>Android NDK</strong></p>
+<p>This Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> release is verified to work with Android NDK version r26c. The same can be downloaded from
+<a class="reference external" href="https://dl.google.com/android/repository/android-ndk-r26c-linux.zip">https://dl.google.com/android/repository/android-ndk-r26c-linux.zip</a>. Once the zip file is downloaded and extracted,
+the extracted location needs to be added to PATH environment variable.</p>
+<p>To set the environment to use Android NDK, the following commands can be used to set and check proper configuration:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">ANDROID_NDK_ROOT</span><span class="o">=&lt;</span><span class="n">PATH</span><span class="o">-</span><span class="n">TO</span><span class="o">-</span><span class="n">NDK</span><span class="o">&gt;</span>
+<span class="n">$</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">PATH</span><span class="o">=</span><span class="n">$</span><span class="p">{</span><span class="n">ANDROID_NDK_ROOT</span><span class="p">}</span><span class="o">:</span><span class="n">$</span><span class="p">{</span><span class="n">PATH</span><span class="p">}</span>
+<span class="n">$</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">envcheck</span><span class="w"> </span><span class="o">-</span><span class="n">n</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If your environment is in WSL, Android NDK must be unzipped under $HOME with unzip command of WSL.</p>
+</div>
+<p><strong>clang-14</strong></p>
+<p>This Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> release is verified to work with clang-14.
+Please refer to <a class="reference internal" href="#linux-dependency"><span class="std std-ref">Linux Dependency</span></a> section to help with installation of the same.</p>
+<p>To check if the environment is setup properly to use clang-14, the following command can be used:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">envcheck</span><span class="w"> </span><span class="o">-</span><span class="n">c</span>
+</pre></div>
+</div>
+<p><strong>CPU</strong></p>
+<p>The x86_64 targets are built using clang-14 (see <a class="reference internal" href="#linux-dependency"><span class="std std-ref">Linux Dependency</span></a>).
+The ARM CPU targets are built using Android NDK (see <a class="reference internal" href="#android-ndk-dependency"><span class="std std-ref">Android NDK</span></a>).</p>
+<p><strong>GPU</strong></p>
+<p>The GPU backend kernels are written based on OpenCL.
+The GPU operations must be implemented based on OpenCL headers with minimum version OpenCL 1.2.</p>
+<p id="hexagon-toolchain-setup"><strong>HTP/DSP</strong></p>
+<p>Compiling for HTP/DSP requires the use of the Hexagon toolchain available from Qualcomm® Hexagon SDK.</p>
+<blockquote>
+<div><p class="rubric" id="linux-hexagon-sdk-installation">Hexagon SDK installation on Linux</p>
+<ul class="simple">
+<li><p>The Hexagon SDK versions are available at <a class="reference external" href="https://developer.qualcomm.com/software/hexagon-dsp-sdk/tools">https://developer.qualcomm.com/software/hexagon-dsp-sdk/tools</a>.</p></li>
+</ul>
+<p class="rubric" id="wsl-hexagon-sdk-installation">Hexagon SDK installation on WSL2 20.04</p>
+<ul class="simple">
+<li><p>Download Hexagon SDKs from <a class="reference external" href="https://qpm.qualcomm.com">https://qpm.qualcomm.com</a> in a Linux PC.</p></li>
+<li><p>Copy Hexagon SDKs from Linux PC to Windows PC.</p></li>
+</ul>
+</div></blockquote>
+<p>This Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> release is verified to work with:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 29%" />
+<col style="width: 27%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Backend</p></th>
+<th class="head"><p>Hexagon Architecture</p></th>
+<th class="head"><p>Hexagon SDK Version</p></th>
+<th class="head"><p>Hexagon Tools Version</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>HTP</p></td>
+<td><p>V75</p></td>
+<td><p>5.4.0</p></td>
+<td><p>8.7.03</p></td>
+</tr>
+<tr class="row-odd"><td><p>HTP</p></td>
+<td><p>V73</p></td>
+<td><p>5.4.0</p></td>
+<td><p>8.6.02</p></td>
+</tr>
+<tr class="row-even"><td><p>HTP</p></td>
+<td><p>V69</p></td>
+<td><p>4.3.0</p></td>
+<td><p>8.5.03</p></td>
+</tr>
+<tr class="row-odd"><td><p>HTP</p></td>
+<td><p>V68</p></td>
+<td><p>4.2.0</p></td>
+<td><p>8.4.09</p></td>
+</tr>
+<tr class="row-even"><td><p>DSP</p></td>
+<td><p>V66</p></td>
+<td><p>4.1.0</p></td>
+<td><p>8.4.06</p></td>
+</tr>
+<tr class="row-odd"><td><p>DSP</p></td>
+<td><p>V65</p></td>
+<td><p>3.5.2</p></td>
+<td><p>8.3.07</p></td>
+</tr>
+</tbody>
+</table>
+<p>Additionally, compiling for HTP/DSP requires clang++.</p>
+<p>Further setup instructions are available at <code class="docutils literal notranslate"><span class="pre">$HEXAGON_SDK_ROOT/docs/readme.html</span></code>, where
+<code class="docutils literal notranslate"><span class="pre">HEXAGON_SDK_ROOT</span></code> is the location of the Hexagon SDK installation.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Hexagon SDK tools version 8.4.09/8.4.06/8.3.07 is <strong>not</strong> currently pre-packaged into
+Hexagon SDK version 4.2.0/4.1.0/3.5.2 respectively. It needs to be downloaded separately and placed
+at the location $HEXAGON_SDK_ROOT/tools/HEXAGON_Tools/ .</p>
+</div>
+</div>
+</div>
+<div class="section" id="windows-platform-dependencies">
+<h2>Windows Platform Dependencies<a class="headerlink" href="#windows-platform-dependencies" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id1">
+<span id="id2"></span><h3>Host OS<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
+<p>Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> SDK is verified with <strong>Windows 10</strong> and <strong>Windows 11</strong> OS on a x86 host platform and with <strong>Windows 11</strong> OS on a Snapdragon platform.</p>
+</div>
+<div class="section" id="id3">
+<h3>Python<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h3>
+<p>This Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> SDK distribution is supported on python3 only.
+The SDK has been tested with python3.10.
+Please download and install it with <a class="reference external" href="https://www.python.org/ftp/python/3.10.11/python-3.10.11-amd64.exe">https://www.python.org/ftp/python/3.10.11/python-3.10.11-amd64.exe</a>.</p>
+<p>After installation, check dependencies by running the following script in <code class="docutils literal notranslate"><span class="pre">PowerShell</span></code> terminal window.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">py</span><span class="w"> </span><span class="mf">-3.10</span><span class="w"> </span><span class="o">-</span><span class="n">m</span><span class="w"> </span><span class="n">venv</span><span class="w"> </span><span class="s">&quot;&lt;PYTHON3.10_VENV_ROOT&gt;&quot;</span>
+<span class="n">$</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="s">&quot;&lt;PYTHON3.10_VENV_ROOT&gt;\Scripts\Activate.ps1&quot;</span>
+<span class="n">$</span><span class="w"> </span><span class="n">python</span><span class="w"> </span><span class="o">-</span><span class="n">m</span><span class="w"> </span><span class="n">pip</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">--</span><span class="n">upgrade</span><span class="w"> </span><span class="n">pip</span>
+<span class="n">$</span><span class="w"> </span><span class="n">python</span><span class="w"> </span><span class="s">&quot;${QNN_SDK_ROOT}</span><span class="se">\b</span><span class="s">in\check-python-dependency&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can set <code class="docutils literal notranslate"><span class="pre">QNN_SDK_ROOT</span></code> environment variable by following <span class="xref std std-ref">Environment Setup for Windows</span>.</p>
+</div>
+</div>
+<div class="section" id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this heading">¶</a></h3>
+<p>Compiling artifacts for the Windows targets requires <strong>Visual Studio</strong> setup.
+Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> SDK was verified with the following build environment.</p>
+<ul class="simple">
+<li><p>Visual Studio 2022 17.5.1</p></li>
+<li><p>MSVC v143 - VS 2022 C++ x64/x86 build tools - 14.34</p></li>
+<li><p>MSVC v143 - VS 2022 C++ ARM64/ARM64EC build tools - 14.34</p></li>
+<li><p>Windows SDK 10.0.22621.0</p></li>
+<li><p>MSBuild support for LLVM (clang-cl) toolset</p></li>
+<li><p>C++ Clang Compiler for Windows (15.0.1)</p></li>
+<li><p>C++ CMake tools for Windows</p></li>
+</ul>
+<p>Run the following script in Powershell terminal as <strong>Administrator</strong> to check and install missing Windows dependencies:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="s">&quot;${QNN_SDK_ROOT}/bin/check-windows-dependency.ps1&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can set <code class="docutils literal notranslate"><span class="pre">QNN_SDK_ROOT</span></code> environment variable by following <span class="xref std std-ref">Environment Setup for Windows</span>.</p>
+</div>
+<p>To just check if the environment satisfies the requirements, run the following command in your <strong>Developer Powershell terminal</strong>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="s">&quot;${QNN_SDK_ROOT}/bin/envcheck.ps1&quot;</span><span class="w"> </span><span class="o">-</span><span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="environment-setup">
+<h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="environment-setup-linux">
+<span id="id4"></span><h3>Linux<a class="headerlink" href="#environment-setup-linux" title="Permalink to this heading">¶</a></h3>
+<p>After <a class="reference internal" href="#linux-platform-dependency"><span class="std std-ref">Linux Platform Dependencies</span></a> have been satisfied, the user environment can be set with the provided <strong>envsetup.sh</strong> script.</p>
+<p>Open a command shell on Linux host and run:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">envsetup</span><span class="p">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>This will set/update the following environment variables:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>QNN_SDK_ROOT</p></li>
+<li><p>PYTHONPATH</p></li>
+<li><p>PATH</p></li>
+<li><p>LD_LIBRARY_PATH</p></li>
+</ul>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}</span></code> represents the full path to Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> SDK root.</p>
+<p>The QNN API headers are in <code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/include/QNN</span></code>.</p>
+<p>The tools are in <code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/bin/x86_64-linux-clang</span></code>.</p>
+<p>Target specific backend and other libraries are in <code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/lib/*/</span></code>.</p>
+<div class="section" id="tensorflow-setup">
+<h4>TensorFlow Setup<a class="headerlink" href="#tensorflow-setup" title="Permalink to this heading">¶</a></h4>
+<p>Install TensorFlow as a standalone Python module using <a class="reference external" href="https://pypi.org/project/tensorflow/2.10.1/">https://pypi.org/project/tensorflow/2.10.1/</a>
+To ensure TensorFlow is in your PYTHONPATH, run the following command.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="s">&quot;import tensorflow&quot;</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt>See <a class="reference internal" href="#ml-frameworks">ML Frameworks</a> for information on versions Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> SDK was verified with. Note that</dt><dd><p>installing versions of TensorFlow besides 2.10.1 may update dependencies (e.g. numpy).</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="onnx-setup">
+<h4>ONNX Setup<a class="headerlink" href="#onnx-setup" title="Permalink to this heading">¶</a></h4>
+<p>Install ONNX as a standalone Python module using <a class="reference external" href="https://pypi.org/project/onnx/1.12.0/">https://pypi.org/project/onnx/1.12.0/</a>
+and ensure ONNX is in your PYTHONPATH by running the following command.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="s">&quot;import onnx&quot;</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="#ml-frameworks">ML Frameworks</a> for information on versions Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> SDK was verified with.</p>
+</div>
+<div class="section" id="onnx-runtime-setup">
+<h4>ONNX Runtime Setup<a class="headerlink" href="#onnx-runtime-setup" title="Permalink to this heading">¶</a></h4>
+<p>Install ONNX Runtime as a standalone Python module using <a class="reference external" href="https://pypi.org/project/onnxruntime/1.17.1/">https://pypi.org/project/onnxruntime/1.17.1/</a>
+and ensure ONNX Runtime is in your PYTHONPATH by running the following command.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="s">&quot;import onnxruntime&quot;</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="#ml-frameworks">ML Frameworks</a> for information on versions Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> SDK was verified with.</p>
+</div>
+<div class="section" id="onnx-simplifier-setup">
+<h4>ONNX Simplifier Setup<a class="headerlink" href="#onnx-simplifier-setup" title="Permalink to this heading">¶</a></h4>
+<p>Install ONNX Simplifier as a standalone Python module using <a class="reference external" href="https://pypi.org/project/onnxsim/0.4.36/">https://pypi.org/project/onnxsim/0.4.36/</a>
+and ensure ONNX Simplifier is in your PYTHONPATH by running the following command.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="s">&quot;import onnxsim&quot;</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="#ml-frameworks">ML Frameworks</a> for information on versions Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> SDK was verified with.</p>
+</div>
+<div class="section" id="tflite-setup">
+<h4>TFLite Setup<a class="headerlink" href="#tflite-setup" title="Permalink to this heading">¶</a></h4>
+<p>Install TFLite as a standalone Python module using <a class="reference external" href="https://pypi.org/project/tflite/2.3.0/">https://pypi.org/project/tflite/2.3.0/</a>
+and ensure TFLite is in your PYTHONPATH by running the following command.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="s">&quot;import tflite&quot;</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="#ml-frameworks">ML Frameworks</a> for information on versions Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> SDK was verified with.</p>
+</div>
+<div class="section" id="pytorch-setup">
+<h4>PyTorch Setup<a class="headerlink" href="#pytorch-setup" title="Permalink to this heading">¶</a></h4>
+<p>Install PyTorch v1.13.1 as a standalone Python module using <a class="reference external" href="https://pytorch.org/get-started/previous-versions/#v1131">https://pytorch.org/get-started/previous-versions/#v1131</a>
+and ensure PyTorch is in your PYTHONPATH by running the following command.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="s">&quot;import torch&quot;</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="#ml-frameworks">ML Frameworks</a> for information on versions Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> SDK was verified with.</p>
+</div>
+<div class="section" id="torchvision-setup">
+<h4>Torchvision Setup<a class="headerlink" href="#torchvision-setup" title="Permalink to this heading">¶</a></h4>
+<p>Install Torchvision as a standalone Python module using <a class="reference external" href="https://pypi.org/project/torchvision/0.14.1/">https://pypi.org/project/torchvision/0.14.1/</a>
+and ensure Torchvision is in your PYTHONPATH by running the following command.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="s">&quot;import torchvision&quot;</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="#ml-frameworks">ML Frameworks</a> for information on versions Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> SDK was verified with.</p>
+</div>
+</div>
+<div class="section" id="environment-setup-windows">
+<span id="id5"></span><h3>Windows<a class="headerlink" href="#environment-setup-windows" title="Permalink to this heading">¶</a></h3>
+<p>After <a class="reference internal" href="#id1"><span class="std std-ref">Windows Platform Dependencies</span></a> have been satisfied, the user environment can be set with the provided <strong>envsetup.ps1</strong> script.</p>
+<p>First, open <code class="docutils literal notranslate"><span class="pre">Developer</span> <span class="pre">PowerShell</span> <span class="pre">for</span> <span class="pre">VS2022</span></code> as Administrator.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">Set</span><span class="o">-</span><span class="n">ExecutionPolicy</span><span class="w"> </span><span class="n">RemoteSigned</span>
+</pre></div>
+</div>
+<p>Then, execute the following script.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="s">&quot;&lt;QNN_SDK_ROOT&gt;</span><span class="se">\b</span><span class="s">in\envsetup.ps1&quot;</span>
+</pre></div>
+</div>
+<p>This will set/update the following environment variables:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>QNN_SDK_ROOT</p></li>
+</ul>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}</span></code> represents the full path to Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> SDK root.</p>
+<p>The QNN API headers are in <code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/include/QNN</span></code>.</p>
+<p>The tools are in <code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/bin/x86_64-linux-clang</span></code>.</p>
+<p>Target specific backend and other libraries are in <code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/lib/*/</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">envsetup.ps1</span></code> is only required to be executed on Windows host.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="backend.html" class="btn btn-neutral float-right" title="Backend" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="overview.html" class="btn btn-neutral float-left" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

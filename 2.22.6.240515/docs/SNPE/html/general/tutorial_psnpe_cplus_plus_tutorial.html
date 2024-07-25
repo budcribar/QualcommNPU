@@ -1,0 +1,461 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>PSNPE C++ Tutorial &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="PSNPE Android Tutorial" href="tutorial_psnpe_android_tutorial.html" />
+    <link rel="prev" title="PSNPE C Tutorial" href="tutorial_psnpe_c_tutorial.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup1.html">Network Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="usergroup6.html">Tutorials and Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial_setup.html">Tutorials Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snpe2_migration_guidelines.html">SNPE1 to SNPE2 Migration Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup7.html">Running Nets</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="usergroup8.html">Code Examples</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="cplus_plus_tutorial.html">C++ Tutorial - Build the Sample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="c_tutorial.html">C Tutorial - Build the Sample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="c_api_guidelines.html">C API Guidelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="android_tutorial.html">Android Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="build_samplecode_windows.html">Windows Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_inceptionv3_udo.html">UDO Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_inceptionv3_udo_dsp.html">UDO DSP tutorial for Quantized DLC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_inceptionv3_udo_dsp_win.html">UDO DSP tutorial on Windows for Quantized DLC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_onnx_udo_weights.html">UDO Tutorial With Weights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_psnpe_introduction.html">PSNPE Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_psnpe_c_tutorial.html">PSNPE C Tutorial</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">PSNPE C++ Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_psnpe_android_tutorial.html">PSNPE Android Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dsp_runtime.html">DSP Runtime Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="network_resize.html">Network Resizing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="input_batch.html">Input Image Batch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="init_caching.html">Init Caching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup9.html">Application Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="usergroup6.html">Tutorials and Examples</a> &raquo;</li>
+        
+          <li><a href="usergroup8.html">Code Examples</a> &raquo;</li>
+        
+      <li>PSNPE C++ Tutorial</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="psnpe-c-tutorial">
+<h1>PSNPE C++ Tutorial<a class="headerlink" href="#psnpe-c-tutorial" title="Permalink to this heading">¶</a></h1>
+<p class="rubric" id="prerequisites">Prerequisites</p>
+<ul class="simple">
+<li><p>The Qualcomm® Neural Processing SDK has been set up following the <a class="reference external" href="setup.html">|Qualcomm(R)| Neural Processing SDK setup</a> .</p></li>
+<li><p>The <a class="reference external" href="tutorial_setup.html">Tutorials Setup</a> has been completed.</p></li>
+<li><p>APIs used in this page can be found in <a class="reference external" href="cplus_plus_tutorial.html">C++ Tutorial - Build the Sample</a>.</p></li>
+</ul>
+<p class="rubric" id="introduction">Introduction</p>
+<p>This tutorial demonstrates how to use PSNPE C++ APIs to build its C++ sample application
+that can execute neural network models with multiple runtimes on the target device.
+While this sample code does not do any error checking, it is strongly recommended
+that users check for errors when using the PSNPE APIs.</p>
+<p>Using sync mode as a sample, a PSNPE integrated application will follow the following pattern while using a neural network:</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="tutorial_psnpe_cplus_plus_tutorial.html#get-configuration-of-available-runtimes">Get Configuration of Available Runtimes</a></p></li>
+<li><p><a class="reference external" href="tutorial_psnpe_cplus_plus_tutorial.html#get-builder-configuration">Get Builder Configuration</a></p></li>
+<li><p><a class="reference external" href="tutorial_psnpe_cplus_plus_tutorial.html#build-psnpe-instance">Build PSNPE Instance</a></p></li>
+<li><p><a class="reference external" href="tutorial_psnpe_cplus_plus_tutorial.html#load-network-inputs-with-user-buffer-list">Load Network Inputs with User Buffer List</a></p></li>
+<li><p><a class="reference external" href="tutorial_psnpe_cplus_plus_tutorial.html#execute-the-network-process-output-for-sync-mode">Execute the Network &amp; Process Output for Sync Mode</a></p></li>
+<li><p><a class="reference external" href="tutorial_psnpe_cplus_plus_tutorial.html#cpp-application-example">C++ Application Example</a></p></li>
+</ol>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>zdl::PSNPE::RuntimeConfigList runtimeconfigs;
+zdl::PSNPE::BuildConfig buildConfig;
+buildStatus = psnpe-&gt;build(buildConfig);
+exeStatus = psnpe-&gt;execute(inputMapList, outputMapList);
+</pre></div>
+</div>
+<p>PSNPE uses sync model as default, if you want to choose async mode, please refer to
+<a class="reference external" href="tutorial_psnpe_cplus_plus_tutorial.html#buildconfig-for-async-mode">BuildConfig for Async Mode</a>.
+For output async mode, loading input data and executing psnpe is similar as sync mode,
+but you need to get output data by defining outputCallback function in
+<a class="reference external" href="tutorial_psnpe_cplus_plus_tutorial.html#callback-for-outputasync-mode">Callback for OutputAsync Mode</a>.
+For input/output async mode, both loading input data and get output data need
+callback functions which could refer to
+<a class="reference external" href="tutorial_psnpe_cplus_plus_tutorial.html#execution-and-callback-for-inputoutputasync-mode">Execution and Callback for InputOutputAsync Mode</a>.</p>
+<p>The sections below describe how to implement each step described above.</p>
+<p class="rubric" id="get-configuration-of-available-runtimes">Get Configuration of Available Runtimes</p>
+<p>The code excerpt below illustrates how to set the config for each available runtime with the given parameters.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>zdl::PSNPE::RuntimeConfigList runtimeconfigs;
+for (size_t j = 0; j &lt; numRequestedInstances; j++)
+{
+    zdl::PSNPE::RuntimeConfig runtimeConfig;
+    zdl::SNPE::SNPEFactory::isRuntimeAvailable(Runtimes[j]);
+    runtimeConfig.runtime = Runtimes[j];
+    runtimeConfig.enableCPUFallback = cpuFallBacks[j];
+    runtimeConfig.perfProfile = PerfProfile[j];
+    runtimeconfigs.push_back(runtimeConfig);
+}
+</pre></div>
+</div>
+<p class="rubric" id="get-builder-configuration">Get Builder Configuration</p>
+<p>The code excerpt below illustrates how to set the configuration for PSNPE builder with the given parameters including DLC, runtimeConfigList, output layer, transmission mode etc.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>zdl::PSNPE::BuildConfig buildConfig;
+std::unique_ptr&lt;zdl::DlContainer::IDlContainer&gt; container = zdl::DlContainer::IDlContainer::open(ContainerPath);
+buildConfig.container = container.get();
+buildConfig.runtimeConfigList = runtimeconfigs;
+buildConfig.outputBufferNames = outputLayers;
+buildConfig.inputOutputTransmissionMode = inputOutputTransmissionMode;
+buildConfig.enableInitCache = usingInitCache;
+buildConfig.profilingLevel = profilingLevel;
+buildConfig.platformOptions = platformOptions;
+buildConfig.outputTensors = outputTensors;
+</pre></div>
+</div>
+<p class="rubric" id="build-psnpe-instance">Build PSNPE Instance</p>
+<p>The following code demonstrates how to instantiate a PSNPE Builder object which will be used to execute the network.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>bool buildStatus = psnpe-&gt;build(buildConfig);
+</pre></div>
+</div>
+<p class="rubric" id="load-network-inputs-with-user-buffer-list">Load Network Inputs with User Buffer List</p>
+<p>This input loading method is used in synchronous mode and output asynchronous mode which
+is similar as the method used by Qualcomm® Neural Processing SDK to create inputs
+and outputs from user-backed buffers. Functions createUserBuffer() and loadInputUserBuffer()
+can refer to <a class="reference external" href="cplus_plus_tutorial.html">C++ Tutorial - Build the Sample</a>.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>std::vector&lt;std::unordered_map &lt;std::string, std::vector&lt;uint8_t&gt;&gt;&gt; outputBuffersVec(nums);
+std::vector&lt;std::unordered_map &lt;std::string, std::vector&lt;uint8_t&gt;&gt;&gt; inputBuffersVec(nums);
+std::vector &lt;std::unique_ptr&lt;zdl::DlSystem::IUserBuffer&gt;&gt; snpeUserBackedInputBuffers, snpeUserBackedOutputBuffers;
+zdl::PSNPE::UserBufferList inputMapList(nums), outputMapList(nums);
+const zdl::DlSystem::StringList innames = psnpe-&gt;getInputTensorNames();
+const zdl::DlSystem::StringList outnames = psnpe-&gt;getOutputTensorNames();
+if(inputOutputTransmissionMode != zdl::PSNPE::InputOutputTransmissionMode::inputOutputAsync)
+{
+   for (size_t i = 0; i &lt; inputs.size(); ++i)
+   {
+      for (const char* name : innames)
+      {
+         createUserBuffer(inputMapList[i],
+                          inputBuffersVec[i],
+                          snpeUserBackedInputBuffers,
+                          psnpe,
+                          name,
+                          usingTf8UserBuffer);
+      }
+      for (const char* name : outnames)
+      {
+         createUserBuffer(outputMapList[i],
+                          outputBuffersVec[i],
+                          snpeUserBackedOutputBuffers,
+                          psnpe,
+                          name,
+                          usingTf8UserBuffer);
+      }
+      loadInputUserBuffer(inputBuffersVec[i], psnpe, inputs[i], inputMapList[i], usingTf8UserBuffer)
+   }
+}
+</pre></div>
+</div>
+<p class="rubric" id="execute-the-network-process-output-for-sync-mode">Execute the Network &amp; Process Output for Sync Mode</p>
+<p>The following code uses the native API to execute the network in synchronous mode.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>bool exeStatus = psnpe-&gt;execute(inputMapList, outputMapList);
+saveOutput(outputMapList[i], outputBuffersVec[i], OutputDir, i * batchSize, batchSize, true);
+// The below shows parts of the function.
+void saveOutput (zdl::DlSystem::UserBufferMap&amp; outputMap,
+                 std::unordered_map&lt;std::string,std::vector&lt;uint8_t&gt;&gt;&amp; applicationOutputBuffers,
+                 const std::string&amp; outputDir,
+                 int num,
+                 size_t batchSize,
+                 bool isTf8Buffer)
+{
+   const zdl::DlSystem::StringList&amp; outputBufferNames = outputMap.getUserBufferNames();
+   for(auto &amp; name : outputBufferNames )
+   {
+      ... //get output data
+   }
+}
+</pre></div>
+</div>
+<p class="rubric" id="buildconfig-for-async-mode">BuildConfig for Async Mode</p>
+<p>If you want to run outputAsync mode or inputOutputAsync mode, you need to set callback fuction in buildConfig.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>if (inputOutputTransmissionMode == zdl::PSNPE::InputOutputTransmissionMode::outputAsync) {
+   buildConfig.outputThreadNumbers = outputNum;
+   buildConfig.outputCallback = OCallback;
+}
+if (inputOutputTransmissionMode == zdl::PSNPE::InputOutputTransmissionMode::inputOutputAsync) {
+   buildConfig.inputThreadNumbers = inputNum;
+   buildConfig.outputThreadNumbers = outputNum;
+   buildConfig.inputOutputCallback = IOCallback;
+   buildConfig.inputOutputInputCallback = inputCallback;
+}
+</pre></div>
+</div>
+<p class="rubric" id="callback-for-outputasync-mode">Callback for OutputAsync Mode</p>
+<p>Output asynchronous mode provide real-time output by calling callback function.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>void OCallback(zdl::PSNPE::OutputAsyncCallbackParam p) {
+   if (!p.executeStatus) {
+      std::cerr &lt;&lt; &quot;excute fail ,index: &quot; &lt;&lt; p.dataIndex &lt;&lt; std::endl;
+   }
+}
+</pre></div>
+</div>
+<p class="rubric" id="execution-and-callback-for-inputoutputasync-mode">Execution and Callback for InputOutputAsync Mode</p>
+<p>Asynchronous execution can provide real-time output result while synchronous mode provides the outputs after finishing execution.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>bool exeStatus = psnpe-&gt;executeInputOutputAsync(zdl::PSNPE::ApplicationBufferMap(inputMap),i,usingTf8UserBuffer);
+//In input/output asynchronous mode, loading input data through callback function with TF8 vector.
+std::shared_ptr&lt;zdl::PSNPE::ApplicationBufferMap&gt; inputCallback(
+        std::vector&lt;std::string&gt; inputs, const zdl::DlSystem::StringList&amp; inputNames) {
+   std::shared_ptr&lt;zdl::PSNPE::ApplicationBufferMap&gt; inputMap(new zdl::PSNPE::ApplicationBufferMap);
+   for (std::string fileLine : inputs) {
+      for (size_t j = 0; j &lt; inputNames.size(); j++) {
+         ... //load input data
+         }
+         inputMap-&gt;add(inputNames.at(j), loadVector);
+      }
+   }
+   return inputMap;
+}
+// In input/output asynchronous mode, the index and data of output can be obtained through a callback function
+void IOCallback(zdl::PSNPE::InputOutputAsyncCallbackParam p)
+{
+   saveOutput(p.outputMap.getUserBuffer(), OutputDir, p.dataIndex);
+}
+// The below shows parts of the function.
+void saveOutput(const std::unordered_map&lt;std::string, std::vector&lt;uint8_t&gt;&gt;&amp; applicationOutputBuffers, const std::string&amp; outputDir, int num)
+{
+   std::for_each(applicationOutputBuffers.begin(), applicationOutputBuffers.end(), [&amp;](std::pair&lt;std::string, std::vector&lt;uint8_t&gt;&gt; a) {
+       std::ostringstream path;
+       path &lt;&lt; outputDir &lt;&lt; &quot;/&quot; &lt;&lt; &quot;Result_&quot; &lt;&lt; num &lt;&lt; &quot;/&quot; &lt;&lt;a.first.data()&lt;&lt; &quot;.raw&quot;;
+       std::string outputPath = path.str();
+       std::string::size_type pos = outputPath.find(&quot;:&quot;);
+       if(pos != std::string::npos) outputPath = outputPath.replace(pos, 1, &quot;_&quot;);
+       SaveUserBuffer(outputPath,a.second.data(),a.second.size());
+     });
+</pre></div>
+</div>
+<p class="rubric" id="cpp-application-example">C++ Application Example</p>
+<p>The C++ application integrated with PSNPE in this tutorial is called <a class="reference external" href="tools.html#snpe-parallel-run">snpe-parallel-run</a>.
+It is a command line executable that executes a DLC model using Qualcomm® Neural Processing SDK APIs.
+It’s usage is same as snpe-net-run example from <a class="reference external" href="tutorial_inceptionv3.html">Running the Inception v3 Model</a>
+while running on android target.</p>
+<ol class="arabic simple">
+<li><p>Push model data to Android target.</p></li>
+<li><p>Select target architecture.</p></li>
+<li><p>Push binaries to target.</p></li>
+<li><p>Set up environment variables.</p></li>
+</ol>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>adb shell
+export ADSP_LIBRARY_PATH=&quot;/data/local/tmp/snpeexample/dsp/lib;/system/lib/rfsa/adsp;/system/vendor/lib/rfsa/adsp;/dsp&quot;
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/data/local/tmp/snpeexample/aarch64-android/lib
+export PATH=$PATH:/data/local/tmp/snpeexample/aarch64-android/bin/
+cd /data/local/tmp/inception_v3
+snpe-parallel-run --container inception_v3_quantized.dlc --input_list target_raw_list.txt --use_dsp --perf_profile burst --cpu_fallback false --use_dsp --perf_profile burst --cpu_fallback false --runtime_mode output_async
+exit
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="tutorial_psnpe_android_tutorial.html" class="btn btn-neutral float-right" title="PSNPE Android Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="tutorial_psnpe_c_tutorial.html" class="btn btn-neutral float-left" title="PSNPE C Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

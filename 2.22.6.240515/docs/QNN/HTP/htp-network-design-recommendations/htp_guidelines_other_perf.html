@@ -1,0 +1,313 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Other Performance and Energy Guidelines &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="HTP Yielding and Pre-Emption" href="../../general/htp/htp_yielding.html" />
+    <link rel="prev" title="INT4 encodings for weights" href="htp_guidelines_int4_weights.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../general/backend.html">Backend</a> &raquo;</li>
+        
+          <li><a href="../../general/htp/htp_backend.html">HTP</a> &raquo;</li>
+        
+      <li>Other Performance and Energy Guidelines</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="other-performance-and-energy-guidelines">
+<h1>Other Performance and Energy Guidelines<a class="headerlink" href="#other-performance-and-energy-guidelines" title="Permalink to this heading">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#guidelines-regarding-datatypes" id="id1">Guidelines Regarding Datatypes</a></p></li>
+<li><p><a class="reference internal" href="#size-of-width-and-height-dimensions" id="id2">Size of Width and Height dimensions</a></p></li>
+<li><p><a class="reference internal" href="#use-batches" id="id3">Use Batches</a></p></li>
+<li><p><a class="reference internal" href="#choice-of-machine-learning-platforms-and-tools" id="id4">Choice of Machine Learning Platforms and Tools</a></p></li>
+<li><p><a class="reference internal" href="#miscellaneous-guidelines" id="id5">Miscellaneous Guidelines</a></p></li>
+</ul>
+</div>
+<div class="section" id="guidelines-regarding-datatypes">
+<h2><a class="toc-backref" href="#id1">Guidelines Regarding Datatypes</a><a class="headerlink" href="#guidelines-regarding-datatypes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Fixed-point computations use lower energy than floating-point for a given bit-width. Therefore always use quantized models
+(preferably 8bit), if they achieve sufficient accuracy. For more information about quantization, read <a class="reference internal" href="../../general/quantization.html#id1"><span class="std std-ref">Quantization</span></a></p></li>
+<li><p>MAC energy is proportional to the square of the activation bit-width and weight bit-width. Therefore use quantized 8 bit
+activations preferably.</p></li>
+<li><p>Quantization also helps in reducing memory energy consumption as it is proportional to the total bit-width transferred.</p></li>
+<li><p>Lower bit-width is also an effective way to reduce model size.</p></li>
+<li><p>Use per channel scaling to offset the loss of dynamic range due to fixed-point. This effectively becomes block
+floating point.</p></li>
+<li><p>When converting between 8bit and 16 bit fixed point, keep the following in mind:</p>
+<ul>
+<li><p>When expanding from 8 bit width to 16 bit width, use the MSBs and put zeros on the LSBs. Similarly when converting 16 bit
+to 8 bit move the MSB bits to the 8 bit values.</p></li>
+<li><p>When converting from 8 bit to 16 bit, set the stepsize and offset values of 16 bit layer exactly 256 times the corresponding values of the 8 bit layer.</p></li>
+<li><p>When converting from 16 bit to 8 bit, set the stepsize and offset values of 8 bit layer exactly 1/256 times the corresponding values of the 16 bit layer.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="size-of-width-and-height-dimensions">
+<h2><a class="toc-backref" href="#id2">Size of Width and Height dimensions</a><a class="headerlink" href="#size-of-width-and-height-dimensions" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Choose width and height dimensions as power-of-2 to better align with the hardware.</p></li>
+</ul>
+</div>
+<div class="section" id="use-batches">
+<h2><a class="toc-backref" href="#id3">Use Batches</a><a class="headerlink" href="#use-batches" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Tile (with halos) large images to produces batches (for at least the subnetwork where tiles don’t interact). The tiled batches can then be converted to channels. The convolution following this can be converted to group convolution. This helps in counteracting low number of channel layers to look like a more efficient layer with channel groups.</p></li>
+</ul>
+</div>
+<div class="section" id="choice-of-machine-learning-platforms-and-tools">
+<h2><a class="toc-backref" href="#id4">Choice of Machine Learning Platforms and Tools</a><a class="headerlink" href="#choice-of-machine-learning-platforms-and-tools" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>We recommend tensorflow platform instead of other platforms such as pytorch, due to the following reasons:</p>
+<ul>
+<li><p>The data format of Tensorflow is same as QNN, which is NHWC. On the other hand pytorch uses NCHW format. QNN models
+generated from pytorch will have additional transpose ops to switch between the data formats which will affect the
+performance negatively.</p></li>
+<li><p>The graphs generated by starting from pytorch, then converting to onnx and then to QNN, are not optimal for QNN HTP
+performance.</p></li>
+</ul>
+</li>
+<li><p>Use onnx-simplifier and transform (tensorflow) tools to simplify the graphs. The graph may have various redundancies and
+these tools help remove those reduncdancies.</p></li>
+</ul>
+</div>
+<div class="section" id="miscellaneous-guidelines">
+<h2><a class="toc-backref" href="#id5">Miscellaneous Guidelines</a><a class="headerlink" href="#miscellaneous-guidelines" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Avoid global operations (pooling) for small accuracy benefits. These create memory bottlenecks
+(inhibits tile-based/depth-first memory savings).</p></li>
+<li><p>Zeroes are generally helpful to reduce energy consumption of multiply and memory operations, but don’t
+naturally help energy significantly unless zeros are repeated in the same position. For example, 50% zeros uniformly
+distributed over one of the multiplicand results in reduction of upto 15% of the peak full capacity fully random
+data power. ReLU is a major source of zeros for activations and is recommended for this reason. The pattern of
+beneficial zeros is hardware dependent. Reducing bit-width tends to be a bigger lever to reduce model size and energy
+for a given level of accuracy.</p></li>
+<li><p>Use relu activation function instead of leakyrelu/prelu.</p></li>
+<li><p>Use multiply by reciprocal instead of divide, when dividing by a constant.</p></li>
+<li><p>Use quantized inputs (tf8/tf16), where possible, to avoid quantization of inputs during inference.</p></li>
+<li><p>Reshape and other data movement operations, such as Transpose, are not typically free and might
+involve substantial overhead. If you are using Reshape to implement some novel functionality (such
+as filtering in a new dimension), consider using an alternative fused framework op or writing your own op rather
+than using Reshape to build the op out of existing operations.</p></li>
+<li><p>Performance of an op in a shallow graph is not indicative of an op in a full graph.</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../../general/htp/htp_yielding.html" class="btn btn-neutral float-right" title="HTP Yielding and Pre-Emption" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="htp_guidelines_int4_weights.html" class="btn btn-neutral float-left" title="INT4 encodings for weights" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

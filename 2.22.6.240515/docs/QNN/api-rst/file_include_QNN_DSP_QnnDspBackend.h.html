@@ -1,0 +1,451 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>File QnnDspBackend.h &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>File QnnDspBackend.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="file-qnndspbackend-h">
+<span id="file-include-qnn-dsp-qnndspbackend-h"></span><h1>File QnnDspBackend.h<a class="headerlink" href="#file-qnndspbackend-h" title="Permalink to this heading">¶</a></h1>
+<p>↰ <a class="reference internal" href="dir_include_QNN_DSP.html#dir-include-qnn-dsp"><span class="std std-ref">Parent directory</span></a> (<code class="docutils literal notranslate"><span class="pre">include/QNN/DSP</span></code>)</p>
+<p>QNN DSP component Backend API.</p>
+<div class="contents local topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#definition-include-qnn-dsp-qnndspbackend-h" id="id1">Definition (<code class="docutils literal notranslate"><span class="pre">include/QNN/DSP/QnnDspBackend.h</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#detailed-description" id="id2">Detailed Description</a></p></li>
+<li><p><a class="reference internal" href="#includes" id="id3">Includes</a></p></li>
+<li><p><a class="reference internal" href="#classes" id="id4">Classes</a></p></li>
+<li><p><a class="reference internal" href="#enums" id="id5">Enums</a></p></li>
+<li><p><a class="reference internal" href="#defines" id="id6">Defines</a></p></li>
+<li><p><a class="reference internal" href="#typedefs" id="id7">Typedefs</a></p></li>
+<li><p><a class="reference internal" href="#unions" id="id8">Unions</a></p></li>
+<li><p><a class="reference internal" href="#full-file-listing" id="id9">Full File Listing</a></p></li>
+</ul>
+</div>
+<div class="section" id="definition-include-qnn-dsp-qnndspbackend-h">
+<h2>Definition (<code class="docutils literal notranslate"><span class="pre">include/QNN/DSP/QnnDspBackend.h</span></code>)<a class="headerlink" href="#definition-include-qnn-dsp-qnndspbackend-h" title="Permalink to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="program_listing_file_include_QNN_DSP_QnnDspBackend.h.html">Program Listing for File QnnDspBackend.h</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="detailed-description">
+<h2>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><p>The interfaces in this file work with the top level QNN
+API and supplements QnnBackend.h for DSP backend</p>
+</div></blockquote>
+</div>
+<div class="section" id="includes">
+<h2>Includes<a class="headerlink" href="#includes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">QnnBackend.h</span></code> (<a class="reference internal" href="file_include_QNN_QnnBackend.h.html#file-include-qnn-qnnbackend-h"><span class="std std-ref">File QnnBackend.h</span></a>)</p></li>
+</ul>
+</div>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="structQnnDspBackend__CustomConfig.html#exhale-struct-structqnndspbackend-customconfig"><span class="std std-ref">Struct QnnDspBackend_CustomConfig</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="enums">
+<h2>Enums<a class="headerlink" href="#enums" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="enum_QnnDspBackend_8h_1abbbfaed42670433ccb72153e139fd014.html#exhale-enum-qnndspbackend-8h-1abbbfaed42670433ccb72153e139fd014"><span class="std std-ref">Enum QnnDspBackend_ConfigOption_t</span></a></p></li>
+<li><p><a class="reference internal" href="enum_QnnDspBackend_8h_1aed0b7d84549639888ad74a1c28cb2413.html#exhale-enum-qnndspbackend-8h-1aed0b7d84549639888ad74a1c28cb2413"><span class="std std-ref">Enum QnnDspBackend_DspArch_t</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="defines">
+<h2>Defines<a class="headerlink" href="#defines" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="define_QnnDspBackend_8h_1a33c8f0bf63e6f7568acd739c3a14ed00.html#exhale-define-qnndspbackend-8h-1a33c8f0bf63e6f7568acd739c3a14ed00"><span class="std std-ref">Define QNN_DSP_BACKEND_CUSTOM_CONFIG_INIT</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="typedefs">
+<h2>Typedefs<a class="headerlink" href="#typedefs" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="typedef_QnnDspBackend_8h_1a5de498b6d607bee165752a215d0eed32.html#exhale-typedef-qnndspbackend-8h-1a5de498b6d607bee165752a215d0eed32"><span class="std std-ref">Typedef QnnDspBackend_CustomConfig_t</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="unions">
+<h2>Unions<a class="headerlink" href="#unions" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="unionQnnDspBackend__CustomConfig_1_1unnamed.html#exhale-union-unionqnndspbackend-customconfig-1-1unnamed"><span class="std std-ref">Union QnnDspBackend_CustomConfig::unnamed</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="full-file-listing">
+<h2>Full File Listing<a class="headerlink" href="#full-file-listing" title="Permalink to this heading">¶</a></h2>
+<p>QNN DSP component Backend API. </p>
+<p><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">   </span><span class="n">The</span><span class="w"> </span><span class="n">interfaces</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="n">work</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">top</span><span class="w"> </span><span class="n">level</span><span class="w"> </span><span class="n">QNN</span>
+<span class="w">   </span><span class="n">API</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">supplements</span><span class="w"> </span><span class="n">QnnBackend</span><span class="p">.</span><span class="n">h</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">DSP</span><span class="w"> </span><span class="n">backend</span>
+</pre></div>
+</div>
+ </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_DSP_BACKEND_CUSTOM_CONFIG_INIT">
+<span class="target" id="QnnDspBackend_8h_1a33c8f0bf63e6f7568acd739c3a14ed00"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_DSP_BACKEND_CUSTOM_CONFIG_INIT</span></span></span> &#160; <span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span>
+&#160;&#160;&#160; <a class="reference internal" href="enum_QnnDspBackend_8h_1abbbfaed42670433ccb72153e139fd014.html#QnnDspBackend_8h_1abbbfaed42670433ccb72153e139fd014a169d234c29668fc98315350eaca0c3ec"><span class="std std-ref"><span class="pre">QNN_DSP_BACKEND_CONFIG_OPTION_UNKNOWN</span></span></a><p><span class="pre">,</span> <span class="pre">/*option*/</span> <span class="pre">\</span></p>
+<p><span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">false</span> <span class="pre">/*foldReluActivationIntoConvOff*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">}</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">}</span></p>
+<br /></dt>
+<dd><p>QnnDspBackend_CustomConfig_t initializer macro. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv428QnnDspBackend_CustomConfig_t">
+<span id="_CPPv328QnnDspBackend_CustomConfig_t"></span><span id="_CPPv228QnnDspBackend_CustomConfig_t"></span><span id="QnnDspBackend_CustomConfig_t"></span><span class="target" id="QnnDspBackend_8h_1a5de498b6d607bee165752a215d0eed32"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="structQnnDspBackend__CustomConfig.html#_CPPv426QnnDspBackend_CustomConfig" title="QnnDspBackend_CustomConfig"><span class="n"><span class="pre">QnnDspBackend_CustomConfig</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnDspBackend_CustomConfig_t</span></span></span><a class="headerlink" href="#_CPPv428QnnDspBackend_CustomConfig_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Structure describing the set of configurations supported by the backend. Objects of this type are to be referenced through QnnBackend_CustomConfig_t. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv428QnnDspBackend_ConfigOption_t">
+<span id="_CPPv328QnnDspBackend_ConfigOption_t"></span><span id="_CPPv228QnnDspBackend_ConfigOption_t"></span><span class="target" id="QnnDspBackend_8h_1abbbfaed42670433ccb72153e139fd014"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnDspBackend_ConfigOption_t</span></span></span><a class="headerlink" href="#_CPPv428QnnDspBackend_ConfigOption_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N28QnnDspBackend_ConfigOption_t64QNN_DSP_BACKEND_CONFIG_OPTION_FOLD_RELU_ACTIVATION_INTO_CONV_OFFE">
+<span id="_CPPv3N28QnnDspBackend_ConfigOption_t64QNN_DSP_BACKEND_CONFIG_OPTION_FOLD_RELU_ACTIVATION_INTO_CONV_OFFE"></span><span id="_CPPv2N28QnnDspBackend_ConfigOption_t64QNN_DSP_BACKEND_CONFIG_OPTION_FOLD_RELU_ACTIVATION_INTO_CONV_OFFE"></span><span class="target" id="QnnDspBackend_8h_1abbbfaed42670433ccb72153e139fd014af0d1bfa43c1121d49978e9deb7d85a9d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_DSP_BACKEND_CONFIG_OPTION_FOLD_RELU_ACTIVATION_INTO_CONV_OFF</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N28QnnDspBackend_ConfigOption_t64QNN_DSP_BACKEND_CONFIG_OPTION_FOLD_RELU_ACTIVATION_INTO_CONV_OFFE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The accelerator will always attempt to fold relu activation into the immediate preceding convolution operation. This optimization is correct when quantization ranges for convolution are equal or subset of the Relu operation. For graphs, where this cannot be guaranteed, the client should set this option to true </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N28QnnDspBackend_ConfigOption_t57QNN_DSP_BACKEND_CONFIG_OPTION_SHORT_DEPTH_CONV_ON_HMX_OFFE">
+<span id="_CPPv3N28QnnDspBackend_ConfigOption_t57QNN_DSP_BACKEND_CONFIG_OPTION_SHORT_DEPTH_CONV_ON_HMX_OFFE"></span><span id="_CPPv2N28QnnDspBackend_ConfigOption_t57QNN_DSP_BACKEND_CONFIG_OPTION_SHORT_DEPTH_CONV_ON_HMX_OFFE"></span><span class="target" id="QnnDspBackend_8h_1abbbfaed42670433ccb72153e139fd014a30ab81741e1f18099026793ced083f6b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_DSP_BACKEND_CONFIG_OPTION_SHORT_DEPTH_CONV_ON_HMX_OFF</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N28QnnDspBackend_ConfigOption_t57QNN_DSP_BACKEND_CONFIG_OPTION_SHORT_DEPTH_CONV_ON_HMX_OFFE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The accelerator will always attempt to all Convolution operation using HMX instructions. Convolution that have short depth and/or weights that are not symmetric could exhibit inaccurate results. In such cases, clients must set this option to true to guarantee correctness of the operation </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N28QnnDspBackend_ConfigOption_t55QNN_DSP_BACKEND_CONFIG_OPTION_USE_SIGNED_PROCESS_DOMAINE">
+<span id="_CPPv3N28QnnDspBackend_ConfigOption_t55QNN_DSP_BACKEND_CONFIG_OPTION_USE_SIGNED_PROCESS_DOMAINE"></span><span id="_CPPv2N28QnnDspBackend_ConfigOption_t55QNN_DSP_BACKEND_CONFIG_OPTION_USE_SIGNED_PROCESS_DOMAINE"></span><span class="target" id="QnnDspBackend_8h_1abbbfaed42670433ccb72153e139fd014aa0d665d37534fae6890a18ccef81f4de"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_DSP_BACKEND_CONFIG_OPTION_USE_SIGNED_PROCESS_DOMAIN</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">2</span></span><a class="headerlink" href="#_CPPv4N28QnnDspBackend_ConfigOption_t55QNN_DSP_BACKEND_CONFIG_OPTION_USE_SIGNED_PROCESS_DOMAINE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Every APP side user process that uses a DSP via FastRPC has a corresponding dynamic user process domain on the DSP side. QNN by default opens RPC session as unsigned PD, in case this option is set to true, RPC session will be opened as signed PD (requires signed .so). </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N28QnnDspBackend_ConfigOption_t34QNN_DSP_BACKEND_CONFIG_OPTION_ARCHE">
+<span id="_CPPv3N28QnnDspBackend_ConfigOption_t34QNN_DSP_BACKEND_CONFIG_OPTION_ARCHE"></span><span id="_CPPv2N28QnnDspBackend_ConfigOption_t34QNN_DSP_BACKEND_CONFIG_OPTION_ARCHE"></span><span class="target" id="QnnDspBackend_8h_1abbbfaed42670433ccb72153e139fd014a2614e5d5fcec6dc4c0089af3e96d39da"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_DSP_BACKEND_CONFIG_OPTION_ARCH</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">3</span></span><a class="headerlink" href="#_CPPv4N28QnnDspBackend_ConfigOption_t34QNN_DSP_BACKEND_CONFIG_OPTION_ARCHE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>set QnnDspBackend_DspArch_t for offline prepare mode </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N28QnnDspBackend_ConfigOption_t37QNN_DSP_BACKEND_CONFIG_OPTION_UNKNOWNE">
+<span id="_CPPv3N28QnnDspBackend_ConfigOption_t37QNN_DSP_BACKEND_CONFIG_OPTION_UNKNOWNE"></span><span id="_CPPv2N28QnnDspBackend_ConfigOption_t37QNN_DSP_BACKEND_CONFIG_OPTION_UNKNOWNE"></span><span class="target" id="QnnDspBackend_8h_1abbbfaed42670433ccb72153e139fd014a169d234c29668fc98315350eaca0c3ec"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_DSP_BACKEND_CONFIG_OPTION_UNKNOWN</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0x7fffffff</span></span><a class="headerlink" href="#_CPPv4N28QnnDspBackend_ConfigOption_t37QNN_DSP_BACKEND_CONFIG_OPTION_UNKNOWNE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>UNKNOWN enum option that must not be used. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv423QnnDspBackend_DspArch_t">
+<span id="_CPPv323QnnDspBackend_DspArch_t"></span><span id="_CPPv223QnnDspBackend_DspArch_t"></span><span class="target" id="QnnDspBackend_8h_1aed0b7d84549639888ad74a1c28cb2413"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnDspBackend_DspArch_t</span></span></span><a class="headerlink" href="#_CPPv423QnnDspBackend_DspArch_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23QnnDspBackend_DspArch_t29QNN_DSP_BACKEND_DSP_ARCH_NONEE">
+<span id="_CPPv3N23QnnDspBackend_DspArch_t29QNN_DSP_BACKEND_DSP_ARCH_NONEE"></span><span id="_CPPv2N23QnnDspBackend_DspArch_t29QNN_DSP_BACKEND_DSP_ARCH_NONEE"></span><span class="target" id="QnnDspBackend_8h_1aed0b7d84549639888ad74a1c28cb2413a63d5bf3d31b25a79e1caf1f3d9d4fae6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_DSP_BACKEND_DSP_ARCH_NONE</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N23QnnDspBackend_DspArch_t29QNN_DSP_BACKEND_DSP_ARCH_NONEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23QnnDspBackend_DspArch_t28QNN_DSP_BACKEND_DSP_ARCH_V65E">
+<span id="_CPPv3N23QnnDspBackend_DspArch_t28QNN_DSP_BACKEND_DSP_ARCH_V65E"></span><span id="_CPPv2N23QnnDspBackend_DspArch_t28QNN_DSP_BACKEND_DSP_ARCH_V65E"></span><span class="target" id="QnnDspBackend_8h_1aed0b7d84549639888ad74a1c28cb2413a972f0cd75303aeb6b9ac15fde2062240"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_DSP_BACKEND_DSP_ARCH_V65</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">65</span></span><a class="headerlink" href="#_CPPv4N23QnnDspBackend_DspArch_t28QNN_DSP_BACKEND_DSP_ARCH_V65E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23QnnDspBackend_DspArch_t28QNN_DSP_BACKEND_DSP_ARCH_V66E">
+<span id="_CPPv3N23QnnDspBackend_DspArch_t28QNN_DSP_BACKEND_DSP_ARCH_V66E"></span><span id="_CPPv2N23QnnDspBackend_DspArch_t28QNN_DSP_BACKEND_DSP_ARCH_V66E"></span><span class="target" id="QnnDspBackend_8h_1aed0b7d84549639888ad74a1c28cb2413a1ae1118f67cbb847eacd421cb35a05d0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_DSP_BACKEND_DSP_ARCH_V66</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">66</span></span><a class="headerlink" href="#_CPPv4N23QnnDspBackend_DspArch_t28QNN_DSP_BACKEND_DSP_ARCH_V66E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23QnnDspBackend_DspArch_t28QNN_DSP_BACKEND_DSP_ARCH_V68E">
+<span id="_CPPv3N23QnnDspBackend_DspArch_t28QNN_DSP_BACKEND_DSP_ARCH_V68E"></span><span id="_CPPv2N23QnnDspBackend_DspArch_t28QNN_DSP_BACKEND_DSP_ARCH_V68E"></span><span class="target" id="QnnDspBackend_8h_1aed0b7d84549639888ad74a1c28cb2413a209467e57ef5ca5ca4dcf7ccfe25d4d9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_DSP_BACKEND_DSP_ARCH_V68</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">68</span></span><a class="headerlink" href="#_CPPv4N23QnnDspBackend_DspArch_t28QNN_DSP_BACKEND_DSP_ARCH_V68E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23QnnDspBackend_DspArch_t28QNN_DSP_BACKEND_DSP_ARCH_V69E">
+<span id="_CPPv3N23QnnDspBackend_DspArch_t28QNN_DSP_BACKEND_DSP_ARCH_V69E"></span><span id="_CPPv2N23QnnDspBackend_DspArch_t28QNN_DSP_BACKEND_DSP_ARCH_V69E"></span><span class="target" id="QnnDspBackend_8h_1aed0b7d84549639888ad74a1c28cb2413ac95813621c8e0901c301eccefd58bd57"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_DSP_BACKEND_DSP_ARCH_V69</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">69</span></span><a class="headerlink" href="#_CPPv4N23QnnDspBackend_DspArch_t28QNN_DSP_BACKEND_DSP_ARCH_V69E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23QnnDspBackend_DspArch_t28QNN_DSP_BACKEND_DSP_ARCH_V73E">
+<span id="_CPPv3N23QnnDspBackend_DspArch_t28QNN_DSP_BACKEND_DSP_ARCH_V73E"></span><span id="_CPPv2N23QnnDspBackend_DspArch_t28QNN_DSP_BACKEND_DSP_ARCH_V73E"></span><span class="target" id="QnnDspBackend_8h_1aed0b7d84549639888ad74a1c28cb2413a5c183e06a2231364d8ddebbd7a419a88"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_DSP_BACKEND_DSP_ARCH_V73</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">73</span></span><a class="headerlink" href="#_CPPv4N23QnnDspBackend_DspArch_t28QNN_DSP_BACKEND_DSP_ARCH_V73E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23QnnDspBackend_DspArch_t32QNN_DSP_BACKEND_DSP_ARCH_UNKNOWNE">
+<span id="_CPPv3N23QnnDspBackend_DspArch_t32QNN_DSP_BACKEND_DSP_ARCH_UNKNOWNE"></span><span id="_CPPv2N23QnnDspBackend_DspArch_t32QNN_DSP_BACKEND_DSP_ARCH_UNKNOWNE"></span><span class="target" id="QnnDspBackend_8h_1aed0b7d84549639888ad74a1c28cb2413a2d22c221e6e45e38ca4c871dd00e62cd"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_DSP_BACKEND_DSP_ARCH_UNKNOWN</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0x7fffffff</span></span><a class="headerlink" href="#_CPPv4N23QnnDspBackend_DspArch_t32QNN_DSP_BACKEND_DSP_ARCH_UNKNOWNE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv426QnnDspBackend_CustomConfig">
+<span id="_CPPv326QnnDspBackend_CustomConfig"></span><span id="_CPPv226QnnDspBackend_CustomConfig"></span><span id="QnnDspBackend_CustomConfig"></span><span class="target" id="structQnnDspBackend__CustomConfig"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnDspBackend_CustomConfig</span></span></span><a class="headerlink" href="#_CPPv426QnnDspBackend_CustomConfig" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnDspBackend.h&gt;</em></div>
+<p>Structure describing the set of configurations supported by the backend. Objects of this type are to be referenced through QnnBackend_CustomConfig_t. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26QnnDspBackend_CustomConfig6optionE">
+<span id="_CPPv3N26QnnDspBackend_CustomConfig6optionE"></span><span id="_CPPv2N26QnnDspBackend_CustomConfig6optionE"></span><span id="QnnDspBackend_CustomConfig::option__QnnDspBackend_ConfigOption_t"></span><span class="target" id="structQnnDspBackend__CustomConfig_1a14b4fd8abb1e2ba0b443c7be8e3ed026"></span><a class="reference internal" href="#_CPPv428QnnDspBackend_ConfigOption_t" title="QnnDspBackend_ConfigOption_t"><span class="n"><span class="pre">QnnDspBackend_ConfigOption_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">option</span></span></span><a class="headerlink" href="#_CPPv4N26QnnDspBackend_CustomConfig6optionE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<dl class="cpp union">
+<dt class="sig sig-object cpp" id="_CPPv4N26QnnDspBackend_CustomConfig7unnamedE">
+<span id="_CPPv3N26QnnDspBackend_CustomConfig7unnamedE"></span><span id="_CPPv2N26QnnDspBackend_CustomConfig7unnamedE"></span><span class="target" id="unionQnnDspBackend__CustomConfig_1_1unnamed"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">unnamed</span></span></span><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnDspBackend.h&gt;</em></div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26QnnDspBackend_CustomConfig7unnamed29foldReluActivationIntoConvOffE">
+<span id="_CPPv3N26QnnDspBackend_CustomConfig7unnamed29foldReluActivationIntoConvOffE"></span><span id="_CPPv2N26QnnDspBackend_CustomConfig7unnamed29foldReluActivationIntoConvOffE"></span><span id="QnnDspBackend_CustomConfig::unnamed::foldReluActivationIntoConvOff__b"></span><span class="target" id="unionQnnDspBackend__CustomConfig_1_1unnamed_1afe0f63fa1057563686f60abd07408017"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">foldReluActivationIntoConvOff</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26QnnDspBackend_CustomConfig7unnamed22shortDepthConvOnHmxOffE">
+<span id="_CPPv3N26QnnDspBackend_CustomConfig7unnamed22shortDepthConvOnHmxOffE"></span><span id="_CPPv2N26QnnDspBackend_CustomConfig7unnamed22shortDepthConvOnHmxOffE"></span><span id="QnnDspBackend_CustomConfig::unnamed::shortDepthConvOnHmxOff__b"></span><span class="target" id="unionQnnDspBackend__CustomConfig_1_1unnamed_1a8c6f6043b7ffb906faf2ffccbfe1b466"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">shortDepthConvOnHmxOff</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26QnnDspBackend_CustomConfig7unnamed22useSignedProcessDomainE">
+<span id="_CPPv3N26QnnDspBackend_CustomConfig7unnamed22useSignedProcessDomainE"></span><span id="_CPPv2N26QnnDspBackend_CustomConfig7unnamed22useSignedProcessDomainE"></span><span id="QnnDspBackend_CustomConfig::unnamed::useSignedProcessDomain__b"></span><span class="target" id="unionQnnDspBackend__CustomConfig_1_1unnamed_1aa238536b3e7e0a88c1d2ac7348bda162"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">useSignedProcessDomain</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26QnnDspBackend_CustomConfig7unnamed4archE">
+<span id="_CPPv3N26QnnDspBackend_CustomConfig7unnamed4archE"></span><span id="_CPPv2N26QnnDspBackend_CustomConfig7unnamed4archE"></span><span id="QnnDspBackend_CustomConfig::unnamed::arch__QnnDspBackend_DspArch_t"></span><span class="target" id="unionQnnDspBackend__CustomConfig_1_1unnamed_1ab02849222c3e0c0eb9212407b32e2a0f"></span><a class="reference internal" href="#_CPPv423QnnDspBackend_DspArch_t" title="QnnDspBackend_DspArch_t"><span class="n"><span class="pre">QnnDspBackend_DspArch_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">arch</span></span></span><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+    "Name":"<Model Name>",
+    "HostRootPath": "<Path to copy result on host>",
+    "HostResultsDir":"<Result Directory name>",
+    "DevicePath":"<Path to store results on device e.g: /data/local/tmp/qnnbenchmark>",
+    "Devices":["<device id as output by 'adb devices'>"],
+    "Runs":<No. of runs>,
+
+    "Model": {
+        "Name": "<Output folder name on device>",
+        "qnn_model": "<Path to compiled model.so or x86 compiled serialized.bin file, to push on device>",
+        "Data": [
+            "<Host path to input images folder to push images on device ; example: data/imagenet/227x227_raw>"
+        ],
+        "InputList": "<Path to imagelist text file to push image list on device; example: data/imagenet/227x227_raw/input_list.txt>"
+    },
+
+    "Backends":[<list of runtimes supported runtimes: "CPU","GPU","DSP">],
+    "Measurements": [<Measurement type: "timing">],
+    "PerfProfile": <Choose performance profile from the following options: low_balanced, balanced, default,
+                   sustained_high_performance, high_performance, low_power_saver, power_saver, high_power_saver, system_settings>,
+    "ProfilingLevel": <Choose profiling level from the following options: basic, detailed>
+}

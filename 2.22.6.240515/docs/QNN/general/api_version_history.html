@@ -1,0 +1,739 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>QNN API Revision History &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="QNN CPU API Revision History" href="cpu/cpu_api_version_history.html" />
+    <link rel="prev" title="Usage Guidelines" href="api_usage_guidelines.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="operations.html">Operations</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="api_overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_usage_guidelines.html">Usage Guidelines</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">QNN API Revision History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#backend-specific-revision-history">Backend Specific Revision History</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cpu/cpu_api_version_history.html">CPU Version History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dsp/dsp_api_version_history.html">DSP Version History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gpu/gpu_api_version_history.html">GPU Version History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hta/hta_api_version_history.html">HTA Version History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="htp/htp_api_version_history.html">HTP Version History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lpai/lpai_api_version_history.html">LPAI Version History</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#qnn-system-api-revision-history">QNN System API Revision History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supported_api.html">Supported APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supported_capabilities.html">Supported Capabilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#c">C</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="api.html">API</a> &raquo;</li>
+        
+      <li>QNN API Revision History</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="qnn-api-revision-history">
+<h1>QNN API Revision History<a class="headerlink" href="#qnn-api-revision-history" title="Permalink to this heading">¶</a></h1>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 11%" />
+<col style="width: 76%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>API Version</p></th>
+<th class="head"><p>SDK Version</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2.15.0</p></td>
+<td><p>2.21.0</p></td>
+<td><ul class="simple">
+<li><p>Introduced the QnnContext_createFromBinaryWithSignal API.</p></li>
+<li><p>Added QNN_MEM_TYPE_DMA_BUF QnnMem type.</p></li>
+<li><p>Clarified QnnProperty capability descriptions.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.14.0</p></td>
+<td><p>2.20.0</p></td>
+<td><ul class="simple">
+<li><p>Introduced Qnn_TensorV2_t. Tensor V2 adds API support for sparse tensors,
+dynamically shaped tensors, and graph execution early termination. Please consult
+SDK documentation for further details. Support can be queried via
+QNN_PROPERTY_TENSOR_SUPPORT_SPARSITY, QNN_PROPERTY_TENSOR_SUPPORT_DYNAMIC_DIMENSIONS,
+and QNN_PROPERTY_GRAPH_SUPPORT_EARLY_TERMINATION.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>2.13.0</p></td>
+<td><p>2.19.0</p></td>
+<td><ul class="simple">
+<li><p>Introduced the QnnContext_validateBinary API.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.12.0</p></td>
+<td><p>2.18.0</p></td>
+<td><ul class="simple">
+<li><p>Introduced the QnnGraph_getProperty API.</p></li>
+<li><p>Allow QnnGraph_finalize for deserialized graphs created via
+QnnContext_createFromBinary.</p></li>
+<li><p>Introduced the QnnGraph_prepareExecutionEnvironment and
+QnnGraph_releaseExecutionEnvironment APIs.</p></li>
+<li><p>Added QNN_CONTEXT_CONFIG_BINARY_COMPATIBILITY context config and
+QNN_CONTEXT_ERROR_BINARY_SUBOPTIMAL context error code.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>2.11.0</p></td>
+<td><p>2.17.0</p></td>
+<td><ul class="simple">
+<li><p>Introduced the QnnError.h API.</p></li>
+<li><p>Introduced QNN_GRAPH_CONFIG_OPTION_SET_PROFILING_STATE and
+QNN_GRAPH_CONFIG_OPTION_SET_PROFILING_NUM_EXECUTIONS graph configuration options.</p></li>
+<li><p>Added QNN_PROPERTY_MEMORY_SUPPORT_MEM_TYPE_ION and
+QNN_PROPERTY_MEMORY_SUPPORT_MEM_TYPE_CUSTOM capabilities.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.10.0</p></td>
+<td><p>2.16.0</p></td>
+<td><ul class="simple">
+<li><p>Added QNN_CONTEXT_CONFIG_ENABLE_GRAPHS context configuration option,
+QNN_PROPERTY_CONTEXT_SUPPORT_CONFIG_ENABLE_GRAPHS capability, and
+QNN_GRAPH_ERROR_DISABLED error code.</p></li>
+<li><p>Added QNN_CONTEXT_CONFIG_MEMORY_LIMIT_HINT context configuration option and
+QNN_PROPERTY_CONTEXT_SUPPORT_CONFIG_MEMORY_LIMIT capability.</p></li>
+<li><p>Added QNN_CONTEXT_CONFIG_PERSISTENT_BINARY context configuration option and
+QNN_PROPERTY_CONTEXT_SUPPORT_CONFIG_PERSISTENT_BINARY capability.</p></li>
+<li><p>Added QNN_DATATYPE_SFIXED_POINT_4 and QNN_DATATYPE_UFIXED_POINT_4 data types.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>2.9.0</p></td>
+<td><p>2.15.0</p></td>
+<td><ul class="simple">
+<li><p>Added QnnGraph_createSubgraph API and the QNN_PROPERTY_GRAPH_SUPPORT_SUBGRAPH
+capability.</p></li>
+<li><p>Added QnnBackend_setConfig API.</p></li>
+<li><p>Added QNN_PROFILE_CONFIG_OPTION_ENABLE_OPTRACE and QNN_PROFILE_EVENTTYPE_TRACE.</p></li>
+<li><p>Added QNN_PROPERTY_BACKEND_SUPPORT_COMPOSITION and
+QNN_PROPERTY_TENSOR_SUPPORT_CONTEXT_TENSORS capability.</p></li>
+<li><p>Added QNN_DATATYPE_FLOAT_64 data type.</p></li>
+<li><p>Clarified QnnSignal behavior when used with QnnGraph_executeAsync.</p></li>
+<li><p>Deprecated QNN_TENSOR_ERROR_ALREADY_EXISTS and QNN_TENSOR_ERROR_NAME_HASH_COLLISION
+error codes. QnnTensor_createContextTensor and QnnTensor_createGraphTensor will no
+longer generate them.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.8.0</p></td>
+<td><p>2.14.0</p></td>
+<td><ul class="simple">
+<li><p>Introduced QnnProfile_ExtendedEventData_t and QnnProfile_getExtendedEventData to
+support binary large object data.</p></li>
+<li><p>Added QnnProfile_setConfig and QNN_PROFILE_CONFIG_OPTION_CUSTOM and
+QNN_PROFILE_CONFIG_OPTION_MAX_EVENTS configuration options.</p></li>
+<li><p>Added the QNN_DATATYPE_STRING data type for scalars.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>2.7.2</p></td>
+<td><p>2.13.0</p></td>
+<td><ul class="simple">
+<li><p>Added QNN_GRAPH_ERROR_GENERAL error code.</p></li>
+<li><p>Added QNN_PROPERTY_GRAPH_SUPPORT_PER_API_PROFILING capability.</p></li>
+<li><p>Added QNN_SIGNAL_ERROR_INCOMPATIBLE_SIGNAL_TYPE error code.</p></li>
+<li><p>Clarified unconfigured QnnSignal behavior.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.7.1</p></td>
+<td><p>2.12.0</p></td>
+<td><ul class="simple">
+<li><p>Added QNN_COMMON_ERROR_RESOURCE_UNAVAILABLE common error code.</p></li>
+<li><p>Added QNN_GRAPH_ERROR_TIMED_OUT error code and corrected QnnGraph_execute and
+QnnGraph_executeAsync API documentation to reference this error code.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>2.7.0</p></td>
+<td><p>2.11.0</p></td>
+<td><ul>
+<li><p>Added QNN_COMMON_ERROR_LOADING_BINARIES common error code.</p></li>
+<li><p>Added support for timeouts in QnnSignal</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>QNN_SIGNAL_CONFIG_OPTION_TIMEOUT</p></li>
+<li><p>QNN_PROPERTY_SIGNAL_SUPPORT_TIMEOUT</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Added QNN_CONTEXT_ERROR_MEM_ALLOC error code to QnnContext_getBinarySize and
+QnnContext_getBinary</p></li>
+<li><p>Added QNN_DEVICE_ERROR_INVALID_HANDLE error code to QnnDevice_getPlatformInfo and
+QnnDevice_freePlatformInfo</p></li>
+<li><p>Added QNN_DEVICE_ERROR_MEM_ALLOC error code to QnnDevice_getInfrastructure</p></li>
+<li><p>Corrected occurrences of QNN_SIGNAL_ERROR_NOT_SUPPORTED to be
+QNN_SIGNAL_ERROR_UNSUPPORTED</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.6.0</p></td>
+<td><p>2.10.40</p></td>
+<td><ul class="simple">
+<li><p>Added QNN_BACKEND_CONFIG_OPTION_PLATFORM backend config option.</p></li>
+<li><p>Added QNN_PROPERTY_BACKEND_SUPPORT_PLATFORM_OPTIONS property.</p></li>
+<li><p>Added QNN_BACKEND_CONFIG_OPTION_PLATFORM backend error code.</p></li>
+<li><p>Indicated that QNN_PRIORITY_NORMAL_HIGH and QNN_PRIORITY_HIGH can be silently
+treated as QNN_PRIORITY_NORMAL in some scenarios.</p></li>
+<li><p>Cleaned up unused SOC models.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>2.5.1</p></td>
+<td><p>2.10.0</p></td>
+<td><ul class="simple">
+<li><p>Added QNN_COMMON_ERROR_INCOMPATIBLE_BINARIES common error code.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.5.0</p></td>
+<td><p>2.9.0</p></td>
+<td><ul class="simple">
+<li><p>Added QNN_PROPERTY_GRAPH_SUPPORT_EXECUTE capability.</p></li>
+<li><p>Added QNN_PROPERTY_GRAPH_SUPPORT_BATCH_MULTIPLE capability.</p></li>
+<li><p>Clarify that a Qnn_ProfileHandle_t can only be bound to one graph at a time.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>2.4.0</p></td>
+<td><p>2.8.0</p></td>
+<td><ul>
+<li><p>Introduced continuous QnnGraph profiling via the
+QNN_GRAPH_CONFIG_OPTION_PROFILE_HANDLE config option. Backend support is
+communicated via QNN_PROPERTY_GRAPH_SUPPORT_CONTINUOUS_PROFILING.</p></li>
+<li><p>Added the following QnnProfile event types:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>QNN_PROFILE_EVENTTYPE_EXECUTE_QUEUE_WAIT</p></li>
+<li><p>QNN_PROFILE_EVENTTYPE_EXECUTE_PREPROCESS</p></li>
+<li><p>QNN_PROFILE_EVENTTYPE_EXECUTE_DEVICE</p></li>
+<li><p>QNN_PROFILE_EVENTTYPE_EXECUTE_POSTPROCESS</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Introduced a new Qnn_Priority_t level:  QNN_PRIORITY_NORMAL_HIGH.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.3.2</p></td>
+<td><p>2.7.0</p></td>
+<td><ul class="simple">
+<li><p>Deprecate Qnn_SocModel_t.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>2.3.1</p></td>
+<td><p>2.5.0</p></td>
+<td><ul class="simple">
+<li><p>Add note to QnnProperty_hasCapability that it can be called at any time.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.3.0</p></td>
+<td><p>2.4.0</p></td>
+<td><ul>
+<li><p>Introduction of the QnnSignal API.</p></li>
+<li><p>Added QNN_SOC_MODEL_SM8325.</p></li>
+<li><p>Added new capabilities for support of QnnSignal in QnnGraph APIs:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>QNN_PROPERTY_GRAPH_SUPPORT_FINALIZE_SIGNAL</p></li>
+<li><p>QNN_PROPERTY_GRAPH_SUPPORT_EXECUTE_SIGNAL</p></li>
+<li><p>QNN_PROPERTY_GRAPH_SUPPORT_EXECUTE_ASYNC_SIGNAL</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>2.2.0</p></td>
+<td><p>2.3.0</p></td>
+<td><ul class="simple">
+<li><p>Moved QNN_API definition to QnnCommon.h from QnnTypes.h.</p></li>
+<li><p>Updated QnnGraph_executeAsync() behavior to block until the execution is enqueued
+rather than returning early if the queue is full.</p></li>
+<li><p>Clarified behavior with concurrent calls to QnnGraph_execute() and
+QnnGraph_executeAsync().</p></li>
+<li><p>Introduced a queue depth context config to control the maximum depth of the async
+execution queue.</p></li>
+<li><p>Added QNN_SOC_MODEL_SXR2230P and QNN_SOC_MODEL_SM7475.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.1.0</p></td>
+<td><p>2.1.0</p></td>
+<td><ul class="simple">
+<li><p>Added QNN_SOC_MODEL_SXR1230P, QNN_SOC_MODEL_SSG2115P, and QNN_SOC_MODEL_SM6450.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>2.0.0</p></td>
+<td><p>2.0.0</p></td>
+<td><ul>
+<li><p>The following list itemizes updates as compared to QNN API 1.x.</p></li>
+<li><p>See 1.x to 2.0 migration guide in SDK docs for details.</p></li>
+<li><p>QnnInterface:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>QnnInterface_getProviders function signature update.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>QnnTypes:</p>
+<blockquote>
+<div><ul>
+<li><p>Qnn_Tensor_t data structure update:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Add versioning (i.e. Qnn_TensorV1_t).</p></li>
+<li><p>Add name field. ID field is now backend generated.</p></li>
+<li><p>Consolidate max and current dimensions into one field.</p></li>
+<li><p>INT4 support (see Qnn_BwScaleOffset_t and Qnn_BwAxisScaleOffset_t).</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Qnn_OpConfig_t data structure update:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Add versioning (i.e. Qnn_OpConfigV1_t).</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Added Qnn_SocModel_t.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>QnnTensor:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Qnn_Tensor_t is now an output argument to QnnTensor_createContextTensor and
+QnnTensor_createGraphTensor since the ID is now generated by the backend from
+the name.</p></li>
+<li><p>Added QNN_TENSOR_ERROR_NAME_HASH_COLLISION error code.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>QnnDevice introduction:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Adds multi-core support.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>QnnBackend:</p>
+<blockquote>
+<div><ul>
+<li><p>Introduce Qnn_BackendHandle_t.</p></li>
+<li><p>These APIs now take a Qnn_BackendHandle_t as an argument:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>QnnBackend_registerOpPackage</p></li>
+<li><p>QnnBackend_validateOpConfig</p></li>
+<li><p>QnnBackend_registerOpPackage</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>QnnBackend_initialize replaced by QnnBackend_create.</p></li>
+<li><p>QnnBackend_terminate replaced by QnnBackend_free.</p></li>
+<li><p>Added QnnBackend_getSupportedOperations and QnnBackend_OperationName_t.</p></li>
+<li><p>Removed QnnBackend_getPerfInfrastructure (see QnnDevice_getInfrastructure).</p></li>
+<li><p>Added and removed a variety of error codes.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>QnnMem:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>QnnMem_register now take a Qnn_ContextHandle_t as an argument.</p></li>
+<li><p>Add backend specific memory registration extensions.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>QnnContext:</p>
+<blockquote>
+<div><ul>
+<li><p>Increased maximum context binary size to 64-bit.</p></li>
+<li><p>Consolidate QnnContext_createFromBinary and
+QnnContext_createFromBinaryWithConfig.</p></li>
+<li><p>QnnContext_create and QnnContext_createFromBinary function signature updates:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Qnn_BackendHandle_t association.</p></li>
+<li><p>Qnn_DeviceHandle_t association.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>QnnLog:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Introduce Qnn_LogHandle_t.</p></li>
+<li><p>QnnLog_setLogLevel now takes a Qnn_LogHandle_t as an argument.</p></li>
+<li><p>QnnLog_initialize replaced by QnnLog_create.</p></li>
+<li><p>QnnLog_terminate replaced by QnnLog_free.</p></li>
+<li><p>Qnn_LogHandle_t is associated to a Qnn_BackendHandle_t in QnnBackend_create.</p></li>
+<li><p>Added and removed a variety of error codes.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>QnnProperty:</p>
+<blockquote>
+<div><ul>
+<li><p>Removed QnnProperty_get and QnnProperty_free.</p></li>
+<li><p>Removed the following capability keys:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>QNN_PROPERTY_BACKEND_SUPPORT_BUILD_ID</p></li>
+<li><p>QNN_PROPERTY_BACKEND_SUPPORT_PERF_INFRASTRUCTURE</p></li>
+<li><p>QNN_PROPERTY_BACKEND_SUPPORT_OP_VALIDATION</p></li>
+<li><p>QNN_PROPERTY_CONTEXT_SUPPORT_GET_BINARY</p></li>
+<li><p>QNN_PROPERTY_CONTEXT_SUPPORT_GET_BINARY_SIZE</p></li>
+<li><p>QNN_PROPERTY_CONTEXT_SUPPORT_CREATE_BINARY</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Added the following capability keys:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>QNN_PROPERTY_CONTEXT_SUPPORT_CACHING</p></li>
+<li><p>QNN_PROPERTY_GRAPH_SUPPORT_PRIORITY_CONTROL</p></li>
+<li><p>QNN_PROPERTY_GROUP_DEVICE</p></li>
+<li><p>QNN_PROPERTY_DEVICE_SUPPORT_INFRASTRUCTURE</p></li>
+<li><p>QNN_PROPERTY_GRAPH_SUPPORT_PRIORITY_CONTROL</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Added and removed a variety of error codes.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>QnnGraph:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Add priority configuration.</p></li>
+<li><p>Add QnnGraph_setConfig API.</p></li>
+<li><p>Removed asynch execution configs.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>QnnProfile:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>QnnProfile_create associated with a Qnn_BackendHandle_t.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>QnnOpPackage:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Introduce Qnn_OpPackageHandle_t.</p></li>
+<li><p>Introduce 2.0 interface to the backend.</p></li>
+<li><p>Removed the QNN_OP_PACKAGE_API_VERSION_* macros and replaced them with
+QNN_OP_PACKAGE_API_VERSION_1_4_0 and QNN_OP_PACKAGE_API_VERSION_2_0_0.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>QnnSystem:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>QnnSystemInterface_getProviders function signature update.</p></li>
+<li><p>QnnSystemContext_getBinaryInfo function signature update for const output.</p></li>
+<li><p>Added QnnSystemContext_BinaryInfoV2_t to support QnnDevice.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>QnnOpDef:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Added op set version.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Other:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Prune header inclusions.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="backend-specific-revision-history">
+<h1>Backend Specific Revision History<a class="headerlink" href="#backend-specific-revision-history" title="Permalink to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cpu/cpu_api_version_history.html">CPU Version History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dsp/dsp_api_version_history.html">DSP Version History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu/gpu_api_version_history.html">GPU Version History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hta/hta_api_version_history.html">HTA Version History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="htp/htp_api_version_history.html">HTP Version History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lpai/lpai_api_version_history.html">LPAI Version History</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="qnn-system-api-revision-history">
+<h1>QNN System API Revision History<a class="headerlink" href="#qnn-system-api-revision-history" title="Permalink to this heading">¶</a></h1>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 11%" />
+<col style="width: 76%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>API Version</p></th>
+<th class="head"><p>SDK Version</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1.1.0</p></td>
+<td><p>2.13.0</p></td>
+<td><ul class="simple">
+<li><p>Added QnnSystemContext_getMetadata.</p></li>
+<li><p>Deprecated QnnSystemContext_getBinaryInfo.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>1.0.0</p></td>
+<td><p>2.0.0</p></td>
+<td><ul class="simple">
+<li><p>Initial release.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="cpu/cpu_api_version_history.html" class="btn btn-neutral float-right" title="QNN CPU API Revision History" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="api_usage_guidelines.html" class="btn btn-neutral float-left" title="Usage Guidelines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

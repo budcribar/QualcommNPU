@@ -1,0 +1,497 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Qairt Converter &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Qairt Quantizer" href="qairt_quantizer.html" />
+    <link rel="prev" title="Offline Graph Caching for DSP Runtime on HTP" href="offline_graph_caching.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="usergroup1.html">Network Models</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="network_layers.html">Supported Network Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supported_onnx_ops.html">Supported ONNX Ops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quantized_models.html">Quantized vs Non-Quantized Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup2.html">User-defined Operations</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="usergroup3.html">Model Conversion</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="model_conv_tensorflow.html">TensorFlow Model Conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensorflow_graphs.html">Tensorflow Graph Compatibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model_conv_tflite.html">TFLite Model Conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model_conv_pytorch.html">PyTorch Model Conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model_conv_onnx.html">ONNX Model Conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model_conversion.html">Quantizing a Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="offline_graph_caching.html">Offline Graph Caching for DSP Runtime on HTP</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Qairt Converter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#basic-conversion">Basic Conversion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#input-output-layouts">Input/Output Layouts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#input-output-customization-using-yaml">Input/Output Customization using YAML</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qat-encodings">QAT encodings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantization-overrides">Quantization Overrides</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fp16-conversion">FP16 Conversion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dryrun">DryRun</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#faqs">FAQs</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qairt_quantizer.html">Qairt Quantizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usergroup4.html">Model Tips</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup6.html">Tutorials and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="usergroup1.html">Network Models</a> &raquo;</li>
+        
+          <li><a href="usergroup3.html">Model Conversion</a> &raquo;</li>
+        
+      <li>Qairt Converter</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="qairt-converter">
+<h1>Qairt Converter<a class="headerlink" href="#qairt-converter" title="Permalink to this heading">¶</a></h1>
+<p>The 2.21 release introduces a new conversion tool, using a new prefix <code class="docutils literal notranslate"><span class="pre">qairt</span></code> for <code class="docutils literal notranslate"><span class="pre">Qualcomm</span> <span class="pre">AI</span> <span class="pre">Runtime</span></code>. This new prefix
+communicates that this converter can be used with both the <code class="docutils literal notranslate"><span class="pre">Qualcomm</span> <span class="pre">Neural</span> <span class="pre">Processing</span> <span class="pre">SDK</span></code> API as well as the <code class="docutils literal notranslate"><span class="pre">Qualcomm</span> <span class="pre">AI</span> <span class="pre">Engine</span> <span class="pre">Direct</span></code>
+API.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This tool is still in a Beta release status.</p>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">qairt-converter</span></code> tool converts a model from one of ONNX/TensorFlow/TFLite/PyTorch framework to a DLC.
+The DLC contains the model in a Qualcomm graph format to support inference on Qualcomm HW.
+The converter automatically detects the proper framework based on the source model extension.</p>
+<p>Supported frameworks and file types are:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 53%" />
+<col style="width: 47%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Framework</p></th>
+<th class="head"><p>File Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Onnx</p></td>
+<td><p><a href="#id1"><span class="problematic" id="id2">*</span></a>.onnx</p></td>
+</tr>
+<tr class="row-odd"><td><p>TensorFlow</p></td>
+<td><p><a href="#id3"><span class="problematic" id="id4">*</span></a>.pb</p></td>
+</tr>
+<tr class="row-even"><td><p>TFLite</p></td>
+<td><p><a href="#id5"><span class="problematic" id="id6">*</span></a>.tflite</p></td>
+</tr>
+<tr class="row-odd"><td><p>PyTorch</p></td>
+<td><p><a href="#id7"><span class="problematic" id="id8">*</span></a>.pt</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="basic-conversion">
+<h2>Basic Conversion<a class="headerlink" href="#basic-conversion" title="Permalink to this heading">¶</a></h2>
+<p>Basic conversion has only one required argument <code class="docutils literal notranslate"><span class="pre">--input_network</span></code>. Some frameworks may require additional arguments
+that are otherwise listed as optional. Please check the help text for more details.</p>
+<ol class="loweralpha simple">
+<li><p>Onnx Conversion</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ qairt-converter --input_network model.onnx
+</pre></div>
+</div>
+<ol class="loweralpha simple" start="2">
+<li><p>Tensorflow Conversion</p></li>
+</ol>
+<p>Tensorflow requires <code class="docutils literal notranslate"><span class="pre">--desired_input_shape</span></code> and <code class="docutils literal notranslate"><span class="pre">--out_tensor_node</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ qairt-converter \
+     --input_network inception_v3_2016_08_28_frozen.pb \
+     --desired_input_shape input 1,299,299,3 \
+     --out_tensor_node InceptionV3/Predictions/Reshape_1
+</pre></div>
+</div>
+</div>
+<div class="section" id="input-output-layouts">
+<h2>Input/Output Layouts<a class="headerlink" href="#input-output-layouts" title="Permalink to this heading">¶</a></h2>
+<p>The default input and output layouts in the converted graph are the same as per the source model. This behavior differs
+from the legacy converter which would modify the input and (optionally) the output layout to the spatial first format.
+An example single layer Onnx model (spatial last) is shown below.</p>
+<div class="figure align-default" id="qairt-single-layers-argmax-layout">
+<img alt="../images/qairt-conversion-layout-comparison.png" src="../images/qairt-conversion-layout-comparison.png" />
+</div>
+</div>
+<div class="section" id="input-output-customization-using-yaml">
+<h2>Input/Output Customization using YAML<a class="headerlink" href="#input-output-customization-using-yaml" title="Permalink to this heading">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This feature will allow specification of the desired input/output tensor layout in the converted model.</p>
+</div>
+<p>Users can provide a yaml configuration file to simplify using different input and output configurations over the command
+line. All configurations in the yaml are optional. If an option is provided in the yaml configuration and an equivalent
+option is provided on the command line, the command line option takes priority. The yaml configuration schema is shown below.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Input</span> <span class="n">Tensor</span> <span class="n">Configuration</span><span class="p">:</span>
+  <span class="c1"># Input 1</span>
+  <span class="o">-</span> <span class="n">Name</span><span class="p">:</span>
+    <span class="n">Src</span> <span class="n">Model</span> <span class="n">Parameters</span><span class="p">:</span>
+        <span class="n">DataType</span><span class="p">:</span>
+        <span class="n">Layout</span><span class="p">:</span>
+    <span class="n">Desired</span> <span class="n">Model</span> <span class="n">Parameters</span><span class="p">:</span>
+        <span class="n">DataType</span><span class="p">:</span>
+        <span class="n">Layout</span><span class="p">:</span>
+        <span class="n">Shape</span><span class="p">:</span>
+        <span class="n">Color</span> <span class="n">Conversion</span><span class="p">:</span>
+        <span class="n">QuantParams</span><span class="p">:</span>
+          <span class="n">Scale</span><span class="p">:</span>
+          <span class="n">Offset</span><span class="p">:</span>
+
+<span class="n">Output</span> <span class="n">Tensor</span> <span class="n">Configuration</span><span class="p">:</span>
+  <span class="c1"># Output 1</span>
+  <span class="o">-</span> <span class="n">Name</span><span class="p">:</span>
+    <span class="n">Src</span> <span class="n">Model</span> <span class="n">Parameters</span><span class="p">:</span>
+        <span class="n">DataType</span><span class="p">:</span>
+        <span class="n">Layout</span><span class="p">:</span>
+    <span class="n">Desired</span> <span class="n">Model</span> <span class="n">Parameters</span><span class="p">:</span>
+        <span class="n">DType</span><span class="p">:</span>
+        <span class="n">Layout</span><span class="p">:</span>
+        <span class="n">QuantParams</span><span class="p">:</span>
+          <span class="n">Scale</span><span class="p">:</span>
+          <span class="n">Offset</span><span class="p">:</span>
+</pre></div>
+</div>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Name:</span></code> Name of the input or output tensor present in the model that needs to be customized</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Src</span> <span class="pre">Model</span> <span class="pre">Parameters</span></code></p>
+<p>These are mandatory if a certain equivalent desired configuration is specified.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">DataType:</span></code> DataType of the tensor in source model.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Layout:</span></code> Layout of the tensor in source model. Accepted values are:</p>
+<ul class="simple">
+<li><p>NCDHW</p></li>
+<li><p>NDHWC</p></li>
+<li><p>NCHW</p></li>
+<li><p>NHWC</p></li>
+<li><p>NFC</p></li>
+<li><p>NCF</p></li>
+<li><p>NTF</p></li>
+<li><p>TNF</p></li>
+<li><p>NF</p></li>
+<li><p>NC</p></li>
+<li><p>F</p></li>
+</ul>
+<p>where</p>
+<ul class="simple">
+<li><p>N = Batch</p></li>
+<li><p>C = Channels</p></li>
+<li><p>D = Depth</p></li>
+<li><p>H = Height</p></li>
+<li><p>W = Width</p></li>
+<li><p>F = Feature</p></li>
+<li><p>T = Time</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Desired</span> <span class="pre">Model</span> <span class="pre">Parameters</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DataType:</span></code> Desired datatype of the tensor in converted model. Supports float32, float16, uint8, int8 datatypes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Layout:</span></code> Desired layout of the tensor in converted model. Supports the same values as source layout.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Shape:</span></code> Shape/Dimension of the tensor in converted model. Supports comma separated dimension value (a,b,c,d)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Color</span> <span class="pre">Conversion:</span></code> Color encoding of the tensor in converted model. Supports BGR, RGB, RGBA, ARGB32, NV21, NV12</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QuantParams:</span></code> Used when the desired model datatype is a quantized datatype; has two sub fields (Scale and Offset).</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Scale:</span></code> Float value for the scale of the buffer as desired by the user.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Offset:</span></code> Integer value for the offset as desired by the user.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>The IO configuration file can be obtained using the <code class="docutils literal notranslate"><span class="pre">--dump_io_config_template</span></code> option of <code class="docutils literal notranslate"><span class="pre">qairt-converter</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ qairt-converter \
+      --input_network model.onnx \
+      --dump_io_config_template &lt;output_folder&gt;/io_config.yaml
+</pre></div>
+</div>
+</div>
+<div class="section" id="qat-encodings">
+<h2>QAT encodings<a class="headerlink" href="#qat-encodings" title="Permalink to this heading">¶</a></h2>
+<p>QAT encodings are quantization-aware training encodings which are present in the source graph. They can be present
+in the following form in the source graph.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>FakeQuant Nodes: There can be FakeQuant nodes in the source network.</p></li>
+<li><p>Tensor output encodings: Quantization overrides can be associated with the output tensors in the source network.</p></li>
+<li><p>Quant-Dequant Nodes: There can be Quant-Dequant nodes present in the source network.</p></li>
+</ul>
+</div></blockquote>
+<p>For all the above cases, the FakeQuant and Quant-Dequant nodes are removed and the quantization overrides are cached
+in the float DLC generated from the <code class="docutils literal notranslate"><span class="pre">qairt-converter</span></code> tool. These can then be used with the <code class="docutils literal notranslate"><span class="pre">qairt-quantizer</span></code> tool.</p>
+</div>
+<div class="section" id="quantization-overrides">
+<h2>Quantization Overrides<a class="headerlink" href="#quantization-overrides" title="Permalink to this heading">¶</a></h2>
+<p>Provide quantization overrides to <code class="docutils literal notranslate"><span class="pre">qairt-converter</span></code> with a JSON file containing the parameters to use for quantization by
+using the <code class="docutils literal notranslate"><span class="pre">--quantization_overrides</span></code> option, e.g., <code class="docutils literal notranslate"><span class="pre">--quantization_overrides</span> <span class="pre">&lt;overrides.json&gt;</span></code> These will be cached with
+the float DLC generated by <code class="docutils literal notranslate"><span class="pre">qairt-converter</span></code> and can be used with the <code class="docutils literal notranslate"><span class="pre">qairt-quantizer</span></code> tool.</p>
+<p>These will override any quantization data carried from conversion ,e.g., TF fake quantization, or calculated during the normal
+quantization process. For more details refer to <a class="reference external" href="quantized_models.html">Quantized vs Non-Quantized Models</a>.</p>
+</div>
+<div class="section" id="fp16-conversion">
+<h2>FP16 Conversion<a class="headerlink" href="#fp16-conversion" title="Permalink to this heading">¶</a></h2>
+<p>Users also have the ability to generate a float16 graph where all float32 tensors are converted to float16 by passing
+the <code class="docutils literal notranslate"><span class="pre">--float_bitwidth</span> <span class="pre">16</span></code> flag to the <code class="docutils literal notranslate"><span class="pre">qairt-converter</span></code> tool.
+To generate a float16 graph with the bias still in float32, an additional <code class="docutils literal notranslate"><span class="pre">--float_bias_bitwidth</span> <span class="pre">32</span></code> flag can be
+passed.</p>
+</div>
+<div class="section" id="dryrun">
+<h2>DryRun<a class="headerlink" href="#dryrun" title="Permalink to this heading">¶</a></h2>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">--dry_run</span></code> option to evaluate the model without actually converting any ops. This returns unsupported ops/attributes
+and unused inputs/outputs.</p>
+</div>
+<div class="section" id="faqs">
+<h2>FAQs<a class="headerlink" href="#faqs" title="Permalink to this heading">¶</a></h2>
+<ul>
+<li><p>How is QAIRT Converter different from Legacy Converters?</p>
+<ul>
+<li><p>Single converter vs independent framework converters</p>
+<p>The qairt-converter is a single converter tool supporting conversion for all supported frameworks based
+on the model extension while legacy converters had different framework specific tools.</p>
+</li>
+<li><p>Changed some optional arguments as default behavior</p>
+<p>The default input and output layouts in the Converted graph will be same as in the Source graph. The legacy ONNX and
+Pytorch converters may not always retain the input and output layouts from Source graph.</p>
+</li>
+<li><p>Removed deprecated arguments</p>
+<p>Deprecated arguments on the legacy converters are not enabled on the new converter.</p>
+</li>
+<li><p>Renamed some arguments for clarity</p>
+<p>The –input_encoding argument is renamed to –input_color_encoding. Framework-specific arguments have the
+framework name present. eg- –define_symbol is renamed to –onnx_define_symbol, –show_unconsumed_nodes is
+renamed to –tf_show_unconsumed_nodes, –signature_name is renamed to –tflite_signature_name.</p>
+</li>
+<li><p>DLC as the Converter output file format</p>
+<p>The QAIRT Converter uses DLC as export format similar to SNPE.</p>
+</li>
+<li><p>What about the changes to Quantization?</p>
+<p><code class="docutils literal notranslate"><span class="pre">qairt-quantizer</span></code> is a standalone tool for quantization like <code class="docutils literal notranslate"><span class="pre">snpe-dlc-quant</span></code>.
+Please refer to <a class="reference external" href="tools.html#qairt-quantizer">qairt-quantizer</a> for more information and usage details.</p>
+</li>
+</ul>
+</li>
+<li><p>Will the Converted model be any different with QAIRT converter compared to Legacy Converter?</p>
+<ul class="simple">
+<li><p>The result of the QAIRT Converter will be different from the result of Legacy Converters in terms of the input/output layout.</p></li>
+<li><p>Legacy converters will by default modify the input tensors to Spatial First (e.g. NHWC) layout. This means for Frameworks
+like ONNX, where the predominant layout is Spatial Last (e.g. NCHW), the input/output layout is different between the
+source model and the converted model.</p></li>
+<li><p>Since QAIRT Converter preserves the source layouts be default, the QAIRT-converted graphs in case of many ONNX/Pytorch
+models will be different from the Legacy-converted graphs.</p></li>
+<li><p>The QAIRT Converter will be enhanced in a future release to support the same layouts as the legacy converters.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="qairt_quantizer.html" class="btn btn-neutral float-right" title="Qairt Quantizer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="offline_graph_caching.html" class="btn btn-neutral float-left" title="Offline Graph Caching for DSP Runtime on HTP" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

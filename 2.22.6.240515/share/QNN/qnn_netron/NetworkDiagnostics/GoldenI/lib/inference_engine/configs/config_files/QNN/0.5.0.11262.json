@@ -1,0 +1,61 @@
+{
+    "inference_engine": {
+        "backend_locations": {
+            "cpu": "{engine_path}/target/{target_arch}/lib/libQnnCpu.so",
+            "gpu": "{engine_path}/target/{target_arch}/lib/libQnnGpu.so"
+        },
+        "op_packages": {
+            "cpu": [],
+            "gpu": ["{engine_path}/target/{target_arch}/lib/libQnnGpuOpPkg.so"],
+            "interface": "QnnOpPackage_interfaceProvider"
+        },
+        "lib_generator": {
+            "executable": "qnn-model-lib-generator",
+            "arguments": {
+                "model_cpp": "-c",
+                "model_bin": "-b",
+                "output_path": "-o"
+            }
+        },
+        "sdk_tools_root": "{engine_path}/target/linux-x86_64",
+        "environment_variables": {
+            "PYTHONPATH": "{sdk_tools_root}/python/",
+            "PATH": "{sdk_tools_root}/bin",
+            "LD_LIBRARY_PATH": "{sdk_tools_root}/lib"
+        },
+        "libcpp_dependency": true
+    },
+    "devices": {
+        "host": ["x86"],
+        "target": ["x86", "linux-embedded", "android"]
+    },
+    "converter": {
+        "tensorflow": {
+            "executable": "tensorflow-to-qnn",
+            "arguments": {
+                "model_path_flag": "--input_network",
+                "input_tensor_flag": "--input_dim",
+                "output_tensor_flag": "--out_node",
+                "output_path_flag": "--output_path"
+            }
+        },
+        "onnx": {
+            "executable": "onnx-to-qnn",
+            "arguments": {
+                "model_path_flag": "--input_network",
+                "output_path_flag": "--output_path"
+            }
+        }
+    },
+    "executor": {
+        "executable":"qnn-net-run",
+        "arguments": {
+            "qnn_model_path": "--model",
+            "input_list": "--input_list",
+            "backend": "--backend",
+            "op_package": "--op_packages",
+            "output_dir": "--output_dir"
+        },
+        "target_path": "/data/local/tmp/network_diagnosis"
+    }
+}

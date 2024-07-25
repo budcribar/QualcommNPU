@@ -1,0 +1,44 @@
+{
+    "graph": {
+        "g-1": {
+            "condition": "node_pool.get_elsize() == 2",
+            "issue":"'This model uses 16-bit activation data. 16-bit activation data takes twice the amount of memory than 8-bit activation data does.'",
+            "recomm":"'Try to use a smaller datatype to get better performance. E.g., 8-bit'"
+        }
+    },
+    "single_node": {
+        "sn-2": {
+            "condition": "node.is_conv() and (not node.conv_channel_less_than(32)) and (not node.conv_channel_mul_of(32))",
+            "issue":"'The channel size of input/output tensor of this convolution is not a multiple of 32'",
+            "recomm":"'Try adjusting the channel size of input/output tensor to a multiple of 32 to get better performance.'"
+        },
+        "sn-3": {
+            "condition": "node.get_type() == 'Prelu'",
+            "issue":"'Prelu usually has poor performance compared to Relu.'",
+            "recomm":"'Try replacing Prelu with Relu to get better performance.'"
+        },
+        "sn-4": {
+            "condition": "node.is_divide_by_const()",
+            "issue":"'ElementWiseDivide usually has poor performance compared to ElementWiseMultiply.'",
+            "recomm":"'Try replacing ElementWiseDivide with ElementWiseMultiply using the reciprocal value to get better performance.'"
+        },
+        "sn-5": {
+            "condition": "node.get_type() == 'Transpose' or node.get_type() == 'Reshape'",
+            "issue":"'{} usually have poor performance'.format(node.get_type())",
+            "recomm":"'{}'.format(get_sn5_recomm(node))"
+        }
+    },
+    "patterns": {
+        "p-1": {
+            "condition": "conv_padding_in_middle(node_pool, optimized_graph, backend)",
+            "issue":"'This is a convolution node with padding in the middle of a convolution sequence'",
+            "recomm":"'Try moving the padding to the beginning of the sequence to get better performance'"
+        },
+        "p-2": {
+            "condition": "conv_seq_low_channel(node_pool, optimized_graph, backend, 32)",
+            "issue":"'The number of channels in the input/output tensor of this convolution node is low (smaller than 32).'",
+            "recomm":"'Try increasing the number of channels in the input/output tensor to 32 or greater to get better performance'",
+            "recomm_alt":"'This node appears in a sequence of convolutions. Try inserting space-to-depth node at the beginning of this sequence of convolutions to increase the number of channels of the input/output tensor of this convolution node to 32 or greater'"
+        }
+    }
+}

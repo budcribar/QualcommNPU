@@ -1,0 +1,326 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>QNN LPAI Op Support Revision History &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Common Terminology" href="../terminology.html" />
+    <link rel="prev" title="QNN HTP Op Support Revision History" href="../htp/htp_opdef_version_history.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../operations.html">Operations</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../OpDef/SupportedOps.html">Supported Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../OpDef/opdef_version_history.html">Op Definition Revision History</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../OpDef/opdef_version_history.html#backend-specific-revision-history">Backend Specific Revision History</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../cpu/cpu_opdef_version_history.html">QNN CPU Op Definition Revision History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dsp/dsp_opdef_version_history.html">QNN DSP Op Definition Revision History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gpu/gpu_opdef_version_history.html">QNN GPU Op Definition Revision History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hta/hta_opdef_version_history.html">QNN HTA Op Definition Revision History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../htp/htp_opdef_version_history.html">QNN HTP Op Definition Revision History</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">QNN LPAI Op Definition Revision History</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../operations.html#operation-definitions">Operation Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operations.html#backend-supplements">Backend Supplements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../operations.html">Operations</a> &raquo;</li>
+        
+          <li><a href="../../OpDef/opdef_version_history.html">Op Definition Revision History</a> &raquo;</li>
+        
+      <li>QNN LPAI Op Support Revision History</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="qnn-lpai-op-support-revision-history">
+<h1>QNN LPAI Op Support Revision History<a class="headerlink" href="#qnn-lpai-op-support-revision-history" title="Permalink to this heading">¶</a></h1>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 74%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Introduced in QNN SDK Version</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2.16.0</p></td>
+<td><ul class="simple">
+<li><dl class="simple">
+<dt>Added Support of 8-bit and 16-bit ElementWiseUnary Op with sub operations:</dt><dd><ul>
+<li><p>ElementWiseExp, ElementWiseLog, ElementWiseNeg, ElementWiseSquareRoot</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Added Support of 8-bit and 16-bit ElementWiseBinary Op with sub operations:</dt><dd><ul>
+<li><p>ElementWiseAdd, ElementWiseDivide, ElementWiseMultiply, ElementWiseSubtract</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Added Support of 8-bit and 16-bit ElementWiseNeuron Op with sub operations:</dt><dd><ul>
+<li><p>Gelu, HardSwish, Relu, ReluMinMax, Sigmoid, Tanh</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.13.1</p></td>
+<td><ul class="simple">
+<li><p>Added support for Resize and ElementWiseMinimum (8bit/16bit)</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>2.12.1</p></td>
+<td><ul class="simple">
+<li><p>Added ROI support for Slice and Concat</p></li>
+<li><p>Added support for Convert (8bit/16bit)</p></li>
+<li><p>Added support for Pool to floor rounding mode</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.11.1</p></td>
+<td><ul class="simple">
+<li><p>Removed Gather op limitation</p></li>
+<li><p>Added support deconv with both input and output padding</p></li>
+<li><p>Added 4-bit weights support for Conv2d, DepthWiseConv2d, TransposeConv2d</p></li>
+<li><p>Added 8-bit support for HardSwish and Gelu</p></li>
+<li><p>Added 16-bit support for Argmax, Argmin, Batchnorm, Conv2d, Concat, DepthWiseConv2d,
+HardSwish, ElementWiseMaximum, ElementWiseAdd, ElementWiseDivide, ElementWiseExp,
+ElementWiseLog, ElementWiseMultiply, ElementWiseSquareRoot, ElementWiseSubtract,
+FullyConnected, Gather, Gelu, LogSoftmax, MatMul, Pad, PoolAvg2d, PoolMax2d, Prelu,
+ReduceMax, ReduceMean, ReduceMin, ReluMinMax,  Reshape, ReduceSum, Relu, Softmax,
+StridedSlice, Sigmoid, Transpose, Tanh, and TransposeConv2d.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>2.10.1</p></td>
+<td><ul class="simple">
+<li><p>Fix for overflow for clip in global AvgPool</p></li>
+<li><p>Added 8-bit signed/unsigned support for ReduceMax, ReduceMin, ReduceSum, StridedSlice,
+Gather, and LogSoftMax.</p></li>
+<li><p>Added AvgPool, MaxPool, Pad, TransposeConv2d, and StridedSlice validators.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../terminology.html" class="btn btn-neutral float-right" title="Common Terminology" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../htp/htp_opdef_version_history.html" class="btn btn-neutral float-left" title="QNN HTP Op Support Revision History" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

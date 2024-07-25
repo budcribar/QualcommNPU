@@ -1,0 +1,320 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Windows Hibernation Tutorial &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Windows Hibernation Tutorial</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="windows-hibernation-tutorial">
+<h1>Windows Hibernation Tutorial<a class="headerlink" href="#windows-hibernation-tutorial" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<p><em>hibernation</em> is a Windows <a class="reference external" href="https://learn.microsoft.com/en-us/windows/win32/power/system-power-states#hibernate-state-s4">system power states</a>.
+This tutorial describes how to safely enter hibernation, while running a QNN application, and provides code snippets demonstrating the QNN API
+calls used to release system resources.</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#free-context">Free context</a></p></li>
+<li><p><a class="reference internal" href="#free-device">Free device</a></p></li>
+<li><p><a class="reference internal" href="#free-backend">Free backend</a></p></li>
+<li><p><a class="reference internal" href="#close-backend-library">Close backend library</a></p></li>
+</ol>
+<div class="section" id="steps-for-safe-hibernation">
+<h3>Steps for safe hibernation<a class="headerlink" href="#steps-for-safe-hibernation" title="Permalink to this heading">¶</a></h3>
+</div>
+</div>
+<div class="section" id="free-context">
+<h2>Free context<a class="headerlink" href="#free-context" title="Permalink to this heading">¶</a></h2>
+<p>Any contexts created in a QNN backend should be released:</p>
+<p><a class="reference internal" href="sample_app.html#free-context"><span class="std std-ref">Free context from SampleApp</span></a></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">QNN_CONTEXT_NO_ERROR</span><span class="w"> </span><span class="o">!=</span>
+<span class="linenos">2</span><span class="w">       </span><span class="n">m_qnnFunctionPointers</span><span class="p">.</span><span class="n">qnnInterface</span><span class="p">.</span><span class="n">contextFree</span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">profileBackendHandle</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">3</span><span class="w">   </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Could not free context&quot;</span><span class="p">);</span>
+<span class="linenos">4</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span>
+<span class="linenos">5</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="free-device">
+<h2>Free device<a class="headerlink" href="#free-device" title="Permalink to this heading">¶</a></h2>
+<p>Devices created through the QNN API should be freed next:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">QNN_DEVICE_NO_ERROR</span><span class="w"> </span><span class="o">!=</span>
+<span class="linenos">2</span><span class="w">       </span><span class="n">m_qnnFunctionPointers</span><span class="p">.</span><span class="n">qnnInterface</span><span class="p">.</span><span class="n">deviceFree</span><span class="p">(</span><span class="n">deviceHandle</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">3</span><span class="w">   </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Failed to free device&quot;</span><span class="p">);</span>
+<span class="linenos">4</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span>
+<span class="linenos">5</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="free-backend">
+<h2>Free backend<a class="headerlink" href="#free-backend" title="Permalink to this heading">¶</a></h2>
+<p>The application should then free any backends created:</p>
+<p><a class="reference internal" href="sample_app.html#terminate-backend"><span class="std std-ref">Free backend from SampleApp</span></a></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">QNN_BACKEND_NO_ERROR</span><span class="w"> </span><span class="o">!=</span>
+<span class="linenos">2</span><span class="w">       </span><span class="n">m_qnnFunctionPointers</span><span class="p">.</span><span class="n">qnnInterface</span><span class="p">.</span><span class="n">backendFree</span><span class="p">(</span><span class="n">backendHandle</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">3</span><span class="w">   </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Could not free backend&quot;</span><span class="p">);</span>
+<span class="linenos">4</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span>
+<span class="linenos">5</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="close-backend-library">
+<h2>Close backend library<a class="headerlink" href="#close-backend-library" title="Permalink to this heading">¶</a></h2>
+<p>Finaly, the application should close the backend library:</p>
+<p><a class="reference internal" href="sample_app.html#loading-a-backend"><span class="std std-ref">Loading a backend from SampleApp</span></a> as shown below:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">libBackendHandle</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">2</span><span class="w">   </span><span class="n">pal</span><span class="o">::</span><span class="n">dynamicloading</span><span class="o">::</span><span class="n">dlClose</span><span class="p">(</span><span class="n">libBackendHandle</span><span class="p">);</span>
+<span class="linenos">3</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="full-sampleapp-hibernation-example">
+<h2>Full SampleApp Hibernation Example<a class="headerlink" href="#full-sampleapp-hibernation-example" title="Permalink to this heading">¶</a></h2>
+<p>Now we can bring all the steps together using <span class="xref std std-ref">SampleApp</span> as an example.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="w"> </span><span class="c1">// Free context first</span>
+<span class="linenos"> 2</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">QNN_CONTEXT_NO_ERROR</span><span class="w"> </span><span class="o">!=</span>
+<span class="linenos"> 3</span><span class="w">       </span><span class="n">m_qnnFunctionPointers</span><span class="p">.</span><span class="n">qnnInterface</span><span class="p">.</span><span class="n">contextFree</span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">profileBackendHandle</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 4</span><span class="w">   </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Could not free context&quot;</span><span class="p">);</span>
+<span class="linenos"> 5</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span>
+<span class="linenos"> 6</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="w"> </span><span class="c1">// Free device if needed</span>
+<span class="linenos"> 9</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">QNN_DEVICE_NO_ERROR</span><span class="w"> </span><span class="o">!=</span>
+<span class="linenos">10</span><span class="w">       </span><span class="n">m_qnnFunctionPointers</span><span class="p">.</span><span class="n">qnnInterface</span><span class="p">.</span><span class="n">deviceFree</span><span class="p">(</span><span class="n">deviceHandle</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">11</span><span class="w">   </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Failed to free device&quot;</span><span class="p">);</span>
+<span class="linenos">12</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span>
+<span class="linenos">13</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="w"> </span><span class="c1">// Free backend</span>
+<span class="linenos">16</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">QNN_BACKEND_NO_ERROR</span><span class="w"> </span><span class="o">!=</span>
+<span class="linenos">17</span><span class="w">       </span><span class="n">m_qnnFunctionPointers</span><span class="p">.</span><span class="n">qnnInterface</span><span class="p">.</span><span class="n">backendFree</span><span class="p">(</span><span class="n">backendHandle</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">18</span><span class="w">   </span><span class="n">QNN_ERROR</span><span class="p">(</span><span class="s">&quot;Could not free backend&quot;</span><span class="p">);</span>
+<span class="linenos">19</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">StatusCode</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span>
+<span class="linenos">20</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">21</span>
+<span class="linenos">22</span><span class="w"> </span><span class="c1">// Close backhandle</span>
+<span class="linenos">23</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">libBackendHandle</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">24</span><span class="w">   </span><span class="n">pal</span><span class="o">::</span><span class="n">dynamicloading</span><span class="o">::</span><span class="n">dlClose</span><span class="p">(</span><span class="n">libBackendHandle</span><span class="p">);</span>
+<span class="linenos">25</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">26</span>
+<span class="linenos">27</span><span class="w"> </span><span class="c1">// This turns device into hibernation mode</span>
+<span class="linenos">28</span><span class="w"> </span><span class="n">SetSuspendState</span><span class="p">(</span><span class="nb">true</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+<span class="linenos">29</span><span class="w"> </span><span class="c1">// Get back from hibernation</span>
+<span class="linenos">30</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">EXIT_SUCCESS</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

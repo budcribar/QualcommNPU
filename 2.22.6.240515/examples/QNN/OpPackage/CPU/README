@@ -1,0 +1,74 @@
+Getting Started
+===============
+
+Follow "To set up your environment" instruction from ${QNN_SDK_ROOT}/README
+
+
+Building and Running Example Model
+==================================
+
+This section will show how to use the QNN SDK tools to build and run using an Op Package example
+for CPU BE. It will walk through steps needed to generate and use a OpPackage library based on
+an example op in the SDK located at ${QNN_SDK_ROOT}/examples/QNN/OpPackage/CPU. Specifically,
+it explains the following stages:
+   - Using make to generate the CPU Op package shared library from the example source.
+   - Using qnn-net-run with the generated shared library.
+
+-----------------------------------------------------------------
+1. Building libQnnCpuOpPackageExample.so using OpPackage example
+-----------------------------------------------------------------
+# Go to the OpPackage example folder.
+$ cd ${QNN_SDK_ROOT}/examples/QNN/OpPackage/CPU
+
+# Build example source and generate libQnnCpuOpPackageExample.so library
+# use "make cpu_x86" for linux-x86_64
+# use "make cpu_android" for arm64-v8a
+$ make
+
+# The command command will generate OpPackage library for x86_64-linux-clang and
+  aarch64-android platforms in the libs/ directory.
+$ ls -l ./libs
+
+---------------------------------------------------------
+2. Running qnn-net-run using libQnnCpuOpPackageExample.so
+---------------------------------------------------------
+# Using libQnnCpuOpPackageExample.so library created from step 1, you can run qnn-net-run
+# Note: A pre-requisite step is to have set up the environment by having run envsetup.sh. Refer to
+  the instruction at the top of this README for help.
+
+# Option 1: Running on linux-x86_64
+    # Run help to see options available
+    $ qnn-net-run -h
+
+    # Basic command needed for running net-run on the CPU BE with the generated example:
+    $ qnn-net-run --backend ${QNN_SDK_ROOT}/lib/x86_64-linux-clang/libQnnCpu.so
+                  --model <model.so>
+                  --input_list <path_to_input_list.txt>
+                  --op_packages ${QNN_SDK_ROOT}/examples/QNN/OpPackage/CPU/libs/x86_64-linux-clang/libQnnCpuOpPackageExample.so::QnnOpPackage_interfaceProvider
+
+# Option 2: Running on arm64-v8a
+    # Push the following files to the device
+    # QNN CPU Backend library
+    adb push ${QNN_SDK_ROOT}/lib/aarch64-android/libQnnCpu.so /data/local/tmp
+
+    # Example OpPackage (to demonstrate external "examples.OpPackage" OpPackage, for now it contains RELU Op)
+    adb push ${QNN_SDK_ROOT}/examples/QNN/OpPackage/CPU/libs/aarch64-android/libQnnCpuOpPackageExample.so /data/local/tmp
+
+    # Running qnn-net-run
+    # Setup LD_LIBRARY_PATH
+    adb shell
+    $ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/data/local/tmp
+
+    # Run net-run
+    $ qnn-net-run --backend libQnnCpu.so
+                  --model libqnn_model_float.so
+                  --input_list input_list_float.txt
+                  --op_packages libQnnCpuOpPackageExample.so:QnnOpPackage_interfaceProvider
+
+#NOTES:
+# 1. The CPU backend will use the example op package for ops that are not present in the core library.
+# 2. The rest of the ops in the model will be executed on the Qualcomm native op package
+     distributed with the SDK.
+# 3. For this release the CPU native op package is not exposed as a shared library
+     but is consumed internally. In a subsequent release all op packages required by a model
+     will need to be explicitly supplied to a runtime tool such as qnn-net-run.

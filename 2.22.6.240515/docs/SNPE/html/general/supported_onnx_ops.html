@@ -1,0 +1,777 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Supported ONNX Ops &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Quantized vs Non-Quantized Models" href="quantized_models.html" />
+    <link rel="prev" title="Supported Network Layers" href="network_layers.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="usergroup1.html">Network Models</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="network_layers.html">Supported Network Layers</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Supported ONNX Ops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quantized_models.html">Quantized vs Non-Quantized Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup2.html">User-defined Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup3.html">Model Conversion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup6.html">Tutorials and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="usergroup1.html">Network Models</a> &raquo;</li>
+        
+      <li>Supported ONNX Ops</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="supported-onnx-ops">
+<h1>Supported ONNX Ops<a class="headerlink" href="#supported-onnx-ops" title="Permalink to this heading">¶</a></h1>
+<div class="ui-resizable side-nav-resizable docutils container" id="side-nav">
+<div class="docutils container" id="nav-tree">
+<div class="docutils container" id="nav-tree-contents">
+</div>
+</div>
+</div>
+<div class="docutils container" id="doc-content">
+<div class="header docutils container">
+</div>
+<div class="contents docutils container">
+<div class="textblock docutils container">
+<p class="rubric" id="operator-support">Operator Support</p>
+<p>snpe-onnx-to-dlc currently supports the following operators and
+parameters:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Operator</p></th>
+<th class="head"><p>Opset Version
+Supported</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Abs</p></td>
+<td><p>1,6,13</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Add</p></td>
+<td><p>1,6,7,13,14</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>And</p></td>
+<td><p>1,7</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>AveragePool</p></td>
+<td><p>1,7,10,11</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>ArgMax</p></td>
+<td><p>1,11,12,13</p></td>
+<td><p>Only default value(0)
+is supported for
+select_last_index</p></td>
+</tr>
+<tr class="row-odd"><td><p>ArgMin</p></td>
+<td><p>1,11,12,13</p></td>
+<td><p>Only default value(0)
+is supported for
+select_last_index</p></td>
+</tr>
+<tr class="row-even"><td><p>Asin</p></td>
+<td><p>7</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Atan</p></td>
+<td><p>7</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>BatchNormalization</p></td>
+<td><p>1,6,7,9,14,15</p></td>
+<td><p>Momentum is not
+supported. Only
+default value (0) for
+training_mode is
+supported. All
+inputs after the
+first must be
+static. Only the
+first output is
+generated.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ceil</p></td>
+<td><p>1,6,13</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Clip</p></td>
+<td><p>1,6,11,12</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Concat</p></td>
+<td><p>1,4,11,13</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Constant</p></td>
+<td><p>1,9,11,12,13</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>ConstantOfShape</p></td>
+<td><p>9</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Conv</p></td>
+<td><p>1,11</p></td>
+<td><p>“kernel_shape” which
+differs from that of
+weights is not
+supported.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ConvTranspose</p></td>
+<td><p>1,11</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Cos</p></td>
+<td><p>7</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>CumSum</p></td>
+<td><p>11,14</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>DepthToSpace</p></td>
+<td><p>1,11,13</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>DequantizeLinear</p></td>
+<td><p>10,13</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Div</p></td>
+<td><p>1,6,7,13,14</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Dropout</p></td>
+<td><p>1,6,7,10</p></td>
+<td><p>Only test mode (i.e.
+noop) is supported.
+Mask output is not
+generated.</p></td>
+</tr>
+<tr class="row-even"><td><p>Elu</p></td>
+<td><p>1,6</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Equal</p></td>
+<td><p>1,7,11,13</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Erf</p></td>
+<td><p>9,13</p></td>
+<td><p>Only certain cases
+which can be matched
+to GeLU will be
+supported</p></td>
+</tr>
+<tr class="row-odd"><td><p>Exp</p></td>
+<td><p>1,6,13</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Expand</p></td>
+<td><p>8,13</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Flatten</p></td>
+<td><p>1,9,11,13</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Floor</p></td>
+<td><p>1,6</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Gather</p></td>
+<td><p>1,11,13</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>GatherElements</p></td>
+<td><p>11,13</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>GatherND</p></td>
+<td><p>11,12,13</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Gemm</p></td>
+<td><p>1,6,7,9,11,13</p></td>
+<td><p>Gemm is only
+supported in the
+case where it is
+used to emulate FC;
+transA=0, transB=1,
+broadcast=1.</p></td>
+</tr>
+<tr class="row-odd"><td><p>GlobalAveragePool</p></td>
+<td><p>1</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>GlobalMaxPool</p></td>
+<td><p>1</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Greater</p></td>
+<td><p>1,7,9,13</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>GreaterOrEqual</p></td>
+<td><p>12</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>GridSample</p></td>
+<td><p>16</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>GRU</p></td>
+<td><p>1,7,14</p></td>
+<td><p>Custom
+activations,
+user-defined
+activations and clip
+are not supported.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Identity</p></td>
+<td><p>1,13,14,16</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>InstanceNormalization</p></td>
+<td><p>1,6</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>LRN</p></td>
+<td><p>1,13</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>LeakyRelu</p></td>
+<td><p>1,6</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Less</p></td>
+<td><p>1,7,9,13</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>LessOrEqual</p></td>
+<td><p>12</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Log</p></td>
+<td><p>1,6,13</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>LogSoftmax</p></td>
+<td><p>1,11</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>LpNormalization</p></td>
+<td><p>1</p></td>
+<td><p>Only support
+attribute p=2</p></td>
+</tr>
+<tr class="row-even"><td><p>LpPool</p></td>
+<td><p>1,2,11</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>LSTM</p></td>
+<td><p>1,7,14</p></td>
+<td><p>Custom
+activations,
+user-defined
+activations, clip
+and input-forget
+parameters are not
+supported. Only
+default value(0)
+is supported for
+layout</p></td>
+</tr>
+<tr class="row-even"><td><p>Matmul</p></td>
+<td><p>1,9,13</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Max</p></td>
+<td><p>1,6,8,12,13</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>MaxPool</p></td>
+<td><p>1,8,10,11,12</p></td>
+<td><p>Only support
+Dilations = 1. Only
+support single
+output, doesn’t
+support Indices
+output.</p></td>
+</tr>
+<tr class="row-odd"><td><p>MaxRoiPool</p></td>
+<td><p>1</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Min</p></td>
+<td><p>1,6,8,12,13</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Mod</p></td>
+<td><p>10,13</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Mul</p></td>
+<td><p>1,6,7,13,14</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Neg</p></td>
+<td><p>1,6,13</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>NonMaxSuppression</p></td>
+<td><p>10,11</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>NonZero</p></td>
+<td><p>9,13</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Not</p></td>
+<td><p>1</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>OneHot</p></td>
+<td><p>9,11</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Or</p></td>
+<td><p>1,7</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Pad</p></td>
+<td><p>1,2,11,13</p></td>
+<td><p>Only constant
+padding is
+supported.</p></td>
+</tr>
+<tr class="row-even"><td><p>Pow</p></td>
+<td><p>1,7,12,13,15</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>PRelu</p></td>
+<td><p>1,6,7,9</p></td>
+<td><p>Slope must be
+static.</p></td>
+</tr>
+<tr class="row-even"><td><p>QuantizeLinear</p></td>
+<td><p>10,13</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Range</p></td>
+<td><p>11</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Reciprocal</p></td>
+<td><p>1,6</p></td>
+<td><p>Translate to Div.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Reducel2</p></td>
+<td><p>1,11,13</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>ReduceMax</p></td>
+<td><p>1,11,12,13</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>ReduceMean</p></td>
+<td><p>1,11,13</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>ReduceMin</p></td>
+<td><p>1,11,12,13</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>ReduceProd</p></td>
+<td><p>1,11,13</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>ReduceSum</p></td>
+<td><p>1,11,13</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Relu</p></td>
+<td><p>1,6</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Reshape</p></td>
+<td><p>1,5,13,14</p></td>
+<td><p>Only default value(0)
+is supported for
+allow_zero</p></td>
+</tr>
+<tr class="row-odd"><td><p>Resize</p></td>
+<td><p>10,11</p></td>
+<td><p>Only 4D and 5D inputs
+supported.</p></td>
+</tr>
+<tr class="row-even"><td><p>RoiAlign</p></td>
+<td><p>10,16</p></td>
+<td><p>Only output_haf_pixel
+is supported for
+coordinate
+transformation mode</p></td>
+</tr>
+<tr class="row-odd"><td><p>Round</p></td>
+<td><p>11</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>RNN</p></td>
+<td><p>1, 7</p></td>
+<td><p>Custom and
+user-defined
+activations
+(activation_alpha
+and beta) are not
+supported.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Round</p></td>
+<td><p>11</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Scatter</p></td>
+<td><p>9,11</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>ScatterElements</p></td>
+<td><p>11,13</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>ScatterND</p></td>
+<td><p>11,13,16</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Shape</p></td>
+<td><p>1</p></td>
+<td><p>Shape is only
+supported at
+conversion time. The
+input to Shape and
+all operators which
+manipulate the
+resulting output
+shape (eg slice,
+concat, etc) are
+also computed at
+conversion time.</p></td>
+</tr>
+<tr class="row-even"><td><p>Sign</p></td>
+<td><p>13</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Sigmoid</p></td>
+<td><p>1,6,13</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Sin</p></td>
+<td><p>7</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Slice</p></td>
+<td><p>1,10,11,13</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Softmax</p></td>
+<td><p>1,11,13</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Softplus</p></td>
+<td><p>1</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Split</p></td>
+<td><p>1,2,11,13</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Squeeze</p></td>
+<td><p>1,11,13</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Sqrt</p></td>
+<td><p>1,6,13</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Sub</p></td>
+<td><p>1,6,7,13,14</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Sum</p></td>
+<td><p>1,6,8,13</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Tanh</p></td>
+<td><p>1,6,13</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Tile</p></td>
+<td><p>1.6,13</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>TopK</p></td>
+<td><p>1,10,11</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Transpose</p></td>
+<td><p>1,13</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Unsqueeze</p></td>
+<td><p>1,11,13</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Upsample</p></td>
+<td><p>1,7,9</p></td>
+<td><p>Only bilinear and
+nearest neighbor
+modes are supported.</p></td>
+</tr>
+<tr class="row-odd"><td><p>FC</p></td>
+<td><p>1</p></td>
+<td><p>Both “axis” and
+“axis_w” must be 1.</p></td>
+</tr>
+<tr class="row-even"><td><p>ScaledTanh</p></td>
+<td><p>1,6</p></td>
+<td><p>Scaledtanh is
+removed in ONNX
+release v1.5.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>ThresholdRelu</p></td>
+<td><p>1</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>SpaceToDepth</p></td>
+<td><p>1,13</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Where</p></td>
+<td><p>9,16</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="quantized_models.html" class="btn btn-neutral float-right" title="Quantized vs Non-Quantized Models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="network_layers.html" class="btn btn-neutral float-left" title="Supported Network Layers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,378 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Tutorial - Skip Delegation Ops Using the Qualcomm® AI Engine Direct Delegate &mdash; Qualcomm® AI Engine Direct Delegate</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tutorial - Benchmarking the Qualcomm® AI Engine Direct Delegate" href="tutorial_benchmark_model.html" />
+    <link rel="prev" title="Tutorial - Running Inference Using the Qualcomm® AI Engine Direct Delegate" href="tutorial_qtld_net_run.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Qualcomm® AI Engine Direct Delegate
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qnn_libs.html">Qualcomm® AI Engine Direct Backend Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Acceleration Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom_op.html">Custom Operator Support</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial_qtld_net_run.html">Tutorial - Running Inference Using the Qualcomm® AI Engine Direct Delegate</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Tutorial - Skip Delegation Ops Using the Qualcomm® AI Engine Direct Delegate</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-skip-delegation-op-ids">How to Skip Delegation OP IDs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#skip-delegation-ops-with-op-ids">Skip Delegation Ops with Op IDs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#skip-delegation-ops-with-node-ids">Skip Delegation Ops with Node IDs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_benchmark_model.html">Tutorial - Benchmarking the Qualcomm® AI Engine Direct Delegate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_htp_shared_memory.html">Tutorial - Running Inference Using Shared Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_mix_precision.html">Tutorial - Use Mix-Precision Model with Qualcomm® AI Engine Direct Delegate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_qtld_profiler.html">Tutorial - Profile Custom Models using Qualcomm® AI Engine Direct Delegate</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_version_history.html">API Version History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Qualcomm® AI Engine Direct Delegate</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="tutorials.html">Tutorials</a> &raquo;</li>
+        
+      <li>Tutorial - Skip Delegation Ops Using the Qualcomm® AI Engine Direct Delegate</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tutorial-skip-delegation-ops-using-the-qualcomm-r-ai-engine-direct-delegate">
+<h1>Tutorial - Skip Delegation Ops Using the Qualcomm® AI Engine Direct Delegate<a class="headerlink" href="#tutorial-skip-delegation-ops-using-the-qualcomm-r-ai-engine-direct-delegate" title="Permalink to this heading">¶</a></h1>
+<p>Qualcomm® AI Engine Direct Delegate has provided skip options,
+giving users the flexilbity to control whether to fallback specific Ops to TFLite runtime.
+This tutorial demonstrates how to use the skip options with the Qualcomm® AI Engine Direct Delegate.
+We will go through how to use qtld-net-run to perform inferences.
+If users are interested in the implementation of Skip Delegation OPs with Qualcomm® AI Engine Direct Delegate,
+a sample is provided at $QNN_SDK_ROOT/examples/QNN/TFLiteDelegate/SkipNodeExample.</p>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">¶</a></h2>
+<p>The following list of prerequisites must be met before starting this tutorial:</p>
+<ol class="arabic simple">
+<li><p>Finish <a class="reference internal" href="tutorial_qtld_net_run.html"><span class="doc">Tutorial qtld-net-run</span></a></p></li>
+</ol>
+</div>
+<div class="section" id="how-to-skip-delegation-op-ids">
+<h2>How to Skip Delegation OP IDs<a class="headerlink" href="#how-to-skip-delegation-op-ids" title="Permalink to this heading">¶</a></h2>
+<p>Qualcomm® AI Engine Direct Delegate has provided 2 ways to skip Delegation Ops:</p>
+<ol class="arabic simple">
+<li><p>Skip Delegation Ops based on Op IDs.</p></li>
+<li><p>Skip Delegation Ops based on Node IDs</p></li>
+</ol>
+</div>
+<div class="section" id="skip-delegation-ops-with-op-ids">
+<h2>Skip Delegation Ops with Op IDs<a class="headerlink" href="#skip-delegation-ops-with-op-ids" title="Permalink to this heading">¶</a></h2>
+<p>Each Op has its corresponding Op ID, which is defined in <code class="docutils literal notranslate"><span class="pre">tensorflow/lite/builtin_ops.h</span></code>.
+If users do not want specific Op(s) to be delegated by Qualcomm® AI Engine Direct Delegate,
+users can do so by specifying the Op IDs.
+Taking <em>inception_v3_quant</em> model as an example, there are a total of 4 <code class="docutils literal notranslate"><span class="pre">MaxPool2d</span></code> operations in the model.
+If we want to skip <code class="docutils literal notranslate"><span class="pre">MaxPool2d</span></code>, which has Op ID=17, we can run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>adb<span class="w"> </span>shell<span class="w"> </span><span class="s1">&#39;export LD_LIBRARY_PATH=/data/local/tmp/qnn_delegate/:$LD_LIBRARY_PATH &amp;&amp;</span>
+<span class="s1">             export ADSP_LIBRARY_PATH=&quot;/data/local/tmp/qnn_delegate/&quot; &amp;&amp;</span>
+<span class="s1">             cd /data/local/tmp/qnn_delegate/inception_v3_quant/ &amp;&amp;</span>
+<span class="s1">             /data/local/tmp/qnn_delegate/qtld-net-run \</span>
+<span class="s1">             --model inception_v3_quant.tflite \</span>
+<span class="s1">             --input target_raw_list.txt \</span>
+<span class="s1">             --output output \</span>
+<span class="s1">             --backend htp \</span>
+<span class="s1">             --skip_delegate_ops 17&#39;</span>
+</pre></div>
+</div>
+<p>The output should look similar to the following:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>TFLite model: [inception_v3_quant.tflite]
+Input list file: [target_raw_list.txt]
+Total number of inferences: [4]
+Using QNN Backend: [htp]
+Ops not to be delegated : [17]
+Loaded model successfully.
+
+INFO: Initialized TensorFlow Lite runtime.
+INFO: Operator Builtin Code  17 MAX_POOL_2D not to be delegated
+
+INFO: Operator Builtin Code  17 MAX_POOL_2D not to be delegated
+
+INFO: Operator Builtin Code  17 MAX_POOL_2D not to be delegated
+
+INFO: Operator Builtin Code  17 MAX_POOL_2D not to be delegated
+
+INFO: TfLiteQnnDelegate delegate: 124 nodes delegated out of 128 nodes with 5 partitions.
+
+=== Pre-invoke Interpreter State ===
+Line 719: Allocated 1 input tensor(s)
+Line 729: Allocated 1 output tensor(s)
+
+=== Invoking Interpreter ===
+Line 918: About to fout.write() output tensors with 4004 bytes
+=== Invoking Interpreter ===
+Line 918: About to fout.write() output tensors with 4004 bytes
+=== Invoking Interpreter ===
+Line 918: About to fout.write() output tensors with 4004 bytes
+=== Invoking Interpreter ===
+Line 918: About to fout.write() output tensors with 4004 bytes
+</pre></div>
+</div>
+<p>From the output above, we can see that there are a total of 5 paritions for Qualcomm® AI Engine Direct Delegate
+to execute since the graph is partitioned based on the 4 <code class="docutils literal notranslate"><span class="pre">MaxPool2d</span></code> operations.</p>
+<p>Notice that different from <a class="reference internal" href="tutorial_qtld_net_run.html"><span class="doc">Tutorial qtld-net-run</span></a>, we added the following when executing:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--skip_delegate_ops<span class="w"> </span><span class="m">17</span>
+</pre></div>
+</div>
+<p>If we want to skip more than 1 Op ID, for example, <code class="docutils literal notranslate"><span class="pre">MaxPool2d</span></code>, and <code class="docutils literal notranslate"><span class="pre">AveragePool2d</span></code>,
+we can do:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--skip_delegate_ops<span class="w"> </span><span class="m">1</span>,17
+</pre></div>
+</div>
+</div>
+<div class="section" id="skip-delegation-ops-with-node-ids">
+<h2>Skip Delegation Ops with Node IDs<a class="headerlink" href="#skip-delegation-ops-with-node-ids" title="Permalink to this heading">¶</a></h2>
+<p>The second option to skip Delegation Op(s) is based on the Node ID(s).
+Different from above where we use <code class="docutils literal notranslate"><span class="pre">--skip_delegate_ops</span></code>, this time we will be using <code class="docutils literal notranslate"><span class="pre">--skip_delegate_node_ids</span></code>.
+Taking <em>inception_v3_quant</em> model as an example, there are a total of 128 nodes in the model, and each of them has corresponding node ID, from 0-127.</p>
+<p>Users can specify the node ID to be skipped when executing.
+For example, if a user wants to skip node ID 2 and 5, the following can be performed:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>adb<span class="w"> </span>shell<span class="w"> </span><span class="s1">&#39;export LD_LIBRARY_PATH=/data/local/tmp/qnn_delegate/:$LD_LIBRARY_PATH &amp;&amp;</span>
+<span class="s1">             export ADSP_LIBRARY_PATH=&quot;/data/local/tmp/qnn_delegate/&quot; &amp;&amp;</span>
+<span class="s1">             cd /data/local/tmp/qnn_delegate/inception_v3_quant/ &amp;&amp;</span>
+<span class="s1">             /data/local/tmp/qnn_delegate/qtld-net-run \</span>
+<span class="s1">             --model inception_v3_quant.tflite \</span>
+<span class="s1">             --input target_raw_list.txt \</span>
+<span class="s1">             --output output \</span>
+<span class="s1">             --backend htp \</span>
+<span class="s1">             --skip_delegate_node_ids 2,5&#39;</span>
+</pre></div>
+</div>
+<p>The output should look similar to the following:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>TFLite model: [inception_v3_quant.tflite]
+Input list file: [target_raw_list.txt]
+Total number of inferences: [4]
+Using QNN Backend: [htp]
+Node ids not to be delegated : [2,5]
+Loaded model successfully.
+
+INFO: Initialized TensorFlow Lite runtime.
+INFO: Node 2 not to be delegated
+
+INFO: Node 5 not to be delegated
+
+INFO: TfLiteQnnDelegate delegate: 126 nodes delegated out of 128 nodes with 3 partitions.
+
+=== Pre-invoke Interpreter State ===
+Line 719: Allocated 1 input tensor(s)
+Line 729: Allocated 1 output tensor(s)
+
+=== Invoking Interpreter ===
+Line 918: About to fout.write() output tensors with 4004 bytes
+=== Invoking Interpreter ===
+Line 918: About to fout.write() output tensors with 4004 bytes
+=== Invoking Interpreter ===
+Line 918: About to fout.write() output tensors with 4004 bytes
+=== Invoking Interpreter ===
+Line 918: About to fout.write() output tensors with 4004 bytes
+</pre></div>
+</div>
+<p>From the output above, we can see that Node 2 and Node 5 is skipped, so there are a total of 3 paritions for
+Qualcomm® AI Engine Direct Delegate to execute since the graph is partitioned based on the 2 skipped Node IDs.
+As mentioned earlier, users can refer to $QNN_SDK_ROOT/examples/QNN/TFLiteDelegate/SkipNodeExample
+for the implementation of Skip Delegation OPs with Node IDs.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="tutorial_benchmark_model.html" class="btn btn-neutral float-right" title="Tutorial - Benchmarking the Qualcomm® AI Engine Direct Delegate" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="tutorial_qtld_net_run.html" class="btn btn-neutral float-left" title="Tutorial - Running Inference Using the Qualcomm® AI Engine Direct Delegate" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

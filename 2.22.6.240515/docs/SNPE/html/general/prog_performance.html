@@ -1,0 +1,428 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Performance Tips &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Burst Mode on DSP and AIP" href="prog_burst_mode.html" />
+    <link rel="prev" title="Application Integration Tips" href="prog_integration.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup1.html">Network Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="usergroup6.html">Tutorials and Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial_setup.html">Tutorials Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snpe2_migration_guidelines.html">SNPE1 to SNPE2 Migration Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup7.html">Running Nets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup8.html">Code Examples</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="usergroup9.html">Application Tips</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="prog_integration.html">Application Integration Tips</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Performance Tips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="prog_burst_mode.html">Burst Mode on DSP and AIP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_logging.html">Logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpu_fxp_mode.html">CPU Fixed Point Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arm64x_support.html">Windows ARM64X Support</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="usergroup6.html">Tutorials and Examples</a> &raquo;</li>
+        
+          <li><a href="usergroup9.html">Application Tips</a> &raquo;</li>
+        
+      <li>Performance Tips</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="performance-tips">
+<h1>Performance Tips<a class="headerlink" href="#performance-tips" title="Permalink to this heading">¶</a></h1>
+<div class="ui-resizable side-nav-resizable docutils container" id="side-nav">
+<div class="docutils container" id="nav-tree">
+<div class="docutils container" id="nav-tree-contents">
+</div>
+</div>
+</div>
+<div class="docutils container" id="doc-content">
+<div class="header docutils container">
+</div>
+<div class="contents docutils container">
+<div class="textblock docutils container">
+<p class="rubric" id="performance-tips-for-using-tensors">Performance Tips for Using Tensors</p>
+<p class="rubric" id="userbuffer">UserBuffer</p>
+<p>By default Qualcomm® Neural Processing SDK creates networks that accept tensors, where for
+each SNPE::execute() there is an additional copy to get data
+into/out of Qualcomm® Neural Processing SDK. In addition, depending on the data format
+required by the underlying target runtime, Qualcomm® Neural Processing SDK may perform
+format conversion such as quantization or float expansion.</p>
+<p>An alternative is to create networks that accept user buffers,
+by calling build with SNPEBuilder::build() with the
+setUseUserSuppliedBuffers() setter. This creates networks that
+will use UserBuffers for execute(). By utilizing UserBuffer, a
+user can specify the format (encoding) of the buffer and its
+dimensionality. If the dimensions and stride of the buffer
+matches the network’s, Qualcomm® Neural Processing SDK can potentially read from and write
+to the buffers directly, saving data copies into / out of
+tensors for each execute.</p>
+<p class="rubric" id="copy-tensors">Copy Tensors</p>
+<p>Qualcomm® Neural Processing SDK supports a STL compatible tensor class that is used to
+send data into the network and return the output. While this
+provides a great deal of flexibility and ability to leverage
+STL functions to manipulate the data, it does come at a cost.
+For tensors that contain relatively little data, exactly how
+the user manipulates the data inside a tensor or gets data into
+the tensor doesn’t really matter. However, for tensors that
+need to contain a large amount of data (e.g. a 1080p input
+image or very large outputs), the user should be aware of the
+following guideline when moving data into a tensor: std::copy()
+is far more efficient for moving data into or out of a tensor
+than direct usage of the iterators (by at least an order of
+magnitude more). So rather than doing something like the
+following:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>// Assume we have access to the following two variables
+// std::shared_ptr&lt;zdl::DlSystem::ITensor&gt; tensor;
+// std::vector&lt;float&gt;&amp; vec;
+vec.resize(tensor-&gt;getSize());
+size_t idx = 0;
+for (auto it = tensor-&gt;begin(); it != tensor-&gt;end(); it++)
+{
+        vec[idx++] = *it;
+}
+</pre></div>
+</div>
+<p>The user should do this instead:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>std::copy(tensor-&gt;begin(), tensor-&gt;end(), vec.begin())
+</pre></div>
+</div>
+<p>This is true whether getting data from a tensor (as in the
+example above) or putting data into a tensor.</p>
+<p>In addition, if the tensor data needs to be modified (e.g.
+pre-processed before going into the network or post-processed
+after), it is better to do the manipulation in a user buffer
+than in the tensor directly using the iterators (and then just
+use std::copy() to move the modified data in/out of the
+tensor).</p>
+<p class="rubric" id="performance-tips-for-executing-networks">Performance Tips for Executing Networks</p>
+<ul class="simple">
+<li><p><strong>Optimizing TensorFlow Graphs for Inference</strong></p>
+<ul>
+<li><p>This applies only for TensorFlow.</p></li>
+<li><p>TensorFlow provides a tool that can be used to convert a
+model into one that is optimized for inference.</p></li>
+<li><p>It is <strong>strongly</strong> recommended to optimize TensorFlow
+graphs prior to converting them to a DLC file.</p></li>
+<li><p>For an example of optimizing for inference, see
+$SNPE_ROOT/examples/Models/InceptionV3/scripts/setup_inceptionv3_snpe.py.</p></li>
+</ul>
+</li>
+<li><p><strong>Balancing Performance and Power</strong></p>
+<ul>
+<li><p>Qualcomm® Neural Processing SDK supports five performance profiles, “DEFAULT”,
+“BALANCED, “HIGH_PERFORMANCE”, “POWER_SAVER” and
+“SYSTEM_SETTINGS”. (See
+<span class="xref std std-ref">Snpe_SNPEBuilder_SetPerformanceProfile()</span> API
+description.)</p></li>
+<li><p>The DEFAULT performance profile is less power intensive,
+at the expense of performance.</p></li>
+<li><p>The BALANCED performance profile is the same as DEFAULT.
+(DEFAULT is going to be deprecated.)</p></li>
+<li><p>The POWER_SAVER performance profile attempts to provide
+more power saving than the BALANCED performance profile,
+which may result in lower performance.</p></li>
+<li><p>For optimal performance, use the set the performance profile
+to HIGH_PERFORMANCE.</p>
+<ul>
+<li><p>When HIGH_PERFORMANCE is selected, Qualcomm® Neural Processing SDK will attempt
+to maximize performance at the expense of increased
+power consumption.</p></li>
+</ul>
+</li>
+<li><p>The SYSTEM_SETTINGS profile causes Qualcomm® Neural Processing SDK to leave all
+power and performance settings alone. No calls to any
+power or performance related APIs will be invoked by
+Qualcomm® Neural Processing SDK.</p>
+<ul>
+<li><p>Users of this profile can use other APIs (out of the
+scope of Qualcomm® Neural Processing SDK) if they want to control performance or
+power.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Minimizing Profiling in Production Environments</strong></p>
+<ul>
+<li><p>Qualcomm® Neural Processing SDK supports the
+<span class="xref std std-ref">Snpe_SNPEBuilder_SetProfilingLevel()</span>
+API to configure the level of profiling information.</p></li>
+<li><p>While the overhead of collecting profiling information is
+small, it will still add to the inference time.</p></li>
+<li><p>Disabling profiling information in production
+environments will result in extra performance.</p></li>
+</ul>
+</li>
+<li><p><strong>Running on the GPU</strong></p>
+<ul>
+<li><p>Typically, running a network on the GPU results in a
+6X-10X speed of inference increase as compared to running
+the same network on the CPU and at lower power
+consumption, so usually the GPU runtime is the obvious
+choice for network execution unless the GPU is
+potentially heavily utilized for some other application
+(e.g. gaming).</p></li>
+<li><p>However, there is a roughly 4-6ms overhead for network
+execution on the GPU that does not exist on the CPU, so
+very small networks might execute quicker on the CPU. For
+example, if a network runs in less than 10ms on the GPU,
+it may run faster on the CPU as the GPU overhead might
+eliminate any speed advantage to the actual network
+execution that the GPU provides.</p></li>
+<li><p>By default, the GPU runtime runs in GPU_FLOAT32_16_HYBRID
+mode (Please see <span class="xref std std-ref">C Snpe_Runtime_t Enum</span>
+description).
+The GPU_FLOAT16 mode may run some networks faster but may
+incur accuracy loss as well. (Please see <a class="reference external" href="limitations.html#general-gpu-runtime-limitations">GPU
+Limitations</a> section
+for more info.)</p></li>
+</ul>
+</li>
+<li><p><strong>Running on the DSP</strong></p>
+<ul>
+<li><p>The DSP offers an optimized execution environment for
+supported layers, however some layer operations are not
+optimal on the DSP and may cause slow execution of the
+model on the DSP.</p></li>
+<li><p>The performance of input preprocessing layers are
+currently not optimized on the DSP runtime. When using
+the DSP runtime it is recommended to do input
+preprocessing (colour space conversion, scaling, crop and
+mean subtract) before passing the image to Qualcomm® Neural Processing SDK.</p></li>
+<li><p>The DSP runs 8-bit quantized math for most operations.
+Some networks may be sensitive to this and may not be
+suitable for the DSP runtime.</p></li>
+<li><p>The default DSP runtime availability check performs
+platform validation on the DSP to validate DSP runtime
+support. Basic runtime availability check performs less
+validation than the default check, i.e. basic check only
+validates that the SoC platform should have DSP support.</p></li>
+<li><p>Accelerator Init Times are significantly longer for DSP
+V68 version and above, compared to previous generation
+platforms. The longer initialization times are due to the
+graph analysis and optimization.</p></li>
+<li><p>For DSP V68 version and above, enabling the init cache
+mode is recommended. Subsequent initialization times will
+be greatly reduced and execution times will also be
+improved, due to data locality.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="prog_burst_mode.html" class="btn btn-neutral float-right" title="Burst Mode on DSP and AIP" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="prog_integration.html" class="btn btn-neutral float-left" title="Application Integration Tips" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

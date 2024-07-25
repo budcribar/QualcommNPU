@@ -1,0 +1,555 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Saver Tutorial: Save execution sequence with Saver and replay on a backend &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Saver Tutorial: Save execution sequence with Saver and replay on a backend</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="saver-tutorial-save-execution-sequence-with-saver-and-replay-on-a-backend">
+<h1>Saver Tutorial: Save execution sequence with Saver and replay on a backend<a class="headerlink" href="#saver-tutorial-save-execution-sequence-with-saver-and-replay-on-a-backend" title="Permalink to this heading">¶</a></h1>
+<p>This tutorial describes how to use the QNN Saver backend to capture the execution sequence of
+QNN APIs. The captured output can then be compiled and replayed on any QNN backend.</p>
+<div class="section" id="linux">
+<h2>Linux<a class="headerlink" href="#linux" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="generating-saver-output-c">
+<h3>Generating saver_output.c<a class="headerlink" href="#generating-saver-output-c" title="Permalink to this heading">¶</a></h3>
+<p>saver_output.c is an artifact produced by running a model on the Saver backend. A model in a source
+framework can be converted into a <code class="docutils literal notranslate"><span class="pre">model.cpp</span></code> and <code class="docutils literal notranslate"><span class="pre">model.bin</span></code> using the
+<a class="reference internal" href="../converters.html"><span class="doc">QNN Converters</span></a>. Sample <code class="docutils literal notranslate"><span class="pre">model.cpp</span></code> and <code class="docutils literal notranslate"><span class="pre">model.bin</span></code> files are located in
+<code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/QNN/converter/models/</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">model.cpp</span></code> and <code class="docutils literal notranslate"><span class="pre">model.bin</span></code> are used to create a <code class="docutils literal notranslate"><span class="pre">model.so</span></code> via <code class="docutils literal notranslate"><span class="pre">qnn-model-lib-generator</span></code>.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ ${QNN_SDK_ROOT}/bin/x86_64-linux-clang/qnn-model-lib-generator \
+              -c ${QNN_SDK_ROOT}/examples/QNN/converter/models/qnn_model_float.cpp \
+              -b ${QNN_SDK_ROOT}/examples/QNN/converter/models/qnn_model_float.bin \
+              -o ${QNN_SDK_ROOT}/examples/QNN/converter/model_libs # This can be any path
+</pre></div>
+</div>
+<p>This will produce the following artifacts:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/QNN/converter/model_libs/aarch64-android/libqnn_model_float.so</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/QNN/converter/model_libs/x86_64-linux-clang/libqnn_model_float.so</span></code></p></li>
+</ul>
+<p>The resulting <code class="docutils literal notranslate"><span class="pre">model.so</span></code> can be run on the Saver backend using <code class="docutils literal notranslate"><span class="pre">qnn-net-run</span></code>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">converter</span><span class="o">/</span><span class="n">models</span><span class="o">/</span>
+<span class="n">$</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">qnn</span><span class="o">-</span><span class="n">net</span><span class="o">-</span><span class="n">run</span><span class="w"> </span>\
+<span class="w">              </span><span class="o">--</span><span class="n">backend</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">libQnnSaver</span><span class="p">.</span><span class="n">so</span><span class="w"> </span>\
+<span class="w">              </span><span class="o">--</span><span class="n">model</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">converter</span><span class="o">/</span><span class="n">model_libs</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">clang</span><span class="o">/</span><span class="n">libqnn_model_float</span><span class="p">.</span><span class="n">so</span><span class="w"> </span>\
+<span class="w">              </span><span class="o">--</span><span class="n">input_list</span><span class="w"> </span><span class="n">input_list_float</span><span class="p">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>This will produce the following artifacts:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">./saver_output/saver_output.c</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">./saver_output/params.bin</span></code></p></li>
+</ul>
+<p>See <a class="reference internal" href="../tutorial2.html"><span class="doc">Tutorial: Converting and executing a CNN model with QNN</span></a> for more information on converting a model from a source framework
+into the QNN shared library format.</p>
+<p>Alternatively, the following script performs the steps described above and can be used for
+convenience.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">NetRun</span><span class="o">/</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span>
+<span class="n">$</span><span class="w"> </span><span class="p">.</span><span class="o">/</span><span class="n">linux</span><span class="o">-</span><span class="n">qnn</span><span class="o">-</span><span class="n">net</span><span class="o">-</span><span class="n">run</span><span class="p">.</span><span class="n">sh</span><span class="w"> </span><span class="o">-</span><span class="n">b</span><span class="w"> </span><span class="n">saver</span>
+</pre></div>
+</div>
+<p>This will produce a quantized <code class="docutils literal notranslate"><span class="pre">saver_output.c</span></code> and <code class="docutils literal notranslate"><span class="pre">params.bin</span></code> in
+<code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/QNN/NetRun/linux-x86_64/saver_output/quantized/</span></code> for replay on DSP or HTP
+backends, and a non-quantized <code class="docutils literal notranslate"><span class="pre">saver_output.c</span></code> and <code class="docutils literal notranslate"><span class="pre">params.bin</span></code> in
+<code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/QNN/NetRun/linux-x86_64/saver_output/non_quantized/</span></code> for replay on CPU or GPU
+backends.</p>
+</div>
+<div class="section" id="compiling-saver-output-c">
+<h3>Compiling saver_output.c<a class="headerlink" href="#compiling-saver-output-c" title="Permalink to this heading">¶</a></h3>
+<p>To compile saver_output.c for replay on a backend, use the <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> located in
+<code class="docutils literal notranslate"><span class="pre">${QNN_SDK_ROOT}/examples/QNN/Saver</span></code>. This makefile can be used to compile saver_output.c for the
+specified QNN backend on a compatible platform.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Compiling for x86 targets requires clang.</p></li>
+<li><p>Compiling for Android targets requires Android NDK.</p></li>
+<li><p>Compiling for DSP/HTP backends on Android targets requires Hexagon SDK.</p></li>
+</ul>
+</div>
+<p>Refer to <a class="reference internal" href="../setup.html"><span class="doc">Setup</span></a> to set the appropriate environment variables.</p>
+<p>With <code class="docutils literal notranslate"><span class="pre">saver_output.c</span></code> located in the same directory as <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>, run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">all</span></code> to compile
+for all QNN backends on supported targets.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">cp</span><span class="w"> </span><span class="p">.</span><span class="o">/</span><span class="n">saver_output</span><span class="o">/</span><span class="n">saver_output</span><span class="p">.</span><span class="n">c</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">Saver</span>
+<span class="n">$</span><span class="w"> </span><span class="n">cp</span><span class="w"> </span><span class="p">.</span><span class="o">/</span><span class="n">saver_output</span><span class="o">/</span><span class="n">params</span><span class="p">.</span><span class="n">bin</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">Saver</span>
+<span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">Saver</span>
+<span class="n">$</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="n">x86</span><span class="w"> </span><span class="n">android</span>
+</pre></div>
+</div>
+<p>This will produce a folder for each target:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">./x86_64-linux-clang</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">./aarch64-android</span></code></p></li>
+</ul>
+<p>These folders will contain one executable for each backend available on the target named
+<code class="docutils literal notranslate"><span class="pre">saver_output_&lt;backend&gt;</span></code>.</p>
+<p>To create executables for all backends on a specific target, run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">&lt;target&gt;</span></code>. Valid options
+for &lt;target&gt; are <strong>x86</strong> or <strong>aarch64</strong>.</p>
+<p>To create an executable for a specific backend on a specific target, run
+<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">&lt;backend&gt;_&lt;target&gt;</span></code>. Valid options for &lt;backend&gt; are <strong>cpu</strong> or <strong>htp</strong> for &lt;target&gt;=x86,
+and <strong>cpu</strong>, <strong>gpu</strong>, <strong>dsp</strong>, <strong>hta</strong>, or <strong>htp</strong> for &lt;target&gt;=aarch64.</p>
+</div>
+<div class="section" id="replaying-saver-output-c-on-x86">
+<h3>Replaying saver_output.c on x86<a class="headerlink" href="#replaying-saver-output-c-on-x86" title="Permalink to this heading">¶</a></h3>
+<p>To replay on x86 backends, set LD_LIBRARY_PATH to point to the desired QNN backend library and run
+the executable. Ensure <code class="docutils literal notranslate"><span class="pre">params.bin</span></code> is in the current working directory.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ cd ${QNN_SDK_ROOT}/examples/QNN/Saver
+$ export QNN_BACKEND=&lt;backend&gt; # where &lt;backend&gt; is QnnCpu or QnnHtp
+$ export LD_LIBRARY_PATH=${QNN_SDK_ROOT}/lib/x86_64-linux-clang:$LD_LIBRARY_PATH
+$ ./x86_64-linux-clang/saver_output_${QNN_BACKEND} [--logging &lt;verbose,debug,info,warn,error&gt;] # optionally enable logging
+</pre></div>
+</div>
+</div>
+<div class="section" id="replaying-saver-output-c-on-android">
+<h3>Replaying saver_output.c on Android<a class="headerlink" href="#replaying-saver-output-c-on-android" title="Permalink to this heading">¶</a></h3>
+<div class="section" id="replay-on-qnn-cpu-qnn-hta-or-qnn-gpu-backend">
+<h4>Replay on QNN CPU, QNN HTA, or QNN GPU Backend<a class="headerlink" href="#replay-on-qnn-cpu-qnn-hta-or-qnn-gpu-backend" title="Permalink to this heading">¶</a></h4>
+<p>Make a directory on device, push QNN backend library, <code class="docutils literal notranslate"><span class="pre">saver_output.c</span></code> executable, and
+<code class="docutils literal notranslate"><span class="pre">params.bin</span></code>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ export QNN_BACKEND=&lt;backend&gt; # where &lt;backend&gt; is QnnCpu, QnnHta, or QnnGpu
+$ adb shell &quot;mkdir /data/local/tmp/saver&quot;
+$ adb push ${QNN_SDK_ROOT}/lib/aarch64-android/lib${QNN_BACKEND}.so /data/local/tmp/saver
+$ adb push ${QNN_SDK_ROOT}/examples/QNN/Saver/aarch64-android/saver_output_${QNN_BACKEND} /data/local/tmp/saver
+$ adb push ./saver_output/params.bin /data/local/tmp/saver
+</pre></div>
+</div>
+<p>Set LD_LIBRARY_PATH on device and execute</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ adb shell
+$ cd /data/local/tmp/saver
+$ export LD_LIBRARY_PATH=/data/local/tmp/saver:$LD_LIBRARY_PATH
+$ ./saver_output_${QNN_BACKEND} [-l &lt;verbose,debug,info,warn,error&gt;] # optionally enable logging
+</pre></div>
+</div>
+</div>
+<div class="section" id="replay-on-qnn-dsp-or-qnn-htp-backend">
+<h4>Replay on QNN DSP or QNN HTP Backend<a class="headerlink" href="#replay-on-qnn-dsp-or-qnn-htp-backend" title="Permalink to this heading">¶</a></h4>
+<p>Make a directory on device, push QNN backend stub/skel, <code class="docutils literal notranslate"><span class="pre">saver_output.c</span></code> executable, and
+<code class="docutils literal notranslate"><span class="pre">params.bin</span></code>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ export QNN_BACKEND=&lt;backend&gt;  # where &lt;backend&gt; is QnnDsp or QnnHtp
+$ export HEXAGON_ARCH=&lt;v65,v66,v68,v69,v73,v75&gt;  # based on device
+$ adb shell &quot;mkdir data/local/tmp/saver&quot;
+$ adb push ${QNN_SDK_ROOT}/lib/aarch64-android/lib${QNN_BACKEND}.so /data/local/tmp/saver
+$ adb push ${QNN_SDK_ROOT}/lib/aarch64-android/lib${QNN_BACKEND}${HEXAGON_ARCH^}Stub.so /data/local/tmp/saver
+$ adb push ${QNN_SDK_ROOT}/lib/hexagon-${HEXAGON_ARCH}/unsigned/lib${QNN_BACKEND}${HEXAGON_ARCH^}Skel.so /data/local/tmp/saver
+$ adb push ${QNN_SDK_ROOT}/lib/aarch64-android/libQnnHtpPrepare.so /data/local/tmp/saver  # if QNN_BACKEND=QnnHtp
+$ adb push ${QNN_SDK_ROOT}/examples/QNN/Saver/aarch64-android/saver_output_${QNN_BACKEND} /data/local/tmp/saver
+$ adb push ${QNN_SDK_ROOT}/examples/QNN/Saver/params.bin /data/local/tmp/saver
+</pre></div>
+</div>
+<p>Set LD_LIBRARY_PATH and ADSP_LIBRARY_PATH on device and execute:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ adb shell
+$ cd /data/local/tmp/saver
+$ export LD_LIBRARY_PATH=/data/local/tmp/saver:$LD_LIBRARY_PATH
+$ export ADSP_LIBRARY_PATH=/data/local/tmp/saver:$ADSP_LIBRARY_PATH
+$ ./saver_output_${QNN_BACKEND} [-l &lt;verbose,debug,info,warn,error&gt;] # optionally enable logging
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="windows">
+<h2>Windows<a class="headerlink" href="#windows" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="setup">
+<h3>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">¶</a></h3>
+<p>The tutorial assumes general setup instructions have been followed at <a class="reference internal" href="../setup.html"><span class="doc">Setup</span></a>.</p>
+<p>Please use “x86_x64 Cross Tools Command Prompt for VS 2022” to set QNN_SDK_ROOT:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ set QNN_SDK_ROOT=\path\to\QNN_SDK_ROOT
+</pre></div>
+</div>
+</div>
+<div class="section" id="build">
+<h3>Build<a class="headerlink" href="#build" title="Permalink to this heading">¶</a></h3>
+<p>Please use “x86_x64 Cross Tools Command Prompt for VS 2022” in this step.</p>
+<div class="section" id="generate-model">
+<h4>Generate Model<a class="headerlink" href="#generate-model" title="Permalink to this heading">¶</a></h4>
+<p>For CPU, generate a non-quantized model:</p>
+<p><strong>For Windows native/x86_x64 PC developers</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ cd &quot;%QNN_SDK_ROOT%\examples\QNN\Saver&quot;
+$ mkdir model &amp;&amp; cd model
+$ xcopy &quot;%QNN_SDK_ROOT%\examples\QNN\converter\models\qnn_model_float.cpp&quot; .
+$ xcopy &quot;%QNN_SDK_ROOT%\examples\QNN\converter\models\qnn_model_float.bin&quot; .
+$ py -3 &quot;%QNN_SDK_ROOT%\bin\x86_64-windows-msvc\qnn-model-lib-generator&quot; ^
+           -c .\qnn_model_float.cpp ^
+           -b .\qnn_model_float.bin ^
+           -o .\model_libs ^
+           -t windows-x86_64
+</pre></div>
+</div>
+<p>After executing commands from above, you should be able to see:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">%QNN_SDK_ROOT%\examples\QNN\Saver\model\model_libs\x64\qnn_model_float.dll</span></code></p></li>
+</ul>
+<p><strong>For Windows on Snapdragon developers</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ cd &quot;%QNN_SDK_ROOT%\examples\QNN\Saver&quot;
+$ mkdir model &amp;&amp; cd model
+$ xcopy &quot;%QNN_SDK_ROOT%\examples\QNN\converter\models\qnn_model_float.cpp&quot; .
+$ xcopy &quot;%QNN_SDK_ROOT%\examples\QNN\converter\models\qnn_model_float.bin&quot; .
+$ py -3 &quot;%QNN_SDK_ROOT%\bin\aarch64-windows-msvc\qnn-model-lib-generator&quot; ^
+           -c .\qnn_model_float.cpp ^
+           -b .\qnn_model_float.bin ^
+           -o .\model_libs ^
+           -t windows-aarch64
+</pre></div>
+</div>
+<p>After executing commands from above, you should be able to see:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">%QNN_SDK_ROOT%\examples\QNN\Saver\model\model_libs\ARM64\qnn_model_float.dll</span></code></p></li>
+</ul>
+<p>For DSP and HTP, generate a quantized model:</p>
+<p><strong>For Windows native/x86_x64 PC developers</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ cd &quot;%QNN_SDK_ROOT%\examples\QNN\Saver&quot;
+$ mkdir model &amp;&amp; cd model
+$ xcopy &quot;%QNN_SDK_ROOT%\examples\QNN\converter\models\qnn_model_8bit_quantized.cpp&quot; .
+$ xcopy &quot;%QNN_SDK_ROOT%\examples\QNN\converter\models\qnn_model_8bit_quantized.bin&quot; .
+$ py -3 &quot;%QNN_SDK_ROOT%\bin\x86_64-windows-msvc\qnn-model-lib-generator&quot; ^
+           -c .\qnn_model_8bit_quantized.cpp ^
+           -b .\qnn_model_8bit_quantized.bin ^
+           -o .\model_libs ^
+           -t windows-x86_64
+</pre></div>
+</div>
+<p>After executing commands from above, you should be able to see:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">%QNN_SDK_ROOT%\examples\QNN\Saver\model\model_libs\x64\qnn_model_8bit_quantized.dll</span></code></p></li>
+</ul>
+<p><strong>For Windows on Snapdragon developers</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ cd &quot;%QNN_SDK_ROOT%\examples\QNN\Saver&quot;
+$ mkdir model &amp;&amp; cd model
+$ xcopy &quot;%QNN_SDK_ROOT%\examples\QNN\converter\models\qnn_model_8bit_quantized.cpp&quot; .
+$ xcopy &quot;%QNN_SDK_ROOT%\examples\QNN\converter\models\qnn_model_8bit_quantized.bin&quot; .
+$ py -3 &quot;%QNN_SDK_ROOT%\bin\aarch64-windows-msvc\qnn-model-lib-generator&quot; ^
+           -c .\qnn_model_8bit_quantized.cpp ^
+           -b .\qnn_model_8bit_quantized.bin ^
+           -o .\model_libs ^
+           -t windows-aarch64
+</pre></div>
+</div>
+<p>After executing commands from above, you should be able to see:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">%QNN_SDK_ROOT%\examples\QNN\Saver\model\model_libs\ARM64\qnn_model_8bit_quantized.dll</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="generate-saver-output-c-and-params-bin">
+<h4>Generate saver_output.c and params.bin<a class="headerlink" href="#generate-saver-output-c-and-params-bin" title="Permalink to this heading">¶</a></h4>
+<p>Please check the path of &lt;model&gt;.dll and replace in the below commands:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ cd &quot;%QNN_SDK_ROOT%\examples\QNN\Saver&quot;
+$ mkdir source &amp;&amp; cd source
+$ xcopy &quot;%QNN_SDK_ROOT%\examples\QNN\converter\models\input_data_float&quot; .\input_data_float /i
+$ xcopy &quot;%QNN_SDK_ROOT%\examples\QNN\converter\models\input_list_float.txt&quot; .
+$ xcopy &quot;%QNN_SDK_ROOT%\examples\QNN\Saver\model\model_libs\x64\&lt;model&gt;.dll&quot; .
+$ &quot;%QNN_SDK_ROOT%\bin\x86_64-windows-msvc\qnn-net-run.exe&quot; ^
+           --backend &quot;%QNN_SDK_ROOT%\lib\x86_64-windows-msvc\QnnSaver.dll&quot; ^
+           --model &lt;model&gt;.dll ^
+           --input_list .\input_list_float.txt
+</pre></div>
+</div>
+<p>After executing commands from above, you should be able to see:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">%QNN_SDK_ROOT%\examples\QNN\Saver\source\saver_output\saver_output.c</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">%QNN_SDK_ROOT%\examples\QNN\Saver\source\saver_output\params.bin</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="build-saver-output-c">
+<h4>Build saver_output.c<a class="headerlink" href="#build-saver-output-c" title="Permalink to this heading">¶</a></h4>
+<p>Please choose one target between [x64, ARM64] as the parameter of “-A” config.
+Executables for all backends on the target named <code class="docutils literal notranslate"><span class="pre">saver_output_&lt;backend&gt;</span></code> will be generated.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="s">&quot;%QNN_SDK_ROOT%\examples\QNN\Saver&quot;</span>
+<span class="n">$</span><span class="w"> </span><span class="n">xcopy</span><span class="w"> </span><span class="s">&quot;%QNN_SDK_ROOT%\examples\QNN\Saver\source\saver_output\saver_output.c&quot;</span><span class="w"> </span><span class="p">.</span>
+<span class="n">$</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">build</span>
+<span class="n">$</span><span class="w"> </span><span class="n">cmake</span><span class="w"> </span><span class="o">-</span><span class="n">S</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="w"> </span><span class="o">-</span><span class="n">B</span><span class="w"> </span><span class="p">.</span><span class="o">/</span><span class="w"> </span><span class="o">-</span><span class="n">T</span><span class="w"> </span><span class="n">ClangCL</span><span class="w"> </span><span class="o">-</span><span class="n">A</span><span class="w"> </span><span class="p">[</span><span class="n">x64</span><span class="p">,</span><span class="w"> </span><span class="n">ARM64</span><span class="p">]</span>
+<span class="n">$</span><span class="w"> </span><span class="n">cmake</span><span class="w"> </span><span class="o">--</span><span class="n">build</span><span class="w"> </span><span class="p">.</span><span class="o">/</span><span class="w"> </span><span class="o">--</span><span class="n">config</span><span class="w"> </span><span class="n">Release</span>
+</pre></div>
+</div>
+<p>To generate an executable for a specific backend, please use below command to build.
+Valid options for &lt;backend&gt; are cpu for &lt;target&gt;=x64, and cpu, dsp, or htp for &lt;target&gt;=ARM64.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">cmake</span><span class="w"> </span><span class="o">--</span><span class="n">build</span><span class="w"> </span><span class="p">.</span><span class="o">/</span><span class="w"> </span><span class="o">--</span><span class="n">config</span><span class="w"> </span><span class="n">Release</span><span class="w"> </span><span class="o">--</span><span class="n">target</span><span class="w"> </span><span class="p">[</span><span class="n">cpu</span><span class="p">,</span><span class="w"> </span><span class="n">dsp</span><span class="p">,</span><span class="w"> </span><span class="n">htp</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>After executing commands from above, you should be able to see:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">%QNN_SDK_ROOT%\examples\QNN\Saver\build\Release\saver_output_&lt;backend&gt;.exe</span></code></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="run">
+<h3>Run<a class="headerlink" href="#run" title="Permalink to this heading">¶</a></h3>
+<p>Please use “Command Prompt” to execute, and ensure the <code class="docutils literal notranslate"><span class="pre">params.bin</span></code> is the same file generated in <a class="reference internal" href="#build"><span class="std std-ref">build</span></a>.</p>
+<div class="section" id="for-cpu">
+<h4>For CPU<a class="headerlink" href="#for-cpu" title="Permalink to this heading">¶</a></h4>
+<p>Run on x86.</p>
+<p>Please push below files to a folder:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">%QNN_SDK_ROOT%\examples\QNN\Saver\build\Release\saver_output_QnnCpu.exe</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">%QNN_SDK_ROOT%\lib\x86_64-windows-msvc\QnnCpu.dll</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">%QNN_SDK_ROOT%\examples\QNN\Saver\source\saver_output\params.bin</span></code></p></li>
+</ul>
+<p>To execute:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ .\saver_output_QnnCpu.exe [--logging &lt;verbose,debug,info,warn,error&gt;] # optionally enable logging
+</pre></div>
+</div>
+<p>Run on aarch64.</p>
+<p>Please push below files to device:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">%QNN_SDK_ROOT%\examples\QNN\Saver\build\Release\saver_output_QnnCpu.exe</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">%QNN_SDK_ROOT%\lib\aarch64-windows-msvc\QnnCpu.dll</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">%QNN_SDK_ROOT%\examples\QNN\Saver\source\saver_output\params.bin</span></code></p></li>
+</ul>
+</div></blockquote>
+<p>To execute:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ .\saver_output_QnnCpu.exe [--logging &lt;verbose,debug,info,warn,error&gt;] # optionally enable logging
+</pre></div>
+</div>
+</div>
+<div class="section" id="for-dsp">
+<h4>For DSP<a class="headerlink" href="#for-dsp" title="Permalink to this heading">¶</a></h4>
+<p>Run on aarch64.</p>
+<p>Please push below files to device:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">%QNN_SDK_ROOT%\examples\QNN\Saver\build\Release\saver_output_QnnDsp.exe</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">%QNN_SDK_ROOT%\lib\aarch64-windows-msvc\QnnDsp.dll</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">%QNN_SDK_ROOT%\lib\aarch64-windows-msvc\QnnDspV66Stub.dll</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">%QNN_SDK_ROOT%\lib\hexagon-v66\unsigned\libQnnDspV66Skel.so</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">%QNN_SDK_ROOT%\examples\QNN\Saver\source\saver_output\params.bin</span></code></p></li>
+</ul>
+<p>To execute:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ .\saver_output_QnnDsp.exe [--logging &lt;verbose,debug,info,warn,error&gt;] # optionally enable logging
+</pre></div>
+</div>
+</div>
+<div class="section" id="for-htp">
+<h4>For HTP<a class="headerlink" href="#for-htp" title="Permalink to this heading">¶</a></h4>
+<p>Run on aarch64.</p>
+<p>Please push below files to device:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">%QNN_SDK_ROOT%\examples\QNN\Saver\build\Release\saver_output_QnnHtp.exe</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">%QNN_SDK_ROOT%\lib\aarch64-windows-msvc\QnnHtp.dll</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">%QNN_SDK_ROOT%\lib\aarch64-windows-msvc\QnnHtpPrepare.dll</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">%QNN_SDK_ROOT%\lib\aarch64-windows-msvc\QnnHtp&lt;Hexagon</span> <span class="pre">Architecture&gt;Stub.dll</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">%QNN_SDK_ROOT%\lib\hexagon-v68\unsigned\libQnnHtp&lt;Hexagon</span> <span class="pre">Architecture&gt;Skel.so</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">%QNN_SDK_ROOT%\examples\QNN\Saver\source\saver_output\params.bin</span></code></p></li>
+</ul>
+<p>To execute:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>$ .\saver_output_QnnHtp.exe [--logging &lt;verbose,debug,info,warn,error&gt;] # optionally enable logging
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,402 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Op Package Migration Guide &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Avoid low depth Activations" href="../htp-network-design-recommendations/htp_guidelines_low_depth_activations.html" />
+    <link rel="prev" title="General OpPackage Central Migration Guidance" href="central_migration_guidance.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/setup.html">Setup</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../general/backend.html">Backend</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../general/backend.html#backend-specific-pages">Backend Specific Pages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../general/dsp/dsp_backend.html">DSP</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../general/htp/htp_backend.html">HTP</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../general/htp/htp_backend.html#api-specializations">API Specializations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../general/htp/htp_backend.html#usage-expectations">Usage Expectations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../general/htp/htp_backend.html#qnn-htp-supported-operations">QNN HTP Supported Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../general/htp/htp_backend.html#qnn-htp-variable-batch">QNN HTP Variable Batch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../general/htp/htp_backend.html#qnn-htp-backend-api">QNN HTP Backend API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../general/htp/htp_backend.html#qnn-htp-performance-infrastructure-api">QNN HTP Performance Infrastructure API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../general/htp/htp_backend.html#qnn-htp-precision">QNN HTP Precision</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../general/htp/htp_backend.html#qnn-htp-fp16-output-difference-between-sm8550-and-sm8650">QNN HTP FP16 output difference between SM8550 and SM8650</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../general/htp/htp_backend.html#qnn-htp-deep-learning-bandwidth-compression-dlbc">QNN HTP Deep Learning Bandwidth Compression (DLBC)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../general/htp/htp_backend.html#qnn-htp-setting-number-of-hvx-threads">QNN HTP - Setting Number of HVX Threads</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../general/htp/htp_backend.html#qnn-htp-backend-extensions">QNN HTP Backend Extensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../general/htp/htp_backend.html#qnn-htp-profiling">QNN HTP Profiling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../general/htp/htp_backend.html#qnn-context-binary-size">QNN Context Binary size</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../../general/htp/htp_backend.html#op-writing-guidelines">Op Writing Guidelines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../general/htp/htp_backend.html#recommendations-for-network-design">Recommendations for Network Design</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../general/htp/htp_backend.html#yielding-and-pre-emption">Yielding and Pre-Emption</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../general/htp/htp_backend.html#vtcm-sharing">VTCM Sharing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../general/htp/htp_backend.html#subsystem-restart-ssr">SubSystem Restart (SSR)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../general/htp/htp_backend.html#qmem-graph-shared-buffer-only-graph">Qmem Graph (shared_buffer only graph)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../general/htp/htp_backend.html#htp-session-artifact-usage-guidlines">HTP Session &amp; Artifact Usage Guidlines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../general/htp/htp_backend.html#graph-switching-beta">Graph Switching (Beta)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../general/htp/htp_backend.html#benefits-of-batch-inference-and-multi-threaded-inference">Benefits of batch inference and multi-threaded inference</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../general/hta/hta_backend.html">HTA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../general/lpai/lpai_backend.html">LPAI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../general/cpu/cpu_backend.html">CPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../general/gpu/gpu_backend.html">GPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../general/saver/saver_backend.html">Saver</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../general/backend.html">Backend</a> &raquo;</li>
+        
+          <li><a href="../../general/htp/htp_backend.html">HTP</a> &raquo;</li>
+        
+      <li>Op Package Migration Guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="op-package-migration-guide">
+<span id="id1"></span><h1>Op Package Migration Guide<a class="headerlink" href="#op-package-migration-guide" title="Permalink to this heading">¶</a></h1>
+<p>Since QNN HTP does not currently guarantee backward compatibility for Op Packages, they may need
+to be rebuilt from source or modified at the source code level to comply with later versions of the QNN HTP API.
+This page is a guide for resolving any such compatibility breakages and is designed to help external developers
+update their Op Packages for compatibility with the latest QNN SDK.</p>
+<div class="section" id="migration-guide-for-qnn-htp-api-version-5-15-0-qnn-sdk-version-2-15-0">
+<h2>Migration Guide for QNN HTP API version 5.15.0 / QNN SDK version 2.15.0<a class="headerlink" href="#migration-guide-for-qnn-htp-api-version-5-15-0-qnn-sdk-version-2-15-0" title="Permalink to this heading">¶</a></h2>
+<p>QNN HTP API version 5.15.0 introduces a pair of new requirements on Op Packages:</p>
+<ol class="arabic simple">
+<li><p>Hexagon targets of Op Packages must be rebuilt from source with the <code class="docutils literal notranslate"><span class="pre">-DPREPARE_DISABLED</span></code> compiler option</p>
+<ul class="simple">
+<li><p>Only the Hexagon target(s) must add <code class="docutils literal notranslate"><span class="pre">-DPREPARE_DISABLED</span></code>; x86_64-linux and aarch64-android targets should be left alone.</p></li>
+<li><p>Note that the <code class="docutils literal notranslate"><span class="pre">qnn-op-package-generator</span></code> tool, provided by QNN SDK 2.15.0, will generate a Makefile that is compliant with this new requirement.</p></li>
+</ul>
+</li>
+<li><p>Any external shape, constraint, and replacement functions, and whatever helper code they depend on, must now be wrapped in an <code class="docutils literal notranslate"><span class="pre">#ifndef</span> <span class="pre">PREPARE_DISABLED</span></code> / <code class="docutils literal notranslate"><span class="pre">#endif</span></code> guard</p>
+<ul class="simple">
+<li><p>These are the functions referenced by invocations of the <code class="docutils literal notranslate"><span class="pre">EXTERNAL_SHAPEFN()</span></code>, <code class="docutils literal notranslate"><span class="pre">EXTERNAL_CONSTRAINT()</span></code>, and <code class="docutils literal notranslate"><span class="pre">EXTERNAL_REPLACE()</span></code> elements of the package optimization grammar.</p></li>
+<li><p>Note that only Op Packages that define these kinds of functions need to make this change.</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="migration-guide-for-qnn-htp-api-version-5-10-0-qnn-sdk-version-2-10-0">
+<h2>Migration Guide for QNN HTP API version 5.10.0 / QNN SDK version 2.10.0<a class="headerlink" href="#migration-guide-for-qnn-htp-api-version-5-10-0-qnn-sdk-version-2-10-0" title="Permalink to this heading">¶</a></h2>
+<p>Op Packages are not backward compatible after QNN HTP API Version 5.10.0.
+This document outlines the process for updating the Op Packages for QNN HTP to use the new registration system.</p>
+<p><strong>An Op Package contains two parts, both of which require updates</strong>:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#part-1">Part 1</a>: The Op Package interface file, which references the Op source file(s)</p></li>
+<li><p><a class="reference internal" href="#part-2">Part 2</a>: Each Op implementation has an individual source file (or files)</p></li>
+</ul>
+</div>
+<div class="section" id="part-1">
+<h2>Part 1<a class="headerlink" href="#part-1" title="Permalink to this heading">¶</a></h2>
+<p>To adapt the new registration system, the <strong>interface.cpp</strong> file must contain the following points:</p>
+<ul>
+<li><p><strong>Include new header files:</strong></p>
+<blockquote>
+<div><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;HTP/core/unique_types.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;HTP/core/simple_reg.h&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p><strong>Add macros and order of declarations list</strong></p>
+<blockquote>
+<div><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">DEFINE_UNIQ_TY</span><span class="p">()</span>
+<span class="n">BEGIN_PKG_OPS_OPTS_LIST</span><span class="p">()</span>
+
+<span class="c1">// Append the Op file name in between the begin and end call</span>
+<span class="n">DECLARE_PKG_OPS_OPTS_LIST</span><span class="p">(</span><span class="n">PKG_SOFTMAX</span><span class="p">)</span>
+<span class="n">DECLARE_PKG_OPS_OPTS_LIST</span><span class="p">(</span><span class="n">PKG_RELU</span><span class="p">)</span>
+<span class="n">DECLARE_PKG_OPS_OPTS_LIST</span><span class="p">(</span><span class="n">PKG_RELUFP16</span><span class="p">)</span>
+<span class="n">DECLARE_PKG_OPS_OPTS_LIST</span><span class="p">(</span><span class="n">PKG_MAXPOOL</span><span class="p">)</span>
+
+<span class="n">END_PKG_OPS_OPTS_LIST</span><span class="p">()</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+<p><strong>Note:</strong> <em>The Op file name depends on the name you give to your op.cpp file. The order matters; always append the new one at the bottom</em></p>
+</div>
+<div class="section" id="part-2">
+<h2>Part 2<a class="headerlink" href="#part-2" title="Permalink to this heading">¶</a></h2>
+<p>For each Op source file, make sure to add the following changes:</p>
+<ul>
+<li><p><strong>Add new include header file:</strong></p>
+<blockquote>
+<div><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include &quot;HTP/core/simple_reg.h</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p><strong>Add BEGIN and END macros:</strong></p>
+<blockquote>
+<div><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">BEGIN_PKG_OP_DEFINITION</span><span class="p">(</span><span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="p">)</span>
+<span class="p">...</span>
+<span class="p">...</span>
+<span class="n">END_PKG_OP_DEFINITION</span><span class="p">(</span><span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+<p>Before invoking any variant of <code class="docutils literal notranslate"><span class="pre">REGISTER_OP</span></code> or <code class="docutils literal notranslate"><span class="pre">DEF_OPT</span></code>, call <code class="docutils literal notranslate"><span class="pre">BEGIN_OP_DEFINITION(&lt;name&gt;)</span></code>, where <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code> is a C++ identifier that uniquely IDs the source file.
+At the bottom of the file, call <code class="docutils literal notranslate"><span class="pre">END_OP_DEFINITION(&lt;name&gt;)</span></code>, using the <strong>same</strong> <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code> as BEGIN.</p>
+<ul>
+<li><dl class="simple">
+<dt><strong>Declare your source file name inside Interface file:</strong></dt><dd><p>Make sure to append the line <code class="docutils literal notranslate"><span class="pre">DECLARE_PKG_OPS_OPTS_LIST(&lt;name&gt;)</span></code> to the interface file, as mentioned in the second point of Part 1.</p>
+</dd>
+</dl>
+</li>
+<li><p><strong>NEW MACRO for registering ops</strong></p>
+<blockquote>
+<div><div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">We now have three ways to register ops</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">//Default Cost Function and Default Flags</span>
+<span class="linenos">2</span><span class="n">DEF_PACKAGE_OP</span>
+<span class="linenos">3</span><span class="c1">//Built-in cost value and Flags</span>
+<span class="linenos">4</span><span class="n">DEF_PACKAGE_OP_AND_COST_AND_FLAGS</span>
+<span class="linenos">5</span><span class="c1">//NEW MACRO, user-specified cost function and Flags</span>
+<span class="hll"><span class="linenos">6</span><span class="n">DEF_PACKAGE_OP_AND_COST_F_AND_FLAGS</span>
+</span></pre></div>
+</div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="op-registration-restrictions">
+<h2>Op Registration Restrictions<a class="headerlink" href="#op-registration-restrictions" title="Permalink to this heading">¶</a></h2>
+<p>COST VALUE: <strong>DO NOT</strong> use STRING format of COST VALUE</p>
+<p>OPNAME: <strong>DO NOT</strong> use any STRING VARIABLE for NAME ENTRY, use STRING LITERAL directly</p>
+<blockquote>
+<div><div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">examples/OpPackage/HTP/ExampleOpPackageRelu.cpp in QNN SDK</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="w">    </span><span class="c1">//Do NOT use string variable for name entry</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="c1">//static constexpr auto sg_opNameReluMinMax = &quot;ReluMinMax&quot;;</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="n">DEF_PACKAGE_OP_AND_COST_AND_FLAGS</span><span class="p">((</span><span class="n">reluMinMaxImpl</span><span class="o">&lt;</span><span class="n">QUint8CroutonTensor</span><span class="p">,</span><span class="w"> </span><span class="n">Tensor</span><span class="o">&gt;</span><span class="p">),</span>
+<span class="linenos"> 5</span><span class="w">     </span><span class="c1">//Use string literal directly</span>
+<span class="hll"><span class="linenos"> 6</span><span class="w">     </span><span class="s">&quot;ReluMinMax&quot;</span><span class="p">,</span>
+</span><span class="linenos"> 7</span><span class="w">     </span><span class="c1">//DO NOT use string for cost value</span>
+<span class="linenos"> 8</span><span class="w">     </span><span class="c1">// &quot;SNAIL&quot;,</span>
+<span class="hll"><span class="linenos"> 9</span><span class="w">     </span><span class="n">SNAIL</span><span class="p">,</span>
+</span><span class="linenos">10</span><span class="w">     </span><span class="n">Flags</span><span class="o">::</span><span class="n">RESOURCE_HVX</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../htp-network-design-recommendations/htp_guidelines_low_depth_activations.html" class="btn btn-neutral float-right" title="Avoid low depth Activations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="central_migration_guidance.html" class="btn btn-neutral float-left" title="General OpPackage Central Migration Guidance" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

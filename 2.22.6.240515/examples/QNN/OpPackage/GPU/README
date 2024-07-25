@@ -1,0 +1,59 @@
+Getting Started
+===============
+Follow "To set up your environment" instruction from ${QNN_SDK_ROOT}/README
+
+Building and Running Example Model
+==================================
+
+This section will show how to use the QNN SDK tools to build and run using an Op Package example
+for GPU BE. It will walk through steps needed to generate and use a OpPackage library based on
+an example op in the SDK located at ${QNN_SDK_ROOT}/examples/QNN/OpPackage/GPU. Specifically,
+it explains the following stages:
+   - Using make to generate the GPU Op package shared library from the example source.
+   - Using qnn-net-run with the generated shared library.
+
+-----------------------------------------------------------------
+1. Building libQnnGpuOpPackageExample.so using OpPackage example
+-----------------------------------------------------------------
+# Go to the OpPackage example folder.
+$ cd ${QNN_SDK_ROOT}/examples/QNN/OpPackage/GPU
+
+# Build example source and generate libQnnGpuOpPackageExample.so library
+# ensure QNN_SDK_ROOT is setup
+$ make
+
+# The command command will generate OpPackage library for arm64-v8a in the libs/aarch64-android/ directory
+$ ls -l ./libs
+
+---------------------------------------------------------
+2. Running qnn-net-run using libQnnGpuOpPackageExample.so
+---------------------------------------------------------
+# Using libQnnGpuOpPackageExample.so library created from step 1, you can run qnn-net-run
+# Note: A pre-requisite step is to have set up the environment by having run envsetup.sh. Refer to
+  the instruction at the top of this README for help.
+
+# Push the following files to the device
+    # QNN GPU Combined Backend and OpPackage library
+    adb push ${QNN_SDK_ROOT}/lib/<target>/libQnnGpu.so /data/local/tmp
+
+    # Example OpPackage (to demonstrate external "examples.OpPackage" OpPackage, for now it contains RELU Op)
+    adb push ${QNN_SDK_ROOT}/examples/QNN/OpPackage/GPU/libs/<target>/libQnnGpuOpPackageExample.so /data/local/tmp
+
+    # Copy libc++_shared.so
+    adb push ${QNN_SDK_ROOT}/examples/QNN/OpPackage/GPU/libs/<target>/libc++_shared.so /data/local/tmp
+
+# Running qnn-net-run
+    # Setup LD_LIBRARY_PATH
+    adb shell
+    $ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/data/local/tmp
+
+    # Run net-run
+    $ ./qnn-net-run    --backend libQnnGpu.so
+                       --model libqnn_model_float.so
+                       --input_list input_list_float.txt
+                       --op_packages libQnnGpuOpPackageExample.so:QnnOpPackage_interfaceProvider
+
+#NOTES:
+# 1. The GPU backend will use the example op package for ops that are not present in the core library.
+# 2. The rest of the ops in the model will be executed on the Qualcomm native op package
+     distributed with the SDK

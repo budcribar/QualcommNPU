@@ -1,0 +1,720 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>UDO DSP tutorial for Quantized DLC &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="UDO DSP tutorial on Windows for Quantized DLC" href="tutorial_inceptionv3_udo_dsp_win.html" />
+    <link rel="prev" title="UDO Tutorial" href="tutorial_inceptionv3_udo.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup1.html">Network Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="usergroup6.html">Tutorials and Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial_setup.html">Tutorials Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snpe2_migration_guidelines.html">SNPE1 to SNPE2 Migration Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup7.html">Running Nets</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="usergroup8.html">Code Examples</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="cplus_plus_tutorial.html">C++ Tutorial - Build the Sample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="c_tutorial.html">C Tutorial - Build the Sample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="c_api_guidelines.html">C API Guidelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="android_tutorial.html">Android Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="build_samplecode_windows.html">Windows Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_inceptionv3_udo.html">UDO Tutorial</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">UDO DSP tutorial for Quantized DLC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_inceptionv3_udo_dsp_win.html">UDO DSP tutorial on Windows for Quantized DLC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_onnx_udo_weights.html">UDO Tutorial With Weights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_psnpe_introduction.html">PSNPE Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_psnpe_c_tutorial.html">PSNPE C Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_psnpe_cplus_plus_tutorial.html">PSNPE C++ Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_psnpe_android_tutorial.html">PSNPE Android Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dsp_runtime.html">DSP Runtime Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="network_resize.html">Network Resizing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="input_batch.html">Input Image Batch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="init_caching.html">Init Caching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup9.html">Application Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="usergroup6.html">Tutorials and Examples</a> &raquo;</li>
+        
+          <li><a href="usergroup8.html">Code Examples</a> &raquo;</li>
+        
+      <li>UDO DSP tutorial for Quantized DLC</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="udo-dsp-tutorial-for-quantized-dlc">
+<h1>UDO DSP tutorial for Quantized DLC<a class="headerlink" href="#udo-dsp-tutorial-for-quantized-dlc" title="Permalink to this heading">¶</a></h1>
+<div class="ui-resizable side-nav-resizable docutils container" id="side-nav">
+<div class="docutils container" id="nav-tree">
+<div class="docutils container" id="nav-tree-contents">
+</div>
+</div>
+</div>
+<div class="docutils container" id="doc-content">
+<div class="header docutils container">
+</div>
+<div class="contents docutils container">
+<div class="textblock docutils container">
+<p class="rubric" id="overview">Overview</p>
+<p>This tutorial describes the steps needed to create a UDO
+package for DSP runtime and execute the Inception V3 model
+using the package. The Softmax operation has been chosen in
+this tutorial to demonstrate the implementation of a UDO with
+Qualcomm® Neural Processing SDK. This tutorial also describes the offline cache generation
+steps for DSP V68.</p>
+<p>The Qualcomm® Neural Processing SDK provides the resources for this example under</p>
+<ul class="simple">
+<li><p>$SNPE_ROOT/examples/SNPE/NativeCpp/UdoExample/Softmax</p></li>
+</ul>
+<p>Information on UDO in general is available at <a class="reference external" href="udo_overview.html">UDO Overview</a>.
+Information on running the Inception V3 network without UDO is
+available at <a class="reference external" href="tutorial_inceptionv3.html">Inception V3 Tutorial</a>.</p>
+<p>The artifacts necessary to run the Inception V3 network for
+CPU, GPU, and DSP runtime will be generated in this tutorial.
+The steps required to compile and execute the Inception V3
+network for DSP runtime alone are outlined here. Information on
+running the Inception V3 network for CPU and GPU runtime is
+available at <a class="reference external" href="tutorial_inceptionv3_udo.html">Inception V3 UDO Tutorial</a>.</p>
+<p class="rubric" id="prerequisites">Prerequisites</p>
+<p>The following tutorial assumes that general <a class="reference external" href="setup.html">Qualcomm (R) Neural Processing SDK
+setup</a> has been followed to support
+SDK environment, TensorFlow environment, and desired platform
+dependencies. Additionally, we need an extracted Qualcomm® AI Direct SDK (no
+need of Qualcomm® AI Direct SDK setup) for generating the skeleton code and
+building the libraries. For Qualcomm® AI Direct SDK details, refer to the Qualcomm® AI Direct SDK
+documentation at <code class="docutils literal notranslate"><span class="pre">$QNN_SDK_ROOT/docs/QNN/index.html</span></code> page, where
+<code class="docutils literal notranslate"><span class="pre">QNN_SDK_ROOT</span></code> is the location of the Qualcomm® AI Direct SDK installation.
+Set the <code class="docutils literal notranslate"><span class="pre">$QNN_SDK_ROOT</span></code> to the unzipped Qualcomm® AI Direct SDK location. This has to be performed
+after running the envsetup.sh script mentioned in <a class="reference external" href="setup.html#environment-setup">SNPE Setup</a>. The
+steps listed in this tutorial use the Tensorflow model in the
+form of inception_v3_2016_08_28_frozen.pb. For details on
+acquiring the Inception V3 model visit <a class="reference external" href="tutorial_setup.html#tutorial_setup_inception_v3">Tutorials
+Setup</a>.</p>
+<p class="rubric" id="introduction">Introduction</p>
+<p>Here are the steps to develop and run a UDO</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="tutorial_inceptionv3_udo_dsp.html#step-1-package-generation">Package Generation</a></p></li>
+<li><p><a class="reference external" href="tutorial_inceptionv3_udo_dsp.html#step-2-framework-model-conversion-to-a-dlc">Framework Model Conversion to a DLC</a></p></li>
+<li><p><a class="reference external" href="tutorial_inceptionv3_udo_dsp.html#step-3-package-implementations">Package Implementation</a></p></li>
+<li><p><a class="reference external" href="tutorial_inceptionv3_udo_dsp.html#step-4-package-compilation">Package Compilation</a></p></li>
+<li><p><a class="reference external" href="tutorial_inceptionv3_udo_dsp.html#model-execution">Model Execution</a></p></li>
+</ol>
+<p>Steps 1-4 are run offline on the x86 host and are necessary for
+execution in step 5. Step 5 provides information on execution
+using the Qualcomm® Neural Processing SDK command-line executable <strong>snpe-net-run</strong>.
+Optionally, the user can perform steps 1-4 automatically using
+the provided <a class="reference external" href="tutorial_inceptionv3_udo_dsp.html#setup-script">setup script</a>.</p>
+<p class="rubric" id="step-1-package-generation">Step 1: Package Generation</p>
+<p>Generating the SoftmaxUdoPackage requires the
+<strong>snpe-udo-package-generator</strong> tool and the provided UDO
+plugin: Softmax_Quant.json. The plugin is located under
+$SNPE_ROOT/examples/SNPE/NativeCpp/UdoExample/Softmax/config. More
+information about creating a UDO plugin can be found
+<a class="reference external" href="udo_operator_definition.html#the-udo-configuration-specification">here</a>.</p>
+<p>Generate the SoftmaxUdoPackage using the following:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>export SNPE_UDO_ROOT=$SNPE_ROOT/share/SNPE/SnpeUdo
+export QNN_SDK_ROOT=&lt;path to Qualcomm® AI Direct SDK&gt;
+snpe-udo-package-generator -p $SNPE_ROOT/examples/SNPE/NativeCpp/UdoExample/Softmax/config/Softmax_Quant.json -o $SNPE_ROOT/examples/Models/InceptionV3/
+</pre></div>
+</div>
+<p>Similarly for DSP V68 example, the config is available at the
+location</p>
+<ul class="simple">
+<li><p>$SNPE_ROOT/examples/SNPE/NativeCpp/UdoExample/Softmax/config/Softmax_v68.json</p></li>
+</ul>
+<p>This command creates the Softmax based package at
+$SNPE_ROOT/examples/Models/InceptionV3/SoftmaxUdoPackage.
+For more information on the snpe-udo-package-generator tool
+visit <a class="reference external" href="creating_udo_package.html">here</a>.</p>
+<p class="rubric" id="step-2-framework-model-conversion-to-a-dlc">Step 2: Framework model Conversion to a DLC</p>
+<p>Information for converting a model to a DLC is available at
+<a class="reference external" href="tutorial_inceptionv3_udo.html#step-2-framework-model-conversion-to-a-dlc">Inception V3 UDO Model Conversion</a>.
+This will generate a DLC named inception_v3_udo.dlc containing
+the Softmax as UDO at $SNPE_ROOT/examples/Models/InceptionV3/dlc.</p>
+<p class="rubric" id="step-3-package-implementations">Step 3: Package Implementations</p>
+<p>The generated package creates the skeleton of the operation
+implementation, which must be filled by the user to create a
+functional UDO. The rest of the code scaffolding for
+compatibility with Qualcomm® Neural Processing SDK is provided by the
+<strong>snpe-udo-package-generator</strong>. The UDO implementations for this tutorial are provided under
+$SNPE_ROOT/examples/SNPE/NativeCpp/UdoExample/Softmax/src.</p>
+<p><strong>DSP Implementations for V65 and V66</strong></p>
+<p>A registration library and an implementation library are
+required to run inference on a network with UDO layers on Qualcomm® Neural Processing SDK
+DSP. The registration library will run on CPU, and specifies
+the DSP implementation library of the UDO. Refer <a class="reference external" href="compiling_udo_package.html#implementing-a-udo-for-dsp-v65-and-v66">Implementing a UDO for DSP V65 and
+V66</a>
+for more information on implementing UDO for DSP V65 and V66
+runtimes.</p>
+<p>The file in the package that need to be implemented for DSP V65
+and V66 are</p>
+<ul class="simple">
+<li><p>SoftmaxUdoPackage/jni/src/DSP/Softmax.cpp</p></li>
+</ul>
+<p>The provided example implementation is present at the location</p>
+<ul class="simple">
+<li><p>$SNPE_ROOT/examples/SNPE/NativeCpp/UdoExample/Softmax/src/DSP/Softmax.cpp</p></li>
+</ul>
+<p>Copy the provided implementations to the package:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>cp -f $SNPE_ROOT/examples/SNPE/NativeCpp/UdoExample/Softmax/src/DSP/Softmax.cpp $SNPE_ROOT/examples/Models/InceptionV3/SoftmaxUdoPackage/jni/src/DSP/src/ops
+</pre></div>
+</div>
+<p>Optionally, the user can provide their own implementations in
+the package.</p>
+<p><strong>DSP Implementations for V68 or later</strong></p>
+<p>Similar to all other Qualcomm® Neural Processing SDK runtimes, a registration library and
+an implementation library are required to run inference on a
+network with UDO layers on Qualcomm® Neural Processing SDK DSP. The registration library
+will run on CPU, and specifies the DSP implementation library
+of the UDO. Refer <a class="reference external" href="compiling_udo_package.html#implementing-a-udo-for-dsp-v68-or-later">Implementing a UDO for DSP V68 or
+later</a>
+for more information on implementing UDO for DSP V68 or later
+runtimes. The directory paths and locations in this example are
+specific to DSP V68. For later runtimes, please replace
+<strong>DSP_V68</strong> with the corresponding DSP architecture (for
+example, <strong>DSP_V69</strong>) in the paths.</p>
+<p>The file in the package that needs to be implemented for DSP
+V68 and later is</p>
+<ul class="simple">
+<li><p>SoftmaxUdoPackage/jni/src/DSP_V68/src/ops/Softmax.cpp</p></li>
+</ul>
+<p>The provided example implementation is present at the location</p>
+<ul class="simple">
+<li><p>$SNPE_ROOT/examples/SNPE/NativeCpp/UdoExample/Softmax/src/HTP/Softmax.cpp</p></li>
+</ul>
+<p>Copy the provided implementations to the package:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>cp -f $SNPE_ROOT/examples/SNPE/NativeCpp/UdoExample/Softmax/src/HTP/Softmax.cpp $SNPE_ROOT/examples/Models/InceptionV3/SoftmaxUdoPackage/jni/src/DSP_V68/src/ops
+</pre></div>
+</div>
+<p>Optionally, the user can provide their own implementations in
+the package.</p>
+<p class="rubric" id="step-4-package-compilation">Step 4: Package Compilation</p>
+<p><strong>Hexagon DSP Runtime Compilation</strong></p>
+<p>Compilation for the DSP runtime makes use of the make system.
+In order to build the implementation libraries for DSP V65 and
+V66 runtimes, Hexagon-SDK needs to be installed and set up. For
+details, follow the setup instructions on
+<code class="docutils literal notranslate"><span class="pre">$HEXAGON_SDK_ROOT/docs/readme.html</span></code> page, where
+<code class="docutils literal notranslate"><span class="pre">HEXAGON_SDK_ROOT</span></code> is the location of your Hexagon-SDK
+installation. Information for compiling a UDO for DSP is
+available at <a class="reference external" href="compiling_udo_package.html#compiling-a-udo-for-dsp-v65-and-v66-on-device">Compiling UDO for
+DSP</a>.</p>
+<p>In order to build the implementation libraries for DSP V68 or
+later runtimes, Hexagon-SDK 4.0+ needs to be installed and set
+up. For Hexagon-SDK details, follow the setup instructions on
+<code class="docutils literal notranslate"><span class="pre">$HEXAGON_SDK4_ROOT/docs/readme.html</span></code> page, where
+<code class="docutils literal notranslate"><span class="pre">HEXAGON_SDK_ROOT</span></code> is the location of your Hexagon-SDK
+installation. Also, we need an extracted Qualcomm® AI Direct SDK (no need of
+Qualcomm® AI Direct SDK setup) for building the libraries. For Qualcomm® AI Direct SDK details,
+refer to the Qualcomm® AI Direct SDK documentation at
+<code class="docutils literal notranslate"><span class="pre">$QNN_SDK_ROOT/docs/QNN/index.html</span></code> page, where <code class="docutils literal notranslate"><span class="pre">QNN_SDK_ROOT</span></code>
+is the location of the Qualcomm® AI Direct SDK installation. Set the
+<code class="docutils literal notranslate"><span class="pre">$QNN_SDK_ROOT</span></code> to the unzipped Qualcomm® AI Direct SDK location. Information
+for compiling a UDO for DSP V68 or later is available at
+<a class="reference external" href="compiling_udo_package.html#implementing-a-udo-for-dsp-v68-or-later">Compiling a UDO for DSP_V68 or
+later</a>.</p>
+<p>Compile for offline cache generation in case of DSP V68:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>cd SoftmaxUdoPackage
+make dsp_x86 X86_CXX=&lt;path_to_x86_64_clang&gt;
+</pre></div>
+</div>
+<p>The expected artifact after compiling for offline cache
+generation is</p>
+<ul class="simple">
+<li><p>The UDO DSP implementation library:
+SoftmaxUdoPackage/libs/x86-64_linux_clang/libUdoSoftmaxUdoPackageImplDsp.so</p></li>
+</ul>
+<p class="rubric" id="setup-script">Setup Script</p>
+<p>The Qualcomm® Neural Processing SDK provides an option to automatically perform steps
+of DLC conversion, package generation, package implementation,
+and package compilation for UDO as outlined in steps 1-4 above.
+The option is an extension of the <a class="reference external" href="tutorial_setup.html#getting-inception-v3">Inception V3 setup
+script</a>. To
+enable Inception V3 setup for UDO, run the script with the
+<strong>–udo</strong> or <strong>-u</strong> option.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>usage: $SNPE_ROOT/models/examples/Models/InceptionV3/scripts/setup_inceptionv3_snpe.py [-h] -a ASSETS_DIR [-d] [-r RUNTIME] [-u] [-l [HTP_SOC]]
+
+Prepares the InceptionV3 assets for tutorial examples.
+
+required arguments:
+  -a ASSETS_DIR, --assets_dir ASSETS_DIR
+                        directory containing the InceptionV3 assets
+
+optional arguments:
+  -d, --download        Download InceptionV3 assets to InceptionV3 example
+                        directory
+  -r RUNTIME, --runtime RUNTIME
+                        Choose a runtime to set up tutorial for. Choices: cpu,
+                        gpu, dsp, aip, all. &#39;all&#39; option is only supported
+                        with --udo flag
+  -u, --udo             Generate and compile a user-defined operation package
+                        to be used with InceptionV3. Softmax is simulated as
+                        a UDO for this script.
+  -l [HTP_SOC], --htp_soc [HTP_SOC]
+                        Specify SOC target for generating HTP Offline Cache.
+                        For example: &quot;--htp_soc sm8450&quot; for Snapdragon 8 Gen 1,
+                        default value is sm8650.
+</pre></div>
+</div>
+<p>The –udo extension is compatible with options normally used by
+the setup_inceptionv3.py script. When the –udo option is
+enabled, the -r or –runtime option controls the runtime for
+the package implementation and compilation. Additionally, the
+–udo option supports use of an ‘all’ runtime option to create
+and compile the SoftmaxUdoPackage for the CPU, GPU, and
+DSP/AIP runtimes. Selecting the ‘aip’ or ‘dsp’ runtime options
+additionally compiles x86 libraries in order to quantize the
+model. Selecting the ‘cpu’ runtime option compiles for both x86
+and Android targets. Compilation for Android target will be
+skipped if ANDROID_NDK_ROOT is not set. If no runtime option is
+provided the package is compiled for the CPU runtime. The -l or
+–htp_soc option will generate and compile the package for the
+HTP architecture of the SoC provided.</p>
+<p>The command to use the setup script for UDO is:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>python3 $SNPE_ROOT/examples/Models/InceptionV3/scripts/setup_inceptionv3.py -a ~/tmpdir -d -u -r &lt;runtime_of_choice&gt;
+</pre></div>
+</div>
+<p>In case of DSP V68:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>python3 $SNPE_ROOT/examples/Models/InceptionV3/scripts/setup_inceptionv3.py -a ~/tmpdir -d -u -r &lt;runtime_of_choice&gt; -l
+</pre></div>
+</div>
+<p>This will populate the artifacts in <a class="reference external" href="tutorial_inceptionv3_udo_dsp.html#step-4-package-compilation">Step
+4</a>.</p>
+<p class="rubric" id="model-execution">Model Execution</p>
+<p><strong>Execution using snpe-net-run</strong></p>
+<p>Executing Inception V3 with UDO is largely the same as use of
+<a class="reference external" href="tutorial_inceptionv3.html#overview">snpe-net-run</a>
+without UDO.</p>
+<p>The Qualcomm® Neural Processing SDK provides Linux and Android binaries of
+<strong>snpe-net-run</strong> under</p>
+<ul class="simple">
+<li><p>$SNPE_ROOT/bin/x86_64-linux-clang</p></li>
+<li><p>$SNPE_ROOT/bin/aarch64-android</p></li>
+<li><p>$SNPE_ROOT/bin/aarch64-oe-linux-gcc8.2</p></li>
+<li><p>$SNPE_ROOT/bin/aarch64-oe-linux-gcc9.3</p></li>
+<li><p>$SNPE_ROOT/bin/aarch64-ubuntu-gcc7.5</p></li>
+<li><p>$SNPE_ROOT/bin/aarch64-ubuntu-gcc9.4</p></li>
+<li><p>$SNPE_ROOT/bin/aarch64-oe-linux-gcc11.2</p></li>
+</ul>
+<p>For UDO, snpe-net-run consumes the registration library through
+the –udo_package_path option. LD_LIBRARY_PATH must also be
+updated to include the runtime-specific artifacts generated
+from package compilation.</p>
+<p><strong>Android Target Execution</strong></p>
+<p>The tutorial for execution on Android targets will use the
+arm64-v8a architecture. Set SNPE_TARGET_DSPARCH
+to the DSP architecture of the target Android device.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span># architecture: arm64-v8a - compiler: clang - STL: libc++
+export SNPE_TARGET_ARCH=aarch64-android
+export SNPE_TARGET_DSPARCH=hexagon-v68
+</pre></div>
+</div>
+<p>Then, push Qualcomm® Neural Processing SDK binaries and libraries to the target device:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>adb shell &quot;mkdir -p /data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/bin&quot;
+adb shell &quot;mkdir -p /data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/lib&quot;
+
+adb push $SNPE_ROOT/lib/$SNPE_TARGET_ARCH/*.so \
+      /data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/lib
+adb push $SNPE_ROOT/bin/$SNPE_TARGET_ARCH/snpe-net-run \
+      /data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/bin
+</pre></div>
+</div>
+<p>Next, update environment variables on the target device to
+include the Qualcomm® Neural Processing SDK libraries and binaries:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>adb shell
+export SNPE_TARGET_ARCH=aarch64-android
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/lib
+export PATH=$PATH:/data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/bin
+</pre></div>
+</div>
+<p>Lastly, push the Inception V3 UDO model and input data to the device:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>cd $SNPE_ROOT/examples/Models/InceptionV3
+mkdir data/rawfiles &amp;&amp; cp data/cropped/*.raw data/rawfiles/
+adb shell &quot;mkdir -p /data/local/tmp/inception_v3_udo&quot;
+adb push data/rawfiles /data/local/tmp/inception_v3_udo/cropped
+adb push data/target_raw_list.txt /data/local/tmp/inception_v3_udo
+adb push dlc/inception_v3_udo.dlc /data/local/tmp/inception_v3_udo
+rm -rf data/rawfiles
+</pre></div>
+</div>
+<p><strong>Hexagon DSP Execution</strong></p>
+<p>The procedure for execution on device for DSP is largely the
+same as CPU and GPU. However, the DSP runtime requires
+quantized network parameters. While DSP allows unquantized
+DLCs, it is generally recommended to quantize DLCs for improved
+performance. The tutorial will use a quantized DLC as an
+illustrative example. Quantizing the DLC requires the
+<strong>snpe-dlc-quantize</strong> tool.</p>
+<p><strong>Note:</strong> In the below command one should use input dlc
+generated at <a class="reference external" href="tutorial_inceptionv3_udo.html#step-2-framework-model-conversion-to-a-dlc">Model DLC
+Conversion</a>.
+Also, provide the path of the registration lib generated after
+compiling x86 Host under the argument “udo_package_path”. More
+information about compiling x86 can be found
+<a class="reference external" href="tutorial_inceptionv3_udo.html#step-4-package-compilation">here</a>.</p>
+<p>To quantize the DLC for use on DSP:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>cd $SNPE_ROOT/examples/Models/InceptionV3/
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$SNPE_ROOT/examples/Models/InceptionV3/SoftmaxUdoPackage/libs/x86-64_linux_clang/
+snpe-dlc-quantize --input_dlc dlc/inception_v3_udo.dlc --input_list data/cropped/raw_list.txt --udo_package_path SoftmaxUdoPackage/libs/x86-64_linux_clang/libUdoSoftmaxUdoPackageReg.so --output_dlc dlc/inception_v3_udo_quantized.dlc
+</pre></div>
+</div>
+<p>For quantizing the DLC with offline cache generation to use on
+DSP V68 :</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>cd $SNPE_ROOT/examples/Models/InceptionV3/
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:SoftmaxUdoPackage/libs/x86-64_linux_clang
+snpe-dlc-quantize --input_dlc dlc/inception_v3_udo.dlc --input_list data/cropped/raw_list.txt --udo_package_path SoftmaxUdoPackage/libs/x86-64_linux_clang/libUdoSoftmaxUdoPackageReg.so --output_dlc dlc/inception_v3_udo_quantized.dlc --enable_htp --htp_socs sm8350
+</pre></div>
+</div>
+<p>For more information on <strong>snpe-dlc-quantize</strong> visit
+<a class="reference external" href="quantized_models.html#overview">quantization</a>. For
+information on UDO-specific quantization visit <a class="reference external" href="preparing_model_with_udo.html#quantizing-a-dlc-with-udo">Quantizing a
+DLC with UDO</a>.
+For information on DSP/AIP runtime visit <a class="reference external" href="dsp_runtime.html">DSP
+Runtime</a> or <a class="reference external" href="aip_runtime.html">AIP
+Runtime</a>.</p>
+<p>Now push the quantized model to device:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>adb push dlc/inception_v3_udo_quantized.dlc /data/local/tmp/inception_v3_udo
+</pre></div>
+</div>
+<p>Before executing on the DSP, push the Qualcomm® Neural Processing SDK libraries for DSP to
+device:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>adb shell &quot;mkdir -p /data/local/tmp/snpeexample/dsp/lib&quot;
+adb push $SNPE_ROOT/lib/$SNPE_TARGET_DSPARCH/unsigned/*.so /data/local/tmp/snpeexample/dsp/lib
+</pre></div>
+</div>
+<p>Now push DSP-specific UDO libraries to device. Depending on DSP
+architecture specified in the config, <strong>dsp_v68</strong> directory can
+be <strong>dsp_v60</strong> or <strong>dsp</strong> (with older Qualcomm® Neural Processing SDKs).</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>cd $SNPE_ROOT/examples/Models/InceptionV3
+adb shell &quot;mkdir -p /data/local/tmp/inception_v3_udo/dsp&quot;
+adb push SoftmaxUdoPackage/libs/dsp_v68/*.so /data/local/tmp/inception_v3_udo/dsp
+adb push SoftmaxUdoPackage/libs/arm64-v8a/libUdoSoftmaxUdoPackageReg.so /data/local/tmp/inception_v3_udo/dsp # Pushes reg lib
+adb push SoftmaxUdoPackage/libs/arm64-v8a/libc++_shared.so /data/local/tmp/inception_v3_udo/dsp
+</pre></div>
+</div>
+<p>Then set required environment variables and run snpe-net-run on
+device:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>adb shell
+cd /data/local/tmp/inception_v3_udo/
+export SNPE_TARGET_ARCH=aarch64-android
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/lib
+export PATH=$PATH:/data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/bin
+export LD_LIBRARY_PATH=/data/local/tmp/inception_v3_udo/dsp/:$LD_LIBRARY_PATH
+export ADSP_LIBRARY_PATH=&quot;/data/local/tmp/inception_v3_udo/dsp/;/data/local/tmp/snpeexample/dsp/lib;/system/lib/rfsa/adsp;/system/vendor/lib/rfsa/adsp;/dsp&quot;
+snpe-net-run --container inception_v3_udo_quantized.dlc --input_list target_raw_list.txt --udo_package_path dsp/libUdoSoftmaxUdoPackageReg.so --use_dsp
+</pre></div>
+</div>
+<p><strong>AIP Execution</strong></p>
+<p>Because UDOs are not supported on the HTA hardware, executing
+on the AIP runtime defaults to the DSP UDO implementations. HTA
+hardware runs exclusively on quantized models and therefore as
+with the DSP runtime, a quantized model will be used.</p>
+<p><strong>Note:</strong> In the below command one should use input dlc
+generated at <a class="reference external" href="tutorial_inceptionv3_udo.html#step-2-framework-model-conversion-to-a-dlc">Model DLC
+Conversion</a>.
+Also provide the path of the registration lib generated after
+compiling x86 Host under the argument “udo_package_path”. More
+information about compiling x86 can be found
+<a class="reference external" href="tutorial_inceptionv3_udo.html#step-4-package-compilation">here</a>.</p>
+<p>The command to quantize the DLC for AIP is:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>cd $SNPE_ROOT/examples/Models/InceptionV3/
+snpe-dlc-quantize --input_dlc dlc/inception_v3_udo.dlc --input_list data/cropped/raw_list.txt --udo_package_path SoftmaxUdoPackage/libs/x86-64_linux_clang/libUdoSoftmaxUdoPackageReg.so --output_dlc dlc/inception_v3_udo_quantized.dlc --enable_hta
+</pre></div>
+</div>
+<p>Now push the quantized model to device:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>adb push dlc/inception_v3_udo_quantized.dlc /data/local/tmp/inception_v3_udo
+</pre></div>
+</div>
+<p>Before executing using the AIP runtime, push the Qualcomm® Neural Processing SDK libraries
+for DSP to device with these commands:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>adb shell &quot;mkdir -p /data/local/tmp/snpeexample/dsp/lib&quot;
+adb push $SNPE_ROOT/lib/$SNPE_TARGET_DSPARCH/unsigned/*.so /data/local/tmp/snpeexample/dsp/lib
+</pre></div>
+</div>
+<p>Now push DSP-specific UDO libraries to device. Depending on DSP
+architecture specified in the config, <strong>dsp_v68</strong> directory can
+be <strong>dsp_v60</strong> or <strong>dsp</strong> (with older Qualcomm® Neural Processing SDKs).</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>cd $SNPE_ROOT/examples/Models/InceptionV3
+adb shell &quot;mkdir -p /data/local/tmp/inception_v3_udo/dsp&quot;
+adb push SoftmaxUdoPackage/libs/dsp_v68/*.so /data/local/tmp/inception_v3_udo/dsp
+adb push SoftmaxUdoPackage/libs/arm64-v8a/libUdoSoftmaxUdoPackageReg.so /data/local/tmp/inception_v3_udo/dsp # Pushes reg lib
+adb push SoftmaxUdoPackage/libs/arm64-v8a/libc++_shared.so /data/local/tmp/inception_v3_udo/dsp
+</pre></div>
+</div>
+<p>Then set required environment variables and run snpe-net-run on
+device:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>adb shell
+cd /data/local/tmp/inception_v3_udo/
+export SNPE_TARGET_ARCH=aarch64-android
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/lib
+export PATH=$PATH:/data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/bin
+export LD_LIBRARY_PATH=/data/local/tmp/inception_v3_udo/dsp/:$LD_LIBRARY_PATH
+export ADSP_LIBRARY_PATH=&quot;/data/local/tmp/inception_v3_udo/dsp/;/data/local/tmp/snpeexample/dsp/lib;/system/lib/rfsa/adsp;/system/vendor/lib/rfsa/adsp;/dsp&quot;
+snpe-net-run --container inception_v3_udo_quantized.dlc --input_list target_raw_list.txt --udo_package_path dsp/libUdoSoftmaxUdoPackageReg.so --use_aip
+</pre></div>
+</div>
+<p><strong>Integration with Android APK</strong></p>
+<p>This portion of the tutorial outlines how to integrate Qualcomm® Neural Processing SDK UDO
+libraries and Java API for package registration into an Android
+application. Generally, for native shared libraries to be
+discoverable by the application they must be placed in the
+project under</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>&lt;project&gt;/app/src/main/jniLibs/&lt;platform_abi&gt;
+</pre></div>
+</div>
+<p>Once the libraries are accessible by the application, the
+registration library can be registered using the provided <a class="reference external" href="running_model_with_udo.html#executing-neural-networks-with-udo">Java
+API</a>.
+This process will be replicated with the example <a class="reference external" href="android_tutorial.html#android-sample-application">Image
+Classifiers</a>
+application. The following assumes that the rest of the example
+application setup has been followed. The tutorial will issue
+instructions for platforms with arm64-v8a ABI.</p>
+<p>First, create the neccessary directories to contain the UDO
+libraries. The following steps will populate all runtime
+implementation libraries.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>mkdir app/src/main/jniLibs/
+cp -a $SNPE_ROOT/examples/Models/InceptionV3/SoftmaxUdoPackage/libs/arm64-v8a/ app/src/main/jniLibs/
+</pre></div>
+</div>
+<p>If DSP is to be used as the runtime, copy the implementation
+library with the following:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>cp $SNPE_ROOT/examples/Models/InceptionV3/SoftmaxUdoPackage/libs/dsp_v68/*.so app/src/main/jniLibs/arm64-v8a/
+</pre></div>
+</div>
+<p>If not already done, running <strong>setup_inceptionv3.sh</strong> will add
+the Inception V3 model enabled with UDO to the project.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>bash ./setup_inceptionv3.sh
+</pre></div>
+</div>
+<p>Now the Java API can be registered. Edit the file
+$SNPE_ROOT/examples/SNPE/android/image-classifiers/app/src/main/java/com/qualcomm/qti/snpe/imageclassifiers/tasks/LoadNetworkTask.java</p>
+<p>To contain this line</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>@Override
+    protected NeuralNetwork doInBackground(File... params) {
+        NeuralNetwork network = null;
+        try {
+            SNPE.addOpPackage(mApplication,&quot;libUdoSoftmaxUdoPackageReg.so&quot;); // Add this line to register package
+            final SNPE.NeuralNetworkBuilder builder = new SNPE.NeuralNetworkBuilder(mApplication)
+        ...
+</pre></div>
+</div>
+<p>Now the APK can be built and exercised</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>./gradlew assembleDebug
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="tutorial_inceptionv3_udo_dsp_win.html" class="btn btn-neutral float-right" title="UDO DSP tutorial on Windows for Quantized DLC" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="tutorial_inceptionv3_udo.html" class="btn btn-neutral float-left" title="UDO Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

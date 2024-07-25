@@ -1,0 +1,1069 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>File QnnOpPackage.h &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>File QnnOpPackage.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="file-qnnoppackage-h">
+<span id="file-include-qnn-qnnoppackage-h"></span><h1>File QnnOpPackage.h<a class="headerlink" href="#file-qnnoppackage-h" title="Permalink to this heading">¶</a></h1>
+<p>↰ <a class="reference internal" href="dir_include_QNN.html#dir-include-qnn"><span class="std std-ref">Parent directory</span></a> (<code class="docutils literal notranslate"><span class="pre">include/QNN</span></code>)</p>
+<p>QNN Operation Package API.</p>
+<div class="contents local topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#definition-include-qnn-qnnoppackage-h" id="id1">Definition (<code class="docutils literal notranslate"><span class="pre">include/QNN/QnnOpPackage.h</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#detailed-description" id="id2">Detailed Description</a></p></li>
+<li><p><a class="reference internal" href="#includes" id="id3">Includes</a></p></li>
+<li><p><a class="reference internal" href="#included-by" id="id4">Included By</a></p></li>
+<li><p><a class="reference internal" href="#classes" id="id5">Classes</a></p></li>
+<li><p><a class="reference internal" href="#enums" id="id6">Enums</a></p></li>
+<li><p><a class="reference internal" href="#defines" id="id7">Defines</a></p></li>
+<li><p><a class="reference internal" href="#typedefs" id="id8">Typedefs</a></p></li>
+<li><p><a class="reference internal" href="#unions" id="id9">Unions</a></p></li>
+<li><p><a class="reference internal" href="#full-file-listing" id="id10">Full File Listing</a></p></li>
+</ul>
+</div>
+<div class="section" id="definition-include-qnn-qnnoppackage-h">
+<h2>Definition (<code class="docutils literal notranslate"><span class="pre">include/QNN/QnnOpPackage.h</span></code>)<a class="headerlink" href="#definition-include-qnn-qnnoppackage-h" title="Permalink to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="program_listing_file_include_QNN_QnnOpPackage.h.html">Program Listing for File QnnOpPackage.h</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="detailed-description">
+<h2>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><p>Provides interface to the backend to use registered OpPackage libraries.</p>
+</div></blockquote>
+</div>
+<div class="section" id="includes">
+<h2>Includes<a class="headerlink" href="#includes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">QnnCommon.h</span></code> (<a class="reference internal" href="file_include_QNN_QnnCommon.h.html#file-include-qnn-qnncommon-h"><span class="std std-ref">File QnnCommon.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QnnLog.h</span></code> (<a class="reference internal" href="file_include_QNN_QnnLog.h.html#file-include-qnn-qnnlog-h"><span class="std std-ref">File QnnLog.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QnnTypes.h</span></code> (<a class="reference internal" href="file_include_QNN_QnnTypes.h.html#file-include-qnn-qnntypes-h"><span class="std std-ref">File QnnTypes.h</span></a>)</p></li>
+</ul>
+</div>
+<div class="section" id="included-by">
+<h2>Included By<a class="headerlink" href="#included-by" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="file_include_QNN_CPU_QnnCpuOpPackage.h.html#file-include-qnn-cpu-qnncpuoppackage-h"><span class="std std-ref">File QnnCpuOpPackage.h</span></a></p></li>
+<li><p><a class="reference internal" href="file_include_QNN_DSP_QnnDspOpPackage.h.html#file-include-qnn-dsp-qnndspoppackage-h"><span class="std std-ref">File QnnDspOpPackage.h</span></a></p></li>
+<li><p><a class="reference internal" href="file_include_QNN_GPU_QnnGpuOpPackage.h.html#file-include-qnn-gpu-qnngpuoppackage-h"><span class="std std-ref">File QnnGpuOpPackage.h</span></a></p></li>
+<li><p><a class="reference internal" href="file_include_QNN_QnnInterface.h.html#file-include-qnn-qnninterface-h"><span class="std std-ref">File QnnInterface.h</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="structQnnOpPackage__ImplementationV1__4__t.html#exhale-struct-structqnnoppackage-implementationv1-4-t"><span class="std std-ref">Struct QnnOpPackage_ImplementationV1_4_t</span></a></p></li>
+<li><p><a class="reference internal" href="structQnnOpPackage__ImplementationV2__0__t.html#exhale-struct-structqnnoppackage-implementationv2-0-t"><span class="std std-ref">Struct QnnOpPackage_ImplementationV2_0_t</span></a></p></li>
+<li><p><a class="reference internal" href="structQnnOpPackage__Info__t.html#exhale-struct-structqnnoppackage-info-t"><span class="std std-ref">Struct QnnOpPackage_Info_t</span></a></p></li>
+<li><p><a class="reference internal" href="structQnnOpPackage__Interface__t.html#exhale-struct-structqnnoppackage-interface-t"><span class="std std-ref">Struct QnnOpPackage_Interface_t</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="enums">
+<h2>Enums<a class="headerlink" href="#enums" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="enum_QnnOpPackage_8h_1a7cfdb5aae322cae6f30de8e730443fbc.html#exhale-enum-qnnoppackage-8h-1a7cfdb5aae322cae6f30de8e730443fbc"><span class="std std-ref">Enum QnnOpPackage_Error_t</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="defines">
+<h2>Defines<a class="headerlink" href="#defines" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="define_QnnOpPackage_8h_1a25562831fc189d1f9dc525228d9169a2.html#exhale-define-qnnoppackage-8h-1a25562831fc189d1f9dc525228d9169a2"><span class="std std-ref">Define QNN_OP_PACKAGE_API_VERSION_1_4_0</span></a></p></li>
+<li><p><a class="reference internal" href="define_QnnOpPackage_8h_1a416ecc1f53e3aeb8afbd63158e9927dd.html#exhale-define-qnnoppackage-8h-1a416ecc1f53e3aeb8afbd63158e9927dd"><span class="std std-ref">Define QNN_OP_PACKAGE_API_VERSION_2_0_0</span></a></p></li>
+<li><p><a class="reference internal" href="define_QnnOpPackage_8h_1ab6be92c6a72d978f4a5ca46409e5a9a2.html#exhale-define-qnnoppackage-8h-1ab6be92c6a72d978f4a5ca46409e5a9a2"><span class="std std-ref">Define QNN_OP_PACKAGE_IMPLEMENTATION_V1_4_INIT</span></a></p></li>
+<li><p><a class="reference internal" href="define_QnnOpPackage_8h_1aee5570b4c347dea30c01d15c8bd16f4f.html#exhale-define-qnnoppackage-8h-1aee5570b4c347dea30c01d15c8bd16f4f"><span class="std std-ref">Define QNN_OP_PACKAGE_IMPLEMENTATION_V2_0_INIT</span></a></p></li>
+<li><p><a class="reference internal" href="define_QnnOpPackage_8h_1ab22abb1613784492dbe0b2b5be69e2d3.html#exhale-define-qnnoppackage-8h-1ab22abb1613784492dbe0b2b5be69e2d3"><span class="std std-ref">Define QNN_OP_PACKAGE_INFO_INIT</span></a></p></li>
+<li><p><a class="reference internal" href="define_QnnOpPackage_8h_1a1f1e092b1c11e5c293d5074fbca79e30.html#exhale-define-qnnoppackage-8h-1a1f1e092b1c11e5c293d5074fbca79e30"><span class="std std-ref">Define QNN_OP_PACKAGE_INTERFACE_INIT</span></a></p></li>
+<li><p><a class="reference internal" href="define_QnnOpPackage_8h_1a401004dcd193bac32dea2dbdb468e860.html#exhale-define-qnnoppackage-8h-1a401004dcd193bac32dea2dbdb468e860"><span class="std std-ref">Define QNN_OP_PACKAGE_RESERVED_INFO_SIZE</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="typedefs">
+<h2>Typedefs<a class="headerlink" href="#typedefs" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="typedef_QnnOpPackage_8h_1af313f3e4439e7f79362d1065938e0960.html#exhale-typedef-qnnoppackage-8h-1af313f3e4439e7f79362d1065938e0960"><span class="std std-ref">Typedef Qnn_OpPackageHandle_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_QnnOpPackage_8h_1a4485c95f5e6b9eba3394da35703f6b39.html#exhale-typedef-qnnoppackage-8h-1a4485c95f5e6b9eba3394da35703f6b39"><span class="std std-ref">Typedef QnnOpPackage_CreateFn_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_QnnOpPackage_8h_1a4a28f68bc4f3e46c4310f3991445b6e9.html#exhale-typedef-qnnoppackage-8h-1a4a28f68bc4f3e46c4310f3991445b6e9"><span class="std std-ref">Typedef QnnOpPackage_CreateOpImplFn_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_QnnOpPackage_8h_1a5bcd1f43e0e30582a75188228a4a66ff.html#exhale-typedef-qnnoppackage-8h-1a5bcd1f43e0e30582a75188228a4a66ff"><span class="std std-ref">Typedef QnnOpPackage_CreateOpImplHandleFn_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_QnnOpPackage_8h_1a3b0611a7d9105b853af4ce005b3bace7.html#exhale-typedef-qnnoppackage-8h-1a3b0611a7d9105b853af4ce005b3bace7"><span class="std std-ref">Typedef QnnOpPackage_FreeFn_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_QnnOpPackage_8h_1ae26cd784792e4d3c3c09133ad3ba730f.html#exhale-typedef-qnnoppackage-8h-1ae26cd784792e4d3c3c09133ad3ba730f"><span class="std std-ref">Typedef QnnOpPackage_FreeOpImplFn_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_QnnOpPackage_8h_1ae4dac9216b2e6d8ac60d12e7b79e346d.html#exhale-typedef-qnnoppackage-8h-1ae4dac9216b2e6d8ac60d12e7b79e346d"><span class="std std-ref">Typedef QnnOpPackage_FreeOpImplHandleFn_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_QnnOpPackage_8h_1a1f7646062abbbd782c32e6bed72dd564.html#exhale-typedef-qnnoppackage-8h-1a1f7646062abbbd782c32e6bed72dd564"><span class="std std-ref">Typedef QnnOpPackage_GetInfoFn_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_QnnOpPackage_8h_1a131cec9cecddbdbf9d6819a14a001fe9.html#exhale-typedef-qnnoppackage-8h-1a131cec9cecddbdbf9d6819a14a001fe9"><span class="std std-ref">Typedef QnnOpPackage_InitFn_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_QnnOpPackage_8h_1a71759daf7267945c50a6e5417026e869.html#exhale-typedef-qnnoppackage-8h-1a71759daf7267945c50a6e5417026e869"><span class="std std-ref">Typedef QnnOpPackage_InterfaceProvider_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_QnnOpPackage_8h_1a2a2611c2e2ab753026744d80b68c7f9f.html#exhale-typedef-qnnoppackage-8h-1a2a2611c2e2ab753026744d80b68c7f9f"><span class="std std-ref">Typedef QnnOpPackage_LogInitializeFn_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_QnnOpPackage_8h_1a0d38a8da3f01f8030a1c039efb987965.html#exhale-typedef-qnnoppackage-8h-1a0d38a8da3f01f8030a1c039efb987965"><span class="std std-ref">Typedef QnnOpPackage_LogSetLevelFn_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_QnnOpPackage_8h_1a27c09fc21487527b170ea41a22d9e03b.html#exhale-typedef-qnnoppackage-8h-1a27c09fc21487527b170ea41a22d9e03b"><span class="std std-ref">Typedef QnnOpPackage_LogSetLevelHandleFn_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_QnnOpPackage_8h_1a24ee97abd62ee02485729b354895e960.html#exhale-typedef-qnnoppackage-8h-1a24ee97abd62ee02485729b354895e960"><span class="std std-ref">Typedef QnnOpPackage_LogTerminateFn_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_QnnOpPackage_8h_1a6ed084a085bca8d7780fc91c651a91c9.html#exhale-typedef-qnnoppackage-8h-1a6ed084a085bca8d7780fc91c651a91c9"><span class="std std-ref">Typedef QnnOpPackage_TerminateFn_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_QnnOpPackage_8h_1ad8cdd8de3e34c264d3925064f8790920.html#exhale-typedef-qnnoppackage-8h-1ad8cdd8de3e34c264d3925064f8790920"><span class="std std-ref">Typedef QnnOpPackage_ValidateOpConfigFn_t</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_QnnOpPackage_8h_1a81873772d7ff2530ffc3601502c8fea6.html#exhale-typedef-qnnoppackage-8h-1a81873772d7ff2530ffc3601502c8fea6"><span class="std std-ref">Typedef QnnOpPackage_ValidateOpConfigHandleFn_t</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="unions">
+<h2>Unions<a class="headerlink" href="#unions" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="unionQnnOpPackage__Interface__t_1_1unnamed.html#exhale-union-unionqnnoppackage-interface-t-1-1unnamed"><span class="std std-ref">Union QnnOpPackage_Interface_t::unnamed</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="full-file-listing">
+<h2>Full File Listing<a class="headerlink" href="#full-file-listing" title="Permalink to this heading">¶</a></h2>
+<p>QNN Operation Package API. </p>
+<p><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="n">Provides</span><span class="w"> </span><span class="n">interface</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">backend</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">registered</span><span class="w"> </span><span class="n">OpPackage</span><span class="w"> </span><span class="n">libraries</span><span class="p">.</span>
+</pre></div>
+</div>
+ </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_OP_PACKAGE_RESERVED_INFO_SIZE">
+<span class="target" id="QnnOpPackage_8h_1a401004dcd193bac32dea2dbdb468e860"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_OP_PACKAGE_RESERVED_INFO_SIZE</span></span></span> <span class="pre">12</span><a class="headerlink" href="#c.QNN_OP_PACKAGE_RESERVED_INFO_SIZE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_OP_PACKAGE_INFO_INIT">
+<span class="target" id="QnnOpPackage_8h_1ab22abb1613784492dbe0b2b5be69e2d3"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_OP_PACKAGE_INFO_INIT</span></span></span> <p><span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160; <span class="pre">/*packageName*/</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160; <span class="pre">/*operationNames*/</span>&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160; <span class="pre">/*operationInfo*/</span>&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">0u,</span>&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">/*numOperations*/</span>&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160; <span class="pre">/*optimizations*/</span>&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">0u,</span>&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">/*numOptimizations*/</span> <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160; <span class="pre">/*sdkBuildId*/</span>&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160; <span class="pre">/*sdkApiVersion*/</span>&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160; <span class="pre">/*packageInfo*/</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160; <span class="pre">/*opsetVersion*/</span>&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">{</span> <span class="pre">0u</span> <span class="pre">}</span>&#160;&#160;&#160; <span class="pre">/*reserved*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">}</span></p>
+<a class="headerlink" href="#c.QNN_OP_PACKAGE_INFO_INIT" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#structQnnOpPackage__Info__t"><span class="std std-ref">QnnOpPackage_Info_t</span></a> initializer macro. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_OP_PACKAGE_API_VERSION_1_4_0">
+<span class="target" id="QnnOpPackage_8h_1a25562831fc189d1f9dc525228d9169a2"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_OP_PACKAGE_API_VERSION_1_4_0</span></span></span> <p><span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">1u,</span> <span class="pre">/*major*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">4u,</span> <span class="pre">/*minor*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">0u</span>&#160; <span class="pre">/*patch*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">}</span></p>
+<a class="headerlink" href="#c.QNN_OP_PACKAGE_API_VERSION_1_4_0" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#structQnnOpPackage__ImplementationV1__4__t"><span class="std std-ref">QnnOpPackage_ImplementationV1_4_t</span></a> version initializer macro. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_OP_PACKAGE_IMPLEMENTATION_V1_4_INIT">
+<span class="target" id="QnnOpPackage_8h_1ab6be92c6a72d978f4a5ca46409e5a9a2"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_OP_PACKAGE_IMPLEMENTATION_V1_4_INIT</span></span></span> <p><span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160; <span class="pre">/*init*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160; <span class="pre">/*terminate*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160; <span class="pre">/*getInfo*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160; <span class="pre">/*validateOpConfig*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160; <span class="pre">/*createOpImpl*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160; <span class="pre">/*freeOpImpl*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160; <span class="pre">/*logInitialize*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160; <span class="pre">/*logSetLevel*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">/*logTerminate*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">}</span></p>
+<a class="headerlink" href="#c.QNN_OP_PACKAGE_IMPLEMENTATION_V1_4_INIT" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#structQnnOpPackage__ImplementationV1__4__t"><span class="std std-ref">QnnOpPackage_ImplementationV1_4_t</span></a> initializer macro. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_OP_PACKAGE_API_VERSION_2_0_0">
+<span class="target" id="QnnOpPackage_8h_1a416ecc1f53e3aeb8afbd63158e9927dd"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_OP_PACKAGE_API_VERSION_2_0_0</span></span></span> <p><span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">2u,</span> <span class="pre">/*major*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">0u,</span> <span class="pre">/*minor*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">0u</span>&#160; <span class="pre">/*patch*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">}</span></p>
+<a class="headerlink" href="#c.QNN_OP_PACKAGE_API_VERSION_2_0_0" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#structQnnOpPackage__ImplementationV2__0__t"><span class="std std-ref">QnnOpPackage_ImplementationV2_0_t</span></a> version initializer macro. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_OP_PACKAGE_IMPLEMENTATION_V2_0_INIT">
+<span class="target" id="QnnOpPackage_8h_1aee5570b4c347dea30c01d15c8bd16f4f"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_OP_PACKAGE_IMPLEMENTATION_V2_0_INIT</span></span></span> <p><span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160; <span class="pre">/*create*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160; <span class="pre">/*getInfo*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160; <span class="pre">/*validateOpConfig*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160; <span class="pre">/*createOpImpl*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160; <span class="pre">/*freeOpImpl*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160; <span class="pre">/*logSetLevel*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">/*free*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">}</span></p>
+<a class="headerlink" href="#c.QNN_OP_PACKAGE_IMPLEMENTATION_V2_0_INIT" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#structQnnOpPackage__ImplementationV2__0__t"><span class="std std-ref">QnnOpPackage_ImplementationV2_0_t</span></a> initializer macro. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_OP_PACKAGE_INTERFACE_INIT">
+<span class="target" id="QnnOpPackage_8h_1a1f1e092b1c11e5c293d5074fbca79e30"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_OP_PACKAGE_INTERFACE_INIT</span></span></span> &#160; <span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span>
+&#160;&#160;&#160; <a class="reference internal" href="define_QnnOpPackage_8h_1a25562831fc189d1f9dc525228d9169a2.html#QnnOpPackage_8h_1a25562831fc189d1f9dc525228d9169a2"><span class="std std-ref"><span class="pre">QNN_OP_PACKAGE_API_VERSION_1_4_0</span></span></a><p><span class="pre">,</span> <span class="pre">/*interfaceVersion*/</span> <span class="pre">\</span></p>
+<p><span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<a class="reference internal" href="define_QnnOpPackage_8h_1ab6be92c6a72d978f4a5ca46409e5a9a2.html#QnnOpPackage_8h_1ab6be92c6a72d978f4a5ca46409e5a9a2"><span class="std std-ref"><span class="pre">QNN_OP_PACKAGE_IMPLEMENTATION_V1_4_INIT</span></span></a><p><span class="pre">/*v1_4*/</span>&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">}</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">}</span></p>
+<a class="headerlink" href="#c.QNN_OP_PACKAGE_INTERFACE_INIT" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#structQnnOpPackage__Interface__t"><span class="std std-ref">QnnOpPackage_Interface_t</span></a> initializer macro. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv421Qnn_OpPackageHandle_t">
+<span id="_CPPv321Qnn_OpPackageHandle_t"></span><span id="_CPPv221Qnn_OpPackageHandle_t"></span><span id="Qnn_OpPackageHandle_t"></span><span class="target" id="QnnOpPackage_8h_1af313f3e4439e7f79362d1065938e0960"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="typedef_QnnCommon_8h_1a661adc2cc9e4c2079ab49e3ed733612a.html#_CPPv412Qnn_Handle_t" title="Qnn_Handle_t"><span class="n"><span class="pre">Qnn_Handle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Qnn_OpPackageHandle_t</span></span></span><a class="headerlink" href="#_CPPv421Qnn_OpPackageHandle_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A typedef for op package handles. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv421QnnOpPackage_InitFn_t">
+<span id="_CPPv321QnnOpPackage_InitFn_t"></span><span id="_CPPv221QnnOpPackage_InitFn_t"></span><span id="QnnOpPackage_InitFn_t"></span><span class="target" id="QnnOpPackage_8h_1a131cec9cecddbdbf9d6819a14a001fe9"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">QnnOpPackage_InitFn_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">QnnOpPackage_GlobalInfrastructure_t</span></span><span class="w"> </span><span class="n"><span class="pre">infrastructure</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv421QnnOpPackage_InitFn_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Initialize an Op package library’s data structures. This function must be called before any other library functions. Calling multiple times will result in errors after the first call. This function can be called again after QnnOpPackage_TerminateFn_t. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Param infrastructure</dt>
+<dd class="field-odd"><p><strong>[in]</strong> Global infrastructure object provided by the backend, for use in all operations in the package. This is guaranteed to live at least until QnnOpPackage_TerminateFn_t returns, and is safe to cache.</p>
+</dd>
+<dt class="field-even">Return</dt>
+<dd class="field-even"><p>Error code:<ul class="simple">
+<li><p>QNN_SUCCESS: Op package library was successfully initialized.</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_LIBRARY_ALREADY_INITIALIZED: This package library has already been initialized.</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_INVALID_INFRASTRUCTURE: Op package initialization failed due to invalid infrastructure content.</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_GENERAL: Op package library failed to initialize. </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv426QnnOpPackage_TerminateFn_t">
+<span id="_CPPv326QnnOpPackage_TerminateFn_t"></span><span id="_CPPv226QnnOpPackage_TerminateFn_t"></span><span id="QnnOpPackage_TerminateFn_t"></span><span class="target" id="QnnOpPackage_8h_1a6ed084a085bca8d7780fc91c651a91c9"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">QnnOpPackage_TerminateFn_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv426QnnOpPackage_TerminateFn_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Terminate an Op package library, freeing all data structures and invalidating any memory or handles provided by the library. This function may be called again after a subsequent call to QnnOpPackage_InitFn_t. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Return</dt>
+<dd class="field-odd"><p>Error code:<ul class="simple">
+<li><p>QNN_SUCCESS: Op package library was successfully terminated.</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_GENERAL: Op package library termination failed. </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv424QnnOpPackage_GetInfoFn_t">
+<span id="_CPPv324QnnOpPackage_GetInfoFn_t"></span><span id="_CPPv224QnnOpPackage_GetInfoFn_t"></span><span id="QnnOpPackage_GetInfoFn_t"></span><span class="target" id="QnnOpPackage_8h_1a1f7646062abbbd782c32e6bed72dd564"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">QnnOpPackage_GetInfoFn_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="structQnnOpPackage__Info__t.html#_CPPv419QnnOpPackage_Info_t" title="QnnOpPackage_Info_t"><span class="n"><span class="pre">QnnOpPackage_Info_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">info</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv424QnnOpPackage_GetInfoFn_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Retrieve a <a class="reference internal" href="#structQnnOpPackage__Info__t"><span class="std std-ref">QnnOpPackage_Info_t</span></a> struct from an Op package library describing all operations and optimizations provided by the library. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Param info</dt>
+<dd class="field-odd"><p><strong>[out]</strong> Info object for the library. This pointer shall point to memory owned by the op package library and remain valid until QnnOpPackage_TerminateFn_t is called on the library. The contents of this struct shall not change before QnnOpPackage_TerminateFn_t is called.</p>
+</dd>
+<dt class="field-even">Return</dt>
+<dd class="field-even"><p>Error code:<ul class="simple">
+<li><p>QNN_SUCCESS: Info is fetched successfully.</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_INVALID_INFO: ‘info’ argument was NULL or invalid.</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_GENERAL: Other error occurred. </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv433QnnOpPackage_ValidateOpConfigFn_t">
+<span id="_CPPv333QnnOpPackage_ValidateOpConfigFn_t"></span><span id="_CPPv233QnnOpPackage_ValidateOpConfigFn_t"></span><span id="QnnOpPackage_ValidateOpConfigFn_t"></span><span class="target" id="QnnOpPackage_8h_1ad8cdd8de3e34c264d3925064f8790920"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">QnnOpPackage_ValidateOpConfigFn_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="structQnn__OpConfig__t.html#_CPPv414Qnn_OpConfig_t" title="Qnn_OpConfig_t"><span class="n"><span class="pre">Qnn_OpConfig_t</span></span></a><span class="w"> </span><span class="n"><span class="pre">opConfig</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv433QnnOpPackage_ValidateOpConfigFn_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Verifies that this op with the specified config can be successfully executed. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Param opConfig</dt>
+<dd class="field-odd"><p><strong>[in]</strong> Op configuration in question.</p>
+</dd>
+<dt class="field-even">Return</dt>
+<dd class="field-even"><p>error code:<ul class="simple">
+<li><p>QNN_SUCCESS if validation is successful</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_VALIDATION_FAILURE: op config validation failed</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_UNSUPPORTED_FEATURE: Validation API not supported </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>inputTensors</em> and <em>outputTensors</em> inside opConfig must be fully qualified for complete validation. However, their unique IDs (<em>id</em>) are ignored during validation.</p>
+</div>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv429QnnOpPackage_CreateOpImplFn_t">
+<span id="_CPPv329QnnOpPackage_CreateOpImplFn_t"></span><span id="_CPPv229QnnOpPackage_CreateOpImplFn_t"></span><span id="QnnOpPackage_CreateOpImplFn_t"></span><span class="target" id="QnnOpPackage_8h_1a4a28f68bc4f3e46c4310f3991445b6e9"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">QnnOpPackage_CreateOpImplFn_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">QnnOpPackage_GraphInfrastructure_t</span></span><span class="w"> </span><span class="n"><span class="pre">graphInfrastructure</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">QnnOpPackage_Node_t</span></span><span class="w"> </span><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">QnnOpPackage_OpImpl_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">opImpl</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv429QnnOpPackage_CreateOpImplFn_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Create Op implementation with executable content for a given node. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Param graphInfrastructure</dt>
+<dd class="field-odd"><p><strong>[in]</strong> Infrastructure for the graph to which the node and kernels belong. This memory is guaranteed to live at least until all created kernels are freed, and may be safely cached.</p>
+</dd>
+<dt class="field-even">Param node</dt>
+<dd class="field-even"><p><strong>[in]</strong> Node object for which kernels should be created. This node may be freed before the created kernels. Neither the node nor it’s members should be cached.</p>
+</dd>
+<dt class="field-odd">Param opImpl</dt>
+<dd class="field-odd"><p><strong>[out]</strong> Op implementation with executable content to compute the operation specified by <em>node</em>. The Op implementation contents will be freed by the backend with QnnOpPackage_FreeOpImplFn_t.</p>
+</dd>
+<dt class="field-even">Pre</dt>
+<dd class="field-even"><p>The corresponding QnnOpPackage_ValidateOpConfigFn_t should return QNN_SUCCESS for the supplied node.</p>
+</dd>
+<dt class="field-odd">Return</dt>
+<dd class="field-odd"><p>Error code:<ul class="simple">
+<li><p>QNN_SUCCESS: Op implementation is created successfully</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_INVALID_INFRASTRUCTURE: Failed to create op implementation due to invalid graph infrastructure content.</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_INVALID_ARGUMENT: one or more invalid arguments (e.g. NULL)</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_UNSUPPORTED_FEATURE: API not supported</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_GENERAL: Other error occurred. </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv427QnnOpPackage_FreeOpImplFn_t">
+<span id="_CPPv327QnnOpPackage_FreeOpImplFn_t"></span><span id="_CPPv227QnnOpPackage_FreeOpImplFn_t"></span><span id="QnnOpPackage_FreeOpImplFn_t"></span><span class="target" id="QnnOpPackage_8h_1ae26cd784792e4d3c3c09133ad3ba730f"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">QnnOpPackage_FreeOpImplFn_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">QnnOpPackage_OpImpl_t</span></span><span class="w"> </span><span class="n"><span class="pre">opImpl</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv427QnnOpPackage_FreeOpImplFn_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Free the resources associated with Op implementation previously allocated by QnnOpPackage_CreateOpImplFn_t. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Param opImpl</dt>
+<dd class="field-odd"><p><strong>[in]</strong> Op implementation which should be freed.</p>
+</dd>
+<dt class="field-even">Return</dt>
+<dd class="field-even"><p>Error code:<ul class="simple">
+<li><p>QNN_SUCCESS if Op implementation resources are successfully freed.</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_INVALID_ARGUMENT: <em>opImpl</em> argument was NULL.</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_UNSUPPORTED_FEATURE: API not supported.</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_GENERAL: Other error occurred. </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv430QnnOpPackage_LogInitializeFn_t">
+<span id="_CPPv330QnnOpPackage_LogInitializeFn_t"></span><span id="_CPPv230QnnOpPackage_LogInitializeFn_t"></span><span id="QnnOpPackage_LogInitializeFn_t"></span><span class="target" id="QnnOpPackage_8h_1a2a2611c2e2ab753026744d80b68c7f9f"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">QnnOpPackage_LogInitializeFn_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="typedef_QnnLog_8h_1af2b3739b9f4b81c8554bd0c1b02a968c.html#_CPPv417QnnLog_Callback_t" title="QnnLog_Callback_t"><span class="n"><span class="pre">QnnLog_Callback_t</span></span></a><span class="w"> </span><span class="n"><span class="pre">callback</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="enum_QnnLog_8h_1a7e31479caab6e3a7274dfbc0bd0b133f.html#_CPPv414QnnLog_Level_t" title="QnnLog_Level_t"><span class="n"><span class="pre">QnnLog_Level_t</span></span></a><span class="w"> </span><span class="n"><span class="pre">maxLogLevel</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv430QnnOpPackage_LogInitializeFn_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>See <a class="reference internal" href="file_include_QNN_QnnLog.h.html#QnnLog_8h_1a786ad69e2c24827d911b89f558ee7829"><span class="std std-ref">QnnLog_create()</span></a> in QnnLog.h for documentation. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv428QnnOpPackage_LogSetLevelFn_t">
+<span id="_CPPv328QnnOpPackage_LogSetLevelFn_t"></span><span id="_CPPv228QnnOpPackage_LogSetLevelFn_t"></span><span id="QnnOpPackage_LogSetLevelFn_t"></span><span class="target" id="QnnOpPackage_8h_1a0d38a8da3f01f8030a1c039efb987965"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">QnnOpPackage_LogSetLevelFn_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="enum_QnnLog_8h_1a7e31479caab6e3a7274dfbc0bd0b133f.html#_CPPv414QnnLog_Level_t" title="QnnLog_Level_t"><span class="n"><span class="pre">QnnLog_Level_t</span></span></a><span class="w"> </span><span class="n"><span class="pre">maxLogLevel</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv428QnnOpPackage_LogSetLevelFn_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>See <a class="reference internal" href="file_include_QNN_QnnLog.h.html#QnnLog_8h_1aeb1ae7105285d54ff710f935109fc5ad"><span class="std std-ref">QnnLog_setLogLevel()</span></a> in QnnLog.h for documentation. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv429QnnOpPackage_LogTerminateFn_t">
+<span id="_CPPv329QnnOpPackage_LogTerminateFn_t"></span><span id="_CPPv229QnnOpPackage_LogTerminateFn_t"></span><span id="QnnOpPackage_LogTerminateFn_t"></span><span class="target" id="QnnOpPackage_8h_1a24ee97abd62ee02485729b354895e960"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">QnnOpPackage_LogTerminateFn_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv429QnnOpPackage_LogTerminateFn_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>See <a class="reference internal" href="file_include_QNN_QnnLog.h.html#QnnLog_8h_1aacd47e923c528453f17e46280c96c53e"><span class="std std-ref">QnnLog_free()</span></a> in QnnLog.h for documentation. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv423QnnOpPackage_CreateFn_t">
+<span id="_CPPv323QnnOpPackage_CreateFn_t"></span><span id="_CPPv223QnnOpPackage_CreateFn_t"></span><span id="QnnOpPackage_CreateFn_t"></span><span class="target" id="QnnOpPackage_8h_1a4485c95f5e6b9eba3394da35703f6b39"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">QnnOpPackage_CreateFn_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">QnnOpPackage_GlobalInfrastructure_t</span></span><span class="w"> </span><span class="n"><span class="pre">infrastructure</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="typedef_QnnLog_8h_1af2b3739b9f4b81c8554bd0c1b02a968c.html#_CPPv417QnnLog_Callback_t" title="QnnLog_Callback_t"><span class="n"><span class="pre">QnnLog_Callback_t</span></span></a><span class="w"> </span><span class="n"><span class="pre">callback</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="enum_QnnLog_8h_1a7e31479caab6e3a7274dfbc0bd0b133f.html#_CPPv414QnnLog_Level_t" title="QnnLog_Level_t"><span class="n"><span class="pre">QnnLog_Level_t</span></span></a><span class="w"> </span><span class="n"><span class="pre">maxLogLevel</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="typedef_QnnOpPackage_8h_1af313f3e4439e7f79362d1065938e0960.html#_CPPv421Qnn_OpPackageHandle_t" title="Qnn_OpPackageHandle_t"><span class="n"><span class="pre">Qnn_OpPackageHandle_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">opPackage</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv423QnnOpPackage_CreateFn_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Initialize an op package library and create an op package handle. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Param infrastructure</dt>
+<dd class="field-odd"><p><strong>[in]</strong> Global infrastructure object provided by the backend for use in all operations in the package.</p>
+</dd>
+<dt class="field-even">Param callback</dt>
+<dd class="field-even"><p><strong>[in]</strong> Callback to handle op package generated logging messages. NULL represents that logging is disabled.</p>
+</dd>
+<dt class="field-odd">Param maxLogLevel</dt>
+<dd class="field-odd"><p><strong>[in]</strong> Maximum level of messages which the op package will generate.</p>
+</dd>
+<dt class="field-even">Param opPackage</dt>
+<dd class="field-even"><p><strong>[out]</strong> The created op package handle.</p>
+</dd>
+<dt class="field-odd">Return</dt>
+<dd class="field-odd"><p>Error code:<ul class="simple">
+<li><p>QNN_SUCCESS: Op package was successfully created.</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_UNSUPPORTED_PLATFORM: Op package attempted to be created on an unsupported platform.</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_INVALID_ARGUMENT: if one or more arguments is invalid.</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_INVALID_INFRASTRUCTURE: Op package initialization failed due to invalid infrastructure content.</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_GENERAL: Op package library failed to initialize. </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv439QnnOpPackage_ValidateOpConfigHandleFn_t">
+<span id="_CPPv339QnnOpPackage_ValidateOpConfigHandleFn_t"></span><span id="_CPPv239QnnOpPackage_ValidateOpConfigHandleFn_t"></span><span id="QnnOpPackage_ValidateOpConfigHandleFn_t"></span><span class="target" id="QnnOpPackage_8h_1a81873772d7ff2530ffc3601502c8fea6"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">QnnOpPackage_ValidateOpConfigHandleFn_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="typedef_QnnOpPackage_8h_1af313f3e4439e7f79362d1065938e0960.html#_CPPv421Qnn_OpPackageHandle_t" title="Qnn_OpPackageHandle_t"><span class="n"><span class="pre">Qnn_OpPackageHandle_t</span></span></a><span class="w"> </span><span class="n"><span class="pre">opPackage</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="structQnn__OpConfig__t.html#_CPPv414Qnn_OpConfig_t" title="Qnn_OpConfig_t"><span class="n"><span class="pre">Qnn_OpConfig_t</span></span></a><span class="w"> </span><span class="n"><span class="pre">opConfig</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv439QnnOpPackage_ValidateOpConfigHandleFn_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Verifies that this op with the specified config can be successfully executed. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Param opPackage</dt>
+<dd class="field-odd"><p><strong>[in]</strong> An op package handle.</p>
+</dd>
+<dt class="field-even">Param opConfig</dt>
+<dd class="field-even"><p><strong>[in]</strong> Op configuration in question.</p>
+</dd>
+<dt class="field-odd">Return</dt>
+<dd class="field-odd"><p>error code:<ul class="simple">
+<li><p>QNN_SUCCESS No error encountered.</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_INVALID_HANDLE: <em>opPackage</em> is not a valid handle.</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_VALIDATION_FAILURE: op config validation failed</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_UNSUPPORTED_FEATURE: Validation API not supported </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>inputTensors</em> and <em>outputTensors</em> inside opConfig must be fully qualified for complete validation. However, their unique <em>id</em> and <em>name</em> are ignored during validation.</p>
+</div>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv435QnnOpPackage_CreateOpImplHandleFn_t">
+<span id="_CPPv335QnnOpPackage_CreateOpImplHandleFn_t"></span><span id="_CPPv235QnnOpPackage_CreateOpImplHandleFn_t"></span><span id="QnnOpPackage_CreateOpImplHandleFn_t"></span><span class="target" id="QnnOpPackage_8h_1a5bcd1f43e0e30582a75188228a4a66ff"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">QnnOpPackage_CreateOpImplHandleFn_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="typedef_QnnOpPackage_8h_1af313f3e4439e7f79362d1065938e0960.html#_CPPv421Qnn_OpPackageHandle_t" title="Qnn_OpPackageHandle_t"><span class="n"><span class="pre">Qnn_OpPackageHandle_t</span></span></a><span class="w"> </span><span class="n"><span class="pre">opPackage</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">QnnOpPackage_GraphInfrastructure_t</span></span><span class="w"> </span><span class="n"><span class="pre">graphInfrastructure</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">QnnOpPackage_Node_t</span></span><span class="w"> </span><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">QnnOpPackage_OpImpl_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">opImpl</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv435QnnOpPackage_CreateOpImplHandleFn_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Create op implementation with executable content for a given node. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Param opPackage</dt>
+<dd class="field-odd"><p><strong>[in]</strong> An op package handle.</p>
+</dd>
+<dt class="field-even">Param graphInfrastructure</dt>
+<dd class="field-even"><p><strong>[in]</strong> Infrastructure for the graph to which the node and kernels belong. This memory is guaranteed to live at least until all created kernels are freed and may be safely cached.</p>
+</dd>
+<dt class="field-odd">Param node</dt>
+<dd class="field-odd"><p><strong>[in]</strong> Node object for which kernels should be created. This node may be freed before the created kernels. Neither the node nor it’s members should be cached.</p>
+</dd>
+<dt class="field-even">Param opImpl</dt>
+<dd class="field-even"><p><strong>[out]</strong> Op implementation with executable content to compute the operation specified by <em>node</em>. The Op implementation contents will be freed by the backend with QnnOpPackage_FreeOpImplFn_t.</p>
+</dd>
+<dt class="field-odd">Pre</dt>
+<dd class="field-odd"><p>The corresponding QnnOpPackage_ValidateOpConfigFn_t should return QNN_SUCCESS for the supplied node.</p>
+</dd>
+<dt class="field-even">Return</dt>
+<dd class="field-even"><p>Error code:<ul class="simple">
+<li><p>QNN_SUCCESS: No error encountered.</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_INVALID_HANDLE: <em>opPackage</em> is not a valid handle.</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_INVALID_INFRASTRUCTURE: Failed to create op implementation due to invalid graph infrastructure content.</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_INVALID_ARGUMENT: one or more invalid arguments (e.g. NULL)</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_UNSUPPORTED_FEATURE: API not supported</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_GENERAL: Other error occurred. </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv433QnnOpPackage_FreeOpImplHandleFn_t">
+<span id="_CPPv333QnnOpPackage_FreeOpImplHandleFn_t"></span><span id="_CPPv233QnnOpPackage_FreeOpImplHandleFn_t"></span><span id="QnnOpPackage_FreeOpImplHandleFn_t"></span><span class="target" id="QnnOpPackage_8h_1ae4dac9216b2e6d8ac60d12e7b79e346d"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">QnnOpPackage_FreeOpImplHandleFn_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="typedef_QnnOpPackage_8h_1af313f3e4439e7f79362d1065938e0960.html#_CPPv421Qnn_OpPackageHandle_t" title="Qnn_OpPackageHandle_t"><span class="n"><span class="pre">Qnn_OpPackageHandle_t</span></span></a><span class="w"> </span><span class="n"><span class="pre">opPackage</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">QnnOpPackage_OpImpl_t</span></span><span class="w"> </span><span class="n"><span class="pre">opImpl</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv433QnnOpPackage_FreeOpImplHandleFn_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Free the resources associated with Op implementation previously allocated by QnnOpPackage_CreateOpImplFn_t. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Param opPackage</dt>
+<dd class="field-odd"><p><strong>[in]</strong> An op package handle.</p>
+</dd>
+<dt class="field-even">Param opImpl</dt>
+<dd class="field-even"><p><strong>[in]</strong> Op implementation which should be freed.</p>
+</dd>
+<dt class="field-odd">Return</dt>
+<dd class="field-odd"><p>Error code:<ul class="simple">
+<li><p>QNN_SUCCESS No error encountered.</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_INVALID_HANDLE: <em>opPackage</em> is not a valid handle.</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_INVALID_ARGUMENT: <em>opImpl</em> argument was NULL.</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_UNSUPPORTED_FEATURE: API not supported.</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_GENERAL: Other error occurred. </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv434QnnOpPackage_LogSetLevelHandleFn_t">
+<span id="_CPPv334QnnOpPackage_LogSetLevelHandleFn_t"></span><span id="_CPPv234QnnOpPackage_LogSetLevelHandleFn_t"></span><span id="QnnOpPackage_LogSetLevelHandleFn_t"></span><span class="target" id="QnnOpPackage_8h_1a27c09fc21487527b170ea41a22d9e03b"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">QnnOpPackage_LogSetLevelHandleFn_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="typedef_QnnOpPackage_8h_1af313f3e4439e7f79362d1065938e0960.html#_CPPv421Qnn_OpPackageHandle_t" title="Qnn_OpPackageHandle_t"><span class="n"><span class="pre">Qnn_OpPackageHandle_t</span></span></a><span class="w"> </span><span class="n"><span class="pre">opPackage</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="enum_QnnLog_8h_1a7e31479caab6e3a7274dfbc0bd0b133f.html#_CPPv414QnnLog_Level_t" title="QnnLog_Level_t"><span class="n"><span class="pre">QnnLog_Level_t</span></span></a><span class="w"> </span><span class="n"><span class="pre">maxLogLevel</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv434QnnOpPackage_LogSetLevelHandleFn_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A function to change the log level for the supplied op package handle. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Param opPackage</dt>
+<dd class="field-odd"><p><strong>[in]</strong> An op package handle.</p>
+</dd>
+<dt class="field-even">Param maxLogLevel</dt>
+<dd class="field-even"><p><strong>[in]</strong> New maximum log level.</p>
+</dd>
+<dt class="field-odd">Return</dt>
+<dd class="field-odd"><p>Error code:<ul class="simple">
+<li><p>QNN_SUCCESS: No error encountered.</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_INVALID_HANDLE: <em>opPackage</em> is not a valid handle.</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_INVALID_ARGUMENT: if maxLogLevel is not a valid log level. </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv421QnnOpPackage_FreeFn_t">
+<span id="_CPPv321QnnOpPackage_FreeFn_t"></span><span id="_CPPv221QnnOpPackage_FreeFn_t"></span><span id="QnnOpPackage_FreeFn_t"></span><span class="target" id="QnnOpPackage_8h_1a3b0611a7d9105b853af4ce005b3bace7"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">QnnOpPackage_FreeFn_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="typedef_QnnOpPackage_8h_1af313f3e4439e7f79362d1065938e0960.html#_CPPv421Qnn_OpPackageHandle_t" title="Qnn_OpPackageHandle_t"><span class="n"><span class="pre">Qnn_OpPackageHandle_t</span></span></a><span class="w"> </span><span class="n"><span class="pre">opPackage</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv421QnnOpPackage_FreeFn_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Free all resources associated with an op package handle. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Param Op</dt>
+<dd class="field-odd"><p><strong>[in]</strong> package handle to be freed.</p>
+</dd>
+<dt class="field-even">Return</dt>
+<dd class="field-even"><p>Error code:<ul class="simple">
+<li><p>QNN_SUCCESS: No error encountered.</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_INVALID_HANDLE: <em>opPackage</em> is not a valid handle.</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_GENERAL: Indicates failure to free op package allocated resources. </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv432QnnOpPackage_InterfaceProvider_t">
+<span id="_CPPv332QnnOpPackage_InterfaceProvider_t"></span><span id="_CPPv232QnnOpPackage_InterfaceProvider_t"></span><span id="QnnOpPackage_InterfaceProvider_t"></span><span class="target" id="QnnOpPackage_8h_1a71759daf7267945c50a6e5417026e869"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">QnnOpPackage_InterfaceProvider_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="structQnnOpPackage__Interface__t.html#_CPPv424QnnOpPackage_Interface_t" title="QnnOpPackage_Interface_t"><span class="n"><span class="pre">QnnOpPackage_Interface_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">interface</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv432QnnOpPackage_InterfaceProvider_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A function to retrieve the interface provided by the Op package. The name of this function is not prescribed by Op Package API, but must be documented by the package developer and supplied to QNN backend by the client. See <a class="reference internal" href="file_include_QNN_QnnBackend.h.html#QnnBackend_8h_1a95dd59ad0b59872f3649f7c363c23441"><span class="std std-ref">QnnBackend_registerOpPackage()</span></a>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Param interface</dt>
+<dd class="field-odd"><p><strong>[out]</strong> QNN Op Package interface structure, populated with the version and interface methods this Op package provides. Caller to manage the lifetime of the pointer, though the contents are to be considered invalid if the op package library is terminated/unloaded.</p>
+</dd>
+<dt class="field-even">Return</dt>
+<dd class="field-even"><p>Error code:<ul class="simple">
+<li><p>QNN_SUCCESS: Op package interface is successfully retrieved.</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_INVALID_ARGUMENT: <em>interface</em> argument was NULL.</p></li>
+<li><p>QNN_OP_PACKAGE_ERROR_GENERAL: Other error occurred. </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv420QnnOpPackage_Error_t">
+<span id="_CPPv320QnnOpPackage_Error_t"></span><span id="_CPPv220QnnOpPackage_Error_t"></span><span class="target" id="QnnOpPackage_8h_1a7cfdb5aae322cae6f30de8e730443fbc"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnOpPackage_Error_t</span></span></span><a class="headerlink" href="#_CPPv420QnnOpPackage_Error_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>QNN OpPackage API result / error codes. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N20QnnOpPackage_Error_t24QNN_OP_PACKAGE_MIN_ERRORE">
+<span id="_CPPv3N20QnnOpPackage_Error_t24QNN_OP_PACKAGE_MIN_ERRORE"></span><span id="_CPPv2N20QnnOpPackage_Error_t24QNN_OP_PACKAGE_MIN_ERRORE"></span><span class="target" id="QnnOpPackage_8h_1a7cfdb5aae322cae6f30de8e730443fbca200919d3fd9c5f22caaffcb2cd36fa67"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_OP_PACKAGE_MIN_ERROR</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">3000</span></span><a class="headerlink" href="#_CPPv4N20QnnOpPackage_Error_t24QNN_OP_PACKAGE_MIN_ERRORE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N20QnnOpPackage_Error_t23QNN_OP_PACKAGE_NO_ERRORE">
+<span id="_CPPv3N20QnnOpPackage_Error_t23QNN_OP_PACKAGE_NO_ERRORE"></span><span id="_CPPv2N20QnnOpPackage_Error_t23QNN_OP_PACKAGE_NO_ERRORE"></span><span class="target" id="QnnOpPackage_8h_1a7cfdb5aae322cae6f30de8e730443fbcaddfaa7473ae91b9f4726cc3def559a08"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_OP_PACKAGE_NO_ERROR</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N20QnnOpPackage_Error_t23QNN_OP_PACKAGE_NO_ERRORE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N20QnnOpPackage_Error_t40QNN_OP_PACKAGE_ERROR_UNSUPPORTED_FEATUREE">
+<span id="_CPPv3N20QnnOpPackage_Error_t40QNN_OP_PACKAGE_ERROR_UNSUPPORTED_FEATUREE"></span><span id="_CPPv2N20QnnOpPackage_Error_t40QNN_OP_PACKAGE_ERROR_UNSUPPORTED_FEATUREE"></span><span class="target" id="QnnOpPackage_8h_1a7cfdb5aae322cae6f30de8e730443fbcac615a8dd8431ba8a214bdb6e6441e52d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_OP_PACKAGE_ERROR_UNSUPPORTED_FEATURE</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="../general/api_error_codes.html#_CPPv4N17QnnCommon_Error_t30QNN_COMMON_ERROR_NOT_SUPPORTEDE" title="QNN_COMMON_ERROR_NOT_SUPPORTED"><span class="n"><span class="pre">QNN_COMMON_ERROR_NOT_SUPPORTED</span></span></a><a class="headerlink" href="#_CPPv4N20QnnOpPackage_Error_t40QNN_OP_PACKAGE_ERROR_UNSUPPORTED_FEATUREE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>There is optional API component that is not supported yet. See QnnProperty. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N20QnnOpPackage_Error_t48QNN_OP_PACKAGE_ERROR_LIBRARY_ALREADY_INITIALIZEDE">
+<span id="_CPPv3N20QnnOpPackage_Error_t48QNN_OP_PACKAGE_ERROR_LIBRARY_ALREADY_INITIALIZEDE"></span><span id="_CPPv2N20QnnOpPackage_Error_t48QNN_OP_PACKAGE_ERROR_LIBRARY_ALREADY_INITIALIZEDE"></span><span class="target" id="QnnOpPackage_8h_1a7cfdb5aae322cae6f30de8e730443fbcaf0cff5d7e08b9302cd192ed7d2249f70"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_OP_PACKAGE_ERROR_LIBRARY_ALREADY_INITIALIZED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">3000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N20QnnOpPackage_Error_t48QNN_OP_PACKAGE_ERROR_LIBRARY_ALREADY_INITIALIZEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Op package library was already initialized. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N20QnnOpPackage_Error_t44QNN_OP_PACKAGE_ERROR_LIBRARY_NOT_INITIALIZEDE">
+<span id="_CPPv3N20QnnOpPackage_Error_t44QNN_OP_PACKAGE_ERROR_LIBRARY_NOT_INITIALIZEDE"></span><span id="_CPPv2N20QnnOpPackage_Error_t44QNN_OP_PACKAGE_ERROR_LIBRARY_NOT_INITIALIZEDE"></span><span class="target" id="QnnOpPackage_8h_1a7cfdb5aae322cae6f30de8e730443fbcaf72684b86f08a07abff3bc2da9abc3c0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_OP_PACKAGE_ERROR_LIBRARY_NOT_INITIALIZED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">3000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N20QnnOpPackage_Error_t44QNN_OP_PACKAGE_ERROR_LIBRARY_NOT_INITIALIZEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Attempt to call a function in an uninitialized op package library. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N20QnnOpPackage_Error_t35QNN_OP_PACKAGE_ERROR_INVALID_HANDLEE">
+<span id="_CPPv3N20QnnOpPackage_Error_t35QNN_OP_PACKAGE_ERROR_INVALID_HANDLEE"></span><span id="_CPPv2N20QnnOpPackage_Error_t35QNN_OP_PACKAGE_ERROR_INVALID_HANDLEE"></span><span class="target" id="QnnOpPackage_8h_1a7cfdb5aae322cae6f30de8e730443fbca7ff18c5d567ac72bb74339581678cff9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_OP_PACKAGE_ERROR_INVALID_HANDLE</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">3000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">2</span></span><a class="headerlink" href="#_CPPv4N20QnnOpPackage_Error_t35QNN_OP_PACKAGE_ERROR_INVALID_HANDLEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An invalid op package handle was provided. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N20QnnOpPackage_Error_t43QNN_OP_PACKAGE_ERROR_INVALID_INFRASTRUCTUREE">
+<span id="_CPPv3N20QnnOpPackage_Error_t43QNN_OP_PACKAGE_ERROR_INVALID_INFRASTRUCTUREE"></span><span id="_CPPv2N20QnnOpPackage_Error_t43QNN_OP_PACKAGE_ERROR_INVALID_INFRASTRUCTUREE"></span><span class="target" id="QnnOpPackage_8h_1a7cfdb5aae322cae6f30de8e730443fbca0e33a56db8ed00d739bed77a29fed204"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_OP_PACKAGE_ERROR_INVALID_INFRASTRUCTURE</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">3000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">100</span></span><a class="headerlink" href="#_CPPv4N20QnnOpPackage_Error_t43QNN_OP_PACKAGE_ERROR_INVALID_INFRASTRUCTUREE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Invalid infrastructure object used in initializing op package. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N20QnnOpPackage_Error_t33QNN_OP_PACKAGE_ERROR_INVALID_INFOE">
+<span id="_CPPv3N20QnnOpPackage_Error_t33QNN_OP_PACKAGE_ERROR_INVALID_INFOE"></span><span id="_CPPv2N20QnnOpPackage_Error_t33QNN_OP_PACKAGE_ERROR_INVALID_INFOE"></span><span class="target" id="QnnOpPackage_8h_1a7cfdb5aae322cae6f30de8e730443fbcaa1292ee22d78520d781329a421d3305b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_OP_PACKAGE_ERROR_INVALID_INFO</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">3000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">101</span></span><a class="headerlink" href="#_CPPv4N20QnnOpPackage_Error_t33QNN_OP_PACKAGE_ERROR_INVALID_INFOE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Invalid op package info object used in initializing op package. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N20QnnOpPackage_Error_t39QNN_OP_PACKAGE_ERROR_VALIDATION_FAILUREE">
+<span id="_CPPv3N20QnnOpPackage_Error_t39QNN_OP_PACKAGE_ERROR_VALIDATION_FAILUREE"></span><span id="_CPPv2N20QnnOpPackage_Error_t39QNN_OP_PACKAGE_ERROR_VALIDATION_FAILUREE"></span><span class="target" id="QnnOpPackage_8h_1a7cfdb5aae322cae6f30de8e730443fbca00e9b12bcd911d9ca3d7a13167ca018f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_OP_PACKAGE_ERROR_VALIDATION_FAILURE</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">3000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">110</span></span><a class="headerlink" href="#_CPPv4N20QnnOpPackage_Error_t39QNN_OP_PACKAGE_ERROR_VALIDATION_FAILUREE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Op configuration failed validation. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N20QnnOpPackage_Error_t37QNN_OP_PACKAGE_ERROR_INVALID_ARGUMENTE">
+<span id="_CPPv3N20QnnOpPackage_Error_t37QNN_OP_PACKAGE_ERROR_INVALID_ARGUMENTE"></span><span id="_CPPv2N20QnnOpPackage_Error_t37QNN_OP_PACKAGE_ERROR_INVALID_ARGUMENTE"></span><span class="target" id="QnnOpPackage_8h_1a7cfdb5aae322cae6f30de8e730443fbca548a5880878453fa0120c9bbcfb749dd"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_OP_PACKAGE_ERROR_INVALID_ARGUMENT</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">3000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">200</span></span><a class="headerlink" href="#_CPPv4N20QnnOpPackage_Error_t37QNN_OP_PACKAGE_ERROR_INVALID_ARGUMENTE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Invalid function argument. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N20QnnOpPackage_Error_t28QNN_OP_PACKAGE_ERROR_GENERALE">
+<span id="_CPPv3N20QnnOpPackage_Error_t28QNN_OP_PACKAGE_ERROR_GENERALE"></span><span id="_CPPv2N20QnnOpPackage_Error_t28QNN_OP_PACKAGE_ERROR_GENERALE"></span><span class="target" id="QnnOpPackage_8h_1a7cfdb5aae322cae6f30de8e730443fbca07c5b112acbbb40c587de7768839e856"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_OP_PACKAGE_ERROR_GENERAL</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="../general/api_error_codes.html#_CPPv4N17QnnCommon_Error_t24QNN_COMMON_ERROR_GENERALE" title="QNN_COMMON_ERROR_GENERAL"><span class="n"><span class="pre">QNN_COMMON_ERROR_GENERAL</span></span></a><a class="headerlink" href="#_CPPv4N20QnnOpPackage_Error_t28QNN_OP_PACKAGE_ERROR_GENERALE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Indicates an error has occurred due to a condition unforeseen by QNN, and possibly meaningful only in the context of the particular op package. Unless otherwise noted, any op package function may return this error. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N20QnnOpPackage_Error_t24QNN_OP_PACKAGE_MAX_ERRORE">
+<span id="_CPPv3N20QnnOpPackage_Error_t24QNN_OP_PACKAGE_MAX_ERRORE"></span><span id="_CPPv2N20QnnOpPackage_Error_t24QNN_OP_PACKAGE_MAX_ERRORE"></span><span class="target" id="QnnOpPackage_8h_1a7cfdb5aae322cae6f30de8e730443fbca7da9100b3ad69a00182326b634941759"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_OP_PACKAGE_MAX_ERROR</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">3999</span></span><a class="headerlink" href="#_CPPv4N20QnnOpPackage_Error_t24QNN_OP_PACKAGE_MAX_ERRORE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N20QnnOpPackage_Error_t30QNN_OP_PACKAGE_ERROR_UNDEFINEDE">
+<span id="_CPPv3N20QnnOpPackage_Error_t30QNN_OP_PACKAGE_ERROR_UNDEFINEDE"></span><span id="_CPPv2N20QnnOpPackage_Error_t30QNN_OP_PACKAGE_ERROR_UNDEFINEDE"></span><span class="target" id="QnnOpPackage_8h_1a7cfdb5aae322cae6f30de8e730443fbca62c74947fbd704639ed9d28aac793dbd"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_OP_PACKAGE_ERROR_UNDEFINED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0x7FFFFFFF</span></span><a class="headerlink" href="#_CPPv4N20QnnOpPackage_Error_t30QNN_OP_PACKAGE_ERROR_UNDEFINEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv419QnnOpPackage_Info_t">
+<span id="_CPPv319QnnOpPackage_Info_t"></span><span id="_CPPv219QnnOpPackage_Info_t"></span><span id="QnnOpPackage_Info_t"></span><span class="target" id="structQnnOpPackage__Info__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnOpPackage_Info_t</span></span></span><a class="headerlink" href="#_CPPv419QnnOpPackage_Info_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnOpPackage.h&gt;</em></div>
+<p><p>Struct describing the contents of an Op package.</p>
+<p>Reported to the backend by QnnOpPackage_GetInfoFn_t.</p>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19QnnOpPackage_Info_t11packageNameE">
+<span id="_CPPv3N19QnnOpPackage_Info_t11packageNameE"></span><span id="_CPPv2N19QnnOpPackage_Info_t11packageNameE"></span><span id="QnnOpPackage_Info_t::packageName__cCP"></span><span class="target" id="structQnnOpPackage__Info__t_1ac6152cd7f0b4052f0c4281431945a728"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">packageName</span></span></span><a class="headerlink" href="#_CPPv4N19QnnOpPackage_Info_t11packageNameE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Op package name. Must not be NULL nor empty string. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19QnnOpPackage_Info_t14operationNamesE">
+<span id="_CPPv3N19QnnOpPackage_Info_t14operationNamesE"></span><span id="_CPPv2N19QnnOpPackage_Info_t14operationNamesE"></span><span id="QnnOpPackage_Info_t::operationNames__cCPP"></span><span class="target" id="structQnnOpPackage__Info__t_1ad995eeb08f2687b69ec10a929fdf1686"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">operationNames</span></span></span><a class="headerlink" href="#_CPPv4N19QnnOpPackage_Info_t14operationNamesE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Array holding names of operations provided by the op package. Must not be NULL. Number of elements in the array is specified with <em>numOperations</em>. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19QnnOpPackage_Info_t13operationInfoE">
+<span id="_CPPv3N19QnnOpPackage_Info_t13operationInfoE"></span><span id="_CPPv2N19QnnOpPackage_Info_t13operationInfoE"></span><span id="QnnOpPackage_Info_t::operationInfo__QnnOpPackage_OperationInfo_tCP"></span><span class="target" id="structQnnOpPackage__Info__t_1ae08792620d12b3bad6854088de6bdcd6"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">QnnOpPackage_OperationInfo_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">operationInfo</span></span></span><a class="headerlink" href="#_CPPv4N19QnnOpPackage_Info_t13operationInfoE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Array holding backend-defined operation information. This is optional, backend-specific information. Can be NULL. If not NULL, number of elements in the array is specified with <em>numOperations</em>. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19QnnOpPackage_Info_t13numOperationsE">
+<span id="_CPPv3N19QnnOpPackage_Info_t13numOperationsE"></span><span id="_CPPv2N19QnnOpPackage_Info_t13numOperationsE"></span><span id="QnnOpPackage_Info_t::numOperations__uint32_t"></span><span class="target" id="structQnnOpPackage__Info__t_1a2f473fffa79a6d4caafd1420a616e6a4"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">numOperations</span></span></span><a class="headerlink" href="#_CPPv4N19QnnOpPackage_Info_t13numOperationsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Number of elements in <em>operationNames</em> and <em>operationInfo</em> arrays. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19QnnOpPackage_Info_t13optimizationsE">
+<span id="_CPPv3N19QnnOpPackage_Info_t13optimizationsE"></span><span id="_CPPv2N19QnnOpPackage_Info_t13optimizationsE"></span><span id="QnnOpPackage_Info_t::optimizations__QnnOpPackage_Optimization_tCP"></span><span class="target" id="structQnnOpPackage__Info__t_1a5bc65d5c5d6d87b3b880ff2f05275843"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">QnnOpPackage_Optimization_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">optimizations</span></span></span><a class="headerlink" href="#_CPPv4N19QnnOpPackage_Info_t13optimizationsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Array holding backend-defined graph optimizations. This is optional, backend-specific information. Can be NULL. If not NULL, number of elements in the array is specified with <em>numOptimizations</em>. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19QnnOpPackage_Info_t16numOptimizationsE">
+<span id="_CPPv3N19QnnOpPackage_Info_t16numOptimizationsE"></span><span id="_CPPv2N19QnnOpPackage_Info_t16numOptimizationsE"></span><span id="QnnOpPackage_Info_t::numOptimizations__uint32_t"></span><span class="target" id="structQnnOpPackage__Info__t_1a6405030cdb3651139b356d7fc74a670a"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">numOptimizations</span></span></span><a class="headerlink" href="#_CPPv4N19QnnOpPackage_Info_t16numOptimizationsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Number of elements in <em>optimizations</em> array. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19QnnOpPackage_Info_t10sdkBuildIdE">
+<span id="_CPPv3N19QnnOpPackage_Info_t10sdkBuildIdE"></span><span id="_CPPv2N19QnnOpPackage_Info_t10sdkBuildIdE"></span><span id="QnnOpPackage_Info_t::sdkBuildId__cCP"></span><span class="target" id="structQnnOpPackage__Info__t_1a7c1844fa1ff7fe7fdc66bac718fa98f3"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">sdkBuildId</span></span></span><a class="headerlink" href="#_CPPv4N19QnnOpPackage_Info_t10sdkBuildIdE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>BuildId (as returned by <a class="reference internal" href="file_include_QNN_QnnBackend.h.html#QnnBackend_8h_1a463608b6e9568457becaeeb59e115534"><span class="std std-ref">QnnBackend_getBuildId()</span></a>, also see QNN_SDK_BUILD_ID) from QNN SDK which was used to create this OpPackage with. Allowed to be NULL. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19QnnOpPackage_Info_t13sdkApiVersionE">
+<span id="_CPPv3N19QnnOpPackage_Info_t13sdkApiVersionE"></span><span id="_CPPv2N19QnnOpPackage_Info_t13sdkApiVersionE"></span><span id="QnnOpPackage_Info_t::sdkApiVersion__Qnn_ApiVersion_tCP"></span><span class="target" id="structQnnOpPackage__Info__t_1ae113f914650e246bfb6959df53eb7ce3"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="structQnn__ApiVersion__t.html#_CPPv416Qnn_ApiVersion_t" title="Qnn_ApiVersion_t"><span class="n"><span class="pre">Qnn_ApiVersion_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">sdkApiVersion</span></span></span><a class="headerlink" href="#_CPPv4N19QnnOpPackage_Info_t13sdkApiVersionE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>API Version (as returned by <a class="reference internal" href="file_include_QNN_QnnBackend.h.html#QnnBackend_8h_1aa2317e971e9ac56b21cf482552e4bd02"><span class="std std-ref">QnnBackend_getApiVersion()</span></a>) from QNN SDK which was used to create this OpPackage with. Allowed to be NULL. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19QnnOpPackage_Info_t11packageInfoE">
+<span id="_CPPv3N19QnnOpPackage_Info_t11packageInfoE"></span><span id="_CPPv2N19QnnOpPackage_Info_t11packageInfoE"></span><span id="QnnOpPackage_Info_t::packageInfo__QnnOpPackage_PackageInfo_tCP"></span><span class="target" id="structQnnOpPackage__Info__t_1a3fa43867fdc17c682c0ef953d9686868"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">QnnOpPackage_PackageInfo_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">packageInfo</span></span></span><a class="headerlink" href="#_CPPv4N19QnnOpPackage_Info_t11packageInfoE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Op package level information. Allowed to be NULL. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19QnnOpPackage_Info_t12opsetVersionE">
+<span id="_CPPv3N19QnnOpPackage_Info_t12opsetVersionE"></span><span id="_CPPv2N19QnnOpPackage_Info_t12opsetVersionE"></span><span id="QnnOpPackage_Info_t::opsetVersion__Qnn_Version_tCP"></span><span class="target" id="structQnnOpPackage__Info__t_1a9a5aadccbccbd1e1cab4392fa22c6b28"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="structQnn__Version__t.html#_CPPv413Qnn_Version_t" title="Qnn_Version_t"><span class="n"><span class="pre">Qnn_Version_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">opsetVersion</span></span></span><a class="headerlink" href="#_CPPv4N19QnnOpPackage_Info_t12opsetVersionE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Version of the set of operations implemented in the op package. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19QnnOpPackage_Info_t8reservedE">
+<span id="_CPPv3N19QnnOpPackage_Info_t8reservedE"></span><span id="_CPPv2N19QnnOpPackage_Info_t8reservedE"></span><span id="QnnOpPackage_Info_t::reserved__sA"></span><span class="target" id="structQnnOpPackage__Info__t_1a75f01212fd0b1b20c86a9719a1d2ecca"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">reserved</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">12</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N19QnnOpPackage_Info_t8reservedE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Reserved for future extensibility. Must be memset to 0. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv433QnnOpPackage_ImplementationV1_4_t">
+<span id="_CPPv333QnnOpPackage_ImplementationV1_4_t"></span><span id="_CPPv233QnnOpPackage_ImplementationV1_4_t"></span><span id="QnnOpPackage_ImplementationV1_4_t"></span><span class="target" id="structQnnOpPackage__ImplementationV1__4__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnOpPackage_ImplementationV1_4_t</span></span></span><a class="headerlink" href="#_CPPv433QnnOpPackage_ImplementationV1_4_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnOpPackage.h&gt;</em></div>
+<p>Version 1.4 QNN Op Package Implementation structure. </p>
+<p><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">   </span><span class="n">Contains</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">pointers</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">each</span><span class="w"> </span><span class="n">interface</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="n">defined</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">the</span>
+<span class="w">   </span><span class="mf">1.4</span><span class="w"> </span><span class="n">QNN</span><span class="w"> </span><span class="n">Op</span><span class="w"> </span><span class="n">Package</span><span class="w"> </span><span class="n">API</span><span class="p">.</span>
+</pre></div>
+</div>
+ </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N33QnnOpPackage_ImplementationV1_4_t4initE">
+<span id="_CPPv3N33QnnOpPackage_ImplementationV1_4_t4initE"></span><span id="_CPPv2N33QnnOpPackage_ImplementationV1_4_t4initE"></span><span id="QnnOpPackage_ImplementationV1_4_t::init__QnnOpPackage_InitFn_t"></span><span class="target" id="structQnnOpPackage__ImplementationV1__4__t_1affd860c8f093eeda14985f71f46ad6c4"></span><a class="reference internal" href="typedef_QnnOpPackage_8h_1a131cec9cecddbdbf9d6819a14a001fe9.html#_CPPv421QnnOpPackage_InitFn_t" title="QnnOpPackage_InitFn_t"><span class="n"><span class="pre">QnnOpPackage_InitFn_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">init</span></span></span><a class="headerlink" href="#_CPPv4N33QnnOpPackage_ImplementationV1_4_t4initE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N33QnnOpPackage_ImplementationV1_4_t9terminateE">
+<span id="_CPPv3N33QnnOpPackage_ImplementationV1_4_t9terminateE"></span><span id="_CPPv2N33QnnOpPackage_ImplementationV1_4_t9terminateE"></span><span id="QnnOpPackage_ImplementationV1_4_t::terminate__QnnOpPackage_TerminateFn_t"></span><span class="target" id="structQnnOpPackage__ImplementationV1__4__t_1acd4dac32332d553a7df72a92ae093f16"></span><a class="reference internal" href="typedef_QnnOpPackage_8h_1a6ed084a085bca8d7780fc91c651a91c9.html#_CPPv426QnnOpPackage_TerminateFn_t" title="QnnOpPackage_TerminateFn_t"><span class="n"><span class="pre">QnnOpPackage_TerminateFn_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">terminate</span></span></span><a class="headerlink" href="#_CPPv4N33QnnOpPackage_ImplementationV1_4_t9terminateE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N33QnnOpPackage_ImplementationV1_4_t7getInfoE">
+<span id="_CPPv3N33QnnOpPackage_ImplementationV1_4_t7getInfoE"></span><span id="_CPPv2N33QnnOpPackage_ImplementationV1_4_t7getInfoE"></span><span id="QnnOpPackage_ImplementationV1_4_t::getInfo__QnnOpPackage_GetInfoFn_t"></span><span class="target" id="structQnnOpPackage__ImplementationV1__4__t_1a4475723630064f8b1178534634ff3858"></span><a class="reference internal" href="typedef_QnnOpPackage_8h_1a1f7646062abbbd782c32e6bed72dd564.html#_CPPv424QnnOpPackage_GetInfoFn_t" title="QnnOpPackage_GetInfoFn_t"><span class="n"><span class="pre">QnnOpPackage_GetInfoFn_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getInfo</span></span></span><a class="headerlink" href="#_CPPv4N33QnnOpPackage_ImplementationV1_4_t7getInfoE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N33QnnOpPackage_ImplementationV1_4_t16validateOpConfigE">
+<span id="_CPPv3N33QnnOpPackage_ImplementationV1_4_t16validateOpConfigE"></span><span id="_CPPv2N33QnnOpPackage_ImplementationV1_4_t16validateOpConfigE"></span><span id="QnnOpPackage_ImplementationV1_4_t::validateOpConfig__QnnOpPackage_ValidateOpConfigFn_t"></span><span class="target" id="structQnnOpPackage__ImplementationV1__4__t_1a3f0fd60e43075f99ec9bd50a3fa7826f"></span><a class="reference internal" href="typedef_QnnOpPackage_8h_1ad8cdd8de3e34c264d3925064f8790920.html#_CPPv433QnnOpPackage_ValidateOpConfigFn_t" title="QnnOpPackage_ValidateOpConfigFn_t"><span class="n"><span class="pre">QnnOpPackage_ValidateOpConfigFn_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">validateOpConfig</span></span></span><a class="headerlink" href="#_CPPv4N33QnnOpPackage_ImplementationV1_4_t16validateOpConfigE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N33QnnOpPackage_ImplementationV1_4_t12createOpImplE">
+<span id="_CPPv3N33QnnOpPackage_ImplementationV1_4_t12createOpImplE"></span><span id="_CPPv2N33QnnOpPackage_ImplementationV1_4_t12createOpImplE"></span><span id="QnnOpPackage_ImplementationV1_4_t::createOpImpl__QnnOpPackage_CreateOpImplFn_t"></span><span class="target" id="structQnnOpPackage__ImplementationV1__4__t_1ab4c1115aa80eb031beb59600303319c5"></span><a class="reference internal" href="typedef_QnnOpPackage_8h_1a4a28f68bc4f3e46c4310f3991445b6e9.html#_CPPv429QnnOpPackage_CreateOpImplFn_t" title="QnnOpPackage_CreateOpImplFn_t"><span class="n"><span class="pre">QnnOpPackage_CreateOpImplFn_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">createOpImpl</span></span></span><a class="headerlink" href="#_CPPv4N33QnnOpPackage_ImplementationV1_4_t12createOpImplE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N33QnnOpPackage_ImplementationV1_4_t10freeOpImplE">
+<span id="_CPPv3N33QnnOpPackage_ImplementationV1_4_t10freeOpImplE"></span><span id="_CPPv2N33QnnOpPackage_ImplementationV1_4_t10freeOpImplE"></span><span id="QnnOpPackage_ImplementationV1_4_t::freeOpImpl__QnnOpPackage_FreeOpImplFn_t"></span><span class="target" id="structQnnOpPackage__ImplementationV1__4__t_1a543f18126ca4f50011e65f157329593e"></span><a class="reference internal" href="typedef_QnnOpPackage_8h_1ae26cd784792e4d3c3c09133ad3ba730f.html#_CPPv427QnnOpPackage_FreeOpImplFn_t" title="QnnOpPackage_FreeOpImplFn_t"><span class="n"><span class="pre">QnnOpPackage_FreeOpImplFn_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">freeOpImpl</span></span></span><a class="headerlink" href="#_CPPv4N33QnnOpPackage_ImplementationV1_4_t10freeOpImplE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N33QnnOpPackage_ImplementationV1_4_t13logInitializeE">
+<span id="_CPPv3N33QnnOpPackage_ImplementationV1_4_t13logInitializeE"></span><span id="_CPPv2N33QnnOpPackage_ImplementationV1_4_t13logInitializeE"></span><span id="QnnOpPackage_ImplementationV1_4_t::logInitialize__QnnOpPackage_LogInitializeFn_t"></span><span class="target" id="structQnnOpPackage__ImplementationV1__4__t_1a64b5f9816c94f02e4384187e2d50a5fb"></span><a class="reference internal" href="typedef_QnnOpPackage_8h_1a2a2611c2e2ab753026744d80b68c7f9f.html#_CPPv430QnnOpPackage_LogInitializeFn_t" title="QnnOpPackage_LogInitializeFn_t"><span class="n"><span class="pre">QnnOpPackage_LogInitializeFn_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">logInitialize</span></span></span><a class="headerlink" href="#_CPPv4N33QnnOpPackage_ImplementationV1_4_t13logInitializeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N33QnnOpPackage_ImplementationV1_4_t11logSetLevelE">
+<span id="_CPPv3N33QnnOpPackage_ImplementationV1_4_t11logSetLevelE"></span><span id="_CPPv2N33QnnOpPackage_ImplementationV1_4_t11logSetLevelE"></span><span id="QnnOpPackage_ImplementationV1_4_t::logSetLevel__QnnOpPackage_LogSetLevelFn_t"></span><span class="target" id="structQnnOpPackage__ImplementationV1__4__t_1abace1ab3ad7954e7431863668eeb9995"></span><a class="reference internal" href="typedef_QnnOpPackage_8h_1a0d38a8da3f01f8030a1c039efb987965.html#_CPPv428QnnOpPackage_LogSetLevelFn_t" title="QnnOpPackage_LogSetLevelFn_t"><span class="n"><span class="pre">QnnOpPackage_LogSetLevelFn_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">logSetLevel</span></span></span><a class="headerlink" href="#_CPPv4N33QnnOpPackage_ImplementationV1_4_t11logSetLevelE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N33QnnOpPackage_ImplementationV1_4_t12logTerminateE">
+<span id="_CPPv3N33QnnOpPackage_ImplementationV1_4_t12logTerminateE"></span><span id="_CPPv2N33QnnOpPackage_ImplementationV1_4_t12logTerminateE"></span><span id="QnnOpPackage_ImplementationV1_4_t::logTerminate__QnnOpPackage_LogTerminateFn_t"></span><span class="target" id="structQnnOpPackage__ImplementationV1__4__t_1a0640b4d74a28f10e27a73455a79a7f2b"></span><a class="reference internal" href="typedef_QnnOpPackage_8h_1a24ee97abd62ee02485729b354895e960.html#_CPPv429QnnOpPackage_LogTerminateFn_t" title="QnnOpPackage_LogTerminateFn_t"><span class="n"><span class="pre">QnnOpPackage_LogTerminateFn_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">logTerminate</span></span></span><a class="headerlink" href="#_CPPv4N33QnnOpPackage_ImplementationV1_4_t12logTerminateE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv433QnnOpPackage_ImplementationV2_0_t">
+<span id="_CPPv333QnnOpPackage_ImplementationV2_0_t"></span><span id="_CPPv233QnnOpPackage_ImplementationV2_0_t"></span><span id="QnnOpPackage_ImplementationV2_0_t"></span><span class="target" id="structQnnOpPackage__ImplementationV2__0__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnOpPackage_ImplementationV2_0_t</span></span></span><a class="headerlink" href="#_CPPv433QnnOpPackage_ImplementationV2_0_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnOpPackage.h&gt;</em></div>
+<p>Version 2.0 QNN Op Package Implementation structure. </p>
+<p><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">   </span><span class="n">Contains</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">pointers</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">each</span><span class="w"> </span><span class="n">interface</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="n">defined</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">the</span>
+<span class="w">   </span><span class="mf">2.0</span><span class="w"> </span><span class="n">QNN</span><span class="w"> </span><span class="n">Op</span><span class="w"> </span><span class="n">Package</span><span class="w"> </span><span class="n">API</span><span class="p">.</span>
+</pre></div>
+</div>
+ </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N33QnnOpPackage_ImplementationV2_0_t6createE">
+<span id="_CPPv3N33QnnOpPackage_ImplementationV2_0_t6createE"></span><span id="_CPPv2N33QnnOpPackage_ImplementationV2_0_t6createE"></span><span id="QnnOpPackage_ImplementationV2_0_t::create__QnnOpPackage_CreateFn_t"></span><span class="target" id="structQnnOpPackage__ImplementationV2__0__t_1a66abe447be2dc2e2698ff97d7ad8de8b"></span><a class="reference internal" href="typedef_QnnOpPackage_8h_1a4485c95f5e6b9eba3394da35703f6b39.html#_CPPv423QnnOpPackage_CreateFn_t" title="QnnOpPackage_CreateFn_t"><span class="n"><span class="pre">QnnOpPackage_CreateFn_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">create</span></span></span><a class="headerlink" href="#_CPPv4N33QnnOpPackage_ImplementationV2_0_t6createE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N33QnnOpPackage_ImplementationV2_0_t7getInfoE">
+<span id="_CPPv3N33QnnOpPackage_ImplementationV2_0_t7getInfoE"></span><span id="_CPPv2N33QnnOpPackage_ImplementationV2_0_t7getInfoE"></span><span id="QnnOpPackage_ImplementationV2_0_t::getInfo__QnnOpPackage_GetInfoFn_t"></span><span class="target" id="structQnnOpPackage__ImplementationV2__0__t_1a5e6ea6660f8d1b44650c3bc03a565515"></span><a class="reference internal" href="typedef_QnnOpPackage_8h_1a1f7646062abbbd782c32e6bed72dd564.html#_CPPv424QnnOpPackage_GetInfoFn_t" title="QnnOpPackage_GetInfoFn_t"><span class="n"><span class="pre">QnnOpPackage_GetInfoFn_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getInfo</span></span></span><a class="headerlink" href="#_CPPv4N33QnnOpPackage_ImplementationV2_0_t7getInfoE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N33QnnOpPackage_ImplementationV2_0_t16validateOpConfigE">
+<span id="_CPPv3N33QnnOpPackage_ImplementationV2_0_t16validateOpConfigE"></span><span id="_CPPv2N33QnnOpPackage_ImplementationV2_0_t16validateOpConfigE"></span><span id="QnnOpPackage_ImplementationV2_0_t::validateOpConfig__QnnOpPackage_ValidateOpConfigHandleFn_t"></span><span class="target" id="structQnnOpPackage__ImplementationV2__0__t_1a5efad9f8ae74a98d7612516db19f3b16"></span><a class="reference internal" href="typedef_QnnOpPackage_8h_1a81873772d7ff2530ffc3601502c8fea6.html#_CPPv439QnnOpPackage_ValidateOpConfigHandleFn_t" title="QnnOpPackage_ValidateOpConfigHandleFn_t"><span class="n"><span class="pre">QnnOpPackage_ValidateOpConfigHandleFn_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">validateOpConfig</span></span></span><a class="headerlink" href="#_CPPv4N33QnnOpPackage_ImplementationV2_0_t16validateOpConfigE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N33QnnOpPackage_ImplementationV2_0_t12createOpImplE">
+<span id="_CPPv3N33QnnOpPackage_ImplementationV2_0_t12createOpImplE"></span><span id="_CPPv2N33QnnOpPackage_ImplementationV2_0_t12createOpImplE"></span><span id="QnnOpPackage_ImplementationV2_0_t::createOpImpl__QnnOpPackage_CreateOpImplHandleFn_t"></span><span class="target" id="structQnnOpPackage__ImplementationV2__0__t_1af5dd9799ec1b898be21f569afe90ff61"></span><a class="reference internal" href="typedef_QnnOpPackage_8h_1a5bcd1f43e0e30582a75188228a4a66ff.html#_CPPv435QnnOpPackage_CreateOpImplHandleFn_t" title="QnnOpPackage_CreateOpImplHandleFn_t"><span class="n"><span class="pre">QnnOpPackage_CreateOpImplHandleFn_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">createOpImpl</span></span></span><a class="headerlink" href="#_CPPv4N33QnnOpPackage_ImplementationV2_0_t12createOpImplE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N33QnnOpPackage_ImplementationV2_0_t10freeOpImplE">
+<span id="_CPPv3N33QnnOpPackage_ImplementationV2_0_t10freeOpImplE"></span><span id="_CPPv2N33QnnOpPackage_ImplementationV2_0_t10freeOpImplE"></span><span id="QnnOpPackage_ImplementationV2_0_t::freeOpImpl__QnnOpPackage_FreeOpImplHandleFn_t"></span><span class="target" id="structQnnOpPackage__ImplementationV2__0__t_1ad2ea2c1fd2d57fba8c1ab89fde746fdd"></span><a class="reference internal" href="typedef_QnnOpPackage_8h_1ae4dac9216b2e6d8ac60d12e7b79e346d.html#_CPPv433QnnOpPackage_FreeOpImplHandleFn_t" title="QnnOpPackage_FreeOpImplHandleFn_t"><span class="n"><span class="pre">QnnOpPackage_FreeOpImplHandleFn_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">freeOpImpl</span></span></span><a class="headerlink" href="#_CPPv4N33QnnOpPackage_ImplementationV2_0_t10freeOpImplE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N33QnnOpPackage_ImplementationV2_0_t11logSetLevelE">
+<span id="_CPPv3N33QnnOpPackage_ImplementationV2_0_t11logSetLevelE"></span><span id="_CPPv2N33QnnOpPackage_ImplementationV2_0_t11logSetLevelE"></span><span id="QnnOpPackage_ImplementationV2_0_t::logSetLevel__QnnOpPackage_LogSetLevelHandleFn_t"></span><span class="target" id="structQnnOpPackage__ImplementationV2__0__t_1ab062bdce9ae578b6876ea6a62c8105e3"></span><a class="reference internal" href="typedef_QnnOpPackage_8h_1a27c09fc21487527b170ea41a22d9e03b.html#_CPPv434QnnOpPackage_LogSetLevelHandleFn_t" title="QnnOpPackage_LogSetLevelHandleFn_t"><span class="n"><span class="pre">QnnOpPackage_LogSetLevelHandleFn_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">logSetLevel</span></span></span><a class="headerlink" href="#_CPPv4N33QnnOpPackage_ImplementationV2_0_t11logSetLevelE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N33QnnOpPackage_ImplementationV2_0_t4freeE">
+<span id="_CPPv3N33QnnOpPackage_ImplementationV2_0_t4freeE"></span><span id="_CPPv2N33QnnOpPackage_ImplementationV2_0_t4freeE"></span><span id="QnnOpPackage_ImplementationV2_0_t::free__QnnOpPackage_FreeFn_t"></span><span class="target" id="structQnnOpPackage__ImplementationV2__0__t_1aa0fab8808b11ad94b11519a0dba04ef2"></span><a class="reference internal" href="typedef_QnnOpPackage_8h_1a3b0611a7d9105b853af4ce005b3bace7.html#_CPPv421QnnOpPackage_FreeFn_t" title="QnnOpPackage_FreeFn_t"><span class="n"><span class="pre">QnnOpPackage_FreeFn_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">free</span></span></span><a class="headerlink" href="#_CPPv4N33QnnOpPackage_ImplementationV2_0_t4freeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv424QnnOpPackage_Interface_t">
+<span id="_CPPv324QnnOpPackage_Interface_t"></span><span id="_CPPv224QnnOpPackage_Interface_t"></span><span id="QnnOpPackage_Interface_t"></span><span class="target" id="structQnnOpPackage__Interface__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnOpPackage_Interface_t</span></span></span><a class="headerlink" href="#_CPPv424QnnOpPackage_Interface_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnOpPackage.h&gt;</em></div>
+<p>Structure which provides the package version and implementation for a given package. Will be queried by the backend using the package’s implementation provider. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24QnnOpPackage_Interface_t16interfaceVersionE">
+<span id="_CPPv3N24QnnOpPackage_Interface_t16interfaceVersionE"></span><span id="_CPPv2N24QnnOpPackage_Interface_t16interfaceVersionE"></span><span id="QnnOpPackage_Interface_t::interfaceVersion__Qnn_Version_t"></span><span class="target" id="structQnnOpPackage__Interface__t_1a583753b4fdf655429df68de0eb8ac605"></span><a class="reference internal" href="structQnn__Version__t.html#_CPPv413Qnn_Version_t" title="Qnn_Version_t"><span class="n"><span class="pre">Qnn_Version_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">interfaceVersion</span></span></span><a class="headerlink" href="#_CPPv4N24QnnOpPackage_Interface_t16interfaceVersionE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Version of the QNN Op Package Interface which this package provides. The Op Package Interface is accessed through correspondingly named implementation. </p>
+</dd></dl>
+
+</div>
+<dl class="cpp union">
+<dt class="sig sig-object cpp" id="_CPPv4N24QnnOpPackage_Interface_t7unnamedE">
+<span id="_CPPv3N24QnnOpPackage_Interface_t7unnamedE"></span><span id="_CPPv2N24QnnOpPackage_Interface_t7unnamedE"></span><span class="target" id="unionQnnOpPackage__Interface__t_1_1unnamed"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">unnamed</span></span></span><a class="headerlink" href="#_CPPv4N24QnnOpPackage_Interface_t7unnamedE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnOpPackage.h&gt;</em></div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24QnnOpPackage_Interface_t7unnamed4v1_4E">
+<span id="_CPPv3N24QnnOpPackage_Interface_t7unnamed4v1_4E"></span><span id="_CPPv2N24QnnOpPackage_Interface_t7unnamed4v1_4E"></span><span id="QnnOpPackage_Interface_t::unnamed::v1_4__QnnOpPackage_ImplementationV1_4_t"></span><span class="target" id="unionQnnOpPackage__Interface__t_1_1unnamed_1ae7a39a0da3a76f7377f8644f81724262"></span><a class="reference internal" href="structQnnOpPackage__ImplementationV1__4__t.html#_CPPv433QnnOpPackage_ImplementationV1_4_t" title="QnnOpPackage_ImplementationV1_4_t"><span class="n"><span class="pre">QnnOpPackage_ImplementationV1_4_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">v1_4</span></span></span><a class="headerlink" href="#_CPPv4N24QnnOpPackage_Interface_t7unnamed4v1_4E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24QnnOpPackage_Interface_t7unnamed4v2_0E">
+<span id="_CPPv3N24QnnOpPackage_Interface_t7unnamed4v2_0E"></span><span id="_CPPv2N24QnnOpPackage_Interface_t7unnamed4v2_0E"></span><span id="QnnOpPackage_Interface_t::unnamed::v2_0__QnnOpPackage_ImplementationV2_0_t"></span><span class="target" id="unionQnnOpPackage__Interface__t_1_1unnamed_1a9ea6593d3f0a7fe8b1548589a54455e8"></span><a class="reference internal" href="structQnnOpPackage__ImplementationV2__0__t.html#_CPPv433QnnOpPackage_ImplementationV2_0_t" title="QnnOpPackage_ImplementationV2_0_t"><span class="n"><span class="pre">QnnOpPackage_ImplementationV2_0_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">v2_0</span></span></span><a class="headerlink" href="#_CPPv4N24QnnOpPackage_Interface_t7unnamed4v2_0E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

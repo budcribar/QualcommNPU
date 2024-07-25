@@ -1,0 +1,985 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Quantized vs Non-Quantized Models &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="User-defined Operations" href="usergroup2.html" />
+    <link rel="prev" title="Supported ONNX Ops" href="supported_onnx_ops.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="usergroup1.html">Network Models</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="network_layers.html">Supported Network Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supported_onnx_ops.html">Supported ONNX Ops</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Quantized vs Non-Quantized Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup2.html">User-defined Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup3.html">Model Conversion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup6.html">Tutorials and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="usergroup1.html">Network Models</a> &raquo;</li>
+        
+      <li>Quantized vs Non-Quantized Models</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="quantized-vs-non-quantized-models">
+<h1>Quantized vs Non-Quantized Models<a class="headerlink" href="#quantized-vs-non-quantized-models" title="Permalink to this heading">¶</a></h1>
+<div class="ui-resizable side-nav-resizable docutils container" id="side-nav">
+<div class="docutils container" id="nav-tree">
+<div class="docutils container" id="nav-tree-contents">
+</div>
+</div>
+</div>
+<div class="docutils container" id="doc-content">
+<div class="header docutils container">
+</div>
+<div class="contents docutils container">
+<div class="textblock docutils container">
+<p class="rubric" id="overview">Overview</p>
+<ul class="simple">
+<li><p>Non-quantized DLC files use 32 bit floating point
+representations of network parameters.</p></li>
+<li><p>Quantized DLC files use fixed point representations of
+network parameters, generally 8 bit weights and 8 or 32 bit
+biases. The fixed point representation is the same used in
+Tensorflow quantized models.</p></li>
+</ul>
+<p class="rubric" id="onnx">ONNX</p>
+<p>The default output of
+<a class="reference external" href="tools.html#snpe-onnx-to-dlc">snpe-onnx-to-dlc</a> is a
+non-quantized model. This means that all the network parameters
+are left in the 32 bit floating point representation as present
+in the original ONNX model. To quantize the model to 8 bit
+fixed point, see
+<a class="reference external" href="tools.html#snpe-dlc-quantize">snpe-dlc-quantize</a>.
+Note that models that are intended to be quantized using
+<a class="reference external" href="tools.html#snpe-dlc-quantize">snpe-dlc-quantize</a> must
+have their batch dimension set to 1. A different batch
+dimension can be used during inference, by
+<a class="reference external" href="network_resize.html">resizing</a> the network during
+initialization.</p>
+<p class="rubric" id="tensorflow">TensorFlow</p>
+<p>The default output of
+<a class="reference external" href="tools.html#snpe-tensorflow-to-dlc">snpe-tensorflow-to-dlc</a>
+is a non-quantized model. This means that all the network
+parameters are left in the 32 bit floating point representation
+as present in the original TensorFlow model. To quantize the
+model to 8 bit fixed point, see
+<a class="reference external" href="tools.html#snpe-dlc-quantize">snpe-dlc-quantize</a>.
+Note that models that are intended to be quantized using
+<a class="reference external" href="tools.html#snpe-dlc-quantize">snpe-dlc-quantize</a> must
+have their batch dimension set to 1. A different batch
+dimension can be used during inference, by
+<a class="reference external" href="network_resize.html">resizing</a> the network during
+initialization.</p>
+<p class="rubric" id="choosing-between-a-quantized-or-non-quantized-model">Choosing Between a Quantized or Non-Quantized
+Model</p>
+<p class="rubric" id="summary">Summary</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Runtime</p></th>
+<th class="head"><p>Quantized DLC</p></th>
+<th class="head"><p>Non-Quantized DLC</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CPU</p></td>
+<td><p><strong>Compatible.</strong> If CPU fixed-point mode is enabled, model can be passed
+directly to the runtime. Else the model is dequantized by the runtime,
+increasing network initialization time.  Accuracy may be impacted.</p></td>
+<td><p><strong>Compatible.</strong> The model is native format for this runtime. Model can
+be passed directly to the runtime. May be more accurate than a quantized model.</p></td>
+</tr>
+<tr class="row-odd"><td><p>GPU</p></td>
+<td><p><strong>Compatible.</strong> The model is dequantized by the runtime, increasing
+network initialization time. Accuracy may be impacted.</p></td>
+<td><p><strong>Compatible.</strong> The model is native format for this runtime. Model can
+be passed directly to the runtime. May be more accurate than a quantized model.</p></td>
+</tr>
+<tr class="row-even"><td><p>DSP</p></td>
+<td><p><strong>Compatible.</strong> The model is native format for DSP runtime. Model can be
+passed directly to the runtime. Accuracy may be different than a
+non-quantized model</p></td>
+<td><p><strong>Compatible.</strong> The model is quantized by the runtime, increasing
+network initialization time. Accuracy may be different than a quantized model.</p></td>
+</tr>
+<tr class="row-odd"><td><p>AIP</p></td>
+<td><p><strong>Compatible.</strong> The model is in supported format for AIP runtime. Model
+can be passed directly to the runtime.</p></td>
+<td><p><strong>Incompatible.</strong> Non-quantized models are not supported by the AIP runtime.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric" id="details">Details</p>
+<ul class="simple">
+<li><p>CPU</p>
+<ul>
+<li><p>The CPU by default uses floating point (non-quantized) network parameters.</p></li>
+<li><p>Using quantized DLC files with CPU runtime is supported. To use quantized network parameters directly,
+CPU fixed-point mode should be enabled. If it is not enabled, network initialization time will
+dramatically increase as Qualcomm® Neural Processing SDK will automatically
+de-quantize the network parameters in order to run on CPU.</p></li>
+<li><p>Quantization of the DLC file does introduce noise, as quantization is lossy.</p></li>
+<li><p>The network performance during execute is not impacted by the
+choice of quantized vs non-quantized DLC files.</p></li>
+</ul>
+</li>
+<li><p>GPU</p>
+<ul>
+<li><p>The GPU always uses floating point (non-quantized) network parameters.</p></li>
+<li><p>Using quantized DLC files with GPU runtime is supported. Network
+initialization time will dramatically increase as Qualcomm® Neural Processing SDK will automatically
+de-quantize the network parameters in order to run on GPU.</p></li>
+<li><p>If network initialization time is a concern, it is recommended to
+use non-quantized DLC files (default) for GPU.</p></li>
+<li><p>Quantization of the DLC file does introduce noise, as quantization is lossy.</p></li>
+<li><p>The network performance during execute is not impacted by the
+choice of quantized vs non-quantized DLC files.</p></li>
+</ul>
+</li>
+<li><p>DSP</p>
+<ul>
+<li><p>The DSP always uses quantized network parameters.</p></li>
+<li><p>Using a non-quantized DLC file on the DSP is supported. Network
+initialization time will dramatically increase as Qualcomm® Neural Processing SDK will automatically
+quantize the network parameters in order to run on the DSP.</p></li>
+<li><p>It is generally recommended to use quantized DLC files for running
+on the DSP. In addition to faster network initialization time,
+using quantized models also reduces peak memory usage during
+initialization, and decreases DLC file size.</p></li>
+</ul>
+</li>
+<li><p>AIP</p>
+<ul>
+<li><p>The AIP runtime always uses quantized network parameters.</p></li>
+<li><p>Passing through snpe-dlc-quantize is mandatory for generating the
+binaries for HTA subnets.</p></li>
+<li><p>Using a non-quantized DLC file with the AIP runtime is not supported.</p></li>
+<li><p>HTA subnets use the quantized parameters in the DLC.</p></li>
+<li><p>HNN (Hexagon NN) subnets use the quantization parameters in the
+same way DSP runtime does.</p></li>
+</ul>
+</li>
+<li><p>Balancing DLC file size, network initialization time and accuracy</p>
+<ul>
+<li><p>If the network will mainly run on the GPU and CPU it is
+recommended to try both quantized and non-quantized models during
+development. If a quantized model provides enough accuracy, then
+it may be used directly for CPU using CPU fixed-point mode. For GPU,
+it may be used at the expense of increased network initialization
+time. The benefit is a much smaller DLC file. The tradeoff between
+accuracy, network initialization time, and DLC file size is
+application specific.</p></li>
+<li><p>If the network will mainly run on the DSP, there is no benefit to
+using a non-quantized model. As previously stated it will
+dramatically increase network initialization time and DLC file
+size, but provide no accuracy benefit.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<p><strong>Quantization Algorithm</strong></p>
+<p>This section describes the concepts behind the quantization algorithm used in Qualcomm® Neural Processing SDK.
+These concepts are used by <a class="reference external" href="tools.html#snpe-dlc-quantize">snpe-dlc-quantize</a> and is also
+used by Qualcomm® Neural Processing SDK for input quantization when using the DSP runtime.</p>
+<p class="rubric" id="id1"><span id="overview-1"></span>Overview</p>
+<p><strong>Note:</strong> Qualcomm® Neural Processing SDK supports multiple quantization modes. The basics of the
+quantization, regardless of mode, are described here. See <a class="reference external" href="quantized_models.html#quantization_modes">Quantization
+Modes</a> for more
+information.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Quantization converts floating point data to Tensorflow-style 8-bit fixed point format.</p></li>
+<li><p>The following requirements are satisfied:</p>
+<ul>
+<li><p>Full range of input values is covered.</p></li>
+<li><p>Minimum range of 0.0001 is enforced.</p></li>
+<li><p>Floating point zero is exactly representable.</p></li>
+</ul>
+</li>
+<li><p>Quantization algorithm inputs:</p>
+<ul>
+<li><p>Set of floating point values to be quantized.</p></li>
+</ul>
+</li>
+<li><p>Quantization algorithm outputs:</p>
+<ul>
+<li><p>Set of 8-bit fixed point values.</p></li>
+<li><p>Encoding parameters:</p>
+<ul>
+<li><p>encoding-min : minimum floating point value representable (by fixed point value 0).</p></li>
+<li><p>encoding-max : maximum floating point value representable (by fixed point value 255).</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Algorithm</p>
+<ol class="arabic simple">
+<li><p>Compute the true range (min, max) of input data.</p></li>
+<li><p>Compute the encoding-min and encoding-max.</p></li>
+<li><p>Quantize the input floating point values.</p></li>
+<li><p>Output:</p>
+<ul>
+<li><p>fixed point values</p></li>
+<li><p>encoding-min and encoding-max parameters</p></li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</div></blockquote>
+<p class="rubric" id="id2"><span id="details-1"></span>Details</p>
+<p>This section outlines more information regarding the quantization process.</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p>Compute the true range of the input floating point data.</p>
+<ul class="simple">
+<li><p>finds the smallest and largest values in the input data</p></li>
+<li><p>represents the true range of the input data</p></li>
+</ul>
+</li>
+<li><p>Compute the encoding-min and encoding-max.</p>
+<ul class="simple">
+<li><p>These parameters are used in the quantization step.</p></li>
+<li><p>These parameters define the range and floating point values that
+will be representable by the fixed point format.</p>
+<ul>
+<li><p>encoding-min: specifies the smallest floating point value that
+will be represented by the fixed point value of 0</p></li>
+<li><p>encoding-max: specifies the largest floating point value that
+will be represented by the fixed point value of 255</p></li>
+<li><p>floating point values at every step size, where step size =
+(encoding-max - encoding-min) / 255, will be representable</p></li>
+</ul>
+</li>
+</ul>
+<ol class="arabic simple">
+<li><p>encoding-min and encoding-max are first set to the true min and
+true max computed in the previous step</p></li>
+<li><p>First requirement: encoding range must be at least a minimum of 0.0001</p>
+<ul class="simple">
+<li><p>encoding-max is adjusted to max(true max, true min + 0.01)</p></li>
+</ul>
+</li>
+<li><p>Second requirement: floating point value of 0 must be exactly
+representable</p>
+<ul class="simple">
+<li><p>encoding-min or encoding-max may be further adjusted</p></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>Handling 0.</p>
+<ol class="arabic simple">
+<li><p>Case 1: Inputs are strictly positive</p>
+<ul class="simple">
+<li><p>the encoding-min is set to 0.0</p></li>
+<li><p>zero floating point value is exactly representable by smallest
+fixed point value 0</p></li>
+<li><p>e.g. input range = [5.0, 10.0]</p>
+<ul>
+<li><p>encoding-min = 0.0, encoding-max = 10.0</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Case 2: Inputs are strictly negative</p>
+<ul class="simple">
+<li><p>encoding-max is set to 0.0</p></li>
+<li><p>zero floating point value is exactly representable by the
+largest fixed point value 255</p></li>
+<li><p>e.g. input range = [-20.0, -6.0]</p>
+<ul>
+<li><p>encoding*min = <a href="#id3"><span class="problematic" id="id4">*</span></a>20.0, encoding*max = 0.0</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Case 3: Inputs are both negative and positive</p>
+<ul class="simple">
+<li><p>encoding-min and encoding-max are slightly shifted to make the
+floating point zero exactly representable</p></li>
+<li><p>e.g. input range = [-5.1, 5.1]</p>
+<ul>
+<li><p>encoding-min and encoding-max are first set to -5.1 and 5.1,
+respectively</p></li>
+<li><p>encoding range is 10.2 and the step size is 10.2/255 = 0.04</p></li>
+<li><p>zero value is currently not representable. The closest
+values representable are -0.02 and +0.02 by fixed point
+values 127 and 128, respectively</p></li>
+<li><p>encoding-min and encoding-max are shifted by -0.02. The new
+encoding-min is -5.12 and the new encoding-max is 5.08</p></li>
+<li><p>floating point zero is now exactly representable by the
+fixed point value of 128</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>Quantize the input floating point values.</p>
+<ul class="simple">
+<li><p>encoding-min and encoding-max parameter determined in the previous
+step are used to quantize all the input floating values to their
+fixed point representation</p></li>
+<li><p>Quantization formula is:</p>
+<ul>
+<li><p>quantized value = round(255 * (floating point value -
+encoding.min) / (encoding.max - encoding.min))</p></li>
+</ul>
+</li>
+<li><p>quantized value is also clamped to be within 0 and 255</p></li>
+</ul>
+</li>
+<li><p>Outputs</p>
+<ul class="simple">
+<li><p>the fixed point values</p></li>
+<li><p>encoding-min and encoding-max parameters</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+<p class="rubric" id="quantization-example">Quantization Example</p>
+<ul class="simple">
+<li><p>Inputs:</p>
+<ul>
+<li><p>input values = [-1.8, -1.0, 0, 0.5]</p></li>
+</ul>
+</li>
+<li><p>encoding-min is set to -1.8 and encoding-max to 0.5</p></li>
+<li><p>encoding range is 2.3, which is larger than the required 0.0001</p></li>
+<li><p>encoding-min is adjusted to −1.803922 and encoding-max to 0.496078 to
+make zero exactly representable</p></li>
+<li><p>step size (delta or scale) is 0.009020</p></li>
+<li><p>Outputs:</p>
+<ul>
+<li><p>quantized values are [0, 89, 200, 255]</p></li>
+</ul>
+</li>
+</ul>
+<p class="rubric" id="dequantization-example">Dequantization Example</p>
+<ul class="simple">
+<li><p>Inputs:</p>
+<ul>
+<li><p>quantized values = [0, 89, 200, 255]</p></li>
+<li><p>encoding-min = −1.803922, encoding-max = 0.496078</p></li>
+</ul>
+</li>
+<li><p>step size is 0.009020</p></li>
+<li><p>Outputs:</p>
+<ul>
+<li><p>dequantized values = [−1.8039, −1.0011, 0.0000, 0.4961]</p></li>
+</ul>
+</li>
+</ul>
+<p class="rubric" id="bias-bitwidth">Bias BitWidth</p>
+<p>Qualcomm® Neural Processing SDK currently supports a default quantization bit width of 8 for both
+weights and biases. The bias bitwidth, however, can be overriden to use
+32 bit quantization by specifying the command line option
+“–bias_bitwidth 32” from <a class="reference external" href="tools.html#snpe-dlc-quantize">snpe-dlc-quantize</a>.
+For some models, using 32 bit biases may give a small improvement in accuracy.
+Unfortunately it is difficult to predict which models may benefit from
+this since model architectures, weight distributions, etc all have an
+impact on quantization performance.</p>
+<p class="rubric" id="activation-bitwidth">Activation BitWidth</p>
+<p>Qualcomm® Neural Processing SDK also supports, quantization bitwidth of 16 for activation.(See Notes)</p>
+<p>To enable 16-bit fixed point inference, specify quantization bitwidth of
+activations to 16 while keeping that of weights to 8. Passing the
+command line options: “–act_bitwidth 16 –weights_bitwidth 8” to
+snpe-dlc-quantize, will generate quantized model files with 16-bit
+activations and 8-bit weights.</p>
+<p>It is recommended to use UserBuffer TF16 as input/output data format for
+better efficiency. In this case, users of Qualcomm® Neural Processing SDK need quantize/dequantize
+input/output data on their own if floating point data are used. When
+testing with snpe-net-run, command line option “–userbuffer_tfN 16” can
+be used to select UserBuffer TF16 mode. ITensor and UserBuffer floating point
+format can still be used with 16-bit integer inference with less efficient
+quantization applied internally.</p>
+<p class="rubric" id="quantization-modes">Quantization Modes</p>
+<p>Qualcomm® Neural Processing SDK supports multiple quantization modes, the difference is in how
+quantization parameters are chosen.</p>
+<p class="rubric" id="default-quantization-mode">Default Quantization Mode</p>
+<p>The default mode has been described above, and uses the true min/max of
+the data being quantized, followed by an adjustment of the range to
+ensure a minimum range and to ensure 0.0 is exactly quantizable.</p>
+<p class="rubric" id="enhanced-quantization-mode">Enhanced Quantization Mode</p>
+<p>Enhanced quantization mode (invoked by using the
+“use_enhanced_quantizer” parameter to
+<a class="reference external" href="tools.html#snpe-dlc-quantize">snpe-dlc-quantize</a>) uses an
+algorithm to try to determine a better set of quantization parameters to
+improve accuracy. The algorithm may pick a different min/max value than
+the default quantizer, and in some cases it may set the range such that
+some of the original weights and/or activations cannot fall into that
+range. However, this range does produce better accuracy than simply
+using the true min/max. The enhanced quantizer can be enabled
+independently for weights and activations by appending either “weights”
+or “activations” after the option.</p>
+<p>This is useful for some models where the weights and/or activations may
+have “long tails”. (Imagine a range with most values between -100 and
+1000, but a few values much greater than 1000 or much less than -100.)
+In some cases these long tails can be ignored and the range -100, 1000
+can be used more effectively than the full range.</p>
+<p>Enhanced quantizer still enforces a minimum range and ensures 0.0 is
+exactly quantizable.</p>
+<p class="rubric" id="adjusted-weights-quantization-mode">Adjusted Weights Quantization Mode</p>
+<p>This mode is used only for quantizing weights to 8 bit fixed
+point (invoked by using the “use_adjusted_weights_quantizer” parameter to
+<a class="reference external" href="tools.html#snpe-dlc-quantize">snpe-dlc-quantize</a>), which uses
+adjusted min or max of the data being quantized other than true min/max
+or the min/max that exclude the long tail. This has been verified to be
+able to provide accuracy benefit for denoise model specifically. Using
+this quantizer, the max will be expanded or the min will be decreased if
+necessary.</p>
+<p>Adjusted weights quantizer still enforces a minimum range and ensures
+0.0 is exactly quantizable.</p>
+<p class="rubric" id="enhanced-quantization-techniques">Enhanced Quantization Techniques</p>
+<p>Quantization can be a difficult problem to solve due to the myriad of
+training techniques, model architectures, and layer types. In an attempt
+to mitigate quantization problems two new model preprocessing techniques
+have been added to <a class="reference external" href="tools.html#snpe-dlc-quantize">snpe-dlc-quantize</a>
+that may improve quantization performance on models which exhibit sharp drops in
+accuracy upon quantization.</p>
+<p>The new technique introduced is CLE (Cross Layer Equalization).</p>
+<p>CLE works by scaling the convolution weight ranges in the network by
+making use of a scale-equivariance property of activation functions. In
+addition, the process absorbs high biases which may be result from
+weight scaling from one convolution layer to a subsequent convolution
+layer.</p>
+<p class="rubric" id="enhanced-quantization-techniques-limitations">Enhanced Quantization Techniques: Limitations</p>
+<p>In many cases, CLE may enable quantized models to return to close to
+their original floating-point accuracy. There are some
+caveats/limitations to the current algorithms:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>CLE operates on specific patterns of operations that all exist in a
+single branch (outputs cannot be consumed by more than one op). The
+matched operation patterns (r=required, o=optional) are:</p>
+<ul class="simple">
+<li><p>Conv(r)-&gt;Batchnorm(r)-&gt;activation(o)-&gt;Conv(r)-&gt;Batchnorm(r)-&gt;activation(o)</p></li>
+<li><p>Conv(r)-&gt;Batchnorm(r)-&gt;activation(o)-&gt;DepthwiseConv(r)-&gt;Batchnorm(r)-&gt;activation(o)-&gt;Conv(r)-&gt;Batchnorm(r)-&gt;activation(o)</p></li>
+</ul>
+</li>
+<li><p>The CLE algorithm currently only supports Relu activations. Any Relu6
+activations will be automatically changed to Relu and any activations
+other than these will cause the algorithm to ignore the preceding
+convolution. Typically the switch from Relu6-&gt;Relu is harmless and
+does not cause any degradation in accuracy, however some models may
+exhibit a slight degradation of accuracy. In this case, CLE can
+only recover accuracy to that degraded level, and not to the original
+float accuracy.</p></li>
+<li><p>CLE requires batchnorms (specifically detectable batchnorm beta/gamma
+data) be present in the original model before conversion to DLC for
+the complete algorithm to be run and to regain maximum accuracy. For
+Tensorflow, the beta and gamma can sometimes still be found even with
+folded batchnorms, so long as the folding didn’t fold the parameters
+into the convolution’s static weights and bias. If it does not detect
+the required information you may see a message that looks like:
+“Invalid model for HBA quantization algorithm.” This indicates the
+algorithm will only partially run and accuracy issues may likely be
+present.</p></li>
+</ol>
+</div></blockquote>
+<p>To run CLE pass the “–optimizations cle” to
+<a class="reference external" href="tools.html#snpe-dlc-quantize">snpe-dlc-quantize</a>.</p>
+<p>The original converted float model should always be used as input to
+snpe-dlc-quantize. Passing quantized models back to the quantizer is not
+supported and will result in undefined behavior.</p>
+<p>More information about the algorithms can be found
+here: <a class="reference external" href="https://arxiv.org/abs/1906.04721">https://arxiv.org/abs/1906.04721</a></p>
+<p class="rubric" id="quantization-impacts">Quantization Impacts</p>
+<p>Quantizing a model and/or running it in a quantized runtime (like the
+DSP) can affect accuracy. Some models may not work well when quantized,
+and may yield incorrect results. The metrics for measuring impact of
+quantization on a model that does classification are typically “Mean
+Average Precision”, “Top-1 Error” and “Top-5 Error”. These metrics
+published in Qualcomm® Neural Processing SDK release notes for various models.</p>
+<p class="rubric" id="mixed-precision-and-fp16-support">Mixed Precision and FP16 Support</p>
+<p>Mixed Precision enables specifying different bit widths (e.g. 8 or 16) or
+datatypes (integer or floating point) for different operations within the same graph.
+Data type conversion operations are automatically inserted when activation precision or
+data type is different between successive operations. Graphs can have a mix of floating-point
+and fixed-point data types. Each operation can have different precision for weights and
+activations. However, for a particular operation, either all inputs, outputs and parameters
+(weights/biases) will be floating-point or all will be fixed-point format.</p>
+<p class="rubric" id="quantization-overrides">Quantization Overrides</p>
+<p>If the option –quantization_overrides is provided during model
+conversion the user can provide a json file with parameters to use for
+quantization. These will be cached along with the model and can be used
+to override any quantization data carried from conversion (eg TF fake
+quantization) or calculated during the normal quantization process in
+snpe-dlc-quantize. To override the params during snpe-dlc-quantize the
+option –override_params must be passed, and the cached values will be
+used instead. The json format is defined as per AIMET specification and
+can be found below.</p>
+<p>There are two sections in the json, a section for overriding operator
+output encodings called “activation_encodings” and a section for
+overriding parameter (weight and bias) encodings called
+“param_encodings”. Both must be present in the file, but can be empty if
+no overrides are desired.</p>
+<p>An example with all of the currently supported options:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>{
+  &quot;activation_encodings&quot;: {
+      &quot;Conv1:0&quot;: [
+          {
+              &quot;bitwidth&quot;: 8,
+              &quot;max&quot;: 12.82344407824954,
+              &quot;min&quot;: 0.0,
+              &quot;offset&quot;: 0,
+              &quot;scale&quot;: 0.050288015993135454
+          }
+      ],
+      &quot;input:0&quot;: [
+          {
+              &quot;bitwidth&quot;: 8,
+              &quot;max&quot;: 0.9960872825108046,
+              &quot;min&quot;: -1.0039304197656937,
+              &quot;offset&quot;: 127,
+              &quot;scale&quot;: 0.007843206675594112
+          }
+      ]
+  },
+  &quot;param_encodings&quot;: {
+      &quot;Conv2d/weights&quot;: [
+          {
+              &quot;bitwidth&quot;: 8,
+              &quot;max&quot;: 1.700559472933134,
+              &quot;min&quot;: -2.1006477158567995,
+              &quot;offset&quot;: 140,
+              &quot;scale&quot;: 0.01490669485799974
+          }
+      ]
+  }
+}
+</pre></div>
+</div>
+<p>Under “activation_encodings” the names (eg “Conv1:0”) represent the
+output tensor names where quantization should be overriden. Under
+“param_encodings” the names represent the weights or biases for which
+the encodings will be specified. A brief breakdown of the common
+parameters:</p>
+<ul class="simple">
+<li><p>bitwidth (int, required) - The bitwidth to use for quantization. Note
+that this much match the existing bitwidth support for the runtime on
+which the model will be run.</p></li>
+<li><p>max (float, required) - The largest number in the distribution or
+desired range.</p></li>
+<li><p>min (float, required) - The smalled number in the distribution or
+desired range.</p></li>
+<li><p>offset (int) - The integer offset indicating the zero point (ie The
+point at which 0 is exactly represnted).</p></li>
+<li><p>scale (float) - The value indicating the integer size divided by the
+desired distribution range.</p></li>
+</ul>
+<p>Note that it is not required to provide scale (also referred to as
+delta) and offset (zero point). If they are provided they will be used,
+otherwise they will be calulated from the provided bitwidth, min, and
+max parameters.</p>
+<p>Note : Quantization bit width 16 for activation, supported from
+Snapdragon 865/765 onwards on certain runtimes and currently not enable
+for all ops.</p>
+<p>Float16 (half-precision) additionally enables converting the entire models to FP16 or selecting between FP16 and FP32
+data-types for the float ops in case of mixed precision graphs with a mix of floating point and integer ops. The
+different modes of using mixed precision are described below.</p>
+<ul>
+<li><p>No override: If no –quantization_overrides flag is given with an encoding file, all activations are quantized as per
+–act_bitwidth (default 8) and parameters are quantized as per –weight_bitwidth/–bias_bitwidth (default 8/8)
+respectively.</p></li>
+<li><p>Full override: If –quantization_overrides flag is given along with encoding file specifying encodings for all ops in
+the model. In this case, the bitwidth with be set as per JSON for all ops defined as integer/float as per encoding
+file (dtype=’int’ or dtype=’float’ in encoding json).</p></li>
+<li><p>Partial override: If –quantization_overrides flag is given along with encoding file specifying partial encodings
+(i.e. encodings are missing for some ops), the following will happen.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Layers for which encoding are NOT available in json file are encoded in the same manner as the no override case
+i.e. defined as integer with bitwidth defined as per –act_bitwidth/–weight_bitwidth/–bias_bitwidth
+(or their default values 8/8/8).
+For some ops (Conv2d, Conv3d, TransposeConv2d, DepthwiseConv2d, FullyConnected, MatMul) even if any of the
+output/weights/bias are specified as float in the encoding file, all three of them will be overridden to float.
+The float bitwidth used will be same as the float bitwidth of the overriding tensor in the encodings file. We
+can also manually control the bitwidth of bias tensors in such case (if encodings for it are absent in encodings
+json and present for output/weights) with the use of the –float_bias_bitwidth (16/32) flag.</p></li>
+<li><p>Layers for which encoding are available in json are encoded in same manner as full override case.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>We show a sample json for network with 3 Conv2d ops. The first and third Conv2d ops are INT8 while the second Conv2d op
+is marked as FP32. The FP32 op (namely conv2_1) is sandwiched between two INT8 ops in “activation_encodings”, hence
+convert ops will be inserted before and after the FP32 op. The corresponding weights and biases for conv2_1 are also
+marked as floating-point in the JSON in “param_encodings”.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>{
+       &quot;activation_encodings&quot;: {
+           &quot;data_0&quot;: [
+               {
+                   &quot;bitwidth&quot;: 8,
+                   &quot;dtype&quot;: &quot;int&quot;
+               }
+           ],
+           &quot;conv1_1&quot;: [
+               {
+                   &quot;bitwidth&quot;: 8,
+                   &quot;dtype&quot;: &quot;int&quot;
+               }
+           ],
+           &quot;conv2_1&quot;: [
+               {
+                   &quot;bitwidth&quot;: 32,
+                   &quot;dtype&quot;: &quot;float&quot;
+               }
+           ],
+           &quot;conv3_1&quot;: [
+               {
+                   &quot;bitwidth&quot;: 8,
+                   &quot;dtype&quot;: &quot;int&quot;
+               }
+           ]
+       },
+       &quot;param_encodings&quot;: {
+           &quot;conv1_w_0&quot;: [
+               {
+                   &quot;bitwidth&quot;: 8,
+                   &quot;dtype&quot;: &quot;int&quot;
+               }
+           ],
+           &quot;conv1_b_0&quot;: [
+               {
+                   &quot;bitwidth&quot;: 8,
+                   &quot;dtype&quot;: &quot;int&quot;
+               }
+           ],
+           &quot;conv2_w_0&quot;: [
+               {
+                   &quot;bitwidth&quot;: 32,
+                   &quot;dtype&quot;: &quot;float&quot;
+               }
+           ],
+           &quot;conv2_b_0&quot;: [
+               {
+                   &quot;bitwidth&quot;: 32,
+                   &quot;dtype&quot;: &quot;float&quot;
+               }
+           ],
+           &quot;conv3_w_0&quot;: [
+               {
+                   &quot;bitwidth&quot;: 8,
+                   &quot;dtype&quot;: &quot;int&quot;
+               }
+           ],
+           &quot;conv3_b_0&quot;: [
+               {
+                   &quot;bitwidth&quot;: 8,
+                   &quot;dtype&quot;: &quot;int&quot;
+               }
+           ]
+       }
+    }
+</pre></div>
+</div>
+<p>The ops that are not present in json will be assumed to be fixed-point and the bit widths will be selected according to
+–act_bitwidth/–weight_bitwidth/–bias_bitwidth respectively.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>{
+       &quot;activation_encodings&quot;: {
+           &quot;conv2_1&quot;: [
+               {
+                   &quot;bitwidth&quot;: 32,
+                   &quot;dtype&quot;: &quot;float&quot;
+               }
+           ]
+       },
+       &quot;param_encodings&quot;: {
+           &quot;conv2_w_0&quot;: [
+               {
+                   &quot;bitwidth&quot;: 32,
+                   &quot;dtype&quot;: &quot;float&quot;
+               }
+           ],
+           &quot;conv2_b_0&quot;: [
+               {
+                   &quot;bitwidth&quot;: 32,
+                   &quot;dtype&quot;: &quot;float&quot;
+               }
+           ]
+       }
+    }
+</pre></div>
+</div>
+<p>The following quantized mixed-precision graph will be generated based on the JSON shown above. Please note that the
+convert operations are added appropriately to convert between float and int types and vice-versa.</p>
+<div class="docutils container">
+<div class="figure align-default">
+<img alt="../images/snpe_quantization_mp_graph.png" src="../images/snpe_quantization_mp_graph.png" />
+</div>
+</div>
+<p class="rubric" id="per-channel-quantization-overrides">Per-channel Quantization Overrides</p>
+<p>Per-channel quantization should be used for tensors that are weight inputs to Conv consumers (Conv2d, Conv3d,
+TransposeConv2d, DepthwiseConv2d). This section provides examples to manually override per-channel encodings for these
+Conv-based op weight tensors.
+Per-channel quantization will be used when we provide multiple encodings (equal to the number of channels) for the
+given tensor.
+We see an example for convolution weight for the following cases.</p>
+<ul class="simple">
+<li><p>Case 1: Asymmetric encodings without per-channel quantization</p></li>
+</ul>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>{
+    &quot;features.9.conv.3.weight&quot;: [
+        {
+            &quot;bitwidth&quot;: 8,
+            &quot;is_symmetric&quot;: &quot;False&quot;,
+            &quot;max&quot;: 3.0387749017453665,
+            &quot;min&quot;: -2.059169834735364,
+            &quot;offset&quot;: -103,
+            &quot;scale&quot;: 0.019991940143061618
+        }
+    ]
+}
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Case 2: Per-channel quantization encodings with 3 output channels</p></li>
+</ul>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>{
+    &quot;features.8.conv.3.weight&quot;: [
+        {
+            &quot;bitwidth&quot;: 8,
+            &quot;is_symmetric&quot;: &quot;True&quot;,
+            &quot;max&quot;: 0.7011175155639648,
+            &quot;min&quot;: -0.7066381259227362,
+            &quot;offset&quot;: -128.0,
+            &quot;scale&quot;: 0.005520610358771377
+        },
+        {
+            &quot;bitwidth&quot;: 8,
+            &quot;is_symmetric&quot;: &quot;True&quot;,
+            &quot;max&quot;: 0.5228064656257629,
+            &quot;min&quot;: -0.5269230519692729,
+            &quot;offset&quot;: -128.0,
+            &quot;scale&quot;: 0.004116586343509945
+        },
+        {
+            &quot;bitwidth&quot;: 8,
+            &quot;is_symmetric&quot;: &quot;True&quot;,
+            &quot;max&quot;: 0.7368279099464417,
+            &quot;min&quot;: -0.7426297045129491,
+            &quot;offset&quot;: -128.0,
+            &quot;scale&quot;: 0.005801794566507415
+        }
+    ]
+}
+</pre></div>
+</div>
+<p><strong>Note:</strong> Per-channel quantization must use symmetric representation with offset == -2^(bitwidth-1). Per-channel always
+has is_symmetric = True.</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="usergroup2.html" class="btn btn-neutral float-right" title="User-defined Operations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="supported_onnx_ops.html" class="btn btn-neutral float-left" title="Supported ONNX Ops" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,638 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>File SNPEUtil.h &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup1.html">Network Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup6.html">Tutorials and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>File SNPEUtil.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="file-snpeutil-h">
+<span id="file-snpe-snpeutil-h"></span><h1>File SNPEUtil.h<a class="headerlink" href="#file-snpeutil-h" title="Permalink to this heading">¶</a></h1>
+<p>↰ <a class="reference internal" href="dir_SNPE.html#dir-snpe"><span class="std std-ref">Parent directory</span></a> (<code class="docutils literal notranslate"><span class="pre">SNPE</span></code>)</p>
+<div class="contents local topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#definition-snpe-snpeutil-h" id="id1">Definition (<code class="docutils literal notranslate"><span class="pre">SNPE/SNPEUtil.h</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#includes" id="id2">Includes</a></p></li>
+<li><p><a class="reference internal" href="#functions" id="id3">Functions</a></p></li>
+<li><p><a class="reference internal" href="#full-file-listing" id="id4">Full File Listing</a></p></li>
+</ul>
+</div>
+<div class="section" id="definition-snpe-snpeutil-h">
+<h2>Definition (<code class="docutils literal notranslate"><span class="pre">SNPE/SNPEUtil.h</span></code>)<a class="headerlink" href="#definition-snpe-snpeutil-h" title="Permalink to this heading">¶</a></h2>
+</div>
+<div class="section" id="includes">
+<h2>Includes<a class="headerlink" href="#includes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DlSystem/DlEnums.h</span></code> (<a class="reference internal" href="file_DlSystem_DlEnums.h.html#file-dlsystem-dlenums-h"><span class="std std-ref">File DlEnums.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DlSystem/DlError.h</span></code> (<a class="reference internal" href="file_DlSystem_DlError.h.html#file-dlsystem-dlerror-h"><span class="std std-ref">File DlError.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DlSystem/DlVersion.h</span></code> (<a class="reference internal" href="file_DlSystem_DlVersion.h.html#file-dlsystem-dlversion-h"><span class="std std-ref">File DlVersion.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DlSystem/ITensor.h</span></code> (<a class="reference internal" href="file_DlSystem_ITensor.h.html#file-dlsystem-itensor-h"><span class="std std-ref">File ITensor.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DlSystem/IUserBuffer.h</span></code> (<a class="reference internal" href="file_DlSystem_IUserBuffer.h.html#file-dlsystem-iuserbuffer-h"><span class="std std-ref">File IUserBuffer.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DlSystem/SnpeApiExportDefine.h</span></code> (<a class="reference internal" href="file_DlSystem_SnpeApiExportDefine.h.html#file-dlsystem-snpeapiexportdefine-h"><span class="std std-ref">File SnpeApiExportDefine.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DlSystem/TensorShape.h</span></code> (<a class="reference internal" href="file_DlSystem_TensorShape.h.html#file-dlsystem-tensorshape-h"><span class="std std-ref">File TensorShape.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SNPE/SNPE.h</span></code> (<a class="reference internal" href="file_SNPE_SNPE.h.html#file-snpe-snpe-h"><span class="std std-ref">File SNPE.h</span></a>)</p></li>
+</ul>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="function_SNPEUtil_8h_1a0eb9a124fdd8bcfba4168dfc0e8c0c90.html#exhale-function-snpeutil-8h-1a0eb9a124fdd8bcfba4168dfc0e8c0c90"><span class="std std-ref">Function Snpe_Util_AddOpPackage</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEUtil_8h_1a80dbf4c9ec54f24245c2834198da025c.html#exhale-function-snpeutil-8h-1a80dbf4c9ec54f24245c2834198da025c"><span class="std std-ref">Function Snpe_Util_Convert_Float32ToTfN</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEUtil_8h_1a090710a8ac3beb6d1b1d0f307be2d6d3.html#exhale-function-snpeutil-8h-1a090710a8ac3beb6d1b1d0f307be2d6d3"><span class="std std-ref">Function Snpe_Util_Convert_TfNToFloat32</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEUtil_8h_1ae3a35411d1e231ab3e768e62de5e6568.html#exhale-function-snpeutil-8h-1ae3a35411d1e231ab3e768e62de5e6568"><span class="std std-ref">Function Snpe_Util_CreateITensor</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEUtil_8h_1a2be4071484eb19e05fbab5cd7e0f98c2.html#exhale-function-snpeutil-8h-1a2be4071484eb19e05fbab5cd7e0f98c2"><span class="std std-ref">Function Snpe_Util_CreateITensor_NV21</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEUtil_8h_1a6317ba49b9a8c9a6b25a37b449df2f92.html#exhale-function-snpeutil-8h-1a6317ba49b9a8c9a6b25a37b449df2f92"><span class="std std-ref">Function Snpe_Util_CreateITensorDataSize</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEUtil_8h_1a6de0d9edac24b9d40c1583a99fcd88c4.html#exhale-function-snpeutil-8h-1a6de0d9edac24b9d40c1583a99fcd88c4"><span class="std std-ref">Function Snpe_Util_CreateUserBuffer</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEUtil_8h_1a5427dbfc54d6c1e416eef48ce5595dad.html#exhale-function-snpeutil-8h-1a5427dbfc54d6c1e416eef48ce5595dad"><span class="std std-ref">Function Snpe_Util_CreateUserBufferFromSource</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEUtil_8h_1a5bf8d334046bf046bb9962ffff3f5db2.html#exhale-function-snpeutil-8h-1a5bf8d334046bf046bb9962ffff3f5db2"><span class="std std-ref">Function Snpe_Util_CreateUserBufferShared</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEUtil_8h_1afa570a349803f5c3f875139cad64b138.html#exhale-function-snpeutil-8h-1afa570a349803f5c3f875139cad64b138"><span class="std std-ref">Function Snpe_Util_CreateUserGlBuffer</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEUtil_8h_1a18b17b3deb99b9c6ce401c4124055179.html#exhale-function-snpeutil-8h-1a18b17b3deb99b9c6ce401c4124055179"><span class="std std-ref">Function Snpe_Util_GetLastError</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEUtil_8h_1ae11da8d0513c2374624d488bf4c76c20.html#exhale-function-snpeutil-8h-1ae11da8d0513c2374624d488bf4c76c20"><span class="std std-ref">Function Snpe_Util_GetLibraryVersion</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEUtil_8h_1a23e0f3f44c5ff5ac89a7a8f74aecba28.html#exhale-function-snpeutil-8h-1a23e0f3f44c5ff5ac89a7a8f74aecba28"><span class="std std-ref">Function Snpe_Util_InitializeLogging</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEUtil_8h_1a4245f3bf270e24528a92f6baab4fba91.html#exhale-function-snpeutil-8h-1a4245f3bf270e24528a92f6baab4fba91"><span class="std std-ref">Function Snpe_Util_InitializeLoggingPath</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEUtil_8h_1a19f1079a470734df5075a52df331c663.html#exhale-function-snpeutil-8h-1a19f1079a470734df5075a52df331c663"><span class="std std-ref">Function Snpe_Util_IsGLCLInteropSupported</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEUtil_8h_1ae8eb4fc4f502327271ed17bb907c2acb.html#exhale-function-snpeutil-8h-1ae8eb4fc4f502327271ed17bb907c2acb"><span class="std std-ref">Function Snpe_Util_IsRuntimeAvailable</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEUtil_8h_1aa9d48a9194b2d0604917295a5bee2c31.html#exhale-function-snpeutil-8h-1aa9d48a9194b2d0604917295a5bee2c31"><span class="std std-ref">Function Snpe_Util_IsRuntimeAvailableCheckOption</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEUtil_8h_1ab30e87b36fcd1f5fd5da069179ea2857.html#exhale-function-snpeutil-8h-1ab30e87b36fcd1f5fd5da069179ea2857"><span class="std std-ref">Function Snpe_Util_SetLogLevel</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEUtil_8h_1a2a228e1f600af3839ed690f1a99c3d26.html#exhale-function-snpeutil-8h-1a2a228e1f600af3839ed690f1a99c3d26"><span class="std std-ref">Function Snpe_Util_SetSNPEStorageLocation</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEUtil_8h_1a3a4c36b743fafa1b22453373ded1a05f.html#exhale-function-snpeutil-8h-1a3a4c36b743fafa1b22453373ded1a05f"><span class="std std-ref">Function Snpe_Util_TerminateLogging</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="full-file-listing">
+<h2>Full File Listing<a class="headerlink" href="#full-file-listing" title="Permalink to this heading">¶</a></h2>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv426Snpe_Util_CreateUserBufferPv6size_t25Snpe_TensorShape_Handle_t25Snpe_IUserBuffer_Handle_t">
+<span id="_CPPv326Snpe_Util_CreateUserBufferPv6size_t25Snpe_TensorShape_Handle_t25Snpe_IUserBuffer_Handle_t"></span><span id="_CPPv226Snpe_Util_CreateUserBufferPv6size_t25Snpe_TensorShape_Handle_t25Snpe_IUserBuffer_Handle_t"></span><span id="Snpe_Util_CreateUserBuffer__voidP.s.Snpe_TensorShape_Handle_t.Snpe_IUserBuffer_Handle_t"></span><span class="target" id="SNPEUtil_8h_1a6de0d9edac24b9d40c1583a99fcd88c4"></span><a class="reference internal" href="file_DlSystem_IUserBuffer.h.html#_CPPv425Snpe_IUserBuffer_Handle_t" title="Snpe_IUserBuffer_Handle_t"><span class="n"><span class="pre">Snpe_IUserBuffer_Handle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_Util_CreateUserBuffer</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bufSize</span></span>, <a class="reference internal" href="typedef_TensorShape_8h_1aa2c4ee3ae82899680c05757c4c44c1ee.html#_CPPv425Snpe_TensorShape_Handle_t" title="Snpe_TensorShape_Handle_t"><span class="n"><span class="pre">Snpe_TensorShape_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">stridesHandle</span></span>, <a class="reference internal" href="file_DlSystem_IUserBuffer.h.html#_CPPv425Snpe_IUserBuffer_Handle_t" title="Snpe_IUserBuffer_Handle_t"><span class="n"><span class="pre">Snpe_IUserBuffer_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">userBufferEncodingHandle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426Snpe_Util_CreateUserBufferPv6size_t25Snpe_TensorShape_Handle_t25Snpe_IUserBuffer_Handle_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Creates a UserBuffer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buffer</strong> – <strong>[in]</strong> Pointer to the buffer that the caller supplies</p></li>
+<li><p><strong>bufSize</strong> – <strong>[in]</strong> Buffer size, in bytes</p></li>
+<li><p><strong>stridesHandle</strong> – <strong>[in]</strong> Total number of bytes between elements in each dimension. E.g. A tightly packed tensor of floats with dimensions [4, 3, 2] would have strides of [24, 8, 4].</p></li>
+<li><p><strong>userBufferEncodingHandle</strong> – <strong>[in]</strong> Handle to a UserBufferEncoding object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Handle to the created UserBuffer </p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Caller has to ensure that memory pointed to by buffer stays accessible for the lifetime of the object created</p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv432Snpe_Util_CreateUserBufferSharedPv6size_t8uint64_t25Snpe_TensorShape_Handle_t25Snpe_IUserBuffer_Handle_t">
+<span id="_CPPv332Snpe_Util_CreateUserBufferSharedPv6size_t8uint64_t25Snpe_TensorShape_Handle_t25Snpe_IUserBuffer_Handle_t"></span><span id="_CPPv232Snpe_Util_CreateUserBufferSharedPv6size_t8uint64_t25Snpe_TensorShape_Handle_t25Snpe_IUserBuffer_Handle_t"></span><span id="Snpe_Util_CreateUserBufferShared__voidP.s.uint64_t.Snpe_TensorShape_Handle_t.Snpe_IUserBuffer_Handle_t"></span><span class="target" id="SNPEUtil_8h_1a5bf8d334046bf046bb9962ffff3f5db2"></span><a class="reference internal" href="file_DlSystem_IUserBuffer.h.html#_CPPv425Snpe_IUserBuffer_Handle_t" title="Snpe_IUserBuffer_Handle_t"><span class="n"><span class="pre">Snpe_IUserBuffer_Handle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_Util_CreateUserBufferShared</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bufSize</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">addrOffset</span></span>, <a class="reference internal" href="typedef_TensorShape_8h_1aa2c4ee3ae82899680c05757c4c44c1ee.html#_CPPv425Snpe_TensorShape_Handle_t" title="Snpe_TensorShape_Handle_t"><span class="n"><span class="pre">Snpe_TensorShape_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">stridesHandle</span></span>, <a class="reference internal" href="file_DlSystem_IUserBuffer.h.html#_CPPv425Snpe_IUserBuffer_Handle_t" title="Snpe_IUserBuffer_Handle_t"><span class="n"><span class="pre">Snpe_IUserBuffer_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">userBufferEncodingHandle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv432Snpe_Util_CreateUserBufferSharedPv6size_t8uint64_t25Snpe_TensorShape_Handle_t25Snpe_IUserBuffer_Handle_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Creates a UserBuffer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buffer</strong> – <strong>[in]</strong> Pointer to the buffer that the caller supplies</p></li>
+<li><p><strong>bufSize</strong> – <strong>[in]</strong> Buffer size, in bytes</p></li>
+<li><p><strong>addrOffset</strong> – <strong>[in]</strong> byte offset to the actual address from the start of the allocated buffer. This is useful for sharing a large buffer amongst different tensors. When set to 0 this API behaves like <a class="reference internal" href="function_SNPEUtil_8h_1a6de0d9edac24b9d40c1583a99fcd88c4.html#SNPEUtil_8h_1a6de0d9edac24b9d40c1583a99fcd88c4"><span class="std std-ref">Snpe_Util_CreateUserBuffer()</span></a></p></li>
+<li><p><strong>stridesHandle</strong> – <strong>[in]</strong> Total number of bytes between elements in each dimension. E.g. A tightly packed tensor of floats with dimensions [4, 3, 2] would have strides of [24, 8, 4].</p></li>
+<li><p><strong>userBufferEncodingHandle</strong> – <strong>[in]</strong> Handle to a UserBufferEncoding object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Handle to the created UserBuffer </p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Caller has to ensure that memory pointed to by buffer stays accessible for the lifetime of the object created</p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv436Snpe_Util_CreateUserBufferFromSourcePv6size_t25Snpe_TensorShape_Handle_t25Snpe_IUserBuffer_Handle_t30Snpe_UserBufferSource_Handle_t">
+<span id="_CPPv336Snpe_Util_CreateUserBufferFromSourcePv6size_t25Snpe_TensorShape_Handle_t25Snpe_IUserBuffer_Handle_t30Snpe_UserBufferSource_Handle_t"></span><span id="_CPPv236Snpe_Util_CreateUserBufferFromSourcePv6size_t25Snpe_TensorShape_Handle_t25Snpe_IUserBuffer_Handle_t30Snpe_UserBufferSource_Handle_t"></span><span id="Snpe_Util_CreateUserBufferFromSource__voidP.s.Snpe_TensorShape_Handle_t.Snpe_IUserBuffer_Handle_t.Snpe_UserBufferSource_Handle_t"></span><span class="target" id="SNPEUtil_8h_1a5427dbfc54d6c1e416eef48ce5595dad"></span><a class="reference internal" href="file_DlSystem_IUserBuffer.h.html#_CPPv425Snpe_IUserBuffer_Handle_t" title="Snpe_IUserBuffer_Handle_t"><span class="n"><span class="pre">Snpe_IUserBuffer_Handle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_Util_CreateUserBufferFromSource</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bufSize</span></span>, <a class="reference internal" href="typedef_TensorShape_8h_1aa2c4ee3ae82899680c05757c4c44c1ee.html#_CPPv425Snpe_TensorShape_Handle_t" title="Snpe_TensorShape_Handle_t"><span class="n"><span class="pre">Snpe_TensorShape_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">stridesHandle</span></span>, <a class="reference internal" href="file_DlSystem_IUserBuffer.h.html#_CPPv425Snpe_IUserBuffer_Handle_t" title="Snpe_IUserBuffer_Handle_t"><span class="n"><span class="pre">Snpe_IUserBuffer_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">userBufferEncodingHandle</span></span>, <a class="reference internal" href="file_DlSystem_IUserBuffer.h.html#_CPPv430Snpe_UserBufferSource_Handle_t" title="Snpe_UserBufferSource_Handle_t"><span class="n"><span class="pre">Snpe_UserBufferSource_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">userBufferSourceHandle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv436Snpe_Util_CreateUserBufferFromSourcePv6size_t25Snpe_TensorShape_Handle_t25Snpe_IUserBuffer_Handle_t30Snpe_UserBufferSource_Handle_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Creates a UserBuffer with a provided UserBufferSource. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buffer</strong> – <strong>[in]</strong> Pointer to the buffer that the caller supplies</p></li>
+<li><p><strong>bufSize</strong> – <strong>[in]</strong> Buffer size, in bytes</p></li>
+<li><p><strong>stridesHandle</strong> – <strong>[in]</strong> Total number of bytes between elements in each dimension. E.g. A tightly packed tensor of floats with dimensions [4, 3, 2] would have strides of [24, 8, 4].</p></li>
+<li><p><strong>userBufferEncodingHandle</strong> – <strong>[in]</strong> Handle to a UserBufferEncoding object</p></li>
+<li><p><strong>userBufferSourceHandle</strong> – <strong>[in]</strong> Handle to a UserBufferSource object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Handle to the created UserBuffer </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv430Snpe_Util_Convert_Float32ToTfNPKf6size_tbPfP8uint64_tPv6size_tj">
+<span id="_CPPv330Snpe_Util_Convert_Float32ToTfNPKf6size_tbPfP8uint64_tPv6size_tj"></span><span id="_CPPv230Snpe_Util_Convert_Float32ToTfNPKf6size_tbPfP8uint64_tPv6size_tj"></span><span id="Snpe_Util_Convert_Float32ToTfN__floatCP.s.b.floatP.uint64_tP.voidP.s.unsigned"></span><span class="target" id="SNPEUtil_8h_1a80dbf4c9ec54f24245c2834198da025c"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_Util_Convert_Float32ToTfN</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">inputBuffer</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">inputBufferSizeBytes</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">isDynamicEncoding</span></span>, <span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">scale</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">offset</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">outputBuffer</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">outputBufferSizeBytes</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bitWidth</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv430Snpe_Util_Convert_Float32ToTfNPKf6size_tbPfP8uint64_tPv6size_tj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Converts/Quantizes a float32 buffer to an unsigned fixed point 8/16 bit buffer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputBuffer</strong> – <strong>[in]</strong> Pointer to the float32 buffer that the caller supplies</p></li>
+<li><p><strong>inputBufferSizeBytes</strong> – <strong>[in]</strong> Input buffer size, in bytes. Must be at least 4 bytes</p></li>
+<li><p><strong>isDynamicEncoding</strong> – <strong>[in]</strong> When set to false, scale and offset provided (next 2 argumets) will be used to qunatize. When set to true, scale and offset provided will be ignored and min/max will be computed from the inputBuffer to derrive the scale and offset for quantization. The computed scale and offset will be populated back to the caller in the next two arguments</p></li>
+<li><p><strong>[in/out]</strong> – scale Pointer to qunatization encoding scale to be passed in by the caller when isDynamicEncoding is true. When isDynamicEncoding is false this argument is ignored and is populated as an outparam.</p></li>
+<li><p><strong>[in/out]</strong> – offset Pointer to qunatization encoding offset to be passed in by the caller when isDynamicEncoding is true. When isDynamicEncoding is false this argument is ignored and is populated as an outparam.</p></li>
+<li><p><strong>outputBuffer</strong> – <strong>[in]</strong> Pointer to the unsigned fixed point 8/16 bit buffer that the caller supplies</p></li>
+<li><p><strong>outputBufferSizeBytes</strong> – <strong>[in]</strong> Output buffer size, in bytes. Must be large enough for all the inputs</p></li>
+<li><p><strong>bitWidth</strong> – <strong>[in]</strong> Quantization bitwidth (8 or 16)</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This API can do in-place quantization i.e. when outputBuffer equals inputBuffer pointer. But the output buffer CANNOT start at an offset from input buffer which will lead to corrupting inputs at sbsequent indexes. </p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv430Snpe_Util_Convert_TfNToFloat32PKv6size_tf8uint64_tPf6size_tj">
+<span id="_CPPv330Snpe_Util_Convert_TfNToFloat32PKv6size_tf8uint64_tPf6size_tj"></span><span id="_CPPv230Snpe_Util_Convert_TfNToFloat32PKv6size_tf8uint64_tPf6size_tj"></span><span id="Snpe_Util_Convert_TfNToFloat32__voidCP.s.float.uint64_t.floatP.s.unsigned"></span><span class="target" id="SNPEUtil_8h_1a090710a8ac3beb6d1b1d0f307be2d6d3"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_Util_Convert_TfNToFloat32</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">inputBuffer</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">inputBufferSizeBytes</span></span>, <span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">scale</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">offset</span></span>, <span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">outputBuffer</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">outputBufferSizeBytes</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bitWidth</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv430Snpe_Util_Convert_TfNToFloat32PKv6size_tf8uint64_tPf6size_tj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Converts/De-Quantizes an unsigned fixed point 8/16 bit buffer to a float32 buffer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputBuffer</strong> – <strong>[in]</strong> Pointer to the unsigned fixed point 8/16 bit buffer that the caller supplies</p></li>
+<li><p><strong>inputBufferSizeBytes</strong> – <strong>[in]</strong> Input buffer size, in bytes</p></li>
+<li><p><strong>[in/out]</strong> – scale Qunatization encoding scale to be passed in by the caller</p></li>
+<li><p><strong>[in/out]</strong> – offset Qunatization encoding offset to be passed in by the caller</p></li>
+<li><p><strong>outputBuffer</strong> – <strong>[in]</strong> Pointer to the float32 buffer that the caller supplies</p></li>
+<li><p><strong>outputBufferSizeBytes</strong> – <strong>[in]</strong> Output buffer size, in bytes. Must be large enough for all the inputs</p></li>
+<li><p><strong>bitWidth</strong> – <strong>[in]</strong> Quantization bitwidth (8 or 16)</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This API CANNOT in place de-quantization. The input and output buffers must have no overlap </p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv428Snpe_Util_CreateUserGlBufferPv6size_t25Snpe_TensorShape_Handle_t25Snpe_IUserBuffer_Handle_t25Snpe_IUserBuffer_Handle_t">
+<span id="_CPPv328Snpe_Util_CreateUserGlBufferPv6size_t25Snpe_TensorShape_Handle_t25Snpe_IUserBuffer_Handle_t25Snpe_IUserBuffer_Handle_t"></span><span id="_CPPv228Snpe_Util_CreateUserGlBufferPv6size_t25Snpe_TensorShape_Handle_t25Snpe_IUserBuffer_Handle_t25Snpe_IUserBuffer_Handle_t"></span><span id="Snpe_Util_CreateUserGlBuffer__voidP.s.Snpe_TensorShape_Handle_t.Snpe_IUserBuffer_Handle_t.Snpe_IUserBuffer_Handle_t"></span><span class="target" id="SNPEUtil_8h_1afa570a349803f5c3f875139cad64b138"></span><a class="reference internal" href="file_DlSystem_IUserBuffer.h.html#_CPPv425Snpe_IUserBuffer_Handle_t" title="Snpe_IUserBuffer_Handle_t"><span class="n"><span class="pre">Snpe_IUserBuffer_Handle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_Util_CreateUserGlBuffer</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bufSize</span></span>, <a class="reference internal" href="typedef_TensorShape_8h_1aa2c4ee3ae82899680c05757c4c44c1ee.html#_CPPv425Snpe_TensorShape_Handle_t" title="Snpe_TensorShape_Handle_t"><span class="n"><span class="pre">Snpe_TensorShape_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">stridesHandle</span></span>, <a class="reference internal" href="file_DlSystem_IUserBuffer.h.html#_CPPv425Snpe_IUserBuffer_Handle_t" title="Snpe_IUserBuffer_Handle_t"><span class="n"><span class="pre">Snpe_IUserBuffer_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">userBufferEncodingHandle</span></span>, <a class="reference internal" href="file_DlSystem_IUserBuffer.h.html#_CPPv425Snpe_IUserBuffer_Handle_t" title="Snpe_IUserBuffer_Handle_t"><span class="n"><span class="pre">Snpe_IUserBuffer_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">userBufferSourceHandle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv428Snpe_Util_CreateUserGlBufferPv6size_t25Snpe_TensorShape_Handle_t25Snpe_IUserBuffer_Handle_t25Snpe_IUserBuffer_Handle_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Creates a UserBuffer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buffer</strong> – <strong>[in]</strong> Pointer to the buffer that the caller supplies</p></li>
+<li><p><strong>bufSize</strong> – <strong>[in]</strong> Buffer size, in bytes</p></li>
+<li><p><strong>stridesHandle</strong> – <strong>[in]</strong> Total number of bytes between elements in each dimension. E.g. A tightly packed tensor of floats with dimensions [4, 3, 2] would have strides of [24, 8, 4].</p></li>
+<li><p><strong>userBufferEncodingHandle</strong> – <strong>[in]</strong> Reference to an UserBufferEncoding object</p></li>
+<li><p><strong>userBufferSourceHandle</strong> – <strong>[in]</strong> Reference to an UserBufferSource object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the created UserBuffer </p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Caller has to ensure that memory pointed to by buffer stays accessible for the lifetime of the object created</p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423Snpe_Util_CreateITensor25Snpe_TensorShape_Handle_t">
+<span id="_CPPv323Snpe_Util_CreateITensor25Snpe_TensorShape_Handle_t"></span><span id="_CPPv223Snpe_Util_CreateITensor25Snpe_TensorShape_Handle_t"></span><span id="Snpe_Util_CreateITensor__Snpe_TensorShape_Handle_t"></span><span class="target" id="SNPEUtil_8h_1ae3a35411d1e231ab3e768e62de5e6568"></span><a class="reference internal" href="file_DlSystem_ITensor.h.html#_CPPv421Snpe_ITensor_Handle_t" title="Snpe_ITensor_Handle_t"><span class="n"><span class="pre">Snpe_ITensor_Handle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_Util_CreateITensor</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_TensorShape_8h_1aa2c4ee3ae82899680c05757c4c44c1ee.html#_CPPv425Snpe_TensorShape_Handle_t" title="Snpe_TensorShape_Handle_t"><span class="n"><span class="pre">Snpe_TensorShape_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">shapeHandle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423Snpe_Util_CreateITensor25Snpe_TensorShape_Handle_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Creates a new ITensor with uninitialized data.</p>
+<p>ITensor buffer size assumes float32 encoding for each element. (i.e., a tensor with dimensions (2,3) will be represented by (2 * 3) * 4 = 24 bytes in memory)</p>
+<p>The strides for the tensor will match the tensor dimensions (i.e., the tensor data is contiguous in memory).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>shapeHandle</strong> – <strong>[in]</strong> The dimensions for the tensor in which the last element of the vector represents the fastest varying dimension and the zeroth element represents the slowest varying, etc.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The created tensor </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv431Snpe_Util_CreateITensorDataSize25Snpe_TensorShape_Handle_tPK7uint8_t6size_t">
+<span id="_CPPv331Snpe_Util_CreateITensorDataSize25Snpe_TensorShape_Handle_tPK7uint8_t6size_t"></span><span id="_CPPv231Snpe_Util_CreateITensorDataSize25Snpe_TensorShape_Handle_tPK7uint8_t6size_t"></span><span id="Snpe_Util_CreateITensorDataSize__Snpe_TensorShape_Handle_t.uint8_tCP.s"></span><span class="target" id="SNPEUtil_8h_1a6317ba49b9a8c9a6b25a37b449df2f92"></span><a class="reference internal" href="file_DlSystem_ITensor.h.html#_CPPv421Snpe_ITensor_Handle_t" title="Snpe_ITensor_Handle_t"><span class="n"><span class="pre">Snpe_ITensor_Handle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_Util_CreateITensorDataSize</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_TensorShape_8h_1aa2c4ee3ae82899680c05757c4c44c1ee.html#_CPPv425Snpe_TensorShape_Handle_t" title="Snpe_TensorShape_Handle_t"><span class="n"><span class="pre">Snpe_TensorShape_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">shapeHandle</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">data</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dataSize</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv431Snpe_Util_CreateITensorDataSize25Snpe_TensorShape_Handle_tPK7uint8_t6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Create a new ITensor with specific data. (i.e. the tensor data is contiguous in memory). This tensor is primarily used to create a tensor where tensor size can’t be computed directly from dimension. One such example is NV21-formatted image, or any YUV formatted image</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shapeHandle</strong> – <strong>[in]</strong> The dimensions for the tensor in which the last element of the vector represents the fastest varying dimension and the zeroth element represents the slowest varying, etc.</p></li>
+<li><p><strong>data</strong> – <strong>[in]</strong> The actual data with which the Tensor object is filled.</p></li>
+<li><p><strong>dataSize</strong> – <strong>[in]</strong> The size of data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A handle to the created tensor </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv428Snpe_Util_CreateITensor_NV2125Snpe_TensorShape_Handle_tPh6size_t">
+<span id="_CPPv328Snpe_Util_CreateITensor_NV2125Snpe_TensorShape_Handle_tPh6size_t"></span><span id="_CPPv228Snpe_Util_CreateITensor_NV2125Snpe_TensorShape_Handle_tPh6size_t"></span><span id="Snpe_Util_CreateITensor_NV21__Snpe_TensorShape_Handle_t.unsigned-cP.s"></span><span class="target" id="SNPEUtil_8h_1a2be4071484eb19e05fbab5cd7e0f98c2"></span><a class="reference internal" href="file_DlSystem_ITensor.h.html#_CPPv421Snpe_ITensor_Handle_t" title="Snpe_ITensor_Handle_t"><span class="n"><span class="pre">Snpe_ITensor_Handle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_Util_CreateITensor_NV21</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_TensorShape_8h_1aa2c4ee3ae82899680c05757c4c44c1ee.html#_CPPv425Snpe_TensorShape_Handle_t" title="Snpe_TensorShape_Handle_t"><span class="n"><span class="pre">Snpe_TensorShape_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">shapeHandle</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">data</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dataSize</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv428Snpe_Util_CreateITensor_NV2125Snpe_TensorShape_Handle_tPh6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Create a new ITensor with specific data. (i.e. the tensor data is contiguous in memory). This tensor is primarily used to create a tensor where tensor size can’t be computed directly from dimension. One such example is NV21-formatted image, or any YUV formatted image</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shapeHandle</strong> – <strong>[in]</strong> The dimensions for the tensor in which the last element of the vector represents the fastest varying dimension and the zeroth element represents the slowest varying, etc.</p></li>
+<li><p><strong>data</strong> – <strong>[in]</strong> The actual data with which the Tensor object is filled.</p></li>
+<li><p><strong>dataSize</strong> – <strong>[in]</strong> The size of data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the created tensor </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv428Snpe_Util_IsRuntimeAvailable14Snpe_Runtime_t">
+<span id="_CPPv328Snpe_Util_IsRuntimeAvailable14Snpe_Runtime_t"></span><span id="_CPPv228Snpe_Util_IsRuntimeAvailable14Snpe_Runtime_t"></span><span id="Snpe_Util_IsRuntimeAvailable__Snpe_Runtime_t"></span><span class="target" id="SNPEUtil_8h_1ae8eb4fc4f502327271ed17bb907c2acb"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_Util_IsRuntimeAvailable</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="enum_DlEnums_8h_1a851ce6c63b2bd5515681a906330f7d01.html#_CPPv414Snpe_Runtime_t" title="Snpe_Runtime_t"><span class="n"><span class="pre">Snpe_Runtime_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">runtime</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv428Snpe_Util_IsRuntimeAvailable14Snpe_Runtime_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Indicates whether the supplied runtime is available on the current platform.</p>
+<p>Note: It is advised to use this function to check DSP availability. If the DSP is not already initialized, it will conduct the initialization - therefore, please ensure that the appropriate arguments are passed, where relevant.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>runtime</strong> – <strong>[in]</strong> The target runtime to check.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Boolean: Non-zero if the supplied runtime is available; 0 otherwise </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv439Snpe_Util_IsRuntimeAvailableCheckOption14Snpe_Runtime_t25Snpe_RuntimeCheckOption_t">
+<span id="_CPPv339Snpe_Util_IsRuntimeAvailableCheckOption14Snpe_Runtime_t25Snpe_RuntimeCheckOption_t"></span><span id="_CPPv239Snpe_Util_IsRuntimeAvailableCheckOption14Snpe_Runtime_t25Snpe_RuntimeCheckOption_t"></span><span id="Snpe_Util_IsRuntimeAvailableCheckOption__Snpe_Runtime_t.Snpe_RuntimeCheckOption_t"></span><span class="target" id="SNPEUtil_8h_1aa9d48a9194b2d0604917295a5bee2c31"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_Util_IsRuntimeAvailableCheckOption</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="enum_DlEnums_8h_1a851ce6c63b2bd5515681a906330f7d01.html#_CPPv414Snpe_Runtime_t" title="Snpe_Runtime_t"><span class="n"><span class="pre">Snpe_Runtime_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">runtime</span></span>, <a class="reference internal" href="enum_DlEnums_8h_1acdec3885743492063797091205a08274.html#_CPPv425Snpe_RuntimeCheckOption_t" title="Snpe_RuntimeCheckOption_t"><span class="n"><span class="pre">Snpe_RuntimeCheckOption_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">runtimeCheckOption</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv439Snpe_Util_IsRuntimeAvailableCheckOption14Snpe_Runtime_t25Snpe_RuntimeCheckOption_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Indicates whether the supplied runtime is available on the current platform.</p>
+<p>Note: It is advised to use this function to check DSP availability. If the DSP is not already initialized, it will conduct the initialization - therefore, please ensure that the appropriate arguments are passed, where relevant.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>runtime</strong> – <strong>[in]</strong> The target runtime to check.</p></li>
+<li><p><strong>runtimeCheckOption</strong> – <strong>[in]</strong> Extent to perform runtime available check.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Boolean: Non-zero if the supplied runtime is available; 0 otherwise </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv427Snpe_Util_GetLibraryVersionv">
+<span id="_CPPv327Snpe_Util_GetLibraryVersionv"></span><span id="_CPPv227Snpe_Util_GetLibraryVersionv"></span><span id="Snpe_Util_GetLibraryVersion"></span><span class="target" id="SNPEUtil_8h_1ae11da8d0513c2374624d488bf4c76c20"></span><a class="reference internal" href="file_DlSystem_DlVersion.h.html#_CPPv423Snpe_DlVersion_Handle_t" title="Snpe_DlVersion_Handle_t"><span class="n"><span class="pre">Snpe_DlVersion_Handle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_Util_GetLibraryVersion</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv427Snpe_Util_GetLibraryVersionv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Gets the version of the SNPE library.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Version of the SNPE library. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv432Snpe_Util_SetSNPEStorageLocationPKc">
+<span id="_CPPv332Snpe_Util_SetSNPEStorageLocationPKc"></span><span id="_CPPv232Snpe_Util_SetSNPEStorageLocationPKc"></span><span id="Snpe_Util_SetSNPEStorageLocation__cCP"></span><span class="target" id="SNPEUtil_8h_1a2a228e1f600af3839ed690f1a99c3d26"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_Util_SetSNPEStorageLocation</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">storagePath</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv432Snpe_Util_SetSNPEStorageLocationPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set the SNPE storage location for all SNPE instances in this process. Note that this may only be called once, and if so must be called before creating any SNPE instances.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>storagePath</strong> – <strong>[in]</strong> Absolute path to a directory which SNPE may use for caching and other storage purposes.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Boolean: Non-zero if the supplied path was succesfully set as the SNPE storage location, 0 otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422Snpe_Util_AddOpPackagePKc">
+<span id="_CPPv322Snpe_Util_AddOpPackagePKc"></span><span id="_CPPv222Snpe_Util_AddOpPackagePKc"></span><span id="Snpe_Util_AddOpPackage__cCP"></span><span class="target" id="SNPEUtil_8h_1a0eb9a124fdd8bcfba4168dfc0e8c0c90"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_Util_AddOpPackage</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">regLibraryPath</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422Snpe_Util_AddOpPackagePKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Register a user-defined op package with SNPE. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>regLibraryPath</strong> – <strong>[in]</strong> Path to the registration library that allows clients to register a set of operations that are part of the package, and share op info with SNPE</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Boolean: Non-zero if successful, 0 otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv432Snpe_Util_IsGLCLInteropSupportedv">
+<span id="_CPPv332Snpe_Util_IsGLCLInteropSupportedv"></span><span id="_CPPv232Snpe_Util_IsGLCLInteropSupportedv"></span><span id="Snpe_Util_IsGLCLInteropSupported"></span><span class="target" id="SNPEUtil_8h_1a19f1079a470734df5075a52df331c663"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_Util_IsGLCLInteropSupported</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv432Snpe_Util_IsGLCLInteropSupportedv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Indicates whether the OpenGL and OpenCL interoperability is supported on GPU platform.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Boolean: Non-zero if the OpenGL and OpenCl interop is supported; 0 otherwise </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422Snpe_Util_GetLastErrorv">
+<span id="_CPPv322Snpe_Util_GetLastErrorv"></span><span id="_CPPv222Snpe_Util_GetLastErrorv"></span><span id="Snpe_Util_GetLastError"></span><span class="target" id="SNPEUtil_8h_1a18b17b3deb99b9c6ce401c4124055179"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_Util_GetLastError</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422Snpe_Util_GetLastErrorv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A string description of the last error </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv427Snpe_Util_InitializeLogging15Snpe_LogLevel_t">
+<span id="_CPPv327Snpe_Util_InitializeLogging15Snpe_LogLevel_t"></span><span id="_CPPv227Snpe_Util_InitializeLogging15Snpe_LogLevel_t"></span><span id="Snpe_Util_InitializeLogging__Snpe_LogLevel_t"></span><span class="target" id="SNPEUtil_8h_1a23e0f3f44c5ff5ac89a7a8f74aecba28"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_Util_InitializeLogging</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="enum_DlEnums_8h_1a4f988c3d3afbaf6e886d9d853e9ea651.html#_CPPv415Snpe_LogLevel_t" title="Snpe_LogLevel_t"><span class="n"><span class="pre">Snpe_LogLevel_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">level</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv427Snpe_Util_InitializeLogging15Snpe_LogLevel_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Initializes logging with the specified log level. initializeLogging with level, is used on Android platforms and after successful initialization, SNPE logs are printed in android logcat logs.</p>
+<p>It is recommended to initializeLogging before creating any SNPE instances, in order to capture information related to core initialization. If this is called again after first time initialization, subsequent calls are ignored. Also, Logging can be re-initialized after a call to terminateLogging API by calling initializeLogging again.</p>
+<p>A typical usage of Logging life cycle can be initializeLogging() any other SNPE API like isRuntimeAvailable()<ul class="simple">
+<li><p>setLogLevel() - optional - can be called anytime between initializeLogging &amp; terminateLogging SNPE instance creation, inference, destroy terminateLogging().</p></li>
+</ul>
+</p>
+<p>Please note, enabling logging can have performance impact.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>level</strong> – <strong>[in]</strong> Log level (LOG_INFO, LOG_WARN, etc.).</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Boolean: non-zero if successful, 0 otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv431Snpe_Util_InitializeLoggingPath15Snpe_LogLevel_tPKc">
+<span id="_CPPv331Snpe_Util_InitializeLoggingPath15Snpe_LogLevel_tPKc"></span><span id="_CPPv231Snpe_Util_InitializeLoggingPath15Snpe_LogLevel_tPKc"></span><span id="Snpe_Util_InitializeLoggingPath__Snpe_LogLevel_t.cCP"></span><span class="target" id="SNPEUtil_8h_1a4245f3bf270e24528a92f6baab4fba91"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_Util_InitializeLoggingPath</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="enum_DlEnums_8h_1a4f988c3d3afbaf6e886d9d853e9ea651.html#_CPPv415Snpe_LogLevel_t" title="Snpe_LogLevel_t"><span class="n"><span class="pre">Snpe_LogLevel_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">level</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">logPath</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv431Snpe_Util_InitializeLoggingPath15Snpe_LogLevel_tPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Initializes logging with the specified log level and log path. initializeLogging with level &amp; log path, is used on non Android platforms and after successful initialization, SNPE logs are printed in std output &amp; into log files created in the log path.</p>
+<p>It is recommended to initializeLogging before creating any SNPE instances, in order to capture information related to core initialization. If this is called again after first time initialization, subsequent calls are ignored. Also, Logging can be re-initialized after a call to terminateLogging API by calling initializeLogging again.</p>
+<p>A typical usage of Logging life cycle can be initializeLogging() any other SNPE API like isRuntimeAvailable()<ul class="simple">
+<li><p>setLogLevel() - optional - can be called anytime between initializeLogging &amp; terminateLogging SNPE instance creation, inference, destroy terminateLogging()</p></li>
+</ul>
+</p>
+<p>Please note, enabling logging can have performance impact</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>level</strong> – <strong>[in]</strong> Log level (LOG_INFO, LOG_WARN, etc.).</p></li>
+<li><p><strong>logPath</strong> – <strong>[in]</strong> of directory to store logs. If path is empty, the default path is “./Log”. For android, the log path is ignored.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Boolean: non-zero if successful, 0 otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421Snpe_Util_SetLogLevel15Snpe_LogLevel_t">
+<span id="_CPPv321Snpe_Util_SetLogLevel15Snpe_LogLevel_t"></span><span id="_CPPv221Snpe_Util_SetLogLevel15Snpe_LogLevel_t"></span><span id="Snpe_Util_SetLogLevel__Snpe_LogLevel_t"></span><span class="target" id="SNPEUtil_8h_1ab30e87b36fcd1f5fd5da069179ea2857"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_Util_SetLogLevel</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="enum_DlEnums_8h_1a4f988c3d3afbaf6e886d9d853e9ea651.html#_CPPv415Snpe_LogLevel_t" title="Snpe_LogLevel_t"><span class="n"><span class="pre">Snpe_LogLevel_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">level</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421Snpe_Util_SetLogLevel15Snpe_LogLevel_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Updates the current logging level with the specified level. setLogLevel is optional, called anytime after initializeLogging and before terminateLogging, to update the log level set. Log levels can be updated multiple times by calling setLogLevel A call to setLogLevel() is ignored if it is made before initializeLogging() or after terminateLogging()</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>level</strong> – <strong>[in]</strong> Log level (LOG_INFO, LOG_WARN, etc.).</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Boolean: non-zero if successful, 0 otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv426Snpe_Util_TerminateLoggingv">
+<span id="_CPPv326Snpe_Util_TerminateLoggingv"></span><span id="_CPPv226Snpe_Util_TerminateLoggingv"></span><span id="Snpe_Util_TerminateLogging"></span><span class="target" id="SNPEUtil_8h_1a3a4c36b743fafa1b22453373ded1a05f"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_Util_TerminateLogging</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426Snpe_Util_TerminateLoggingv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Terminates logging.</p>
+<p>It is recommended to terminateLogging after initializeLogging in order to disable logging information. If this is called before initialization or after first time termination, calls are ignored.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Boolean: non-zero if successful, 0 otherwise. </p>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><a class="reference internal" href="function_SNPEUtil_8h_1a3a4c36b743fafa1b22453373ded1a05f.html#SNPEUtil_8h_1a3a4c36b743fafa1b22453373ded1a05f"><span class="std std-ref">Snpe_Util_TerminateLogging()</span></a> must not be called while another thread is executing. In a multi-threaded use case, the individual threads must have a cooperative life cycle management strategy for the logger.</p>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

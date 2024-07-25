@@ -1,0 +1,498 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Setup &mdash; Qualcomm® AI Engine Direct Delegate</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Qualcomm® AI Engine Direct Backend Library" href="qnn_libs.html" />
+    <link rel="prev" title="Overview" href="overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Qualcomm® AI Engine Direct Delegate
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c-c-application">C/C++ Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#qualcomm-r-ai-engine-direct-delegate-interface">Qualcomm® AI Engine Direct Delegate Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#external-delegate-interface">External Delegate Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#on-device-environment-setup">On Device Environment Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#android-java-application">Android Java Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#concurrent-setup">Concurrent Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="qnn_libs.html">Qualcomm® AI Engine Direct Backend Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Acceleration Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom_op.html">Custom Operator Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_version_history.html">API Version History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Qualcomm® AI Engine Direct Delegate</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Setup</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="setup">
+<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">¶</a></h1>
+<p>This page will outline the setup required for using the Qualcomm® AI Engine Direct
+Delegate. Currently, only C APIs are provided. Aarch64-Android is supported.
+For other platforms or architectures, please check libraries under <code class="docutils literal notranslate"><span class="pre">lib</span></code> directory.</p>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Qualcomm® AI Engine Direct libraries, which are in Qualcomm® AI Engine Direct SDK,
+<code class="docutils literal notranslate"><span class="pre">lib</span></code> directory. We use $QNN_SDK_ROOT for the root of unzipped Qualcomm® AI Engine Direct SDK.</p></li>
+<li><p>The <a class="reference external" href="https://www.tensorflow.org/lite/guide/android#use_tflite_c_api">TensorFlow Lite Android C API</a>
+integrated into a C/C++ Android application. Check
+<a class="reference internal" href="introduction.html#compatibility"><span class="std std-ref">Compatibility</span></a> for the supported TensorFlow version.</p></li>
+<li><p>A Qualcomm device with Android Debug Bridge (ADB) connected.</p></li>
+<li><p>Qualcomm® AI Engine Direct Delegate artifacts.</p></li>
+</ol>
+</div>
+<div class="section" id="c-c-application">
+<h2>C/C++ Application<a class="headerlink" href="#c-c-application" title="Permalink to this heading">¶</a></h2>
+<p>There are currently two methods for integrating the Qualcomm® AI Engine Direct Delegate into a C/C++ application.</p>
+<ol class="arabic simple">
+<li><p>Using the Qualcomm® AI Engine Direct Delegate Interface.</p></li>
+<li><p>Using the TFLite External Delegate Interface.</p></li>
+</ol>
+<div class="section" id="qualcomm-r-ai-engine-direct-delegate-interface">
+<h3>Qualcomm® AI Engine Direct Delegate Interface<a class="headerlink" href="#qualcomm-r-ai-engine-direct-delegate-interface" title="Permalink to this heading">¶</a></h3>
+<p>The Qualcomm® AI Engine Direct Delegate Interface is the fastest way to integrate the delegate into an
+existing application that uses TFLite. To use the Qualcomm® AI Engine Direct Delegate interface, the
+C/C++ application must include the <em>QnnTFLiteDelegate.h</em> file and dynamically
+link/load the <em>libQnnTFLiteDelegate.so</em> library.</p>
+<p>The following code snippet shows how an application can instantiate the delegate
+and perform inference:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;QNN/TFLiteDelegate/QnnTFLiteDelegate.h&quot;</span>
+
+<span class="c1">// Setup interpreter with .tflite model.</span>
+
+<span class="c1">// Create QNN Delegate options structure.</span>
+<span class="n">TfLiteQnnDelegateOptions</span><span class="w"> </span><span class="n">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TfLiteQnnDelegateOptionsDefault</span><span class="p">();</span>
+
+<span class="c1">// Set the mandatory backend_type option. All other options have default values.</span>
+<span class="n">options</span><span class="p">.</span><span class="n">backend_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kHtpBackend</span><span class="p">;</span>
+
+<span class="c1">// Instantiate delegate. Must not be freed until interpreter is freed.</span>
+<span class="n">TfLiteDelegate</span><span class="o">*</span><span class="w"> </span><span class="n">delegate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TfLiteQnnDelegateCreate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">options</span><span class="p">);</span>
+
+<span class="c1">// Register QNN Delegate with TfLite interpreter to automatically delegate nodes.</span>
+<span class="n">interpreter</span><span class="o">-&gt;</span><span class="n">ModifyGraphWithDelegate</span><span class="p">(</span><span class="n">delegate</span><span class="p">);</span>
+
+<span class="c1">// Perform inference with interpreter as usual.</span>
+
+<span class="c1">// Delete delegate after interpreter no longer needed.</span>
+<span class="n">TfLiteQnnDelegateDelete</span><span class="p">(</span><span class="n">delegate</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>First, calling <code class="xref c c-func docutils literal notranslate"><span class="pre">TfLiteQnnDelegateOptionsDefault()</span></code> function will return a
+structure containing all the options for the delegate, with default values. The
+<code class="xref c c-member docutils literal notranslate"><span class="pre">TfLiteQnnDelegateOptions.backend_type</span></code> option is mandatory and is set to the HTP backend in this example.
+The options structure is used to instantiate the delegate by calling the <code class="xref c c-func docutils literal notranslate"><span class="pre">TfLiteQnnDelegateCreate()</span></code>
+function. Next, the delegate object is passed into the interpreter to delegate
+the model’s nodes. Finally, the delegate can be deleted using the
+<code class="xref c c-func docutils literal notranslate"><span class="pre">TfLiteQnnDelegateDelete()</span></code> function once no longer required. See the
+<a class="reference internal" href="c_interface.html"><span class="doc">C Interface</span></a> page for more information on all enums,
+structures, and functions.</p>
+<p>Qualcomm® AI Engine Direct Delegate Interface is generated from Android NDK r25c.
+We recommend to avoid flags like <code class="docutils literal notranslate"><span class="pre">-fshort-enums</span></code> to conform to application binary interfaces.</p>
+<p>Note that this interface is preferred over the External Delegate Interface.</p>
+</div>
+<div class="section" id="external-delegate-interface">
+<h3>External Delegate Interface<a class="headerlink" href="#external-delegate-interface" title="Permalink to this heading">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please don’t mix Qualcomm® AI Engine Direct Delegate Interface and External Delegate Interface in a single process,
+which can confuse Qualcomm® AI Engine Direct Delegate instances. This implies C-APIs in <cite>QnnTFLiteDelegate.h</cite> cannot
+be used by an application using External Delegate Interface.</p>
+</div>
+<p>The TFLite External Delegate is a wrapper that can dynamically load other
+delegates. Using the External Delegate interface, there is no static dependency
+between the C/C++ application and the delegate being loaded. Thus a change to
+the delegate does not require a recompilation of the application. Since the
+Qualcomm® AI Engine Direct Delegate is dynamically loaded in this method, one drawback is that all
+delegate options must be passed as key value strings. More information on
+TFLite’s External Delegate mechanism can be found on the
+<a class="reference external" href="https://github.com/tensorflow/tensorflow/tree/v2.10.0/tensorflow/lite/delegates/external">TFLite External Delegate GitHub page</a>.</p>
+<p>In addition to the <a class="reference external" href="https://www.tensorflow.org/lite/guide/android#use_tflite_c_api">TensorFlow Lite Android C API</a>,
+the External Delegate has its own header file and library that must be
+integrated into the application. Setup the <a class="reference external" href="https://www.tensorflow.org/install/source">TensorFlow source environment</a>
+and all required tools and dependencies. Again, check
+<a class="reference internal" href="introduction.html#compatibility"><span class="std std-ref">Compatibility</span></a> for the supported TensorFlow version. To build
+the external delegate, run the following command:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">bazel</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="n">opt</span><span class="w"> </span><span class="o">--</span><span class="n">config</span><span class="o">=</span><span class="n">android_arm64</span><span class="w"> </span><span class="n">tensorflow</span><span class="o">/</span><span class="n">lite</span><span class="o">/</span><span class="n">delegates</span><span class="o">/</span><span class="n">external</span><span class="o">:</span><span class="n">external_delegate</span>
+</pre></div>
+</div>
+<p>This will create the <em>external_delegate.h</em> header file as well as the
+<em>libexternal_delegate.so</em> shared library. These need to be integrated into the
+C/C++ Android application in the same way as the TFLite Android C API.</p>
+<p>The same <em>libQnnTFLiteDelegate.so</em> library is also compatible with the
+External Delegate interface. The External Delegate method will be employed
+within the <a class="reference internal" href="tutorials.html#tutorials"><span class="std std-ref">Tutorials</span></a> section in order to leverage precompiled
+TFLite applications.</p>
+<p>The code snippet below shows how to load the Qualcomm® AI Engine Direct Delegate through the External
+Delegate mechanism and run inference. Notice that the External Delegate header
+is included inplace of the Qualcomm® AI Engine Direct Delegate header.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;tensorflow/lite/delegates/external/external_delegate.h&quot;</span>
+
+<span class="c1">// Setup interpreter with .tflite model.</span>
+
+<span class="c1">// Create external delegate option and pass the QNN Delegate library</span>
+<span class="c1">// location so it can be dynamically loaded. Here we assume the delegate is</span>
+<span class="c1">// located at the path /data/local/tmp/qnn_delegate/.</span>
+<span class="n">TfLiteExternalDelegateOptions</span><span class="w"> </span><span class="n">external_delegate_options</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">TfLiteExternalDelegateOptionsDefault</span><span class="p">(</span><span class="s">&quot;/data/local/tmp/qnn_delegate/libQnnTFLiteDelegate.so&quot;</span><span class="p">);</span>
+
+<span class="c1">// Add QNN Delegate specific options.</span>
+<span class="n">external_delegate_options</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="o">&amp;</span><span class="n">external_delegate_options</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;backend_type&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;htp&quot;</span><span class="p">);</span>
+
+<span class="c1">// Create the External Delegate. This will load the QNN Delegate.</span>
+<span class="n">TfLiteDelegate</span><span class="o">*</span><span class="w"> </span><span class="n">external_delegate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TfLiteExternalDelegateCreate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">external_delegate_options</span><span class="p">);</span>
+
+<span class="c1">// Add External Delegate into TFLite Interpreter to automatically delegate nodes.</span>
+<span class="n">interpreter</span><span class="o">-&gt;</span><span class="n">ModifyGraphWithDelegate</span><span class="p">(</span><span class="n">external_delegate</span><span class="p">);</span>
+
+<span class="c1">// Perform inference with Interpreter using TFLite as usual.</span>
+
+<span class="c1">// Delete external delegate at end of app.</span>
+<span class="n">TfLiteExternalDelegateDelete</span><span class="p">(</span><span class="n">external_delegate</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Instead of directly instantiating a Qualcomm® AI Engine Direct Delegate object, the application creates
+an External Delegate. The External Delegate acts as wrapper that dynamically
+loads the Qualcomm® AI Engine Direct Delegate library and all relevant symbols. The specific Qualcomm® AI Engine Direct
+Delegate options are passed as key-value string. See the
+<a class="reference internal" href="options.html"><span class="doc">External Delegate Options</span></a> for a list of all available option
+strings.</p>
+</div>
+<div class="section" id="on-device-environment-setup">
+<h3>On Device Environment Setup<a class="headerlink" href="#on-device-environment-setup" title="Permalink to this heading">¶</a></h3>
+<p>Once an application has integrated the Qualcomm® AI Engine Direct Delegate, either using the
+Qualcomm® AI Engine Direct Delegate interface or the External Delegate interface, the required libraries
+must be pushed from the SDK to the device, using ADB. The path
+<code class="docutils literal notranslate"><span class="pre">/data/local/tmp/qnn_delegate</span></code> will be used as an example here.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>adb<span class="w"> </span>shell<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/data/local/tmp/qnn_delegate
+$<span class="w"> </span><span class="c1"># Push the QNN Delegate library</span>
+$<span class="w"> </span>adb<span class="w"> </span>push<span class="w"> </span><span class="nv">$QNN_SDK_ROOT</span>/lib/aarch64-android/libQnnTFLiteDelegate.so<span class="w"> </span>/data/local/tmp/qnn_delegate
+</pre></div>
+</div>
+<p>Next, push Qualcomm® AI Engine Direct backend libraries. <a class="reference internal" href="qnn_libs.html"><span class="doc">This page</span></a> describes supported libraries.</p>
+<p>You might want to push all or part of them to the device. Please see <a class="reference internal" href="tutorial_qtld_net_run.html"><span class="doc">tutorial for qtld-net-run</span></a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="c1"># Push QNN backend ARM libraries</span>
+$<span class="w"> </span>adb<span class="w"> </span>push<span class="w"> </span><span class="nv">$QNN_SDK_ROOT</span>/lib/aarch64-android/libQnn*.so<span class="w"> </span>/data/local/tmp/qnn_delegate/
+$<span class="w"> </span><span class="c1"># Push Hexagon (eg. QNN HTP) backends, push the Skel:</span>
+$<span class="w"> </span>adb<span class="w"> </span>push<span class="w"> </span><span class="nv">$QNN_SDK_ROOT</span>/lib/hexagon-v&lt;version&gt;/unsigned/libQnn*.so<span class="w"> </span>/data/local/tmp/qnn_delegate/
+</pre></div>
+</div>
+<p>The following environment variables must also be set on the device each
+time the delegate is invoked. Note the quotes when setting ADSP_LIBRARY_PATH.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/data/local/tmp/qnn_delegate/:<span class="nv">$LD_LIBRARY_PATH</span>
+$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">ADSP_LIBRARY_PATH</span><span class="o">=</span><span class="s2">&quot;/data/local/tmp/qnn_delegate/&quot;</span>
+</pre></div>
+</div>
+<p>Note that the ADSP_LIBRARY_PATH needs to be set only if the Skel library is
+required. For convenience, the delegate provides the
+<code class="xref c c-member docutils literal notranslate"><span class="pre">TfLiteQnnDelegateOptions.skel_library_dir</span></code> option, which can set the
+$ADSP_LIBRARY_PATH variable for the user.</p>
+<p>See the <a class="reference internal" href="faq.html"><span class="doc">Frequently Asked Questions</span></a> page for common issues.</p>
+</div>
+</div>
+<div class="section" id="android-java-application">
+<h2>Android Java Application<a class="headerlink" href="#android-java-application" title="Permalink to this heading">¶</a></h2>
+<p>The Qualcomm® AI Engine Direct Delegate Java Interface provides an API for Android applications through
+an AAR in the SDK at <code class="docutils literal notranslate"><span class="pre">$QNN_SDK_ROOT/lib/android/qtld-release.aar</span></code>.</p>
+<p>Following are the steps for using the AAR to create the delegate:</p>
+<ul class="simple">
+<li><p><strong>Step 1</strong>: Open the top <code class="docutils literal notranslate"><span class="pre">build.gradle</span></code> and add a library directory as follows:</p></li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>allprojects {
+    repositories {
+        flatDir {
+            dirs &#39;libs&#39;
+        }
+    }
+}
+</pre></div>
+</div>
+<p>Now create the <em>libs</em> folder under <code class="docutils literal notranslate"><span class="pre">app</span></code> and place the AAR there.</p>
+<p>Then include the AAR into the <code class="docutils literal notranslate"><span class="pre">app</span></code>’s <code class="docutils literal notranslate"><span class="pre">build.gradle</span></code> with the following:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>implementation(name:&#39;qtld-release&#39;, ext:&#39;aar&#39;)
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Step 2</strong>: Add Qualcomm® AI Engine Direct libraries from sdk to your Android apk</p></li>
+</ul>
+<p>E.g. Create <code class="docutils literal notranslate"><span class="pre">app/src/main/jniLibs/arm64-v8a</span></code> directory and add the Qualcomm® AI Engine Direct
+libraries here.</p>
+<ul class="simple">
+<li><p><strong>Step 3</strong>: Create a delegate and initialize a TensorFlow Lite Interpreter</p></li>
+</ul>
+<p>An example of using HTP backend is below:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">com.qualcomm.qti.QnnDelegate</span><span class="p">;</span>
+<span class="kd">private</span><span class="w"> </span><span class="n">QnnDelegate</span><span class="w"> </span><span class="n">qnnDelegate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="c1">// Created a default Options</span>
+<span class="w">   </span><span class="n">QnnDelegate</span><span class="p">.</span><span class="na">Options</span><span class="w"> </span><span class="n">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">QnnDelegate</span><span class="p">.</span><span class="na">Options</span><span class="p">();</span>
+<span class="w">   </span><span class="c1">// Set the backend and library path</span>
+<span class="w">   </span><span class="n">options</span><span class="p">.</span><span class="na">setBackendType</span><span class="p">(</span><span class="n">QnnDelegate</span><span class="p">.</span><span class="na">Options</span><span class="p">.</span><span class="na">BackendType</span><span class="p">.</span><span class="na">HTP_BACKEND</span><span class="p">);</span>
+<span class="w">   </span><span class="n">options</span><span class="p">.</span><span class="na">setSkelLibraryDir</span><span class="p">(</span><span class="n">activity</span><span class="p">.</span><span class="na">getApplicationInfo</span><span class="p">().</span><span class="na">nativeLibraryDir</span><span class="p">);</span>
+<span class="w">   </span><span class="c1">// Create the Delegate instance.</span>
+<span class="w">   </span><span class="n">qnnDelegate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">QnnDelegate</span><span class="p">(</span><span class="n">options</span><span class="p">);</span>
+<span class="w">   </span><span class="n">tfliteOptions</span><span class="p">.</span><span class="na">addDelegate</span><span class="p">(</span><span class="n">qnnDelegate</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">UnsupportedOperationException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="c1">// Delegate creation failed</span>
+<span class="p">}</span>
+<span class="n">tfliteInterpreter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Interpreter</span><span class="p">(</span><span class="n">tfliteModel</span><span class="p">,</span><span class="w"> </span><span class="n">tfliteOptions</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Note that the $ADSP_LIBRARY_PATH needs to be set only if the Skel library is
+required. The delegate provides the <span class="cpp-expr sig sig-inline cpp"><span class="n">Options</span><span class="p">.</span><span class="n">setSkelLibraryDir</span><span class="p">(</span><span class="p">)</span></span>
+public method for setting $ADSP_LIBRARY_PATH variable for the user.</p>
+</div>
+<div class="section" id="concurrent-setup">
+<h2>Concurrent Setup<a class="headerlink" href="#concurrent-setup" title="Permalink to this heading">¶</a></h2>
+<p>One delegate instance can only be used for a single specific interpreter.
+But it is possible to have multiple interpreters in a single process.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Due to HW resource limitation, the number of concurrent HTP or DSP backend
+varies with the chip. If you find some errors related to rpc
+please reduce the number of concurrent HTP or DSP delegate instances.</p>
+</div>
+<p>For example,</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;QNN/TFLiteDelegate/QnnTFLiteDelegate.h&quot;</span>
+
+<span class="c1">// Setup interpreter_0 with model_0.tflite.</span>
+<span class="c1">// ...</span>
+
+<span class="c1">// Create QNN Delegate options structure.</span>
+<span class="n">TfLiteQnnDelegateOptions</span><span class="w"> </span><span class="n">options_0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TfLiteQnnDelegateOptionsDefault</span><span class="p">();</span>
+
+<span class="c1">// Set the mandatory backend_type option. All other options have default values.</span>
+<span class="n">options_0</span><span class="p">.</span><span class="n">backend_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kHtpBackend</span><span class="p">;</span>
+
+<span class="n">TfLiteDelegate</span><span class="o">*</span><span class="w"> </span><span class="n">delegate0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TfLiteQnnDelegateCreate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">options_0</span><span class="p">);</span>
+
+<span class="c1">// Register delegate_0 with interpreter_0.</span>
+<span class="c1">// Note that after this line, delegate_0 cannot be applied for any other</span>
+<span class="c1">// interpreter.</span>
+<span class="n">interpreter_0</span><span class="o">-&gt;</span><span class="n">ModifyGraphWithDelegate</span><span class="p">(</span><span class="n">delegate_0</span><span class="p">);</span>
+
+<span class="c1">// Perform inference with interpreter_0 as usual.</span>
+
+<span class="c1">// We can have another delegate_1 for another interpreter_1</span>
+<span class="c1">// Setup interpreter_1 with model_1.tflite.</span>
+<span class="c1">// ...</span>
+<span class="c1">// Craete another delegate_1</span>
+<span class="n">TfLiteQnnDelegateOptions</span><span class="w"> </span><span class="n">options_1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TfLiteQnnDelegateOptionsDefault</span><span class="p">();</span>
+<span class="n">options_1</span><span class="p">.</span><span class="n">backend_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kHtpBackend</span><span class="p">;</span>
+<span class="n">TfLiteDelegate</span><span class="o">*</span><span class="w"> </span><span class="n">delegate1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TfLiteQnnDelegateCreate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">options_1</span><span class="p">);</span>
+<span class="n">interpreter_1</span><span class="o">-&gt;</span><span class="n">ModifyGraphWithDelegate</span><span class="p">(</span><span class="n">delegate_1</span><span class="p">);</span>
+
+<span class="c1">// Perform inference with interpreter_0 and interpreter_1 as usual.</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="qnn_libs.html" class="btn btn-neutral float-right" title="Qualcomm® AI Engine Direct Backend Library" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="overview.html" class="btn btn-neutral float-left" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

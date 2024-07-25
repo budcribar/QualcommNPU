@@ -1,0 +1,38 @@
+{
+  "UdoPackage_0":
+  {
+    "Operators": [
+      {
+        "type": "Convolution",
+        "inputs":[
+          {"name":"input", "data_type": "UINT_8", "quantization_mode":"TF"},
+          {"name": "weight_filler","data_type": "UINT_8", "static":true, "default_value": [1.0],
+           "quantization_mode":"TF"},
+          {"name": "bias_filler","data_type": "UINT_8", "static": true, "default_value": [0.0],
+           "quantization_mode":"TF"}
+        ],
+        "outputs":[
+          {"name":"output","data_type": "UINT_8", "quantization_mode":"TF"}
+        ],
+        "scalar_params": [
+          {"name": "bias_term","data_type": "INT_32","default_value": true},
+          {"name": "group","data_type": "INT_32", "default_value": 1},
+          {"name": "kernel_h", "data_type": "INT_32", "default_value":0 },
+          {"name": "kernel_w", "data_type": "INT_32", "default_value": 0},
+          {"name": "pad_h", "data_type": "INT_32", "default_value": 0},
+          {"name": "pad_w", "data_type": "INT_32", "default_value": 0},
+          {"name": "stride_h", "data_type": "INT_32", "default_value": 1},
+          {"name": "stride_w", "data_type": "INT_32", "default_value": 1},
+          {"name": "num_output","data_type": "INT_32"}
+        ],
+        "tensor_params": [
+          {"name": "pad","data_type": "INT_32", "default_value": []},
+          {"name": "stride","data_type": "INT_32", "default_value": []},
+          {"name": "kernel_size","data_type": "INT_32", "default_value": []}
+        ],
+        "core_types": ["DSP"]
+      }
+    ],
+    "UDO_PACKAGE_NAME": "Conv2DPackage"
+  }
+}

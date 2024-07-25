@@ -1,0 +1,346 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Scheduling and Allocation &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Allocate Memory for Scratch Buffers" href="scratch_buffer.html" />
+    <link rel="prev" title="QNN HTP-FP16 Op Package - Relu Op Example" href="relu_fp16_example.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/setup.html">Setup</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../general/backend.html">Backend</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../general/backend.html#backend-specific-pages">Backend Specific Pages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../general/dsp/dsp_backend.html">DSP</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../general/htp/htp_backend.html">HTP</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#api-specializations">API Specializations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#usage-expectations">Usage Expectations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-supported-operations">QNN HTP Supported Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-variable-batch">QNN HTP Variable Batch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-backend-api">QNN HTP Backend API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-performance-infrastructure-api">QNN HTP Performance Infrastructure API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-precision">QNN HTP Precision</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-fp16-output-difference-between-sm8550-and-sm8650">QNN HTP FP16 output difference between SM8550 and SM8650</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-deep-learning-bandwidth-compression-dlbc">QNN HTP Deep Learning Bandwidth Compression (DLBC)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-setting-number-of-hvx-threads">QNN HTP - Setting Number of HVX Threads</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-backend-extensions">QNN HTP Backend Extensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-profiling">QNN HTP Profiling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-context-binary-size">QNN Context Binary size</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../general/htp/htp_backend.html#op-writing-guidelines">Op Writing Guidelines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#recommendations-for-network-design">Recommendations for Network Design</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#yielding-and-pre-emption">Yielding and Pre-Emption</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#vtcm-sharing">VTCM Sharing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#subsystem-restart-ssr">SubSystem Restart (SSR)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qmem-graph-shared-buffer-only-graph">Qmem Graph (shared_buffer only graph)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#htp-session-artifact-usage-guidlines">HTP Session &amp; Artifact Usage Guidlines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#graph-switching-beta">Graph Switching (Beta)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#benefits-of-batch-inference-and-multi-threaded-inference">Benefits of batch inference and multi-threaded inference</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../general/hta/hta_backend.html">HTA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/lpai/lpai_backend.html">LPAI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/cpu/cpu_backend.html">CPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/gpu/gpu_backend.html">GPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/saver/saver_backend.html">Saver</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../general/backend.html">Backend</a> &raquo;</li>
+        
+          <li><a href="../general/htp/htp_backend.html">HTP</a> &raquo;</li>
+        
+      <li>Scheduling and Allocation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="scheduling-and-allocation">
+<h1>Scheduling and Allocation<a class="headerlink" href="#scheduling-and-allocation" title="Permalink to this heading">¶</a></h1>
+<p>QNN HTP is high in performance goal due to the support of parallelism
+and resource utilization. The initial graph is constructed though series
+of <code class="docutils literal notranslate"><span class="pre">append_node</span></code> calls; after which graph goes through <code class="docutils literal notranslate"><span class="pre">prepare</span></code>
+phase. With cost and dependency information, ordering can be determined
+algorithmically.</p>
+<p>In QNN HTP, both scheduling and allocation is done in
+<code class="docutils literal notranslate"><span class="pre">Graph::prepare()</span></code> stage. As an overview, the following occurs in
+regards to <em>scheduling and allocation</em>:</p>
+<ol class="arabic simple">
+<li><p>Memory <strong>blocks are registered</strong> with the allocator.</p>
+<ul class="simple">
+<li><p>During <code class="docutils literal notranslate"><span class="pre">prepare</span></code>, before scheduling and allocation, all blocks
+of data are registered with the allocator, informing the allocator
+of their memory type and minimum size and alignment requirements.
+The two types of memory blocks are <code class="docutils literal notranslate"><span class="pre">Plain</span></code> and <code class="docutils literal notranslate"><span class="pre">TCM</span></code>. <code class="docutils literal notranslate"><span class="pre">TCM</span></code>
+here refers to the <code class="docutils literal notranslate"><span class="pre">VTCM</span></code>.</p></li>
+</ul>
+</li>
+<li><p><strong>Pre-Scheduler</strong> fits as much data into <code class="docutils literal notranslate"><span class="pre">TCM</span></code> as possible.</p>
+<ul class="simple">
+<li><p>At this point, the scheduler tries to develop a topological
+ordering which reduces <code class="docutils literal notranslate"><span class="pre">TCM</span></code> usage by iteratively partitioning
+the graph at <code class="docutils literal notranslate"><span class="pre">low-TCM</span></code> boundaries. This outputs a “runlist”.</p></li>
+</ul>
+</li>
+<li><p><strong>Spill/fill nodes are inserted</strong> where necessary.</p>
+<ul class="simple">
+<li><p>Based on the runlist output by the pre-scheduler, the spill pass
+adds up the requested <code class="docutils literal notranslate"><span class="pre">VTCM</span></code> at each op. It is possible for the
+requested <code class="docutils literal notranslate"><span class="pre">VTCM</span></code> at an op to be much higher than what is input
+and output by the op itself since other blocks of data might still
+be in <code class="docutils literal notranslate"><span class="pre">VTCM</span></code> that were output earlier and not used as input
+until later. To reduce the required <code class="docutils literal notranslate"><span class="pre">VTCM</span></code> usage across ranges
+of ops, the spill pass inserts spill and fill ops that copy data
+out of <code class="docutils literal notranslate"><span class="pre">VTCM</span></code> temporarily to make room for other data and then
+copy it back in before it is needed later.</p></li>
+</ul>
+</li>
+<li><p>Some <strong>ops are split</strong> into launch-wait pairs.</p>
+<ul class="simple">
+<li><p>Some ops have the ability to be run using background resources.
+This is where those ops are split into pairs that launch the
+operation onto some background resource and then wait for
+completion in order to prevent another op from starting before its
+inputs are ready.</p></li>
+</ul>
+</li>
+<li><p><strong>Offsets are allocated</strong> for blocks that reside in <code class="docutils literal notranslate"><span class="pre">VTCM</span></code>.</p>
+<ul class="simple">
+<li><p>The allocator takes in the modified runlist after spills and fills
+have been inserted. Using the requirements for each block of data
+that were registered earlier, the allocator assigns offsets to
+each <code class="docutils literal notranslate"><span class="pre">TCM</span></code> block within <code class="docutils literal notranslate"><span class="pre">VTCM</span></code>. If two blocks of data do not
+have to be in <code class="docutils literal notranslate"><span class="pre">VTCM</span></code> at the same time, then the allocator might
+assign offsets to those two blocks of data such that their address
+ranges overlap. This can cause the situation where two ops that
+could have been rearranged in any order can no longer be swapped
+because doing so would cause some blocks of data that were
+allocated in an overlapping manner to be needed in <code class="docutils literal notranslate"><span class="pre">VTCM</span></code> at the
+same time. The allocator tries to reduce this situation where it
+can, since these new restrictions can constrain available
+parallelism.</p></li>
+</ul>
+</li>
+<li><p>Ops are <strong>re-scheduled</strong> to maximize parallelism.</p>
+<ul class="simple">
+<li><p>The final scheduler moves some ops earlier/later to increase
+parallelism while respecting dependencies within the allocated
+graph. This pass takes in the existing runlist and outputs a new
+runlist that has been optimized for parallelism. The final
+scheduler runs after allocation has been performed, so must obey
+the restrictions the allocator introduced by allocating some
+blocks at overlapping address ranges within <code class="docutils literal notranslate"><span class="pre">VTCM</span></code>.</p></li>
+</ul>
+</li>
+</ol>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="scratch_buffer.html" class="btn btn-neutral float-right" title="Allocate Memory for Scratch Buffers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="relu_fp16_example.html" class="btn btn-neutral float-left" title="QNN HTP-FP16 Op Package - Relu Op Example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

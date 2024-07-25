@@ -1,0 +1,462 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Backend &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="DSP" href="dsp/dsp_backend.html" />
+    <link rel="prev" title="Setup" href="setup.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Backend</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#backend-specific-pages">Backend Specific Pages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dsp/dsp_backend.html">DSP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="htp/htp_backend.html">HTP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hta/hta_backend.html">HTA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lpai/lpai_backend.html">LPAI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpu/cpu_backend.html">CPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gpu/gpu_backend.html">GPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="saver/saver_backend.html">Saver</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Backend</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="backend">
+<h1>Backend<a class="headerlink" href="#backend" title="Permalink to this heading">¶</a></h1>
+<p>Clients interact with Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> through backends. In general terms, a Qualcomm® <a class="reference internal" href="introduction.html#qnn-ai-engine-note"><span class="std std-ref">AI Engine Direct</span></a> backend is a software entity
+that implements <a class="reference internal" href="api.html"><span class="doc">QNN API</span></a>, and is typically compiled in the form of a
+shared library. The terms <em>QNN backend</em> and <em>QNN backend library</em> are often used interchangeably.</p>
+<p>QNN backend libraries provide integration modularity per hardware accelerator core (see <a class="reference internal" href="overview.html"><span class="doc">Overview</span></a> for more details).</p>
+<p>The QNN SDK provides several backend libraries. These libraries can be found in <code class="docutils literal notranslate"><span class="pre">&lt;QNN_SDK_ROOT&gt;/lib/&lt;target-platform&gt;</span></code> folders.
+QNN backend libraries follow naming rules that are platform dependent (see <a class="reference internal" href="introduction.html#platform-differences"><span class="std std-ref">Platform Differences</span></a> for more details).
+In the <a class="reference internal" href="#qnn-sdk-backends-table"><span class="std std-ref">Available Backend Libraries table</span></a> Library Description, the backend library is referred to by its platform agnostic name.</p>
+<p class="centered" id="qnn-sdk-backends-table">
+<strong><strong>Available QNN SDK Backend libraries</strong></strong></p><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Backend Name</p></th>
+<th class="head"><p>Backend Description</p></th>
+<th class="head"><p>Target and Library Names</p></th>
+<th class="head"><p>Library Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CPU</p></td>
+<td><p>Backend for Snapdragon™ CPU hardware core(s)</p></td>
+<td><ul class="simple">
+<li><p>aarch64-android</p></li>
+<li><p>x86_64-linux-clang</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">libQnnCpu.so</span></code></p></li>
+</ul>
+</li>
+<li><p>aarch64-windows-msvc</p></li>
+<li><p>arm64x-windows-msvc</p></li>
+<li><p>x86_64-windows-msvc</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">QnnCpu.dll</span></code></p></li>
+</ul>
+</li>
+</ul>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">QnnCpu</span></code> : CPU backend library, same name used across all targets.</p></td>
+</tr>
+<tr class="row-odd"><td><p>DSP</p></td>
+<td><p>Backend for Hexagon™ DSP hardware accelerator</p></td>
+<td><ul class="simple">
+<li><p>hexagon-v##</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">libQnnDspV##Skel.so</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libQnnDspV##.so</span></code></p></li>
+</ul>
+</li>
+<li><p>aarch64-android</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">libQnnDsp.so</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libQnnDspV##Stub.so</span></code></p></li>
+</ul>
+</li>
+<li><p>aarch64-windows-msvc</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">QnnDsp.dll</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QnnDspV##Stub.dll</span></code></p></li>
+</ul>
+</li>
+</ul>
+</td>
+<td><p><strong>Note: v## indicates libraries for different hexagon architecture versions are available.</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">libQnnDspV##Skel.so</span></code>   : DSP native library which is to be loaded using corresponding QnnDspV##Stub
+from the device CPU side and is responsible for executing graphs
+on the DSP accelerator as a proxy for CPU side backend.</p>
+<p><code class="docutils literal notranslate"><span class="pre">QnnDspV##Stub</span></code>   : DSP CPU-side proxy library that communicates with libQnnDspV##Skel.so
+on DSP side via RPC channel.</p>
+<p><code class="docutils literal notranslate"><span class="pre">QnnDsp</span></code>          : DSP device CPU-side backend library, loads the corresponding DSP stub library based on the SoC.</p>
+<p><code class="docutils literal notranslate"><span class="pre">libQnnDspV##.so</span></code>        : DSP native backend library that allows direct integration on DSP without RPC.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>GPU</p></td>
+<td><p>Backend for Adreno™ GPU hardware accelerator</p></td>
+<td><ul class="simple">
+<li><p>aarch64-android</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">libQnnGpu.so</span></code></p></li>
+</ul>
+</li>
+</ul>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">QnnGpu</span></code> : GPU backend library, same name used across all targets.</p></td>
+</tr>
+<tr class="row-odd"><td><p>HTP</p></td>
+<td><p>Backend for Hexagon™ HTP hardware accelerator</p></td>
+<td><ul class="simple">
+<li><p>hexagon-v##</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">libQnnHtpV##Skel.so</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libQnnHtpV##.so</span></code></p></li>
+</ul>
+</li>
+<li><p>aarch64-android</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">libQnnHtp.so</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libQnnHtpPrepare.so</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libQnnHtpV##Stub.so</span></code></p></li>
+</ul>
+</li>
+<li><p>x86_64-linux-clang</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">libQnnHtp.so</span></code></p></li>
+</ul>
+</li>
+<li><p>aarch64-windows-msvc</p></li>
+<li><p>arm64x-windows-msvc</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">QnnHtp.dll</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QnnHtpPrepare.dll</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QnnHtpV##Stub.dll</span></code></p></li>
+</ul>
+</li>
+</ul>
+</td>
+<td><p><strong>Note: v## indicates libraries for different hexagon architecture versions are available.</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">libQnnHtpV##Skel.so</span></code>    : HTP native library which is to be loaded using corresponding QnnHtpV##Stub
+from the device CPU side and is responsible for executing graphs
+on the HTP accelerator as a proxy for CPU side backend.</p>
+<p><code class="docutils literal notranslate"><span class="pre">QnnHtpV##Stub</span></code>    : HTP CPU-side proxy library that communicates with libQnnHtpV##Skel.so on
+the HTP side via RPC channel.</p>
+<p><code class="docutils literal notranslate"><span class="pre">QnnHtp</span></code>           : HTP backend library. There are two variants:
+(aarch64-android) Android device CPU-side backend library, loads the corresponding HTP stub library based
+on the SoC; (x86_64-linux) x86 Linux host backend serves as an functional simulator for the hardware accelerator and supports graph preparation on x86_64 hosts.</p>
+<p><code class="docutils literal notranslate"><span class="pre">libQnnHtpV##.so</span></code>        : HTP native backend library that allows direct integration on HTP without RPC.</p>
+<p><code class="docutils literal notranslate"><span class="pre">QnnHtpPrepare</span></code>    : HTP library which provides functionality to compose and finalize graphs on
+the device ARM (CPU) side. This library is automatically loaded by HTP backend library only when one of the following
+operations is requested: 1) QnnBackend_validateOpConfig, 2) QnnGraph_addNode, 3)
+QnnGraph_finalize, or 4) QnnBackend_registerOpPackage() with “CPU” target.
+If these operations are not requested, this library does not need to be on the device.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>HTA</p></td>
+<td><p>Backend for Snapdragon™ HTA hardware accelerator</p></td>
+<td><ul class="simple">
+<li><p>aarch64-android</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">libQnnHta.so</span></code></p></li>
+</ul>
+</li>
+</ul>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">QnnHta</span></code> : HTA backend library, same name used across all supported targets.</p></td>
+</tr>
+<tr class="row-odd"><td><p>LPAI</p></td>
+<td><p>Backend for Snapdragon™ LPAI hardware accelerator</p></td>
+<td><ul class="simple">
+<li><p>hexagon-v##</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">libQnnLpaiV##Skel_v##.so</span></code></p></li>
+</ul>
+</li>
+<li><p>aarch64-android</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">libQnnLpai.so</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libQnnLpaiV##Stub.so</span></code></p></li>
+</ul>
+</li>
+<li><p>x86_64-linux-clang</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">libQnnLpai.so</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libQnnLpaiSim_v##.so</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libQnnLpaiPrepare_v##.so</span></code></p></li>
+</ul>
+</li>
+</ul>
+</td>
+<td><dl class="simple">
+<dt><strong>Note:</strong></dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LpaiV##</span></code>      indicates libraries for different hexagon architecture versions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Skel_v##</span></code>     indicates Skel libraries for different eNPU architecture versions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Sim_v##</span></code>      indicates Simulator libraries for different eNPU architecture versions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Prepare_v##</span></code>  indicates compiler libraries for different eNPU architecture versions.</p></li>
+</ul>
+</dd>
+</dl>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">libQnnLpaiV##Skel_v##.so</span></code> : LPAI native library which is to be loaded using corresponding QnnLpaiV##Stub.so from the device CPU side and is responsible for executing graphs on the LPAI accelerator as a proxy for CPU side backend.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QnnLpaiV##Stub.so</span></code>        : LPAI CPU-side proxy library that communicates with libQnnLpaiV##Skel_v##.so on the LPAI side via RPC channel.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libQnnLpai.so</span></code>            : LPAI backend library. There are two variants: (aarch64-android) Android device CPU-side backend library, loads the corresponding LPAI stub library based on the SoC; (x86_64-linux) x86 Linux host backend serves as an functional simulator for the hardware accelerator and supports graph preparation on x86_64 hosts.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libQnnLpaiSim_v##.so</span></code>     : x86_86 host simulator library for specific eNPU architecture. This library is automatically loaded by LPAI backend library when one of the following operations is requested: 1) QnnContext_createFromBinary 2) QnnContext_create.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libQnnLpaiPrepare_v##.so</span></code> : x86_86 host model generator library for specific eNPU architecture. This library is automatically loaded by LPAI backend library when one of the following operations is requested: 1) QnnBackend_validateOpConfig, 2) QnnGraph_addNode, 3) QnnGraph_finalize</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Saver</p></td>
+<td><p>Backend which captures QNN API calls and saves them to a file as they are issued by a client.
+This can later be replayed for support and troubleshooting.</p></td>
+<td><ul class="simple">
+<li><p>aarch64-android</p></li>
+<li><p>x86_64-linux-clang</p></li>
+<li><p>hexagon-v68</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">libQnnSaver.so</span></code></p></li>
+</ul>
+</li>
+<li><p>aarch64-windows-msvc</p></li>
+<li><p>x86_64-windows-msvc</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">QnnSaver.dll</span></code></p></li>
+</ul>
+</li>
+</ul>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">QnnSaver</span></code> : Saver backend library.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="backend-specific-pages">
+<h2>Backend Specific Pages<a class="headerlink" href="#backend-specific-pages" title="Permalink to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dsp/dsp_backend.html">DSP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="htp/htp_backend.html">HTP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hta/hta_backend.html">HTA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lpai/lpai_backend.html">LPAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cpu/cpu_backend.html">CPU</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu/gpu_backend.html">GPU</a></li>
+<li class="toctree-l1"><a class="reference internal" href="saver/saver_backend.html">Saver</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="dsp/dsp_backend.html" class="btn btn-neutral float-right" title="DSP" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="setup.html" class="btn btn-neutral float-left" title="Setup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

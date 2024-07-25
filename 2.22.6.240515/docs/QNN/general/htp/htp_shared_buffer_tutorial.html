@@ -1,0 +1,529 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>QNN HTP Shared Buffer Tutorial &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>QNN HTP Shared Buffer Tutorial</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="qnn-htp-shared-buffer-tutorial">
+<h1>QNN HTP Shared Buffer Tutorial<a class="headerlink" href="#qnn-htp-shared-buffer-tutorial" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<p>This tutorial describes how to use data buffers for shared access in between
+processing domains in QNN HTP backend. Using shared buffers can eliminate data
+copy in between client code on the host CPU and HTP accelerator.</p>
+<p>There are two types of shared memories supported by HTP backend.</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Qnn_MemDescriptor_t Type</p></th>
+<th class="head"><p>QnnMemHtp_Descriptor_t Type</p></th>
+<th class="head"><p>Descriptor</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../../api-rst/enum_QnnMem_8h_1ab5f34c4a6c8b1f544072bb49739d2a89.html#exhale-enum-qnnmem-8h-1ab5f34c4a6c8b1f544072bb49739d2a89"><span class="std std-ref">QNN_MEM_TYPE_ION</span></a></p></td>
+<td><p>Not Applicable</p></td>
+<td><ul class="simple">
+<li><p>Each tensor will be mapped to its own shared buffer</p></li>
+<li><p>One-to-one relationship between the file descriptor and memory handle</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../api-rst/enum_QnnMem_8h_1ab5f34c4a6c8b1f544072bb49739d2a89.html#exhale-enum-qnnmem-8h-1ab5f34c4a6c8b1f544072bb49739d2a89"><span class="std std-ref">QNN_MEM_TYPE_CUSTOM</span></a></p></td>
+<td><p><a class="reference internal" href="../../api-rst/enum_QnnHtpMem_8h_1aaef9cbda0b0e670f83b37a504fdced5f.html#exhale-enum-qnnhtpmem-8h-1aaef9cbda0b0e670f83b37a504fdced5f"><span class="std std-ref">QNN_HTP_MEM_SHARED_BUFFER</span></a></p></td>
+<td><ul class="simple">
+<li><p>Multiple tensors will be mapped to one shared buffer</p></li>
+<li><p>One-to-many relationship between the file descriptor and memory handles</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This tutorial is only focused on the shared buffer usage. There are some prerequisites in the
+SDK example code not discussed in detail here. Users can refer to the corresponding part in the
+QNN documentation, or refer to the SampleApp.</p>
+<p>SampleApp documentation: <a class="reference internal" href="../sample_app.html#sample-app-tutorial"><span class="std std-ref">Sample App Tutorial</span></a></p>
+<p>SampleApp code: ${QNN_SDK_ROOT}/examples/QNN/SampleApp</p>
+</div>
+</div>
+<div class="section" id="loading-prerequisite-shared-libraries">
+<h2>Loading prerequisite shared libraries<a class="headerlink" href="#loading-prerequisite-shared-libraries" title="Permalink to this heading">¶</a></h2>
+<p>A hardware device equipped with the Qualcomm chipset includes a shared library which provides the
+functions for shared buffer manipulation.</p>
+<div class="section" id="loading-shared-library">
+<h3>Loading shared library<a class="headerlink" href="#loading-shared-library" title="Permalink to this heading">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">libcdsprpc.so</span></code> shared library is available on most mainstream Qualcomm chipset equipped
+devices (SD888 and later).</p>
+<p>We can dynamically load it as shown below:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">libCdspHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dlopen</span><span class="p">(</span><span class="s">&quot;libcdsprpc.so&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">RTLD_NOW</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">RTLD_LOCAL</span><span class="p">);</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nullptr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">libCdspHandle</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">4</span><span class="w">   </span><span class="c1">// handle errors</span>
+<span class="linenos">5</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="resolving-symbols">
+<h3>Resolving Symbols<a class="headerlink" href="#resolving-symbols" title="Permalink to this heading">¶</a></h3>
+<p>After the shared library is successfully loaded, we can proceed to resolve all necessary symbols.</p>
+<p>The below code snippet shows a template to resolve a symbol in a shared library:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cm">/**</span>
+<span class="linenos"> 2</span><span class="cm">* Defination: void* rpcmem_alloc(int heapid, uint32 flags, int size);</span>
+<span class="linenos"> 3</span><span class="cm">* Allocate a buffer via ION and register it with the FastRPC framework.</span>
+<span class="linenos"> 4</span><span class="cm">* @param[in] heapid  Heap ID to use for memory allocation.</span>
+<span class="linenos"> 5</span><span class="cm">* @param[in] flags   ION flags to use for memory allocation.</span>
+<span class="linenos"> 6</span><span class="cm">* @param[in] size    Buffer size to allocate.</span>
+<span class="linenos"> 7</span><span class="cm">* @return            Pointer to the buffer on success; NULL on failure.</span>
+<span class="linenos"> 8</span><span class="cm">*/</span>
+<span class="linenos"> 9</span><span class="k">typedef</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">RpcMemAllocFn_t</span><span class="p">)(</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">);</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="cm">/**</span>
+<span class="linenos">12</span><span class="cm">* Defination: void rpcmem_free(void* po);</span>
+<span class="linenos">13</span><span class="cm">* Free a buffer and ignore invalid buffers.</span>
+<span class="linenos">14</span><span class="cm">*/</span>
+<span class="linenos">15</span><span class="k">typedef</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">RpcMemFreeFn_t</span><span class="p">)(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">);</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="cm">/**</span>
+<span class="linenos">18</span><span class="cm">* Defination: int rpcmem_to_fd(void* po);</span>
+<span class="linenos">19</span><span class="cm">* Return an associated file descriptor.</span>
+<span class="linenos">20</span><span class="cm">* @param[in] po  Data pointer for an RPCMEM-allocated buffer.</span>
+<span class="linenos">21</span><span class="cm">* @return        Buffer file descriptor.</span>
+<span class="linenos">22</span><span class="cm">*/</span>
+<span class="linenos">23</span><span class="k">typedef</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">RpcMemToFdFn_t</span><span class="p">)(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">);</span>
+<span class="linenos">24</span>
+<span class="linenos">25</span><span class="n">RpcMemFreeFn_t</span><span class="w"> </span><span class="n">rpcmem_alloc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">RpcMemAllocFn_t</span><span class="p">)</span><span class="n">dlsym</span><span class="p">(</span><span class="n">libCdspHandle</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;rpcmem_alloc&quot;</span><span class="p">);</span>
+<span class="linenos">26</span><span class="n">RpcMemFreeFn_t</span><span class="w"> </span><span class="n">rpcmem_free</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">RpcMemFreeFn_t</span><span class="p">)</span><span class="n">dlsym</span><span class="p">(</span><span class="n">libCdspHandle</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;rpcmem_free&quot;</span><span class="p">);</span>
+<span class="linenos">27</span><span class="n">RpcMemToFdFn_t</span><span class="w"> </span><span class="n">rpcmem_to_fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">RpcMemToFdFn_t</span><span class="p">)</span><span class="n">dlsym</span><span class="p">(</span><span class="n">libCdspHandle</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;rpcmem_to_fd&quot;</span><span class="p">);</span>
+<span class="linenos">28</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nullptr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">rpcmem_alloc</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">nullptr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">rpcmem_free</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">nullptr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">rpcmem_to_fd</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">29</span><span class="w">    </span><span class="n">dlclose</span><span class="p">(</span><span class="n">libCdspHandle</span><span class="p">);</span>
+<span class="linenos">30</span><span class="w">    </span><span class="c1">// handle errors</span>
+<span class="linenos">31</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="using-qnn-mem-type-ion-with-qnn-api">
+<h2>Using QNN_MEM_TYPE_ION with QNN API<a class="headerlink" href="#using-qnn-mem-type-ion-with-qnn-api" title="Permalink to this heading">¶</a></h2>
+<p>The following is the representation of ION shared buffers, where each tensor has its own shared buffer
+with its own unique memory pointer, file descriptor, and memory handle.</p>
+<div class="figure align-default">
+<img alt="../../_static/resources/htp_shared_buffer/ION_Shared_Buffer.png" src="../../_static/resources/htp_shared_buffer/ION_Shared_Buffer.png" />
+</div>
+<p>An example is shown below:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">HTP Shared Buffer Example</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">// QnnInterface_t is defined in ${QNN_SDK_ROOT}/include/QNN/QnnInterface.h</span>
+<span class="linenos"> 2</span><span class="n">QnnInterface_t</span><span class="w"> </span><span class="n">qnnInterface</span><span class="p">;</span>
+<span class="linenos"> 3</span><span class="c1">// Init qnn interface ......</span>
+<span class="linenos"> 4</span><span class="c1">// See ${QNN_SDK_ROOT}/examples/QNN/SampleApp code</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="c1">// Qnn_Tensor_t is defined in ${QNN_SDK_ROOT}/include/QNN/QnnTypes.h</span>
+<span class="linenos"> 7</span><span class="n">Qnn_Tensor_t</span><span class="w"> </span><span class="n">inputTensor</span><span class="p">;</span>
+<span class="linenos"> 8</span><span class="c1">// Set up common setting for inputTensor ......</span>
+<span class="linenos"> 9</span><span class="cm">/* There are 2 specific settings for shared buffer:</span>
+<span class="linenos">10</span><span class="cm">*  1. memType should be QNN_TENSORMEMTYPE_MEMHANDLE; (line 40)</span>
+<span class="linenos">11</span><span class="cm">*  2. union member memHandle should be used instead of clientBuf, and it</span>
+<span class="linenos">12</span><span class="cm">*     should be set to nullptr. (line 41)</span>
+<span class="linenos">13</span><span class="cm">*/</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="kt">size_t</span><span class="w"> </span><span class="n">bufSize</span><span class="p">;</span>
+<span class="linenos">17</span><span class="c1">// Calculate the bufSize base on tensor dimensions and data type ......</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="cp">#define RPCMEM_HEAP_ID_SYSTEM 25</span>
+<span class="linenos">20</span><span class="cp">#define RPCMEM_DEFAULT_FLAGS 1</span>
+<span class="linenos">21</span>
+<span class="linenos">22</span><span class="c1">// Allocate the shared buffer</span>
+<span class="hll"><span class="linenos">23</span><span class="kt">uint8_t</span><span class="o">*</span><span class="w"> </span><span class="n">memPointer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="o">*</span><span class="p">)</span><span class="n">rpcmem_alloc</span><span class="p">(</span><span class="n">RPCMEM_HEAP_ID_SYSTEM</span><span class="p">,</span><span class="w"> </span><span class="n">RPCMEM_DEFAULT_FLAGS</span><span class="p">,</span><span class="w"> </span><span class="n">bufSize</span><span class="p">);</span>
+</span><span class="linenos">24</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nullptr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">memPointer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">25</span><span class="w">    </span><span class="c1">// handle errors</span>
+<span class="linenos">26</span><span class="p">}</span>
+<span class="linenos">27</span>
+<span class="hll"><span class="linenos">28</span><span class="kt">int</span><span class="w"> </span><span class="n">memFd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rpcmem_to_fd</span><span class="p">(</span><span class="n">memPointer</span><span class="p">);</span>
+</span><span class="linenos">29</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="mi">-1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">memfd</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">30</span><span class="w">    </span><span class="c1">// handle errors</span>
+<span class="linenos">31</span><span class="p">}</span>
+<span class="linenos">32</span>
+<span class="linenos">33</span><span class="c1">// Fill the info of Qnn_MemDescriptor_t and regist the buffer to QNN</span>
+<span class="linenos">34</span><span class="c1">// Qnn_MemDescriptor_t is defined in ${QNN_SDK_ROOT}/include/QNN/QnnMem.h</span>
+<span class="linenos">35</span><span class="n">Qnn_MemDescriptor_t</span><span class="w"> </span><span class="n">memDescriptor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QNN_MEM_DESCRIPTOR_INIT</span><span class="p">;</span>
+<span class="linenos">36</span><span class="n">memDescriptor</span><span class="p">.</span><span class="n">memShape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">inputTensor</span><span class="p">.</span><span class="n">rank</span><span class="p">,</span><span class="w"> </span><span class="n">inputTensor</span><span class="p">.</span><span class="n">dimensions</span><span class="p">,</span><span class="w"> </span><span class="n">nullptr</span><span class="p">};</span>
+<span class="linenos">37</span><span class="n">memDescriptor</span><span class="p">.</span><span class="n">dataType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inputTensor</span><span class="p">.</span><span class="n">dataType</span><span class="p">;</span>
+<span class="hll"><span class="linenos">38</span><span class="n">memDescriptor</span><span class="p">.</span><span class="n">memType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QNN_MEM_TYPE_ION</span><span class="p">;</span>
+</span><span class="linenos">39</span><span class="n">memDescriptor</span><span class="p">.</span><span class="n">ionInfo</span><span class="p">.</span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">memfd</span><span class="p">;</span>
+<span class="linenos">40</span><span class="n">inputTensor</span><span class="p">.</span><span class="n">memType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QNN_TENSORMEMTYPE_MEMHANDLE</span><span class="p">;</span>
+<span class="linenos">41</span><span class="n">inputTensor</span><span class="p">.</span><span class="n">memHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nullptr</span><span class="p">;</span>
+<span class="linenos">42</span><span class="n">Qnn_ContextHandle_t</span><span class="w"> </span><span class="n">context</span><span class="p">;</span><span class="w"> </span><span class="c1">// Must obtain a QNN context handle before memRegister()</span>
+<span class="linenos">43</span><span class="c1">// To obtain QNN context handle:</span>
+<span class="linenos">44</span><span class="c1">// For online prepare, refer to ${QNN_SDK_ROOT}/docs/general/sample_app.html#create-context</span>
+<span class="linenos">45</span><span class="c1">// For offline prepare, refer to ${QNN_SDK_ROOT}/docs/general/sample_app.html#load-context-from-a-cached-binary</span>
+<span class="hll"><span class="linenos">46</span><span class="n">Qnn_ErrorHandle_t</span><span class="w"> </span><span class="n">registRet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">qnnInterface</span><span class="o">-&gt;</span><span class="n">memRegister</span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">memDescriptor</span><span class="p">,</span><span class="w"> </span><span class="mi">1u</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">(</span><span class="n">inputTensor</span><span class="p">.</span><span class="n">memHandle</span><span class="p">));</span>
+</span><span class="linenos">47</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">QNN_SUCCESS</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">registRet</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">48</span><span class="w">    </span><span class="n">rpcmem_free</span><span class="p">(</span><span class="n">memPointer</span><span class="p">);</span>
+<span class="linenos">49</span><span class="w">    </span><span class="c1">// handle errors</span>
+<span class="linenos">50</span><span class="p">}</span>
+<span class="linenos">51</span>
+<span class="linenos">52</span><span class="cm">/**</span>
+<span class="linenos">53</span><span class="cm">* At this place, the allocation and registration of the shared buffer has been complete.</span>
+<span class="linenos">54</span><span class="cm">* On QNN side, the buffer has been bound by memfd</span>
+<span class="linenos">55</span><span class="cm">* On user side, this buffer can be manipulated through memPointer.</span>
+<span class="linenos">56</span><span class="cm">*/</span>
+<span class="linenos">57</span>
+<span class="linenos">58</span><span class="cm">/**</span>
+<span class="linenos">59</span><span class="cm">* Optionally, user can also allocate and register shared buffer for output as adove codes (lines 7-46).</span>
+<span class="linenos">60</span><span class="cm">* And if so the output buffer also should be deregistered and freed as below codes (lines 66-70).</span>
+<span class="linenos">61</span><span class="cm">*/</span>
+<span class="linenos">62</span>
+<span class="linenos">63</span><span class="c1">// Load the input data to memPointer ......</span>
+<span class="linenos">64</span>
+<span class="linenos">65</span><span class="c1">// Execute QNN graph with input tensor and output tensor ......</span>
+<span class="linenos">66</span>
+<span class="linenos">67</span><span class="c1">// Get output data ......</span>
+<span class="linenos">68</span>
+<span class="linenos">69</span><span class="c1">// Deregister and free all buffers if it&#39;s not being used</span>
+<span class="hll"><span class="linenos">70</span><span class="n">Qnn_ErrorHandle_t</span><span class="w"> </span><span class="n">deregisterRet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">qnnInterface</span><span class="o">-&gt;</span><span class="n">memDeRegister</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tensors</span><span class="p">.</span><span class="n">memHandle</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+</span><span class="linenos">71</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">QNN_SUCCESS</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">registRet</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">72</span><span class="w">    </span><span class="c1">// handle errors</span>
+<span class="linenos">73</span><span class="p">}</span>
+<span class="linenos">74</span><span class="n">rpcmem_free</span><span class="p">(</span><span class="n">memPointer</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="using-qnn-htp-mem-shared-buffer-with-qnn-api">
+<h2>Using QNN_HTP_MEM_SHARED_BUFFER with QNN API<a class="headerlink" href="#using-qnn-htp-mem-shared-buffer-with-qnn-api" title="Permalink to this heading">¶</a></h2>
+<p>The following is the representation of a Multi-Tensor shared buffer where a group of
+tensors is mapped to single shared buffer. This single shared buffer has one memory
+pointer and a file descriptor, however each tensor has its own memory pointer offset and
+memory handle.</p>
+<div class="figure align-default">
+<img alt="../../_static/resources/htp_shared_buffer/Multi_Tensor_Shared_Buffer.png" src="../../_static/resources/htp_shared_buffer/Multi_Tensor_Shared_Buffer.png" />
+</div>
+<p>An example is shown below:</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">HTP Multi-Tensor Shared Buffer Example</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="c1">// QnnInterface_t is defined in ${QNN_SDK_ROOT}/include/QNN/QnnInterface.h</span>
+<span class="linenos">  2</span><span class="n">QnnInterface_t</span><span class="w"> </span><span class="n">qnnInterface</span><span class="p">;</span>
+<span class="linenos">  3</span><span class="c1">// Init qnn interface ......</span>
+<span class="linenos">  4</span><span class="c1">// See ${QNN_SDK_ROOT}/examples/QNN/SampleApp code</span>
+<span class="linenos">  5</span>
+<span class="linenos">  6</span><span class="c1">// Total number of input tensors</span>
+<span class="linenos">  7</span><span class="kt">size_t</span><span class="w"> </span><span class="n">numTensors</span><span class="p">;</span>
+<span class="linenos">  8</span>
+<span class="linenos">  9</span><span class="c1">// Qnn_Tensor_t is defined in ${QNN_SDK_ROOT}/include/QNN/QnnTypes.h</span>
+<span class="linenos"> 10</span><span class="n">Qnn_Tensor_t</span><span class="w"> </span><span class="n">inputTensors</span><span class="p">[</span><span class="n">numTensors</span><span class="p">];</span>
+<span class="linenos"> 11</span><span class="c1">// Set up common setting for inputTensor ......</span>
+<span class="linenos"> 12</span><span class="cm">/* There are 2 specific settings for shared buffer:</span>
+<span class="linenos"> 13</span><span class="cm">*  1. memType should be QNN_TENSORMEMTYPE_MEMHANDLE; (line 40)</span>
+<span class="linenos"> 14</span><span class="cm">*  2. union member memHandle should be used instead of clientBuf, and it</span>
+<span class="linenos"> 15</span><span class="cm">*     should be set to nullptr. (line 41)</span>
+<span class="linenos"> 16</span><span class="cm">*/</span>
+<span class="linenos"> 17</span>
+<span class="linenos"> 18</span><span class="c1">// Calculate the shared buffer size</span>
+<span class="linenos"> 19</span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">totalBufferSize</span><span class="p">;</span>
+<span class="linenos"> 20</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">tensorIdx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">tensorIdx</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">numTensors</span><span class="p">;</span><span class="w"> </span><span class="n">tensorIdx</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 21</span><span class="w">   </span><span class="c1">// Calculate the tensorSize based on tensor dimensions and data type</span>
+<span class="linenos"> 22</span><span class="w">   </span><span class="n">totalBufferSize</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">tensorSize</span><span class="p">;</span>
+<span class="linenos"> 23</span><span class="p">}</span>
+<span class="linenos"> 24</span>
+<span class="linenos"> 25</span><span class="cp">#define RPCMEM_HEAP_ID_SYSTEM 25</span>
+<span class="linenos"> 26</span><span class="cp">#define RPCMEM_DEFAULT_FLAGS 1</span>
+<span class="linenos"> 27</span>
+<span class="linenos"> 28</span><span class="c1">// Allocate the shard buffer</span>
+<span class="hll"><span class="linenos"> 29</span><span class="kt">uint8_t</span><span class="o">*</span><span class="w"> </span><span class="n">memPointer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="o">*</span><span class="p">)</span><span class="n">rpcmem_alloc</span><span class="p">(</span><span class="n">RPCMEM_HEAP_ID_SYSTEM</span><span class="p">,</span><span class="w"> </span><span class="n">RPCMEM_DEFAULT_FLAGS</span><span class="p">,</span><span class="w"> </span><span class="n">totalBufferSize</span><span class="p">);</span>
+</span><span class="linenos"> 30</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nullptr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">memPointer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 31</span><span class="w">    </span><span class="c1">// handle errors</span>
+<span class="linenos"> 32</span><span class="p">}</span>
+<span class="linenos"> 33</span>
+<span class="linenos"> 34</span><span class="c1">// Get a file descriptor for the buffer</span>
+<span class="hll"><span class="linenos"> 35</span><span class="kt">int</span><span class="w"> </span><span class="n">memFd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rpcmem_to_fd</span><span class="p">(</span><span class="n">memPointer</span><span class="p">);</span>
+</span><span class="linenos"> 36</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="mi">-1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">memfd</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 37</span><span class="w">    </span><span class="c1">// handle errors</span>
+<span class="linenos"> 38</span><span class="p">}</span>
+<span class="linenos"> 39</span>
+<span class="linenos"> 40</span><span class="c1">// Regiter the memory handles using memory descriptors</span>
+<span class="linenos"> 41</span><span class="c1">// This is the offset of the tensor location in the shared buffer</span>
+<span class="linenos"> 42</span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">offset</span><span class="p">;</span>
+<span class="linenos"> 43</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">tensorIdx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">tensorIdx</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">numTensors</span><span class="p">;</span><span class="w"> </span><span class="n">tensorIdx</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 44</span><span class="w">   </span><span class="c1">// Fill the info of Qnn_MemDescriptor_t and register the descriptor to QNN</span>
+<span class="linenos"> 45</span><span class="w">   </span><span class="c1">// Qnn_MemDescriptor_t is defined in ${QNN_SDK_ROOT}/include/QNN/QnnMem.h</span>
+<span class="linenos"> 46</span><span class="w">   </span><span class="n">Qnn_MemDescriptor_t</span><span class="w"> </span><span class="n">memDescriptor</span><span class="p">;</span>
+<span class="linenos"> 47</span><span class="w">   </span><span class="n">memDescriptor</span><span class="p">.</span><span class="n">memShape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">inputTensors</span><span class="p">[</span><span class="n">tensorIdx</span><span class="p">].</span><span class="n">rank</span><span class="p">,</span><span class="w"> </span><span class="n">inputTensors</span><span class="p">[</span><span class="n">tensorIdx</span><span class="p">].</span><span class="n">dimensions</span><span class="p">,</span><span class="w"> </span><span class="n">nullptr</span><span class="p">};</span>
+<span class="linenos"> 48</span><span class="w">   </span><span class="n">memDescriptor</span><span class="p">.</span><span class="n">dataType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inputTensors</span><span class="p">[</span><span class="n">tensorIdx</span><span class="p">].</span><span class="n">dataType</span><span class="p">;</span>
+<span class="hll"><span class="linenos"> 49</span><span class="w">   </span><span class="n">memDescriptor</span><span class="p">.</span><span class="n">memType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QNN_MEM_TYPE_CUSTOM</span><span class="p">;</span>
+</span><span class="linenos"> 50</span><span class="w">   </span><span class="n">inputTensor</span><span class="p">[</span><span class="n">tensorIdx</span><span class="p">].</span><span class="n">memType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QNN_TENSORMEMTYPE_MEMHANDLE</span><span class="p">;</span>
+<span class="linenos"> 51</span><span class="w">   </span><span class="n">inputTensor</span><span class="p">[</span><span class="n">tensorIdx</span><span class="p">].</span><span class="n">memHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nullptr</span><span class="p">;</span>
+<span class="linenos"> 52</span>
+<span class="linenos"> 53</span><span class="w">   </span><span class="c1">// Fill the info of QnnMemHtp_Descriptor_t and set as custom info</span>
+<span class="linenos"> 54</span><span class="w">   </span><span class="c1">// QnnMemHtp_Descriptor_t is defined in ${QNN_SDK_ROOT}/include/QNN/HTP/QnnHtpMem.h</span>
+<span class="linenos"> 55</span><span class="w">   </span><span class="n">QnnMemHtp_Descriptor_t</span><span class="w"> </span><span class="n">htpMemDescriptor</span><span class="p">;</span>
+<span class="hll"><span class="linenos"> 56</span><span class="w">   </span><span class="n">htpMemDescriptor</span><span class="p">.</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QNN_HTP_MEM_SHARED_BUFFER</span><span class="p">;</span>
+</span><span class="linenos"> 57</span><span class="w">   </span><span class="n">htpMemDescriptor</span><span class="p">.</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">totalBufferSize</span><span class="p">;</span><span class="w"> </span><span class="c1">//Note: it&#39;s total buffer size</span>
+<span class="linenos"> 58</span>
+<span class="linenos"> 59</span><span class="w">   </span><span class="n">QnnHtpMem_SharedBufferConfig_t</span><span class="w"> </span><span class="n">htpSharedBuffConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">memFd</span><span class="p">,</span><span class="w"> </span><span class="n">offset</span><span class="p">};</span>
+<span class="linenos"> 60</span><span class="w">   </span><span class="n">htpMemDescriptor</span><span class="p">.</span><span class="n">sharedBufferConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">htpSharedBuffConfig</span><span class="p">;</span>
+<span class="linenos"> 61</span>
+<span class="linenos"> 62</span><span class="w">   </span><span class="n">memDescriptor</span><span class="p">.</span><span class="n">customInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">htpMemDescriptor</span><span class="p">;</span>
+<span class="linenos"> 63</span>
+<span class="linenos"> 64</span><span class="w">   </span><span class="n">Qnn_ContextHandle_t</span><span class="w"> </span><span class="n">context</span><span class="p">;</span><span class="w"> </span><span class="c1">// Must obtain a QNN context handle before memRegister()</span>
+<span class="linenos"> 65</span><span class="w">   </span><span class="c1">// To obtain QNN context handle:</span>
+<span class="linenos"> 66</span><span class="w">   </span><span class="c1">// For online prepare, refer to ${QNN_SDK_ROOT}/docs/general/sample_app.html#create-context</span>
+<span class="linenos"> 67</span><span class="w">   </span><span class="c1">// For offline prepare, refer to ${QNN_SDK_ROOT}/docs/general/sample_app.html#load-context-from-a-cached-binary</span>
+<span class="linenos"> 68</span>
+<span class="hll"><span class="linenos"> 69</span><span class="w">   </span><span class="n">Qnn_ErrorHandle_t</span><span class="w"> </span><span class="n">registRet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">qnnInterface</span><span class="o">-&gt;</span><span class="n">memRegister</span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">memDescriptor</span><span class="p">,</span><span class="w"> </span><span class="mi">1u</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">(</span><span class="n">inputTensor</span><span class="p">[</span><span class="n">tensorIdx</span><span class="p">].</span><span class="n">memHandle</span><span class="p">));</span>
+</span><span class="linenos"> 70</span><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">QNN_SUCCESS</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">registRet</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 71</span><span class="w">      </span><span class="c1">// Deregister already created memory handles</span>
+<span class="linenos"> 72</span><span class="w">      </span><span class="n">rpcmem_free</span><span class="p">(</span><span class="n">memPointer</span><span class="p">);</span>
+<span class="linenos"> 73</span><span class="w">      </span><span class="c1">// handle errors</span>
+<span class="linenos"> 74</span><span class="w">   </span><span class="p">}</span>
+<span class="linenos"> 75</span>
+<span class="linenos"> 76</span><span class="w">   </span><span class="c1">// move offset by the tensor size</span>
+<span class="linenos"> 77</span><span class="w">   </span><span class="n">offset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">offset</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tensorSize</span><span class="p">;</span>
+<span class="linenos"> 78</span><span class="p">}</span>
+<span class="linenos"> 79</span>
+<span class="linenos"> 80</span><span class="cm">/**</span>
+<span class="linenos"> 81</span><span class="cm">* At this place, the allocation and registration of the shared buffer has been complete.</span>
+<span class="linenos"> 82</span><span class="cm">* On QNN side, the buffer has been bound by memfd</span>
+<span class="linenos"> 83</span><span class="cm">* On user side, this buffer can be manipulated through memPointer and offset.</span>
+<span class="linenos"> 84</span><span class="cm">*/</span>
+<span class="linenos"> 85</span>
+<span class="linenos"> 86</span><span class="cm">/**</span>
+<span class="linenos"> 87</span><span class="cm">* Optionally, user can also allocate and register shared buffer for output as adove codes (lines 7-78).</span>
+<span class="linenos"> 88</span><span class="cm">* And if so the output buffer also should be deregistered and freed as below codes (lines 98-104).</span>
+<span class="linenos"> 89</span><span class="cm">*/</span>
+<span class="linenos"> 90</span>
+<span class="linenos"> 91</span><span class="c1">// Load the input data to memPointer with respecitve offsets ......</span>
+<span class="linenos"> 92</span>
+<span class="linenos"> 93</span><span class="c1">// Execute QNN graph with input tensors and output tensors ......</span>
+<span class="linenos"> 94</span>
+<span class="linenos"> 95</span><span class="c1">// Get output data from the memPointer and offset combination ......</span>
+<span class="linenos"> 96</span>
+<span class="linenos"> 97</span><span class="c1">// Deregister all mem handles the buffer if it&#39;s not being used</span>
+<span class="linenos"> 98</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">tensorIdx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">tensorIdx</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">numTensors</span><span class="p">;</span><span class="w"> </span><span class="n">tensorIdx</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="hll"><span class="linenos"> 99</span><span class="w">   </span><span class="n">Qnn_ErrorHandle_t</span><span class="w"> </span><span class="n">deregisterRet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">qnnInterface</span><span class="o">-&gt;</span><span class="n">memDeRegister</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">inputTensors</span><span class="p">[</span><span class="n">tensorIdx</span><span class="p">].</span><span class="n">memHandle</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+</span><span class="linenos">100</span><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">QNN_SUCCESS</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">registRet</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">101</span><span class="w">    </span><span class="c1">// handle errors</span>
+<span class="linenos">102</span><span class="w">   </span><span class="p">}</span>
+<span class="linenos">103</span><span class="p">}</span>
+<span class="linenos">104</span><span class="n">rpcmem_free</span><span class="p">(</span><span class="n">memPointer</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

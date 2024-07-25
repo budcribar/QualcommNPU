@@ -1,0 +1,130 @@
+# Copyright (c) 2020-2024 Qualcomm Technologies, Inc.
+# All Rights Reserved.
+# Confidential and Proprietary - Qualcomm Technologies, Inc.
+# TODO: add option to handle custom model names
+# Specify the compiler flags
+QNN_TARGET_TUPLE := x86_64-linux-clang
+COMMON_FLAGS = -fPIC -fvisibility=hidden
+# Uncomment below for debugging and comment following line
+#CXXFLAGS += -std=c++11 -fPIC -march=x86-64 -O0 -g -fno-exceptions -fno-rtti -pg
+CXXFLAGS += -std=c++11 -march=x86-64 -O3 -fno-exceptions -fno-rtti -Wno-write-strings \
+            -DQNN_API="__attribute__((visibility(\"default\")))" $(COMMON_FLAGS)
+TARGET_OBJCOPY_CMD := objcopy -I binary -O elf64-x86-64 -B i386:x86-64
+LDFLAGS += -shared -s $(COMMON_FLAGS)
+
+# Include paths
+INCLUDES += -Ijni/ -I$(QNN_SDK_ROOT)/include/QNN
+
+# Specify the target
+SRC_DIR         := jni
+BINARY_DIR      := obj/binary
+BINARY_OBJ_DIR  := obj/binary/$(QNN_TARGET_TUPLE)
+OBJ_DIR         := obj/$(QNN_TARGET_TUPLE)
+LIB_DIR         := libs/$(QNN_TARGET_TUPLE)
+
+# Specify the source list and the object directories.
+# The source file is in the 'jni' directory to be compatible with the
+# Android NDK structure.
+# Get the list of source files including the directory
+SRC      := $(wildcard $(SRC_DIR)/*.cpp)
+# Generate the output names by substituting the object dir for the source/binaryary dir
+OBJS          := $(subst $(SRC_DIR),$(OBJ_DIR),$(subst .cpp,.o,$(SRC)))
+# The binary files are "auto" generated when zip file is extracted hence we want variable subsitution when
+# extractbinary target is executed
+BINARY = $(wildcard $(BINARY_DIR)/*.raw)
+
+# setup variables for compilation
+ifndef QNN_SDK_ROOT
+QNN_SDK_ROOT := $(abspath $(abspath $(lastword $(MAKEFILE_LIST)))/../../../../..)
+ifneq ($(shell test -d $(QNN_SDK_ROOT) && echo 0),0)
+$(error Unable to determine QNN_SDK_ROOT.)
+endif
+endif
+
+# support any filename for .bin tarfile
+# Note: Allow only one .bin per compilation for added simplicity and this also matches converter output spec
+BINARY_FILE := $(wildcard $(SRC_DIR)/*.bin)
+ifeq ($(BINARY_FILE),)
+$(warning WARNING: No Binary File provided. If params are required for model, this will potentially result in undefined reference when running.)
+else
+BINARY_FILE_CNT := $(words $(BINARY_FILE))
+ifneq ($(BINARY_FILE_CNT),1)
+$(error Only one Binary File can be provided. Got: $(BINARY_FILE) at $(abspath jni))
+endif
+endif
+
+# User provided name takes precendence for created model
+ifneq ($(QNN_MODEL_LIB_NAME),)
+# add prefix and suffix for naming shared library, if not provided
+LIBRARY := $(QNN_MODEL_LIB_NAME)
+PREFIX  = $(shell echo $(LIBRARY) | head -c 3)
+SUFFIX  = $(shell echo -n $(LIBRARY) | tail -c 3)
+ifneq ($(PREFIX),lib)
+LIBRARY := lib$(LIBRARY)
+endif
+ifneq ($(SUFFIX),.so)
+LIBRARY := $(LIBRARY).so
+endif
+else
+ifneq ($(BINARY_FILE),)
+# if provided, use binary name for library as next option
+LIBRARY := lib$(subst .bin,.so,$(notdir $(BINARY_FILE)))
+else
+# unable to determine name, hence default to generic name
+LIBRARY := libqnn_model.so
+endif
+endif
+
+define exec-cmd
+  $(1)
+
+endef
+
+all: $(LIB_DIR)/$(LIBRARY)
+
+$(BINARY_DIR)/./extractbinary: $(BINARY_FILE) | $(BINARY_OBJ_DIR)
+# extract and load binary, if provided
+ifneq ($(BINARY_FILE),)
+	$(shell tar xf $< -C $(BINARY_DIR) >/dev/null)
+	@if [ -z "$(firstword $(BINARY))" ]; then \
+		echo "Error no raw files found. Please make sure $(BINARY_FILE) is not empty and/or there is no error when untarring."; \
+		exit 1; \
+	fi \
+	$(echo "Loading binary...")
+endif
+
+# added to avoid extraction of qnn_model bin when no change
+	touch $(BINARY_DIR)/extractbinary
+
+$(BINARY_OBJ_DIR)/objcopyDone: $(BINARY_DIR)/./extractbinary
+ifneq ($(BINARY_FILE),)
+	$(foreach var,$(BINARY), $(call exec-cmd, @$(TARGET_OBJCOPY_CMD) $(var) $(subst $(BINARY_DIR),$(BINARY_OBJ_DIR),$(subst .raw,.o,$(var)))))
+endif
+	touch $(BINARY_OBJ_DIR)/objcopyDone
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
+	$(CXX) -c $(CXXFLAGS) $(INCLUDES) $< -o $@
+
+$(LIB_DIR)/$(LIBRARY): $(OBJS) $(BINARY_OBJ_DIR)/objcopyDone | $(LIB_DIR)
+	@if [ -n "$$(ls -A $(BINARY_OBJ_DIR) | grep -v objcopyDone)" ]; then \
+		$(CXX) $(LDFLAGS) -o $@ $(OBJS) $(BINARY_OBJ_DIR)/*.o; \
+	else \
+		$(CXX) $(LDFLAGS) -o $@ $(OBJS); \
+	fi \
+	$(echo "Compilation complete.")
+
+clean:
+	-rm -f $(OBJS) $(OBJ_DIR)/$(LIBRARY).o
+	-rm -f $(LIB_DIR)/$(LIBRARY)
+	-rm -f $(BINARY_DIR)/*.raw $(BINARY_DIR)/extractbinary $(BINARY_OBJ_DIR)/*
+
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+
+$(LIB_DIR):
+	mkdir -p $(LIB_DIR)
+
+$(BINARY_OBJ_DIR):
+	mkdir -p $(BINARY_OBJ_DIR)
+
+.PHONY: all clean

@@ -1,0 +1,491 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>qnn-netron (Beta) &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>qnn-netron (<span class="xref std std-ref">Beta</span>)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="qnn-netron-beta">
+<h1>qnn-netron (<a class="reference internal" href="tools.html#qnn-ai-tools-beta-note"><span class="std std-ref">Beta</span></a>)<a class="headerlink" href="#qnn-netron-beta" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">¶</a></h2>
+<p>QNN Netron tool is making model debugging and visualization less daunting. qnn-netron is an extension of the
+<a class="reference external" href="https://github.com/lutzroeder/netron">netron</a> graph tool. It provides for easier graph debugging and convenient runtime information.
+There are currently two key functionalities of the tool:</p>
+<ol class="arabic simple">
+<li><p>The Visualize section allows customers to view their desired models after using the QNN Converter by importing the
+JSON representation of the model</p></li>
+<li><p>The Diff section allows customers to run networks of their choosing on different
+runtimes in order to compare network accuracy and performance</p></li>
+</ol>
+</div>
+<div class="section" id="launching-tool">
+<h2>Launching Tool<a class="headerlink" href="#launching-tool" title="Permalink to this heading">¶</a></h2>
+<p><strong>Dependencies</strong></p>
+<p>The QNN netron tool leverages electron JS framework for building GUI frontend and depends on npm/node_js to be available
+in system. Additionally, python libraries for accuracy analysis are required by backend of tool. A convenient script is
+available in the QNN SDK to download necessary dependencies for building and running the tool.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp"># Note: following command should be run as administrator/root to be able to install system libraries</span>
+<span class="n">$</span><span class="w"> </span><span class="n">sudo</span><span class="w"> </span><span class="n">bash</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">check</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">dependency</span><span class="p">.</span><span class="n">sh</span>
+<span class="n">$</span><span class="w"> </span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">check</span><span class="o">-</span><span class="n">python</span><span class="o">-</span><span class="n">dependency</span>
+</pre></div>
+</div>
+<p><strong>Launching Application</strong></p>
+<p><cite>qnn-netron</cite> script is used to be able to launch the QNN Netron application. This script:</p>
+<ol class="arabic simple">
+<li><p>Clones vanilla netron git project</p></li>
+<li><p>Applies custom patches for enabling Netron for QNN</p></li>
+<li><p>Build the npm project</p></li>
+<li><p>Launches application</p></li>
+</ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">qnn</span><span class="o">-</span><span class="n">netron</span><span class="w"> </span><span class="o">-</span><span class="n">h</span>
+<span class="nl">usage</span><span class="p">:</span><span class="w"> </span><span class="n">qnn</span><span class="o">-</span><span class="n">netron</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="n">w</span><span class="w"> </span><span class="o">&lt;</span><span class="n">working_dir</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="n">Script</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">launch</span><span class="w"> </span><span class="n">QNN</span><span class="w"> </span><span class="n">Netron</span><span class="w"> </span><span class="n">tool</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">visualizing</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">running</span><span class="w"> </span><span class="n">analysis</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">Qnn</span><span class="w"> </span><span class="n">Models</span><span class="p">.</span>
+
+<span class="n">Optional</span><span class="w"> </span><span class="n">argument</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">:</span>
+<span class="w"> </span><span class="o">-</span><span class="n">w</span><span class="w"> </span><span class="o">&lt;</span><span class="n">working_dir</span><span class="o">&gt;</span><span class="w">                      </span><span class="n">Location</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">building</span><span class="w"> </span><span class="n">QNN</span><span class="w"> </span><span class="n">Netron</span><span class="w"> </span><span class="n">tool</span><span class="p">.</span><span class="w"> </span><span class="n">Default</span><span class="o">:</span><span class="w"> </span><span class="n">current_dir</span>
+
+
+<span class="cp"># To build and run application use</span>
+<span class="n">$</span><span class="w"> </span><span class="n">qnn</span><span class="o">-</span><span class="n">netron</span><span class="w"> </span><span class="o">-</span><span class="n">w</span><span class="w"> </span><span class="o">&lt;</span><span class="n">my_working_dir</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="qnn-netron-visualize-deep-dive">
+<h2>QNN Netron Visualize Deep Dive<a class="headerlink" href="#qnn-netron-visualize-deep-dive" title="Permalink to this heading">¶</a></h2>
+<p>First, the user is prompted to open a JSON file that represents their converted model. This JSON comes from the
+converter tool. Please refer to this <a class="reference internal" href="converters.html#overview"><span class="std std-ref">Overview</span></a> for more details.</p>
+<div class="figure align-default">
+<img alt="../_static/resources/landing_page_netron.jpg" src="../_static/resources/landing_page_netron.jpg" />
+</div>
+<p>Once the file is loaded into the tool, the graph should be displayed in the UI as shown below:</p>
+<p>After loading in the model, the user can click on any of the nodes and a side pop-up section will display node
+information such as the type and name as well as vital parameter information such as inputs and outputs
+(datatypes, encodings, and shapes)</p>
+<div class="figure align-default">
+<img alt="../_static/resources/netron_detailed_nodes_visualization.jpg" src="../_static/resources/netron_detailed_nodes_visualization.jpg" />
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="netron-diff-customization-deep-dive">
+<h2>Netron Diff Customization Deep Dive<a class="headerlink" href="#netron-diff-customization-deep-dive" title="Permalink to this heading">¶</a></h2>
+<p><strong>Limitations</strong></p>
+<ol class="arabic simple">
+<li><p>Diff Tool comparison between source framework goldens only works for framework goldens that are spatial first axis order. (NHWC)</p></li>
+<li><p>For usecases where source framework golden is used for comparison, Diff Tool is only tested to work for tensorflow and tensorflow variant frameworks.</p></li>
+</ol>
+<p>In order for the user to open the Diff Customization tool, they can either click file and then “Open Diff…” or on
+tool startup by clicking “Diff…” as shown below:</p>
+<div class="figure align-default">
+<img alt="../_static/resources/netron_diff_ui_opening.jpg" src="../_static/resources/netron_diff_ui_opening.jpg" />
+</div>
+<div class="figure align-default">
+<img alt="../_static/resources/open_diff_tool_netron.png" src="../_static/resources/open_diff_tool_netron.png" />
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Upon launch of the Diff Customization tool, at the top, the user is prompted to select a use case for the tool.
+There are 3 options to choose from:</p>
+<div class="figure align-default">
+<img alt="../_static/resources/use_case_netron.png" src="../_static/resources/use_case_netron.png" />
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>For the purposes of this documentation, only inference vs inference will be detailed. The setup procedure for the other
+use cases is similar. The other two use cases are explained below:</p>
+<ol class="arabic simple">
+<li><p>Golden vs Inference: Used to test inference run using goldens from a particular ML framework and comparing against
+the output of a QNN backend</p></li>
+<li><p>Output vs Output: Used to test existing inference results against ML framework goldens OR used to test differences
+between two existing inference results</p></li>
+<li><p>Inference Vs Inference: Used to test inference between two converted QNN models or the same QNN model on different
+QNN backends</p></li>
+</ol>
+</div>
+<div class="section" id="inference-vs-inference">
+<h2>Inference vs Inference<a class="headerlink" href="#inference-vs-inference" title="Permalink to this heading">¶</a></h2>
+<p>If this use case is selected, the user is presented with various form fields for the purposes of running two
+jobs asynchronously with the option of choosing different runtimes for each QNN network being run.</p>
+<div class="figure align-center">
+<img alt="qnn-netron" src="../_static/resources/inferencevinference.png" />
+</div>
+<p>A more detailed view of what the user is prompted is displayed below:</p>
+<div class="figure align-center">
+<img alt="qnn-netron" src="../_static/resources/inferencedetailed.png" />
+</div>
+<p>In order to execute the networks, the user has two options:</p>
+<p><strong>Running on Host machine</strong></p>
+<p>When the Target Device is selected as “host”, the user can only use the CPU as a runtime. In addition, the user can
+only select “x86_64-linux-clang” as the architecture in this use case.</p>
+<div class="figure align-center">
+<img alt="qnn-netron" src="../_static/resources/netron_host_use_case.png" />
+</div>
+<p><strong>Running On-Device</strong></p>
+<p>When the Target Device is selected as “on-device”, a Device ID is required to connect to the device via adb.
+Thereafter, the user can select any of the three QNN backend runtimes available (CPU, GPU, or DSPv[68, 69, 73]) and the user
+can select architecture “aarch64-android”</p>
+<div class="figure align-center">
+<img alt="qnn-netron" src="../_static/resources/netron_device_use_case.png" />
+</div>
+<p>After choosing the desired target device and runtime configurations, the rest of the fields are explained in detail
+below:</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Users are able to click again and change the location to any of the path fields</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Setup Parameters</p></th>
+<th class="head"><p>Configurations to Select</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>The options for what verifier to run on the outputs of the model are (See Note below table for custom verifier
+(accuracy + performance) thresholds and see table below for providing custom accuracy verifier hyperparameters):</p></td>
+<td><p>RtolAtol, AdjustedRtolAtol, TopK, MeanIOU, L1Error, CosineSimilarity, MSE, SQNR</p></td>
+</tr>
+<tr class="row-odd"><td><p>Model JSON</p></td>
+<td><p>upload &lt;model&gt;_net.json file that was outputted from the QNN converters.</p></td>
+</tr>
+<tr class="row-even"><td><p>Model Cpp</p></td>
+<td><p>upload &lt;model&gt;.cpp that was outputted from the QNN converters.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Model Bin</p></td>
+<td><p>upload &lt;model&gt;.bin that was outputted from the QNN converters.</p></td>
+</tr>
+<tr class="row-even"><td><p>NDK Path</p></td>
+<td><p>upload the path to your Android NDK</p></td>
+</tr>
+<tr class="row-odd"><td><p>Devices Engine Path</p></td>
+<td><p>upload the path to the top-level of the unzipped qnn-sdk</p></td>
+</tr>
+<tr class="row-even"><td><p>Input List</p></td>
+<td><p>provide a path to the input file for the model</p></td>
+</tr>
+<tr class="row-odd"><td><p>Save Run Configurations</p></td>
+<td><p>provide a location where the inference and runtime results from the Diff customization tool will be stored</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Users have the option of providing a custom accuracy and performance verifier threshold when running diff.
+A custom accuracy verifier threshold can be provided for any of the accuracy verifiers. By default the
+verifier thresholds are 0.01. The custom thresholds can be provided in the text boxes labelled “Accuracy
+Threshold” and “Perf Threshold”.</p>
+</div>
+<p>Users now have the option to enter accuracy verifier specific hyperparameters inside textboxes. The Default Values are displayed
+inside the text-boxes and can be customized as per user needs. The table below highlights the hyperparameters for each
+verifier that can be customized.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Verifier</p></th>
+<th class="head"><p>Hyperparameters</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>AdjustedRtolAtol</p></td>
+<td><p>Number of Levels</p></td>
+</tr>
+<tr class="row-odd"><td><p>RtolAtol</p></td>
+<td><p>Rtol Margin, Atol Margin</p></td>
+</tr>
+<tr class="row-even"><td><p>Topk</p></td>
+<td><p>K, Ordered</p></td>
+</tr>
+<tr class="row-odd"><td><p>MeanIOU</p></td>
+<td><p>Background Classification</p></td>
+</tr>
+<tr class="row-even"><td><p>L1Error</p></td>
+<td><p>Multiplier, Scale</p></td>
+</tr>
+<tr class="row-odd"><td><p>CosineSimilarity</p></td>
+<td><p>Multiplier, Scale</p></td>
+</tr>
+<tr class="row-even"><td><p>MSE (Mean Square Error)</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>SQNR (Signal-To-Noise Ratio)</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+<p>Below is an example of what the fields should look like once filled to completion:</p>
+<div class="figure align-center">
+<img alt="qnn-netron" src="../_static/resources/inferencefinalview.png" />
+</div>
+<p>After running the Diff Customization tool, the output directories/files should be present in the working directory
+file path provided in the last field</p>
+<div class="figure align-center">
+<img alt="qnn-netron" src="../_static/resources/output_directories_netron_diff.png" />
+</div>
+</div>
+<div class="section" id="results-and-outputs">
+<h2>Results and Outputs:<a class="headerlink" href="#results-and-outputs" title="Permalink to this heading">¶</a></h2>
+<p>After pressing the Run button as mentioned above, the visualization of the network should pop-up. Nodes will be
+highlighted if there are any accuracy and/or performance variations. Clicking on each node will show more information
+about the accuracy and performance diff information as shown below.</p>
+<div class="figure align-center">
+<img alt="qnn-netron" src="../_static/resources/netron_diff_overall_view.png" />
+</div>
+</div>
+<div class="section" id="performance-and-accuracy-diff-visualizations">
+<h2>Performance and Accuracy Diff Visualizations:<a class="headerlink" href="#performance-and-accuracy-diff-visualizations" title="Permalink to this heading">¶</a></h2>
+<div class="figure align-center">
+<img alt="qnn-netron" src="../_static/resources/netron_accuracy_performance_diff.png" />
+</div>
+<p>As seen above, the performance and accuracy diff information is shown under the Diff section of any given node.
+The color of the node boundary in the viewer represents whether a performance or accuracy error (above the default
+verifier threshold of 0.01) was reported. For example, in the Conv2d node shown below, there are two boundaries of
+orange and red indicating that this node has both an accuracy and performance difference across the runs. The
+FullyConnected node shown only has a yellow boundary indicating that only a performance difference was found.</p>
+<div class="figure align-center">
+<img alt="qnn-netron" src="../_static/resources/netron_node_overlay_both.png" />
+</div>
+<div class="figure align-center">
+<img alt="qnn-netron" src="../_static/resources/netron_node_overlay_perf.png" />
+</div>
+</div>
+<div class="section" id="qnn-netron-diff-navigation">
+<h2>QNN Netron Diff Navigation<a class="headerlink" href="#qnn-netron-diff-navigation" title="Permalink to this heading">¶</a></h2>
+<p>QNN Netron has the ability to locate the first node in the graph with any performance or accuracy diffs. When the
+user clicks on the next and previous arrows, the visualization of the graph will zoom into the desired node with the
+first performance or accuracy difference. This makes model debugging much easier for larger models as the user doesn’t
+have to look for the nodes themselves to find where the network performance and accuracy errors starts to diverge.</p>
+<div class="figure align-center">
+<img alt="qnn-netron" src="../_static/resources/netron_error_first_node_selected.png" />
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

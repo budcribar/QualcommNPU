@@ -1,0 +1,245 @@
+{
+    "inference_engine": {
+        "executable_location": "{engine_path}/bin/{target_arch}/qnn-net-run",
+        "backend_locations": {
+            "x86": {
+                "cpu": [
+                    "{engine_path}/lib/{target_arch}/libQnnCpu.so"
+                ],
+                "gpu": [
+                    "{engine_path}/lib/{target_arch}/libQnnGpu.so"
+                ],
+                "dspv68": [
+                    "{engine_path}/lib/{target_arch}/libQnnHtp.so"
+                ],
+                "dspv69": [
+                    "{engine_path}/lib/{target_arch}/libQnnHtp.so"
+                ],
+                "dspv73": [
+                    "{engine_path}/lib/{target_arch}/libQnnHtp.so"
+                ],
+                "aic": [
+                    "{engine_path}/lib/{target_arch}/libQnnAicRt.so"
+                ]
+            },
+            "android": {
+                "cpu": [
+                    "{engine_path}/lib/{target_arch}/libQnnCpu.so"
+                ],
+                "gpu": [
+                    "{engine_path}/lib/{target_arch}/libQnnGpu.so"
+                ],
+                "dspv66": [
+                    "{engine_path}/lib/{target_arch}/libQnnDsp.so",
+                    "{engine_path}/lib/{target_arch}/libQnnDspV66Stub.so",
+                    "{engine_path}/lib/hexagon-v66/unsigned/libQnnDspV66Skel.so"
+                ],
+                "dspv68": [
+                    "{engine_path}/lib/{target_arch}/libQnnHtp.so",
+                    "{engine_path}/lib/{target_arch}/libQnnHtpPrepare.so",
+                    "{engine_path}/lib/{target_arch}/libQnnHtpV68Stub.so",
+                    "{engine_path}/lib/hexagon-v68/unsigned/libQnnHtpV68Skel.so"
+                ],
+                "dspv69": [
+                    "{engine_path}/lib/{target_arch}/libQnnHtp.so",
+                    "{engine_path}/lib/{target_arch}/libQnnHtpPrepare.so",
+                    "{engine_path}/lib/{target_arch}/libQnnHtpV69Stub.so",
+                    "{engine_path}/lib/hexagon-v69/unsigned/libQnnHtpV69Skel.so"
+                ],
+                "dspv73": [
+                    "{engine_path}/lib/{target_arch}/libQnnHtp.so",
+                    "{engine_path}/lib/{target_arch}/libQnnHtpPrepare.so",
+                    "{engine_path}/lib/{target_arch}/libQnnHtpV73Stub.so",
+                    "{engine_path}/lib/hexagon-v73/unsigned/libQnnHtpV73Skel.so"
+                ]
+            }
+        },
+        "op_packages": {
+            "x86": {
+                "cpu": [],
+                "gpu": ["{engine_path}/lib/{target_arch}/libQnnGpuOpPkg.so"],
+                "dspv68": [],
+                "dspv69": [],
+                "dspv73": [],
+                "aic": []
+            },
+            "android": {
+                "cpu": [],
+                "gpu": ["{engine_path}/lib/{target_arch}/libQnnGpuOpPkg.so"],
+                "dspv66": [],
+                "dspv68": [],
+                "dspv69": [],
+                "dspv73": []
+            },
+            "interface": "QnnOpPackage_interfaceProvider"
+        },
+        "lib_generator": {
+            "executable": "qnn-model-lib-generator",
+            "arguments": {
+                "model_cpp": "-c",
+                "model_bin": "-b",
+                "output_path": "-o",
+                "lib_name": "-l",
+                "lib_target" : "-t"
+            }
+        },
+        "backend_extension_shared_library_path": "libQnnHtpNetRunExtensions.so",
+        "aic_backend_extension_shared_library_path":"{engine_path}/lib/{target_arch}/libQnnAicNetRunExtensions.so",
+        "sdk_tools_root": "{engine_path}",
+        "clang_path": "{android_ndk_path}/toolchains/llvm/prebuilt/linux-x86_64/bin",
+        "environment_variables": {
+            "PYTHONPATH": "{sdk_tools_root}/lib/python/",
+            "PATH": "{sdk_tools_root}/bin",
+            "LD_LIBRARY_PATH": "{sdk_tools_root}/lib/x86_64-linux-clang"
+        },
+        "profiler": {
+            "executable": "qnn-profile-viewer",
+            "executable_path": "{engine_path}/bin/{target_arch}/qnn-profile-viewer",
+            "arguments": {
+                "input_log": "--input_log",
+                "output_csv": "--output",
+                "reader": "--reader"
+            }
+        },
+        "libcpp_dependency": false
+    },
+    "devices": {
+        "host": ["x86"],
+        "target": ["x86", "linux-embedded", "android"]
+    },
+    "converter": {
+        "tensorflow": {
+            "executable": "qnn-tensorflow-converter",
+            "arguments": {
+                "model_path_flag": "--input_network",
+                "input_tensor_flag": "--input_dim",
+                "output_tensor_flag": "--out_node",
+                "output_path_flag": "--output_path",
+                "quantization_flag":{
+                    "quantization_overrides_flag": "--quantization_overrides",
+                    "input_list_flag": "--input_list",
+                    "param_quantizer_flag": "--param_quantizer",
+                    "act_quantizer_flag": "--act_quantizer",
+                    "weight_bw_flag": "--weight_bw",
+                    "bias_bw_flag": "--bias_bw",
+                    "act_bw_flag": "--act_bw",
+                    "algorithms_flag": "--algorithms",
+                    "ignore_encodings_flag": "--ignore_encodings",
+                    "use_per_channel_quantization_flag": "--use_per_channel_quantization"
+                }
+            }
+        },
+        "onnx": {
+            "executable": "qnn-onnx-converter",
+            "arguments": {
+                "model_path_flag": "--input_network",
+                "input_tensor_flag": "--input_dim",
+                "output_tensor_flag": "--out_node",
+                "output_path_flag": "--output_path",
+                "quantization_flag":{
+                    "quantization_overrides_flag": "--quantization_overrides",
+                    "input_list_flag": "--input_list",
+                    "param_quantizer_flag": "--param_quantizer",
+                    "act_quantizer_flag": "--act_quantizer",
+                    "weight_bw_flag": "--weight_bw",
+                    "bias_bw_flag": "--bias_bw",
+                    "act_bw_flag": "--act_bw",
+                    "algorithms_flag": "--algorithms",
+                    "ignore_encodings_flag": "--ignore_encodings",
+                    "use_per_channel_quantization_flag": "--use_per_channel_quantization"
+                }
+            }
+        },
+        "caffe": {
+            "executable": "qnn-caffe-converter",
+            "arguments": {
+                "flags": [
+                    "--disable_batchnorm_folding"
+                ],
+                "model_path_flag": [
+                    "-i",
+                    "-b"
+                ],
+                "output_tensor_flag": "--out_node",
+                "output_path_flag": "--output_path",
+                "quantization_flag":{
+                    "quantization_overrides_flag": "--quantization_overrides",
+                    "input_list_flag": "--input_list",
+                    "param_quantizer_flag": "--param_quantizer",
+                    "act_quantizer_flag": "--act_quantizer",
+                    "weight_bw_flag": "--weight_bw",
+                    "bias_bw_flag": "--bias_bw",
+                    "act_bw_flag": "--act_bw",
+                    "algorithms_flag": "--algorithms",
+                    "ignore_encodings_flag": "--ignore_encodings",
+                    "use_per_channel_quantization_flag": "--use_per_channel_quantization"
+                }
+            }
+        },
+        "tflite": {
+            "executable": "qnn-tflite-converter",
+            "arguments": {
+                "flags": [
+                    "--disable_batchnorm_folding"
+                ],
+                "model_path_flag": "--input_network",
+                "input_tensor_flag": "--input_dim",
+                "output_tensor_flag": "--out_node",
+                "output_path_flag": "--output_path",
+                "quantization_flag":{
+                    "quantization_overrides_flag": "--quantization_overrides",
+                    "input_list_flag": "--input_list",
+                    "param_quantizer_flag": "--param_quantizer",
+                    "act_quantizer_flag": "--act_quantizer",
+                    "weight_bw_flag": "--weight_bw",
+                    "bias_bw_flag": "--bias_bw",
+                    "act_bw_flag": "--act_bw",
+                    "algorithms_flag": "--algorithms",
+                    "ignore_encodings_flag": "--ignore_encodings",
+                    "use_per_channel_quantization_flag": "--use_per_channel_quantization"
+                }
+            }
+        }
+    },
+    "context_binary_generator": {
+        "executable": "qnn-context-binary-generator",
+        "arguments": {
+            "model_path": "--model",
+            "backend": "--backend",
+            "binary_file": "--binary_file",
+            "model_prefix": "--model_prefix",
+            "output_dir": "--output_dir",
+            "op_package": "--op_packages",
+            "config_file": "--config_file",
+            "enable_intermediate_outputs": "--enable_intermediate_outputs"
+        },
+        "backend_location": "{engine_path}/lib/x86_64-linux-clang/libQnnHtp.so",
+        "aic_backend_location": "{engine_path}/lib/x86_64-linux-clang/libQnnAicCC.so"
+    },
+    "executor": {
+        "executable":"qnn-net-run",
+        "arguments": {
+            "qnn_model_path": "--model",
+            "retrieve_context": "--retrieve_context",
+            "input_list": "--input_list",
+            "backend": "--backend",
+            "op_package": "--op_packages",
+            "output_dir": "--output_dir",
+            "debug": "--debug",
+            "input_data_type": "--input_data_type",
+            "output_data_type": "--output_data_type",
+            "profiling_level": "--profiling_level",
+            "perf_profile": "--perf_profile",
+            "config_file": "--config_file",
+            "log_level": "--log_level",
+            "version": "--version"
+
+        },
+        "target_path": "/data/local/tmp/network_diagnosis",
+        "environment_variables": {
+            "PATH": "/data/local/tmp/network_diagnosis",
+            "LD_LIBRARY_PATH": "/data/local/tmp/network_diagnosis:$LD_LIBRARY_PATH",
+            "ADSP_LIBRARY_PATH": "/data/local/tmp/network_diagnosis;/system/lib/rfsa/adsp;/system/vendor/lib/rfsa/adsp;/dsp"
+        }
+    }
+}

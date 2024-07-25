@@ -1,0 +1,2784 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>LPAI Backend Op Definition Supplement &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="API" href="../general/api.html" />
+    <link rel="prev" title="HTA Backend Op Definition Supplement" href="HtaOpDefSupplement.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../general/operations.html">Operations</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="SupportedOps.html">Supported Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opdef_version_history.html">Op Definition Revision History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opdef_version_history.html#backend-specific-revision-history">Backend Specific Revision History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/operations.html#operation-definitions">Operation Definitions</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../general/operations.html#backend-supplements">Backend Supplements</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="CpuOpDefSupplement.html">CPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DspOpDefSupplement.html">DSP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="GpuOpDefSupplement.html">GPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="HtpOpDefSupplement.html">HTP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Htp_fp16OpDefSupplement.html">HTP FP16</a></li>
+<li class="toctree-l3"><a class="reference internal" href="HtaOpDefSupplement.html">HTA</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">LPAI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#argmax">Argmax</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#argmin">Argmin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#batchnorm">Batchnorm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#concat">Concat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#conv2d">Conv2d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#convert">Convert</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#depthwiseconv2d">DepthWiseConv2d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#elementwiseadd">ElementWiseAdd</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#elementwisebinary">ElementWiseBinary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#elementwisedivide">ElementWiseDivide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#elementwiseexp">ElementWiseExp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#elementwiselog">ElementWiseLog</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#elementwisemaximum">ElementWiseMaximum</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#elementwiseminimum">ElementWiseMinimum</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#elementwisemultiply">ElementWiseMultiply</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#elementwiseneuron">ElementWiseNeuron</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#elementwisesquareroot">ElementWiseSquareRoot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#elementwisesubtract">ElementWiseSubtract</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#elementwiseunary">ElementWiseUnary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fullyconnected">FullyConnected</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gather">Gather</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gelu">Gelu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gru">Gru</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hardswish">HardSwish</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#logsoftmax">LogSoftmax</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lstm">Lstm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#matmul">MatMul</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pad">Pad</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#poolavg2d">PoolAvg2d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#poolmax2d">PoolMax2d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#prelu">Prelu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reducemax">ReduceMax</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reducemean">ReduceMean</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reducemin">ReduceMin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reducesum">ReduceSum</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#relu">Relu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reluminmax">ReluMinMax</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reshape">Reshape</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#resize">Resize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#resizebilinear">ResizeBilinear</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sigmoid">Sigmoid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#softmax">Softmax</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stridedslice">StridedSlice</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tanh">Tanh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#transpose">Transpose</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#transposeconv2d">TransposeConv2d</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../general/operations.html">Operations</a> &raquo;</li>
+        
+      <li>LPAI Backend Op Definition Supplement</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="lpai-backend-op-definition-supplement">
+<h1>LPAI Backend Op Definition Supplement<a class="headerlink" href="#lpai-backend-op-definition-supplement" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="argmax">
+<h2>Argmax<a class="headerlink" href="#argmax" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="datatypes">
+<h3>Datatypes<a class="headerlink" href="#datatypes" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_INT_32</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="constraints">
+<h3>Constraints<a class="headerlink" href="#constraints" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><ul class="simple">
+<li><p>Shape: Rank &gt;= 1</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="argmin">
+<h2>Argmin<a class="headerlink" href="#argmin" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id1">
+<h3>Datatypes<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_INT_32</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id2">
+<h3>Constraints<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><ul class="simple">
+<li><p>Shape: Rank &gt;= 1</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="batchnorm">
+<h2>Batchnorm<a class="headerlink" href="#batchnorm" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id3">
+<h3>Datatypes<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>in[1]</p></th>
+<th class="head"><p>in[2]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id4">
+<h3>Constraints<a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><ul class="simple">
+<li><p>Shape: Rank &gt;=2</p></li>
+<li><p>Shape: Rank &lt;=4</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="concat">
+<h2>Concat<a class="headerlink" href="#concat" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id5">
+<h3>Datatypes<a class="headerlink" href="#id5" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0..m]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id6">
+<h3>Constraints<a class="headerlink" href="#id6" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0..m]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;=4</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;=4</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="conv2d">
+<h2>Conv2d<a class="headerlink" href="#conv2d" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id7">
+<h3>Datatypes<a class="headerlink" href="#id7" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>in[1]</p></th>
+<th class="head"><p>in[2]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id8">
+<h3>Constraints<a class="headerlink" href="#id8" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="convert">
+<h2>Convert<a class="headerlink" href="#convert" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id9">
+<h3>Datatypes<a class="headerlink" href="#id9" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_SFIXED_POINT_16, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_SFIXED_POINT_16, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id10">
+<h3>Constraints<a class="headerlink" href="#id10" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>dynamic_input_data</p></th>
+<th class="head"><p>dynamic_output_data</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><ul class="simple">
+<li><p>Value: Must be false</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Value: Must be false</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="depthwiseconv2d">
+<h2>DepthWiseConv2d<a class="headerlink" href="#depthwiseconv2d" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id11">
+<h3>Datatypes<a class="headerlink" href="#id11" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>in[1]</p></th>
+<th class="head"><p>in[2]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="elementwiseadd">
+<h2>ElementWiseAdd<a class="headerlink" href="#elementwiseadd" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id12">
+<h3>Datatypes<a class="headerlink" href="#id12" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>in[1]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id13">
+<h3>Constraints<a class="headerlink" href="#id13" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>in[1]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;=4</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;=4</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;=4</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="elementwisebinary">
+<h2>ElementWiseBinary<a class="headerlink" href="#elementwisebinary" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id14">
+<h3>Datatypes<a class="headerlink" href="#id14" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id15">
+<h3>Constraints<a class="headerlink" href="#id15" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+<th class="head"><p>operation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;=4</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;=4</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Supported operations: ElementWiseAdd, ElementWiseDivide, ElementWiseMultiply, ElementWiseSubtract</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="elementwisedivide">
+<h2>ElementWiseDivide<a class="headerlink" href="#elementwisedivide" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id16">
+<h3>Datatypes<a class="headerlink" href="#id16" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>in[1]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="elementwiseexp">
+<h2>ElementWiseExp<a class="headerlink" href="#elementwiseexp" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id17">
+<h3>Datatypes<a class="headerlink" href="#id17" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="elementwiselog">
+<h2>ElementWiseLog<a class="headerlink" href="#elementwiselog" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id18">
+<h3>Datatypes<a class="headerlink" href="#id18" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="elementwisemaximum">
+<h2>ElementWiseMaximum<a class="headerlink" href="#elementwisemaximum" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id19">
+<h3>Datatypes<a class="headerlink" href="#id19" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>in[1]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="elementwiseminimum">
+<h2>ElementWiseMinimum<a class="headerlink" href="#elementwiseminimum" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id20">
+<h3>Datatypes<a class="headerlink" href="#id20" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>in[1]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="elementwisemultiply">
+<h2>ElementWiseMultiply<a class="headerlink" href="#elementwisemultiply" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id21">
+<h3>Datatypes<a class="headerlink" href="#id21" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>in[1]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id22">
+<h3>Constraints<a class="headerlink" href="#id22" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>in[1]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;=4</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;=4</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;=4</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="elementwiseneuron">
+<h2>ElementWiseNeuron<a class="headerlink" href="#elementwiseneuron" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id23">
+<h3>Datatypes<a class="headerlink" href="#id23" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id24">
+<h3>Constraints<a class="headerlink" href="#id24" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+<th class="head"><p>operation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;=4</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;=4</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Supported operations: Gelu, HardSwish, Relu, ReluMinMax, Sigmoid, Tanh</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="elementwisesquareroot">
+<h2>ElementWiseSquareRoot<a class="headerlink" href="#elementwisesquareroot" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id25">
+<h3>Datatypes<a class="headerlink" href="#id25" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="elementwisesubtract">
+<h2>ElementWiseSubtract<a class="headerlink" href="#elementwisesubtract" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id26">
+<h3>Datatypes<a class="headerlink" href="#id26" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>in[1]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id27">
+<h3>Constraints<a class="headerlink" href="#id27" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>in[1]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;=4</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;=4</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;=4</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="elementwiseunary">
+<h2>ElementWiseUnary<a class="headerlink" href="#elementwiseunary" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id28">
+<h3>Datatypes<a class="headerlink" href="#id28" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id29">
+<h3>Constraints<a class="headerlink" href="#id29" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+<th class="head"><p>operation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;=4</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;=4</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Supported operations: ElementWiseExp, ElementWiseLog, ElementWiseNeg, ElementWiseSquareRoot</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="fullyconnected">
+<h2>FullyConnected<a class="headerlink" href="#fullyconnected" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id30">
+<h3>Datatypes<a class="headerlink" href="#id30" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>in[1]</p></th>
+<th class="head"><p>in[2]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id31">
+<h3>Constraints<a class="headerlink" href="#id31" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>in[1]</p></th>
+<th class="head"><p>in[2]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 2</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 2</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 1</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 2</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="gather">
+<h2>Gather<a class="headerlink" href="#gather" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id32">
+<h3>Datatypes<a class="headerlink" href="#id32" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>in[1]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_INT_32</p></td>
+<td><p>QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id33">
+<h3>Constraints<a class="headerlink" href="#id33" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>in[1]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><ul class="simple">
+<li><p>Shape: Rank &gt;= 1</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank &gt;= 1</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="gelu">
+<h2>Gelu<a class="headerlink" href="#gelu" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id34">
+<h3>Datatypes<a class="headerlink" href="#id34" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id35">
+<h3>Constraints<a class="headerlink" href="#id35" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="gru">
+<h2>Gru<a class="headerlink" href="#gru" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id36">
+<h3>Datatypes<a class="headerlink" href="#id36" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>in[1]</p></th>
+<th class="head"><p>in[2]</p></th>
+<th class="head"><p>in[3]</p></th>
+<th class="head"><p>in[4]</p></th>
+<th class="head"><p>in[5]</p></th>
+<th class="head"><p>in[6]</p></th>
+<th class="head"><p>in[7]</p></th>
+<th class="head"><p>in[8]</p></th>
+<th class="head"><p>in[9]</p></th>
+<th class="head"><p>in[10]</p></th>
+<th class="head"><p>in[11]</p></th>
+<th class="head"><p>in[12]</p></th>
+<th class="head"><p>in[13]</p></th>
+<th class="head"><p>out[0]</p></th>
+<th class="head"><p>out[1]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="hardswish">
+<h2>HardSwish<a class="headerlink" href="#hardswish" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id37">
+<h3>Datatypes<a class="headerlink" href="#id37" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id38">
+<h3>Constraints<a class="headerlink" href="#id38" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="logsoftmax">
+<h2>LogSoftmax<a class="headerlink" href="#logsoftmax" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id39">
+<h3>Datatypes<a class="headerlink" href="#id39" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id40">
+<h3>Constraints<a class="headerlink" href="#id40" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="lstm">
+<h2>Lstm<a class="headerlink" href="#lstm" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id41">
+<h3>Datatypes<a class="headerlink" href="#id41" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>in[1]</p></th>
+<th class="head"><p>in[2]</p></th>
+<th class="head"><p>in[3]</p></th>
+<th class="head"><p>in[4]</p></th>
+<th class="head"><p>in[5]</p></th>
+<th class="head"><p>in[6]</p></th>
+<th class="head"><p>in[7]</p></th>
+<th class="head"><p>in[8]</p></th>
+<th class="head"><p>in[9]</p></th>
+<th class="head"><p>in[10]</p></th>
+<th class="head"><p>in[11]</p></th>
+<th class="head"><p>in[16]</p></th>
+<th class="head"><p>in[17]</p></th>
+<th class="head"><p>in[18]</p></th>
+<th class="head"><p>in[19]</p></th>
+<th class="head"><p>in[20]</p></th>
+<th class="head"><p>in[21]</p></th>
+<th class="head"><p>out[0]</p></th>
+<th class="head"><p>out[1]</p></th>
+<th class="head"><p>out[2]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="support">
+<h3>Support<a class="headerlink" href="#support" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><ul class="simple">
+<li><p>Param <em>in[12]</em> only supports default value</p></li>
+<li><p>Param <em>in[13]</em> only supports default value</p></li>
+<li><p>Param <em>in[14]</em> only supports default value</p></li>
+<li><p>Param <em>in[15]</em> only supports default value</p></li>
+<li><p>Param <em>in[22]</em> only supports default value</p></li>
+<li><p>Param <em>in[23]</em> only supports default value</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="matmul">
+<h2>MatMul<a class="headerlink" href="#matmul" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id42">
+<h3>Datatypes<a class="headerlink" href="#id42" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>in[1]</p></th>
+<th class="head"><p>in[2]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id43">
+<h3>Constraints<a class="headerlink" href="#id43" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>in[1]</p></th>
+<th class="head"><p>in[2]</p></th>
+<th class="head"><p>out[0]</p></th>
+<th class="head"><p>transpose_in0</p></th>
+<th class="head"><p>transpose_in1</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><ul class="simple">
+<li><p>Shape: Rank = 2 or Rank &lt;= 3 squeezeable to 2d</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank = 2 or Rank &lt;= 3 squeezeable to 2d</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank = 1</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 3</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Value: Must be false</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Value: Must be false</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="pad">
+<h2>Pad<a class="headerlink" href="#pad" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id44">
+<h3>Datatypes<a class="headerlink" href="#id44" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id45">
+<h3>Constraints<a class="headerlink" href="#id45" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+<th class="head"><p>scheme</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;=4</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;=4</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Only supports constant or edge padding schemes. Edge padding is only supported for 4D input, and must be along H and W dimensions.</p></li>
+<li><p>Value: CONSTANT = 0, EDGE = 3</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="poolavg2d">
+<h2>PoolAvg2d<a class="headerlink" href="#poolavg2d" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id46">
+<h3>Datatypes<a class="headerlink" href="#id46" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id47">
+<h3>Constraints<a class="headerlink" href="#id47" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+<th class="head"><p>filter_size</p></th>
+<th class="head"><p>count_pad_for_edges</p></th>
+<th class="head"><p>rounding_mode</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 2</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Does not support PADDING_TYPE_VALID with explicit padding when count_pad_for_edges is zero</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Does not support value 1 (CEIL)</p></li>
+<li><p>Value: FLOOR = 0</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="poolmax2d">
+<h2>PoolMax2d<a class="headerlink" href="#poolmax2d" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id48">
+<h3>Datatypes<a class="headerlink" href="#id48" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id49">
+<h3>Constraints<a class="headerlink" href="#id49" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+<th class="head"><p>filter_size</p></th>
+<th class="head"><p>rounding_mode</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Does not support filter rank greater than 2</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Does not support value 1 (CEIL)</p></li>
+<li><p>Value: FLOOR = 0</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="prelu">
+<h2>Prelu<a class="headerlink" href="#prelu" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id50">
+<h3>Datatypes<a class="headerlink" href="#id50" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>in[1]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id51">
+<h3>Constraints<a class="headerlink" href="#id51" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>in[1]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="reducemax">
+<h2>ReduceMax<a class="headerlink" href="#reducemax" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id52">
+<h3>Datatypes<a class="headerlink" href="#id52" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+<th class="head"><p>axes</p></th>
+<th class="head"><p>keep_dims</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_UINT_32</p></td>
+<td><p>QNN_DATATYPE_BOOL_8</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id53">
+<h3>Constraints<a class="headerlink" href="#id53" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="reducemean">
+<h2>ReduceMean<a class="headerlink" href="#reducemean" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id54">
+<h3>Datatypes<a class="headerlink" href="#id54" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+<th class="head"><p>axes</p></th>
+<th class="head"><p>keep_dims</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_UINT_32</p></td>
+<td><p>QNN_DATATYPE_BOOL_8</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id55">
+<h3>Constraints<a class="headerlink" href="#id55" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="reducemin">
+<h2>ReduceMin<a class="headerlink" href="#reducemin" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id56">
+<h3>Datatypes<a class="headerlink" href="#id56" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+<th class="head"><p>axes</p></th>
+<th class="head"><p>keep_dims</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_UINT_32</p></td>
+<td><p>QNN_DATATYPE_BOOL_8</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id57">
+<h3>Constraints<a class="headerlink" href="#id57" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="reducesum">
+<h2>ReduceSum<a class="headerlink" href="#reducesum" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id58">
+<h3>Datatypes<a class="headerlink" href="#id58" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+<th class="head"><p>axes</p></th>
+<th class="head"><p>keep_dims</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_UINT_32</p></td>
+<td><p>QNN_DATATYPE_BOOL_8</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id59">
+<h3>Constraints<a class="headerlink" href="#id59" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="relu">
+<h2>Relu<a class="headerlink" href="#relu" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id60">
+<h3>Datatypes<a class="headerlink" href="#id60" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id61">
+<h3>Constraints<a class="headerlink" href="#id61" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="reluminmax">
+<h2>ReluMinMax<a class="headerlink" href="#reluminmax" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id62">
+<h3>Datatypes<a class="headerlink" href="#id62" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id63">
+<h3>Constraints<a class="headerlink" href="#id63" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="reshape">
+<h2>Reshape<a class="headerlink" href="#reshape" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id64">
+<h3>Datatypes<a class="headerlink" href="#id64" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id65">
+<h3>Constraints<a class="headerlink" href="#id65" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><ul class="simple">
+<li><p>Shape: Supports Rank in range [1, 4]</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Same as in[0]</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="resize">
+<h2>Resize<a class="headerlink" href="#resize" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id66">
+<h3>Datatypes<a class="headerlink" href="#id66" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id67">
+<h3>Constraints<a class="headerlink" href="#id67" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+<th class="head"><p>transformation_mode</p></th>
+<th class="head"><p>interpolation_mode</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+<li><p>Only supports upsampling, with a positive integer scaling factor. Input and output aspect ratios must be the same.</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Value: Only supports HALF_PIXEL = 0, PYTORCH_HALF_PIXEL = 1</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Value: Only supports LINEAR = 1</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="resizebilinear">
+<h2>ResizeBilinear<a class="headerlink" href="#resizebilinear" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id68">
+<h3>Datatypes<a class="headerlink" href="#id68" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id69">
+<h3>Constraints<a class="headerlink" href="#id69" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+<th class="head"><p>align_corners</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+<li><p>Only supports upsampling, with a positive integer scaling factor. Input and output aspect ratios must be the same.</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Value: Must be false</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="sigmoid">
+<h2>Sigmoid<a class="headerlink" href="#sigmoid" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id70">
+<h3>Datatypes<a class="headerlink" href="#id70" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id71">
+<h3>Constraints<a class="headerlink" href="#id71" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="softmax">
+<h2>Softmax<a class="headerlink" href="#softmax" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id72">
+<h3>Datatypes<a class="headerlink" href="#id72" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id73">
+<h3>Constraints<a class="headerlink" href="#id73" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="stridedslice">
+<h2>StridedSlice<a class="headerlink" href="#stridedslice" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id74">
+<h3>Datatypes<a class="headerlink" href="#id74" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id75">
+<h3>Constraints<a class="headerlink" href="#id75" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>shrink_axes</p></th>
+<th class="head"><p>new_axes_mask</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Does not support non-zero values.</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Does not support non-zero values.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="tanh">
+<h2>Tanh<a class="headerlink" href="#tanh" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id76">
+<h3>Datatypes<a class="headerlink" href="#id76" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id77">
+<h3>Constraints<a class="headerlink" href="#id77" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="transpose">
+<h2>Transpose<a class="headerlink" href="#transpose" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id78">
+<h3>Datatypes<a class="headerlink" href="#id78" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_SFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="transposeconv2d">
+<h2>TransposeConv2d<a class="headerlink" href="#transposeconv2d" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="id79">
+<h3>Datatypes<a class="headerlink" href="#id79" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>in[1]</p></th>
+<th class="head"><p>in[2]</p></th>
+<th class="head"><p>out[0]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+<td><p>QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_UFIXED_POINT_8</p></td>
+<td><p>QNN_DATATYPE_UFIXED_POINT_8, QNN_DATATYPE_UFIXED_POINT_16</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id80">
+<h3>Constraints<a class="headerlink" href="#id80" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>in[0]</p></th>
+<th class="head"><p>in[1]</p></th>
+<th class="head"><p>in[2]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 4</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Shape: Rank &lt;= 1</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../general/api.html" class="btn btn-neutral float-right" title="API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="HtaOpDefSupplement.html" class="btn btn-neutral float-left" title="HTA Backend Op Definition Supplement" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

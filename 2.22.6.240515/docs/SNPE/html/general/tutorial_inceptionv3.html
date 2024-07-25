@@ -1,0 +1,555 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Running the Inception v3 Model &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Running the Inception v3 Model in Windows" href="tutorial_inceptionv3_win.html" />
+    <link rel="prev" title="Running Nets" href="usergroup7.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup1.html">Network Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="usergroup6.html">Tutorials and Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial_setup.html">Tutorials Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snpe2_migration_guidelines.html">SNPE1 to SNPE2 Migration Guide</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="usergroup7.html">Running Nets</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Running the Inception v3 Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_inceptionv3_win.html">Running the Inception v3 Model in Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_word_rnn.html">Running the Word-RNN Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_spoken_digit.html">Running the Spoken Digit Recognition Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_onnx.html">Running a VGG Model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup8.html">Code Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup9.html">Application Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="usergroup6.html">Tutorials and Examples</a> &raquo;</li>
+        
+          <li><a href="usergroup7.html">Running Nets</a> &raquo;</li>
+        
+      <li>Running the Inception v3 Model</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="running-the-inception-v3-model">
+<h1>Running the Inception v3 Model<a class="headerlink" href="#running-the-inception-v3-model" title="Permalink to this heading">¶</a></h1>
+<div class="ui-resizable side-nav-resizable docutils container" id="side-nav">
+<div class="docutils container" id="nav-tree">
+<div class="docutils container" id="nav-tree-contents">
+</div>
+</div>
+</div>
+<div class="docutils container" id="doc-content">
+<div class="header docutils container">
+</div>
+<div class="contents docutils container">
+<div class="textblock docutils container">
+<p class="rubric" id="overview">Overview</p>
+<p>The example C++ application in this tutorial is called
+<a class="reference external" href="tools.html#snpe-net-run">snpe-net-run</a>. It is a command line executable that executes
+a neural network using Qualcomm® Neural Processing SDK APIs.</p>
+<p>The required arguments to snpe-net-run are:</p>
+<ul class="simple">
+<li><p>A neural network model in the DLC file format</p></li>
+<li><p>An input list file with paths to the input data.</p></li>
+</ul>
+<p>Optional arguments to snpe-net-run are:</p>
+<ul class="simple">
+<li><p>Choice of GPU, DSP or AIP runtimes (default is CPU)</p></li>
+<li><p>Output directory (default is ./output)</p></li>
+<li><p>Show help description</p></li>
+</ul>
+<p>snpe-net-run creates and populates an output directory with the
+results of executing the neural network on the input data.</p>
+<div class="docutils container">
+<div class="figure align-default">
+<img alt="../images/neural_network.png" src="../images/neural_network.png" />
+</div>
+</div>
+<p>The Qualcomm® Neural Processing SDK provides Linux and Android binaries of
+<strong>snpe-net-run</strong> under</p>
+<ul class="simple">
+<li><p>$SNPE_ROOT/bin/x86_64-linux-clang</p></li>
+<li><p>$SNPE_ROOT/bin/aarch64-android</p></li>
+<li><p>$SNPE_ROOT/bin/aarch64-oe-linux-gcc8.2</p></li>
+<li><p>$SNPE_ROOT/bin/aarch64-oe-linux-gcc9.3</p></li>
+<li><p>$SNPE_ROOT/bin/aarch64-ubuntu-gcc7.5</p></li>
+<li><p>$SNPE_ROOT/bin/aarch64-ubuntu-gcc9.4</p></li>
+<li><p>$SNPE_ROOT/bin/aarch64-oe-linux-gcc11.2</p></li>
+</ul>
+<p class="rubric" id="prerequisites">Prerequisites</p>
+<ul class="simple">
+<li><p>The Qualcomm® Neural Processing SDK has been set up following the <a class="reference external" href="setup.html">Qualcomm (R) Neural Processing SDK
+Setup</a> chapter.</p></li>
+<li><p>The <a class="reference external" href="tutorial_setup.html">Tutorials Setup</a> has been
+completed.</p></li>
+<li><p>TensorFlow is installed (see <a class="reference external" href="setup.html#tensorflow-setup">TensorFlow
+Setup</a>)</p></li>
+</ul>
+<p class="rubric" id="introduction">Introduction</p>
+<p>The Inception v3 Imagenet classification model is trained to
+classify images with 1000 labels.</p>
+<p>The examples below shows the steps required to execute a
+pretrained <strong>optimized</strong> and optionally <strong>quantized</strong> Inception
+v3 model with <strong>snpe-net-run</strong> to classify a set of sample
+images. An optimized and quantized model is used in this
+example to showcase the DSP and AIP runtimes which execute
+quantized 8-bit neural network models.</p>
+<p>The DLC for the model used in this tutorial was generated and
+optimized using the TensorFlow optimizer tool, during the
+<a class="reference external" href="tutorial_setup.html#tutorial_setup_inception_v3">Getting Inception
+v3</a> portion
+of the <a class="reference external" href="tutorial_setup.html">Tutorials Setup</a>, by the script
+$SNPE_ROOT/examples/Models/InceptionV3/scripts/setup_inceptionv3_snpe.py.
+Additionally, if a fixed-point runtime such as DSP or AIP was
+selected when running the setup script, the model was quantized
+by <a class="reference external" href="tools.html#snpe-dlc-quantize">snpe-dlc-quantize</a>.</p>
+<p><a class="reference external" href="quantized_models.html">Learn more about a quantized model</a>.</p>
+<p class="rubric" id="run-on-linux-host">Run on Linux Host</p>
+<p>Go to the base location for the model and run <strong>snpe-net-run</strong></p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>cd $SNPE_ROOT/examples/Models/InceptionV3
+snpe-net-run --container dlc/inception_v3_quantized.dlc --input_list data/cropped/raw_list.txt
+</pre></div>
+</div>
+<p>After snpe-net-run completes, the results are populated in the
+$SNPE_ROOT/examples/Models/InceptionV3/output directory. There should
+be one or more .log files and several Result_X directories,
+each containing a <strong>InceptionV3/Predictions/Reshape_1:0.raw</strong> file.</p>
+<p>One of the inputs is data/cropped/notice_sign.raw and it was
+created from data/cropped/notice_sign.jpg which looks like
+the following:</p>
+<div class="docutils container">
+<div class="figure align-default">
+<img alt="../images/notice_sign.jpg" src="../images/notice_sign.jpg" />
+</div>
+</div>
+<p>With this input, snpe-net-run created the output file
+$SNPE_ROOT/examples/Models/InceptionV3/output/Result_0/InceptionV3/Predictions/Reshape_1:0.raw.
+It holds the output tensor data of 1000 probabilities for the
+1000 categories. The element with the highest value represents
+the top classification. A python script to interpret the
+classification results is provided and can be used as follows:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>python3 $SNPE_ROOT/examples/Models/InceptionV3/scripts/show_inceptionv3_classifications_snpe.py -i data/cropped/raw_list.txt \
+                                                                                  -o output/ \
+                                                                                  -l data/imagenet_slim_labels.txt
+</pre></div>
+</div>
+<p>The output should look like the following, showing
+classification results for all the images.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>Classification results
+&lt;input_files_dir&gt;/notice_sign.raw 0.170401 459 brass
+&lt;input_files_dir&gt;/plastic_cup.raw 0.977711 648 measuring cup
+&lt;input_files_dir&gt;/chairs.raw      0.299139 832 studio couch
+&lt;input_files_dir&gt;/trash_bin.raw   0.747274 413 ashcan
+</pre></div>
+</div>
+<p><strong>Note:</strong> The &lt;input_files_dir&gt; above maps to a path such as
+$SNPE_ROOT/examples/Models/InceptionV3/data/cropped/</p>
+<p>The output shows the image was classified as “brass”
+(index 459 of the labels) with a probability of 0.170401. The
+rest of the output can be examined to see the model’s
+classification on other images.</p>
+<p><strong>Binary data input</strong></p>
+<p>Note that the Inception v3 image classification model does not
+accept jpg files as input. The model expects its input tensor
+dimension to be 299x299x3 as a float array. The
+scripts/setup_inceptionv3_snpe.py script performs a jpg to binary
+data conversion by calling scripts/create_inceptionv3_raws.py.
+The scripts are an example of how jpg images can be
+preprocessed to generate input for the Inception v3 model.</p>
+<p class="rubric" id="run-on-target-platform">Run on Target Platform ( Android/LE/UBUN )</p>
+<p><strong>Select target architecture</strong></p>
+<p>Qualcomm® Neural Processing SDK provides binaries for different target platforms.
+Android binaries are  compiled with clang using libc++ STL implementation.
+Below are examples for aarch64-android (Android platform)  and
+aarch64-oe-linux-gcc11.2 toolchain (LE platform).
+Similarly other toolchains for different platforms can be set as SNPE_TARGET_ARCH</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span># For Android targets: architecture: arm64-v8a - compiler: clang - STL: libc++
+export SNPE_TARGET_ARCH=aarch64-android
+
+# Example for LE targets
+export SNPE_TARGET_ARCH=aarch64-oe-linux-gcc11.2
+</pre></div>
+</div>
+<p>For simplicity, this tutorial sets the target binaries to
+aarch64-android. Following are commands for on host and on target.</p>
+<p><strong>Push libraries and binaries to target</strong></p>
+<p>Push Qualcomm® Neural Processing SDK libraries and the prebuilt snpe-net-run executable to
+/data/local/tmp/snpeexample on the Android target. Set SNPE_TARGET_DSPARCH
+to the DSP architecture of the target Android device.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>export SNPE_TARGET_ARCH=aarch64-android
+export SNPE_TARGET_DSPARCH=hexagon-v73
+
+adb shell &quot;mkdir -p /data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/bin&quot;
+adb shell &quot;mkdir -p /data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/lib&quot;
+adb shell &quot;mkdir -p /data/local/tmp/snpeexample/dsp/lib&quot;
+
+adb push $SNPE_ROOT/lib/$SNPE_TARGET_ARCH/*.so \
+      /data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/lib
+adb push $SNPE_ROOT/lib/$SNPE_TARGET_DSPARCH/unsigned/*.so \
+      /data/local/tmp/snpeexample/dsp/lib
+adb push $SNPE_ROOT/bin/$SNPE_TARGET_ARCH/snpe-net-run \
+      /data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/bin
+</pre></div>
+</div>
+<p><strong>Set up enviroment variables</strong></p>
+<p>Set up the library path, the path variable, and the target
+architecture in adb shell to run the executable with the -h
+argument to see its description.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>adb shell
+export SNPE_TARGET_ARCH=aarch64-android
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/lib
+export PATH=$PATH:/data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/bin
+snpe-net-run -h
+exit
+</pre></div>
+</div>
+<p><strong>Push model data to Android target</strong></p>
+<p>To execute the Inception v3 classification model on Android target follow these steps:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>cd $SNPE_ROOT/examples/Models/InceptionV3
+mkdir data/rawfiles &amp;&amp; cp data/cropped/*.raw data/rawfiles/
+adb shell &quot;mkdir -p /data/local/tmp/inception_v3&quot;
+adb push data/rawfiles /data/local/tmp/inception_v3/cropped
+adb push data/target_raw_list.txt /data/local/tmp/inception_v3
+adb push dlc/inception_v3_quantized.dlc /data/local/tmp/inception_v3
+rm -rf data/rawfiles
+</pre></div>
+</div>
+<p><strong>Note:</strong> It may take some time to push the Inception v3 dlc
+file to the target.</p>
+<p class="rubric" id="running-on-android-using-cpu-runtime">Running on Android using CPU Runtime</p>
+<p>The Android C++ executable is run with the following commands:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>adb shell
+export SNPE_TARGET_ARCH=aarch64-android
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/lib
+export PATH=$PATH:/data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/bin
+cd /data/local/tmp/inception_v3
+snpe-net-run --container inception_v3_quantized.dlc --input_list target_raw_list.txt
+exit
+</pre></div>
+</div>
+<p>The executable will create the results folder:
+/data/local/tmp/inception_v3/output. To pull the output:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>adb pull /data/local/tmp/inception_v3/output output_android
+</pre></div>
+</div>
+<p>Check the classification results by running the following
+python script:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>python3 scripts/show_inceptionv3_classifications_snpe.py -i data/target_raw_list.txt \
+                                                   -o output_android/ \
+                                                   -l data/imagenet_slim_labels.txt
+</pre></div>
+</div>
+<p>The output should look like the following, showing
+classification results for all the images.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>Classification results
+cropped/notice_sign.raw 0.170409 459 brass
+cropped/plastic_cup.raw 0.977708 648 measuring cup
+cropped/chairs.raw      0.299145 832 studio couch
+cropped/trash_bin.raw   0.747256 413 ashcan
+</pre></div>
+</div>
+<p class="rubric" id="running-on-android-using-dsp-runtime">Running on Android using DSP Runtime</p>
+<div class="line-block">
+<div class="line">Try running on an Android target with the –use_dsp option as
+follows:</div>
+<div class="line">Note the extra environment variable ADSP_LIBRARY_PATH must be
+set to use DSP. (See <a class="reference external" href="dsp_runtime.html">DSP Runtime
+Environment</a> for details.)</div>
+</div>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>adb shell
+export SNPE_TARGET_ARCH=aarch64-android
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/lib
+export PATH=$PATH:/data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/bin
+export ADSP_LIBRARY_PATH=&quot;/data/local/tmp/snpeexample/dsp/lib;/system/lib/rfsa/adsp;/system/vendor/lib/rfsa/adsp;/dsp&quot;
+cd /data/local/tmp/inception_v3
+snpe-net-run --container inception_v3_quantized.dlc --input_list target_raw_list.txt --use_dsp
+exit
+</pre></div>
+</div>
+<p>Pull the output into an output_android_dsp directory.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>adb pull /data/local/tmp/inception_v3/output output_android_dsp
+</pre></div>
+</div>
+<p>Check the classification results by running the following
+python script:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>python3 scripts/show_inceptionv3_classifications_snpe.py -i data/target_raw_list.txt \
+                                                   -o output_android_dsp/ \
+                                                   -l data/imagenet_slim_labels.txt
+</pre></div>
+</div>
+<p>The output should look like the following, showing
+classification results for all the images.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>Classification results
+cropped/notice_sign.raw 0.175781 459 brass
+cropped/plastic_cup.raw 0.976562 648 measuring cup
+cropped/chairs.raw      0.285156 832 studio couch
+cropped/trash_bin.raw   0.773438 413 ashcan
+</pre></div>
+</div>
+<p>Classification results are identical to the run with CPU
+runtime, but there are differences in the probabilities
+associated with the output labels due to floating point
+precision differences.</p>
+<p class="rubric" id="running-on-android-using-aip-runtime">Running on Android using AIP Runtime</p>
+<p>The AIP runtime allows you to run the Inception v3 model on
+the HTA. Running the model using the AIP runtime requires setting the
+–runtime argument as ‘aip’ in the script
+$SNPE_ROOT/examples/Models/InceptionV3/scripts/setup_inceptionv3_snpe.py
+to allow HTA-specific metadata to be packed into the DLC that
+is required by the AIP runtime. Refer to <a class="reference external" href="tutorial_setup.html#tutorial_setup_inception_v3">Getting Inception
+v3</a> for
+more details.</p>
+<p>Other than that the additional settings for AIP runtime are
+quite similar to those for the DSP runtime. Note the extra
+environment variable ADSP_LIBRARY_PATH must be set to use DSP
+(See <a class="reference external" href="dsp_runtime.html">DSP Runtime Environment</a> for details).
+Try running on an Android target with the –use_aip option as follows:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>adb shell
+export SNPE_TARGET_ARCH=aarch64-android
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/lib
+export PATH=$PATH:/data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/bin
+export ADSP_LIBRARY_PATH=&quot;/data/local/tmp/snpeexample/dsp/lib;/system/lib/rfsa/adsp;/system/vendor/lib/rfsa/adsp;/dsp&quot;
+cd /data/local/tmp/inception_v3
+snpe-net-run --container inception_v3_quantized.dlc --input_list target_raw_list.txt --use_aip
+exit
+</pre></div>
+</div>
+<p>Pull the output into an output_android_aip directory.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>adb pull /data/local/tmp/inception_v3/output output_android_aip
+</pre></div>
+</div>
+<p>Check the classification results by running the following
+python script:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>python3 scripts/show_inceptionv3_classifications_snpe.py -i data/target_raw_list.txt \
+                                                   -o output_android_aip/ \
+                                                   -l data/imagenet_slim_labels.txt
+</pre></div>
+</div>
+<p>The output should look like the following, showing
+classification results for all the images.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>Classification results
+cropped/notice_sign.raw 0.175781 459 brass
+cropped/plastic_cup.raw 0.976562 648 measuring cup
+cropped/chairs.raw      0.285156 832 studio couch
+cropped/trash_bin.raw   0.773438 413 ashcan
+</pre></div>
+</div>
+<p>Classification results are identical to the run with CPU
+runtime, but there are differences in the probabilities
+associated with the output labels due to floating point
+precision differences.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="tutorial_inceptionv3_win.html" class="btn btn-neutral float-right" title="Running the Inception v3 Model in Windows" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="usergroup7.html" class="btn btn-neutral float-left" title="Running Nets" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

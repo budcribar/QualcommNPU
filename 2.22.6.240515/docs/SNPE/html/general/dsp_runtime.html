@@ -1,0 +1,347 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>DSP Runtime Environment &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Network Resizing" href="network_resize.html" />
+    <link rel="prev" title="PSNPE Android Tutorial" href="tutorial_psnpe_android_tutorial.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup1.html">Network Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="usergroup6.html">Tutorials and Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial_setup.html">Tutorials Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snpe2_migration_guidelines.html">SNPE1 to SNPE2 Migration Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup7.html">Running Nets</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="usergroup8.html">Code Examples</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="cplus_plus_tutorial.html">C++ Tutorial - Build the Sample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="c_tutorial.html">C Tutorial - Build the Sample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="c_api_guidelines.html">C API Guidelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="android_tutorial.html">Android Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="build_samplecode_windows.html">Windows Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_inceptionv3_udo.html">UDO Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_inceptionv3_udo_dsp.html">UDO DSP tutorial for Quantized DLC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_inceptionv3_udo_dsp_win.html">UDO DSP tutorial on Windows for Quantized DLC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_onnx_udo_weights.html">UDO Tutorial With Weights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_psnpe_introduction.html">PSNPE Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_psnpe_c_tutorial.html">PSNPE C Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_psnpe_cplus_plus_tutorial.html">PSNPE C++ Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_psnpe_android_tutorial.html">PSNPE Android Tutorial</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">DSP Runtime Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="network_resize.html">Network Resizing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="input_batch.html">Input Image Batch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="init_caching.html">Init Caching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup9.html">Application Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="usergroup6.html">Tutorials and Examples</a> &raquo;</li>
+        
+          <li><a href="usergroup8.html">Code Examples</a> &raquo;</li>
+        
+      <li>DSP Runtime Environment</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="dsp-runtime-environment">
+<h1>DSP Runtime Environment<a class="headerlink" href="#dsp-runtime-environment" title="Permalink to this heading">¶</a></h1>
+<div class="ui-resizable side-nav-resizable docutils container" id="side-nav">
+<div class="docutils container" id="nav-tree">
+<div class="docutils container" id="nav-tree-contents">
+</div>
+</div>
+</div>
+<div class="docutils container" id="doc-content">
+<div class="header docutils container">
+</div>
+<div class="contents docutils container">
+<div class="textblock docutils container">
+<p>The DSP runtime is a dynamically loaded module, needed for
+using the AIP and DSP runtimes. This module is found in :</p>
+<ul class="simple">
+<li><p>$SNPE_ROOT/lib/hexagon-v65/unsigned/libSnpeDspV65Skel.so  (for v65 targets)</p></li>
+<li><p>$SNPE_ROOT/lib/hexagon-v66/unsigned/libSnpeDspV66Skel.so  (for v66 targets)</p></li>
+<li><p>$SNPE_ROOT/lib/hexagon-v68/unsigned/libSnpeHtpV68Skel.so  (for v68 targets)</p></li>
+<li><p>$SNPE_ROOT/lib/hexagon-v69/unsigned/libSnpeHtpV69Skel.so  (for v69 targets)</p></li>
+<li><p>$SNPE_ROOT/lib/hexagon-v73/unsigned/libSnpeHtpV73Skel.so  (for v73 targets)</p></li>
+</ul>
+<p>This module runs on the ADSP or the CDSP or the HTP, depending on the
+target. Please refer to the Snapdragon Device Support Matrix
+table in the <a class="reference external" href="overview.html">Overview</a> section to determine Qualcomm® Neural Processing SDK support of DSP
+on various Snapdragon devices. Qualcomm® Neural Processing SDK automatically detects the
+appropriate DSP.</p>
+<p>The DSP loader requires the environment variable
+ADSP_LIBRARY_PATH to be set to the directory where the shared
+libraries are stored. This environment variable is used for
+both ADSP and CDSP.</p>
+<p class="rubric" id="for-command-line-executables">For command line executables</p>
+<p>A typical setting of <strong>ADSP_LIBRARY_PATH</strong> looks like:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>export ADSP_LIBRARY_PATH=&quot;&lt;path_to_dsp_skel&gt;;/system/lib/rfsa/adsp;/system/vendor/lib/rfsa/adsp;/dsp&quot;
+</pre></div>
+</div>
+<p>Where <strong>&lt;path_to_dsp_skel&gt;</strong> is the path where
+$SNPE_ROOT/lib/hexagon-v65/unsigned/libSnpeDspV65Skel.so and/or
+other skel files have been pushed. Do not include the file name of the skel in the path.</p>
+<p><strong>Example:</strong> Assuming the appropriate DSP skel has been pushed to
+/data/local/tmp/snpeexample/dsp/lib, then the following command
+for setting ADSP_LIBRARY_PATH would be used.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>export ADSP_LIBRARY_PATH=&quot;/data/local/tmp/snpeexample/dsp/lib;/system/lib/rfsa/adsp;/system/vendor/lib/rfsa/adsp;/dsp&quot;
+</pre></div>
+</div>
+<p><strong>Key points to note when setting the ADSP_LIBRARY_PATH:</strong></p>
+<p>Unlike LD_LIBRARY_PATH, the path must be contained within
+quotations. Additionally, unlike LD_LIBRARY_PATH, the directory
+separator is a semi-colon, not a colon.</p>
+<p>For Android and most embeded linux systems, the three paths below
+<strong>MUST</strong> be part of ADSP_LIBRARY_PATH. If any of these are
+missing the DSP runtime may fail.</p>
+<ul class="simple">
+<li><p>/system/lib/rfsa/adsp</p></li>
+<li><p>/system/vendor/lib/rfsa/adsp</p></li>
+<li><p>/dsp</p></li>
+</ul>
+<p>For embeded linux automotive system, the following DSP paths
+are required.</p>
+<ul class="simple">
+<li><p>/usr/lib/rfsa/adsp</p></li>
+<li><p>/dsp</p></li>
+</ul>
+<p class="rubric" id="for-android-apks">For Android APKs</p>
+<p>ADSP_LIBRARY_PATH must be set for Android APKs as well, and it
+cannot be done using an “export” command. It must be done
+within code running in the APK.</p>
+<p>The Qualcomm® Neural Processing SDK Android Java APIs automatically sets the
+ADSP_LIBRARY_PATH. The supplied Qualcomm® Neural Processing SDK Java AAR library
+automatically sets up the DSP environment for your Android
+application.</p>
+<p>Android applications that do not use the Qualcomm® Neural Processing SDK Java AAR must set
+the ADSP_LIBRARY_PATH explicitly in native code. An example is
+provided below.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>bool SetAdspLibraryPath(std::string nativeLibPath) {
+    std::stringstream path;
+    path &lt;&lt; nativeLibPath &lt;&lt; &quot;;/system/lib/rfsa/adsp;/system/vendor/lib/rfsa/adsp;/dsp&quot;;
+    return setenv(&quot;ADSP_LIBRARY_PATH&quot;, path.str().c_str(), 1 /*override*/) == 0;
+}
+</pre></div>
+</div>
+<p>Assuming that the DSP loadable module is placed in the same
+location as libSNPE.so in the Android application, the
+“nativeLibPath” input passed to the above method should be the
+string returned by the the following Android API:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>application.getApplicationInfo().nativeLibraryDir
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="network_resize.html" class="btn btn-neutral float-right" title="Network Resizing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="tutorial_psnpe_android_tutorial.html" class="btn btn-neutral float-left" title="PSNPE Android Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

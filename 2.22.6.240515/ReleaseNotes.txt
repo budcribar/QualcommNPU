@@ -1,0 +1,1199 @@
+SNPE SDK
+
+SNPE is a software development kit for building machine learning based applications.
+
+SNPE 2.22.0
+
+Dependencies:
+
+* for converter tools
+  * Ubuntu 20.04
+  * Python 3.6
+* for building Android example build
+  * optional Android NDK (android-ndk-r19c-linux-x86)
+  * optional Android SDK (sdk version 23 and build tools version 23.0.2)
+  * Java 8 JDK
+* for Linux Embedded (LE) platform
+  * libatomic.so.1
+
+Contents:
+
+* Model conversion tools to convert trained models from TensorFlow,ONNX,TFlite,Pytorch to SNPE DLC format
+* SNPE neural network accelerated runtime
+* Sample Native C++ and Android applications
+* SNPE C++ library x86_64-linux-clang, aarch64-android, aarch64-oe-linux-gcc8.2,
+  aarch64-oe-linux-gcc9.3, aarch64-ubuntu-gcc7.5 .
+* Android archive (aar) to facilitate Android application integration using SNPE
+* Snapdragon Neural Processing Engine SDK Reference Guide
+
+Known Issues:
+
+* Please refer to the "Limitations and Issues" chapter of the SNPE User and Reference Guide
+
+Changelog:
+2.22.0
+Features:
+* Tools: Converter: Adding reduction attribute as none in case of attribute is not available in original graph.
+* Tools: Converter: Div op support is added in Tensorflow converter.
+* Tools: Converter: Added scatternd and gathernd support in Tensorflow converter.
+* Tool:snpe-accuracy-debugger: Enable windows x86 Native support for integrated Quant Checker for SNPE SDK.
+* Tools: Converters: Cleanup of old references for Binary Coarse op.
+* Core: Support 5D tensors for transpose fp16 op in HTP.
+* DSP: Introducing low level performance APIs for DSP thus enabling custom performance profile settings for init,
+  inference, de-init and from inference to inference. Also enabling the ability to overwrite partially a preset profile.
+
+Bugs:
+* Tool:quantizer: Fixed issue observed when bias of conv op need to be per-channel quantized in mix-precision mode.
+* Tools: Converter: Fixed the small bug in onnx softmax translation.
+* Core: snpe-dlc-graph-prepare - Fixed a bug with multiple SoC prepare for certain networks.
+* API: Added new APIs to quantize and dequantize buffers - Snpe_Util_Convert_Float32ToTfN / IUserBufferFactory::Float32ToTfN, Snpe_Util_Convert_TfNToFloat32 / TfNToFloat32. Please read the API docs for details on usage.
+* SDK: Updated Android NDK version to android-ndk-r26c for compiling SNPE/QNN SDK for Android based targets.
+* Tool: Converter: Onnx: Fix axis tracking issue for TransposeConv2d.
+* Core: Fixed multiple timestamps in logs in android logcat.
+* Tools: Pytorch & TFlite Converter: Fix incorrect rounding behavior.
+* Tools: Converters: PyTorch: Added support for TransposeConv3d.
+* HTP: Fixed accuracy issue for the pattern: Batchnorm -> Relu -> Concat.
+
+2.21.0
+Features:
+* Tools: Converter: Add qairt-converter tool. This is a single converter tool accepts any Pytorch/Onnx/Tensorflow/TFLite
+  network and produce a Float DLC containing the QNN IR. Please refer Documentation or AppNote for more details.
+* SNPE library migrated to use static libc++ for Android platform.
+* Tool: Quantizer: Added a new standalone qairt-quantizer tool equivalent to snpe-dlc-quant. This new tool takes a
+  float DLC and produce a Quantized or Mixed Precision DLC.
+* Tool:Converters: Added support for sparse tensors.
+* Renamed DSP_v68 folder at <SNPE_SDK>/examples/SNPE/NativeCpp/UdoExample/<OpName>/src to HTP.
+* Tools: Converter: enable 16bits QuantizeLinear/DequantizerLinear in Onnx converter.
+* Tools: Converters: ONNX: Added support for ThresholdedRelu ONNX op.
+* Tools: Converter: Downcast to_type for Cast op from int64 to int32.
+* Tool: Converter: Added PyTorch ChannelShuffle support.
+* Tool: Converter: Added TFLite LOCAL_RESPONSE_NORMALIZATION support
+
+Bugs:
+* Tools: Converter: TFLite: Fixed an encoding mismatch issue at input and output layers when converting a
+  pre-quantized tflite network.
+* Tool: Converter: Onnx: Support FP16 model conversion.
+* Tool:snpe-dlc-quantize: Fix the bug causing snpe-dlc-quantize to fail with multi-dot dlc filenames.
+* Core: Fixed Snpe_Util_SetSNPEStorageLocation/ SNPEFactory::setSNPEStorageLocation to not create duplicate
+  kernel repo file (GpuKernelRepo.pb) for GPU and delegate it to the backend (gpukernelcache.qti.aisw)
+* Core: Fixed resource release in burst and sustained_high_performance mode.
+* Tool: Converter: Onnx: Bug fixed to support different layout of axis in TopK.
+* Tool: Pytorch Converter: Fixed scalar indices issue for gather op.
+* Addressed SSR (SubSystem Restart) occurring during SNPE_Execute().
+
+2.20.0
+Features:
+* Core: Added new option --userbuffer_memorymapped_shared to snpe-parallel-run to enable sharing memory mapped
+  user buffers allowing different tensors to register using the same address/file descriptor and a unique byte offset.
+* Tools: Converters: Added Converter support for MaskedSoftmax Operator.
+* Tools:qnn-pytorch-converter: Enabled preserve_io feature.
+* Tools: Converters: support hardsigmoid in onnx converter.
+* Tools: snpe-dlc-info updated to display output tensors and unconsumed internal tensors in separate tables.
+* Tools: Added support for snpe-diagview tool for OE Linux GCC11.2 toolchain based targets.
+* Core : Added CPU INT8 support to Softmax UDO example.
+* Tools: qnn-pytorch-converter: add support of aten::upsample_linear1d for pytorch converter.
+* Tools: Converter: PyTorch: added PixelShuffle support for pytorch converter.
+
+Bugs:
+* Core: Fixed snpe-diagview --chrometrace stats computations related to averaging when multiple input sets are involved.
+* Core: Updated the sample app MemoryMappedUserBuffer to reflect proper usage of memory mapped userbuffer
+  registration/de-registration, once in SNPE's lifecycle and not once per execute.
+
+2.19.0
+Features:
+* Core: Added support for sharing regular userbuffers (non memory-mapped) via single buffer and offsets.
+* SDK: Added supported SOC table to SDK documentation.
+* Core: Added new option --validate_cache to snpe-net-run and snpe-throughput-net-run to validate
+  HTP cache before network initialization.
+* Tools: Converters: Added the support for assigning input dtype in PyTorch converter.
+
+Bugs:
+* Tool: Converter: Pytorch: Fixed the issue of duplicate buffer names for two identical transpose ops.
+* Tools: Fixed bug to correctly convert shared static tensor to FP16.
+* Tools: Converter: Supported optional initial_h and initial_c in Onnx bidirectional LSTM.
+* Tools: Converter: TFlite: Fixed data type mismatch issue for TFLite pre-quantized model.
+
+2.18.0:
+Features:
+* Tools: Converters: Updated squashing logic to avoid removing model outputs.
+* Core: Added new SNPE builder API s Snpe_SNPEBuilder_SetCacheCompatibilityMode() / SNPEBuilder::setCacheCompatibilityMode()
+  to set HTP cache compatibility mode for cache selection.
+* Tools: Converter: PyTorch: Raise an error for custom op support in SNPE product.
+* Core : Added Relu UDO example to SNPE sdk.
+* Tools: snpe-dlc-graph-prepare - Added a new option --num_hvx_threads for reserving no of HVX threads for a graph running on HTP.
+* Tools: Converters: support group_norm in pytorch converter.
+* Core: ArgMax example added to UDO examples in SNPE SDK.
+* Core: Updated CAPI Sample App for Memory Mapped User Buffer to demonstrate usage of dmabuf (libdmabufheap.so).
+* Tools: Converters: Add Gather and Take support in pytorch converter.
+* Tools: Converters: PyTorch: Added support for AvgPool1d / MaxPool1d / AvgPool3d / MaxPool3d /
+  AdaptiveAvgPool1d / AdaptiveMaxPool1d / GlobalAvgPool1d / GlobalMaxPool1d.
+
+Bugs:
+Tool: Converter: Onnx: Enforce h/c input buffers of LSTM to be NONTRIVIAL.
+Tool: Converter: Support BROADCAST_TO in tvm tflite frontend.
+
+2.17.0
+Features:
+* Core: Added --userbuffer_memorymapped_shared option in snpe-net-run and snpe-throughput-net-run to exercise shared
+  memory mapped buffers.
+* Added product and OS info to SDK.yaml file.
+* Core: Added new APIs Snpe_UserMemoryMap_AddFdOffset / UserMemoryMap::add() and Snpe_Util_CreateUserBufferShared() /
+  IUserBufferFactory::createUserBufferShared() to enable sharing memory mapped user buffers allowing different tensors to register
+  using the same address/file descriptor and an unique byte offset.
+* Tools: Converters: Updated algorithm to fix Tensor Layout from Constant operator when it is located ahead of Concat Operator.
+* HTP: updated backend extensions config - changed graph object to graph array to allow different graphs have
+  different set of properties.
+* Tools: Converter: Fixed param name parsing issue in pytorch converter.
+* Tools: Pytorch converter: Added support for OneHot op.
+* SNPE Core: Added support for targetSdkVersion 32 in SNPE apk.
+* Core: Update MemoryMappedUserBuffer sample app to demonstrate shared buffer usage. Added support for named input parsing
+  in all the sample apps.
+* Core: Enhanced error messages for API failures in userlogs as well as Snpe_ErrorCode_GetLastErrorString() /
+  DlSystem::getLastErrorString()
+
+Bugs:
+* Tools:ONNX Converter: Fixed WhereOp axis format issue.
+* Tools: Converter: fix tensorflow strided_slice conversion for out of range start/end.
+* DSP Runtime: Added DSP reset / Subsystem Reset (SSR) error handling for logging API: Snpe_Util_SetLogLevel() /
+  SNPEFactory::setLogLevel().
+* Core: Fixed registration of memorymapped user buffer with multiple addresses against the same tensor name.
+
+2.16.0
+Features:
+* SDK: Added support for SoC sm8650.
+* Core: Added new APIs Snpe_UserMemoryMap_AddFdOffset / UserMemoryMap::add() to enable sharing memory mapped
+  user buffers allowing different tensors to register using the same address/file descriptor and an unique byte offset.
+* Core: Added pre-emption count captured as yield count in logs in SNPE.
+* Core: Fixed redundant rpc memory allocations during graph initialization for memory-mapped (zero copy) buffer usage by
+  providing hints during graph prepare. snpe-dlc-graph-prepare option --memorymapped_buffer_hint introduced.
+* SDK: Added sdk.yaml in SDK to capture build and other version info.
+* Tool: Common: Quantizer: Added a Quantizer pass to make static inputs of Elementwise Op float if the output is overridden to float.
+* Core: Performance improvements done in network initialization time - up to 1.5x speed up for certain networks with HTP offline cache.
+* Tools Converters: Added broadcast support for layernorm op weights and bias.
+* Tools Converters: Added rectangular SpaceToDepth op support to handle SpaceToDepth pattern in Pytorch model.
+* DSP Runtime: Added HTP DLBC(Deep Learning Bandwidth Compression) option for graph preparation.
+* Tools: Converters: Added batch_norm ND support in tflite/pytorch converter.
+* Tool: PyTorch Converter: Add support for custom op in QNN product.
+* Tools: enable LSTM operator in SNPE.
+
+Bugs:
+* Tools: Converters: Onnx: Fixed conversion failure for gather op with scalar indices.
+* Tools: Quantizer: Fixed an issue by not converting Cast to Convert if next op is float.
+* Core: Fixed Snpe_SNPEBuilder_SetInputDimensions() / SNPEBuilder::setInputDimensions() /snpe-net-run option --input_name xxx
+  --input_dimensions yyy to evaluate new dims when a compatible dsp cache record is present. If new dims are accepted offline
+  cache will be rejected in favor of online preparation.
+* Tools: PyTorch Converter: Fixed parameter quantization override.
+* Tools: Converters: Fixed a conversion failure when folding Concat Ops.
+* Tools: Converters: Pytorch: Fixed an issue with applying overrides.
+* Tools: Converters: Onnx: Fixed a conversion failure when Onnx inferShape API returns an empty graph.
+* Tools: Converters: Onnx: Fixed a quantization failure for networks having Float16 activations.
+* Core: Implemented coexistence of DSP/HTP cache records prepared with different input dimensions. Added option to specify
+  input dimensions in snpe-dlc-graph-prepare. Cache selection logic updated to match dimensions passed during graph initialization.
+* Tools: Converters: Onnx: Add support for Gather Op with negative indices.
+* Tools: Converters: Updated the validation to see if the weights of FC and BN are eligible for optimization of BN into FC.
+* Core: Logging from backends is made conditional based on SNPE logging API invocation.
+* Docs: Updated inceptionv3 documentation to include LU / LE toolchains.
+* SNPE HTA: Added support of Pooling 16bit for large dimensions.
+* HTP: fixed graph prepare issue due to edge mod pad.
+
+2.15.0
+Features:
+* Tools: snpe-dlc-info tensor columns rearranged and HTP cache info section updated to display UDO information, Optimization level etc.
+* Core: snpe-dlc-graph-prepare updated to overwrite existing cache with similar signature but from older cache version by default.
+
+Bugs:
+* SNPE GPU: Extreme power saver performance profile fixed to map to the lowest profile on the SoC instead of highest.
+* SNPE AIP: Extreme power saver performance profile now maps to lowest profile available on the SoC.
+* SDK: Fixed broken links in PSNPE C API documentation.
+* SNPE DSP: Extreme power saver performance profile for DSP v66 devices now maps to lowest performance profile available on the SoC.
+* Core: Memory Mapped Userbuffer Sample App - added error handling for incompatible data types.
+* Core: Fixed --debug not emitting intermediate tensors for offline cache based execution.
+
+2.14.0
+Features:
+* Core: HTP offline cache records prepared for DSP architecture v68, v69 (sm8350/sm8450) will be rejected on SoCs
+  with DSP architecture v73 and above (sm8550).
+* Tools: Converter: Onnx: Added default attribute perm for Transpose Op.
+* Tools: Converter: Tensor with no consumers and not an actual graph output will be set to NATIVE for QNN Onnx Converter.
+* Tools: Converter: Allow only output tensors in the source model to be marked as QNN_TENSOR_TYPE_APP_READ.
+  All other tensors with zero consumers will change from being APP_READ to NATIVE.
+* Tools: Converters: Onnx: Added negative max_output_boxes_per_class parameter support for NonMaxSuppression.
+* Tools: Converter: update tvm version to support pytorch 1.13 version.
+* SDK: Update documentation contents for standalone SDK.
+* Tools: Converters: Added a Graph pass that matches Space2Depth Op (CRD & DCR) from Reshape - Transpose - Reshape pattern.
+
+Bugs:
+* Tools: quantizer: Avoid act's bw changing according the weight/bias's bw.
+* Op:HTP: added uint8 support for maxpool w77s44p00.
+* Core: SNPE de-initialization moved to a separate thread for all profiling levels to better affine to faster CPU core(s)
+  thus improving de-init time for most graphs.
+* Tools: Converters: Resolved OpValidation error related to LayerNorm Op caused due to the unsqueezed Gamma/Beta tensor being > 1D rank.
+
+2.13.0
+Features:
+* SDK: Updated Revision history formatting in SNPE docs.
+* Tools: Converter: GRU weights are shared across time unrolling step.
+* Documents: Update latest PyTorch Op support.
+* Tools: Converter: Allow only output tensors in the source model to be marked as QNN_TENSOR_TYPE_APP_READ. 
+  All other tensors with zero consumers will change from being APP_READ to NATIVE.
+* SNPE DSP: added support for uint8 window7x7 stride3x3 maxpool ops on HTP.
+* Tools: snpe-dlc-graph-prepare - introducing new option --optimization_level. Higher optimization levels
+  incur longer prepare time but yields more optimal graph and hence faster execution time for most graphs.
+* Tools: Converter: Changed the logic for converting 1dOp into 2DOp by expanding along H dimension instead of W dimension.
+* Op:DSP: added support for logSoftmax.
+* Tools: Converter: Changed the translation of FloorDiv operator to ElementWiseDivide if the datatype of input is Int32.
+* Tools: Introducing --userbuffer_memory_mapped option in snpe-net-run, snpe-throughput-net-run and snpe-parallel-run
+  for general memory mapped userbuffer use cases(like ionbuffers in Android).
+* Tool: TF Converter: added support for conv2d_transpose layer with asymmetric strides.
+
+Bugs:
+* Tools: TF Converter: Support optimized Gelu pattern that contains Mul instead of Realdiv.
+* API: Generic APIs added for memory-mapped userbuffers in lieu of existing ion buffer registration/de-registration APIs.
+* SDK: libCalculator_Skel.so added to lib/hexagon-v68/unsigned and lib/hexagon-v69/unsigned folders of SNPE SDK.
+* Core: Added CAPI based Sample Apps for userbuffer and memory-mapped buffers (like ion buffer).
+* HTP: Fixed bug in ReduceMean optimization during prepare.
+* Tools: snpe-diagview - fixed "Snpe Accelerator Time" and "Accelerator Time" data being larger than "Total Inference Time".
+
+2.12.0
+Features:
+* Tools: Converters: Added a new transformation to change MatMul into FullyConnected even without Bias.
+* Tools: Converter: TFlite: Added a fix to account for the difference in
+  the offset sign and usage when quantizing tensors.
+* SNPE DSP: Introduced new extreme power saver performance profile to enable ultra low power
+  inferencing usecases on HTP runtime.
+* SNPE Core: All binaries are now built with libc++, not libstdc++ for X86/Linux.
+* SNPE Core: All binaries are now built with clang9 instead of clang7.
+* Tools: Converters: Modified the output names generated by Pytorch Converter and TFlite Converters.
+  Also changed the axis tracking behavior to match the TF & Onnx Converters.
+  This may change the name and layout for the output layer of the model.
+
+Bugs:
+* API: Fixed Snpe_SNPEBuilder_SetTimeOut/SNPEBuilder::setTimeOut() to failure when 
+  Snpe_SNPE_ExecuteUserBuffers()/SNPE::execute() fails to return within the timeout duration.
+* Tools: Quantizer: Fixed an issue that prevented weights & bias inputs of Batchnorm from being set as FP16.
+* Tools: Quantizer: Fixed an error related to locking the WeakPtr associated with
+  the Bias tensor to Convolution Op.
+
+2.11.0
+Features:
+* SDK: dependencies.sh changed to check-linux-dependency.sh and check_python_depends.sh changed to check-python-dependency.sh.
+  Also envcheck.sh added
+* Core: SNPE C++ APIs are deprecated. To maintain backwards compatibility C++ header-only wrapper APIs are included in the SDK
+  that invokes SNPE C APIs internally
+* Op: ONNX converter: added support for Mod.
+* CPU: INT8 support enabled for LA targets.
+* Core: Caffe source framework models are no longer supported in SNPE
+* Core: arm-32 platform is no longer supported in SNPE.
+* SDK directory structure is updated.
+* Documentation refreshed with a new look and feel and contents are enhanced.
+* Core: New C API s added to match the deprecated C++ API capabilities.
+* Core: Init time improvements for most models with HTP offline cache record (Note that the offline cache needs to be
+  regenerated to take advantage of this improvement)
+
+Bugs:
+* Core :Native Cpp example for Platform Validator with C APIs is now functional.
+* Tools: snpe-net-run now allows --debug when input list has output op names (# )or output tensor names (% ) specified in the first line.
+
+2.10.0
+Features:
+* GPU Runtime: Support Pack operation with 1 input.
+* Core: Updated C API documentation for ITensor/Userbuffer creation indicating data size.
+* Core: setLogLevel() API hooked up to the runtimes for updating logging level after creating logger handle.
+* Tools: snpe-throughput-net-run now supports --userbuffer_auto option (similar to snpe-net-run) for
+  automatic IO tensor data type detection.
+* Tools: Converters: Added a new optimization sequence to squash BatchNorm into FullyConnected.
+
+Bugs:
+* HTP: Fixed issue with ElementwiseSin.
+* Tools: Fix the converter issue for GRU op.
+* SNPE AIP: Fixed perf profile setting for multithread scenario.
+
+2.9.0:
+Features:
+* Core: Added new C API Snpe_SNPE_GetInputDimensionsOfFirstTensor() to facilitate retrieving
+  Input dimension without Input tensor name
+* Tools: ONNX converter: Added support for NonMaxSuppression op.
+
+Bugs:
+* Tools: snpe-dlc-graph-prepare fix benign error message during offline prepare
+  for v68 based SoC s (--htp_socs sm8350, sm7350 etc)
+
+2.8.0:
+Features:
+* Tools: Converters: Onnx: Added support for Sign.
+
+Bugs:
+* HTP: solve vtcm overflow issue happened when change data layout: from uint8 flat to uint8 crouton in tcm.
+* Tool:ONNX Converter: Fixed TransposeOp input axis format NT issue.
+
+2.7.0:
+* Tools: Converters: Fixed a bug in the optimization that merges Matmul + Reshape + Add
+  to FC Op that would incorrectly insert the FC Op before the Constant Bias Op.
+  
+2.6.0:
+Bugs:
+* Tools: onnx converter: support conv's input data is Initializer.
+* DSP: Improve execute time of dynamic depthwise convolution with uint8 weights.
+* Core: Added error handling based on buffer data size in execute().
+
+2.5.0:
+Features:
+* Tools: Added new options for snpe-net-run and snpe-parallel-run --use_native_input_files
+  and --use_native_output_files to support inputs in their native format as opposed to default float32 format.
+* Tools: Added new flag --userbuffer_auto in snpe-parallel-run to automatically detect and
+  use the right buffer type based on tensor data type in the model
+* Documentation: SNPE1 to SNPE2 migration guide is added.
+
+Bugs:
+* Tools: snpe-throughput-net-run - capturing the status of lost thread in the result summary.
+* Tools: snpe-dlc-quant: Fixed abnormal DLC size increase when axis quantization is used.
+* Tool: Tensorflow Converter: Fixed issues with per-channel quantization of weights: set is_symmetric = true
+  by default, added param "axis" and "is_symmetric" into weight encodings info.
+* HTP: solve vtcm overflow for transposeconv2d layer whose groups > 1,
+  in depth= out depth, padding =0 and groups != in depth.
+
+2.4.1
+Features:
+* Tools: New tools - snpe-architecture-checker & snpe-quantization-checker are added.
+* snpe-net-run: Added new flag --userbuffer_auto to automatically detect and use the right buffer type based on tensor data type in the model
+* SNPE Core: Enabled logging in Op validation.
+* SDK: Added missing documentation files for snpe-quantization-checker.
+
+Bugs:
+* GPU Runtime: Improved network initialization time in subsequent runs on GPU when using setInitCacheMode.
+* Tools: ONNX Converter: fixed issue related to missing Cast operation.
+* Tools: Missing files for snpe-quantization-checker have been added to the SDK.
+* Tools: Fixed functional failure for snpe-architecture-checker.
+* Tools: Quantizer: Improve Error handling to remove 'uncaught exception' errors.
+* Tools: Fixed bug in snpe-dlc-quantize with option --axis_quant and --enable_htp when
+  multiple socs are passed using --htp_socs.
+* GPU Runtime: Fixed validation errors for Concat op with large dimensions.
+* GPU Runtime: Improved accuracy in models having Concat op with large dimensions.
+* DSP Runtime: Bug fix in running HTP FP16 networks on non fp16 supported SoCs (like sm8350, sm7350)
+* GPU Runtime: Fixed verifier issue in Softmax2UdoPackage.
+* GPU Runtime: Improved network initialization time in subsequent runs on GPU when using
+  netrun --storage_dir option.
+
+
+2.3.1
+Features:
+* Tools: Converters: Onnx: Added 5D tensor support for PoolMax3d.
+* Tools: GoogleNAS: Added support for utilizing the GoogleNAS service
+  with SNPE hardware in the loop (HIL).
+
+Bugs:
+* Tools: Quantizer: Added fix to use default activation bitwidth for
+  static tensors instead of default parameter, except for static tensor
+  that are known to be parameters like convolution weights and bias
+* SNPE Core: Fix online dequantization of int4 axis quant dlc when ran on CPU/GPU.
+* SNPE Core: Fixed stability with concurrency use cases.
+* GPU Runtime: Fixed accuracy issues related to tensor memory optimization.
+* Tools: Quantizer: Fixed issue observed with int4 weight override support.
+
+2.2.1:
+Features:
+* Core: Added userlogs ( --userlogs=warn) for Op validation failures for both offline
+  and online prepare thereby making it easier to track fallback.
+* Core: HTP Offline Cache Blob backward compatibility - Snpe Version check relaxed
+  from SNPE-2.2.1 onwards.
+* Tool: Converters: Added DepthToSpace DCR/CRD pattern that matched reshape,
+  transpose, reshape nodes.
+
+Bugs:
+* Core: Fixed dlc-info to display per axis encoding information for axis_quant dlcs.
+* Tools: Quantizer: Added support for CLE quantization algorithm.
+* Core: snpe-dlc-graph-prepare bug fixes-
+     bound --vtcm_override to the maximum VTCM for each SOC chipset requested
+     instead of a hardcoded 8MB.
+     limit to 1 cache record per SoC in the dlc.
+* Core: Fix runtime de-quantization of weights and biases for axis quantized dlcs
+  when executing in floating point backends (CPU/GPU).
+* Tool: Onnx Converter: Added axis tracking edge case fixes for Concat and MatMul operations.
+* Core: Added protection for loading malicious dlc file.
+* Converter: change the output dims as the node output axis format order.
+* Core: SNPE::Execute() API updated to validate input/output buffer map size before proceeding.
+* Core: snape-dlc-quantize - fixed error in handling % in input list.
+* Tools: snpe-dlc-quantize miscellaneous bug fixes with --output_dlc option.
+* Tools: Converter: Resolved bug that caused failure to override weight encodings for Conv Ops.
+* Tools: Quantizer: Fixed issues related to axis quantization when the model contains
+  TransposeConv2D.
+* Tools: Converter: Fixed bug in elementwise min and max sequence optimization.
+
+2.1.1
+Features:
+* Core: Re-Enable LSTM support for CPU, GPU (HTP will follow).
+* DSP Runtime: Implemented rules for coexistence and selection of multiple cache
+  records for HTP based on VTCM size, DSP Architecture, and SoC
+* Tools: Converter: Added optimization to fold scalar min + max to ReluMinMax.
+
+Bugs:
+* Tools: Quantizer: Re-enabled support for overriding activation quantization
+  (overriding weight quantization will follow).
+* Tools: Quantizer: Fixed missing skip_quantization command line argument in the
+  new snpe-dlc-quantize shell script.
+* Tools: Quantizer: Fixed axis quantization failure.
+* Tools: Quantizer: Fixed issues with quantizing inputs to the gather op.
+* Tools: Converter & Quantizer: Update converter and quantizer to persist the
+  command used in the DLC that can be displayed in snpe-dlc-info .
+* Tools: DLC Viewer: Fixed to support the new DLC Format.
+* C API: Added new Snpe_DlContainer_OpenBuffer() to support loading a model from a buffer.
+* Docs: Fixed C API documentation related to creating a User Buffer .
+* Core: Change default option for SNPEFactory::isRuntimeAvailable() to UNSIGNEDPD_CHECK
+  from NORMAL_CHECK. Note that this also affects the C API.
+* Core: Re-enable NV21 input processing support.
+
+2.0.1:
+Features:
+* Added support for SM8550.
+* Added new C API. This API is in addition to the C++ API. Note that the APIs cannot be mixed, all code should use one or the other.
+* Updated the DLC internal format to use ‘ops’ rather than ‘layers’ to more closely align the graph definition with QNN.
+
+1.64.0
+Features:
+* Tool: Onnx Converter : Reenabled converter command line input dtype to take precedence over model specified.
+* GPU: Improved accuracy in deepsort model, Resolved issues with Conv + elu op fusion.
+
+Bugs:
+* Tools: Quantizer: Fixed issue observed with applying 8-bit overrides using 16-bit default activation quantization encodings.
+* SNPE Core: Fixed failure to select HTP offline cache for certain multi-subnet network topologies.
+
+
+1.63.0:
+Features:
+* SNPE Core: Support PRELU bias broadcasting in SNPE.
+* SNPE Core : snpe-diagview tool updated to display actual units (like cycles) instead of usec by default.
+* SNPE Core: Open GL buffers supported for GPU backend.
+
+Bugs:
+* SNPE Core : Fixed Zip utility's std::istream index to internal extensible array to be
+  const for every container(DLC) load.
+
+1.62.0:
+Features:
+* DSP Runtime: Perf improvement for FP16 models on HTP.
+* Added GatherV2 support for SNPE-QNN-DSP.
+* Tools: Converters: Added 5D tensor annotations NCDHW and NDHWC support.
+
+Bugs:
+* Tools: Converters: TF: Fixed issue with translating explicit padding from Conv Op.
+* Tools: Converters: Onnx: Fixed Onnx Concat axis.
+* Tools: ONNX Converters: Fixed implementation details for Conv1D and Pool1D Ops.
+* Tools: Converters: Onnx: Added optimization folding continuous reshapes.
+
+1.61.0:
+Features:
+* Tools: Converters: Onnx: Enabled support to handle custom op inputs correctly when the default values are provided.
+* Tools: ONNX Converter: Added support to resolve static ONNX Cast operation as Constant.
+* CPU Runtime: Supported CRD mode for depthtospace(pixelshuffle).
+
+Bugs:
+* Improved performance of loading DLC from a memory buffer.
+* Fixed scale calculation for ONNX Resize Operator for align_corner mode.
+  Also overrides Resize input axis format as per source axis order.
+
+1.60.0:
+Features:
+* Tools: Converter: Added ONNX Gemm transA and transB support.
+* Native sample code is updated to take static quantization parameters for quantized input buffers.
+* libSNPE.so, libcalculator.so, libplatformValidatorShared.so, libnpe_dsp_domains_v2.so - libraries
+  generated with gcc8.2 and gcc9.3 toolchain - are now compiled with additional read-only relocation compiler flags.
+
+Bugs:
+* HTP: Fixed issue with Cast op usage in certain configurations.
+* ONNX Converter: Improvements to handle different input axis layouts.
+
+1.59.0:
+Features:
+* DSP Runtime : Added support for edge padding from SNPE side .
+* Tools: ONNX Converter: Limited support for Expand operator when it can be interpreted
+  as a noop from operator attributes.
+* Tools: ONNX Converter: Added support for ScatterND.
+
+Bugs:
+* Tool: Quantizer: Fixed duplicate Convert layer Id issue observed in generated DLC when
+  multiple Convert layers feed into a single layer.
+* Tool: ONNX Converter: Fixed handling of models with inputs of unknown shape.
+* Tools: ONNX Converter: Resolves issue where Shape operator translation could fail if
+  the input was part of the initializer list.
+
+1.58.0
+Features:
+* Tools: Converter: Enabled broadcasting of weights and bias for BatchNorm layer to
+match channel dimensions.
+
+1.57.0
+Features:
+* Tool: Onnx Converter: Added support in dry-run mode to handle reporting ops that are not in onnx schema domain.
+* Tool: Converter: - Updated inaccurate macs/params calculations for Ops per re-analysis.
+* CPU Runtime: Set the max detections to keep top K for Caffe SSD network.
+* Tool Converter: Removed obsolete ssd_permute_param parameter in caffe converter permute translation.
+
+Bugs:
+* SNPE DSP: Fix axis quantization not adding all the fixedPointParam of output to bufferDeltas.
+* Tool Converter: Fixed coefficient input broadcasting issue for ONNX Prelu operation.
+* Tool Converter: Fixed axis tracking bug for permute when input is btf format.
+
+
+1.56.2
+Features:
+* SDK: Clarified the documentation/example for specifying UDO data types.
+
+Bugs:
+* Tool: Converter: Added new layernorm sequence for pattern matching and added a constraint to enforce MatMul layer's constant second input to 8-bit tensor in quantized model.
+* Tools: ONNX Converter: Adds support for scale/offset quantization overrides
+* Tools: ONNX Converter: Fix warning for Const operator from Opset 11.
+* Tools: ONNX Converter: Fix scale factor calculation error due to mixing height&width dimensions
+* CPU Runtime: Support LayerNorm layer
+* CPU Runtime: Set the max detections to keep top K for Caffe SSD networks
+
+
+1.55.0
+Features:
+* Added support for the OneHot operation across the SNPE converters with runtime support available on SNPE CPU.
+* Tool: ONNX Converter: Added support for LSTM & CRNN.
+* DSP Runtime: Added support for LSTM.
+* Tools: Converters: Added support for Caffe Power scale/shift parameters.
+
+Bugs:
+* SNPE DSP: Fixed the issue of invalid cache record added to DLC while doing offline prepare for HTP.
+* Tools: Converters: Fixed Softmax and Reduction Ops to have default case for output_buf axis format.
+
+1.54.0
+Features:
+* Tool: TF Converter: Added support for detecting eltwise pattern for batchnorm layer with fakequant inputs
+* Tools: Converters: Adds support for Caffe Reduction layer Sum and Mean Ops.
+* Tool: Quantizer: Added support to make Convert Operator upscale and downscale quantization parameters loss free.
+* ONNX Converter: Added support for LSTM & CRNN in converters
+* DSP Runtime: Added support for LSTM.
+
+Bugs:
+* Tool: Converters: Added batch dimension to anchor input data conversion from tensorflow
+  corner style to center style for DetectionOutput operation optimization
+* Tool: ONNX Converter: Added support to pre-apply ONNX batchnorm scale and bias quantization
+  encodings before getting consumed by Converter to compute weights and bias.
+* Add support for reverse engineering SAME padding mode from the explicit pad values
+
+1.53.2:
+Features:
+* Tool: Quantizer: Added support for fake quant operators in snpe-dlc-quantize.
+* Tools: TF Converter: Support for logical_and, equal, greater, greater_equal, less, less_equal, not_equal, logical_or, select.
+* Tool: TensorFlow Converter: Added support for Identity nodes that act as graph output nodes.
+
+Bugs:
+* Tool:ONNX converter: Fixed incorrect default bias shape for ConvTranspose translation.
+
+1.52.0:
+Features:
+* Tools: Converters: Removes pre-broadcasting of constant tensors resulting in smaller
+  file sizes in converter output.
+* Tool: Converter: Added Converter support for Nd Reshape layer.
+* Tool: Converter: Added CastOp support for TF.
+* Tool: Converter: Added support for static subgraph resolutions at conversion time.
+* Tool: Converter: Added support for tensor dtype for TF fill op translation.
+
+Bugs:
+* SNPE DSP: Fixed variance accuracy loss in InstanceNormalization on HTP.
+* SNPE GPU : Added optimized kernel for ReduceMean Operation.
+* Tool: Converter: Fixed bug in TF fullyconnected translation where input was intermittently
+  out-of-order.
+* SNPE DSP: Fixed the issue of freeing the uninitialized pointer that is leading to random crash.
+* SNPE DSP: Optimized specific unpack->elementwise sequences for certain models on HTP.
+
+1.51.0
+Features:
+* Tool:Converter: Added supported for Onnx WhereOp.
+* Added support for edge padding type for pad operation in GPU runtime.
+* SNPE DSP: Enabled support for ElementWiseUnary abs layer on HTP.
+* GPU Runtime: Added support for asymmetric reflect padding for pad operation.
+* UDO: Allow users to specify a different datatype for each core in single config file.
+* UDO: HTML documentation & sample app is updated to provide example for loading UDO package.
+
+Bugs:
+* DSP Runtime: Fixed the context leak on HTP targets during repeated init/deinit scenarios.
+* SNPE: Init stage is optimized to be done faster.
+* SNPE DSP: Optimized maxpool with stride 2x1 on HTP.
+* SNPE DSP: Optimized the big sized concat ops to fit into memory.
+* SNPE DSP: Optimized the init on HTP.
+* SNPE DSP: Graph prepare is optimized for HTP targets to be able to run bigger graphs.
+* SNPE DSP: Fixed the issue with CDSP not going to sleep when the model is de-initialized.
+
+1.50.0
+Features:
+* Tool: Quantizer: Added SNPE Quantizer support for is_symmetric field used in updated AIMET specification.
+* DSP Runtime: Improved instance norm op accuracy when input size is big.
+* DSP Runtime: Enabled edge padding support for v65/v66 targets.
+
+Bugs:
+* Tool: Tensorflow Converter: Resolved Xiaomi issue where TF Mul was not being translated correctly.
+
+1.49.0
+Features:
+* ONNX Converter: Added support for ONNX 1.6 (Opset 11)
+* TF Converter: Added support for TF2.3 models.
+* TFLite Converter: Added initial TFLite converter.
+* ONNX Converter: Added support for YOLOv2, YOLOv3, tiny-YOLOv3, and YOLOv5.
+* DSP Runtime: Optimized conversion performance to/from 16-bit quantized values on HTP.
+* Converters: Improved detection and removal of unconnected nodes.
+* ONNX Converter: Added support for DETR model.
+* AIP Runtime: Optimized the input and output data format conversion times for
+  specific depth configurations for models having 16bit activations.
+* DSP Runtime: Enabled support for Matmul on HTP.
+
+Bugs:
+* snpe-throughput-net-run: Fixed input_list processing when using multiple batches. Fix FPS calculation.
+* TF Converter: Fixed inconsistent network topology flow differing between runs for larger models with forking nodes.
+* DLC Quantizer: Fixed a race condition that might result in integer overflow.
+* Android Sample App: Fix to work correctly when multiple models are packaged, with only some requiring UDO.
+* snpe-diagview: Fixed crash bug when using circumstances AIP runtime networks with UB_FLOAT and UB_TF8 buffer modes with init caching.
+* DSP Runtime: Additional model support with offline prepare .
+
+1.48.0
+Features:
+* SDK: Migrated to use Ubuntu 18.04 as the host platform.
+* SDK: Updated dependencies.sh and check_python_dependencies.sh for the transition to Ubuntu 18.04 - Python 3.6, and libc++9.
+* SDK: Removed the system variants for the DSP stub libraries.
+* Tool: Switched diagnostic logging (SNPEDiag.log) to a new file format.
+* Added static buffer mapping support for frequently used buffers in DSP runtime.
+* Improved instance norm op accuracy when input size is big in DSP runtime.
+* Added support for Unsigned PD with the AIP runtime.
+
+Bugs:
+* Tools: Converters: Fixed a bug which might prevent applying quantization overrides to a model.
+* Fixed NMS op code in HTP core.
+* Input node followed by concat node is optimized in HTP.
+* SNPE DSP: Fixed Unpack Layer indexing error on HTP.
+* DSP Core: Fixed overflow issue in instance norm op when variance is too small.
+
+1.47.0
+Features:
+* Added support for TF 1.15 for NonMaxSuppressionV3 translation in TF converter.
+* Added support for Normalize layer translation in Caffe converter.
+
+1.46.0
+Features:
+* Improved CDSP power voting by using client specific context id.
+* SNPE DSP: Improved argmax op performance by optimizing l2 cache prefetch and replacing int to float cast op.
+* Improved the input/output data conversion times on AIP runtime for specific depth configurations.
+* Enabled the support for random inputs for networks having more than one input layer in SDK benchmarking
+  scriptsTool: qnn-tensorflow-converter: Removed --allow_unconsumed_nodes option from TF converter as it is now the default.
+* Enabled elementwise sub and div on HTP.
+
+Bugs:
+* Fixed issue of Lrn_d32 op fails for window size 1 in DSP runtime.
+* Fixed issue of InputSupernode Fails in a edge case in DSP runtime.
+* Fixed issue with CDSP power voting interfering among multiple threads.
+
+1.45.0
+Features:
+* Beginning with SNPE 1.45.0, users must install libc++1-8 using apt-get or other package manager in order to perform offline cache generation for HTP.
+* Optimized shallow convolution (depth <= 4) in inputsupernode for v66 DSP.
+* Remapped previous converter translation of Caffe Tile layer as ConcatOp to TileOp in Caffe Converter.
+
+Bugs:
+* Fixed small accuracy regression on VGG and Flownet models in DSP runtime.
+* Named the HTA threads created on CDSP appropriately.
+* Improved logging when libcdsprpc cannot be found.
+* Fixed the issue with AIP runtime being unavailable on the Android R platforms.
+* Fixed the issues with HTA metadata generation of conv2d op.
+
+1.44.0
+Features:
+* Optimized concat performance when input size is very big in DSP runtime.
+* Optimized slice performance when split 3 channel RGB input in DSP runtime.
+* Removed support for proposal layer in DSP runtime.
+* Added SNPE converter support for Softmax axis parameter.
+* Added support for consuming AIMET/custom quantization encodings to override quantizer generated encodings.
+
+Bugs:
+* Fixed an issue on graphs where the final node in a graph was an elementwise operation with more than two inputs.
+* Fixed bug where output_shapes were calculated as float values for DepthToSpace and SpaceToDepth Ops.
+* Changed ONNX converter to not allow negative or placeholder dimensions.
+* Fixed potential issues with some models where QAT nodes may not get propagated properly to the final converted model.
+
+1.43.0
+Features:
+* Improved the input/output conversion times for models having depth as 4 on AIP runtime.
+* Enabled initial support for constant layers along with elementwise Op on HTA.
+* Added support for opaque float concat operation in SNPE DSP concat layer.
+* Added support for Caffe's "Clip" layer in the caffe converter.
+* Added int16 example to snpe-sample app.
+
+Bugs:
+* Fixed the crash while running multi-threading applications with user buffer mode on AIP runtime.
+* Fixed bug in ONNX converter that used a hard-coded name for the sequence length input of the LSTM operator.
+* Fixed bug in ONNX converter for Unsqueeze layer, which got a key-error with static inputs.
+* Fixed the bug in l2_fetch usage during output conversion which improved the performance significantly for some models running on AIP runtime.
+* Fixed the issue with generation of HTA enabled dlc for denoise model.
+* Fixed the segmentation fault issue during dlc generation with specific inputs, on HTA.
+* Fixed issue with PlatformValidator.hpp reference to non-existent #include.
+
+1.42.2
+Bugs:
+* Fixed the bug in l2_fetch usage during output conversion which improved the performance significantly
+  for some models running on AIP runtime.
+
+1.42.0
+Features:
+* Removed V60 DSP libs from SNPE SDK.
+* Enabled the AIP runtime support for generating the intermediate outputs from HTA with online compiler.
+* Enabled multithread for re-quantize process in DSP runtime.
+* Added optional parameter to set the hysteris period for sustained high and burst profiles in DSP runtime.
+
+Bugs:
+* Added support for opaque float concat operation in SNPE DSP concat layer.
+* Fixed bug in UserBufferTF8 where retrieving the encoding would always return null.
+* Fixed box decoder performance issue on mobilenet v2 ssd model for DSP r*untime.
+* Fixed tanh performance issue by replacing QuantizedTanh_8_ref with QuantizedTanh_8 op in DSP runtime.
+
+1.41.0
+Features:
+* Added MatMul support on the CPU runtime.
+* Added support for new version of 7250 with integrated PMIC module.
+* User Defined Operations(UDO) with weight parameters have been added to demonstrate both quantization
+  and network execution on CPU and DSP runtime cores respectively.
+
+Bugs:
+* Optimized tile Op in DSP runtime, that used 2d memcpy for w-d plane tiling and HVX for tiling along depth.
+* Fixed stack overflow issue in concat layer in DSP runtime.
+* Fixed issue with input for multibatch in DSP runtime.
+* Fixed issue in TF converter that prevented FusedBatchNorm operations from being merged into previous Convolution layer.
+* Fixed DSP crash issue due to stack overflow Concat layer preparation.
+
+1.40.0
+Features:
+* Added DSP Graph Caching support for AIP models with HVX subnets.
+* Upgraded DSP to use Hexagon SDK 3.5.2 toolchain.
+* Added support for 16bit UDO layers in DSP.
+* Added support for large average pooling, reduce_mean layer and improved elemetnwise_mul support for larger tensor size.
+
+Bugs:
+* Fixed the issue with buffer ordering during the execution of batched models on AIP runtime.
+* Fixed issue with SsdDetectionOut when number of classes is only 1.
+* Fixed accuracy issue with Correlation 1D op.
+* Fixed improper processing when 16bit input quantization is used in certain cases.
+* Fixed scaling logic in convert_16 op.
+
+1.39.1
+Bugs:
+* Fixed the performance regression of Mobilenet SSD model on AIP runtime.
+
+1.39.0
+Features:
+* The SNPE license (LICENSE.pdf) has been updated, please review it for more details.
+  Additionally the REDIST.txt has been removed, as redistribution is covered in the license.
+* Added graph caching support which improves init times for DSP & AIP networks.
+  (DSP subnet with in AIP is not supported)
+* Optimized Prelu to reduce saturation loss during re-quantization at prelu by
+  using cubic approximation in AIP runtime.
+* Fixed the input conversions to allocate the required buffers during initialization itself,
+  to improve the inference time for AIP runtime.
+* Fixed potential bug with freeing threads in DSP runtime.
+* Added additional logging messages for debugging in DSP runtime.
+* Added support for the AIP runtime in the SNPE sample "snpe-sample".
+* Added support for BBox transform layer in Caffe2 converter.
+* Added new opset support in the ONNX converter: ArgMax, ArgMin, Concat, PRelu, ReduceMean,
+  ReduceMax, ReduceMin, ReduceSum, Squeeze, Unsqueeze, MatMul, Flatten, Max, Split, Clip.
+* Added support for the fixed-point version of the MobileNetV3 model with H-Swish neuron in TF converter.
+* Improved support of resizing in Crop layer for TF and Caffe converter by introducing new “counts” parameter.
+Bugs:
+* Fixed issue of incorrect UDO tensor datatype in quantizer.
+* Fixed issue with setting the performance profile mode for HTA from
+  AIP runtime in multi-threading use cases that could cause performance to drop.
+* Fixed issue with snpe_bench.py memory profiling.
+
+1.38.0
+Features:
+* Enabled FC/MatMul to use VTCM if available in DSP.
+* Optimized 16-bit MeanVarianceNormalize in DSP runtime.
+* Added support for batchwise scalar divide operation in DSP runtime.
+* Optimized Hard-swish operator for mobilenetV3.
+* Added support for EltwiseMin layer for ONNX converter and CPU runtime.
+* Added support for Onnx BatchNorm layer (OpVer 9, 12) in Onnx Converters.
+* Caffe preprocessing subtract_mean layer is added. If specified, converter will
+  enable preprocessing specified by a data layer transform_param subtract_mean.
+* ONNX softmax converter support only existed for rank <= 2. Support for tensors
+  rank <= 4 was added.
+* Enabled the end-user / developer to request the use of an unsigned process
+  domain to avoid the requirement of signed libraries for SNPE execution on 8250
+  and newer devices.
+Bugs:
+* Removed autoquantization for classes output in MultiClassNMS layer and added
+  support for float addition in ElementwiseOp layer to handle this case.
+* Fixed the issue with enabling stats for AIP runtime on models where number of
+  layers in HTA subnet is more than SNPE layers.
+* Fixed the output conversions to allocate the required buffers during
+  initialization itself in AIP runtime, to improve the inference time.
+* Enabled honoring of padding information from the HTA driver which is
+  pre-computed by AIP runtime earlier, to unblock execution of more models.
+* Fixed the issue with output buffer id while converting depth2space to deconv on HTA.
+* Fixed a bug during graph transformation while folding the batchnorm on HTA.
+* Increased DCVS relaxed sleep latency duration, this will let power system know
+  that CDSP can goto deeper sleep state. If there is no active request for
+  inferencing, it is better for system to go in deeper sleep state.
+
+1.37.0
+Features:
+* Enabled the online compiler support for HTA 1.x family of devices.
+* AIP performance profiles behavior is aligned similar to DSP runtime for reduced power consumption in case of inference inactivity.
+* ONNX Converter: Added support for Onnx Pad layer (OpVer 11).
+* Added support for the h-swish layer used by MobileNet V3.
+* Removed support for the Generate Proposals, ROI Align, and ROI Proposal layers.
+* Added improved support for the reporting of Exceptions in the Java API.
+* Updated the DSP UDO header file to be compatible with SNPE 1.37.0.
+* The DSP UDO support is updated to be compatible with Hexagon SDK 3.5.1.
+Bugs:
+* The network creation action was moved onto another thread to avoid impacting the affinity for the main thread of the calling program.
+* Snpe-dlc-info: Fixed issue in MACs calculation error for deconvolution layer.
+* Avoid crash on SDM845 and other v65 targets when unable to retrieve VTCM memory.
+* Fixed an issue in the TensorFlow converter where the weights in the Fully Connected layer were incorrectly transposed.
+* Fixed the support for using DSP UDO with the AIP runtime. Previously, the UDO packages would not be properly loaded in the AIP runtime.
+* Fixed DiagLog data for a UDO on GPU, where it did not report proper values for start and stop.
+* Enable support for keras batchnorm with empty mean and variance to a default values.
+* Fixed a memory leak when using IsRuntimeAvailable() with the VOLATILE_CHECK for the DSP runtime.
+
+1.36.0
+Features:
+* Added Java API extension to register UDO package with SNPE.
+* snpe-dlc-info now prints the command-line that was used to quantize the DLC if applicable.
+* Added support to handle UDO layers with multiple TF8 outputs with different quantization parameters.
+* Added support for an additional profiling level (moderate) for SNPE benchmarking script and associated snpe-net-run executable for tracking initialization time metrics.
+* Upgraded DSP to use Hexagon SDK 3.5.1 toolchain.
+* Extend Platform Validator to detect HTA API version.
+* Add VOLATILE_CHECK Mode for SNPE DSP Runtime Checking to query runtime availability in each call instead of giving cached result.
+* Performance modes like LOW_POWER_SAVER, HIGH_POWER_SAVER, LOW_BALANCED added for CPU runtime
+Bugs:
+* Fixed bug with propagation of model version during conversion.
+* Fixed the issue with selecting the correct output shape during graph transformation while inserting1x1 conv2d for different input format.
+* Fixed the issue with allocation of layer descriptor while loading the network on HTA.
+
+1.35.0
+Features:
+* Introduce the User-Defined Operations (UDO) feature.
+* Added support for SDM720G/SM7125.
+* Added support to snpe-throughput-net-run for UserBuffer input tensors (both INT8 and INT16).
+* Input batching support is added for networks that can run completely on AIP runtime.
+* Add support for the tf.stack and tf.unstack ops to the DSP and CPU runtimes.
+* Add support for the tf.stack, tf.unstack, tf.floor, tf.minimum to the TF converter.
+Bugs:
+* Fixed some small memory leaks that are seen when repeatedly calling dlopen()/dlclose() on libSNPE.so.
+* Updated the Deconvolution operation on DSP with a new kernel that improves performance on various kernel sizes and strides.
+* Fix ssd_detection CDSP crash on DSP runtime.
+* Updated the HTA to partition the input layer, if it has a connection to a layer that is not included in the same partition.
+* Improved the tiling configuration support for depth wise convolution layer.
+
+1.34.0
+Features:
+* Initial support for ops with 16-bit activations using HTA in both snpe-dlc-quantize and in the SNPE AIP runtime.
+* New option for snpe-net-run to automatically turn unconsumed tensors of the network (tensors that are not inputs to a layer) into network outputs.
+Bugs:
+* Fixed inconsistent results on SM8250 in certain cases for depthwise convolutions.
+* Add support for the depth2space operation on the GPU.
+* Using optimized Softmax implementation in AIP networks when input activation has more than 5000 elements.
+* Truncate detection output on DSP to return valid data only.
+* Ensure weights are properly flushed to DDR for use during inference in the DSP runtime.
+* Fix support for NV21 encoding in the DSP runtime.
+
+1.33.2
+Features:
+* Changed behavior of Crop layer resize, so it retains the number of copied elements on each dimension.
+* Using optimized Softmax implementation in AIP networks when input activation has more than 5000 elements.
+Bugs:
+* Address accuracy issues for Deconvolution in the AIP runtime.
+* Make quantizer --override_params work for AIP.
+* Reordered PerformanceProfile_t to be ABI compatible with 1.32.0.
+
+1.33.1
+Bugs:
+* Fixed a build issue that incorrectly removed Symphony.
+
+1.33.0
+Features:
+* New performance modes have been added:
+   LOW_POWER_SAVER: Run in lower clock than POWER_SAVER, at the expense of performance.
+   HIGH_POWER_SAVER: Run in higher clock and provides better performance than POWER_SAVER.
+   LOW_BALANCED: Run in lower balanced mode, provides lower performance than BALANCED.
+* snpe-dlc-info adds a summary of the layer types in use in the model.
+* Updated to use new BLAS functionality that leverages OpenMP. This adds a new dependency on the OpenMP shared library for Linux platforms.
+* Added 32-bit bias support.
+* Support init caching for SSD output layer on DSP.
+Bugs:
+* Fix memory leak causing increasing init time for DSP.
+* Add converter support for dilated convolution when used with fakequant nodes.
+* Multiple bugs fixed in snpe-onnx-to-dlc that were causing errors for models having torch.Mul op.
+* Extends TF converter support to NMSv1 Op in addition to existing support for v2 and v3 NMS Ops.
+* Tensorflow conversion bug fixed in infer_shape for StridedSlice Op. output_shape should not be a list of shapes but the shape of the one output.
+* Fix bug with propagation of model version during conversion.
+* If burst mode is set, set thread affinity to Big Cores during init and de-init, and restore to the previous setting after the actions are complete.
+* Fix segfault when using user buffers with a resizable dimension.
+
+1.32.0
+Features:
+* Add Caffe MVN Layer support in the Caffe Converter, CPU Runtime, and DSP Runtime
+* snpe-dlc-quantize: Enable the use of quantization parameters calculated during training when using dlc quantizer.
+  To override the SNPE generated quantization parameters simply pass --override_params to snpe-dlc-quantize.
+* Removed deprecated command line arguments from converters. All three converters now require passing -i/--input_network for model input paths.
+  Help menus are updated for each converter
+* snpe-dlc-diff: Added command-line option [--diff_by_id/-i] to snpe-dlc-diff.
+  This option allows users to compare 2 models in order(sorted by id); as oppose to only diffing common layers
+* Added support for L2Norm layer to TensorFlow converter
+* Optimized the DSP performance for the 'Space To Depth' layer
+* Add support in the Java API for setInitCacheEnabled(), and setStorageDirectory() to enable DLC caching support.
+* Allow graceful recovery after a fastrpc error - Recreate the userPD after the cDSP crashes so that the user can continue on the SNPE process with subsequent instances, instead of having to close the SNPE process. Note: all the instance associated to the previous userPD will be lost.
+* snpe-dlc-viewer: Associate each layer type to a fixed color for consistency when using snpe-dlc-viewer
+* Split the SNPE isRuntimeAvailable method into two separate functions to improve backward compatibility with existing client binaries that were built against the older signature.
+Bugs:
+* TF Converter: Fix Elementwise Broadcast support
+* ONNX Converter: Fixed bug where output dimension was incorrect when keep_dims parameter was set to False for Argmax, ReduceSum and ReduceMax.
+* ONNX Converter: Fixed bug where pad attribute was not properly parsed for Deconv Op.
+* Caffe Converter: Fixed bug when converting SSD-based models when using Python 3.
+* TF Converter: Fixed bug where converter was removing const Op input to reshape op when passed through identity op(s). i.e const-> identity -> reshape.
+* Fixed bug where getOutputSize() would give the wrong result on output tensors in UserBuffer mode
+
+1.31.0
+* New patterns were added to enable running the CLE algorithm on more op
+  patterns and model architectures.
+* Added Tensorflow converter support for Caffe-style SSD networks.
+* Added support for HeatmapMaxKeypoint layer in the CPU runtime.
+* Added support for ROI Align layer in CPU runtime.
+* Added initial L2Norm layer support in CPU runtime. No support for axis
+  parameter yet: normalization is performed along the inner-most dimension of
+  the input tensor.
+* Support for single-input Concatenation layers was added to CPU, GPU and DSP.
+* Changed determination of number of batch dimensions in the Fully Connected
+  layer so rank greater than 1 is always assumed to mean that there is 1 batch
+  dimension.
+* Removed constraint on the LSTM layer in the GPU runtime that prevented batch
+  mode operation.
+* Added support for Leaky-RELU in the TensorFlow converter. Both the actual
+  Leaky-Relu op and the elementwise op representation are supported and map to
+  SNPE's Prelu op.
+* Added Argmax support to the Caffe converter, and optimized performance on
+  the DSP runtime.
+* Added new column to snpe-dlc-info that displays the supported runtimes for
+  each layer.
+* Fixed an edge case where in certain conditions OpenCL would return
+  CL_INVALID_WORK_GROUP_SIZE.
+* Made isRuntimeAvailable Java API thread-safe.
+* Replace unstable image from sample Android classifier application data set
+  with an image that is more consistent.
+
+
+
+1.30.0
+* Documentation has been added to reflect the new common converter command line options for input processing.
+* Converters now propagate required batchnorm information for performing quantization optimizations.
+* Support for the new bias correction quantization optimization which adjusts biases by analyzing float vs quantized activation errors and adjusting the model to compensate.
+* ONNX converter now filters single input Concats as a no ops as SNPE didn’t support them.
+* Converter input processing now uniformly handles different input types and encodings.
+* ONNX converter now supports the ConvTranspose ‘output_padding’ attribute by adding an additional pad layer after the ConvTranspose op.
+* Integrates the latest flatbuffer 1.11 library which brings speed improvements and options for model size reduction.
+* GPU size limitations with the ArgMax op (when setting the keepDims op attribute to false) can be worked around by enabling CPU fallback.
+* Fixed DSP error with MobileNet SSD on QCS403 and QCS405.
+* Fixed the issue with partitioning of deconv layer in HTA.
+
+
+1.29.0
+* Added support for dlc reorder tool
+* Optimization of HTA d32 conversions
+* Added tf space_to_depth op for SNPE CPU and DSP runtime
+* Benchmarking scripts enhanced for showing further break down of execution time, across various components
+* Added support for additional ONNX binary element-wise ops
+* Optimized deconv layer for improving performance
+* Fixed an issue related to runtime error in DSP runtime
+* Performance Optimization of SNPE GPU Runtime for Shufflenet V2 by using profiling level config
+
+1.28.0
+* Added an optional argument to isRuntimeAvailable for the DSP runtime so that it doesn't activate the DSP
+* Allow UB_T8 and UB_FLOAT output for snpe-net-run
+* Added a new command line option for snpe-dlc-diff to check layer names
+* Updated the --dlc argument to --output_path for snpe-caffe-to-dlc to align with the ONNX converter
+* Added --dry_run argument to snpe-onnx-to-dlc to allow evaluation for successful conversion on an ONNX model
+* Added support for the gather op in the DSP runtime
+* Added support to convert the TF MobileNet-V1-FPN-SSD model
+* Fixed a memory leak in the DSP runtime that is seen when repeatedly loading and unloading a network
+* Addressed issues on V66 DSPs related to acquiring VTCM memory
+* Fixed an issue related to multiple inputs for the Caffe converter
+* Fixed an issue in the TF converter related to element-wise sun and the atrous parameter
+* Fixed an issue in the TF converter related to tf.crop_and_resize when there are only 2 inputs.
+* Fixed additional cases of uncaught exceptions with the aarch64-android-clang6.0 platform
+
+1.27.0
+* Added new APIs support for setting output tensor names to snpeBuilder and to fetch output tensor names for a given output layer name.
+* Improved the peak memory usage with DLC v3 format.
+* Fixed few issues with performance and runtime failures on DSP runtime.
+* Fixed few issues and improved error handling for platform validator.
+* Fixed the issues with Pooling and Instance norm layers of Tensorflow converter
+* Removed *-android-gcc4.9 platform support. This compiler has been retired for the Android NDK,
+  so all support is transitioning to using Clang for Android.
+* Remove the arm-linux-gcc4.8hf platform. The development platform has been retired.
+
+Changelog:
+1.26.0
+* Added support for the ONNX Gather Op in the ONNX Converter and CPU runtime
+* Optimized DeConvolution Layer for the DSP runtime
+* Support for tf.nn.moments in the TF converter, CPU and DSP runtimes
+* Added TF Reflect Pad support for the DSP runtime
+* Add symmetric quantizer option in snpe-dlc-quantize
+* Add support for batch > 1 when using the Scale Layer on the DSP runtime
+* Updated Platform Validator python script to be OS-independent
+* Added additional optimizations for HTA input conversion
+
+Changelog:
+1.25.0
+* Updated DLC format to improve load time performance and memory consumption. Old DLCs will continue to work as is, but new DLCs generated from 1.25 will use the new format
+* Added support for optimized MultiClassNms and ArgMax ops on DSP runtime
+* Added option to request larger memory allocations on the DSP for improved init time, at the expense of more memory use
+* Improved concurrency for multiple SNPE objects running simultaneously on DSP
+* Improvements when using priority control on DSP
+* Added support for channel shuffle and ArgMax in the ONNX converter
+* Support multiple subnets within the AIP runtime
+
+Changelog:
+1.24.0
+* Added setProfilingLevel API support for AIP and CPU runtimes
+* Adressed various stability issues on AIP runtime.
+* Support multi inputs and multiple outputs on each SNPE AIP’s subnet
+
+Changelog:
+1.23.0
+* Upgrade to Android NDK r17c to build SNPE
+* Improving initialization and de-initialization times
+* Various DSP timing fixes
+* Addressed some DSP concurrency edge cases that could impact output values
+* TF converter support for non max suppression, crop and resize Ops
+
+Changelog:
+1.22.0
+* Support for several new ops on DSP runtime
+* Upgrade to Android NDK r16b to build SNPE
+* setProfilingLevel API support in DSP runtime
+* Added new tool snpe-throughput-net-run
+
+Changelog:
+1.21.0
+* Tensorflow converter and CPU runtime support for various ops
+* DSP runtime support for Eltwise Realdiv and Square ops
+* GPU support for resize_align_corners layer
+
+Changelog:
+1.20.0
+* Support for QCS605 LE platform
+* NDK version upgrade to r14b
+* Tensorflow converter support for eltwise sqrt and softmax with dimension > 2
+* Platform validation command line tool
+
+Changelog:
+1.19.0
+* ELU op support for Tensorflow/Onnx Converters and CPU/GPU runtimes
+* BoxWithNMSLimit and BBoxTransform ops support in caffe2 converter
+* Support for Caffe Power Layer in GPU
+
+Changelog:
+1.18.0
+* Support for tensorflow pad, elementwise subtraction on GPU
+* ONNX converter support for shape and pad ops
+* Tensorflow converter support for argmax, channel shuffle and elementwise subtraction ops
+
+Changelog:
+1.17.0
+* Support for Scale Layer in Caffe converter and DSP runtime
+* DSP support for batch>1 and ChannelShuffle
+* Updated SDK examples for Inception v3 2016 model
+
+1.16.2
+* Remove linkage to libstdc++.so in DSP loader libraries
+
+1.16.1
+* Add note regarding upgrading from previous SDKs to 1.16
+* DSP runtime fixes
+* Fix axis-tracking for 1D BatchNorm
+* Remove linking to libstdc++.so shared library
+
+1.16.0
+* Add Caffe2 ChannelShuffle layer support for CPU and GPU runtimes
+* Add Inception v3 model to Android application example
+* Add layer optimizations for Sigmoid, BatchNorm and Instance Norm on DSP
+* Support for batch>1 in Caffe, Caffe2, ONNX and TensorFlow converters
+* Support for batch>1 in CPU and GPU runtimes
+* Sustained high performance mode for DSP runtime
+
+1.15.2
+* Fix for GPU runtime memory leak
+* Fix for GPU reshape to/from 1D
+
+1.15.1
+* Fix for instance normalization followed by scale
+
+1.15.0
+* Support for instance normalization for Caffe and Caffe2
+* Support for MobilenetSSD (Caffe)
+
+1.14.1
+* Minor Fixes
+
+1.14.0
+* ONNX converter (alpha), multiple enhancements and fixes
+
+1.13.0
+* GPU and DSP v65 improvements, GPU floating point 16 support.
+
+1.12.0
+* Support for Android LLVM/libc++, MobilenetSSD (TensorFlow)
+
+1.10.2
+* Fix a bug for GPU runtime
+
+1.10.1
+* Bug fix for mixed userbuffer input types for DSP runtime
+
+1.10.0
+* Support for Mobilenet on DSP
+* Added enhanced DSP runtime
+* Support for Snapdragon Flight Board
+* Updates for UserBuffers
+
+1.8.0
+* Mobilenet support on CPU,GPU
+* Support for Snapdragon 636
+* Android 64 bit support
+
+1.6.0
+* Support for Snapdragon 450 - CPU, GPU
+
+1.4.0
+* Support for Snapdragon 630 - CPU, GPU
+* Support for FasterRCNN - CPU, DSP
+* Support for 820 AGL platform - ADSP
+
+1.2.2
+* QDN Release
+
+1.2.0
+* Beta Caffe2 converter
+
+1.0.2
+* Support for Snapdragon 660 - CPU, GPU, CDSP
+* Support for 820 AGL platform - CPU, GPU
+
+1.0.1
+* Updated documentation
+
+1.0.0
+* Official TensorFlow conversion support
+* DSP runtime support
+* New dlc-quantize tool
+* API changes (non-backwards compatible changes were made)
+* DLC files created prior to 1.0 release need to be regenerated
+
+0.11.0
+* Added support for rectangular filters in Convolution and Pooling layer
+* Added support for group parameter in Deconvolution layer
+* Added new layers: Slice
+* Removed core affinity setting in engine
+* Added tensorflow converter
+* Added Linux Embedded (LE) soft float support which has been tested on yocto distribution
+* DLC files created prior to 0.7.0 release need to be regenerated
+
+0.7.0
+* Added new layers: Batchnorm + scale, Crop, Pre-processing
+* Removed SNPEFactory::CreateInstance version using model buffer

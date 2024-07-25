@@ -1,0 +1,373 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Reducing TCM requirements for performance and functionality &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Choice of Activation functions" href="htp_guidelines_activation_functions.html" />
+    <link rel="prev" title="Use Space-to-depth transformation where possible" href="htp_guidelines_space_to_depth.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../general/backend.html">Backend</a> &raquo;</li>
+        
+          <li><a href="../../general/htp/htp_backend.html">HTP</a> &raquo;</li>
+        
+      <li>Reducing TCM requirements for performance and functionality</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="reducing-tcm-requirements-for-performance-and-functionality">
+<h1>Reducing TCM requirements for performance and functionality<a class="headerlink" href="#reducing-tcm-requirements-for-performance-and-functionality" title="Permalink to this heading">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#reducing-the-required-input-and-output-sizes" id="id1">Reducing the required input and output sizes</a></p></li>
+<li><p><a class="reference internal" href="#padding-choices" id="id2">Padding choices</a></p></li>
+<li><p><a class="reference internal" href="#reduce-precision" id="id3">Reduce precision</a></p></li>
+<li><p><a class="reference internal" href="#reducing-tcm-pressure-throughout-the-network" id="id4">Reducing TCM pressure throughout the network</a></p></li>
+<li><p><a class="reference internal" href="#generic-rule-of-thumb-guidelines-for-various-op-activations-to-fit-in-tcm" id="id5">Generic rule of thumb guidelines for various op activations to fit in TCM</a></p></li>
+</ul>
+</div>
+<p>The firmware divides work into smaller pieces (tiles) and attempts to schedule and allocate
+those smaller work items in a way that improves performance and reduces traffic to external
+memory as much as possible.  Working on horizontal strips of activation data is typically
+the most efficient in execution, and so we try to execute in that format as much as possible.
+However, for very large activations the amount of memory required to process a horizontal
+strip of data can be very large.  This is especially true on devices with smaller TCM sizes.</p>
+<div class="section" id="reducing-the-required-input-and-output-sizes">
+<h2><a class="toc-backref" href="#id1">Reducing the required input and output sizes</a><a class="headerlink" href="#reducing-the-required-input-and-output-sizes" title="Permalink to this heading">¶</a></h2>
+<p>To compute a block of output data, we need one or more blocks of input data.  Striding, Dilation,
+padding, and filter sizes all increase the amount of input data required.  By making the required
+input data smaller, you can reduce the pressure on TCM.  At the current time, this is especially
+true for the width and depth dimension; reducing width and depth can have a very strong impact on
+TCM usage requirements.</p>
+</div>
+<div class="section" id="padding-choices">
+<h2><a class="toc-backref" href="#id2">Padding choices</a><a class="headerlink" href="#padding-choices" title="Permalink to this heading">¶</a></h2>
+<p>When a convolution is padded by a small amount to produce the same output size as input size, we
+typically require three tiles of input data to be available: the data above, the data below, and
+the data in the same location.  If there is a large sequence of convolutions, consider applying a
+large padding early in the series of convolutions and then using “VALID” or zero-padding convolutions
+for the subsequent operations.  The zero-padding convolutions typically need two tiles of input
+data instead of three.</p>
+</div>
+<div class="section" id="reduce-precision">
+<h2><a class="toc-backref" href="#id3">Reduce precision</a><a class="headerlink" href="#reduce-precision" title="Permalink to this heading">¶</a></h2>
+<p>16-bit activation data takes twice the amount of memory that 8-bit activation data does.  Consider
+trying smaller data types if possible.</p>
+</div>
+<div class="section" id="reducing-tcm-pressure-throughout-the-network">
+<h2><a class="toc-backref" href="#id4">Reducing TCM pressure throughout the network</a><a class="headerlink" href="#reducing-tcm-pressure-throughout-the-network" title="Permalink to this heading">¶</a></h2>
+<p>While designing a network, please also consider the activation sizes throughout the body of the network
+and not just the input/output sizes of the network. If there are activations in the body of the
+network that are large enough to not fit in TCM or create significant TCM pressure it can result in
+the network failing to prepare and/or having significant performance impact. It is possible for a
+network with a low input resolution to have TCM size issues if it has significantly large activations
+in the body of the network. We continue to improve the engine’s capability to handle larger activations
+in the future.</p>
+</div>
+<div class="section" id="generic-rule-of-thumb-guidelines-for-various-op-activations-to-fit-in-tcm">
+<h2><a class="toc-backref" href="#id5">Generic rule of thumb guidelines for various op activations to fit in TCM</a><a class="headerlink" href="#generic-rule-of-thumb-guidelines-for-various-op-activations-to-fit-in-tcm" title="Permalink to this heading">¶</a></h2>
+<p>Weights are stored in TCM and take up TCM space.
+Some generic rule of thumb guidelines based on activations are provided below for various kinds of ops
+to determine sizing for different TCM configurations.</p>
+<ul class="simple">
+<li><p>Activation widths need to be rounded up to the nearest multiple of 8(uint8)/4(uint16)</p></li>
+<li><p>Activation depths need to be rounded up to the nearest multiple of 32 for both uint8/16</p></li>
+<li><p>Activation height need to be rounded up to the nearest multiple of 8 for both uint8/16</p></li>
+</ul>
+<p>The following equations can be used to get an approximate idea of TCM fit.</p>
+<ul>
+<li><dl class="simple">
+<dt>Unary Elementwise Ops</dt><dd><ul class="simple">
+<li><p>ACTIVATION_WIDTH*256*elsize*2  &lt;=  TCM_SIZE/2</p></li>
+<li><p>ACTIVATION_WIDTH needs to be rounded up to nearest multiple of 8(uint8)/4(uint16)</p></li>
+<li><p>If the LHS above is &gt; TCM_SIZE/2 but less than TCM_SIZE it might still fit but will adversely affect performance</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Binary Elementwise Ops</dt><dd><ul class="simple">
+<li><p>ACTIVATION_WIDTH*256*elsize*3  &lt;= TCM_SIZE/2</p></li>
+<li><p>ACTIVATION_WIDTH needs to be rounded up to nearest multiple of 8 for uint8 and 4 for uint16</p></li>
+<li><p>If the LHS above is &gt; TCM_SIZE/2 but less than TCM_SIZE it might still fit but may adversely affect performance</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Convolution</dt><dd><ul class="simple">
+<li><p>ACTIVATION_INPUT_WIDTH * ACTIVATION_INPUT_DEPTH * FILTER_HEIGHT * tiling_dimension + FILTER_WIDTH * FILTER_HEIGHT * FILTER_DEPTH * number of channels + ACTIVATION_OUTPUT_WIDTH * tiling_dimension &lt;= TCM_SIZE/2</p></li>
+<li><p>ACTIVATION_INPUT_WIDTH and ACTIVATION_OUTPUT_WIDTH needs to be rounded up to nearest multiple of 8</p></li>
+<li><p>(uint8)/4(uint16)ACTIVATION_INPUT_DEPTH needs to be rounded up to nearest multiple of 32</p></li>
+<li><p>FILTER_DEPTH needs to be rounded up to nearest multiple of 32</p></li>
+<li><p>Stride-2 and dilated convolution may have higher VTCM requirements</p></li>
+<li><p>tiling_dimension: 8 (8 byte height as part of the tile dimension WxHxD = 8x8x32)</p></li>
+<li><p>number of channels: 32 (32 channels as minimum chunk for the output)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>GlobalAvgPool</dt><dd><ul class="simple">
+<li><p>ACTIVATION_WIDTH * 256 * elsize &lt;= TCM_SIZE/2</p></li>
+<li><p>ACTIVATION_WIDTH needs to be rounded up to nearest multiple of 8(uint8)/4(uint16)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Concat</dt><dd><ul>
+<li><p>If the dimension of each input on the axis being concatenated except for the last input being concatenated is a multiple of</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>8, if the axis being concatenated on is height,</p></li>
+<li><p>8, (uint8)/4(uint16) if the axis being concatenated on is width or</p></li>
+<li><p>32, if the axis being concatenated on is depth</p></li>
+</ul>
+</div></blockquote>
+<p>then the size of the concat’s output is rounded up to 8 (uint8)/4(uint16) in width, 8 in height and 32 in depth</p>
+</li>
+<li><p>If the above constraint (multiple of 8 if height or 8(uint8)/4(uint16) width and multiple of 32 if depth) is not met, then
+the size of the concat’s output is rounded up to 8 (uint8)/4(uint16) in width,8 in height and 32 in depth + sum of all the
+concat’s inputs rounded up to 8 (uint8)/4(uint16) in width, 8 in height and 32 in depth</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>NMS (Non-Maxima Suppression)</dt><dd><ul class="simple">
+<li><p>Needs all the data to fit in &lt;= TCM_SIZE/2</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>TopK</dt><dd><ul>
+<li><p>For TopK Accuracy classification score computation, the following must be taken into consideration:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>AXIS_DIM*256*elsize*2 &lt;= TCM_SIZE/2</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="htp_guidelines_activation_functions.html" class="btn btn-neutral float-right" title="Choice of Activation functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="htp_guidelines_space_to_depth.html" class="btn btn-neutral float-left" title="Use Space-to-depth transformation where possible" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,1497 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>File QnnGpuOpPackage.h &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>File QnnGpuOpPackage.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="file-qnngpuoppackage-h">
+<span id="file-include-qnn-gpu-qnngpuoppackage-h"></span><h1>File QnnGpuOpPackage.h<a class="headerlink" href="#file-qnngpuoppackage-h" title="Permalink to this heading">¶</a></h1>
+<p>↰ <a class="reference internal" href="dir_include_QNN_GPU.html#dir-include-qnn-gpu"><span class="std std-ref">Parent directory</span></a> (<code class="docutils literal notranslate"><span class="pre">include/QNN/GPU</span></code>)</p>
+<p>A header which defines the QNN GPU specialization of the <a class="reference internal" href="file_include_QNN_QnnOpPackage.h.html#file-include-qnn-qnnoppackage-h"><span class="std std-ref">File QnnOpPackage.h</span></a> interface.</p>
+<div class="contents local topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#definition-include-qnn-gpu-qnngpuoppackage-h" id="id1">Definition (<code class="docutils literal notranslate"><span class="pre">include/QNN/GPU/QnnGpuOpPackage.h</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#includes" id="id2">Includes</a></p></li>
+<li><p><a class="reference internal" href="#classes" id="id3">Classes</a></p></li>
+<li><p><a class="reference internal" href="#enums" id="id4">Enums</a></p></li>
+<li><p><a class="reference internal" href="#defines" id="id5">Defines</a></p></li>
+<li><p><a class="reference internal" href="#full-file-listing" id="id6">Full File Listing</a></p></li>
+</ul>
+</div>
+<div class="section" id="definition-include-qnn-gpu-qnngpuoppackage-h">
+<h2>Definition (<code class="docutils literal notranslate"><span class="pre">include/QNN/GPU/QnnGpuOpPackage.h</span></code>)<a class="headerlink" href="#definition-include-qnn-gpu-qnngpuoppackage-h" title="Permalink to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="program_listing_file_include_QNN_GPU_QnnGpuOpPackage.h.html">Program Listing for File QnnGpuOpPackage.h</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="includes">
+<h2>Includes<a class="headerlink" href="#includes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">GPU/QnnGpuCommon.h</span></code> (<a class="reference internal" href="file_include_QNN_GPU_QnnGpuCommon.h.html#file-include-qnn-gpu-qnngpucommon-h"><span class="std std-ref">File QnnGpuCommon.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GPU/QnnGpuGraph.h</span></code> (<a class="reference internal" href="file_include_QNN_GPU_QnnGpuGraph.h.html#file-include-qnn-gpu-qnngpugraph-h"><span class="std std-ref">File QnnGpuGraph.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QnnOpPackage.h</span></code> (<a class="reference internal" href="file_include_QNN_QnnOpPackage.h.html#file-include-qnn-qnnoppackage-h"><span class="std std-ref">File QnnOpPackage.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QnnTypes.h</span></code> (<a class="reference internal" href="file_include_QNN_QnnTypes.h.html#file-include-qnn-qnntypes-h"><span class="std std-ref">File QnnTypes.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stdint.h</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="structQnnGpu__DataKernelArg__t.html#exhale-struct-structqnngpu-datakernelarg-t"><span class="std std-ref">Struct QnnGpu_DataKernelArg_t</span></a></p></li>
+<li><p><a class="reference internal" href="structQnnGpu__DeviceProperties__t.html#exhale-struct-structqnngpu-deviceproperties-t"><span class="std std-ref">Struct QnnGpu_DeviceProperties_t</span></a></p></li>
+<li><p><a class="reference internal" href="structQnnGpu__Kernel__t.html#exhale-struct-structqnngpu-kernel-t"><span class="std std-ref">Struct QnnGpu_Kernel_t</span></a></p></li>
+<li><p><a class="reference internal" href="structQnnGpu__KernelArg__t.html#exhale-struct-structqnngpu-kernelarg-t"><span class="std std-ref">Struct QnnGpu_KernelArg_t</span></a></p></li>
+<li><p><a class="reference internal" href="structQnnGpu__LocalKernelArg__t.html#exhale-struct-structqnngpu-localkernelarg-t"><span class="std std-ref">Struct QnnGpu_LocalKernelArg_t</span></a></p></li>
+<li><p><a class="reference internal" href="structQnnGpu__MemoryObject__t.html#exhale-struct-structqnngpu-memoryobject-t"><span class="std std-ref">Struct QnnGpu_MemoryObject_t</span></a></p></li>
+<li><p><a class="reference internal" href="structQnnGpu__Operation__t.html#exhale-struct-structqnngpu-operation-t"><span class="std std-ref">Struct QnnGpu_Operation_t</span></a></p></li>
+<li><p><a class="reference internal" href="structQnnGpu__OutputClaim__t.html#exhale-struct-structqnngpu-outputclaim-t"><span class="std std-ref">Struct QnnGpu_OutputClaim_t</span></a></p></li>
+<li><p><a class="reference internal" href="structQnnGpu__TensorKernelArg__t.html#exhale-struct-structqnngpu-tensorkernelarg-t"><span class="std std-ref">Struct QnnGpu_TensorKernelArg_t</span></a></p></li>
+<li><p><a class="reference internal" href="structQnnGpu__TensorStorageType__t.html#exhale-struct-structqnngpu-tensorstoragetype-t"><span class="std std-ref">Struct QnnGpu_TensorStorageType_t</span></a></p></li>
+<li><p><a class="reference internal" href="structQnnGpuOpPackage__GlobalInfrastructure__t.html#exhale-struct-structqnngpuoppackage-globalinfrastructure-t"><span class="std std-ref">Struct QnnGpuOpPackage_GlobalInfrastructure_t</span></a></p></li>
+<li><p><a class="reference internal" href="structQnnGpuOpPackage__GraphInfrastructure__t.html#exhale-struct-structqnngpuoppackage-graphinfrastructure-t"><span class="std std-ref">Struct QnnGpuOpPackage_GraphInfrastructure_t</span></a></p></li>
+<li><p><a class="reference internal" href="structQnnGpuOpPackage__Node__t.html#exhale-struct-structqnngpuoppackage-node-t"><span class="std std-ref">Struct QnnGpuOpPackage_Node_t</span></a></p></li>
+<li><p><a class="reference internal" href="structQnnGpuOpPackage__Optimization__t.html#exhale-struct-structqnngpuoppackage-optimization-t"><span class="std std-ref">Struct QnnGpuOpPackage_Optimization_t</span></a></p></li>
+<li><p><a class="reference internal" href="structQnnGpuOpPackage__PackageInfo__t.html#exhale-struct-structqnngpuoppackage-packageinfo-t"><span class="std std-ref">Struct QnnGpuOpPackage_PackageInfo_t</span></a></p></li>
+<li><p><a class="reference internal" href="structQnnGpuOpPackage__SuperNodeConnectionConstraint__t.html#exhale-struct-structqnngpuoppackage-supernodeconnectionconstraint-t"><span class="std std-ref">Struct QnnGpuOpPackage_SuperNodeConnectionConstraint_t</span></a></p></li>
+<li><p><a class="reference internal" href="structQnnGpuOpPackage__SuperNodeOptimization__t.html#exhale-struct-structqnngpuoppackage-supernodeoptimization-t"><span class="std std-ref">Struct QnnGpuOpPackage_SuperNodeOptimization_t</span></a></p></li>
+<li><p><a class="reference internal" href="structQnnGpuOpPackage__TensorConstraint__t.html#exhale-struct-structqnngpuoppackage-tensorconstraint-t"><span class="std std-ref">Struct QnnGpuOpPackage_TensorConstraint_t</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="enums">
+<h2>Enums<a class="headerlink" href="#enums" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="enum_QnnGpuOpPackage_8h_1a47da798f71cd96c4bbc2946244f6aaf5.html#exhale-enum-qnngpuoppackage-8h-1a47da798f71cd96c4bbc2946244f6aaf5"><span class="std std-ref">Enum QnnGpu_DataKernelArgType_t</span></a></p></li>
+<li><p><a class="reference internal" href="enum_QnnGpuOpPackage_8h_1aa8512424759dba8f6dde181e20dfdb83.html#exhale-enum-qnngpuoppackage-8h-1aa8512424759dba8f6dde181e20dfdb83"><span class="std std-ref">Enum QnnGpu_KernelArgType_t</span></a></p></li>
+<li><p><a class="reference internal" href="enum_QnnGpuOpPackage_8h_1adbd17adf4e85f75ef76551a1230b7688.html#exhale-enum-qnngpuoppackage-8h-1adbd17adf4e85f75ef76551a1230b7688"><span class="std std-ref">Enum QnnGpu_KernelSourceType_t</span></a></p></li>
+<li><p><a class="reference internal" href="enum_QnnGpuOpPackage_8h_1ae7c00b83276b2d1d310972c4ec43b8cd.html#exhale-enum-qnngpuoppackage-8h-1ae7c00b83276b2d1d310972c4ec43b8cd"><span class="std std-ref">Enum QnnGpu_MemoryLayout_t</span></a></p></li>
+<li><p><a class="reference internal" href="enum_QnnGpuOpPackage_8h_1a996bddc6a31b9abf74b4b22681147646.html#exhale-enum-qnngpuoppackage-8h-1a996bddc6a31b9abf74b4b22681147646"><span class="std std-ref">Enum QnnGpu_MemoryObjectType_t</span></a></p></li>
+<li><p><a class="reference internal" href="enum_QnnGpuOpPackage_8h_1a9124303d4ef4979557e7d499dcf89f88.html#exhale-enum-qnngpuoppackage-8h-1a9124303d4ef4979557e7d499dcf89f88"><span class="std std-ref">Enum QnnGpuOpPackage_OptimizationType_t</span></a></p></li>
+<li><p><a class="reference internal" href="enum_QnnGpuOpPackage_8h_1a6d8d7c94d991221f7d11ff8f145fbda5.html#exhale-enum-qnngpuoppackage-8h-1a6d8d7c94d991221f7d11ff8f145fbda5"><span class="std std-ref">Enum QnnGpuOpPackage_TensorConstraintSource_t</span></a></p></li>
+<li><p><a class="reference internal" href="enum_QnnGpuOpPackage_8h_1a09e8cf2e973a8d51b722de61b7cd0a14.html#exhale-enum-qnngpuoppackage-8h-1a09e8cf2e973a8d51b722de61b7cd0a14"><span class="std std-ref">Enum QnnGpuOpPackage_TensorConstraintType_t</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="defines">
+<h2>Defines<a class="headerlink" href="#defines" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="define_QnnGpuOpPackage_8h_1adbab2b5dec9b9a86a4afae50cf508649.html#exhale-define-qnngpuoppackage-8h-1adbab2b5dec9b9a86a4afae50cf508649"><span class="std std-ref">Define QNN_GPU_DATA_KERNEL_ARG_INIT</span></a></p></li>
+<li><p><a class="reference internal" href="define_QnnGpuOpPackage_8h_1ab4b5e93dd461e942dc4ba1e5123d8edf.html#exhale-define-qnngpuoppackage-8h-1ab4b5e93dd461e942dc4ba1e5123d8edf"><span class="std std-ref">Define QNN_GPU_KERNEL_ARG_INIT</span></a></p></li>
+<li><p><a class="reference internal" href="define_QnnGpuOpPackage_8h_1a8445c1f36297f36485f5fbe333bdbfea.html#exhale-define-qnngpuoppackage-8h-1a8445c1f36297f36485f5fbe333bdbfea"><span class="std std-ref">Define QNN_GPU_KERNEL_INIT</span></a></p></li>
+<li><p><a class="reference internal" href="define_QnnGpuOpPackage_8h_1a8c23eb3b0a7b9a07223f6880dfef8628.html#exhale-define-qnngpuoppackage-8h-1a8c23eb3b0a7b9a07223f6880dfef8628"><span class="std std-ref">Define QNN_GPU_LOCAL_KERNEL_ARG_INIT</span></a></p></li>
+<li><p><a class="reference internal" href="define_QnnGpuOpPackage_8h_1a858e7723f3eea15e4f8f848f315140ae.html#exhale-define-qnngpuoppackage-8h-1a858e7723f3eea15e4f8f848f315140ae"><span class="std std-ref">Define QNN_GPU_MEMORY_OBJECT_INIT</span></a></p></li>
+<li><p><a class="reference internal" href="define_QnnGpuOpPackage_8h_1aee1a517e1f89a1794ebe5756c64720d7.html#exhale-define-qnngpuoppackage-8h-1aee1a517e1f89a1794ebe5756c64720d7"><span class="std std-ref">Define QNN_GPU_OP_PACKAGE_OPTIMIZATION_INIT</span></a></p></li>
+<li><p><a class="reference internal" href="define_QnnGpuOpPackage_8h_1ac8aa3a6a101bab176386589267b9aa03.html#exhale-define-qnngpuoppackage-8h-1ac8aa3a6a101bab176386589267b9aa03"><span class="std std-ref">Define QNN_GPU_OP_PACKAGE_SUPER_NODE_OPTIMIZATION_INIT</span></a></p></li>
+<li><p><a class="reference internal" href="define_QnnGpuOpPackage_8h_1a7f3448e4de21c12fa343cb8a2116b6d8.html#exhale-define-qnngpuoppackage-8h-1a7f3448e4de21c12fa343cb8a2116b6d8"><span class="std std-ref">Define QNN_GPU_OPERATION_INIT</span></a></p></li>
+<li><p><a class="reference internal" href="define_QnnGpuOpPackage_8h_1a85c7743cc3f04c378320117e2bda2dfd.html#exhale-define-qnngpuoppackage-8h-1a85c7743cc3f04c378320117e2bda2dfd"><span class="std std-ref">Define QNN_GPU_OUTPUT_CLAIM_INIT</span></a></p></li>
+<li><p><a class="reference internal" href="define_QnnGpuOpPackage_8h_1ac312e4f16b2e45ed51ad097550c2ed90.html#exhale-define-qnngpuoppackage-8h-1ac312e4f16b2e45ed51ad097550c2ed90"><span class="std std-ref">Define QNN_GPU_TENSOR_KERNEL_ARG_INIT</span></a></p></li>
+<li><p><a class="reference internal" href="define_QnnGpuOpPackage_8h_1a4ca7b09a805ad323b31074a41da46dcd.html#exhale-define-qnngpuoppackage-8h-1a4ca7b09a805ad323b31074a41da46dcd"><span class="std std-ref">Define QNN_GPU_TENSOR_STORAGE_TYPE_INIT</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="full-file-listing">
+<h2>Full File Listing<a class="headerlink" href="#full-file-listing" title="Permalink to this heading">¶</a></h2>
+<p>A header which defines the QNN GPU specialization of the QnnOpPackage.h interface. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_GPU_OP_PACKAGE_SUPER_NODE_OPTIMIZATION_INIT">
+<span class="target" id="QnnGpuOpPackage_8h_1ac8aa3a6a101bab176386589267b9aa03"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_OP_PACKAGE_SUPER_NODE_OPTIMIZATION_INIT</span></span></span> <p><span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span> <span class="pre">/*operations*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span> <span class="pre">/*connectionConstraints*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span> <span class="pre">/*tensorConstraints*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">}</span></p>
+<br /></dt>
+<dd><p><a class="reference internal" href="#structQnnGpuOpPackage__SuperNodeOptimization__t"><span class="std std-ref">QnnGpuOpPackage_SuperNodeOptimization_t</span></a> initializer macro. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_GPU_OP_PACKAGE_OPTIMIZATION_INIT">
+<span class="target" id="QnnGpuOpPackage_8h_1aee1a517e1f89a1794ebe5756c64720d7"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_OP_PACKAGE_OPTIMIZATION_INIT</span></span></span> &#160; <span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span>
+&#160;&#160;&#160; <a class="reference internal" href="#QnnGpuOpPackage_8h_1a9124303d4ef4979557e7d499dcf89f88a943e496434ab22dd8919a1c39c1a25c3"><span class="std std-ref"><span class="pre">QNN_GPU_OPTIMIZATION_TYPE_UNDEFINED</span></span></a><p><span class="pre">,</span> <span class="pre">NULL,</span> <span class="pre">{</span> <span class="pre">NULL</span> <span class="pre">}</span> <span class="pre">\</span></p>
+<p><span class="pre">}</span></p>
+<br /></dt>
+<dd><p><a class="reference internal" href="#structQnnGpuOpPackage__Optimization__t"><span class="std std-ref">QnnGpuOpPackage_Optimization_t</span></a> initializer macro. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_GPU_MEMORY_OBJECT_INIT">
+<span class="target" id="QnnGpuOpPackage_8h_1a858e7723f3eea15e4f8f848f315140ae"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_MEMORY_OBJECT_INIT</span></span></span> &#160; <span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span>
+&#160;&#160;&#160; <a class="reference internal" href="#QnnGpuOpPackage_8h_1a996bddc6a31b9abf74b4b22681147646a2cb981dcb70f512bb8b4f58f8a97b1a1"><span class="std std-ref"><span class="pre">QNN_GPU_MEM_OBJ_TYPE_UNCLAIMED</span></span></a><span class="pre">,</span> <span class="pre">/*type*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span>
+&#160;&#160;&#160; <a class="reference internal" href="file_include_QNN_QnnTypes.h.html#QnnTypes_8h_1a8bda296c6c8a3148f764dcbdb5b8f534a02f7f519ec1f541dc1741ae473bb3e19"><span class="std std-ref"><span class="pre">QNN_DATATYPE_UNDEFINED</span></span></a><p><span class="pre">,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">/*dataType*/</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">/*dimensions*/</span>&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">/*offsets*/</span>&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">0u,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">/*numDimensions*/</span> <span class="pre">\</span></p>
+<a class="reference internal" href="#QnnGpuOpPackage_8h_1ae7c00b83276b2d1d310972c4ec43b8cdae5dc915a5e66a2b815250cbf6b877c54"><span class="std std-ref"><span class="pre">QNN_GPU_MEM_LAYOUT_UNDEFINED</span></span></a><p><span class="pre">/*layout*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">}</span></p>
+<br /></dt>
+<dd><p><a class="reference internal" href="#structQnnGpu__MemoryObject__t"><span class="std std-ref">QnnGpu_MemoryObject_t</span></a> initializer macro. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_GPU_TENSOR_STORAGE_TYPE_INIT">
+<span class="target" id="QnnGpuOpPackage_8h_1a4ca7b09a805ad323b31074a41da46dcd"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_TENSOR_STORAGE_TYPE_INIT</span></span></span> <p><span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">0u,</span>&#160;&#160; <span class="pre">/*id*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL</span>&#160; <span class="pre">/*memoryObject*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">}</span></p>
+<br /></dt>
+<dd><p><a class="reference internal" href="#structQnnGpu__TensorStorageType__t"><span class="std std-ref">QnnGpu_TensorStorageType_t</span></a> initializer macro. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_GPU_OUTPUT_CLAIM_INIT">
+<span class="target" id="QnnGpuOpPackage_8h_1a85c7743cc3f04c378320117e2bda2dfd"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_OUTPUT_CLAIM_INIT</span></span></span> <p><span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">0u,</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">/*opConfigIndex*/</span>&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">0u,</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">/*outputIndex*/</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL</span>&#160;&#160;&#160;&#160; <span class="pre">/*memoryObject*/</span>&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">}</span></p>
+<br /></dt>
+<dd><p><a class="reference internal" href="#structQnnGpu__OutputClaim__t"><span class="std std-ref">QnnGpu_OutputClaim_t</span></a> initializer macro. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_GPU_TENSOR_KERNEL_ARG_INIT">
+<span class="target" id="QnnGpuOpPackage_8h_1ac312e4f16b2e45ed51ad097550c2ed90"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_TENSOR_KERNEL_ARG_INIT</span></span></span> <p><span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">0u,</span>&#160;&#160; <span class="pre">/*opConfigIndex*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">0u,</span>&#160;&#160; <span class="pre">/*tensorIndex*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">0u</span>&#160;&#160;&#160; <span class="pre">/*element*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">}</span></p>
+<br /></dt>
+<dd><p><a class="reference internal" href="#structQnnGpu__TensorKernelArg__t"><span class="std std-ref">QnnGpu_TensorKernelArg_t</span></a> initializer macro. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_GPU_DATA_KERNEL_ARG_INIT">
+<span class="target" id="QnnGpuOpPackage_8h_1adbab2b5dec9b9a86a4afae50cf508649"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_DATA_KERNEL_ARG_INIT</span></span></span> &#160; <span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span>
+&#160;&#160;&#160; <a class="reference internal" href="#QnnGpuOpPackage_8h_1a47da798f71cd96c4bbc2946244f6aaf5a8252ad6edab4b8d791c7d9b9156dc1d6"><span class="std std-ref"><span class="pre">QNN_GPU_KERNEL_ARG_CL_TYPE_CHAR</span></span></a><p><span class="pre">,</span> <span class="pre">/*type*/</span> <span class="pre">\</span></p>
+<p><span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">0</span> <span class="pre">/*qnnChar*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">}</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">}</span></p>
+<br /></dt>
+<dd><p><a class="reference internal" href="#structQnnGpu__DataKernelArg__t"><span class="std std-ref">QnnGpu_DataKernelArg_t</span></a> initializer macro. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_GPU_LOCAL_KERNEL_ARG_INIT">
+<span class="target" id="QnnGpuOpPackage_8h_1a8c23eb3b0a7b9a07223f6880dfef8628"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_LOCAL_KERNEL_ARG_INIT</span></span></span> &#160; <span class="pre">{</span> <span class="pre">0u</span> <span class="pre">/*size*/</span> <span class="pre">}</span><br /></dt>
+<dd><p><a class="reference internal" href="#structQnnGpu__LocalKernelArg__t"><span class="std std-ref">QnnGpu_LocalKernelArg_t</span></a> initializer macro. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_GPU_KERNEL_ARG_INIT">
+<span class="target" id="QnnGpuOpPackage_8h_1ab4b5e93dd461e942dc4ba1e5123d8edf"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_KERNEL_ARG_INIT</span></span></span> &#160; <span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span>
+&#160;&#160;&#160; <a class="reference internal" href="#QnnGpuOpPackage_8h_1aa8512424759dba8f6dde181e20dfdb83a4b027449416e51b1650753c642b5a7d9"><span class="std std-ref"><span class="pre">QNN_GPU_KERNEL_ARG_TYPE_NULL_PTR</span></span></a><p><span class="pre">,</span> <span class="pre">/*type*/</span>&#160; <span class="pre">\</span></p>
+<p><span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<a class="reference internal" href="#QnnGpuOpPackage_8h_1ac312e4f16b2e45ed51ad097550c2ed90"><span class="std std-ref"><span class="pre">QNN_GPU_TENSOR_KERNEL_ARG_INIT</span></span></a><p><span class="pre">/*tensor*/</span> <span class="pre">\</span></p>
+<p><span class="pre">}</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">}</span></p>
+<br /></dt>
+<dd><p><a class="reference internal" href="#structQnnGpu__KernelArg__t"><span class="std std-ref">QnnGpu_KernelArg_t</span></a> initializer macro. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_GPU_KERNEL_INIT">
+<span class="target" id="QnnGpuOpPackage_8h_1a8445c1f36297f36485f5fbe333bdbfea"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_KERNEL_INIT</span></span></span> <p><span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">/*kernelSource*/</span>&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">0u,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">/*sourceLength*/</span>&#160;&#160;&#160; <span class="pre">\</span></p>
+<a class="reference internal" href="#QnnGpuOpPackage_8h_1adbd17adf4e85f75ef76551a1230b7688a5d451e16779cbba08319327af395046a"><span class="std std-ref"><span class="pre">QNN_GPU_KERNEL_SOURCE_TYPE_TEXT</span></span></a><p><span class="pre">,</span> <span class="pre">/*sourceType*/</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">/*buildOptions*/</span>&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">0u,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">/*globalWorkDim*/</span>&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">{0u},</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">/*globalWorkSizes*/</span> <span class="pre">\</span></p>
+<p><span class="pre">0u,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">/*localWorkDim*/</span>&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">{0u},</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">/*localWorkSizes*/</span>&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">/*args*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">/*name*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">0u,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">/*isDynamic*/</span>&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">/*reserved*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">}</span></p>
+<br /></dt>
+<dd><p><a class="reference internal" href="#structQnnGpu__Kernel__t"><span class="std std-ref">QnnGpu_Kernel_t</span></a> initializer macro. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_GPU_OPERATION_INIT">
+<span class="target" id="QnnGpuOpPackage_8h_1a7f3448e4de21c12fa343cb8a2116b6d8"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_OPERATION_INIT</span></span></span> <p><span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160; <span class="pre">/*outputClaims*/</span>&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160; <span class="pre">/*memoryObjects*/</span>&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL,</span>&#160;&#160;&#160;&#160; <span class="pre">/*kernels*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">}</span></p>
+<br /></dt>
+<dd><p><a class="reference internal" href="#structQnnGpu__Operation__t"><span class="std std-ref">QnnGpu_Operation_t</span></a> initializer macro. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv434QnnGpuOpPackage_OptimizationType_t">
+<span id="_CPPv334QnnGpuOpPackage_OptimizationType_t"></span><span id="_CPPv234QnnGpuOpPackage_OptimizationType_t"></span><span class="target" id="QnnGpuOpPackage_8h_1a9124303d4ef4979557e7d499dcf89f88"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGpuOpPackage_OptimizationType_t</span></span></span><a class="headerlink" href="#_CPPv434QnnGpuOpPackage_OptimizationType_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An enum to specify the QNN GPU optimization type. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N34QnnGpuOpPackage_OptimizationType_t35QNN_GPU_OPTIMIZATION_TYPE_UNDEFINEDE">
+<span id="_CPPv3N34QnnGpuOpPackage_OptimizationType_t35QNN_GPU_OPTIMIZATION_TYPE_UNDEFINEDE"></span><span id="_CPPv2N34QnnGpuOpPackage_OptimizationType_t35QNN_GPU_OPTIMIZATION_TYPE_UNDEFINEDE"></span><span class="target" id="QnnGpuOpPackage_8h_1a9124303d4ef4979557e7d499dcf89f88a943e496434ab22dd8919a1c39c1a25c3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_OPTIMIZATION_TYPE_UNDEFINED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N34QnnGpuOpPackage_OptimizationType_t35QNN_GPU_OPTIMIZATION_TYPE_UNDEFINEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Undefined option only used for QNN_GPU_OP_PACKAGE_OPTIMIZATION_INIT. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N34QnnGpuOpPackage_OptimizationType_t36QNN_GPU_OPTIMIZATION_TYPE_SUPER_NODEE">
+<span id="_CPPv3N34QnnGpuOpPackage_OptimizationType_t36QNN_GPU_OPTIMIZATION_TYPE_SUPER_NODEE"></span><span id="_CPPv2N34QnnGpuOpPackage_OptimizationType_t36QNN_GPU_OPTIMIZATION_TYPE_SUPER_NODEE"></span><span class="target" id="QnnGpuOpPackage_8h_1a9124303d4ef4979557e7d499dcf89f88a74e0e76a77a77996f29ee9040a12ab6a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_OPTIMIZATION_TYPE_SUPER_NODE</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">2</span></span><a class="headerlink" href="#_CPPv4N34QnnGpuOpPackage_OptimizationType_t36QNN_GPU_OPTIMIZATION_TYPE_SUPER_NODEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Super node optimization. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv440QnnGpuOpPackage_TensorConstraintSource_t">
+<span id="_CPPv340QnnGpuOpPackage_TensorConstraintSource_t"></span><span id="_CPPv240QnnGpuOpPackage_TensorConstraintSource_t"></span><span class="target" id="QnnGpuOpPackage_8h_1a6d8d7c94d991221f7d11ff8f145fbda5"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGpuOpPackage_TensorConstraintSource_t</span></span></span><a class="headerlink" href="#_CPPv440QnnGpuOpPackage_TensorConstraintSource_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An enum to specify the source of a tensor in an op def for a tensor constraint. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N40QnnGpuOpPackage_TensorConstraintSource_t52QNN_GPU_OPTIMIZATION_SUPER_NODE_TENSOR_SOURCE_OUTPUTE">
+<span id="_CPPv3N40QnnGpuOpPackage_TensorConstraintSource_t52QNN_GPU_OPTIMIZATION_SUPER_NODE_TENSOR_SOURCE_OUTPUTE"></span><span id="_CPPv2N40QnnGpuOpPackage_TensorConstraintSource_t52QNN_GPU_OPTIMIZATION_SUPER_NODE_TENSOR_SOURCE_OUTPUTE"></span><span class="target" id="QnnGpuOpPackage_8h_1a6d8d7c94d991221f7d11ff8f145fbda5af82d5edc3d3439539de93062c9a59e1d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_OPTIMIZATION_SUPER_NODE_TENSOR_SOURCE_OUTPUT</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N40QnnGpuOpPackage_TensorConstraintSource_t52QNN_GPU_OPTIMIZATION_SUPER_NODE_TENSOR_SOURCE_OUTPUTE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Tensor is an op def output. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N40QnnGpuOpPackage_TensorConstraintSource_t51QNN_GPU_OPTIMIZATION_SUPER_NODE_TENSOR_SOURCE_INPUTE">
+<span id="_CPPv3N40QnnGpuOpPackage_TensorConstraintSource_t51QNN_GPU_OPTIMIZATION_SUPER_NODE_TENSOR_SOURCE_INPUTE"></span><span id="_CPPv2N40QnnGpuOpPackage_TensorConstraintSource_t51QNN_GPU_OPTIMIZATION_SUPER_NODE_TENSOR_SOURCE_INPUTE"></span><span class="target" id="QnnGpuOpPackage_8h_1a6d8d7c94d991221f7d11ff8f145fbda5a25cc50624b2c796bd0c6b5dd389925ab"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_OPTIMIZATION_SUPER_NODE_TENSOR_SOURCE_INPUT</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">2</span></span><a class="headerlink" href="#_CPPv4N40QnnGpuOpPackage_TensorConstraintSource_t51QNN_GPU_OPTIMIZATION_SUPER_NODE_TENSOR_SOURCE_INPUTE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv438QnnGpuOpPackage_TensorConstraintType_t">
+<span id="_CPPv338QnnGpuOpPackage_TensorConstraintType_t"></span><span id="_CPPv238QnnGpuOpPackage_TensorConstraintType_t"></span><span class="target" id="QnnGpuOpPackage_8h_1a09e8cf2e973a8d51b722de61b7cd0a14"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGpuOpPackage_TensorConstraintType_t</span></span></span><a class="headerlink" href="#_CPPv438QnnGpuOpPackage_TensorConstraintType_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An enum to specify the tensor constraint type. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N38QnnGpuOpPackage_TensorConstraintType_t59QNN_GPU_OPTIMIZATION_SUPER_NODE_TENSOR_CONSTRAINT_DATA_TYPEE">
+<span id="_CPPv3N38QnnGpuOpPackage_TensorConstraintType_t59QNN_GPU_OPTIMIZATION_SUPER_NODE_TENSOR_CONSTRAINT_DATA_TYPEE"></span><span id="_CPPv2N38QnnGpuOpPackage_TensorConstraintType_t59QNN_GPU_OPTIMIZATION_SUPER_NODE_TENSOR_CONSTRAINT_DATA_TYPEE"></span><span class="target" id="QnnGpuOpPackage_8h_1a09e8cf2e973a8d51b722de61b7cd0a14a404be24cf9bce1e34f40154b461ee823"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_OPTIMIZATION_SUPER_NODE_TENSOR_CONSTRAINT_DATA_TYPE</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N38QnnGpuOpPackage_TensorConstraintType_t59QNN_GPU_OPTIMIZATION_SUPER_NODE_TENSOR_CONSTRAINT_DATA_TYPEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Add a Qnn_DataType_t to the whitelist of allowable types. If no data type constraint is present for a tensor, all data types are allowed. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N38QnnGpuOpPackage_TensorConstraintType_t54QNN_GPU_OPTIMIZATION_SUPER_NODE_TENSOR_CONSTRAINT_RANKE">
+<span id="_CPPv3N38QnnGpuOpPackage_TensorConstraintType_t54QNN_GPU_OPTIMIZATION_SUPER_NODE_TENSOR_CONSTRAINT_RANKE"></span><span id="_CPPv2N38QnnGpuOpPackage_TensorConstraintType_t54QNN_GPU_OPTIMIZATION_SUPER_NODE_TENSOR_CONSTRAINT_RANKE"></span><span class="target" id="QnnGpuOpPackage_8h_1a09e8cf2e973a8d51b722de61b7cd0a14a7f21aafb70bc4e479cb4368bcd42a3b0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_OPTIMIZATION_SUPER_NODE_TENSOR_CONSTRAINT_RANK</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">2</span></span><a class="headerlink" href="#_CPPv4N38QnnGpuOpPackage_TensorConstraintType_t54QNN_GPU_OPTIMIZATION_SUPER_NODE_TENSOR_CONSTRAINT_RANKE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Tensor must match it’s rank. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N38QnnGpuOpPackage_TensorConstraintType_t59QNN_GPU_OPTIMIZATION_SUPER_NODE_TENSOR_CONSTRAINT_DIMENSIONE">
+<span id="_CPPv3N38QnnGpuOpPackage_TensorConstraintType_t59QNN_GPU_OPTIMIZATION_SUPER_NODE_TENSOR_CONSTRAINT_DIMENSIONE"></span><span id="_CPPv2N38QnnGpuOpPackage_TensorConstraintType_t59QNN_GPU_OPTIMIZATION_SUPER_NODE_TENSOR_CONSTRAINT_DIMENSIONE"></span><span class="target" id="QnnGpuOpPackage_8h_1a09e8cf2e973a8d51b722de61b7cd0a14add638de4b19da9456daa2a759cc8c7af"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_OPTIMIZATION_SUPER_NODE_TENSOR_CONSTRAINT_DIMENSION</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">3</span></span><a class="headerlink" href="#_CPPv4N38QnnGpuOpPackage_TensorConstraintType_t59QNN_GPU_OPTIMIZATION_SUPER_NODE_TENSOR_CONSTRAINT_DIMENSIONE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Tensor must match one of it’s dimensions. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N38QnnGpuOpPackage_TensorConstraintType_t61QNN_GPU_OPTIMIZATION_SUPER_NODE_TENSOR_CONSTRAINT_TENSOR_TYPEE">
+<span id="_CPPv3N38QnnGpuOpPackage_TensorConstraintType_t61QNN_GPU_OPTIMIZATION_SUPER_NODE_TENSOR_CONSTRAINT_TENSOR_TYPEE"></span><span id="_CPPv2N38QnnGpuOpPackage_TensorConstraintType_t61QNN_GPU_OPTIMIZATION_SUPER_NODE_TENSOR_CONSTRAINT_TENSOR_TYPEE"></span><span class="target" id="QnnGpuOpPackage_8h_1a09e8cf2e973a8d51b722de61b7cd0a14a8c81af426fe4b4d76e590c1aae7c1999"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_OPTIMIZATION_SUPER_NODE_TENSOR_CONSTRAINT_TENSOR_TYPE</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">4</span></span><a class="headerlink" href="#_CPPv4N38QnnGpuOpPackage_TensorConstraintType_t61QNN_GPU_OPTIMIZATION_SUPER_NODE_TENSOR_CONSTRAINT_TENSOR_TYPEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Add a Qnn_TensorType_t to the whitelist of allowable tensor types. If no tensor type constraint is present for a tensor, all types are allowed. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv425QnnGpu_MemoryObjectType_t">
+<span id="_CPPv325QnnGpu_MemoryObjectType_t"></span><span id="_CPPv225QnnGpu_MemoryObjectType_t"></span><span class="target" id="QnnGpuOpPackage_8h_1a996bddc6a31b9abf74b4b22681147646"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGpu_MemoryObjectType_t</span></span></span><a class="headerlink" href="#_CPPv425QnnGpu_MemoryObjectType_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An enum to specify the QNN GPU memory object type. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnGpu_MemoryObjectType_t25QNN_GPU_MEM_OBJ_TYPE_HOSTE">
+<span id="_CPPv3N25QnnGpu_MemoryObjectType_t25QNN_GPU_MEM_OBJ_TYPE_HOSTE"></span><span id="_CPPv2N25QnnGpu_MemoryObjectType_t25QNN_GPU_MEM_OBJ_TYPE_HOSTE"></span><span class="target" id="QnnGpuOpPackage_8h_1a996bddc6a31b9abf74b4b22681147646a592285c1508b3b593753c358af053bbd"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_MEM_OBJ_TYPE_HOST</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N25QnnGpu_MemoryObjectType_t25QNN_GPU_MEM_OBJ_TYPE_HOSTE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Host memory, only used for <a class="reference internal" href="file_include_QNN_QnnTypes.h.html#structQnn__Param__t"><span class="std std-ref">Qnn_Param_t</span></a> tensors. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnGpu_MemoryObjectType_t27QNN_GPU_MEM_OBJ_TYPE_BUFFERE">
+<span id="_CPPv3N25QnnGpu_MemoryObjectType_t27QNN_GPU_MEM_OBJ_TYPE_BUFFERE"></span><span id="_CPPv2N25QnnGpu_MemoryObjectType_t27QNN_GPU_MEM_OBJ_TYPE_BUFFERE"></span><span class="target" id="QnnGpuOpPackage_8h_1a996bddc6a31b9abf74b4b22681147646ad5d5333ec241a7e5ccc8a0fb2b1af0bd"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_MEM_OBJ_TYPE_BUFFER</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N25QnnGpu_MemoryObjectType_t27QNN_GPU_MEM_OBJ_TYPE_BUFFERE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>GPU driver buffer memory object. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnGpu_MemoryObjectType_t28QNN_GPU_MEM_OBJ_TYPE_IMAGE2DE">
+<span id="_CPPv3N25QnnGpu_MemoryObjectType_t28QNN_GPU_MEM_OBJ_TYPE_IMAGE2DE"></span><span id="_CPPv2N25QnnGpu_MemoryObjectType_t28QNN_GPU_MEM_OBJ_TYPE_IMAGE2DE"></span><span class="target" id="QnnGpuOpPackage_8h_1a996bddc6a31b9abf74b4b22681147646ad63addccec59a6397bb5226a23c6a758"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_MEM_OBJ_TYPE_IMAGE2D</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">2</span></span><a class="headerlink" href="#_CPPv4N25QnnGpu_MemoryObjectType_t28QNN_GPU_MEM_OBJ_TYPE_IMAGE2DE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>GPU driver image 2D memory object. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnGpu_MemoryObjectType_t34QNN_GPU_MEM_OBJ_TYPE_IMAGE2D_ARRAYE">
+<span id="_CPPv3N25QnnGpu_MemoryObjectType_t34QNN_GPU_MEM_OBJ_TYPE_IMAGE2D_ARRAYE"></span><span id="_CPPv2N25QnnGpu_MemoryObjectType_t34QNN_GPU_MEM_OBJ_TYPE_IMAGE2D_ARRAYE"></span><span class="target" id="QnnGpuOpPackage_8h_1a996bddc6a31b9abf74b4b22681147646a357794d8f4952edf1310490b39abeb6c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_MEM_OBJ_TYPE_IMAGE2D_ARRAY</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">3</span></span><a class="headerlink" href="#_CPPv4N25QnnGpu_MemoryObjectType_t34QNN_GPU_MEM_OBJ_TYPE_IMAGE2D_ARRAYE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>GPU driver image 2D array memory object. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnGpu_MemoryObjectType_t39QNN_GPU_MEM_OBJ_TYPE_AGGREGATED_IMAGE2DE">
+<span id="_CPPv3N25QnnGpu_MemoryObjectType_t39QNN_GPU_MEM_OBJ_TYPE_AGGREGATED_IMAGE2DE"></span><span id="_CPPv2N25QnnGpu_MemoryObjectType_t39QNN_GPU_MEM_OBJ_TYPE_AGGREGATED_IMAGE2DE"></span><span class="target" id="QnnGpuOpPackage_8h_1a996bddc6a31b9abf74b4b22681147646a5b6458f05605c63f72b4ce0a7278d046"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_MEM_OBJ_TYPE_AGGREGATED_IMAGE2D</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">4</span></span><a class="headerlink" href="#_CPPv4N25QnnGpu_MemoryObjectType_t39QNN_GPU_MEM_OBJ_TYPE_AGGREGATED_IMAGE2DE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Aggregation of GPU driver image 2D memory objects. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnGpu_MemoryObjectType_t45QNN_GPU_MEM_OBJ_TYPE_AGGREGATED_IMAGE2D_ARRAYE">
+<span id="_CPPv3N25QnnGpu_MemoryObjectType_t45QNN_GPU_MEM_OBJ_TYPE_AGGREGATED_IMAGE2D_ARRAYE"></span><span id="_CPPv2N25QnnGpu_MemoryObjectType_t45QNN_GPU_MEM_OBJ_TYPE_AGGREGATED_IMAGE2D_ARRAYE"></span><span class="target" id="QnnGpuOpPackage_8h_1a996bddc6a31b9abf74b4b22681147646ac2ae8b40144df88e62ed93e48e24c7b6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_MEM_OBJ_TYPE_AGGREGATED_IMAGE2D_ARRAY</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">5</span></span><a class="headerlink" href="#_CPPv4N25QnnGpu_MemoryObjectType_t45QNN_GPU_MEM_OBJ_TYPE_AGGREGATED_IMAGE2D_ARRAYE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Aggregation of GPU driver image 2D array memory objects. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnGpu_MemoryObjectType_t30QNN_GPU_MEM_OBJ_TYPE_UNCLAIMEDE">
+<span id="_CPPv3N25QnnGpu_MemoryObjectType_t30QNN_GPU_MEM_OBJ_TYPE_UNCLAIMEDE"></span><span id="_CPPv2N25QnnGpu_MemoryObjectType_t30QNN_GPU_MEM_OBJ_TYPE_UNCLAIMEDE"></span><span class="target" id="QnnGpuOpPackage_8h_1a996bddc6a31b9abf74b4b22681147646a2cb981dcb70f512bb8b4f58f8a97b1a1"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_MEM_OBJ_TYPE_UNCLAIMED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">6</span></span><a class="headerlink" href="#_CPPv4N25QnnGpu_MemoryObjectType_t30QNN_GPU_MEM_OBJ_TYPE_UNCLAIMEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Memory type is unclaimed and can be specified by the op package via the <a class="reference internal" href="#structQnnGpu__OutputClaim__t"><span class="std std-ref">QnnGpu_OutputClaim_t</span></a> struct </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv421QnnGpu_MemoryLayout_t">
+<span id="_CPPv321QnnGpu_MemoryLayout_t"></span><span id="_CPPv221QnnGpu_MemoryLayout_t"></span><span class="target" id="QnnGpuOpPackage_8h_1ae7c00b83276b2d1d310972c4ec43b8cd"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGpu_MemoryLayout_t</span></span></span><a class="headerlink" href="#_CPPv421QnnGpu_MemoryLayout_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An enum to specify the QNN GPU memory layout. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N21QnnGpu_MemoryLayout_t22QNN_GPU_MEM_LAYOUT_HWCE">
+<span id="_CPPv3N21QnnGpu_MemoryLayout_t22QNN_GPU_MEM_LAYOUT_HWCE"></span><span id="_CPPv2N21QnnGpu_MemoryLayout_t22QNN_GPU_MEM_LAYOUT_HWCE"></span><span class="target" id="QnnGpuOpPackage_8h_1ae7c00b83276b2d1d310972c4ec43b8cda4cce118dc3660e26a41269d68fd03c43"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_MEM_LAYOUT_HWC</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N21QnnGpu_MemoryLayout_t22QNN_GPU_MEM_LAYOUT_HWCE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>HWC layout. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N21QnnGpu_MemoryLayout_t22QNN_GPU_MEM_LAYOUT_HCWE">
+<span id="_CPPv3N21QnnGpu_MemoryLayout_t22QNN_GPU_MEM_LAYOUT_HCWE"></span><span id="_CPPv2N21QnnGpu_MemoryLayout_t22QNN_GPU_MEM_LAYOUT_HCWE"></span><span class="target" id="QnnGpuOpPackage_8h_1ae7c00b83276b2d1d310972c4ec43b8cda38752ac959c1c6ae9f07df1b2013a6be"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_MEM_LAYOUT_HCW</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N21QnnGpu_MemoryLayout_t22QNN_GPU_MEM_LAYOUT_HCWE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>HCW layout. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N21QnnGpu_MemoryLayout_t22QNN_GPU_MEM_LAYOUT_CHWE">
+<span id="_CPPv3N21QnnGpu_MemoryLayout_t22QNN_GPU_MEM_LAYOUT_CHWE"></span><span id="_CPPv2N21QnnGpu_MemoryLayout_t22QNN_GPU_MEM_LAYOUT_CHWE"></span><span class="target" id="QnnGpuOpPackage_8h_1ae7c00b83276b2d1d310972c4ec43b8cda6dc44a40b54b8a26890881b86feb53ac"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_MEM_LAYOUT_CHW</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">2</span></span><a class="headerlink" href="#_CPPv4N21QnnGpu_MemoryLayout_t22QNN_GPU_MEM_LAYOUT_CHWE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>CHW layout. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N21QnnGpu_MemoryLayout_t28QNN_GPU_MEM_LAYOUT_UNDEFINEDE">
+<span id="_CPPv3N21QnnGpu_MemoryLayout_t28QNN_GPU_MEM_LAYOUT_UNDEFINEDE"></span><span id="_CPPv2N21QnnGpu_MemoryLayout_t28QNN_GPU_MEM_LAYOUT_UNDEFINEDE"></span><span class="target" id="QnnGpuOpPackage_8h_1ae7c00b83276b2d1d310972c4ec43b8cdae5dc915a5e66a2b815250cbf6b877c54"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_MEM_LAYOUT_UNDEFINED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0x7FFFFFFF</span></span><a class="headerlink" href="#_CPPv4N21QnnGpu_MemoryLayout_t28QNN_GPU_MEM_LAYOUT_UNDEFINEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Undefined. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv422QnnGpu_KernelArgType_t">
+<span id="_CPPv322QnnGpu_KernelArgType_t"></span><span id="_CPPv222QnnGpu_KernelArgType_t"></span><span class="target" id="QnnGpuOpPackage_8h_1aa8512424759dba8f6dde181e20dfdb83"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGpu_KernelArgType_t</span></span></span><a class="headerlink" href="#_CPPv422QnnGpu_KernelArgType_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An enum to specify the kernel argument type. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22QnnGpu_KernelArgType_t37QNN_GPU_KERNEL_ARG_TYPE_OP_INPUT_READE">
+<span id="_CPPv3N22QnnGpu_KernelArgType_t37QNN_GPU_KERNEL_ARG_TYPE_OP_INPUT_READE"></span><span id="_CPPv2N22QnnGpu_KernelArgType_t37QNN_GPU_KERNEL_ARG_TYPE_OP_INPUT_READE"></span><span class="target" id="QnnGpuOpPackage_8h_1aa8512424759dba8f6dde181e20dfdb83af82955f9e0387d6e0fd6e65291741f0b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_KERNEL_ARG_TYPE_OP_INPUT_READ</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N22QnnGpu_KernelArgType_t37QNN_GPU_KERNEL_ARG_TYPE_OP_INPUT_READE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Operation input tensor used as kernel input. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22QnnGpu_KernelArgType_t42QNN_GPU_KERNEL_ARG_TYPE_OP_INPUT_READWRITEE">
+<span id="_CPPv3N22QnnGpu_KernelArgType_t42QNN_GPU_KERNEL_ARG_TYPE_OP_INPUT_READWRITEE"></span><span id="_CPPv2N22QnnGpu_KernelArgType_t42QNN_GPU_KERNEL_ARG_TYPE_OP_INPUT_READWRITEE"></span><span class="target" id="QnnGpuOpPackage_8h_1aa8512424759dba8f6dde181e20dfdb83a759f2ee1abb6107a51d073b5e3e9cf8b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_KERNEL_ARG_TYPE_OP_INPUT_READWRITE</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N22QnnGpu_KernelArgType_t42QNN_GPU_KERNEL_ARG_TYPE_OP_INPUT_READWRITEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Operation input tensor used as kernel output. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22QnnGpu_KernelArgType_t39QNN_GPU_KERNEL_ARG_TYPE_OP_OUTPUT_WRITEE">
+<span id="_CPPv3N22QnnGpu_KernelArgType_t39QNN_GPU_KERNEL_ARG_TYPE_OP_OUTPUT_WRITEE"></span><span id="_CPPv2N22QnnGpu_KernelArgType_t39QNN_GPU_KERNEL_ARG_TYPE_OP_OUTPUT_WRITEE"></span><span class="target" id="QnnGpuOpPackage_8h_1aa8512424759dba8f6dde181e20dfdb83af2bcc615e02175147a4f84340bc9701f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_KERNEL_ARG_TYPE_OP_OUTPUT_WRITE</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">2</span></span><a class="headerlink" href="#_CPPv4N22QnnGpu_KernelArgType_t39QNN_GPU_KERNEL_ARG_TYPE_OP_OUTPUT_WRITEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Operation output tensor used as kernel output. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22QnnGpu_KernelArgType_t37QNN_GPU_KERNEL_ARG_TYPE_INTERNAL_READE">
+<span id="_CPPv3N22QnnGpu_KernelArgType_t37QNN_GPU_KERNEL_ARG_TYPE_INTERNAL_READE"></span><span id="_CPPv2N22QnnGpu_KernelArgType_t37QNN_GPU_KERNEL_ARG_TYPE_INTERNAL_READE"></span><span class="target" id="QnnGpuOpPackage_8h_1aa8512424759dba8f6dde181e20dfdb83a2180226e2b6ce584708e71b58cf34f7c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_KERNEL_ARG_TYPE_INTERNAL_READ</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">3</span></span><a class="headerlink" href="#_CPPv4N22QnnGpu_KernelArgType_t37QNN_GPU_KERNEL_ARG_TYPE_INTERNAL_READE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Operation internal tensor used as kernel input. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22QnnGpu_KernelArgType_t42QNN_GPU_KERNEL_ARG_TYPE_INTERNAL_READWRITEE">
+<span id="_CPPv3N22QnnGpu_KernelArgType_t42QNN_GPU_KERNEL_ARG_TYPE_INTERNAL_READWRITEE"></span><span id="_CPPv2N22QnnGpu_KernelArgType_t42QNN_GPU_KERNEL_ARG_TYPE_INTERNAL_READWRITEE"></span><span class="target" id="QnnGpuOpPackage_8h_1aa8512424759dba8f6dde181e20dfdb83ac87b917c7f64add2f41e177f42f27fcf"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_KERNEL_ARG_TYPE_INTERNAL_READWRITE</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">4</span></span><a class="headerlink" href="#_CPPv4N22QnnGpu_KernelArgType_t42QNN_GPU_KERNEL_ARG_TYPE_INTERNAL_READWRITEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Operation internal tensor used as kernel input/output. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22QnnGpu_KernelArgType_t38QNN_GPU_KERNEL_ARG_TYPE_INTERNAL_WRITEE">
+<span id="_CPPv3N22QnnGpu_KernelArgType_t38QNN_GPU_KERNEL_ARG_TYPE_INTERNAL_WRITEE"></span><span id="_CPPv2N22QnnGpu_KernelArgType_t38QNN_GPU_KERNEL_ARG_TYPE_INTERNAL_WRITEE"></span><span class="target" id="QnnGpuOpPackage_8h_1aa8512424759dba8f6dde181e20dfdb83aa094804231471b262bb3bb85ded3bb2c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_KERNEL_ARG_TYPE_INTERNAL_WRITE</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">5</span></span><a class="headerlink" href="#_CPPv4N22QnnGpu_KernelArgType_t38QNN_GPU_KERNEL_ARG_TYPE_INTERNAL_WRITEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Operation internal tensor used as kernel output. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22QnnGpu_KernelArgType_t28QNN_GPU_KERNEL_ARG_TYPE_DATAE">
+<span id="_CPPv3N22QnnGpu_KernelArgType_t28QNN_GPU_KERNEL_ARG_TYPE_DATAE"></span><span id="_CPPv2N22QnnGpu_KernelArgType_t28QNN_GPU_KERNEL_ARG_TYPE_DATAE"></span><span class="target" id="QnnGpuOpPackage_8h_1aa8512424759dba8f6dde181e20dfdb83abbaf411939bd35d837d029ef7dbe6e36"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_KERNEL_ARG_TYPE_DATA</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">6</span></span><a class="headerlink" href="#_CPPv4N22QnnGpu_KernelArgType_t28QNN_GPU_KERNEL_ARG_TYPE_DATAE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Plain old data kernel argument. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22QnnGpu_KernelArgType_t29QNN_GPU_KERNEL_ARG_TYPE_LOCALE">
+<span id="_CPPv3N22QnnGpu_KernelArgType_t29QNN_GPU_KERNEL_ARG_TYPE_LOCALE"></span><span id="_CPPv2N22QnnGpu_KernelArgType_t29QNN_GPU_KERNEL_ARG_TYPE_LOCALE"></span><span class="target" id="QnnGpuOpPackage_8h_1aa8512424759dba8f6dde181e20dfdb83abf4c68a22ab6cf7907b853a5120d2792"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_KERNEL_ARG_TYPE_LOCAL</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">7</span></span><a class="headerlink" href="#_CPPv4N22QnnGpu_KernelArgType_t29QNN_GPU_KERNEL_ARG_TYPE_LOCALE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Local memory kernel argument. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22QnnGpu_KernelArgType_t32QNN_GPU_KERNEL_ARG_TYPE_NULL_PTRE">
+<span id="_CPPv3N22QnnGpu_KernelArgType_t32QNN_GPU_KERNEL_ARG_TYPE_NULL_PTRE"></span><span id="_CPPv2N22QnnGpu_KernelArgType_t32QNN_GPU_KERNEL_ARG_TYPE_NULL_PTRE"></span><span class="target" id="QnnGpuOpPackage_8h_1aa8512424759dba8f6dde181e20dfdb83a4b027449416e51b1650753c642b5a7d9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_KERNEL_ARG_TYPE_NULL_PTR</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">8</span></span><a class="headerlink" href="#_CPPv4N22QnnGpu_KernelArgType_t32QNN_GPU_KERNEL_ARG_TYPE_NULL_PTRE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Null pointer kernel argument. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv426QnnGpu_DataKernelArgType_t">
+<span id="_CPPv326QnnGpu_DataKernelArgType_t"></span><span id="_CPPv226QnnGpu_DataKernelArgType_t"></span><span class="target" id="QnnGpuOpPackage_8h_1a47da798f71cd96c4bbc2946244f6aaf5"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGpu_DataKernelArgType_t</span></span></span><a class="headerlink" href="#_CPPv426QnnGpu_DataKernelArgType_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An enum to specify the kernel data argument type. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N26QnnGpu_DataKernelArgType_t31QNN_GPU_KERNEL_ARG_CL_TYPE_CHARE">
+<span id="_CPPv3N26QnnGpu_DataKernelArgType_t31QNN_GPU_KERNEL_ARG_CL_TYPE_CHARE"></span><span id="_CPPv2N26QnnGpu_DataKernelArgType_t31QNN_GPU_KERNEL_ARG_CL_TYPE_CHARE"></span><span class="target" id="QnnGpuOpPackage_8h_1a47da798f71cd96c4bbc2946244f6aaf5a8252ad6edab4b8d791c7d9b9156dc1d6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_KERNEL_ARG_CL_TYPE_CHAR</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N26QnnGpu_DataKernelArgType_t31QNN_GPU_KERNEL_ARG_CL_TYPE_CHARE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N26QnnGpu_DataKernelArgType_t32QNN_GPU_KERNEL_ARG_CL_TYPE_UCHARE">
+<span id="_CPPv3N26QnnGpu_DataKernelArgType_t32QNN_GPU_KERNEL_ARG_CL_TYPE_UCHARE"></span><span id="_CPPv2N26QnnGpu_DataKernelArgType_t32QNN_GPU_KERNEL_ARG_CL_TYPE_UCHARE"></span><span class="target" id="QnnGpuOpPackage_8h_1a47da798f71cd96c4bbc2946244f6aaf5a26081f7f6b5a3a96f4079fd63ec8907d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_KERNEL_ARG_CL_TYPE_UCHAR</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N26QnnGpu_DataKernelArgType_t32QNN_GPU_KERNEL_ARG_CL_TYPE_UCHARE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N26QnnGpu_DataKernelArgType_t32QNN_GPU_KERNEL_ARG_CL_TYPE_SHORTE">
+<span id="_CPPv3N26QnnGpu_DataKernelArgType_t32QNN_GPU_KERNEL_ARG_CL_TYPE_SHORTE"></span><span id="_CPPv2N26QnnGpu_DataKernelArgType_t32QNN_GPU_KERNEL_ARG_CL_TYPE_SHORTE"></span><span class="target" id="QnnGpuOpPackage_8h_1a47da798f71cd96c4bbc2946244f6aaf5a8f5186edc9f979ccafb8d6cb0780122c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_KERNEL_ARG_CL_TYPE_SHORT</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">2</span></span><a class="headerlink" href="#_CPPv4N26QnnGpu_DataKernelArgType_t32QNN_GPU_KERNEL_ARG_CL_TYPE_SHORTE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N26QnnGpu_DataKernelArgType_t33QNN_GPU_KERNEL_ARG_CL_TYPE_USHORTE">
+<span id="_CPPv3N26QnnGpu_DataKernelArgType_t33QNN_GPU_KERNEL_ARG_CL_TYPE_USHORTE"></span><span id="_CPPv2N26QnnGpu_DataKernelArgType_t33QNN_GPU_KERNEL_ARG_CL_TYPE_USHORTE"></span><span class="target" id="QnnGpuOpPackage_8h_1a47da798f71cd96c4bbc2946244f6aaf5a64f2acce46c0edf17f373eb6da423d95"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_KERNEL_ARG_CL_TYPE_USHORT</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">3</span></span><a class="headerlink" href="#_CPPv4N26QnnGpu_DataKernelArgType_t33QNN_GPU_KERNEL_ARG_CL_TYPE_USHORTE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N26QnnGpu_DataKernelArgType_t30QNN_GPU_KERNEL_ARG_CL_TYPE_INTE">
+<span id="_CPPv3N26QnnGpu_DataKernelArgType_t30QNN_GPU_KERNEL_ARG_CL_TYPE_INTE"></span><span id="_CPPv2N26QnnGpu_DataKernelArgType_t30QNN_GPU_KERNEL_ARG_CL_TYPE_INTE"></span><span class="target" id="QnnGpuOpPackage_8h_1a47da798f71cd96c4bbc2946244f6aaf5a863eeb96db5d6767a46f024eef3c6985"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_KERNEL_ARG_CL_TYPE_INT</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">4</span></span><a class="headerlink" href="#_CPPv4N26QnnGpu_DataKernelArgType_t30QNN_GPU_KERNEL_ARG_CL_TYPE_INTE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N26QnnGpu_DataKernelArgType_t31QNN_GPU_KERNEL_ARG_CL_TYPE_UINTE">
+<span id="_CPPv3N26QnnGpu_DataKernelArgType_t31QNN_GPU_KERNEL_ARG_CL_TYPE_UINTE"></span><span id="_CPPv2N26QnnGpu_DataKernelArgType_t31QNN_GPU_KERNEL_ARG_CL_TYPE_UINTE"></span><span class="target" id="QnnGpuOpPackage_8h_1a47da798f71cd96c4bbc2946244f6aaf5a616c084e69decdfe09334a9492f63b21"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_KERNEL_ARG_CL_TYPE_UINT</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">5</span></span><a class="headerlink" href="#_CPPv4N26QnnGpu_DataKernelArgType_t31QNN_GPU_KERNEL_ARG_CL_TYPE_UINTE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N26QnnGpu_DataKernelArgType_t31QNN_GPU_KERNEL_ARG_CL_TYPE_LONGE">
+<span id="_CPPv3N26QnnGpu_DataKernelArgType_t31QNN_GPU_KERNEL_ARG_CL_TYPE_LONGE"></span><span id="_CPPv2N26QnnGpu_DataKernelArgType_t31QNN_GPU_KERNEL_ARG_CL_TYPE_LONGE"></span><span class="target" id="QnnGpuOpPackage_8h_1a47da798f71cd96c4bbc2946244f6aaf5a66bab307d51061a7a234b32e2ec28e01"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_KERNEL_ARG_CL_TYPE_LONG</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">6</span></span><a class="headerlink" href="#_CPPv4N26QnnGpu_DataKernelArgType_t31QNN_GPU_KERNEL_ARG_CL_TYPE_LONGE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N26QnnGpu_DataKernelArgType_t32QNN_GPU_KERNEL_ARG_CL_TYPE_ULONGE">
+<span id="_CPPv3N26QnnGpu_DataKernelArgType_t32QNN_GPU_KERNEL_ARG_CL_TYPE_ULONGE"></span><span id="_CPPv2N26QnnGpu_DataKernelArgType_t32QNN_GPU_KERNEL_ARG_CL_TYPE_ULONGE"></span><span class="target" id="QnnGpuOpPackage_8h_1a47da798f71cd96c4bbc2946244f6aaf5afc6148d901515e97bd4ca7a307e20131"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_KERNEL_ARG_CL_TYPE_ULONG</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">7</span></span><a class="headerlink" href="#_CPPv4N26QnnGpu_DataKernelArgType_t32QNN_GPU_KERNEL_ARG_CL_TYPE_ULONGE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N26QnnGpu_DataKernelArgType_t32QNN_GPU_KERNEL_ARG_CL_TYPE_FLOATE">
+<span id="_CPPv3N26QnnGpu_DataKernelArgType_t32QNN_GPU_KERNEL_ARG_CL_TYPE_FLOATE"></span><span id="_CPPv2N26QnnGpu_DataKernelArgType_t32QNN_GPU_KERNEL_ARG_CL_TYPE_FLOATE"></span><span class="target" id="QnnGpuOpPackage_8h_1a47da798f71cd96c4bbc2946244f6aaf5a9a46e6f9827de87769dcb0dfb1a2bf26"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_KERNEL_ARG_CL_TYPE_FLOAT</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">8</span></span><a class="headerlink" href="#_CPPv4N26QnnGpu_DataKernelArgType_t32QNN_GPU_KERNEL_ARG_CL_TYPE_FLOATE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N26QnnGpu_DataKernelArgType_t33QNN_GPU_KERNEL_ARG_CL_TYPE_DOUBLEE">
+<span id="_CPPv3N26QnnGpu_DataKernelArgType_t33QNN_GPU_KERNEL_ARG_CL_TYPE_DOUBLEE"></span><span id="_CPPv2N26QnnGpu_DataKernelArgType_t33QNN_GPU_KERNEL_ARG_CL_TYPE_DOUBLEE"></span><span class="target" id="QnnGpuOpPackage_8h_1a47da798f71cd96c4bbc2946244f6aaf5a79b0d59bf7cd5f6ea677c30f9b452530"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_KERNEL_ARG_CL_TYPE_DOUBLE</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">9</span></span><a class="headerlink" href="#_CPPv4N26QnnGpu_DataKernelArgType_t33QNN_GPU_KERNEL_ARG_CL_TYPE_DOUBLEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv425QnnGpu_KernelSourceType_t">
+<span id="_CPPv325QnnGpu_KernelSourceType_t"></span><span id="_CPPv225QnnGpu_KernelSourceType_t"></span><span class="target" id="QnnGpuOpPackage_8h_1adbd17adf4e85f75ef76551a1230b7688"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGpu_KernelSourceType_t</span></span></span><a class="headerlink" href="#_CPPv425QnnGpu_KernelSourceType_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An enum to specify the kernel source type. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnGpu_KernelSourceType_t31QNN_GPU_KERNEL_SOURCE_TYPE_TEXTE">
+<span id="_CPPv3N25QnnGpu_KernelSourceType_t31QNN_GPU_KERNEL_SOURCE_TYPE_TEXTE"></span><span id="_CPPv2N25QnnGpu_KernelSourceType_t31QNN_GPU_KERNEL_SOURCE_TYPE_TEXTE"></span><span class="target" id="QnnGpuOpPackage_8h_1adbd17adf4e85f75ef76551a1230b7688a5d451e16779cbba08319327af395046a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_KERNEL_SOURCE_TYPE_TEXT</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N25QnnGpu_KernelSourceType_t31QNN_GPU_KERNEL_SOURCE_TYPE_TEXTE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnGpu_KernelSourceType_t33QNN_GPU_KERNEL_SOURCE_TYPE_BINARYE">
+<span id="_CPPv3N25QnnGpu_KernelSourceType_t33QNN_GPU_KERNEL_SOURCE_TYPE_BINARYE"></span><span id="_CPPv2N25QnnGpu_KernelSourceType_t33QNN_GPU_KERNEL_SOURCE_TYPE_BINARYE"></span><span class="target" id="QnnGpuOpPackage_8h_1adbd17adf4e85f75ef76551a1230b7688aa8370bae1abc6cab1b8906178d00e255"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_GPU_KERNEL_SOURCE_TYPE_BINARY</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N25QnnGpu_KernelSourceType_t33QNN_GPU_KERNEL_SOURCE_TYPE_BINARYE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv425QnnGpu_DeviceProperties_t">
+<span id="_CPPv325QnnGpu_DeviceProperties_t"></span><span id="_CPPv225QnnGpu_DeviceProperties_t"></span><span id="QnnGpu_DeviceProperties_t"></span><span class="target" id="structQnnGpu__DeviceProperties__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGpu_DeviceProperties_t</span></span></span><a class="headerlink" href="#_CPPv425QnnGpu_DeviceProperties_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnGpuOpPackage.h&gt;</em></div>
+<p>A struct which is used to communicate device constant properties. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnGpu_DeviceProperties_t13deviceVersionE">
+<span id="_CPPv3N25QnnGpu_DeviceProperties_t13deviceVersionE"></span><span id="_CPPv2N25QnnGpu_DeviceProperties_t13deviceVersionE"></span><span id="QnnGpu_DeviceProperties_t::deviceVersion__cA"></span><span class="target" id="structQnnGpu__DeviceProperties__t_1a69d75a7678b2cef5cb371393fa9c4c81"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">deviceVersion</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">128</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N25QnnGpu_DeviceProperties_t13deviceVersionE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>GPU device version string. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnGpu_DeviceProperties_t16interfaceVersionE">
+<span id="_CPPv3N25QnnGpu_DeviceProperties_t16interfaceVersionE"></span><span id="_CPPv2N25QnnGpu_DeviceProperties_t16interfaceVersionE"></span><span id="QnnGpu_DeviceProperties_t::interfaceVersion__uint32_tA"></span><span class="target" id="structQnnGpu__DeviceProperties__t_1af85327fc52d532eb474c044f19272f25"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">interfaceVersion</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">2</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N25QnnGpu_DeviceProperties_t16interfaceVersionE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>GPU driver interface version {major, minor}. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnGpu_DeviceProperties_t8tierNameE">
+<span id="_CPPv3N25QnnGpu_DeviceProperties_t8tierNameE"></span><span id="_CPPv2N25QnnGpu_DeviceProperties_t8tierNameE"></span><span id="QnnGpu_DeviceProperties_t::tierName__cA"></span><span class="target" id="structQnnGpu__DeviceProperties__t_1a83b15bd5999480129ff62e5f89faf859"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">tierName</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">8</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N25QnnGpu_DeviceProperties_t8tierNameE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>GPU Adreno(TM) tier string. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnGpu_DeviceProperties_t15compilerVersionE">
+<span id="_CPPv3N25QnnGpu_DeviceProperties_t15compilerVersionE"></span><span id="_CPPv2N25QnnGpu_DeviceProperties_t15compilerVersionE"></span><span id="QnnGpu_DeviceProperties_t::compilerVersion__uint32_tA"></span><span class="target" id="structQnnGpu__DeviceProperties__t_1ab649291a0538166e3600d5d3a177f775"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">compilerVersion</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">4</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N25QnnGpu_DeviceProperties_t15compilerVersionE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>GPU driver version {product, major, minor, patch}. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnGpu_DeviceProperties_t16maxWorkGroupSizeE">
+<span id="_CPPv3N25QnnGpu_DeviceProperties_t16maxWorkGroupSizeE"></span><span id="_CPPv2N25QnnGpu_DeviceProperties_t16maxWorkGroupSizeE"></span><span id="QnnGpu_DeviceProperties_t::maxWorkGroupSize__s"></span><span class="target" id="structQnnGpu__DeviceProperties__t_1a26ebf99c13015f283f339f0216eeb133"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">maxWorkGroupSize</span></span></span><a class="headerlink" href="#_CPPv4N25QnnGpu_DeviceProperties_t16maxWorkGroupSizeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>GPU device max work group size. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnGpu_DeviceProperties_t15image2dMaxWidthE">
+<span id="_CPPv3N25QnnGpu_DeviceProperties_t15image2dMaxWidthE"></span><span id="_CPPv2N25QnnGpu_DeviceProperties_t15image2dMaxWidthE"></span><span id="QnnGpu_DeviceProperties_t::image2dMaxWidth__s"></span><span class="target" id="structQnnGpu__DeviceProperties__t_1ae5b4fe1310f39d79b3d0cf30b5629d65"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">image2dMaxWidth</span></span></span><a class="headerlink" href="#_CPPv4N25QnnGpu_DeviceProperties_t15image2dMaxWidthE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>GPU device image 2D max width. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnGpu_DeviceProperties_t16image2dMaxHeightE">
+<span id="_CPPv3N25QnnGpu_DeviceProperties_t16image2dMaxHeightE"></span><span id="_CPPv2N25QnnGpu_DeviceProperties_t16image2dMaxHeightE"></span><span id="QnnGpu_DeviceProperties_t::image2dMaxHeight__s"></span><span class="target" id="structQnnGpu__DeviceProperties__t_1a40fb5c6071dba5328f3b4ddb0aa1c170"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">image2dMaxHeight</span></span></span><a class="headerlink" href="#_CPPv4N25QnnGpu_DeviceProperties_t16image2dMaxHeightE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>GPU device image 2D max height. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnGpu_DeviceProperties_t18maxBufferAllocSizeE">
+<span id="_CPPv3N25QnnGpu_DeviceProperties_t18maxBufferAllocSizeE"></span><span id="_CPPv2N25QnnGpu_DeviceProperties_t18maxBufferAllocSizeE"></span><span id="QnnGpu_DeviceProperties_t::maxBufferAllocSize__s"></span><span class="target" id="structQnnGpu__DeviceProperties__t_1ad7960e1b2037db35c59d8c1be3349008"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">maxBufferAllocSize</span></span></span><a class="headerlink" href="#_CPPv4N25QnnGpu_DeviceProperties_t18maxBufferAllocSizeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>GPU device max memory allocation size. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnGpu_DeviceProperties_t17baseAddrAlignmentE">
+<span id="_CPPv3N25QnnGpu_DeviceProperties_t17baseAddrAlignmentE"></span><span id="_CPPv2N25QnnGpu_DeviceProperties_t17baseAddrAlignmentE"></span><span id="QnnGpu_DeviceProperties_t::baseAddrAlignment__uint32_t"></span><span class="target" id="structQnnGpu__DeviceProperties__t_1ad83fdbc0365f9ff2a69a8614d3c7f4d6"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">baseAddrAlignment</span></span></span><a class="headerlink" href="#_CPPv4N25QnnGpu_DeviceProperties_t17baseAddrAlignmentE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>GPU device addr alignment in bits. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnGpu_DeviceProperties_t20image2dArrayMaxWidthE">
+<span id="_CPPv3N25QnnGpu_DeviceProperties_t20image2dArrayMaxWidthE"></span><span id="_CPPv2N25QnnGpu_DeviceProperties_t20image2dArrayMaxWidthE"></span><span id="QnnGpu_DeviceProperties_t::image2dArrayMaxWidth__s"></span><span class="target" id="structQnnGpu__DeviceProperties__t_1a21555d7ff6473b44339258cb6531cdf2"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">image2dArrayMaxWidth</span></span></span><a class="headerlink" href="#_CPPv4N25QnnGpu_DeviceProperties_t20image2dArrayMaxWidthE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>GPU device image 2D Array max width. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnGpu_DeviceProperties_t21image2dArrayMaxHeightE">
+<span id="_CPPv3N25QnnGpu_DeviceProperties_t21image2dArrayMaxHeightE"></span><span id="_CPPv2N25QnnGpu_DeviceProperties_t21image2dArrayMaxHeightE"></span><span id="QnnGpu_DeviceProperties_t::image2dArrayMaxHeight__s"></span><span class="target" id="structQnnGpu__DeviceProperties__t_1ad988ad2f282cc0b526f6edcb63a893fd"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">image2dArrayMaxHeight</span></span></span><a class="headerlink" href="#_CPPv4N25QnnGpu_DeviceProperties_t21image2dArrayMaxHeightE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>GPU device image 2D Array max height. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnGpu_DeviceProperties_t20image2dArrayMaxDepthE">
+<span id="_CPPv3N25QnnGpu_DeviceProperties_t20image2dArrayMaxDepthE"></span><span id="_CPPv2N25QnnGpu_DeviceProperties_t20image2dArrayMaxDepthE"></span><span id="QnnGpu_DeviceProperties_t::image2dArrayMaxDepth__s"></span><span class="target" id="structQnnGpu__DeviceProperties__t_1a0e5a8ba72c56ac2a2434d8e4ecce1ae5"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">image2dArrayMaxDepth</span></span></span><a class="headerlink" href="#_CPPv4N25QnnGpu_DeviceProperties_t20image2dArrayMaxDepthE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>GPU device image 2D Array max depth. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv438QnnGpuOpPackage_GlobalInfrastructure_t">
+<span id="_CPPv338QnnGpuOpPackage_GlobalInfrastructure_t"></span><span id="_CPPv238QnnGpuOpPackage_GlobalInfrastructure_t"></span><span id="QnnGpuOpPackage_GlobalInfrastructure_t"></span><span class="target" id="structQnnGpuOpPackage__GlobalInfrastructure__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGpuOpPackage_GlobalInfrastructure_t</span></span></span><a class="headerlink" href="#_CPPv438QnnGpuOpPackage_GlobalInfrastructure_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnGpuOpPackage.h&gt;</em></div>
+<p>A QNN GPU struct specializing QnnOpPackage_GlobalInfrastructure_t. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N38QnnGpuOpPackage_GlobalInfrastructure_t13sdkApiVersionE">
+<span id="_CPPv3N38QnnGpuOpPackage_GlobalInfrastructure_t13sdkApiVersionE"></span><span id="_CPPv2N38QnnGpuOpPackage_GlobalInfrastructure_t13sdkApiVersionE"></span><span id="QnnGpuOpPackage_GlobalInfrastructure_t::sdkApiVersion__Qnn_ApiVersion_tCP"></span><span class="target" id="structQnnGpuOpPackage__GlobalInfrastructure__t_1a204e9e45a115f6efa57351399fead075"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="structQnn__ApiVersion__t.html#_CPPv416Qnn_ApiVersion_t" title="Qnn_ApiVersion_t"><span class="n"><span class="pre">Qnn_ApiVersion_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">sdkApiVersion</span></span></span><a class="headerlink" href="#_CPPv4N38QnnGpuOpPackage_GlobalInfrastructure_t13sdkApiVersionE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>GPU backend version (as returned by <a class="reference internal" href="file_include_QNN_QnnBackend.h.html#QnnBackend_8h_1aa2317e971e9ac56b21cf482552e4bd02"><span class="std std-ref">QnnBackend_getApiVersion()</span></a>) </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N38QnnGpuOpPackage_GlobalInfrastructure_t16devicePropertiesE">
+<span id="_CPPv3N38QnnGpuOpPackage_GlobalInfrastructure_t16devicePropertiesE"></span><span id="_CPPv2N38QnnGpuOpPackage_GlobalInfrastructure_t16devicePropertiesE"></span><span id="QnnGpuOpPackage_GlobalInfrastructure_t::deviceProperties__QnnGpu_DeviceProperties_tCP"></span><span class="target" id="structQnnGpuOpPackage__GlobalInfrastructure__t_1a569c32b9977f6c3895e8db523fc25ad7"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="structQnnGpu__DeviceProperties__t.html#_CPPv425QnnGpu_DeviceProperties_t" title="QnnGpu_DeviceProperties_t"><span class="n"><span class="pre">QnnGpu_DeviceProperties_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">deviceProperties</span></span></span><a class="headerlink" href="#_CPPv4N38QnnGpuOpPackage_GlobalInfrastructure_t16devicePropertiesE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>GPU device properties. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N38QnnGpuOpPackage_GlobalInfrastructure_t10driverPathE">
+<span id="_CPPv3N38QnnGpuOpPackage_GlobalInfrastructure_t10driverPathE"></span><span id="_CPPv2N38QnnGpuOpPackage_GlobalInfrastructure_t10driverPathE"></span><span id="QnnGpuOpPackage_GlobalInfrastructure_t::driverPath__cCP"></span><span class="target" id="structQnnGpuOpPackage__GlobalInfrastructure__t_1ac726a98f6e47d9b1f8d636c20f38bdba"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">driverPath</span></span></span><a class="headerlink" href="#_CPPv4N38QnnGpuOpPackage_GlobalInfrastructure_t10driverPathE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Null terminated path to the OpenCL driver used by the backend. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv429QnnGpuOpPackage_PackageInfo_t">
+<span id="_CPPv329QnnGpuOpPackage_PackageInfo_t"></span><span id="_CPPv229QnnGpuOpPackage_PackageInfo_t"></span><span id="QnnGpuOpPackage_PackageInfo_t"></span><span class="target" id="structQnnGpuOpPackage__PackageInfo__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGpuOpPackage_PackageInfo_t</span></span></span><a class="headerlink" href="#_CPPv429QnnGpuOpPackage_PackageInfo_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnGpuOpPackage.h&gt;</em></div>
+<p>A struct having op package specific information. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N29QnnGpuOpPackage_PackageInfo_t14kernelRepoHashE">
+<span id="_CPPv3N29QnnGpuOpPackage_PackageInfo_t14kernelRepoHashE"></span><span id="_CPPv2N29QnnGpuOpPackage_PackageInfo_t14kernelRepoHashE"></span><span id="QnnGpuOpPackage_PackageInfo_t::kernelRepoHash__cCP"></span><span class="target" id="structQnnGpuOpPackage__PackageInfo__t_1a87506b378be4ac5b9bad86bb40f11d64"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">kernelRepoHash</span></span></span><a class="headerlink" href="#_CPPv4N29QnnGpuOpPackage_PackageInfo_t14kernelRepoHashE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Null terminated hash key string of all kernel sources. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv447QnnGpuOpPackage_SuperNodeConnectionConstraint_t">
+<span id="_CPPv347QnnGpuOpPackage_SuperNodeConnectionConstraint_t"></span><span id="_CPPv247QnnGpuOpPackage_SuperNodeConnectionConstraint_t"></span><span id="QnnGpuOpPackage_SuperNodeConnectionConstraint_t"></span><span class="target" id="structQnnGpuOpPackage__SuperNodeConnectionConstraint__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGpuOpPackage_SuperNodeConnectionConstraint_t</span></span></span><a class="headerlink" href="#_CPPv447QnnGpuOpPackage_SuperNodeConnectionConstraint_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnGpuOpPackage.h&gt;</em></div>
+<p>A struct representing a super node connection constraint. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N47QnnGpuOpPackage_SuperNodeConnectionConstraint_t8producerE">
+<span id="_CPPv3N47QnnGpuOpPackage_SuperNodeConnectionConstraint_t8producerE"></span><span id="_CPPv2N47QnnGpuOpPackage_SuperNodeConnectionConstraint_t8producerE"></span><span id="QnnGpuOpPackage_SuperNodeConnectionConstraint_t::producer__uint32_t"></span><span class="target" id="structQnnGpuOpPackage__SuperNodeConnectionConstraint__t_1ad92c8478b879d55876edd2e4ce07f1d1"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">producer</span></span></span><a class="headerlink" href="#_CPPv4N47QnnGpuOpPackage_SuperNodeConnectionConstraint_t8producerE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Producer node corresponding to <a class="reference internal" href="#structQnnGpuOpPackage__SuperNodeOptimization__t_1abf9e8f30b5f47f2df8ae52f57cfe5cf4"><span class="std std-ref">QnnGpuOpPackage_SuperNodeOptimization_t::operations</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N47QnnGpuOpPackage_SuperNodeConnectionConstraint_t19producerOutputIndexE">
+<span id="_CPPv3N47QnnGpuOpPackage_SuperNodeConnectionConstraint_t19producerOutputIndexE"></span><span id="_CPPv2N47QnnGpuOpPackage_SuperNodeConnectionConstraint_t19producerOutputIndexE"></span><span id="QnnGpuOpPackage_SuperNodeConnectionConstraint_t::producerOutputIndex__uint32_t"></span><span class="target" id="structQnnGpuOpPackage__SuperNodeConnectionConstraint__t_1a68498ead6d4f7039747ef5c7235f7512"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">producerOutputIndex</span></span></span><a class="headerlink" href="#_CPPv4N47QnnGpuOpPackage_SuperNodeConnectionConstraint_t19producerOutputIndexE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Output tensor index corresponding to the producer node. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N47QnnGpuOpPackage_SuperNodeConnectionConstraint_t8consumerE">
+<span id="_CPPv3N47QnnGpuOpPackage_SuperNodeConnectionConstraint_t8consumerE"></span><span id="_CPPv2N47QnnGpuOpPackage_SuperNodeConnectionConstraint_t8consumerE"></span><span id="QnnGpuOpPackage_SuperNodeConnectionConstraint_t::consumer__uint32_t"></span><span class="target" id="structQnnGpuOpPackage__SuperNodeConnectionConstraint__t_1a096e4b73626c816809326d8ec1c58ec7"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">consumer</span></span></span><a class="headerlink" href="#_CPPv4N47QnnGpuOpPackage_SuperNodeConnectionConstraint_t8consumerE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Consumer node corresponding to <a class="reference internal" href="#structQnnGpuOpPackage__SuperNodeOptimization__t_1abf9e8f30b5f47f2df8ae52f57cfe5cf4"><span class="std std-ref">QnnGpuOpPackage_SuperNodeOptimization_t::operations</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N47QnnGpuOpPackage_SuperNodeConnectionConstraint_t18consumerInputIndexE">
+<span id="_CPPv3N47QnnGpuOpPackage_SuperNodeConnectionConstraint_t18consumerInputIndexE"></span><span id="_CPPv2N47QnnGpuOpPackage_SuperNodeConnectionConstraint_t18consumerInputIndexE"></span><span id="QnnGpuOpPackage_SuperNodeConnectionConstraint_t::consumerInputIndex__uint32_t"></span><span class="target" id="structQnnGpuOpPackage__SuperNodeConnectionConstraint__t_1a857dd258829e1ba097c6e2446fe413e8"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">consumerInputIndex</span></span></span><a class="headerlink" href="#_CPPv4N47QnnGpuOpPackage_SuperNodeConnectionConstraint_t18consumerInputIndexE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Output tensor index corresponding to the consumer node. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv434QnnGpuOpPackage_TensorConstraint_t">
+<span id="_CPPv334QnnGpuOpPackage_TensorConstraint_t"></span><span id="_CPPv234QnnGpuOpPackage_TensorConstraint_t"></span><span id="QnnGpuOpPackage_TensorConstraint_t"></span><span class="target" id="structQnnGpuOpPackage__TensorConstraint__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGpuOpPackage_TensorConstraint_t</span></span></span><a class="headerlink" href="#_CPPv434QnnGpuOpPackage_TensorConstraint_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnGpuOpPackage.h&gt;</em></div>
+<p>A struct representing a tensor constraint. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N34QnnGpuOpPackage_TensorConstraint_t14operationIndexE">
+<span id="_CPPv3N34QnnGpuOpPackage_TensorConstraint_t14operationIndexE"></span><span id="_CPPv2N34QnnGpuOpPackage_TensorConstraint_t14operationIndexE"></span><span id="QnnGpuOpPackage_TensorConstraint_t::operationIndex__uint32_t"></span><span class="target" id="structQnnGpuOpPackage__TensorConstraint__t_1a9537fe26dfb33dc7a90d2329a7891a31"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">operationIndex</span></span></span><a class="headerlink" href="#_CPPv4N34QnnGpuOpPackage_TensorConstraint_t14operationIndexE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Operation corresponding to <a class="reference internal" href="#structQnnGpuOpPackage__SuperNodeOptimization__t_1abf9e8f30b5f47f2df8ae52f57cfe5cf4"><span class="std std-ref">QnnGpuOpPackage_SuperNodeOptimization_t::operations</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N34QnnGpuOpPackage_TensorConstraint_t6sourceE">
+<span id="_CPPv3N34QnnGpuOpPackage_TensorConstraint_t6sourceE"></span><span id="_CPPv2N34QnnGpuOpPackage_TensorConstraint_t6sourceE"></span><span id="QnnGpuOpPackage_TensorConstraint_t::source__QnnGpuOpPackage_TensorConstraintSource_t"></span><span class="target" id="structQnnGpuOpPackage__TensorConstraint__t_1ab9f1da0bcb6459e924b175bfdfd7c848"></span><a class="reference internal" href="enum_QnnGpuOpPackage_8h_1a6d8d7c94d991221f7d11ff8f145fbda5.html#_CPPv440QnnGpuOpPackage_TensorConstraintSource_t" title="QnnGpuOpPackage_TensorConstraintSource_t"><span class="n"><span class="pre">QnnGpuOpPackage_TensorConstraintSource_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">source</span></span></span><a class="headerlink" href="#_CPPv4N34QnnGpuOpPackage_TensorConstraint_t6sourceE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Source of the tensor in the <a class="reference internal" href="file_include_QNN_QnnTypes.h.html#structQnn__OpConfig__t"><span class="std std-ref">Qnn_OpConfig_t</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N34QnnGpuOpPackage_TensorConstraint_t5indexE">
+<span id="_CPPv3N34QnnGpuOpPackage_TensorConstraint_t5indexE"></span><span id="_CPPv2N34QnnGpuOpPackage_TensorConstraint_t5indexE"></span><span id="QnnGpuOpPackage_TensorConstraint_t::index__uint32_t"></span><span class="target" id="structQnnGpuOpPackage__TensorConstraint__t_1a88dbc13081ac1c7dfdd7cf2483bbe703"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">index</span></span></span><a class="headerlink" href="#_CPPv4N34QnnGpuOpPackage_TensorConstraint_t5indexE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Tensor index in the <a class="reference internal" href="file_include_QNN_QnnTypes.h.html#structQnn__OpConfig__t"><span class="std std-ref">Qnn_OpConfig_t</span></a>, used only for inputs and outputs. </p>
+<p>Tensor dimension index for dimension constraints. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N34QnnGpuOpPackage_TensorConstraint_t4nameE">
+<span id="_CPPv3N34QnnGpuOpPackage_TensorConstraint_t4nameE"></span><span id="_CPPv2N34QnnGpuOpPackage_TensorConstraint_t4nameE"></span><span id="QnnGpuOpPackage_TensorConstraint_t::name__cCP"></span><span class="target" id="structQnnGpuOpPackage__TensorConstraint__t_1a8ec652b6c59505afd436e3b0077b399d"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">name</span></span></span><a class="headerlink" href="#_CPPv4N34QnnGpuOpPackage_TensorConstraint_t4nameE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Tensor parameter name in the <a class="reference internal" href="file_include_QNN_QnnTypes.h.html#structQnn__OpConfig__t"><span class="std std-ref">Qnn_OpConfig_t</span></a>, used only for parameters. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N34QnnGpuOpPackage_TensorConstraint_tUt2_21E">
+<span id="_CPPv3N34QnnGpuOpPackage_TensorConstraint_tUt2_21E"></span><span class="target" id="structQnnGpuOpPackage__TensorConstraint__t_1a5af0bae4f3a173adc3a3ea0dd7e702e2"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><a class="reference internal" href="structQnnGpuOpPackage__TensorConstraint__t.html#_CPPv434QnnGpuOpPackage_TensorConstraint_t" title="QnnGpuOpPackage_TensorConstraint_t"><span class="n"><span class="pre">QnnGpuOpPackage_TensorConstraint_t</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">[anonymous]</span></span></span><a class="headerlink" href="#_CPPv4N34QnnGpuOpPackage_TensorConstraint_tUt2_21E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N34QnnGpuOpPackage_TensorConstraint_t4typeE">
+<span id="_CPPv3N34QnnGpuOpPackage_TensorConstraint_t4typeE"></span><span id="_CPPv2N34QnnGpuOpPackage_TensorConstraint_t4typeE"></span><span id="QnnGpuOpPackage_TensorConstraint_t::type__QnnGpuOpPackage_TensorConstraintType_t"></span><span class="target" id="structQnnGpuOpPackage__TensorConstraint__t_1a6f038463cb591bd1d065929c196e8db7"></span><a class="reference internal" href="enum_QnnGpuOpPackage_8h_1a09e8cf2e973a8d51b722de61b7cd0a14.html#_CPPv438QnnGpuOpPackage_TensorConstraintType_t" title="QnnGpuOpPackage_TensorConstraintType_t"><span class="n"><span class="pre">QnnGpuOpPackage_TensorConstraintType_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">type</span></span></span><a class="headerlink" href="#_CPPv4N34QnnGpuOpPackage_TensorConstraint_t4typeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Type of tensor constraint. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N34QnnGpuOpPackage_TensorConstraint_t8dataTypeE">
+<span id="_CPPv3N34QnnGpuOpPackage_TensorConstraint_t8dataTypeE"></span><span id="_CPPv2N34QnnGpuOpPackage_TensorConstraint_t8dataTypeE"></span><span id="QnnGpuOpPackage_TensorConstraint_t::dataType__Qnn_DataType_t"></span><span class="target" id="structQnnGpuOpPackage__TensorConstraint__t_1a166ca23deea6c4a542c86d3686efe18e"></span><a class="reference internal" href="enum_QnnTypes_8h_1a8bda296c6c8a3148f764dcbdb5b8f534.html#_CPPv414Qnn_DataType_t" title="Qnn_DataType_t"><span class="n"><span class="pre">Qnn_DataType_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dataType</span></span></span><a class="headerlink" href="#_CPPv4N34QnnGpuOpPackage_TensorConstraint_t8dataTypeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Tensor data type for Qnn_DataType_t constraints. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N34QnnGpuOpPackage_TensorConstraint_t10tensorTypeE">
+<span id="_CPPv3N34QnnGpuOpPackage_TensorConstraint_t10tensorTypeE"></span><span id="_CPPv2N34QnnGpuOpPackage_TensorConstraint_t10tensorTypeE"></span><span id="QnnGpuOpPackage_TensorConstraint_t::tensorType__Qnn_TensorType_t"></span><span class="target" id="structQnnGpuOpPackage__TensorConstraint__t_1a582e7e9ec832c4f9429c2b290fcf584a"></span><a class="reference internal" href="enum_QnnTypes_8h_1aedf2127d917e35605f466d7d02f28f25.html#_CPPv416Qnn_TensorType_t" title="Qnn_TensorType_t"><span class="n"><span class="pre">Qnn_TensorType_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">tensorType</span></span></span><a class="headerlink" href="#_CPPv4N34QnnGpuOpPackage_TensorConstraint_t10tensorTypeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Tensor type for Qnn_TensorType_t constraints. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N34QnnGpuOpPackage_TensorConstraint_t4rankE">
+<span id="_CPPv3N34QnnGpuOpPackage_TensorConstraint_t4rankE"></span><span id="_CPPv2N34QnnGpuOpPackage_TensorConstraint_t4rankE"></span><span id="QnnGpuOpPackage_TensorConstraint_t::rank__uint32_t"></span><span class="target" id="structQnnGpuOpPackage__TensorConstraint__t_1a9d1835c15e0e397f7ebf1a17e2fd36d2"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rank</span></span></span><a class="headerlink" href="#_CPPv4N34QnnGpuOpPackage_TensorConstraint_t4rankE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Tensor rank for rank constraints. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N34QnnGpuOpPackage_TensorConstraint_t4sizeE">
+<span id="_CPPv3N34QnnGpuOpPackage_TensorConstraint_t4sizeE"></span><span id="_CPPv2N34QnnGpuOpPackage_TensorConstraint_t4sizeE"></span><span id="QnnGpuOpPackage_TensorConstraint_t::size__uint32_t"></span><span class="target" id="structQnnGpuOpPackage__TensorConstraint__t_1a08bfad858f3805fa759694f0cab01961"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">size</span></span></span><a class="headerlink" href="#_CPPv4N34QnnGpuOpPackage_TensorConstraint_t4sizeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Tensor dimension size for dimension constraints. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N34QnnGpuOpPackage_TensorConstraint_t9dimensionE">
+<span id="_CPPv3N34QnnGpuOpPackage_TensorConstraint_t9dimensionE"></span><span id="_CPPv2N34QnnGpuOpPackage_TensorConstraint_t9dimensionE"></span><span class="target" id="structQnnGpuOpPackage__TensorConstraint__t_1ad49b33d370449b40d278125936d95a2b"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="structQnnGpuOpPackage__TensorConstraint__t.html#_CPPv434QnnGpuOpPackage_TensorConstraint_t" title="QnnGpuOpPackage_TensorConstraint_t"><span class="n"><span class="pre">QnnGpuOpPackage_TensorConstraint_t</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dimension</span></span></span><a class="headerlink" href="#_CPPv4N34QnnGpuOpPackage_TensorConstraint_t9dimensionE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N34QnnGpuOpPackage_TensorConstraint_tUt2_23E">
+<span id="_CPPv3N34QnnGpuOpPackage_TensorConstraint_tUt2_23E"></span><span class="target" id="structQnnGpuOpPackage__TensorConstraint__t_1a6b2ef968bbec6bc779379e7208a10fb9"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><a class="reference internal" href="structQnnGpuOpPackage__TensorConstraint__t.html#_CPPv434QnnGpuOpPackage_TensorConstraint_t" title="QnnGpuOpPackage_TensorConstraint_t"><span class="n"><span class="pre">QnnGpuOpPackage_TensorConstraint_t</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">[anonymous]</span></span></span><a class="headerlink" href="#_CPPv4N34QnnGpuOpPackage_TensorConstraint_tUt2_23E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv439QnnGpuOpPackage_SuperNodeOptimization_t">
+<span id="_CPPv339QnnGpuOpPackage_SuperNodeOptimization_t"></span><span id="_CPPv239QnnGpuOpPackage_SuperNodeOptimization_t"></span><span id="QnnGpuOpPackage_SuperNodeOptimization_t"></span><span class="target" id="structQnnGpuOpPackage__SuperNodeOptimization__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGpuOpPackage_SuperNodeOptimization_t</span></span></span><a class="headerlink" href="#_CPPv439QnnGpuOpPackage_SuperNodeOptimization_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnGpuOpPackage.h&gt;</em></div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N39QnnGpuOpPackage_SuperNodeOptimization_t10operationsE">
+<span id="_CPPv3N39QnnGpuOpPackage_SuperNodeOptimization_t10operationsE"></span><span id="_CPPv2N39QnnGpuOpPackage_SuperNodeOptimization_t10operationsE"></span><span id="QnnGpuOpPackage_SuperNodeOptimization_t::operations__cCPP"></span><span class="target" id="structQnnGpuOpPackage__SuperNodeOptimization__t_1abf9e8f30b5f47f2df8ae52f57cfe5cf4"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">operations</span></span></span><a class="headerlink" href="#_CPPv4N39QnnGpuOpPackage_SuperNodeOptimization_t10operationsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Null-terminated array of comma separated lists of operations used for matching super node ops. An asterisk (*) may be used to represent any operation type. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N39QnnGpuOpPackage_SuperNodeOptimization_t21connectionConstraintsE">
+<span id="_CPPv3N39QnnGpuOpPackage_SuperNodeOptimization_t21connectionConstraintsE"></span><span id="_CPPv2N39QnnGpuOpPackage_SuperNodeOptimization_t21connectionConstraintsE"></span><span id="QnnGpuOpPackage_SuperNodeOptimization_t::connectionConstraints__QnnGpuOpPackage_SuperNodeConnectionConstraint_tPP"></span><span class="target" id="structQnnGpuOpPackage__SuperNodeOptimization__t_1ac3c8e25e093e56d9688216fccac9cd52"></span><a class="reference internal" href="structQnnGpuOpPackage__SuperNodeConnectionConstraint__t.html#_CPPv447QnnGpuOpPackage_SuperNodeConnectionConstraint_t" title="QnnGpuOpPackage_SuperNodeConnectionConstraint_t"><span class="n"><span class="pre">QnnGpuOpPackage_SuperNodeConnectionConstraint_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">connectionConstraints</span></span></span><a class="headerlink" href="#_CPPv4N39QnnGpuOpPackage_SuperNodeOptimization_t21connectionConstraintsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Null-terminated array of pointers to super node connection constraints. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N39QnnGpuOpPackage_SuperNodeOptimization_t17tensorConstraintsE">
+<span id="_CPPv3N39QnnGpuOpPackage_SuperNodeOptimization_t17tensorConstraintsE"></span><span id="_CPPv2N39QnnGpuOpPackage_SuperNodeOptimization_t17tensorConstraintsE"></span><span id="QnnGpuOpPackage_SuperNodeOptimization_t::tensorConstraints__QnnGpuOpPackage_TensorConstraint_tPP"></span><span class="target" id="structQnnGpuOpPackage__SuperNodeOptimization__t_1affe08373b5c26a759debb6a63b66c50b"></span><a class="reference internal" href="structQnnGpuOpPackage__TensorConstraint__t.html#_CPPv434QnnGpuOpPackage_TensorConstraint_t" title="QnnGpuOpPackage_TensorConstraint_t"><span class="n"><span class="pre">QnnGpuOpPackage_TensorConstraint_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">tensorConstraints</span></span></span><a class="headerlink" href="#_CPPv4N39QnnGpuOpPackage_SuperNodeOptimization_t17tensorConstraintsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Null-terminated array of pointers to super node tensor constraints. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv430QnnGpuOpPackage_Optimization_t">
+<span id="_CPPv330QnnGpuOpPackage_Optimization_t"></span><span id="_CPPv230QnnGpuOpPackage_Optimization_t"></span><span id="QnnGpuOpPackage_Optimization_t"></span><span class="target" id="structQnnGpuOpPackage__Optimization__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGpuOpPackage_Optimization_t</span></span></span><a class="headerlink" href="#_CPPv430QnnGpuOpPackage_Optimization_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnGpuOpPackage.h&gt;</em></div>
+<p>A struct representing a QNN GPU optimization. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N30QnnGpuOpPackage_Optimization_t4typeE">
+<span id="_CPPv3N30QnnGpuOpPackage_Optimization_t4typeE"></span><span id="_CPPv2N30QnnGpuOpPackage_Optimization_t4typeE"></span><span id="QnnGpuOpPackage_Optimization_t::type__QnnGpuOpPackage_OptimizationType_t"></span><span class="target" id="structQnnGpuOpPackage__Optimization__t_1a0b102e29d0bb3dd084b9eb9a4c5a602b"></span><a class="reference internal" href="enum_QnnGpuOpPackage_8h_1a9124303d4ef4979557e7d499dcf89f88.html#_CPPv434QnnGpuOpPackage_OptimizationType_t" title="QnnGpuOpPackage_OptimizationType_t"><span class="n"><span class="pre">QnnGpuOpPackage_OptimizationType_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">type</span></span></span><a class="headerlink" href="#_CPPv4N30QnnGpuOpPackage_Optimization_t4typeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Type of optimization. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N30QnnGpuOpPackage_Optimization_t4nameE">
+<span id="_CPPv3N30QnnGpuOpPackage_Optimization_t4nameE"></span><span id="_CPPv2N30QnnGpuOpPackage_Optimization_t4nameE"></span><span id="QnnGpuOpPackage_Optimization_t::name__cCP"></span><span class="target" id="structQnnGpuOpPackage__Optimization__t_1ab5733a77fcd9e4bce16b925b7be4d29b"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">name</span></span></span><a class="headerlink" href="#_CPPv4N30QnnGpuOpPackage_Optimization_t4nameE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Op package assigned name of the optimization. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N30QnnGpuOpPackage_Optimization_t9superNodeE">
+<span id="_CPPv3N30QnnGpuOpPackage_Optimization_t9superNodeE"></span><span id="_CPPv2N30QnnGpuOpPackage_Optimization_t9superNodeE"></span><span id="QnnGpuOpPackage_Optimization_t::superNode__QnnGpuOpPackage_SuperNodeOptimization_tCP"></span><span class="target" id="structQnnGpuOpPackage__Optimization__t_1af32358268a9b20559073f20f4abfe82f"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="structQnnGpuOpPackage__SuperNodeOptimization__t.html#_CPPv439QnnGpuOpPackage_SuperNodeOptimization_t" title="QnnGpuOpPackage_SuperNodeOptimization_t"><span class="n"><span class="pre">QnnGpuOpPackage_SuperNodeOptimization_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">superNode</span></span></span><a class="headerlink" href="#_CPPv4N30QnnGpuOpPackage_Optimization_t9superNodeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Super node optimization, used when type is QNN_GPU_OPTIMIZATION_TYPE_SUPER_NODE. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N30QnnGpuOpPackage_Optimization_tUt2_26E">
+<span id="_CPPv3N30QnnGpuOpPackage_Optimization_tUt2_26E"></span><span class="target" id="structQnnGpuOpPackage__Optimization__t_1aae4119b414c20380ed642b12345b9048"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><a class="reference internal" href="structQnnGpuOpPackage__Optimization__t.html#_CPPv430QnnGpuOpPackage_Optimization_t" title="QnnGpuOpPackage_Optimization_t"><span class="n"><span class="pre">QnnGpuOpPackage_Optimization_t</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">[anonymous]</span></span></span><a class="headerlink" href="#_CPPv4N30QnnGpuOpPackage_Optimization_tUt2_26E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv437QnnGpuOpPackage_GraphInfrastructure_t">
+<span id="_CPPv337QnnGpuOpPackage_GraphInfrastructure_t"></span><span id="_CPPv237QnnGpuOpPackage_GraphInfrastructure_t"></span><span id="QnnGpuOpPackage_GraphInfrastructure_t"></span><span class="target" id="structQnnGpuOpPackage__GraphInfrastructure__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGpuOpPackage_GraphInfrastructure_t</span></span></span><a class="headerlink" href="#_CPPv437QnnGpuOpPackage_GraphInfrastructure_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnGpuOpPackage.h&gt;</em></div>
+<p>A QNN GPU struct specializing QnnOpPackage_GraphInfrastructure_t. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N37QnnGpuOpPackage_GraphInfrastructure_t13precisionModeE">
+<span id="_CPPv3N37QnnGpuOpPackage_GraphInfrastructure_t13precisionModeE"></span><span id="_CPPv2N37QnnGpuOpPackage_GraphInfrastructure_t13precisionModeE"></span><span id="QnnGpuOpPackage_GraphInfrastructure_t::precisionMode__QnnGpu_Precision_t"></span><span class="target" id="structQnnGpuOpPackage__GraphInfrastructure__t_1ac5cb38f8b7e772dd3db5134a2a955979"></span><a class="reference internal" href="enum_QnnGpuGraph_8h_1af5b8531e7f98c28fcf5dc896252a70b9.html#_CPPv418QnnGpu_Precision_t" title="QnnGpu_Precision_t"><span class="n"><span class="pre">QnnGpu_Precision_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">precisionMode</span></span></span><a class="headerlink" href="#_CPPv4N37QnnGpuOpPackage_GraphInfrastructure_t13precisionModeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>GPU precision mode, user-supplied hint used for optimal kernel selection. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv421QnnGpu_MemoryObject_t">
+<span id="_CPPv321QnnGpu_MemoryObject_t"></span><span id="_CPPv221QnnGpu_MemoryObject_t"></span><span id="QnnGpu_MemoryObject_t"></span><span class="target" id="structQnnGpu__MemoryObject__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGpu_MemoryObject_t</span></span></span><a class="headerlink" href="#_CPPv421QnnGpu_MemoryObject_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnGpuOpPackage.h&gt;</em></div>
+<p>A QNN GPU struct specifying a memory object This struct is used with the following kernel argument types: </p>
+<p><ul class="simple">
+<li><p>QNN_GPU_KERNEL_ARG_TYPE_OP_INPUT_READ</p></li>
+<li><p>QNN_GPU_KERNEL_ARG_TYPE_OP_INPUT_READWRITE</p></li>
+<li><p>QNN_GPU_KERNEL_ARG_TYPE_OP_OUTPUT_WRITE</p></li>
+<li><p>QNN_GPU_KERNEL_ARG_TYPE_INTERNAL_READ</p></li>
+<li><p>QNN_GPU_KERNEL_ARG_TYPE_INTERNAL_READWRITE</p></li>
+<li><p>QNN_GPU_KERNEL_ARG_TYPE_INTERNAL_WRITE </p></li>
+</ul>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21QnnGpu_MemoryObject_t4typeE">
+<span id="_CPPv3N21QnnGpu_MemoryObject_t4typeE"></span><span id="_CPPv2N21QnnGpu_MemoryObject_t4typeE"></span><span id="QnnGpu_MemoryObject_t::type__QnnGpu_MemoryObjectType_t"></span><span class="target" id="structQnnGpu__MemoryObject__t_1ade17c6693a7db20b9b13066f794fc857"></span><a class="reference internal" href="enum_QnnGpuOpPackage_8h_1a996bddc6a31b9abf74b4b22681147646.html#_CPPv425QnnGpu_MemoryObjectType_t" title="QnnGpu_MemoryObjectType_t"><span class="n"><span class="pre">QnnGpu_MemoryObjectType_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">type</span></span></span><a class="headerlink" href="#_CPPv4N21QnnGpu_MemoryObject_t4typeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Type of memory object. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21QnnGpu_MemoryObject_t8dataTypeE">
+<span id="_CPPv3N21QnnGpu_MemoryObject_t8dataTypeE"></span><span id="_CPPv2N21QnnGpu_MemoryObject_t8dataTypeE"></span><span id="QnnGpu_MemoryObject_t::dataType__Qnn_DataType_t"></span><span class="target" id="structQnnGpu__MemoryObject__t_1a3aa8478a21d7b119a52b3edc9246fed5"></span><a class="reference internal" href="enum_QnnTypes_8h_1a8bda296c6c8a3148f764dcbdb5b8f534.html#_CPPv414Qnn_DataType_t" title="Qnn_DataType_t"><span class="n"><span class="pre">Qnn_DataType_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dataType</span></span></span><a class="headerlink" href="#_CPPv4N21QnnGpu_MemoryObject_t8dataTypeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Data type of the memory object. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21QnnGpu_MemoryObject_t10dimensionsE">
+<span id="_CPPv3N21QnnGpu_MemoryObject_t10dimensionsE"></span><span id="_CPPv2N21QnnGpu_MemoryObject_t10dimensionsE"></span><span id="QnnGpu_MemoryObject_t::dimensions__uint32_tP"></span><span class="target" id="structQnnGpu__MemoryObject__t_1a15c09f0170f609e4117d9ff5b5926811"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">dimensions</span></span></span><a class="headerlink" href="#_CPPv4N21QnnGpu_MemoryObject_t10dimensionsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><p>Memory object dimensions</p>
+<p>Size is numDimensions. Uses the following type dependent format:</p>
+<p>QNN_GPU_MEM_OBJ_TYPE_BUFFER -&gt; {numElements}</p>
+<p>QNN_GPU_MEM_OBJ_TYPE_IMAGE2D -&gt; {height,width}</p>
+<p>QNN_GPU_MEM_OBJ_TYPE_IMAGE2D_ARRAY -&gt; {height,width,array_size}</p>
+<p>QNN_GPU_MEM_OBJ_TYPE_AGGREGATED_IMAGE2D -&gt; {num_batches,height,width}</p>
+
+ QNN_GPU_MEM_OBJ_TYPE_AGGREGATED_IMAGE2D_ARRAY -&gt; {num_batches,height,width,array_size} </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21QnnGpu_MemoryObject_t7offsetsE">
+<span id="_CPPv3N21QnnGpu_MemoryObject_t7offsetsE"></span><span id="_CPPv2N21QnnGpu_MemoryObject_t7offsetsE"></span><span id="QnnGpu_MemoryObject_t::offsets__uint32_tP"></span><span class="target" id="structQnnGpu__MemoryObject__t_1a44a24d1e77517936ede1de88fc797354"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">offsets</span></span></span><a class="headerlink" href="#_CPPv4N21QnnGpu_MemoryObject_t7offsetsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><p>Memory object offsets</p>
+<p>Size is numDimensions.</p>
+
+ Indicates where the data store starts in the memory object. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21QnnGpu_MemoryObject_t13numDimensionsE">
+<span id="_CPPv3N21QnnGpu_MemoryObject_t13numDimensionsE"></span><span id="_CPPv2N21QnnGpu_MemoryObject_t13numDimensionsE"></span><span id="QnnGpu_MemoryObject_t::numDimensions__uint32_t"></span><span class="target" id="structQnnGpu__MemoryObject__t_1a2893e826cfa79438aa4b38c804f42c4b"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">numDimensions</span></span></span><a class="headerlink" href="#_CPPv4N21QnnGpu_MemoryObject_t13numDimensionsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><p>Number of dimensions in memory object</p>
+<p>Size is numDimensions. Has the following type dependent size:</p>
+<p>QNN_GPU_MEM_OBJ_TYPE_BUFFER -&gt; 1</p>
+<p>QNN_GPU_MEM_OBJ_TYPE_IMAGE2D -&gt; 2</p>
+<p>QNN_GPU_MEM_OBJ_TYPE_IMAGE2D_ARRAY -&gt; 3</p>
+<p>QNN_GPU_MEM_OBJ_TYPE_AGGREGATED_IMAGE2D -&gt; 3</p>
+
+ QNN_GPU_MEM_OBJ_TYPE_AGGREGATED_IMAGE2D_ARRAY -&gt; 4 </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21QnnGpu_MemoryObject_t6layoutE">
+<span id="_CPPv3N21QnnGpu_MemoryObject_t6layoutE"></span><span id="_CPPv2N21QnnGpu_MemoryObject_t6layoutE"></span><span id="QnnGpu_MemoryObject_t::layout__QnnGpu_MemoryLayout_t"></span><span class="target" id="structQnnGpu__MemoryObject__t_1a460be16a7e91555ccd87179a009a45d9"></span><a class="reference internal" href="enum_QnnGpuOpPackage_8h_1ae7c00b83276b2d1d310972c4ec43b8cd.html#_CPPv421QnnGpu_MemoryLayout_t" title="QnnGpu_MemoryLayout_t"><span class="n"><span class="pre">QnnGpu_MemoryLayout_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">layout</span></span></span><a class="headerlink" href="#_CPPv4N21QnnGpu_MemoryObject_t6layoutE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><p>Memory object layout</p>
+<p>Op package specific layout identifier</p>
+
+Default is QNN_GPU_MEM_LAYOUT_UNDEFINED if not already specified by a prior operation </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv426QnnGpu_TensorStorageType_t">
+<span id="_CPPv326QnnGpu_TensorStorageType_t"></span><span id="_CPPv226QnnGpu_TensorStorageType_t"></span><span id="QnnGpu_TensorStorageType_t"></span><span class="target" id="structQnnGpu__TensorStorageType__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGpu_TensorStorageType_t</span></span></span><a class="headerlink" href="#_CPPv426QnnGpu_TensorStorageType_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnGpuOpPackage.h&gt;</em></div>
+<p>A QNN GPU struct specifying a storage tensor. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26QnnGpu_TensorStorageType_t2idE">
+<span id="_CPPv3N26QnnGpu_TensorStorageType_t2idE"></span><span id="_CPPv2N26QnnGpu_TensorStorageType_t2idE"></span><span id="QnnGpu_TensorStorageType_t::id__uint32_t"></span><span class="target" id="structQnnGpu__TensorStorageType__t_1ac9595d04fd4437fd124ed86c2a146a3c"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">id</span></span></span><a class="headerlink" href="#_CPPv4N26QnnGpu_TensorStorageType_t2idE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Tensor ID. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26QnnGpu_TensorStorageType_t12memoryObjectE">
+<span id="_CPPv3N26QnnGpu_TensorStorageType_t12memoryObjectE"></span><span id="_CPPv2N26QnnGpu_TensorStorageType_t12memoryObjectE"></span><span id="QnnGpu_TensorStorageType_t::memoryObject__QnnGpu_MemoryObject_tCP"></span><span class="target" id="structQnnGpu__TensorStorageType__t_1aa505f8cfafd9cd2b9d1c20192646e08b"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="structQnnGpu__MemoryObject__t.html#_CPPv421QnnGpu_MemoryObject_t" title="QnnGpu_MemoryObject_t"><span class="n"><span class="pre">QnnGpu_MemoryObject_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">memoryObject</span></span></span><a class="headerlink" href="#_CPPv4N26QnnGpu_TensorStorageType_t12memoryObjectE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Tensor’s associated memory object. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv422QnnGpuOpPackage_Node_t">
+<span id="_CPPv322QnnGpuOpPackage_Node_t"></span><span id="_CPPv222QnnGpuOpPackage_Node_t"></span><span id="QnnGpuOpPackage_Node_t"></span><span class="target" id="structQnnGpuOpPackage__Node__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGpuOpPackage_Node_t</span></span></span><a class="headerlink" href="#_CPPv422QnnGpuOpPackage_Node_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnGpuOpPackage.h&gt;</em></div>
+<p>A QNN GPU struct specializing QnnOpPackage_Node_t. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22QnnGpuOpPackage_Node_t12optimizationE">
+<span id="_CPPv3N22QnnGpuOpPackage_Node_t12optimizationE"></span><span id="_CPPv2N22QnnGpuOpPackage_Node_t12optimizationE"></span><span id="QnnGpuOpPackage_Node_t::optimization__uint32_t"></span><span class="target" id="structQnnGpuOpPackage__Node__t_1a707a97fc089ebb09911c70319e9ff4a7"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">optimization</span></span></span><a class="headerlink" href="#_CPPv4N22QnnGpuOpPackage_Node_t12optimizationE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Optimization index, see <a class="reference internal" href="file_include_QNN_QnnOpPackage.h.html#structQnnOpPackage__Info__t"><span class="std std-ref">QnnOpPackage_Info_t</span></a>, ignore when only one op config provided. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22QnnGpuOpPackage_Node_t7configsE">
+<span id="_CPPv3N22QnnGpuOpPackage_Node_t7configsE"></span><span id="_CPPv2N22QnnGpuOpPackage_Node_t7configsE"></span><span id="QnnGpuOpPackage_Node_t::configs__Qnn_OpConfig_tCPP"></span><span class="target" id="structQnnGpuOpPackage__Node__t_1acfa4fb7aca589cfb2d12c62b05c021c8"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="structQnn__OpConfig__t.html#_CPPv414Qnn_OpConfig_t" title="Qnn_OpConfig_t"><span class="n"><span class="pre">Qnn_OpConfig_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">configs</span></span></span><a class="headerlink" href="#_CPPv4N22QnnGpuOpPackage_Node_t7configsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Null-terminated array of operation config pointers Only one pointer provided when no optimizations performed </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22QnnGpuOpPackage_Node_t12storageTypesE">
+<span id="_CPPv3N22QnnGpuOpPackage_Node_t12storageTypesE"></span><span id="_CPPv2N22QnnGpuOpPackage_Node_t12storageTypesE"></span><span id="QnnGpuOpPackage_Node_t::storageTypes__QnnGpu_TensorStorageType_tCPP"></span><span class="target" id="structQnnGpuOpPackage__Node__t_1a4ffb2f0edb0733e396af0bcc3acf509f"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="structQnnGpu__TensorStorageType__t.html#_CPPv426QnnGpu_TensorStorageType_t" title="QnnGpu_TensorStorageType_t"><span class="n"><span class="pre">QnnGpu_TensorStorageType_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">storageTypes</span></span></span><a class="headerlink" href="#_CPPv4N22QnnGpuOpPackage_Node_t12storageTypesE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Null-terminated array of tensor storage type pointers called out in the config. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv420QnnGpu_OutputClaim_t">
+<span id="_CPPv320QnnGpu_OutputClaim_t"></span><span id="_CPPv220QnnGpu_OutputClaim_t"></span><span id="QnnGpu_OutputClaim_t"></span><span class="target" id="structQnnGpu__OutputClaim__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGpu_OutputClaim_t</span></span></span><a class="headerlink" href="#_CPPv420QnnGpu_OutputClaim_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnGpuOpPackage.h&gt;</em></div>
+<p>A QNN GPU struct specifying an output tensor claim. Using the principle of least work, operations must output a memory object type that is most convenient for itself. Only QNN_TENSOR_TYPE_NATIVE tensor types may be claimed. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20QnnGpu_OutputClaim_t13opConfigIndexE">
+<span id="_CPPv3N20QnnGpu_OutputClaim_t13opConfigIndexE"></span><span id="_CPPv2N20QnnGpu_OutputClaim_t13opConfigIndexE"></span><span id="QnnGpu_OutputClaim_t::opConfigIndex__uint32_t"></span><span class="target" id="structQnnGpu__OutputClaim__t_1a41935b69e006f89ff445760fb9bd93b4"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opConfigIndex</span></span></span><a class="headerlink" href="#_CPPv4N20QnnGpu_OutputClaim_t13opConfigIndexE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Index into the <a class="reference internal" href="file_include_QNN_QnnTypes.h.html#structQnn__OpConfig__t"><span class="std std-ref">Qnn_OpConfig_t</span></a> provided in <a class="reference internal" href="#structQnnGpuOpPackage__Node__t"><span class="std std-ref">QnnGpuOpPackage_Node_t</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20QnnGpu_OutputClaim_t11outputIndexE">
+<span id="_CPPv3N20QnnGpu_OutputClaim_t11outputIndexE"></span><span id="_CPPv2N20QnnGpu_OutputClaim_t11outputIndexE"></span><span id="QnnGpu_OutputClaim_t::outputIndex__uint32_t"></span><span class="target" id="structQnnGpu__OutputClaim__t_1aadc20688aea0531fca3985bdb855f18b"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">outputIndex</span></span></span><a class="headerlink" href="#_CPPv4N20QnnGpu_OutputClaim_t11outputIndexE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Index into the operation outputs to identify the tensor. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20QnnGpu_OutputClaim_t12memoryObjectE">
+<span id="_CPPv3N20QnnGpu_OutputClaim_t12memoryObjectE"></span><span id="_CPPv2N20QnnGpu_OutputClaim_t12memoryObjectE"></span><span id="QnnGpu_OutputClaim_t::memoryObject__QnnGpu_MemoryObject_tCP"></span><span class="target" id="structQnnGpu__OutputClaim__t_1a676c70ad0c40cfb81446d0afb4dfc3ff"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="structQnnGpu__MemoryObject__t.html#_CPPv421QnnGpu_MemoryObject_t" title="QnnGpu_MemoryObject_t"><span class="n"><span class="pre">QnnGpu_MemoryObject_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">memoryObject</span></span></span><a class="headerlink" href="#_CPPv4N20QnnGpu_OutputClaim_t12memoryObjectE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Specification of the claimed memory object. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv424QnnGpu_TensorKernelArg_t">
+<span id="_CPPv324QnnGpu_TensorKernelArg_t"></span><span id="_CPPv224QnnGpu_TensorKernelArg_t"></span><span id="QnnGpu_TensorKernelArg_t"></span><span class="target" id="structQnnGpu__TensorKernelArg__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGpu_TensorKernelArg_t</span></span></span><a class="headerlink" href="#_CPPv424QnnGpu_TensorKernelArg_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnGpuOpPackage.h&gt;</em></div>
+<p>A QNN GPU struct specifying a kernel argument corresponding to a tensor. This struct is used with the following kernel argument types: </p>
+<p><ul class="simple">
+<li><p>QNN_GPU_KERNEL_ARG_TYPE_OP_INPUT_READ</p></li>
+<li><p>QNN_GPU_KERNEL_ARG_TYPE_OP_INPUT_READWRITE</p></li>
+<li><p>QNN_GPU_KERNEL_ARG_TYPE_OP_OUTPUT_WRITE</p></li>
+<li><p>QNN_GPU_KERNEL_ARG_TYPE_INTERNAL_READ</p></li>
+<li><p>QNN_GPU_KERNEL_ARG_TYPE_INTERNAL_READWRITE</p></li>
+<li><p>QNN_GPU_KERNEL_ARG_TYPE_INTERNAL_WRITE </p></li>
+</ul>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24QnnGpu_TensorKernelArg_t13opConfigIndexE">
+<span id="_CPPv3N24QnnGpu_TensorKernelArg_t13opConfigIndexE"></span><span id="_CPPv2N24QnnGpu_TensorKernelArg_t13opConfigIndexE"></span><span id="QnnGpu_TensorKernelArg_t::opConfigIndex__uint32_t"></span><span class="target" id="structQnnGpu__TensorKernelArg__t_1ad5026c2da0c59f5e2e112be55126ecb2"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opConfigIndex</span></span></span><a class="headerlink" href="#_CPPv4N24QnnGpu_TensorKernelArg_t13opConfigIndexE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Index into the <a class="reference internal" href="file_include_QNN_QnnTypes.h.html#structQnn__OpConfig__t"><span class="std std-ref">Qnn_OpConfig_t</span></a> provided in <a class="reference internal" href="#structQnnGpuOpPackage__Node__t"><span class="std std-ref">QnnGpuOpPackage_Node_t</span></a>, ignored for INTERNAL types. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24QnnGpu_TensorKernelArg_t11tensorIndexE">
+<span id="_CPPv3N24QnnGpu_TensorKernelArg_t11tensorIndexE"></span><span id="_CPPv2N24QnnGpu_TensorKernelArg_t11tensorIndexE"></span><span id="QnnGpu_TensorKernelArg_t::tensorIndex__uint32_t"></span><span class="target" id="structQnnGpu__TensorKernelArg__t_1ad832008327211aabfe8d263f913527a6"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">tensorIndex</span></span></span><a class="headerlink" href="#_CPPv4N24QnnGpu_TensorKernelArg_t11tensorIndexE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Index into the operation input ot output list or the internal tensor list. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24QnnGpu_TensorKernelArg_t7elementE">
+<span id="_CPPv3N24QnnGpu_TensorKernelArg_t7elementE"></span><span id="_CPPv2N24QnnGpu_TensorKernelArg_t7elementE"></span><span id="QnnGpu_TensorKernelArg_t::element__uint32_t"></span><span class="target" id="structQnnGpu__TensorKernelArg__t_1a52c77495000a53b707fcbdc20d9e735d"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">element</span></span></span><a class="headerlink" href="#_CPPv4N24QnnGpu_TensorKernelArg_t7elementE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Batch element index for aggregated tensor types. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv422QnnGpu_DataKernelArg_t">
+<span id="_CPPv322QnnGpu_DataKernelArg_t"></span><span id="_CPPv222QnnGpu_DataKernelArg_t"></span><span id="QnnGpu_DataKernelArg_t"></span><span class="target" id="structQnnGpu__DataKernelArg__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGpu_DataKernelArg_t</span></span></span><a class="headerlink" href="#_CPPv422QnnGpu_DataKernelArg_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnGpuOpPackage.h&gt;</em></div>
+<p>A QNN GPU struct specifying a kernel argument corresponding to a plain old data. This struct is used only with the QNN_GPU_KERNEL_ARG_TYPE_DATA arg type. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22QnnGpu_DataKernelArg_t4typeE">
+<span id="_CPPv3N22QnnGpu_DataKernelArg_t4typeE"></span><span id="_CPPv2N22QnnGpu_DataKernelArg_t4typeE"></span><span id="QnnGpu_DataKernelArg_t::type__QnnGpu_DataKernelArgType_t"></span><span class="target" id="structQnnGpu__DataKernelArg__t_1a3c4af66a828d1f616385d8a277e6a0b5"></span><a class="reference internal" href="enum_QnnGpuOpPackage_8h_1a47da798f71cd96c4bbc2946244f6aaf5.html#_CPPv426QnnGpu_DataKernelArgType_t" title="QnnGpu_DataKernelArgType_t"><span class="n"><span class="pre">QnnGpu_DataKernelArgType_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">type</span></span></span><a class="headerlink" href="#_CPPv4N22QnnGpu_DataKernelArg_t4typeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Data type of the data. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22QnnGpu_DataKernelArg_t7qnnCharE">
+<span id="_CPPv3N22QnnGpu_DataKernelArg_t7qnnCharE"></span><span id="_CPPv2N22QnnGpu_DataKernelArg_t7qnnCharE"></span><span id="QnnGpu_DataKernelArg_t::qnnChar__int8_t"></span><span class="target" id="structQnnGpu__DataKernelArg__t_1aa7e772730359d266cedd216730ceea55"></span><span class="n"><span class="pre">int8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">qnnChar</span></span></span><a class="headerlink" href="#_CPPv4N22QnnGpu_DataKernelArg_t7qnnCharE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Used with QNN_GPU_KERNEL_ARG_CL_TYPE_CHAR. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22QnnGpu_DataKernelArg_t8qnnUCharE">
+<span id="_CPPv3N22QnnGpu_DataKernelArg_t8qnnUCharE"></span><span id="_CPPv2N22QnnGpu_DataKernelArg_t8qnnUCharE"></span><span id="QnnGpu_DataKernelArg_t::qnnUChar__uint8_t"></span><span class="target" id="structQnnGpu__DataKernelArg__t_1ad5476dc0309fc108041cd3f6c2dbd567"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">qnnUChar</span></span></span><a class="headerlink" href="#_CPPv4N22QnnGpu_DataKernelArg_t8qnnUCharE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Used with QNN_GPU_KERNEL_ARG_CL_TYPE_UCHAR. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22QnnGpu_DataKernelArg_t8qnnShortE">
+<span id="_CPPv3N22QnnGpu_DataKernelArg_t8qnnShortE"></span><span id="_CPPv2N22QnnGpu_DataKernelArg_t8qnnShortE"></span><span id="QnnGpu_DataKernelArg_t::qnnShort__int16_t"></span><span class="target" id="structQnnGpu__DataKernelArg__t_1a6030c9846f37bfd856fdd6ee525c52af"></span><span class="n"><span class="pre">int16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">qnnShort</span></span></span><a class="headerlink" href="#_CPPv4N22QnnGpu_DataKernelArg_t8qnnShortE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Used with QNN_GPU_KERNEL_ARG_CL_TYPE_SHORT. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22QnnGpu_DataKernelArg_t9qnnUShortE">
+<span id="_CPPv3N22QnnGpu_DataKernelArg_t9qnnUShortE"></span><span id="_CPPv2N22QnnGpu_DataKernelArg_t9qnnUShortE"></span><span id="QnnGpu_DataKernelArg_t::qnnUShort__uint16_t"></span><span class="target" id="structQnnGpu__DataKernelArg__t_1ad8615f32b6c3a7688867f3232e1010b5"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">qnnUShort</span></span></span><a class="headerlink" href="#_CPPv4N22QnnGpu_DataKernelArg_t9qnnUShortE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Used with QNN_GPU_KERNEL_ARG_CL_TYPE_USHORT. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22QnnGpu_DataKernelArg_t6qnnIntE">
+<span id="_CPPv3N22QnnGpu_DataKernelArg_t6qnnIntE"></span><span id="_CPPv2N22QnnGpu_DataKernelArg_t6qnnIntE"></span><span id="QnnGpu_DataKernelArg_t::qnnInt__int32_t"></span><span class="target" id="structQnnGpu__DataKernelArg__t_1aa1519327f77d320d1ede73ae63845e6a"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">qnnInt</span></span></span><a class="headerlink" href="#_CPPv4N22QnnGpu_DataKernelArg_t6qnnIntE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Used with QNN_GPU_KERNEL_ARG_CL_TYPE_INT. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22QnnGpu_DataKernelArg_t7qnnUIntE">
+<span id="_CPPv3N22QnnGpu_DataKernelArg_t7qnnUIntE"></span><span id="_CPPv2N22QnnGpu_DataKernelArg_t7qnnUIntE"></span><span id="QnnGpu_DataKernelArg_t::qnnUInt__uint32_t"></span><span class="target" id="structQnnGpu__DataKernelArg__t_1ae4ba298669c004fccd380635a45dee77"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">qnnUInt</span></span></span><a class="headerlink" href="#_CPPv4N22QnnGpu_DataKernelArg_t7qnnUIntE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Used with QNN_GPU_KERNEL_ARG_CL_TYPE_UINT. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22QnnGpu_DataKernelArg_t7qnnLongE">
+<span id="_CPPv3N22QnnGpu_DataKernelArg_t7qnnLongE"></span><span id="_CPPv2N22QnnGpu_DataKernelArg_t7qnnLongE"></span><span id="QnnGpu_DataKernelArg_t::qnnLong__int64_t"></span><span class="target" id="structQnnGpu__DataKernelArg__t_1aa53056640a534f5ba98da80cfd9ef488"></span><span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">qnnLong</span></span></span><a class="headerlink" href="#_CPPv4N22QnnGpu_DataKernelArg_t7qnnLongE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Used with QNN_GPU_KERNEL_ARG_CL_TYPE_LONG. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22QnnGpu_DataKernelArg_t8qnnULongE">
+<span id="_CPPv3N22QnnGpu_DataKernelArg_t8qnnULongE"></span><span id="_CPPv2N22QnnGpu_DataKernelArg_t8qnnULongE"></span><span id="QnnGpu_DataKernelArg_t::qnnULong__uint64_t"></span><span class="target" id="structQnnGpu__DataKernelArg__t_1a7e73bebcc0e0a7bd3de7c027188312ae"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">qnnULong</span></span></span><a class="headerlink" href="#_CPPv4N22QnnGpu_DataKernelArg_t8qnnULongE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Used with QNN_GPU_KERNEL_ARG_CL_TYPE_ULONG. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22QnnGpu_DataKernelArg_t8qnnFloatE">
+<span id="_CPPv3N22QnnGpu_DataKernelArg_t8qnnFloatE"></span><span id="_CPPv2N22QnnGpu_DataKernelArg_t8qnnFloatE"></span><span id="QnnGpu_DataKernelArg_t::qnnFloat__float"></span><span class="target" id="structQnnGpu__DataKernelArg__t_1a35d0b289b83e00e07799b4ace062fc76"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">qnnFloat</span></span></span><a class="headerlink" href="#_CPPv4N22QnnGpu_DataKernelArg_t8qnnFloatE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Used with QNN_GPU_KERNEL_ARG_CL_TYPE_FLOAT. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22QnnGpu_DataKernelArg_t9qnnDoubleE">
+<span id="_CPPv3N22QnnGpu_DataKernelArg_t9qnnDoubleE"></span><span id="_CPPv2N22QnnGpu_DataKernelArg_t9qnnDoubleE"></span><span id="QnnGpu_DataKernelArg_t::qnnDouble__double"></span><span class="target" id="structQnnGpu__DataKernelArg__t_1a0ad830586ec820dbe28d1dcf30fc64c5"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">qnnDouble</span></span></span><a class="headerlink" href="#_CPPv4N22QnnGpu_DataKernelArg_t9qnnDoubleE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Used with QNN_GPU_KERNEL_ARG_CL_TYPE_DOUBLE. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22QnnGpu_DataKernelArg_tUt2_28E">
+<span id="_CPPv3N22QnnGpu_DataKernelArg_tUt2_28E"></span><span class="target" id="structQnnGpu__DataKernelArg__t_1ab0d5b612fd578f2cc99468f3db17a708"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><a class="reference internal" href="structQnnGpu__DataKernelArg__t.html#_CPPv422QnnGpu_DataKernelArg_t" title="QnnGpu_DataKernelArg_t"><span class="n"><span class="pre">QnnGpu_DataKernelArg_t</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">[anonymous]</span></span></span><a class="headerlink" href="#_CPPv4N22QnnGpu_DataKernelArg_tUt2_28E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv423QnnGpu_LocalKernelArg_t">
+<span id="_CPPv323QnnGpu_LocalKernelArg_t"></span><span id="_CPPv223QnnGpu_LocalKernelArg_t"></span><span id="QnnGpu_LocalKernelArg_t"></span><span class="target" id="structQnnGpu__LocalKernelArg__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGpu_LocalKernelArg_t</span></span></span><a class="headerlink" href="#_CPPv423QnnGpu_LocalKernelArg_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnGpuOpPackage.h&gt;</em></div>
+<p>A QNN GPU struct specifying a kernel argument corresponding to a local memory type. This struct is used only with the QNN_GPU_KERNEL_ARG_TYPE_LOCAL arg type. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23QnnGpu_LocalKernelArg_t4sizeE">
+<span id="_CPPv3N23QnnGpu_LocalKernelArg_t4sizeE"></span><span id="_CPPv2N23QnnGpu_LocalKernelArg_t4sizeE"></span><span id="QnnGpu_LocalKernelArg_t::size__uint32_t"></span><span class="target" id="structQnnGpu__LocalKernelArg__t_1a6d847b918046bf894a69a470256822e2"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">size</span></span></span><a class="headerlink" href="#_CPPv4N23QnnGpu_LocalKernelArg_t4sizeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Size of the memory requested in bytes. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv418QnnGpu_KernelArg_t">
+<span id="_CPPv318QnnGpu_KernelArg_t"></span><span id="_CPPv218QnnGpu_KernelArg_t"></span><span id="QnnGpu_KernelArg_t"></span><span class="target" id="structQnnGpu__KernelArg__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGpu_KernelArg_t</span></span></span><a class="headerlink" href="#_CPPv418QnnGpu_KernelArg_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnGpuOpPackage.h&gt;</em></div>
+<p>A QNN GPU struct specifying a kernel argument. Note that the QNN_GPU_KERNEL_ARG_TYPE_NULL_PTR type does not have an entry in the union. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnGpu_KernelArg_t4typeE">
+<span id="_CPPv3N18QnnGpu_KernelArg_t4typeE"></span><span id="_CPPv2N18QnnGpu_KernelArg_t4typeE"></span><span id="QnnGpu_KernelArg_t::type__QnnGpu_KernelArgType_t"></span><span class="target" id="structQnnGpu__KernelArg__t_1a1c76e91cac5cab665dc3481f586fac64"></span><a class="reference internal" href="enum_QnnGpuOpPackage_8h_1aa8512424759dba8f6dde181e20dfdb83.html#_CPPv422QnnGpu_KernelArgType_t" title="QnnGpu_KernelArgType_t"><span class="n"><span class="pre">QnnGpu_KernelArgType_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">type</span></span></span><a class="headerlink" href="#_CPPv4N18QnnGpu_KernelArg_t4typeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Type of kernel argument. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnGpu_KernelArg_t6tensorE">
+<span id="_CPPv3N18QnnGpu_KernelArg_t6tensorE"></span><span id="_CPPv2N18QnnGpu_KernelArg_t6tensorE"></span><span id="QnnGpu_KernelArg_t::tensor__QnnGpu_TensorKernelArg_t"></span><span class="target" id="structQnnGpu__KernelArg__t_1ac15fae6d4c8e1882bcb8d1fbed102413"></span><a class="reference internal" href="structQnnGpu__TensorKernelArg__t.html#_CPPv424QnnGpu_TensorKernelArg_t" title="QnnGpu_TensorKernelArg_t"><span class="n"><span class="pre">QnnGpu_TensorKernelArg_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">tensor</span></span></span><a class="headerlink" href="#_CPPv4N18QnnGpu_KernelArg_t6tensorE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Tensor type argument. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnGpu_KernelArg_t4dataE">
+<span id="_CPPv3N18QnnGpu_KernelArg_t4dataE"></span><span id="_CPPv2N18QnnGpu_KernelArg_t4dataE"></span><span id="QnnGpu_KernelArg_t::data__QnnGpu_DataKernelArg_t"></span><span class="target" id="structQnnGpu__KernelArg__t_1a0260c0da0d3a2640b44812e8841c87ea"></span><a class="reference internal" href="structQnnGpu__DataKernelArg__t.html#_CPPv422QnnGpu_DataKernelArg_t" title="QnnGpu_DataKernelArg_t"><span class="n"><span class="pre">QnnGpu_DataKernelArg_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">data</span></span></span><a class="headerlink" href="#_CPPv4N18QnnGpu_KernelArg_t4dataE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Plain old data argument. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnGpu_KernelArg_t5localE">
+<span id="_CPPv3N18QnnGpu_KernelArg_t5localE"></span><span id="_CPPv2N18QnnGpu_KernelArg_t5localE"></span><span id="QnnGpu_KernelArg_t::local__QnnGpu_LocalKernelArg_t"></span><span class="target" id="structQnnGpu__KernelArg__t_1aafe3e361936190733be52a6cef5c6483"></span><a class="reference internal" href="structQnnGpu__LocalKernelArg__t.html#_CPPv423QnnGpu_LocalKernelArg_t" title="QnnGpu_LocalKernelArg_t"><span class="n"><span class="pre">QnnGpu_LocalKernelArg_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">local</span></span></span><a class="headerlink" href="#_CPPv4N18QnnGpu_KernelArg_t5localE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Local memory argument. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnGpu_KernelArg_tUt2_30E">
+<span id="_CPPv3N18QnnGpu_KernelArg_tUt2_30E"></span><span class="target" id="structQnnGpu__KernelArg__t_1a2a22f30f23b92d2d3b1ff2dc16d6c682"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><a class="reference internal" href="structQnnGpu__KernelArg__t.html#_CPPv418QnnGpu_KernelArg_t" title="QnnGpu_KernelArg_t"><span class="n"><span class="pre">QnnGpu_KernelArg_t</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">[anonymous]</span></span></span><a class="headerlink" href="#_CPPv4N18QnnGpu_KernelArg_tUt2_30E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv415QnnGpu_Kernel_t">
+<span id="_CPPv315QnnGpu_Kernel_t"></span><span id="_CPPv215QnnGpu_Kernel_t"></span><span id="QnnGpu_Kernel_t"></span><span class="target" id="structQnnGpu__Kernel__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGpu_Kernel_t</span></span></span><a class="headerlink" href="#_CPPv415QnnGpu_Kernel_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnGpuOpPackage.h&gt;</em></div>
+<p>A QNN GPU struct specifying a kernel. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15QnnGpu_Kernel_t12kernelSourceE">
+<span id="_CPPv3N15QnnGpu_Kernel_t12kernelSourceE"></span><span id="_CPPv2N15QnnGpu_Kernel_t12kernelSourceE"></span><span id="QnnGpu_Kernel_t::kernelSource__voidCP"></span><span class="target" id="structQnnGpu__Kernel__t_1a8c7da08b7aa9d701ef9e26e362b457f0"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">kernelSource</span></span></span><a class="headerlink" href="#_CPPv4N15QnnGpu_Kernel_t12kernelSourceE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Kernel source code or binary. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15QnnGpu_Kernel_t12sourceLengthE">
+<span id="_CPPv3N15QnnGpu_Kernel_t12sourceLengthE"></span><span id="_CPPv2N15QnnGpu_Kernel_t12sourceLengthE"></span><span id="QnnGpu_Kernel_t::sourceLength__s"></span><span class="target" id="structQnnGpu__Kernel__t_1a63665c860fa208e4c546e64561f60188"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sourceLength</span></span></span><a class="headerlink" href="#_CPPv4N15QnnGpu_Kernel_t12sourceLengthE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Length of kernel source/binary in bytes. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15QnnGpu_Kernel_t10sourceTypeE">
+<span id="_CPPv3N15QnnGpu_Kernel_t10sourceTypeE"></span><span id="_CPPv2N15QnnGpu_Kernel_t10sourceTypeE"></span><span id="QnnGpu_Kernel_t::sourceType__QnnGpu_KernelSourceType_t"></span><span class="target" id="structQnnGpu__Kernel__t_1aa5942b6540c030c8e4922a1736d4abf4"></span><a class="reference internal" href="enum_QnnGpuOpPackage_8h_1adbd17adf4e85f75ef76551a1230b7688.html#_CPPv425QnnGpu_KernelSourceType_t" title="QnnGpu_KernelSourceType_t"><span class="n"><span class="pre">QnnGpu_KernelSourceType_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sourceType</span></span></span><a class="headerlink" href="#_CPPv4N15QnnGpu_Kernel_t10sourceTypeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Type of kernel source. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15QnnGpu_Kernel_t12buildOptionsE">
+<span id="_CPPv3N15QnnGpu_Kernel_t12buildOptionsE"></span><span id="_CPPv2N15QnnGpu_Kernel_t12buildOptionsE"></span><span id="QnnGpu_Kernel_t::buildOptions__cCP"></span><span class="target" id="structQnnGpu__Kernel__t_1a3c1596d85f9f6a2aa6186c8ea3e418b9"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">buildOptions</span></span></span><a class="headerlink" href="#_CPPv4N15QnnGpu_Kernel_t12buildOptionsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Null terminated build options string used for kernel compilation. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15QnnGpu_Kernel_t13globalWorkDimE">
+<span id="_CPPv3N15QnnGpu_Kernel_t13globalWorkDimE"></span><span id="_CPPv2N15QnnGpu_Kernel_t13globalWorkDimE"></span><span id="QnnGpu_Kernel_t::globalWorkDim__s"></span><span class="target" id="structQnnGpu__Kernel__t_1a5510f776d23bedb71d18d7d2087a5b15"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">globalWorkDim</span></span></span><a class="headerlink" href="#_CPPv4N15QnnGpu_Kernel_t13globalWorkDimE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Rank of the globalWorkSizes. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15QnnGpu_Kernel_t15globalWorkSizesE">
+<span id="_CPPv3N15QnnGpu_Kernel_t15globalWorkSizesE"></span><span id="_CPPv2N15QnnGpu_Kernel_t15globalWorkSizesE"></span><span id="QnnGpu_Kernel_t::globalWorkSizes__sA"></span><span class="target" id="structQnnGpu__Kernel__t_1aeb75ec9031c13c262a86c84b4e55e4a2"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">globalWorkSizes</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">3</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N15QnnGpu_Kernel_t15globalWorkSizesE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Global work sizes used by enqueuing the kernel. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15QnnGpu_Kernel_t12localWorkDimE">
+<span id="_CPPv3N15QnnGpu_Kernel_t12localWorkDimE"></span><span id="_CPPv2N15QnnGpu_Kernel_t12localWorkDimE"></span><span id="QnnGpu_Kernel_t::localWorkDim__s"></span><span class="target" id="structQnnGpu__Kernel__t_1a11fafc9be032f4579fe2ea013129b4ae"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">localWorkDim</span></span></span><a class="headerlink" href="#_CPPv4N15QnnGpu_Kernel_t12localWorkDimE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Rank of the localWorkSizes. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15QnnGpu_Kernel_t14localWorkSizesE">
+<span id="_CPPv3N15QnnGpu_Kernel_t14localWorkSizesE"></span><span id="_CPPv2N15QnnGpu_Kernel_t14localWorkSizesE"></span><span id="QnnGpu_Kernel_t::localWorkSizes__sA"></span><span class="target" id="structQnnGpu__Kernel__t_1a02f602adcd0e1fe96e22bfa77774505b"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">localWorkSizes</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">3</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N15QnnGpu_Kernel_t14localWorkSizesE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Local work sizes used by enqueuing the kernel. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15QnnGpu_Kernel_t4argsE">
+<span id="_CPPv3N15QnnGpu_Kernel_t4argsE"></span><span id="_CPPv2N15QnnGpu_Kernel_t4argsE"></span><span id="QnnGpu_Kernel_t::args__QnnGpu_KernelArg_tPP"></span><span class="target" id="structQnnGpu__Kernel__t_1ad67689d4c6e04f0264b0af13b74c1cfa"></span><a class="reference internal" href="structQnnGpu__KernelArg__t.html#_CPPv418QnnGpu_KernelArg_t" title="QnnGpu_KernelArg_t"><span class="n"><span class="pre">QnnGpu_KernelArg_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">args</span></span></span><a class="headerlink" href="#_CPPv4N15QnnGpu_Kernel_t4argsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Null-terminated array of kernel arguments in the order they appear in the kernel function. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15QnnGpu_Kernel_t4nameE">
+<span id="_CPPv3N15QnnGpu_Kernel_t4nameE"></span><span id="_CPPv2N15QnnGpu_Kernel_t4nameE"></span><span id="QnnGpu_Kernel_t::name__cCP"></span><span class="target" id="structQnnGpu__Kernel__t_1af2db944a9f36c36a2b6baa8ce688aeaa"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">name</span></span></span><a class="headerlink" href="#_CPPv4N15QnnGpu_Kernel_t4nameE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Null terminated name of the kernel. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15QnnGpu_Kernel_t9isDynamicE">
+<span id="_CPPv3N15QnnGpu_Kernel_t9isDynamicE"></span><span id="_CPPv2N15QnnGpu_Kernel_t9isDynamicE"></span><span id="QnnGpu_Kernel_t::isDynamic__uint32_t"></span><span class="target" id="structQnnGpu__Kernel__t_1a0133e8433f923270919ee1ee000a5cf9"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isDynamic</span></span></span><a class="headerlink" href="#_CPPv4N15QnnGpu_Kernel_t9isDynamicE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>If non-zero, kernel will be enqueued during execute even if it is static. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15QnnGpu_Kernel_t8reservedE">
+<span id="_CPPv3N15QnnGpu_Kernel_t8reservedE"></span><span id="_CPPv2N15QnnGpu_Kernel_t8reservedE"></span><span id="QnnGpu_Kernel_t::reserved__voidP"></span><span class="target" id="structQnnGpu__Kernel__t_1a04872a2d9216097249b4f60ed867ea9c"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">reserved</span></span></span><a class="headerlink" href="#_CPPv4N15QnnGpu_Kernel_t8reservedE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Reserved field, must be null. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv418QnnGpu_Operation_t">
+<span id="_CPPv318QnnGpu_Operation_t"></span><span id="_CPPv218QnnGpu_Operation_t"></span><span id="QnnGpu_Operation_t"></span><span class="target" id="structQnnGpu__Operation__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnGpu_Operation_t</span></span></span><a class="headerlink" href="#_CPPv418QnnGpu_Operation_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnGpuOpPackage.h&gt;</em></div>
+<p>A QNN GPU struct specifying an operation. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnGpu_Operation_t12outputClaimsE">
+<span id="_CPPv3N18QnnGpu_Operation_t12outputClaimsE"></span><span id="_CPPv2N18QnnGpu_Operation_t12outputClaimsE"></span><span id="QnnGpu_Operation_t::outputClaims__QnnGpu_OutputClaim_tPP"></span><span class="target" id="structQnnGpu__Operation__t_1a8541ca07b61f61d9a4af236124b2a162"></span><a class="reference internal" href="structQnnGpu__OutputClaim__t.html#_CPPv420QnnGpu_OutputClaim_t" title="QnnGpu_OutputClaim_t"><span class="n"><span class="pre">QnnGpu_OutputClaim_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">outputClaims</span></span></span><a class="headerlink" href="#_CPPv4N18QnnGpu_Operation_t12outputClaimsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Null-terminated array of output claims. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnGpu_Operation_t13memoryObjectsE">
+<span id="_CPPv3N18QnnGpu_Operation_t13memoryObjectsE"></span><span id="_CPPv2N18QnnGpu_Operation_t13memoryObjectsE"></span><span id="QnnGpu_Operation_t::memoryObjects__QnnGpu_MemoryObject_tPP"></span><span class="target" id="structQnnGpu__Operation__t_1a465d69c8ffc9442399bfec245ddab8ee"></span><a class="reference internal" href="structQnnGpu__MemoryObject__t.html#_CPPv421QnnGpu_MemoryObject_t" title="QnnGpu_MemoryObject_t"><span class="n"><span class="pre">QnnGpu_MemoryObject_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">memoryObjects</span></span></span><a class="headerlink" href="#_CPPv4N18QnnGpu_Operation_t13memoryObjectsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Null-terminated array of tensor requests. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnGpu_Operation_t7kernelsE">
+<span id="_CPPv3N18QnnGpu_Operation_t7kernelsE"></span><span id="_CPPv2N18QnnGpu_Operation_t7kernelsE"></span><span id="QnnGpu_Operation_t::kernels__QnnGpu_Kernel_tPP"></span><span class="target" id="structQnnGpu__Operation__t_1ae65d67f55977b0343e6c5f136f7b869f"></span><a class="reference internal" href="structQnnGpu__Kernel__t.html#_CPPv415QnnGpu_Kernel_t" title="QnnGpu_Kernel_t"><span class="n"><span class="pre">QnnGpu_Kernel_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">kernels</span></span></span><a class="headerlink" href="#_CPPv4N18QnnGpu_Operation_t7kernelsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Null-terminated array of kernels. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

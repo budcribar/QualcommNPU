@@ -1,0 +1,472 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Running the Word-RNN Model &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Running the Spoken Digit Recognition Model" href="tutorial_spoken_digit.html" />
+    <link rel="prev" title="Running the Inception v3 Model in Windows" href="tutorial_inceptionv3_win.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup1.html">Network Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="usergroup6.html">Tutorials and Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial_setup.html">Tutorials Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snpe2_migration_guidelines.html">SNPE1 to SNPE2 Migration Guide</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="usergroup7.html">Running Nets</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="tutorial_inceptionv3.html">Running the Inception v3 Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_inceptionv3_win.html">Running the Inception v3 Model in Windows</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Running the Word-RNN Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_spoken_digit.html">Running the Spoken Digit Recognition Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_onnx.html">Running a VGG Model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup8.html">Code Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup9.html">Application Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="usergroup6.html">Tutorials and Examples</a> &raquo;</li>
+        
+          <li><a href="usergroup7.html">Running Nets</a> &raquo;</li>
+        
+      <li>Running the Word-RNN Model</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="running-the-word-rnn-model">
+<h1>Running the Word-RNN Model<a class="headerlink" href="#running-the-word-rnn-model" title="Permalink to this heading">¶</a></h1>
+<div class="ui-resizable side-nav-resizable docutils container" id="side-nav">
+<div class="docutils container" id="nav-tree">
+<div class="docutils container" id="nav-tree-contents">
+</div>
+</div>
+</div>
+<div class="docutils container" id="doc-content">
+<div class="header docutils container">
+</div>
+<div class="contents docutils container">
+<div class="textblock docutils container">
+<p class="rubric" id="overview">Overview</p>
+<p>The example C++ application in this tutorial is called
+<a class="reference external" href="tools.html#snpe-net-run">snpe-net-run</a>. It is a command line executable that executes
+a neural network using Qualcomm® Neural Processing SDK APIs.</p>
+<p>The required arguments to snpe-net-run are:</p>
+<ul class="simple">
+<li><p>A neural network model in the DLC file format</p></li>
+<li><p>An input list file with paths to the input data.</p></li>
+</ul>
+<p>Optional arguments to snpe-net-run are:</p>
+<ul class="simple">
+<li><p>Choice of GPU or DSP runtime (default is CPU)</p></li>
+<li><p>Output directory (default is ./output)</p></li>
+<li><p>Show help description</p></li>
+</ul>
+<p>snpe-net-run creates and populates an output directory with the
+results of executing the neural network on the input data.</p>
+<div class="docutils container">
+<div class="figure align-default">
+<img alt="../images/neural_network.png" src="../images/neural_network.png" />
+</div>
+</div>
+<p>The Qualcomm® Neural Processing SDK provides Linux and Android binaries of
+<strong>snpe-net-run</strong> under</p>
+<ul class="simple">
+<li><p>$SNPE_ROOT/bin/x86_64-linux-clang</p></li>
+<li><p>$SNPE_ROOT/bin/aarch64-android</p></li>
+<li><p>$SNPE_ROOT/bin/aarch64-oe-linux-gcc8.2</p></li>
+<li><p>$SNPE_ROOT/bin/aarch64-oe-linux-gcc9.3</p></li>
+<li><p>$SNPE_ROOT/bin/aarch64-ubuntu-gcc7.5</p></li>
+</ul>
+<p class="rubric" id="introduction">Introduction</p>
+<p>Recurrent Neural Network (RNN) architectures are widely used in
+Machine Learning Applications for processing sequential input
+data. This chapter will show a simple Word-RNN example for
+predicting the next word in an embedding using Long Short-Term
+Memory (LSTM). The step-by-step example will create, train,
+convert, and execute a Word-RNN model with Qualcomm® Neural Processing SDK.</p>
+<p>The external python3 packages needed by this example are:</p>
+<ul class="simple">
+<li><p>numpy</p></li>
+<li><p>pandas</p></li>
+<li><p>sklearn</p></li>
+<li><p>tensorflow (1.6 or 1.11)</p></li>
+</ul>
+<p>There are six files in $SNPE_ROOT/examples/Models/word_rnn folder</p>
+<ul class="simple">
+<li><p>inference.py</p></li>
+<li><p>input_list.txt</p></li>
+<li><p>belling_the_cat.txt</p></li>
+<li><p>word_rnn.py</p></li>
+<li><p>word_rnn_adb.sh</p></li>
+<li><p>NOTICE.txt</p></li>
+</ul>
+<p>The <strong>word_rnn.py</strong> python3 script creates and trains an RNN
+model with one LSTM layer. After RNN training is done, the
+corresponding frozen protobuf file will be generated.</p>
+<p>The <strong>inference.py</strong> prompts the user to enter several words,
+at which point <strong>snpe-net-run</strong> will be called in a loop to
+generate subsequent words.</p>
+<p class="rubric" id="prerequisites">Prerequisites</p>
+<ul class="simple">
+<li><p>The Qualcomm® Neural Processing SDK has been set up following the <a class="reference external" href="setup.html">Qualcomm (R) Neural Processing SDK
+Setup</a> chapter.</p></li>
+<li><p>The <a class="reference external" href="tutorial_setup.html">Tutorials Setup</a> has been
+completed.</p></li>
+<li><p>TensorFlow is installed (see <a class="reference external" href="setup.html#tensorflow-setup">TensorFlow
+Setup</a>)</p></li>
+</ul>
+<p class="rubric" id="create-train-and-convert-word-rnn-model">Create, Train, and Convert Word-RNN Model</p>
+<p>Run word_rnn.py to create and train the Word-RNN model.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>cd $SNPE_ROOT/examples/Models/word_rnn
+python3 word_rnn.py
+</pre></div>
+</div>
+<p>The terminal will show the following messages.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>Training will be logged in word_rnn_log.
+Load training file belling_the_cat.txt.
+Embedding created.
+Iter= 1000
+Iter= 2000
+Iter= 3000
+Iter= 4000
+Iter= 5000
+Optimization done.
+Converted 2 variables to const ops.
+Save frozen graph in word_rnn.pb.
+</pre></div>
+</div>
+<p>Then, convert the frozen graph model with
+snpe-tensorflow-to-dlc.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>snpe-tensorflow-to-dlc --input_network word_rnn.pb \
+                       --input_dim Placeholder &quot;1, 4, 1&quot; \
+                       --out_node &quot;rnn/basic_lstm_cell/Mul_11&quot; \
+                       --output_path word_rnn.dlc
+</pre></div>
+</div>
+<p>After dlc conversion, we can view the converted dlc
+architecture with <strong>snpe-dlc-info</strong> and <strong>snpe-dlc-viewer</strong> as
+follows:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>snpe-dlc-info -i word_rnn.dlc
+snpe-dlc-viewer -i word_rnn.dlc
+</pre></div>
+</div>
+<p class="rubric" id="run-on-linux-host">Run on Linux Host</p>
+<p>Go to the base location for the model and run the python3
+script including <strong>snpe-net-run</strong></p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>python3 inference.py
+</pre></div>
+</div>
+<p>After running <strong>inference.py</strong>, you will see a list of word
+embedding keys and user input prompt as follows:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>Load training file belling_the_cat.txt.
+Embedding created.
+Use host cpu.
+Display word embedding keys:
+dict_keys([&#39;long&#39;, &#39;is&#39;, &#39;up&#39;, &#39;it&#39;, &#39;i&#39;, &#39;chief&#39;, &#39;our&#39;, &#39;procured&#39;, &#39;her&#39;, &#39;in&#39;, &#39;mouse&#39;, &#39;council&#39;, &#39;treacherous&#39;, &#39;meet&#39;, &#39;manner&#39;, &#39;approaches&#39;, &#39;with&#39;, &#39;propose&#39;, &#39;which&#39;, &#39;consider&#39;, &#39;thought&#39;, &#39;know&#39;, &#39;bell&#39;, &#39;signal&#39;, &#39;always&#39;, &#39;by&#39;, &#39;small&#39;, &#39;old&#39;, &#39;could&#39;, &#39;about&#39;, &#39;neck&#39;, &#39;of&#39;, &#39;approach&#39;, &#39;well&#39;, &#39;easy&#39;, &#39;take&#39;, &#39;all&#39;, &#39;outwit&#39;, &#39;met&#39;, &#39;they&#39;, &#39;this&#39;, &#39;who&#39;, &#39;cat&#39;, &#39;what&#39;, &#39;.&#39;, &#39;will&#39;, &#39;attached&#39;, &#39;their&#39;, &#39;when&#39;, &#39;receive&#39;, &#39;agree&#39;, &#39;applause&#39;, &#39;and&#39;, &#39;if&#39;, &#39;now&#39;, &#39;to&#39;, &#39;a&#39;, &#39;round&#39;, &#39;enemy&#39;, &#39;was&#39;, &#39;ribbon&#39;, &#39;us&#39;, &#39;had&#39;, &#39;general&#39;, &#39;ago&#39;, &#39;means&#39;, &#39;last&#39;, &#39;venture&#39;, &#39;got&#39;, &#39;sly&#39;, &#39;measures&#39;, &#39;young&#39;, &#39;she&#39;, &#39;very&#39;, &#39;impossible&#39;, &#39;therefore&#39;, &#39;we&#39;, &#39;should&#39;, &#39;one&#39;, &#39;mice&#39;, &#39;case&#39;, &#39;?&#39;, &#39;make&#39;, &#39;nobody&#39;, &#39;he&#39;, &#39;that&#39;, &#39;consists&#39;, &#39;spoke&#39;, &#39;from&#39;, &#39;easily&#39;, &#39;at&#39;, &#39;neighbourhood&#39;, &#39;the&#39;, &#39;looked&#39;, &#39;then&#39;, &#39;until&#39;, &#39;an&#39;, &#39;common&#39;, &#39;but&#39;, &#39;be&#39;, &#39;would&#39;, &#39;danger&#39;, &#39;retire&#39;, &#39;proposal&#39;, &#39;another&#39;, &#39;you&#39;, &#39;,&#39;, &#39;while&#39;, &#39;escape&#39;, &#39;some&#39;, &#39;remedies&#39;, &#39;said&#39;])
+Please input 4 words:
+</pre></div>
+</div>
+<p>User can input embedded words and see the results. For example:
+<strong>long ago , the</strong></p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>...
+...
+-------------------------------------------------------------------------------
+Model String: N/A
+SNPE vX.Y.Z.dev
+-------------------------------------------------------------------------------
+Processing DNN input(s):
+./input.raw
+-------------------------------------------------------------------------------
+Model String: N/A
+SNPE vX.Y.Z.dev
+-------------------------------------------------------------------------------
+Processing DNN input(s):
+./input.raw
+Inference result: long ago , the said she a , , and the could could , , and the could could , , and the could could , , and the could could , , and the could
+</pre></div>
+</div>
+<p>The <strong>inference.py</strong> will call <strong>snpe-net-run</strong> several times
+to generate subsequent words with trained LSTM model.</p>
+<p><strong>Binary data input</strong></p>
+<p>Note that the Word-RNN model does not accept pure text files as
+input. The model expects its input tensor dimension to be
+<strong>1x4x1</strong> as a float array. The <strong>create_embedding</strong> function
+in <strong>inference.py</strong> will parse, collect, encode, and build the
+word embedding. User inputs will then be transformed into a <strong>1x4x1</strong> vector
+and sent into the LSTM model. Afterwards the LSTM output will
+be also transformed into the corresponding embedded word.</p>
+<p class="rubric" id="run-on-target-platform">Run on Target Platform ( Android/LE/UBUN )</p>
+<p><strong>Select target architecture</strong></p>
+<p>Qualcomm® Neural Processing SDK provides binaries for different target platforms.
+Android binaries are  compiled with clang using libc++ STL implementation.
+Below are examples for aarch64-android (Android platform)  and
+aarch64-oe-linux-gcc11.2 toolchain (LE platform).
+Similarly other toolchains for different platforms can be set as SNPE_TARGET_ARCH</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span># For Android targets: architecture: arm64-v8a - compiler: clang - STL: libc++
+export SNPE_TARGET_ARCH=aarch64-android
+
+# Example for LE targets
+export SNPE_TARGET_ARCH=aarch64-oe-linux-gcc11.2
+</pre></div>
+</div>
+<p>For simplicity, this tutorial sets the target binaries to
+aarch64-android.</p>
+<p><strong>Push libraries and binaries to target</strong></p>
+<p>Push Qualcomm® Neural Processing SDK libraries and the prebuilt snpe-net-run executable to
+/data/local/tmp/snpeexample on the Android target. Set SNPE_TARGET_DSPARCH
+to the DSP architecture of the target Android device.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>export SNPE_TARGET_ARCH=aarch64-android
+export SNPE_TARGET_DSPARCH=hexagon-v73
+
+adb shell &quot;mkdir -p /data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/bin&quot;
+adb shell &quot;mkdir -p /data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/lib&quot;
+adb shell &quot;mkdir -p /data/local/tmp/snpeexample/dsp/lib&quot;
+
+adb push $SNPE_ROOT/lib/$SNPE_TARGET_ARCH/*.so \
+      /data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/lib
+adb push $SNPE_ROOT/lib/$SNPE_TARGET_DSPARCH/unsigned/*.so \
+      /data/local/tmp/snpeexample/dsp/lib
+adb push $SNPE_ROOT/bin/$SNPE_TARGET_ARCH/snpe-net-run \
+      /data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/bin
+</pre></div>
+</div>
+<p><strong>Set up enviroment variables</strong></p>
+<p>Set up the library path, the path variable, and the target
+architecture in adb shell to run the executable with the -h
+argument to see its description.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>adb shell
+export SNPE_TARGET_ARCH=aarch64-android
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/lib
+export PATH=$PATH:/data/local/tmp/snpeexample/$SNPE_TARGET_ARCH/bin
+snpe-net-run -h
+exit
+</pre></div>
+</div>
+<p><strong>Push model data to Android target</strong></p>
+<p>To execute the Word-RNN model on your Android target follow these steps:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>adb shell &quot;mkdir -p /data/local/tmp/word_rnn&quot;
+adb push input_list.txt /data/local/tmp/word_rnn
+adb push word_rnn.dlc /data/local/tmp/word_rnn
+adb push word_rnn_adb.sh /data/local/tmp/word_rnn
+</pre></div>
+</div>
+<p><strong>Note:</strong> It may take some time to push the word_rnn dlc file to your target.</p>
+<p class="rubric" id="running-on-android-using-cpu-runtime">Running on Android using CPU Runtime</p>
+<p>Run the Android C++ executable with the following commands:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>snpe-net-run --container word_rnn.dlc --input_list input_list.txt
+</pre></div>
+</div>
+<p>We will get the same result as when we <a class="reference external" href="tutorial_word_rnn.html#run-on-linux-host">Run on Linux
+Host</a>.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="tutorial_spoken_digit.html" class="btn btn-neutral float-right" title="Running the Spoken Digit Recognition Model" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="tutorial_inceptionv3_win.html" class="btn btn-neutral float-left" title="Running the Inception v3 Model in Windows" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

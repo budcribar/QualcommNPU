@@ -1,0 +1,982 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>File QnnContext.h &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>File QnnContext.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="file-qnncontext-h">
+<span id="file-include-qnn-qnncontext-h"></span><h1>File QnnContext.h<a class="headerlink" href="#file-qnncontext-h" title="Permalink to this heading">¶</a></h1>
+<p>↰ <a class="reference internal" href="dir_include_QNN.html#dir-include-qnn"><span class="std std-ref">Parent directory</span></a> (<code class="docutils literal notranslate"><span class="pre">include/QNN</span></code>)</p>
+<p>Context component API.</p>
+<div class="contents local topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#definition-include-qnn-qnncontext-h" id="id1">Definition (<code class="docutils literal notranslate"><span class="pre">include/QNN/QnnContext.h</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#detailed-description" id="id2">Detailed Description</a></p></li>
+<li><p><a class="reference internal" href="#includes" id="id3">Includes</a></p></li>
+<li><p><a class="reference internal" href="#included-by" id="id4">Included By</a></p></li>
+<li><p><a class="reference internal" href="#classes" id="id5">Classes</a></p></li>
+<li><p><a class="reference internal" href="#enums" id="id6">Enums</a></p></li>
+<li><p><a class="reference internal" href="#functions" id="id7">Functions</a></p></li>
+<li><p><a class="reference internal" href="#defines" id="id8">Defines</a></p></li>
+<li><p><a class="reference internal" href="#typedefs" id="id9">Typedefs</a></p></li>
+<li><p><a class="reference internal" href="#unions" id="id10">Unions</a></p></li>
+<li><p><a class="reference internal" href="#full-file-listing" id="id11">Full File Listing</a></p></li>
+</ul>
+</div>
+<div class="section" id="definition-include-qnn-qnncontext-h">
+<h2>Definition (<code class="docutils literal notranslate"><span class="pre">include/QNN/QnnContext.h</span></code>)<a class="headerlink" href="#definition-include-qnn-qnncontext-h" title="Permalink to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="program_listing_file_include_QNN_QnnContext.h.html">Program Listing for File QnnContext.h</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="detailed-description">
+<h2>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><p>Requires Backend to be initialized.
+Graphs and Tensors are created within Context.
+Context content once created can be cached into a binary form.</p>
+</div></blockquote>
+</div>
+<div class="section" id="includes">
+<h2>Includes<a class="headerlink" href="#includes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">QnnCommon.h</span></code> (<a class="reference internal" href="file_include_QNN_QnnCommon.h.html#file-include-qnn-qnncommon-h"><span class="std std-ref">File QnnCommon.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QnnTypes.h</span></code> (<a class="reference internal" href="file_include_QNN_QnnTypes.h.html#file-include-qnn-qnntypes-h"><span class="std std-ref">File QnnTypes.h</span></a>)</p></li>
+</ul>
+</div>
+<div class="section" id="included-by">
+<h2>Included By<a class="headerlink" href="#included-by" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="file_include_QNN_HTP_QnnHtpContext.h.html#file-include-qnn-htp-qnnhtpcontext-h"><span class="std std-ref">File QnnHtpContext.h</span></a></p></li>
+<li><p><a class="reference internal" href="file_include_QNN_QnnInterface.h.html#file-include-qnn-qnninterface-h"><span class="std std-ref">File QnnInterface.h</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="structQnnContext__AsyncExecutionQueueDepth__t.html#exhale-struct-structqnncontext-asyncexecutionqueuedepth-t"><span class="std std-ref">Struct QnnContext_AsyncExecutionQueueDepth_t</span></a></p></li>
+<li><p><a class="reference internal" href="structQnnContext__Config__t.html#exhale-struct-structqnncontext-config-t"><span class="std std-ref">Struct QnnContext_Config_t</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="enums">
+<h2>Enums<a class="headerlink" href="#enums" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="enum_QnnContext_8h_1ac7eead806e0bef5d5df0e68e2d2a79f1.html#exhale-enum-qnncontext-8h-1ac7eead806e0bef5d5df0e68e2d2a79f1"><span class="std std-ref">Enum QnnContext_AsyncExecutionQueueDepthType_t</span></a></p></li>
+<li><p><a class="reference internal" href="enum_QnnContext_8h_1aea32d8657e3ab422aebf55f3adef7670.html#exhale-enum-qnncontext-8h-1aea32d8657e3ab422aebf55f3adef7670"><span class="std std-ref">Enum QnnContext_BinaryCompatibilityType_t</span></a></p></li>
+<li><p><a class="reference internal" href="enum_QnnContext_8h_1a054235316eddc82552593ec91318f90e.html#exhale-enum-qnncontext-8h-1a054235316eddc82552593ec91318f90e"><span class="std std-ref">Enum QnnContext_ConfigOption_t</span></a></p></li>
+<li><p><a class="reference internal" href="enum_QnnContext_8h_1ad9cf75b8336ca286004fb26ed4e3252c.html#exhale-enum-qnncontext-8h-1ad9cf75b8336ca286004fb26ed4e3252c"><span class="std std-ref">Enum QnnContext_Error_t</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="function_QnnContext_8h_1a32eb31e802e865f4cb33c5097e367773.html#exhale-function-qnncontext-8h-1a32eb31e802e865f4cb33c5097e367773"><span class="std std-ref">Function QnnContext_create</span></a></p></li>
+<li><p><a class="reference internal" href="function_QnnContext_8h_1aa261465dd9bdfe51532a9d33fe4a2fa9.html#exhale-function-qnncontext-8h-1aa261465dd9bdfe51532a9d33fe4a2fa9"><span class="std std-ref">Function QnnContext_createFromBinary</span></a></p></li>
+<li><p><a class="reference internal" href="function_QnnContext_8h_1ad67db1a7282b19f4e7ef5ccb620861fb.html#exhale-function-qnncontext-8h-1ad67db1a7282b19f4e7ef5ccb620861fb"><span class="std std-ref">Function QnnContext_createFromBinaryWithSignal</span></a></p></li>
+<li><p><a class="reference internal" href="function_QnnContext_8h_1ada3a582e9ab571599958c60665c7a2c8.html#exhale-function-qnncontext-8h-1ada3a582e9ab571599958c60665c7a2c8"><span class="std std-ref">Function QnnContext_free</span></a></p></li>
+<li><p><a class="reference internal" href="function_QnnContext_8h_1aa1c220389821ddf1e9d0de46b8fba0f9.html#exhale-function-qnncontext-8h-1aa1c220389821ddf1e9d0de46b8fba0f9"><span class="std std-ref">Function QnnContext_getBinary</span></a></p></li>
+<li><p><a class="reference internal" href="function_QnnContext_8h_1a3e2fe7d890123f7eb2c0ee5b26ccccba.html#exhale-function-qnncontext-8h-1a3e2fe7d890123f7eb2c0ee5b26ccccba"><span class="std std-ref">Function QnnContext_getBinarySize</span></a></p></li>
+<li><p><a class="reference internal" href="function_QnnContext_8h_1a380694614a9167136c744b21da34feb7.html#exhale-function-qnncontext-8h-1a380694614a9167136c744b21da34feb7"><span class="std std-ref">Function QnnContext_setConfig</span></a></p></li>
+<li><p><a class="reference internal" href="function_QnnContext_8h_1af04e61e7ab7468913f7906a8f9c7123b.html#exhale-function-qnncontext-8h-1af04e61e7ab7468913f7906a8f9c7123b"><span class="std std-ref">Function QnnContext_validateBinary</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="defines">
+<h2>Defines<a class="headerlink" href="#defines" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="define_QnnContext_8h_1aad3508b1b6d3cf79ba0f5f98ce9da7c1.html#exhale-define-qnncontext-8h-1aad3508b1b6d3cf79ba0f5f98ce9da7c1"><span class="std std-ref">Define QNN_CONTEXT_ASYNC_EXECUTION_QUEUE_DEPTH_INIT</span></a></p></li>
+<li><p><a class="reference internal" href="define_QnnContext_8h_1a8d36df99f23d41a033a158830868e48b.html#exhale-define-qnncontext-8h-1a8d36df99f23d41a033a158830868e48b"><span class="std std-ref">Define QNN_CONTEXT_CONFIG_INIT</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="typedefs">
+<h2>Typedefs<a class="headerlink" href="#typedefs" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="typedef_QnnContext_8h_1aacbfab8dfc26825718b4f115e21ac91a.html#exhale-typedef-qnncontext-8h-1aacbfab8dfc26825718b4f115e21ac91a"><span class="std std-ref">Typedef QnnContext_CustomConfig_t</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="unions">
+<h2>Unions<a class="headerlink" href="#unions" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="unionQnnContext__AsyncExecutionQueueDepth__t_1_1unnamed.html#exhale-union-unionqnncontext-asyncexecutionqueuedepth-t-1-1unnamed"><span class="std std-ref">Union QnnContext_AsyncExecutionQueueDepth_t::unnamed</span></a></p></li>
+<li><p><a class="reference internal" href="unionQnnContext__Config__t_1_1unnamed.html#exhale-union-unionqnncontext-config-t-1-1unnamed"><span class="std std-ref">Union QnnContext_Config_t::unnamed</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="full-file-listing">
+<h2>Full File Listing<a class="headerlink" href="#full-file-listing" title="Permalink to this heading">¶</a></h2>
+<p>Context component API. </p>
+<p><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="n">Requires</span><span class="w"> </span><span class="n">Backend</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">initialized</span><span class="p">.</span>
+<span class="w">    </span><span class="n">Graphs</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">Tensors</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">created</span><span class="w"> </span><span class="n">within</span><span class="w"> </span><span class="n">Context</span><span class="p">.</span>
+<span class="w">    </span><span class="n">Context</span><span class="w"> </span><span class="n">content</span><span class="w"> </span><span class="n">once</span><span class="w"> </span><span class="n">created</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">cached</span><span class="w"> </span><span class="n">into</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">binary</span><span class="w"> </span><span class="n">form</span><span class="p">.</span>
+</pre></div>
+</div>
+ </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_CONTEXT_ASYNC_EXECUTION_QUEUE_DEPTH_INIT">
+<span class="target" id="QnnContext_8h_1aad3508b1b6d3cf79ba0f5f98ce9da7c1"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CONTEXT_ASYNC_EXECUTION_QUEUE_DEPTH_INIT</span></span></span> &#160; <span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span>
+&#160;&#160;&#160; <a class="reference internal" href="#QnnContext_8h_1ac7eead806e0bef5d5df0e68e2d2a79f1a2a7980363a3a67d2e7969e49ffe2331d"><span class="std std-ref"><span class="pre">QNN_CONTEXT_ASYNC_EXECUTION_QUEUE_DEPTH_TYPE_UNDEFINED</span></span></a><p><span class="pre">,</span> <span class="pre">/*type*/</span> <span class="pre">\</span></p>
+<p><span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">0</span> <span class="pre">/*depth*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">}</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">}</span></p>
+<br /></dt>
+<dd><p><a class="reference internal" href="#structQnnContext__AsyncExecutionQueueDepth__t"><span class="std std-ref">QnnContext_AsyncExecutionQueueDepth_t</span></a> initializer macro. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.QNN_CONTEXT_CONFIG_INIT">
+<span class="target" id="QnnContext_8h_1a8d36df99f23d41a033a158830868e48b"></span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CONTEXT_CONFIG_INIT</span></span></span> &#160; <span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span>
+&#160;&#160;&#160; <a class="reference internal" href="#QnnContext_8h_1a054235316eddc82552593ec91318f90ea5c02508629b2b044e37dab5f1ebbf669"><span class="std std-ref"><span class="pre">QNN_CONTEXT_CONFIG_UNDEFINED</span></span></a><p><span class="pre">,</span> <span class="pre">/*option*/</span> <span class="pre">\</span></p>
+<p><span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">NULL</span> <span class="pre">/*customConfig*/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">}</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">}</span></p>
+<br /></dt>
+<dd><p><a class="reference internal" href="#structQnnContext__Config__t"><span class="std std-ref">QnnContext_Config_t</span></a> initializer macro. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv425QnnContext_CustomConfig_t">
+<span id="_CPPv325QnnContext_CustomConfig_t"></span><span id="_CPPv225QnnContext_CustomConfig_t"></span><span id="QnnContext_CustomConfig_t"></span><span class="target" id="QnnContext_8h_1aacbfab8dfc26825718b4f115e21ac91a"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">QnnContext_CustomConfig_t</span></span></span><a class="headerlink" href="#_CPPv425QnnContext_CustomConfig_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Context specific object for custom configuration. </p>
+<p>Please refer to documentation provided by the backend for usage information </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv418QnnContext_Error_t">
+<span id="_CPPv318QnnContext_Error_t"></span><span id="_CPPv218QnnContext_Error_t"></span><span class="target" id="QnnContext_8h_1ad9cf75b8336ca286004fb26ed4e3252c"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnContext_Error_t</span></span></span><a class="headerlink" href="#_CPPv418QnnContext_Error_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>QNN Context API result / error codes. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnContext_Error_t21QNN_CONTEXT_MIN_ERRORE">
+<span id="_CPPv3N18QnnContext_Error_t21QNN_CONTEXT_MIN_ERRORE"></span><span id="_CPPv2N18QnnContext_Error_t21QNN_CONTEXT_MIN_ERRORE"></span><span class="target" id="QnnContext_8h_1ad9cf75b8336ca286004fb26ed4e3252ca97e3586baab5d1e23d66e41b167a07ec"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CONTEXT_MIN_ERROR</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">5000</span></span><a class="headerlink" href="#_CPPv4N18QnnContext_Error_t21QNN_CONTEXT_MIN_ERRORE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnContext_Error_t20QNN_CONTEXT_NO_ERRORE">
+<span id="_CPPv3N18QnnContext_Error_t20QNN_CONTEXT_NO_ERRORE"></span><span id="_CPPv2N18QnnContext_Error_t20QNN_CONTEXT_NO_ERRORE"></span><span class="target" id="QnnContext_8h_1ad9cf75b8336ca286004fb26ed4e3252ca85bf0dbff935a7bb54d4b974356c47f2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CONTEXT_NO_ERROR</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N18QnnContext_Error_t20QNN_CONTEXT_NO_ERRORE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Qnn context success. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnContext_Error_t37QNN_CONTEXT_ERROR_UNSUPPORTED_FEATUREE">
+<span id="_CPPv3N18QnnContext_Error_t37QNN_CONTEXT_ERROR_UNSUPPORTED_FEATUREE"></span><span id="_CPPv2N18QnnContext_Error_t37QNN_CONTEXT_ERROR_UNSUPPORTED_FEATUREE"></span><span class="target" id="QnnContext_8h_1ad9cf75b8336ca286004fb26ed4e3252ca51f97730daa17c7586dfab8cc071fa2c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CONTEXT_ERROR_UNSUPPORTED_FEATURE</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="../general/api_error_codes.html#_CPPv4N17QnnCommon_Error_t30QNN_COMMON_ERROR_NOT_SUPPORTEDE" title="QNN_COMMON_ERROR_NOT_SUPPORTED"><span class="n"><span class="pre">QNN_COMMON_ERROR_NOT_SUPPORTED</span></span></a><a class="headerlink" href="#_CPPv4N18QnnContext_Error_t37QNN_CONTEXT_ERROR_UNSUPPORTED_FEATUREE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>There is optional API component that is not supported yet. See QnnProperty. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnContext_Error_t27QNN_CONTEXT_ERROR_MEM_ALLOCE">
+<span id="_CPPv3N18QnnContext_Error_t27QNN_CONTEXT_ERROR_MEM_ALLOCE"></span><span id="_CPPv2N18QnnContext_Error_t27QNN_CONTEXT_ERROR_MEM_ALLOCE"></span><span class="target" id="QnnContext_8h_1ad9cf75b8336ca286004fb26ed4e3252ca2339f6c380108b5ca3b8291093844ce4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CONTEXT_ERROR_MEM_ALLOC</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="../general/api_error_codes.html#_CPPv4N17QnnCommon_Error_t26QNN_COMMON_ERROR_MEM_ALLOCE" title="QNN_COMMON_ERROR_MEM_ALLOC"><span class="n"><span class="pre">QNN_COMMON_ERROR_MEM_ALLOC</span></span></a><a class="headerlink" href="#_CPPv4N18QnnContext_Error_t27QNN_CONTEXT_ERROR_MEM_ALLOCE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Context-specific memory allocation/deallocation failure. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnContext_Error_t34QNN_CONTEXT_ERROR_INVALID_ARGUMENTE">
+<span id="_CPPv3N18QnnContext_Error_t34QNN_CONTEXT_ERROR_INVALID_ARGUMENTE"></span><span id="_CPPv2N18QnnContext_Error_t34QNN_CONTEXT_ERROR_INVALID_ARGUMENTE"></span><span class="target" id="QnnContext_8h_1ad9cf75b8336ca286004fb26ed4e3252caa8601ae9ec789632a7ac2ef9ac97f8c5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CONTEXT_ERROR_INVALID_ARGUMENT</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">5000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N18QnnContext_Error_t34QNN_CONTEXT_ERROR_INVALID_ARGUMENTE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An argument to QNN context API is deemed invalid by a backend. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnContext_Error_t36QNN_CONTEXT_ERROR_CTX_DOES_NOT_EXISTE">
+<span id="_CPPv3N18QnnContext_Error_t36QNN_CONTEXT_ERROR_CTX_DOES_NOT_EXISTE"></span><span id="_CPPv2N18QnnContext_Error_t36QNN_CONTEXT_ERROR_CTX_DOES_NOT_EXISTE"></span><span class="target" id="QnnContext_8h_1ad9cf75b8336ca286004fb26ed4e3252cafb76f6714522cf429954fc1e3f09bc68"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CONTEXT_ERROR_CTX_DOES_NOT_EXIST</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">5000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N18QnnContext_Error_t36QNN_CONTEXT_ERROR_CTX_DOES_NOT_EXISTE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A QNN context has not yet been created in the backend. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnContext_Error_t32QNN_CONTEXT_ERROR_INVALID_HANDLEE">
+<span id="_CPPv3N18QnnContext_Error_t32QNN_CONTEXT_ERROR_INVALID_HANDLEE"></span><span id="_CPPv2N18QnnContext_Error_t32QNN_CONTEXT_ERROR_INVALID_HANDLEE"></span><span class="target" id="QnnContext_8h_1ad9cf75b8336ca286004fb26ed4e3252ca30728a226785968a1ae898ae49d5b365"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CONTEXT_ERROR_INVALID_HANDLE</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">5000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">2</span></span><a class="headerlink" href="#_CPPv4N18QnnContext_Error_t32QNN_CONTEXT_ERROR_INVALID_HANDLEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Invalid/NULL QNN context handle. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnContext_Error_t31QNN_CONTEXT_ERROR_NOT_FINALIZEDE">
+<span id="_CPPv3N18QnnContext_Error_t31QNN_CONTEXT_ERROR_NOT_FINALIZEDE"></span><span id="_CPPv2N18QnnContext_Error_t31QNN_CONTEXT_ERROR_NOT_FINALIZEDE"></span><span class="target" id="QnnContext_8h_1ad9cf75b8336ca286004fb26ed4e3252caf13420dc8371def6153f4e8a957edb14"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CONTEXT_ERROR_NOT_FINALIZED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">5000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">3</span></span><a class="headerlink" href="#_CPPv4N18QnnContext_Error_t31QNN_CONTEXT_ERROR_NOT_FINALIZEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Attempting an operation when graphs in a context haven’t been finalized. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnContext_Error_t32QNN_CONTEXT_ERROR_BINARY_VERSIONE">
+<span id="_CPPv3N18QnnContext_Error_t32QNN_CONTEXT_ERROR_BINARY_VERSIONE"></span><span id="_CPPv2N18QnnContext_Error_t32QNN_CONTEXT_ERROR_BINARY_VERSIONE"></span><span class="target" id="QnnContext_8h_1ad9cf75b8336ca286004fb26ed4e3252ca64f24487da0803cc5a3d756ba7f4eb76"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CONTEXT_ERROR_BINARY_VERSION</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">5000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">4</span></span><a class="headerlink" href="#_CPPv4N18QnnContext_Error_t32QNN_CONTEXT_ERROR_BINARY_VERSIONE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Attempt to access context binary with an incompatible version. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnContext_Error_t36QNN_CONTEXT_ERROR_CREATE_FROM_BINARYE">
+<span id="_CPPv3N18QnnContext_Error_t36QNN_CONTEXT_ERROR_CREATE_FROM_BINARYE"></span><span id="_CPPv2N18QnnContext_Error_t36QNN_CONTEXT_ERROR_CREATE_FROM_BINARYE"></span><span class="target" id="QnnContext_8h_1ad9cf75b8336ca286004fb26ed4e3252ca5bdcdb2d9b1779928166c455dda3cd3b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CONTEXT_ERROR_CREATE_FROM_BINARY</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">5000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">5</span></span><a class="headerlink" href="#_CPPv4N18QnnContext_Error_t36QNN_CONTEXT_ERROR_CREATE_FROM_BINARYE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Failure to create context from binary. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnContext_Error_t40QNN_CONTEXT_ERROR_GET_BINARY_SIZE_FAILEDE">
+<span id="_CPPv3N18QnnContext_Error_t40QNN_CONTEXT_ERROR_GET_BINARY_SIZE_FAILEDE"></span><span id="_CPPv2N18QnnContext_Error_t40QNN_CONTEXT_ERROR_GET_BINARY_SIZE_FAILEDE"></span><span class="target" id="QnnContext_8h_1ad9cf75b8336ca286004fb26ed4e3252ca156bda5a5b1c73dbd9203c57187a4c62"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CONTEXT_ERROR_GET_BINARY_SIZE_FAILED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">5000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">6</span></span><a class="headerlink" href="#_CPPv4N18QnnContext_Error_t40QNN_CONTEXT_ERROR_GET_BINARY_SIZE_FAILEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Failure to get size of a QNN serialized context. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnContext_Error_t35QNN_CONTEXT_ERROR_GET_BINARY_FAILEDE">
+<span id="_CPPv3N18QnnContext_Error_t35QNN_CONTEXT_ERROR_GET_BINARY_FAILEDE"></span><span id="_CPPv2N18QnnContext_Error_t35QNN_CONTEXT_ERROR_GET_BINARY_FAILEDE"></span><span class="target" id="QnnContext_8h_1ad9cf75b8336ca286004fb26ed4e3252cafb1d2754a7e0d1ffc0c4ae5b0b3e6eea"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CONTEXT_ERROR_GET_BINARY_FAILED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">5000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">7</span></span><a class="headerlink" href="#_CPPv4N18QnnContext_Error_t35QNN_CONTEXT_ERROR_GET_BINARY_FAILEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Failure to generate a QNN serialized context. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnContext_Error_t38QNN_CONTEXT_ERROR_BINARY_CONFIGURATIONE">
+<span id="_CPPv3N18QnnContext_Error_t38QNN_CONTEXT_ERROR_BINARY_CONFIGURATIONE"></span><span id="_CPPv2N18QnnContext_Error_t38QNN_CONTEXT_ERROR_BINARY_CONFIGURATIONE"></span><span class="target" id="QnnContext_8h_1ad9cf75b8336ca286004fb26ed4e3252ca81969370cd4a8ac8d8cd46c2d0783b0d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CONTEXT_ERROR_BINARY_CONFIGURATION</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">5000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">8</span></span><a class="headerlink" href="#_CPPv4N18QnnContext_Error_t38QNN_CONTEXT_ERROR_BINARY_CONFIGURATIONE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Invalid context binary configuration. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnContext_Error_t29QNN_CONTEXT_ERROR_SET_PROFILEE">
+<span id="_CPPv3N18QnnContext_Error_t29QNN_CONTEXT_ERROR_SET_PROFILEE"></span><span id="_CPPv2N18QnnContext_Error_t29QNN_CONTEXT_ERROR_SET_PROFILEE"></span><span class="target" id="QnnContext_8h_1ad9cf75b8336ca286004fb26ed4e3252ca6f860b80d5e89c0d9e16be063e79e2c1"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CONTEXT_ERROR_SET_PROFILE</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">5000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">9</span></span><a class="headerlink" href="#_CPPv4N18QnnContext_Error_t29QNN_CONTEXT_ERROR_SET_PROFILEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Failure to set profile. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnContext_Error_t32QNN_CONTEXT_ERROR_INVALID_CONFIGE">
+<span id="_CPPv3N18QnnContext_Error_t32QNN_CONTEXT_ERROR_INVALID_CONFIGE"></span><span id="_CPPv2N18QnnContext_Error_t32QNN_CONTEXT_ERROR_INVALID_CONFIGE"></span><span class="target" id="QnnContext_8h_1ad9cf75b8336ca286004fb26ed4e3252ca154aa9bd69736677557f2fadceae209b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CONTEXT_ERROR_INVALID_CONFIG</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">5000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">10</span></span><a class="headerlink" href="#_CPPv4N18QnnContext_Error_t32QNN_CONTEXT_ERROR_INVALID_CONFIGE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Invalid config. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnContext_Error_t35QNN_CONTEXT_ERROR_BINARY_SUBOPTIMALE">
+<span id="_CPPv3N18QnnContext_Error_t35QNN_CONTEXT_ERROR_BINARY_SUBOPTIMALE"></span><span id="_CPPv2N18QnnContext_Error_t35QNN_CONTEXT_ERROR_BINARY_SUBOPTIMALE"></span><span class="target" id="QnnContext_8h_1ad9cf75b8336ca286004fb26ed4e3252ca85f77e78f0410068496846432222fce4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CONTEXT_ERROR_BINARY_SUBOPTIMAL</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">5000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">11</span></span><a class="headerlink" href="#_CPPv4N18QnnContext_Error_t35QNN_CONTEXT_ERROR_BINARY_SUBOPTIMALE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Attempt to create a context from suboptimal binary. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnContext_Error_t25QNN_CONTEXT_ERROR_ABORTEDE">
+<span id="_CPPv3N18QnnContext_Error_t25QNN_CONTEXT_ERROR_ABORTEDE"></span><span id="_CPPv2N18QnnContext_Error_t25QNN_CONTEXT_ERROR_ABORTEDE"></span><span class="target" id="QnnContext_8h_1ad9cf75b8336ca286004fb26ed4e3252ca0f39bca9ac924772004c965c7ee77e76"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CONTEXT_ERROR_ABORTED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">5000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">12</span></span><a class="headerlink" href="#_CPPv4N18QnnContext_Error_t25QNN_CONTEXT_ERROR_ABORTEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Call aborted early due to a QnnSignal_trigger call issued to the observed signal object. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnContext_Error_t27QNN_CONTEXT_ERROR_TIMED_OUTE">
+<span id="_CPPv3N18QnnContext_Error_t27QNN_CONTEXT_ERROR_TIMED_OUTE"></span><span id="_CPPv2N18QnnContext_Error_t27QNN_CONTEXT_ERROR_TIMED_OUTE"></span><span class="target" id="QnnContext_8h_1ad9cf75b8336ca286004fb26ed4e3252ca9fbc92b66c2d5ecf0a2ffbc53728cfec"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CONTEXT_ERROR_TIMED_OUT</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">5000</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">13</span></span><a class="headerlink" href="#_CPPv4N18QnnContext_Error_t27QNN_CONTEXT_ERROR_TIMED_OUTE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Call aborted early due to a QnnSignal timeout. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnContext_Error_t21QNN_CONTEXT_MAX_ERRORE">
+<span id="_CPPv3N18QnnContext_Error_t21QNN_CONTEXT_MAX_ERRORE"></span><span id="_CPPv2N18QnnContext_Error_t21QNN_CONTEXT_MAX_ERRORE"></span><span class="target" id="QnnContext_8h_1ad9cf75b8336ca286004fb26ed4e3252ca1a764ecc22222be3b6e7daf7d0621415"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CONTEXT_MAX_ERROR</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">5999</span></span><a class="headerlink" href="#_CPPv4N18QnnContext_Error_t21QNN_CONTEXT_MAX_ERRORE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18QnnContext_Error_t27QNN_CONTEXT_ERROR_UNDEFINEDE">
+<span id="_CPPv3N18QnnContext_Error_t27QNN_CONTEXT_ERROR_UNDEFINEDE"></span><span id="_CPPv2N18QnnContext_Error_t27QNN_CONTEXT_ERROR_UNDEFINEDE"></span><span class="target" id="QnnContext_8h_1ad9cf75b8336ca286004fb26ed4e3252ca1285d8ec34d5400b494b79bacd882501"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CONTEXT_ERROR_UNDEFINED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0x7FFFFFFF</span></span><a class="headerlink" href="#_CPPv4N18QnnContext_Error_t27QNN_CONTEXT_ERROR_UNDEFINEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv425QnnContext_ConfigOption_t">
+<span id="_CPPv325QnnContext_ConfigOption_t"></span><span id="_CPPv225QnnContext_ConfigOption_t"></span><span class="target" id="QnnContext_8h_1a054235316eddc82552593ec91318f90e"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnContext_ConfigOption_t</span></span></span><a class="headerlink" href="#_CPPv425QnnContext_ConfigOption_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This enum defines context config options. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnContext_ConfigOption_t32QNN_CONTEXT_CONFIG_OPTION_CUSTOME">
+<span id="_CPPv3N25QnnContext_ConfigOption_t32QNN_CONTEXT_CONFIG_OPTION_CUSTOME"></span><span id="_CPPv2N25QnnContext_ConfigOption_t32QNN_CONTEXT_CONFIG_OPTION_CUSTOME"></span><span class="target" id="QnnContext_8h_1a054235316eddc82552593ec91318f90ea09c99a4eed10550f3af801579aad1364"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CONTEXT_CONFIG_OPTION_CUSTOM</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N25QnnContext_ConfigOption_t32QNN_CONTEXT_CONFIG_OPTION_CUSTOME" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets context custom options via QnnContext_CustomConfig_t. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnContext_ConfigOption_t34QNN_CONTEXT_CONFIG_OPTION_PRIORITYE">
+<span id="_CPPv3N25QnnContext_ConfigOption_t34QNN_CONTEXT_CONFIG_OPTION_PRIORITYE"></span><span id="_CPPv2N25QnnContext_ConfigOption_t34QNN_CONTEXT_CONFIG_OPTION_PRIORITYE"></span><span class="target" id="QnnContext_8h_1a054235316eddc82552593ec91318f90eadc4f401e1da4cdc99febe0565282d94f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CONTEXT_CONFIG_OPTION_PRIORITY</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N25QnnContext_ConfigOption_t34QNN_CONTEXT_CONFIG_OPTION_PRIORITYE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets the default priority for graphs in this context. QNN_GRAPH_CONFIG_OPTION_PRIORITY can be used to override this default. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnContext_ConfigOption_t41QNN_CONTEXT_CONFIG_OPTION_ERROR_REPORTINGE">
+<span id="_CPPv3N25QnnContext_ConfigOption_t41QNN_CONTEXT_CONFIG_OPTION_ERROR_REPORTINGE"></span><span id="_CPPv2N25QnnContext_ConfigOption_t41QNN_CONTEXT_CONFIG_OPTION_ERROR_REPORTINGE"></span><span class="target" id="QnnContext_8h_1a054235316eddc82552593ec91318f90eafaba75c45fec2c62a31173129c68afde"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CONTEXT_CONFIG_OPTION_ERROR_REPORTING</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">2</span></span><a class="headerlink" href="#_CPPv4N25QnnContext_ConfigOption_t41QNN_CONTEXT_CONFIG_OPTION_ERROR_REPORTINGE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets the error reporting level. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnContext_ConfigOption_t36QNN_CONTEXT_CONFIG_OPTION_OEM_STRINGE">
+<span id="_CPPv3N25QnnContext_ConfigOption_t36QNN_CONTEXT_CONFIG_OPTION_OEM_STRINGE"></span><span id="_CPPv2N25QnnContext_ConfigOption_t36QNN_CONTEXT_CONFIG_OPTION_OEM_STRINGE"></span><span class="target" id="QnnContext_8h_1a054235316eddc82552593ec91318f90ea3315d9225b10de5daa28248d02cb1848"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CONTEXT_CONFIG_OPTION_OEM_STRING</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">3</span></span><a class="headerlink" href="#_CPPv4N25QnnContext_ConfigOption_t36QNN_CONTEXT_CONFIG_OPTION_OEM_STRINGE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets the string used for custom oem functionality. This config option is DEPRECATED. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnContext_ConfigOption_t46QNN_CONTEXT_CONFIG_ASYNC_EXECUTION_QUEUE_DEPTHE">
+<span id="_CPPv3N25QnnContext_ConfigOption_t46QNN_CONTEXT_CONFIG_ASYNC_EXECUTION_QUEUE_DEPTHE"></span><span id="_CPPv2N25QnnContext_ConfigOption_t46QNN_CONTEXT_CONFIG_ASYNC_EXECUTION_QUEUE_DEPTHE"></span><span class="target" id="QnnContext_8h_1a054235316eddc82552593ec91318f90ea8e85bbb60fc3b7529ad66d55c38e9d39"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CONTEXT_CONFIG_ASYNC_EXECUTION_QUEUE_DEPTH</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">4</span></span><a class="headerlink" href="#_CPPv4N25QnnContext_ConfigOption_t46QNN_CONTEXT_CONFIG_ASYNC_EXECUTION_QUEUE_DEPTHE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets async execution queue depth for all graphs in this context. This option represents the number of executions that can be in the queue at a given time before <a class="reference internal" href="file_include_QNN_QnnGraph.h.html#QnnGraph_8h_1a690b74571029dd9f36e38cd902c86784"><span class="std std-ref">QnnGraph_executeAsync()</span></a> will start blocking until a new spot is available. Queue depth is subject to a maximum limit determined by the backend and available system resources. The default depth is backend-specific, refer to SDK documentation. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnContext_ConfigOption_t32QNN_CONTEXT_CONFIG_ENABLE_GRAPHSE">
+<span id="_CPPv3N25QnnContext_ConfigOption_t32QNN_CONTEXT_CONFIG_ENABLE_GRAPHSE"></span><span id="_CPPv2N25QnnContext_ConfigOption_t32QNN_CONTEXT_CONFIG_ENABLE_GRAPHSE"></span><span class="target" id="QnnContext_8h_1a054235316eddc82552593ec91318f90ea7aee7a39e515db0b792b1b2d0993d191"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CONTEXT_CONFIG_ENABLE_GRAPHS</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">5</span></span><a class="headerlink" href="#_CPPv4N25QnnContext_ConfigOption_t32QNN_CONTEXT_CONFIG_ENABLE_GRAPHSE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Null terminated array of null terminated strings listing the names of the graphs to deserialize from a context binary. All graphs are enabled by default. An error is generated if an invalid graph name is provided. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnContext_ConfigOption_t36QNN_CONTEXT_CONFIG_MEMORY_LIMIT_HINTE">
+<span id="_CPPv3N25QnnContext_ConfigOption_t36QNN_CONTEXT_CONFIG_MEMORY_LIMIT_HINTE"></span><span id="_CPPv2N25QnnContext_ConfigOption_t36QNN_CONTEXT_CONFIG_MEMORY_LIMIT_HINTE"></span><span class="target" id="QnnContext_8h_1a054235316eddc82552593ec91318f90eace606413c678a2aac7dc45e47c275f8b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CONTEXT_CONFIG_MEMORY_LIMIT_HINT</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">6</span></span><a class="headerlink" href="#_CPPv4N25QnnContext_ConfigOption_t36QNN_CONTEXT_CONFIG_MEMORY_LIMIT_HINTE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets the peak memory limit hint of a deserialized context in megabytes. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnContext_ConfigOption_t36QNN_CONTEXT_CONFIG_PERSISTENT_BINARYE">
+<span id="_CPPv3N25QnnContext_ConfigOption_t36QNN_CONTEXT_CONFIG_PERSISTENT_BINARYE"></span><span id="_CPPv2N25QnnContext_ConfigOption_t36QNN_CONTEXT_CONFIG_PERSISTENT_BINARYE"></span><span class="target" id="QnnContext_8h_1a054235316eddc82552593ec91318f90ea72f0d5d205f0089643fd21006f30c8a9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CONTEXT_CONFIG_PERSISTENT_BINARY</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">7</span></span><a class="headerlink" href="#_CPPv4N25QnnContext_ConfigOption_t36QNN_CONTEXT_CONFIG_PERSISTENT_BINARYE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Indicates that the context binary pointer is available during QnnContext_createFromBinary and until QnnContext_free is called. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnContext_ConfigOption_t39QNN_CONTEXT_CONFIG_BINARY_COMPATIBILITYE">
+<span id="_CPPv3N25QnnContext_ConfigOption_t39QNN_CONTEXT_CONFIG_BINARY_COMPATIBILITYE"></span><span id="_CPPv2N25QnnContext_ConfigOption_t39QNN_CONTEXT_CONFIG_BINARY_COMPATIBILITYE"></span><span class="target" id="QnnContext_8h_1a054235316eddc82552593ec91318f90eab54ef53f677e6edf7d4b58c404fb2124"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CONTEXT_CONFIG_BINARY_COMPATIBILITY</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">8</span></span><a class="headerlink" href="#_CPPv4N25QnnContext_ConfigOption_t39QNN_CONTEXT_CONFIG_BINARY_COMPATIBILITYE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets the context binary check type when reading binary caches. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25QnnContext_ConfigOption_t28QNN_CONTEXT_CONFIG_UNDEFINEDE">
+<span id="_CPPv3N25QnnContext_ConfigOption_t28QNN_CONTEXT_CONFIG_UNDEFINEDE"></span><span id="_CPPv2N25QnnContext_ConfigOption_t28QNN_CONTEXT_CONFIG_UNDEFINEDE"></span><span class="target" id="QnnContext_8h_1a054235316eddc82552593ec91318f90ea5c02508629b2b044e37dab5f1ebbf669"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CONTEXT_CONFIG_UNDEFINED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0x7FFFFFFF</span></span><a class="headerlink" href="#_CPPv4N25QnnContext_ConfigOption_t28QNN_CONTEXT_CONFIG_UNDEFINEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv436QnnContext_BinaryCompatibilityType_t">
+<span id="_CPPv336QnnContext_BinaryCompatibilityType_t"></span><span id="_CPPv236QnnContext_BinaryCompatibilityType_t"></span><span class="target" id="QnnContext_8h_1aea32d8657e3ab422aebf55f3adef7670"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnContext_BinaryCompatibilityType_t</span></span></span><a class="headerlink" href="#_CPPv436QnnContext_BinaryCompatibilityType_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N36QnnContext_BinaryCompatibilityType_t43QNN_CONTEXT_BINARY_COMPATIBILITY_PERMISSIVEE">
+<span id="_CPPv3N36QnnContext_BinaryCompatibilityType_t43QNN_CONTEXT_BINARY_COMPATIBILITY_PERMISSIVEE"></span><span id="_CPPv2N36QnnContext_BinaryCompatibilityType_t43QNN_CONTEXT_BINARY_COMPATIBILITY_PERMISSIVEE"></span><span class="target" id="QnnContext_8h_1aea32d8657e3ab422aebf55f3adef7670a10143129f134f81546568ae3cede51ad"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CONTEXT_BINARY_COMPATIBILITY_PERMISSIVE</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N36QnnContext_BinaryCompatibilityType_t43QNN_CONTEXT_BINARY_COMPATIBILITY_PERMISSIVEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A binary cache is compatible if it could run on the device. This is the default. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N36QnnContext_BinaryCompatibilityType_t39QNN_CONTEXT_BINARY_COMPATIBILITY_STRICTE">
+<span id="_CPPv3N36QnnContext_BinaryCompatibilityType_t39QNN_CONTEXT_BINARY_COMPATIBILITY_STRICTE"></span><span id="_CPPv2N36QnnContext_BinaryCompatibilityType_t39QNN_CONTEXT_BINARY_COMPATIBILITY_STRICTE"></span><span class="target" id="QnnContext_8h_1aea32d8657e3ab422aebf55f3adef7670ac1027b02bdae086ec3859d021d5a4218"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CONTEXT_BINARY_COMPATIBILITY_STRICT</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N36QnnContext_BinaryCompatibilityType_t39QNN_CONTEXT_BINARY_COMPATIBILITY_STRICTE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A binary cache is compatible if it could run on the device and fully utilize hardware capability, otherwise QnnContext_CreateFromBinary may return QNN_CONTEXT_ERROR_BINARY_SUBOPTIMAL. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N36QnnContext_BinaryCompatibilityType_t47QNN_CONTEXT_BINARY_COMPATIBILITY_TYPE_UNDEFINEDE">
+<span id="_CPPv3N36QnnContext_BinaryCompatibilityType_t47QNN_CONTEXT_BINARY_COMPATIBILITY_TYPE_UNDEFINEDE"></span><span id="_CPPv2N36QnnContext_BinaryCompatibilityType_t47QNN_CONTEXT_BINARY_COMPATIBILITY_TYPE_UNDEFINEDE"></span><span class="target" id="QnnContext_8h_1aea32d8657e3ab422aebf55f3adef7670aad45e55214e975ca5988b679db307abb"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CONTEXT_BINARY_COMPATIBILITY_TYPE_UNDEFINED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0x7FFFFFF</span></span><a class="headerlink" href="#_CPPv4N36QnnContext_BinaryCompatibilityType_t47QNN_CONTEXT_BINARY_COMPATIBILITY_TYPE_UNDEFINEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv441QnnContext_AsyncExecutionQueueDepthType_t">
+<span id="_CPPv341QnnContext_AsyncExecutionQueueDepthType_t"></span><span id="_CPPv241QnnContext_AsyncExecutionQueueDepthType_t"></span><span class="target" id="QnnContext_8h_1ac7eead806e0bef5d5df0e68e2d2a79f1"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnContext_AsyncExecutionQueueDepthType_t</span></span></span><a class="headerlink" href="#_CPPv441QnnContext_AsyncExecutionQueueDepthType_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N41QnnContext_AsyncExecutionQueueDepthType_t52QNN_CONTEXT_ASYNC_EXECUTION_QUEUE_DEPTH_TYPE_NUMERICE">
+<span id="_CPPv3N41QnnContext_AsyncExecutionQueueDepthType_t52QNN_CONTEXT_ASYNC_EXECUTION_QUEUE_DEPTH_TYPE_NUMERICE"></span><span id="_CPPv2N41QnnContext_AsyncExecutionQueueDepthType_t52QNN_CONTEXT_ASYNC_EXECUTION_QUEUE_DEPTH_TYPE_NUMERICE"></span><span class="target" id="QnnContext_8h_1ac7eead806e0bef5d5df0e68e2d2a79f1a79b69147d7a46abed45d2b9a2f83770e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CONTEXT_ASYNC_EXECUTION_QUEUE_DEPTH_TYPE_NUMERIC</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N41QnnContext_AsyncExecutionQueueDepthType_t52QNN_CONTEXT_ASYNC_EXECUTION_QUEUE_DEPTH_TYPE_NUMERICE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets a numeric value for the maximum queue depth. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N41QnnContext_AsyncExecutionQueueDepthType_t54QNN_CONTEXT_ASYNC_EXECUTION_QUEUE_DEPTH_TYPE_UNDEFINEDE">
+<span id="_CPPv3N41QnnContext_AsyncExecutionQueueDepthType_t54QNN_CONTEXT_ASYNC_EXECUTION_QUEUE_DEPTH_TYPE_UNDEFINEDE"></span><span id="_CPPv2N41QnnContext_AsyncExecutionQueueDepthType_t54QNN_CONTEXT_ASYNC_EXECUTION_QUEUE_DEPTH_TYPE_UNDEFINEDE"></span><span class="target" id="QnnContext_8h_1ac7eead806e0bef5d5df0e68e2d2a79f1a2a7980363a3a67d2e7969e49ffe2331d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QNN_CONTEXT_ASYNC_EXECUTION_QUEUE_DEPTH_TYPE_UNDEFINED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0x7FFFFFF</span></span><a class="headerlink" href="#_CPPv4N41QnnContext_AsyncExecutionQueueDepthType_t54QNN_CONTEXT_ASYNC_EXECUTION_QUEUE_DEPTH_TYPE_UNDEFINEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv417QnnContext_create19Qnn_BackendHandle_t18Qnn_DeviceHandle_tPPK19QnnContext_Config_tP19Qnn_ContextHandle_t">
+<span id="_CPPv317QnnContext_create19Qnn_BackendHandle_t18Qnn_DeviceHandle_tPPK19QnnContext_Config_tP19Qnn_ContextHandle_t"></span><span id="_CPPv217QnnContext_create19Qnn_BackendHandle_t18Qnn_DeviceHandle_tPPK19QnnContext_Config_tP19Qnn_ContextHandle_t"></span><span id="QnnContext_create__Qnn_BackendHandle_t.Qnn_DeviceHandle_t.QnnContext_Config_tCPP.Qnn_ContextHandle_tP"></span><span class="target" id="QnnContext_8h_1a32eb31e802e865f4cb33c5097e367773"></span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnContext_create</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_QnnCommon_8h_1aa406469e77ca2c62a1892093d796ce6a.html#_CPPv419Qnn_BackendHandle_t" title="Qnn_BackendHandle_t"><span class="n"><span class="pre">Qnn_BackendHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">backend</span></span>, <a class="reference internal" href="typedef_QnnCommon_8h_1a5ef1ac85057d5ffe9a7a22e5682f0cb3.html#_CPPv418Qnn_DeviceHandle_t" title="Qnn_DeviceHandle_t"><span class="n"><span class="pre">Qnn_DeviceHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">device</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="structQnnContext__Config__t.html#_CPPv419QnnContext_Config_t" title="QnnContext_Config_t"><span class="n"><span class="pre">QnnContext_Config_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">config</span></span>, <a class="reference internal" href="typedef_QnnCommon_8h_1ae2751b09a1186e90f79e7b89d1903c8f.html#_CPPv419Qnn_ContextHandle_t" title="Qnn_ContextHandle_t"><span class="n"><span class="pre">Qnn_ContextHandle_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">context</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417QnnContext_create19Qnn_BackendHandle_t18Qnn_DeviceHandle_tPPK19QnnContext_Config_tP19Qnn_ContextHandle_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A function to create a context. Context holds graphs, operations and tensors. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>backend</strong> – <strong>[in]</strong> A backend handle.</p></li>
+<li><p><strong>device</strong> – <strong>[in]</strong> A device handle to set hardware affinity for the created context. NULL value can be supplied for device handle and it is equivalent to calling <a class="reference internal" href="file_include_QNN_QnnDevice.h.html#QnnDevice_8h_1a89dc464367fb4db7a419615591a4a77e"><span class="std std-ref">QnnDevice_create()</span></a> with NULL config.</p></li>
+<li><p><strong>config</strong> – <strong>[in]</strong> Pointer to a NULL terminated array of config option pointers. NULL is allowed and indicates no config options are provided. All config options have default value, in case not provided. If same config option type is provided multiple times, the last option value will be used.</p></li>
+<li><p><strong>context</strong> – <strong>[out]</strong> A handle to the created context.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code:<ul class="simple">
+<li><p>QNN_SUCCESS: no error is encountered</p></li>
+<li><p>QNN_CONTEXT_ERROR_INVALID_ARGUMENT: at least one argument is invalid</p></li>
+<li><p>QNN_CONTEXT_ERROR_MEM_ALLOC: failure in allocating memory when creating context</p></li>
+<li><p>QNN_CONTEXT_ERROR_INVALID_HANDLE: <em>backend</em> or <em>device</em> is not a valid handle</p></li>
+<li><p>QNN_CONTEXT_ERROR_UNSUPPORTED_FEATURE: an optional feature is not supported</p></li>
+<li><p>QNN_CONTEXT_ERROR_INVALID_CONFIG: one or more config values is invalid</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use corresponding API through <a class="reference internal" href="file_include_QNN_QnnInterface.h.html#structQnnInterface__t"><span class="std std-ref">QnnInterface_t</span></a>. </p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv420QnnContext_setConfig19Qnn_ContextHandle_tPPK19QnnContext_Config_t">
+<span id="_CPPv320QnnContext_setConfig19Qnn_ContextHandle_tPPK19QnnContext_Config_t"></span><span id="_CPPv220QnnContext_setConfig19Qnn_ContextHandle_tPPK19QnnContext_Config_t"></span><span id="QnnContext_setConfig__Qnn_ContextHandle_t.QnnContext_Config_tCPP"></span><span class="target" id="QnnContext_8h_1a380694614a9167136c744b21da34feb7"></span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnContext_setConfig</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_QnnCommon_8h_1ae2751b09a1186e90f79e7b89d1903c8f.html#_CPPv419Qnn_ContextHandle_t" title="Qnn_ContextHandle_t"><span class="n"><span class="pre">Qnn_ContextHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">context</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="structQnnContext__Config__t.html#_CPPv419QnnContext_Config_t" title="QnnContext_Config_t"><span class="n"><span class="pre">QnnContext_Config_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">config</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420QnnContext_setConfig19Qnn_ContextHandle_tPPK19QnnContext_Config_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A function to set/modify configuration options on an already generated context. Backends are not required to support this API. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>context</strong> – <strong>[in]</strong> A context handle.</p></li>
+<li><p><strong>config</strong> – <strong>[in]</strong> Pointer to a NULL terminated array of config option pointers. NULL is allowed and indicates no config options are provided. All config options have default value, in case not provided. If same config option type is provided multiple times, the last option value will be used. If a backend cannot support all provided configs it will fail.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code:<ul class="simple">
+<li><p>QNN_SUCCESS: no error is encountered</p></li>
+<li><p>QNN_CONTEXT_ERROR_INVALID_HANDLE: <em>context</em> is not a valid handle</p></li>
+<li><p>QNN_CONTEXT_ERROR_INVALID_ARGUMENT: at least one config option is invalid</p></li>
+<li><p>QNN_CONTEXT_ERROR_UNSUPPORTED_FEATURE: an optional feature is not supported</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use corresponding API through <a class="reference internal" href="file_include_QNN_QnnInterface.h.html#structQnnInterface__t"><span class="std std-ref">QnnInterface_t</span></a>. </p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv424QnnContext_getBinarySize19Qnn_ContextHandle_tP23Qnn_ContextBinarySize_t">
+<span id="_CPPv324QnnContext_getBinarySize19Qnn_ContextHandle_tP23Qnn_ContextBinarySize_t"></span><span id="_CPPv224QnnContext_getBinarySize19Qnn_ContextHandle_tP23Qnn_ContextBinarySize_t"></span><span id="QnnContext_getBinarySize__Qnn_ContextHandle_t.Qnn_ContextBinarySize_tP"></span><span class="target" id="QnnContext_8h_1a3e2fe7d890123f7eb2c0ee5b26ccccba"></span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnContext_getBinarySize</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_QnnCommon_8h_1ae2751b09a1186e90f79e7b89d1903c8f.html#_CPPv419Qnn_ContextHandle_t" title="Qnn_ContextHandle_t"><span class="n"><span class="pre">Qnn_ContextHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">context</span></span>, <a class="reference internal" href="typedef_QnnTypes_8h_1abe693e6fd72f4165901dc7c3360e5825.html#_CPPv423Qnn_ContextBinarySize_t" title="Qnn_ContextBinarySize_t"><span class="n"><span class="pre">Qnn_ContextBinarySize_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">binaryBufferSize</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424QnnContext_getBinarySize19Qnn_ContextHandle_tP23Qnn_ContextBinarySize_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A function to get the size of memory to be allocated to hold the context content in binary (serialized) form. This function must be called after all entities in the context have been finalized. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>context</strong> – <strong>[in]</strong> A context handle.</p></li>
+<li><p><strong>binaryBufferSize</strong> – <strong>[out]</strong> The amount of memory in bytes a client will need to allocate to hold context content in binary form.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code:<ul class="simple">
+<li><p>QNN_SUCCESS: no error is encountered</p></li>
+<li><p>QNN_CONTEXT_ERROR_UNSUPPORTED_FEATURE: a feature is not supported</p></li>
+<li><p>QNN_CONTEXT_ERROR_INVALID_HANDLE: <em>context</em> is not a valid handle</p></li>
+<li><p>QNN_CONTEXT_ERROR_INVALID_ARGUMENT: <em>binaryBufferSize</em> is NULL</p></li>
+<li><p>QNN_CONTEXT_ERROR_NOT_FINALIZED: if there were any non-finalized entities in the context</p></li>
+<li><p>QNN_CONTEXT_ERROR_GET_BINARY_SIZE_FAILED: Operation failure due to other factors</p></li>
+<li><p>QNN_COMMON_ERROR_OPERATION_NOT_PERMITTED: Attempting to get binary size for a context re-created from a cached binary.</p></li>
+<li><p>QNN_CONTEXT_ERROR_MEM_ALLOC: Not enough memory is available to retrieve the context content.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use corresponding API through <a class="reference internal" href="file_include_QNN_QnnInterface.h.html#structQnnInterface__t"><span class="std std-ref">QnnInterface_t</span></a>. </p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv420QnnContext_getBinary19Qnn_ContextHandle_tPv23Qnn_ContextBinarySize_tP23Qnn_ContextBinarySize_t">
+<span id="_CPPv320QnnContext_getBinary19Qnn_ContextHandle_tPv23Qnn_ContextBinarySize_tP23Qnn_ContextBinarySize_t"></span><span id="_CPPv220QnnContext_getBinary19Qnn_ContextHandle_tPv23Qnn_ContextBinarySize_tP23Qnn_ContextBinarySize_t"></span><span id="QnnContext_getBinary__Qnn_ContextHandle_t.voidP.Qnn_ContextBinarySize_t.Qnn_ContextBinarySize_tP"></span><span class="target" id="QnnContext_8h_1aa1c220389821ddf1e9d0de46b8fba0f9"></span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnContext_getBinary</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_QnnCommon_8h_1ae2751b09a1186e90f79e7b89d1903c8f.html#_CPPv419Qnn_ContextHandle_t" title="Qnn_ContextHandle_t"><span class="n"><span class="pre">Qnn_ContextHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">context</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">binaryBuffer</span></span>, <a class="reference internal" href="typedef_QnnTypes_8h_1abe693e6fd72f4165901dc7c3360e5825.html#_CPPv423Qnn_ContextBinarySize_t" title="Qnn_ContextBinarySize_t"><span class="n"><span class="pre">Qnn_ContextBinarySize_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">binaryBufferSize</span></span>, <a class="reference internal" href="typedef_QnnTypes_8h_1abe693e6fd72f4165901dc7c3360e5825.html#_CPPv423Qnn_ContextBinarySize_t" title="Qnn_ContextBinarySize_t"><span class="n"><span class="pre">Qnn_ContextBinarySize_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">writtenBufferSize</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420QnnContext_getBinary19Qnn_ContextHandle_tPv23Qnn_ContextBinarySize_tP23Qnn_ContextBinarySize_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A function to get the context content in binary (serialized) form. The binary can be used to re-create context by using <a class="reference internal" href="#QnnContext_8h_1aa261465dd9bdfe51532a9d33fe4a2fa9"><span class="std std-ref">QnnContext_createFromBinary()</span></a>. This function must be called after all entities in the context have been finalized. Unconsumed tensors are not included in the binary. Client is responsible for allocating sufficient and valid memory to hold serialized context content produced by this method. It is recommended the user calls <a class="reference internal" href="#QnnContext_8h_1a3e2fe7d890123f7eb2c0ee5b26ccccba"><span class="std std-ref">QnnContext_getBinarySize()</span></a> to allocate a buffer of sufficient space to hold the binary. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>context</strong> – <strong>[in]</strong> A context handle.</p></li>
+<li><p><strong>binaryBuffer</strong> – <strong>[in]</strong> Pointer to the user-allocated context binary memory.</p></li>
+<li><p><strong>binaryBufferSize</strong> – <strong>[in]</strong> Size of <em>binaryBuffer</em> to populate context binary with, in bytes.</p></li>
+<li><p><strong>writtenBufferSize</strong> – <strong>[out]</strong> Amount of memory actually written into <em>binaryBuffer</em>, in bytes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code:<ul class="simple">
+<li><p>QNN_SUCCESS: no error is encountered</p></li>
+<li><p>QNN_CONTEXT_ERROR_UNSUPPORTED_FEATURE: a feature is not supported</p></li>
+<li><p>QNN_CONTEXT_ERROR_INVALID_HANDLE: <em>context</em> is not a valid handle</p></li>
+<li><p>QNN_CONTEXT_ERROR_INVALID_ARGUMENT: one of the arguments to the API is invalid/NULL</p></li>
+<li><p>QNN_CONTEXT_ERROR_NOT_FINALIZED: if there were any non-finalized entities in the context</p></li>
+<li><p>QNN_CONTEXT_ERROR_GET_BINARY_FAILED: Operation failure due to other factors</p></li>
+<li><p>QNN_COMMON_ERROR_OPERATION_NOT_PERMITTED: Attempting to get binary for a context re-created from a cached binary.</p></li>
+<li><p>QNN_CONTEXT_ERROR_MEM_ALLOC: Not enough memory is available to retrieve the context content.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use corresponding API through <a class="reference internal" href="file_include_QNN_QnnInterface.h.html#structQnnInterface__t"><span class="std std-ref">QnnInterface_t</span></a>. </p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv425QnnContext_validateBinary19Qnn_BackendHandle_t18Qnn_DeviceHandle_tPPK19QnnContext_Config_tPKv23Qnn_ContextBinarySize_t">
+<span id="_CPPv325QnnContext_validateBinary19Qnn_BackendHandle_t18Qnn_DeviceHandle_tPPK19QnnContext_Config_tPKv23Qnn_ContextBinarySize_t"></span><span id="_CPPv225QnnContext_validateBinary19Qnn_BackendHandle_t18Qnn_DeviceHandle_tPPK19QnnContext_Config_tPKv23Qnn_ContextBinarySize_t"></span><span id="QnnContext_validateBinary__Qnn_BackendHandle_t.Qnn_DeviceHandle_t.QnnContext_Config_tCPP.voidCP.Qnn_ContextBinarySize_t"></span><span class="target" id="QnnContext_8h_1af04e61e7ab7468913f7906a8f9c7123b"></span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnContext_validateBinary</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_QnnCommon_8h_1aa406469e77ca2c62a1892093d796ce6a.html#_CPPv419Qnn_BackendHandle_t" title="Qnn_BackendHandle_t"><span class="n"><span class="pre">Qnn_BackendHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">backend</span></span>, <a class="reference internal" href="typedef_QnnCommon_8h_1a5ef1ac85057d5ffe9a7a22e5682f0cb3.html#_CPPv418Qnn_DeviceHandle_t" title="Qnn_DeviceHandle_t"><span class="n"><span class="pre">Qnn_DeviceHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">device</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="structQnnContext__Config__t.html#_CPPv419QnnContext_Config_t" title="QnnContext_Config_t"><span class="n"><span class="pre">QnnContext_Config_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">config</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">binaryBuffer</span></span>, <a class="reference internal" href="typedef_QnnTypes_8h_1abe693e6fd72f4165901dc7c3360e5825.html#_CPPv423Qnn_ContextBinarySize_t" title="Qnn_ContextBinarySize_t"><span class="n"><span class="pre">Qnn_ContextBinarySize_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">binaryBufferSize</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv425QnnContext_validateBinary19Qnn_BackendHandle_t18Qnn_DeviceHandle_tPPK19QnnContext_Config_tPKv23Qnn_ContextBinarySize_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A function to validate a stored binary. The binary was previously obtained via <a class="reference internal" href="#QnnContext_8h_1aa1c220389821ddf1e9d0de46b8fba0f9"><span class="std std-ref">QnnContext_getBinary()</span></a> and stored by a client. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>backend</strong> – <strong>[in]</strong> A backend handle.</p></li>
+<li><p><strong>device</strong> – <strong>[in]</strong> A device handle to set hardware affinity for the created context. NULL value can be supplied for device handle and it is equivalent to calling <a class="reference internal" href="file_include_QNN_QnnDevice.h.html#QnnDevice_8h_1a89dc464367fb4db7a419615591a4a77e"><span class="std std-ref">QnnDevice_create()</span></a> with NULL config.</p></li>
+<li><p><strong>config</strong> – <strong>[in]</strong> Pointer to a NULL terminated array of config option pointers. NULL is allowed and indicates no config options are provided. In case they are not provided, all config options have a default value in accordance with the serialized context. If the same config option type is provided multiple times, the last option value will be used.</p></li>
+<li><p><strong>binaryBuffer</strong> – <strong>[in]</strong> A pointer to the context binary.</p></li>
+<li><p><strong>binaryBufferSize</strong> – <strong>[in]</strong> Holds the size of the context binary.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code:<ul class="simple">
+<li><p>QNN_SUCCESS: no error is encountered</p></li>
+<li><p>QNN_CONTEXT_ERROR_UNSUPPORTED_FEATURE: a feature is not supported</p></li>
+<li><p>QNN_CONTEXT_ERROR_INVALID_ARGUMENT: <em>binaryBuffer</em> is NULL</p></li>
+<li><p>QNN_CONTEXT_ERROR_MEM_ALLOC: memory allocation error while validating binary cache</p></li>
+<li><p>QNN_CONTEXT_ERROR_CREATE_FROM_BINARY: failed to validate binary cache</p></li>
+<li><p>QNN_CONTEXT_ERROR_BINARY_VERSION: incompatible version of the binary</p></li>
+<li><p>QNN_CONTEXT_ERROR_BINARY_CONFIGURATION: binary is not configured for this device</p></li>
+<li><p>QNN_CONTEXT_ERROR_BINARY_SUBOPTIMAL: suboptimal binary is used when QNN_CONTEXT_BINARY_COMPATIBILITY_STRICT is specified in the config option</p></li>
+<li><p>QNN_CONTEXT_ERROR_INVALID_HANDLE: <em>backend</em>, or <em>device</em> is not a valid handle</p></li>
+<li><p>QNN_CONTEXT_ERROR_INVALID_CONFIG: one or more config values is invalid</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use corresponding API through <a class="reference internal" href="file_include_QNN_QnnInterface.h.html#structQnnInterface__t"><span class="std std-ref">QnnInterface_t</span></a>. </p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv427QnnContext_createFromBinary19Qnn_BackendHandle_t18Qnn_DeviceHandle_tPPK19QnnContext_Config_tPKv23Qnn_ContextBinarySize_tP19Qnn_ContextHandle_t19Qnn_ProfileHandle_t">
+<span id="_CPPv327QnnContext_createFromBinary19Qnn_BackendHandle_t18Qnn_DeviceHandle_tPPK19QnnContext_Config_tPKv23Qnn_ContextBinarySize_tP19Qnn_ContextHandle_t19Qnn_ProfileHandle_t"></span><span id="_CPPv227QnnContext_createFromBinary19Qnn_BackendHandle_t18Qnn_DeviceHandle_tPPK19QnnContext_Config_tPKv23Qnn_ContextBinarySize_tP19Qnn_ContextHandle_t19Qnn_ProfileHandle_t"></span><span id="QnnContext_createFromBinary__Qnn_BackendHandle_t.Qnn_DeviceHandle_t.QnnContext_Config_tCPP.voidCP.Qnn_ContextBinarySize_t.Qnn_ContextHandle_tP.Qnn_ProfileHandle_t"></span><span class="target" id="QnnContext_8h_1aa261465dd9bdfe51532a9d33fe4a2fa9"></span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnContext_createFromBinary</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_QnnCommon_8h_1aa406469e77ca2c62a1892093d796ce6a.html#_CPPv419Qnn_BackendHandle_t" title="Qnn_BackendHandle_t"><span class="n"><span class="pre">Qnn_BackendHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">backend</span></span>, <a class="reference internal" href="typedef_QnnCommon_8h_1a5ef1ac85057d5ffe9a7a22e5682f0cb3.html#_CPPv418Qnn_DeviceHandle_t" title="Qnn_DeviceHandle_t"><span class="n"><span class="pre">Qnn_DeviceHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">device</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="structQnnContext__Config__t.html#_CPPv419QnnContext_Config_t" title="QnnContext_Config_t"><span class="n"><span class="pre">QnnContext_Config_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">config</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">binaryBuffer</span></span>, <a class="reference internal" href="typedef_QnnTypes_8h_1abe693e6fd72f4165901dc7c3360e5825.html#_CPPv423Qnn_ContextBinarySize_t" title="Qnn_ContextBinarySize_t"><span class="n"><span class="pre">Qnn_ContextBinarySize_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">binaryBufferSize</span></span>, <a class="reference internal" href="typedef_QnnCommon_8h_1ae2751b09a1186e90f79e7b89d1903c8f.html#_CPPv419Qnn_ContextHandle_t" title="Qnn_ContextHandle_t"><span class="n"><span class="pre">Qnn_ContextHandle_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">context</span></span>, <a class="reference internal" href="typedef_QnnCommon_8h_1a3d859a5097d3fe96b8d5bad77bf0afd5.html#_CPPv419Qnn_ProfileHandle_t" title="Qnn_ProfileHandle_t"><span class="n"><span class="pre">Qnn_ProfileHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">profile</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv427QnnContext_createFromBinary19Qnn_BackendHandle_t18Qnn_DeviceHandle_tPPK19QnnContext_Config_tPKv23Qnn_ContextBinarySize_tP19Qnn_ContextHandle_t19Qnn_ProfileHandle_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A function to create a context from a stored binary. The binary was previously obtained via <a class="reference internal" href="#QnnContext_8h_1aa1c220389821ddf1e9d0de46b8fba0f9"><span class="std std-ref">QnnContext_getBinary()</span></a> and stored by a client. The content of a context created in this way cannot be further altered, meaning <em>no</em> new nodes or tensors can be added to the context. Creating context by deserializing provided binary is meant for fast content creation, ready to execute on. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>backend</strong> – <strong>[in]</strong> A backend handle.</p></li>
+<li><p><strong>device</strong> – <strong>[in]</strong> A device handle to set hardware affinity for the created context. NULL value can be supplied for device handle and it is equivalent to calling <a class="reference internal" href="file_include_QNN_QnnDevice.h.html#QnnDevice_8h_1a89dc464367fb4db7a419615591a4a77e"><span class="std std-ref">QnnDevice_create()</span></a> with NULL config.</p></li>
+<li><p><strong>config</strong> – <strong>[in]</strong> Pointer to a NULL terminated array of config option pointers. NULL is allowed and indicates no config options are provided. In case they are not provided, all config options have a default value in accordance with the serialized context. If the same config option type is provided multiple times, the last option value will be used.</p></li>
+<li><p><strong>binaryBuffer</strong> – <strong>[in]</strong> A pointer to the context binary.</p></li>
+<li><p><strong>binaryBufferSize</strong> – <strong>[in]</strong> Holds the size of the context binary.</p></li>
+<li><p><strong>context</strong> – <strong>[out]</strong> A handle to the created context.</p></li>
+<li><p><strong>profile</strong> – <strong>[in]</strong> The profile handle on which metrics are populated and can be queried. Use NULL handle to disable profile collection. A handle being re-used would reset and is populated with values from the current call.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code:<ul class="simple">
+<li><p>QNN_SUCCESS: no error is encountered</p></li>
+<li><p>QNN_CONTEXT_ERROR_UNSUPPORTED_FEATURE: a feature is not supported</p></li>
+<li><p>QNN_CONTEXT_ERROR_INVALID_ARGUMENT: <em>binaryBuffer</em> or <em>context</em> is NULL</p></li>
+<li><p>QNN_CONTEXT_ERROR_MEM_ALLOC: memory allocation error while creating context</p></li>
+<li><p>QNN_CONTEXT_ERROR_CREATE_FROM_BINARY: failed to deserialize binary and create context from it</p></li>
+<li><p>QNN_CONTEXT_ERROR_BINARY_VERSION: incompatible version of the binary</p></li>
+<li><p>QNN_CONTEXT_ERROR_BINARY_CONFIGURATION: binary is not configured for this device</p></li>
+<li><p>QNN_CONTEXT_ERROR_BINARY_SUBOPTIMAL: suboptimal binary is used when QNN_CONTEXT_BINARY_COMPATIBILITY_STRICT is specified in the config option</p></li>
+<li><p>QNN_CONTEXT_ERROR_SET_PROFILE: failed to set profiling info</p></li>
+<li><p>QNN_CONTEXT_ERROR_INVALID_HANDLE: <em>backend</em>, __profile_, or <em>device</em> is not a valid handle</p></li>
+<li><p>QNN_CONTEXT_ERROR_INVALID_CONFIG: one or more config values is invalid</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use corresponding API through <a class="reference internal" href="file_include_QNN_QnnInterface.h.html#structQnnInterface__t"><span class="std std-ref">QnnInterface_t</span></a>. </p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv437QnnContext_createFromBinaryWithSignal19Qnn_BackendHandle_t18Qnn_DeviceHandle_tPPK19QnnContext_Config_tPKv23Qnn_ContextBinarySize_tP19Qnn_ContextHandle_t19Qnn_ProfileHandle_t18Qnn_SignalHandle_t">
+<span id="_CPPv337QnnContext_createFromBinaryWithSignal19Qnn_BackendHandle_t18Qnn_DeviceHandle_tPPK19QnnContext_Config_tPKv23Qnn_ContextBinarySize_tP19Qnn_ContextHandle_t19Qnn_ProfileHandle_t18Qnn_SignalHandle_t"></span><span id="_CPPv237QnnContext_createFromBinaryWithSignal19Qnn_BackendHandle_t18Qnn_DeviceHandle_tPPK19QnnContext_Config_tPKv23Qnn_ContextBinarySize_tP19Qnn_ContextHandle_t19Qnn_ProfileHandle_t18Qnn_SignalHandle_t"></span><span id="QnnContext_createFromBinaryWithSignal__Qnn_BackendHandle_t.Qnn_DeviceHandle_t.QnnContext_Config_tCPP.voidCP.Qnn_ContextBinarySize_t.Qnn_ContextHandle_tP.Qnn_ProfileHandle_t.Qnn_SignalHandle_t"></span><span class="target" id="QnnContext_8h_1ad67db1a7282b19f4e7ef5ccb620861fb"></span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnContext_createFromBinaryWithSignal</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_QnnCommon_8h_1aa406469e77ca2c62a1892093d796ce6a.html#_CPPv419Qnn_BackendHandle_t" title="Qnn_BackendHandle_t"><span class="n"><span class="pre">Qnn_BackendHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">backend</span></span>, <a class="reference internal" href="typedef_QnnCommon_8h_1a5ef1ac85057d5ffe9a7a22e5682f0cb3.html#_CPPv418Qnn_DeviceHandle_t" title="Qnn_DeviceHandle_t"><span class="n"><span class="pre">Qnn_DeviceHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">device</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="structQnnContext__Config__t.html#_CPPv419QnnContext_Config_t" title="QnnContext_Config_t"><span class="n"><span class="pre">QnnContext_Config_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">config</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">binaryBuffer</span></span>, <a class="reference internal" href="typedef_QnnTypes_8h_1abe693e6fd72f4165901dc7c3360e5825.html#_CPPv423Qnn_ContextBinarySize_t" title="Qnn_ContextBinarySize_t"><span class="n"><span class="pre">Qnn_ContextBinarySize_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">binaryBufferSize</span></span>, <a class="reference internal" href="typedef_QnnCommon_8h_1ae2751b09a1186e90f79e7b89d1903c8f.html#_CPPv419Qnn_ContextHandle_t" title="Qnn_ContextHandle_t"><span class="n"><span class="pre">Qnn_ContextHandle_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">context</span></span>, <a class="reference internal" href="typedef_QnnCommon_8h_1a3d859a5097d3fe96b8d5bad77bf0afd5.html#_CPPv419Qnn_ProfileHandle_t" title="Qnn_ProfileHandle_t"><span class="n"><span class="pre">Qnn_ProfileHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">profile</span></span>, <a class="reference internal" href="typedef_QnnCommon_8h_1a57c5e514635d2d61c8c396974da8999a.html#_CPPv418Qnn_SignalHandle_t" title="Qnn_SignalHandle_t"><span class="n"><span class="pre">Qnn_SignalHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">signal</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv437QnnContext_createFromBinaryWithSignal19Qnn_BackendHandle_t18Qnn_DeviceHandle_tPPK19QnnContext_Config_tPKv23Qnn_ContextBinarySize_tP19Qnn_ContextHandle_t19Qnn_ProfileHandle_t18Qnn_SignalHandle_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A function to create a context from a stored binary, which supports control signals. The binary was previously obtained via <a class="reference internal" href="#QnnContext_8h_1aa1c220389821ddf1e9d0de46b8fba0f9"><span class="std std-ref">QnnContext_getBinary()</span></a> and stored by a client. The content of a context created in this way cannot be further altered, meaning <em>no</em> new nodes or tensors can be added to the context. Creating context by deserializing provided binary is meant for fast content creation, ready to execute on. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>backend</strong> – <strong>[in]</strong> A backend handle.</p></li>
+<li><p><strong>device</strong> – <strong>[in]</strong> A device handle to set hardware affinity for the created context. NULL value can be supplied for device handle and it is equivalent to calling <a class="reference internal" href="file_include_QNN_QnnDevice.h.html#QnnDevice_8h_1a89dc464367fb4db7a419615591a4a77e"><span class="std std-ref">QnnDevice_create()</span></a> with NULL config.</p></li>
+<li><p><strong>config</strong> – <strong>[in]</strong> Pointer to a NULL terminated array of config option pointers. NULL is allowed and indicates no config options are provided. In case they are not provided, all config options have a default value in accordance with the serialized context. If the same config option type is provided multiple times, the last option value will be used.</p></li>
+<li><p><strong>binaryBuffer</strong> – <strong>[in]</strong> A pointer to the context binary.</p></li>
+<li><p><strong>binaryBufferSize</strong> – <strong>[in]</strong> Holds the size of the context binary.</p></li>
+<li><p><strong>context</strong> – <strong>[out]</strong> A handle to the created context.</p></li>
+<li><p><strong>profile</strong> – <strong>[in]</strong> The profile handle on which metrics are populated and can be queried. Use NULL handle to disable profile collection. A handle being re-used would reset and is populated with values from the current call.</p></li>
+<li><p><strong>signal</strong> – <strong>[in]</strong> Signal object to control the execution of the create context from binary process. NULL may be passed to indicate that no execution control is requested, and the create operation should continue to completion uninterrupted. The signal object, if not NULL, is considered to be in-use for the duration of the call.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code:<ul class="simple">
+<li><p>QNN_SUCCESS: no error is encountered</p></li>
+<li><p>QNN_CONTEXT_ERROR_UNSUPPORTED_FEATURE: a feature is not supported</p></li>
+<li><p>QNN_CONTEXT_ERROR_INVALID_ARGUMENT: <em>binaryBuffer</em> or <em>context</em> is NULL</p></li>
+<li><p>QNN_CONTEXT_ERROR_MEM_ALLOC: memory allocation error while creating context</p></li>
+<li><p>QNN_CONTEXT_ERROR_CREATE_FROM_BINARY: failed to deserialize binary and create context from it</p></li>
+<li><p>QNN_CONTEXT_ERROR_BINARY_VERSION: incompatible version of the binary</p></li>
+<li><p>QNN_CONTEXT_ERROR_BINARY_CONFIGURATION: binary is not configured for this device</p></li>
+<li><p>QNN_CONTEXT_ERROR_BINARY_SUBOPTIMAL: suboptimal binary is used when QNN_CONTEXT_BINARY_COMPATIBILITY_STRICT is specified in the config option</p></li>
+<li><p>QNN_CONTEXT_ERROR_SET_PROFILE: failed to set profiling info</p></li>
+<li><p>QNN_CONTEXT_ERROR_INVALID_HANDLE: <em>backend</em>, __profile_, or <em>device</em> is not a valid handle</p></li>
+<li><p>QNN_CONTEXT_ERROR_INVALID_CONFIG: one or more config values is invalid</p></li>
+<li><p>QNN_CONTEXT_ERROR_ABORTED: the call is aborted before completion due to user cancellation</p></li>
+<li><p>QNN_CONTEXT_ERROR_TIMED_OUT: the call is aborted before completion due to a timeout</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use corresponding API through <a class="reference internal" href="file_include_QNN_QnnInterface.h.html#structQnnInterface__t"><span class="std std-ref">QnnInterface_t</span></a>. </p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv415QnnContext_free19Qnn_ContextHandle_t19Qnn_ProfileHandle_t">
+<span id="_CPPv315QnnContext_free19Qnn_ContextHandle_t19Qnn_ProfileHandle_t"></span><span id="_CPPv215QnnContext_free19Qnn_ContextHandle_t19Qnn_ProfileHandle_t"></span><span id="QnnContext_free__Qnn_ContextHandle_t.Qnn_ProfileHandle_t"></span><span class="target" id="QnnContext_8h_1ada3a582e9ab571599958c60665c7a2c8"></span><a class="reference internal" href="typedef_QnnCommon_8h_1a8e21e7c6a7471103b59098ef81c28570.html#_CPPv417Qnn_ErrorHandle_t" title="Qnn_ErrorHandle_t"><span class="n"><span class="pre">Qnn_ErrorHandle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnContext_free</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_QnnCommon_8h_1ae2751b09a1186e90f79e7b89d1903c8f.html#_CPPv419Qnn_ContextHandle_t" title="Qnn_ContextHandle_t"><span class="n"><span class="pre">Qnn_ContextHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">context</span></span>, <a class="reference internal" href="typedef_QnnCommon_8h_1a3d859a5097d3fe96b8d5bad77bf0afd5.html#_CPPv419Qnn_ProfileHandle_t" title="Qnn_ProfileHandle_t"><span class="n"><span class="pre">Qnn_ProfileHandle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">profile</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415QnnContext_free19Qnn_ContextHandle_t19Qnn_ProfileHandle_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A function to free the context and all associated graphs, operations &amp; tensors. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>context</strong> – <strong>[in]</strong> A context handle.</p></li>
+<li><p><strong>profile</strong> – <strong>[in]</strong> The profile handle on which metrics are populated and can be queried. Use NULL handle to disable profile collection. A handle being re-used would reset and is populated with values from the current call.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error code:<ul class="simple">
+<li><p>QNN_SUCCESS: no error is encountered</p></li>
+<li><p>QNN_CONTEXT_ERROR_INVALID_ARGUMENT: <em>profile</em> is not a valid handle</p></li>
+<li><p>QNN_CONTEXT_ERROR_INVALID_HANDLE: <em>context</em> is not a valid handle</p></li>
+<li><p>QNN_CONTEXT_ERROR_MEM_ALLOC: an error is encountered with de-allocation of associated memory</p></li>
+<li><p>QNN_CONTEXT_ERROR_SET_PROFILE: failed to set profiling info</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use corresponding API through <a class="reference internal" href="file_include_QNN_QnnInterface.h.html#structQnnInterface__t"><span class="std std-ref">QnnInterface_t</span></a>. </p>
+</div>
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv437QnnContext_AsyncExecutionQueueDepth_t">
+<span id="_CPPv337QnnContext_AsyncExecutionQueueDepth_t"></span><span id="_CPPv237QnnContext_AsyncExecutionQueueDepth_t"></span><span id="QnnContext_AsyncExecutionQueueDepth_t"></span><span class="target" id="structQnnContext__AsyncExecutionQueueDepth__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnContext_AsyncExecutionQueueDepth_t</span></span></span><a class="headerlink" href="#_CPPv437QnnContext_AsyncExecutionQueueDepth_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnContext.h&gt;</em></div>
+<p>This struct provides async execution queue depth. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N37QnnContext_AsyncExecutionQueueDepth_t4typeE">
+<span id="_CPPv3N37QnnContext_AsyncExecutionQueueDepth_t4typeE"></span><span id="_CPPv2N37QnnContext_AsyncExecutionQueueDepth_t4typeE"></span><span id="QnnContext_AsyncExecutionQueueDepth_t::type__QnnContext_AsyncExecutionQueueDepthType_t"></span><span class="target" id="structQnnContext__AsyncExecutionQueueDepth__t_1a8f7da7244dd902425b0a6228050b3c9c"></span><a class="reference internal" href="enum_QnnContext_8h_1ac7eead806e0bef5d5df0e68e2d2a79f1.html#_CPPv441QnnContext_AsyncExecutionQueueDepthType_t" title="QnnContext_AsyncExecutionQueueDepthType_t"><span class="n"><span class="pre">QnnContext_AsyncExecutionQueueDepthType_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">type</span></span></span><a class="headerlink" href="#_CPPv4N37QnnContext_AsyncExecutionQueueDepth_t4typeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<dl class="cpp union">
+<dt class="sig sig-object cpp" id="_CPPv4N37QnnContext_AsyncExecutionQueueDepth_t7unnamedE">
+<span id="_CPPv3N37QnnContext_AsyncExecutionQueueDepth_t7unnamedE"></span><span id="_CPPv2N37QnnContext_AsyncExecutionQueueDepth_t7unnamedE"></span><span class="target" id="unionQnnContext__AsyncExecutionQueueDepth__t_1_1unnamed"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">unnamed</span></span></span><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnContext.h&gt;</em></div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N37QnnContext_AsyncExecutionQueueDepth_t7unnamed5depthE">
+<span id="_CPPv3N37QnnContext_AsyncExecutionQueueDepth_t7unnamed5depthE"></span><span id="_CPPv2N37QnnContext_AsyncExecutionQueueDepth_t7unnamed5depthE"></span><span id="QnnContext_AsyncExecutionQueueDepth_t::unnamed::depth__uint32_t"></span><span class="target" id="unionQnnContext__AsyncExecutionQueueDepth__t_1_1unnamed_1a542cf988f6b1f15b44e5f2eb9658c604"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">depth</span></span></span><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv419QnnContext_Config_t">
+<span id="_CPPv319QnnContext_Config_t"></span><span id="_CPPv219QnnContext_Config_t"></span><span id="QnnContext_Config_t"></span><span class="target" id="structQnnContext__Config__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QnnContext_Config_t</span></span></span><a class="headerlink" href="#_CPPv419QnnContext_Config_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnContext.h&gt;</em></div>
+<p>This struct provides context configuration. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19QnnContext_Config_t6optionE">
+<span id="_CPPv3N19QnnContext_Config_t6optionE"></span><span id="_CPPv2N19QnnContext_Config_t6optionE"></span><span id="QnnContext_Config_t::option__QnnContext_ConfigOption_t"></span><span class="target" id="structQnnContext__Config__t_1af32037f98ba71d427a692980cc867ef3"></span><a class="reference internal" href="enum_QnnContext_8h_1a054235316eddc82552593ec91318f90e.html#_CPPv425QnnContext_ConfigOption_t" title="QnnContext_ConfigOption_t"><span class="n"><span class="pre">QnnContext_ConfigOption_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">option</span></span></span><a class="headerlink" href="#_CPPv4N19QnnContext_Config_t6optionE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<dl class="cpp union">
+<dt class="sig sig-object cpp" id="_CPPv4N19QnnContext_Config_t7unnamedE">
+<span id="_CPPv3N19QnnContext_Config_t7unnamedE"></span><span id="_CPPv2N19QnnContext_Config_t7unnamedE"></span><span class="target" id="unionQnnContext__Config__t_1_1unnamed"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">unnamed</span></span></span><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;QnnContext.h&gt;</em></div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19QnnContext_Config_t7unnamed12customConfigE">
+<span id="_CPPv3N19QnnContext_Config_t7unnamed12customConfigE"></span><span id="_CPPv2N19QnnContext_Config_t7unnamed12customConfigE"></span><span id="QnnContext_Config_t::unnamed::customConfig__QnnContext_CustomConfig_t"></span><span class="target" id="unionQnnContext__Config__t_1_1unnamed_1a853a698594405efc073cd9e26ee2bd7d"></span><a class="reference internal" href="typedef_QnnContext_8h_1aacbfab8dfc26825718b4f115e21ac91a.html#_CPPv425QnnContext_CustomConfig_t" title="QnnContext_CustomConfig_t"><span class="n"><span class="pre">QnnContext_CustomConfig_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">customConfig</span></span></span><br /></dt>
+<dd><p>Used with QNN_CONTEXT_CONFIG_OPTION_CUSTOM. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19QnnContext_Config_t7unnamed8priorityE">
+<span id="_CPPv3N19QnnContext_Config_t7unnamed8priorityE"></span><span id="_CPPv2N19QnnContext_Config_t7unnamed8priorityE"></span><span id="QnnContext_Config_t::unnamed::priority__Qnn_Priority_t"></span><span class="target" id="unionQnnContext__Config__t_1_1unnamed_1aec3d772e0ca895b82baed057235e1fc8"></span><a class="reference internal" href="enum_QnnTypes_8h_1a4394623faa5580a396f83dac19565e4d.html#_CPPv414Qnn_Priority_t" title="Qnn_Priority_t"><span class="n"><span class="pre">Qnn_Priority_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">priority</span></span></span><br /></dt>
+<dd><p>Used with QNN_CONTEXT_CONFIG_OPTION_PRIORITY. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19QnnContext_Config_t7unnamed11errorConfigE">
+<span id="_CPPv3N19QnnContext_Config_t7unnamed11errorConfigE"></span><span id="_CPPv2N19QnnContext_Config_t7unnamed11errorConfigE"></span><span id="QnnContext_Config_t::unnamed::errorConfig__Qnn_ErrorReportingConfig_t"></span><span class="target" id="unionQnnContext__Config__t_1_1unnamed_1a3a74ac8594b75cd04e154c6bc0cf9240"></span><a class="reference internal" href="structQnn__ErrorReportingConfig__t.html#_CPPv426Qnn_ErrorReportingConfig_t" title="Qnn_ErrorReportingConfig_t"><span class="n"><span class="pre">Qnn_ErrorReportingConfig_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">errorConfig</span></span></span><br /></dt>
+<dd><p>Used with QNN_CONTEXT_CONFIG_OPTION_ERROR_REPORTING. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19QnnContext_Config_t7unnamed9oemStringE">
+<span id="_CPPv3N19QnnContext_Config_t7unnamed9oemStringE"></span><span id="_CPPv2N19QnnContext_Config_t7unnamed9oemStringE"></span><span id="QnnContext_Config_t::unnamed::oemString__cCP"></span><span class="target" id="unionQnnContext__Config__t_1_1unnamed_1a1be42d0a4785a07a07e1171278c4d6ab"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">oemString</span></span></span><br /></dt>
+<dd><p>DEPRECATED. Used with QNN_CONTEXT_CONFIG_OPTION_OEM_STRING. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19QnnContext_Config_t7unnamed18asyncExeQueueDepthE">
+<span id="_CPPv3N19QnnContext_Config_t7unnamed18asyncExeQueueDepthE"></span><span id="_CPPv2N19QnnContext_Config_t7unnamed18asyncExeQueueDepthE"></span><span id="QnnContext_Config_t::unnamed::asyncExeQueueDepth__QnnContext_AsyncExecutionQueueDepth_t"></span><span class="target" id="unionQnnContext__Config__t_1_1unnamed_1acf4d00ce9153b51f3a744e0f70fafe80"></span><a class="reference internal" href="structQnnContext__AsyncExecutionQueueDepth__t.html#_CPPv437QnnContext_AsyncExecutionQueueDepth_t" title="QnnContext_AsyncExecutionQueueDepth_t"><span class="n"><span class="pre">QnnContext_AsyncExecutionQueueDepth_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">asyncExeQueueDepth</span></span></span><br /></dt>
+<dd><p>Used with QNN_CONTEXT_CONFIG_ASYNC_EXECUTION_QUEUE_DEPTH. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19QnnContext_Config_t7unnamed12enableGraphsE">
+<span id="_CPPv3N19QnnContext_Config_t7unnamed12enableGraphsE"></span><span id="_CPPv2N19QnnContext_Config_t7unnamed12enableGraphsE"></span><span id="QnnContext_Config_t::unnamed::enableGraphs__cCPCP"></span><span class="target" id="unionQnnContext__Config__t_1_1unnamed_1ad1b1e924adaca60d0d57ab2c5615972c"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">enableGraphs</span></span></span><br /></dt>
+<dd><p>Used with QNN_CONTEXT_CONFIG_ENABLE_GRAPHS. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19QnnContext_Config_t7unnamed15memoryLimitHintE">
+<span id="_CPPv3N19QnnContext_Config_t7unnamed15memoryLimitHintE"></span><span id="_CPPv2N19QnnContext_Config_t7unnamed15memoryLimitHintE"></span><span id="QnnContext_Config_t::unnamed::memoryLimitHint__uint64_t"></span><span class="target" id="unionQnnContext__Config__t_1_1unnamed_1a093757efe45fa5098a47cfacb9127119"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">memoryLimitHint</span></span></span><br /></dt>
+<dd><p>Used with QNN_CONTEXT_CONFIG_MEMORY_LIMIT_HINT. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19QnnContext_Config_t7unnamed18isPersistentBinaryE">
+<span id="_CPPv3N19QnnContext_Config_t7unnamed18isPersistentBinaryE"></span><span id="_CPPv2N19QnnContext_Config_t7unnamed18isPersistentBinaryE"></span><span id="QnnContext_Config_t::unnamed::isPersistentBinary__uint8_t"></span><span class="target" id="unionQnnContext__Config__t_1_1unnamed_1af0a368362e6c11fdbb2b924d2473c9b4"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isPersistentBinary</span></span></span><br /></dt>
+<dd><p>Used with QNN_CONTEXT_CONFIG_PERSISTENT_BINARY. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19QnnContext_Config_t7unnamed23binaryCompatibilityTypeE">
+<span id="_CPPv3N19QnnContext_Config_t7unnamed23binaryCompatibilityTypeE"></span><span id="_CPPv2N19QnnContext_Config_t7unnamed23binaryCompatibilityTypeE"></span><span id="QnnContext_Config_t::unnamed::binaryCompatibilityType__QnnContext_BinaryCompatibilityType_t"></span><span class="target" id="unionQnnContext__Config__t_1_1unnamed_1a8c0c0de4b1360945fba0feca75c8b5a3"></span><a class="reference internal" href="enum_QnnContext_8h_1aea32d8657e3ab422aebf55f3adef7670.html#_CPPv436QnnContext_BinaryCompatibilityType_t" title="QnnContext_BinaryCompatibilityType_t"><span class="n"><span class="pre">QnnContext_BinaryCompatibilityType_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">binaryCompatibilityType</span></span></span><br /></dt>
+<dd><p>Used with QNN_CONTEXT_CONFIG_BINARY_COMPATIBILITY. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,421 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>File NeuralNetwork.java &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup1.html">Network Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup6.html">Tutorials and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>File NeuralNetwork.java</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="file-neuralnetwork-java">
+<span id="id1"></span><h1>File NeuralNetwork.java<a class="headerlink" href="#file-neuralnetwork-java" title="Permalink to this heading">¶</a></h1>
+<div class="contents local topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#definition-neuralnetwork-java" id="id2">Definition (<code class="docutils literal notranslate"><span class="pre">NeuralNetwork.java</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#namespaces" id="id3">Namespaces</a></p></li>
+<li><p><a class="reference internal" href="#full-file-listing" id="id4">Full File Listing</a></p></li>
+</ul>
+</div>
+<div class="section" id="definition-neuralnetwork-java">
+<h2>Definition (<code class="docutils literal notranslate"><span class="pre">NeuralNetwork.java</span></code>)<a class="headerlink" href="#definition-neuralnetwork-java" title="Permalink to this heading">¶</a></h2>
+</div>
+<div class="section" id="namespaces">
+<h2>Namespaces<a class="headerlink" href="#namespaces" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="namespace_com__qualcomm__qti__snpe.html#namespace-com-qualcomm-qti-snpe"><span class="std std-ref">Namespace com::qualcomm::qti::snpe</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="full-file-listing">
+<h2>Full File Listing<a class="headerlink" href="#full-file-listing" title="Permalink to this heading">¶</a></h2>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpeE">
+<span id="_CPPv3N3com8qualcomm3qti4snpeE"></span><span id="_CPPv2N3com8qualcomm3qti4snpeE"></span><span id="com::qualcomm::qti::snpe"></span><span class="target" id="namespacecom_1_1qualcomm_1_1qti_1_1snpe"></span><span class="k"><span class="pre">namespace</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">snpe</span></span></span><a class="headerlink" href="#_CPPv4N3com8qualcomm3qti4snpeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe13NeuralNetworkE">
+<span id="_CPPv3N3com8qualcomm3qti4snpe13NeuralNetworkE"></span><span id="_CPPv2N3com8qualcomm3qti4snpe13NeuralNetworkE"></span><span id="com::qualcomm::qti::snpe::NeuralNetwork"></span><span class="target" id="interfacecom_1_1qualcomm_1_1qti_1_1snpe_1_1NeuralNetwork"></span><span class="k"><span class="pre">interface</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NeuralNetwork</span></span></span><a class="headerlink" href="#_CPPv4N3com8qualcomm3qti4snpe13NeuralNetworkE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#interfacecom_1_1qualcomm_1_1qti_1_1snpe_1_1NeuralNetwork"><span class="std std-ref">NeuralNetwork</span></a> helper functions and properties. </p>
+<p>Subclassed by <a class="reference internal" href="file_internal_NativeNetwork.java.html#classcom_1_1qualcomm_1_1qti_1_1snpe_1_1internal_1_1NativeNetwork"><span class="std std-ref">com.qualcomm.qti.snpe.internal.NativeNetwork</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="interfacecom_1_1qualcomm_1_1qti_1_1snpe_1_1NeuralNetwork_1a5d8b9e40793afd6767e3c567e4a662fe"></span><span class="sig-name descname"><span class="pre">NeuralNetwork.Runtime</span> <span class="pre">getRuntime</span> <span class="pre">()</span></span></dt>
+<dd><p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>com.qualcomm.qti.snpe.SNPE.NeuralNetworkBuilder::setRuntimeOrder(Runtime…) </p>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The neural network’s selected runtime. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe13NeuralNetwork15getOutputLayersEv">
+<span id="_CPPv3N3com8qualcomm3qti4snpe13NeuralNetwork15getOutputLayersEv"></span><span id="_CPPv2N3com8qualcomm3qti4snpe13NeuralNetwork15getOutputLayersEv"></span><span id="com::qualcomm::qti::snpe::NeuralNetwork::getOutputLayers"></span><span class="target" id="interfacecom_1_1qualcomm_1_1qti_1_1snpe_1_1NeuralNetwork_1ac643ee57c26a97b7b8875114a3c3b523"></span><span class="n"><span class="pre">Set</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">String</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getOutputLayers</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3com8qualcomm3qti4snpe13NeuralNetwork15getOutputLayersEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="file_SNPE.java.html#classcom_1_1qualcomm_1_1qti_1_1snpe_1_1SNPE_1_1NeuralNetworkBuilder_1abc6f4d4db8428f020c2f1bb3ea826d91"><span class="std std-ref">com.qualcomm.qti.snpe.SNPE.NeuralNetworkBuilder::setOutputLayers(String…)</span></a> </p>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The selected output layer(s) name(s). </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe13NeuralNetwork7executeE3MapI6String11FloatTensorE">
+<span id="_CPPv3N3com8qualcomm3qti4snpe13NeuralNetwork7executeE3MapI6String11FloatTensorE"></span><span id="_CPPv2N3com8qualcomm3qti4snpe13NeuralNetwork7executeE3MapI6String11FloatTensorE"></span><span id="com::qualcomm::qti::snpe::NeuralNetwork::execute__Map:String.FloatTensor:"></span><span class="target" id="interfacecom_1_1qualcomm_1_1qti_1_1snpe_1_1NeuralNetwork_1a6c1e7e70523604cc0dd747766148345e"></span><span class="n"><span class="pre">Map</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">String</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">FloatTensor</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">execute</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">Map</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">String</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">FloatTensor</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">inputs</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3com8qualcomm3qti4snpe13NeuralNetwork7executeE3MapI6String11FloatTensorE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Forward propagates the inputs through the neural network.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> – map of input name and tensor. </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a map of output name and tensor. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="interfacecom_1_1qualcomm_1_1qti_1_1snpe_1_1NeuralNetwork_1a74b23c6a87a76a6c6dc53f9cb504aaf3"></span><span class="sig-name descname"><span class="pre">boolean</span> <span class="pre">execute</span> <span class="pre">(Map&lt;</span> <span class="pre">String,</span> <span class="pre">?</span> <span class="pre">extends</span> <span class="pre">UserBufferTensor</span> <span class="pre">&gt;</span> <span class="pre">inputs,</span> <span class="pre">Map&lt;</span> <span class="pre">String,</span> <span class="pre">?</span> <span class="pre">extends</span> <span class="pre">UserBufferTensor</span> <span class="pre">&gt;</span> <span class="pre">outputs)</span></span></dt>
+<dd><p>Forward propagates the inputs through the neural network.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> – map of input name and user buffer tensor. </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a map of output name and user buffer tensor. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe13NeuralNetwork21getInputTensorsShapesEv">
+<span id="_CPPv3N3com8qualcomm3qti4snpe13NeuralNetwork21getInputTensorsShapesEv"></span><span id="_CPPv2N3com8qualcomm3qti4snpe13NeuralNetwork21getInputTensorsShapesEv"></span><span id="com::qualcomm::qti::snpe::NeuralNetwork::getInputTensorsShapes"></span><span class="target" id="interfacecom_1_1qualcomm_1_1qti_1_1snpe_1_1NeuralNetwork_1aa9e622e1a97d0ed950437775c6d05036"></span><span class="n"><span class="pre">Map</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">String</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getInputTensorsShapes</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3com8qualcomm3qti4snpe13NeuralNetwork21getInputTensorsShapesEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a map of the input tensors(s) shape(s). </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe13NeuralNetwork22getOutputTensorsShapesEv">
+<span id="_CPPv3N3com8qualcomm3qti4snpe13NeuralNetwork22getOutputTensorsShapesEv"></span><span id="_CPPv2N3com8qualcomm3qti4snpe13NeuralNetwork22getOutputTensorsShapesEv"></span><span id="com::qualcomm::qti::snpe::NeuralNetwork::getOutputTensorsShapes"></span><span class="target" id="interfacecom_1_1qualcomm_1_1qti_1_1snpe_1_1NeuralNetwork_1a0d77f2463cb4de943a6582990c56cb30"></span><span class="n"><span class="pre">Map</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">String</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getOutputTensorsShapes</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3com8qualcomm3qti4snpe13NeuralNetwork22getOutputTensorsShapesEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a map of the input tensors(s) shape(s). </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe13NeuralNetwork20getInputTensorsNamesEv">
+<span id="_CPPv3N3com8qualcomm3qti4snpe13NeuralNetwork20getInputTensorsNamesEv"></span><span id="_CPPv2N3com8qualcomm3qti4snpe13NeuralNetwork20getInputTensorsNamesEv"></span><span id="com::qualcomm::qti::snpe::NeuralNetwork::getInputTensorsNames"></span><span class="target" id="interfacecom_1_1qualcomm_1_1qti_1_1snpe_1_1NeuralNetwork_1ae9c4df31495c5e370203c80b7ce877b0"></span><span class="n"><span class="pre">Set</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">String</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getInputTensorsNames</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3com8qualcomm3qti4snpe13NeuralNetwork20getInputTensorsNamesEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a set with the input tensor(s) name(s). </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe13NeuralNetwork21getOutputTensorsNamesEv">
+<span id="_CPPv3N3com8qualcomm3qti4snpe13NeuralNetwork21getOutputTensorsNamesEv"></span><span id="_CPPv2N3com8qualcomm3qti4snpe13NeuralNetwork21getOutputTensorsNamesEv"></span><span id="com::qualcomm::qti::snpe::NeuralNetwork::getOutputTensorsNames"></span><span class="target" id="interfacecom_1_1qualcomm_1_1qti_1_1snpe_1_1NeuralNetwork_1a819acd0475ba7724dcc613b724936338"></span><span class="n"><span class="pre">Set</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">String</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getOutputTensorsNames</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3com8qualcomm3qti4snpe13NeuralNetwork21getOutputTensorsNamesEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a set with the output tensor(s) name(s). </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe13NeuralNetwork19getTensorAttributesE6String">
+<span id="_CPPv3N3com8qualcomm3qti4snpe13NeuralNetwork19getTensorAttributesE6String"></span><span id="_CPPv2N3com8qualcomm3qti4snpe13NeuralNetwork19getTensorAttributesE6String"></span><span id="com::qualcomm::qti::snpe::NeuralNetwork::getTensorAttributes__String"></span><span class="target" id="interfacecom_1_1qualcomm_1_1qti_1_1snpe_1_1NeuralNetwork_1ad3dc400fbb89b91664b3157a53a90bf9"></span><a class="reference internal" href="file_TensorAttributes.java.html#_CPPv4N3com8qualcomm3qti4snpe16TensorAttributesE" title="com::qualcomm::qti::snpe::TensorAttributes"><span class="n"><span class="pre">TensorAttributes</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getTensorAttributes</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">String</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">name</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3com8qualcomm3qti4snpe13NeuralNetwork19getTensorAttributesE6String" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – name of the network tensor. </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>object representing the attributes of the tensor. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe13NeuralNetwork15getModelVersionEv">
+<span id="_CPPv3N3com8qualcomm3qti4snpe13NeuralNetwork15getModelVersionEv"></span><span id="_CPPv2N3com8qualcomm3qti4snpe13NeuralNetwork15getModelVersionEv"></span><span id="com::qualcomm::qti::snpe::NeuralNetwork::getModelVersion"></span><span class="target" id="interfacecom_1_1qualcomm_1_1qti_1_1snpe_1_1NeuralNetwork_1a92d8d8a9b364f596387bbbe666bb7adc"></span><span class="n"><span class="pre">String</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getModelVersion</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3com8qualcomm3qti4snpe13NeuralNetwork15getModelVersionEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the user defined model version. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe13NeuralNetwork7releaseEv">
+<span id="_CPPv3N3com8qualcomm3qti4snpe13NeuralNetwork7releaseEv"></span><span id="_CPPv2N3com8qualcomm3qti4snpe13NeuralNetwork7releaseEv"></span><span id="com::qualcomm::qti::snpe::NeuralNetwork::release"></span><span class="target" id="interfacecom_1_1qualcomm_1_1qti_1_1snpe_1_1NeuralNetwork_1a656a4c33c600402ec236c71e1b476ffe"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">release</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3com8qualcomm3qti4snpe13NeuralNetwork7releaseEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Releases the neural network’s resources. After this call you can no longer invoke any methods on this class instance. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3com8qualcomm3qti4snpe13NeuralNetwork17createFloatTensorEDpi">
+<span id="_CPPv3N3com8qualcomm3qti4snpe13NeuralNetwork17createFloatTensorEDpi"></span><span id="_CPPv2N3com8qualcomm3qti4snpe13NeuralNetwork17createFloatTensorEDpi"></span><span id="com::qualcomm::qti::snpe::NeuralNetwork::createFloatTensor__iDp"></span><span class="target" id="interfacecom_1_1qualcomm_1_1qti_1_1snpe_1_1NeuralNetwork_1a066677ceaceaeb3a5af0715f821434df"></span><span class="n"><span class="pre">FloatTensor</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">createFloatTensor</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="p"><span class="pre">...</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">shape</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3com8qualcomm3qti4snpe13NeuralNetwork17createFloatTensorEDpi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Creates a <a class="reference internal" href="classcom_1_1qualcomm_1_1qti_1_1snpe_1_1FloatTensor.html#classcom_1_1qualcomm_1_1qti_1_1snpe_1_1FloatTensor"><span class="std std-ref">FloatTensor</span></a> instance with the specified shape.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>shape</strong> – tensor shape. </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>newly created instance. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="interfacecom_1_1qualcomm_1_1qti_1_1snpe_1_1NeuralNetwork_1a7e92280efec0e9da33034667a1b5a060"></span><span class="sig-name descname"><span class="pre">TF8UserBufferTensor</span> <span class="pre">createTF8UserBufferTensor</span> <span class="pre">(final</span> <span class="pre">int</span> <span class="pre">size,</span> <span class="pre">final</span> <span class="pre">int[]</span> <span class="pre">strides,</span> <span class="pre">int</span> <span class="pre">stepExactly0,</span> <span class="pre">float</span> <span class="pre">quantizedStepSize,</span> <span class="pre">ByteBuffer</span> <span class="pre">userBuffer)</span></span></dt>
+<dd><p>Creates a <a class="reference internal" href="file_TF8UserBufferTensor.java.html#classcom_1_1qualcomm_1_1qti_1_1snpe_1_1TF8UserBufferTensor"><span class="std std-ref">TF8UserBufferTensor</span></a> instance to wrap a user buffer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>size</strong> – total size of the buffer, in bytes </p></li>
+<li><p><strong>strides</strong> – total number of bytes between elements in each dimension </p></li>
+<li><p><strong>stepExactly0</strong> – step value that represents exactly 0.0 </p></li>
+<li><p><strong>quantizedStepSize</strong> – step size </p></li>
+<li><p><strong>userBuffer</strong> – byte buffer that contains user data. This buffer must have been allocated using direct allocation and possess native byte ordering. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>newly created instance </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

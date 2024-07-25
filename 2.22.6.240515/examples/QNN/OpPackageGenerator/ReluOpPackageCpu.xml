@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2020 Qualcomm Technologies, Inc.
+All Rights Reserved.
+Confidential and Proprietary - Qualcomm Technologies, Inc.
+-->
+<OpDefCollection
+        PackageName="ReluOpPackage"
+        Domain="aisw"
+        Version="1.0"
+>
+    <OpDefList>
+        <!--Example Op Package which defines a Relu Custom op using the QNN operation definition-->
+        <OpDef>
+            <Name>Relu</Name>
+            <Description>
+                <Content>
+                </Content>
+            </Description>
+
+            <Reference Source="Android NDK NeuralNetworks"
+                       Url="ANEURALNETWORKS_RELU &lt;https://developer.android.com/ndk/reference/group/neural-networks#group___neural_networks_1ggaabbe492c60331b13038e39d4207940e0abb2f979866b131c5089ba0caaecee656&gt;"/>
+
+            <Input>
+                <Name>in[0]</Name>
+                <Description>
+                    <Content>input activation</Content>
+                </Description>
+                <Mandatory>true</Mandatory>
+                <Datatype>BACKEND_SPECIFIC</Datatype>
+                <Shape>
+                    <Rank>ND</Rank>
+                    <Text>a tensor of N dimension</Text>
+                </Shape>
+            </Input>
+
+            <Output>
+                <Name>out[0]</Name>
+                <Description>
+                    <Content>output activation</Content>
+                </Description>
+                <Mandatory>true</Mandatory>
+                <Datatype>BACKEND_SPECIFIC</Datatype>
+                <Shape>
+                    <Rank>ND</Rank>
+                    <Text>a tensor of N dimension</Text>
+                </Shape>
+            </Output>
+
+            <!--This Op is implemented on these Backends-->
+            <SupportedBackend>CPU</SupportedBackend>
+        </OpDef>
+
+    </OpDefList>
+
+    <SupplementalOpDefList Backend="CPU">
+        <SupportedOps>
+            <OpName>Relu</OpName>
+        </SupportedOps>
+
+        <!--Relu-->
+        <SupplementalOpDef>
+            <Name>Relu</Name>
+
+            <Input>
+                <Name>in[0]</Name>
+                <Datatype>QNN_DATATYPE_FLOAT_32</Datatype>
+                <Datatype>QNN_DATATYPE_UFIXED_POINT_16</Datatype>
+            </Input>
+
+            <Output>
+                <Name>out[0]</Name>
+                <Datatype>QNN_DATATYPE_FLOAT_32</Datatype>
+                <Datatype>QNN_DATATYPE_UFIXED_POINT_16</Datatype>
+            </Output>
+        </SupplementalOpDef>
+    </SupplementalOpDefList>
+
+</OpDefCollection>

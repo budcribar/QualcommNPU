@@ -1,0 +1,28 @@
+{
+    "name": "qnn_netron",
+    "productName": "QNN Netron",
+    "homepage":"https://github.com/lutzroeder/netron#readme",
+    "author": "Lutz Roeder, <lutzroeder@users.noreply.github.com>",
+    "version": "v2.22.6+240515184619-92920",
+    "description": "Visualizer for neural network, deep learning, and machine learning models, modified by Qualcomm Technologies Inc.",
+    "license": "MIT",
+    "main": "source/app.js",
+    "scripts": {
+        "start": "[ -d node_modules ] || npm install && npx electron@12.0.7 .",
+        "start_server": "[ -d node_modules ] || npm install && python setup.py --quiet build && PYTHONPATH=.build/lib python3 -c 'import netron; netron.main()' $@"
+    },
+    "dependencies": {
+        "d3": "file:./deps/d3",
+        "dagre": "file:./deps/dagre",
+        "electron-prompt": "file:./deps/electron-prompt",
+        "graphlib": "file:./deps/graphlib",
+        "jquery": "file:./deps/jquery",
+        "python-shell": "file:./deps/python-shell"
+    },
+    "devDependencies": {
+        "electron": "12.0.7",
+        "electron-builder": "22.10.5",
+        "eslint": "7.26.0",
+        "xmldom": "0.6.0"
+    }
+}

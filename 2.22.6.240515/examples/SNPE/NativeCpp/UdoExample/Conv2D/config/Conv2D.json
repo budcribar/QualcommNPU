@@ -1,0 +1,29 @@
+{
+    "UdoPackage_0":
+    {
+        "Operators": [
+            {
+                "type": "Conv",
+                "inputs":[
+                    {"name":"input", "per_core_data_types":{"CPU":"FLOAT_32", "GPU":"FLOAT_32", "DSP":"UINT_8"}, "quantization_mode":"TF"},
+                    {"name":"weight", "per_core_data_types":{"CPU":"FLOAT_32", "GPU":"FLOAT_32", "DSP":"UINT_8"}, "static":true, "default_value": [1.0], "quantization_mode":"TF"},
+                    {"name":"bias", "per_core_data_types":{"CPU":"FLOAT_32", "GPU":"FLOAT_32", "DSP":"UINT_8"}, "static":true, "default_value": [1.0], "quantization_mode":"TF"}
+                ],
+                "outputs":[
+                    {"name":"output", "per_core_data_types":{"CPU":"FLOAT_32", "GPU":"FLOAT_32", "DSP":"UINT_8"}}
+                ],
+                "scalar_params": [
+                    {"name": "group", "data_type": "INT_32", "default_value": 1}
+                ],
+                "tensor_params": [
+                    {"name": "pads", "data_type": "INT_32", "default_value": [1, 1]},
+                    {"name": "strides", "data_type": "INT_32", "default_value": [1, 1]},
+                    {"name": "dilations", "data_type": "INT_32", "default_value": [1, 1]},
+                    {"name": "kernel_shape", "data_type": "INT_32", "default_value": [1]}
+                ],
+                "core_types": ["CPU", "GPU", "DSP"]
+            }
+        ],
+        "UDO_PACKAGE_NAME": "Conv2DPackage"
+    }
+}

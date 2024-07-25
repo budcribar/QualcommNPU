@@ -1,0 +1,367 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>QNN HTP-FP16 Op Package - Relu Op Example &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Scheduling and Allocation" href="scheduling_and_allocation.html" />
+    <link rel="prev" title="QNN HTP Op Package - Relu Op Example" href="relu_example.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/setup.html">Setup</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../general/backend.html">Backend</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../general/backend.html#backend-specific-pages">Backend Specific Pages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../general/dsp/dsp_backend.html">DSP</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../general/htp/htp_backend.html">HTP</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#api-specializations">API Specializations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#usage-expectations">Usage Expectations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-supported-operations">QNN HTP Supported Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-variable-batch">QNN HTP Variable Batch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-backend-api">QNN HTP Backend API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-performance-infrastructure-api">QNN HTP Performance Infrastructure API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-precision">QNN HTP Precision</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-fp16-output-difference-between-sm8550-and-sm8650">QNN HTP FP16 output difference between SM8550 and SM8650</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-deep-learning-bandwidth-compression-dlbc">QNN HTP Deep Learning Bandwidth Compression (DLBC)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-setting-number-of-hvx-threads">QNN HTP - Setting Number of HVX Threads</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-backend-extensions">QNN HTP Backend Extensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-htp-profiling">QNN HTP Profiling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qnn-context-binary-size">QNN Context Binary size</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../general/htp/htp_backend.html#op-writing-guidelines">Op Writing Guidelines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#recommendations-for-network-design">Recommendations for Network Design</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#yielding-and-pre-emption">Yielding and Pre-Emption</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#vtcm-sharing">VTCM Sharing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#subsystem-restart-ssr">SubSystem Restart (SSR)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#qmem-graph-shared-buffer-only-graph">Qmem Graph (shared_buffer only graph)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#htp-session-artifact-usage-guidlines">HTP Session &amp; Artifact Usage Guidlines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#graph-switching-beta">Graph Switching (Beta)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../general/htp/htp_backend.html#benefits-of-batch-inference-and-multi-threaded-inference">Benefits of batch inference and multi-threaded inference</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../general/hta/hta_backend.html">HTA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/lpai/lpai_backend.html">LPAI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/cpu/cpu_backend.html">CPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/gpu/gpu_backend.html">GPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/saver/saver_backend.html">Saver</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../general/backend.html">Backend</a> &raquo;</li>
+        
+          <li><a href="../general/htp/htp_backend.html">HTP</a> &raquo;</li>
+        
+      <li>QNN HTP-FP16 Op Package - Relu Op Example</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="qnn-htp-fp16-op-package-relu-op-example">
+<h1>QNN HTP-FP16 Op Package - Relu Op Example<a class="headerlink" href="#qnn-htp-fp16-op-package-relu-op-example" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">¶</a></h2>
+<p>The typical usage of HTP-FP16 ops is to accelerate QNN float32 graphs. These graphs generally have tensors of TensorType  QNN_TENSOR_TYPE_APP_WRITE and QNN_TENSOR_TYPE_APP_READ (See <a class="reference internal" href="../api-rst/enum_QnnTypes_8h_1aedf2127d917e35605f466d7d02f28f25.html#exhale-enum-qnntypes-8h-1aedf2127d917e35605f466d7d02f28f25"><span class="std std-ref">Enum Qnn_TensorType_t</span></a>) and DataType QNN_DATATYPE_FLOAT32 (See <a class="reference internal" href="../api-rst/enum_QnnTypes_8h_1a8bda296c6c8a3148f764dcbdb5b8f534.html#exhale-enum-qnntypes-8h-1a8bda296c6c8a3148f764dcbdb5b8f534"><span class="std std-ref">Enum Qnn_DataType_t</span></a>). Furthermore, the input and output activation tensors defined by the operations of these graphs have DataType QNN_DATATYPE_FLOAT32 (See <a class="reference internal" href="../api-rst/enum_QnnTypes_8h_1a8bda296c6c8a3148f764dcbdb5b8f534.html#exhale-enum-qnntypes-8h-1a8bda296c6c8a3148f764dcbdb5b8f534"><span class="std std-ref">Enum Qnn_DataType_t</span></a>).</p>
+<p>The client is expected to set up QNN graphs with float32 tensors and the QNN HTP accelerator will finalize and execute those QNN graphs using float16 math. See <span class="xref std std-ref">general/htp_backend/qnn-htp-precision</span>.</p>
+<p>This document outlines how to write ops in QNN HTP-FP16 op package with a basic example of relu op. The source code for this example is located at examples/OpPackage/HTP/ExampleOpPackageReluFp16.cpp.</p>
+<p>For detailed descriptions about writing op implementations, defining optimization
+rules, specifying op parameter orders, please read <a class="reference internal" href="implementing_ops.html#implementing-ops"><span class="std std-ref">Implementing Ops</span></a>. In additon,
+<a class="reference internal" href="optimization_grammar.html#optimization-grammar"><span class="std std-ref">Optimization Grammar</span></a> provides more information on defining optimization rules.</p>
+</div>
+<div class="section" id="writing-relu-op-with-htp-fp16">
+<h2>Writing Relu Op with HTP-FP16<a class="headerlink" href="#writing-relu-op-with-htp-fp16" title="Permalink to this heading">¶</a></h2>
+<p>ExampleOpPackageReluFp16.cpp contains a generic relu op and two specializations
+(relu1 and reluX).</p>
+<div class="section" id="op-registration">
+<h3>Op Registration<a class="headerlink" href="#op-registration" title="Permalink to this heading">¶</a></h3>
+<p>Op implementation functions need to be registered with an op name, op cost and flags.
+Op registration can be achieved using HTP core macros listed below, and these macros
+should be placed in global scope in individual op implementation source files.</p>
+<p>Registration with user specified cost value and flags.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * F    - op implementation function</span>
+<span class="cm"> *</span>
+<span class="cm"> * OP   - op name</span>
+<span class="cm"> *</span>
+<span class="cm"> * COST - pre-defined cost value names, one of GLACIAL, SNAIL, FAST, FREE</span>
+<span class="cm"> *        (listed in descending order of value).</span>
+<span class="cm"> *        Op implementation with relatively lower cost will be chosen given all</span>
+<span class="cm"> *        other criteria are met.</span>
+<span class="cm"> *</span>
+<span class="cm"> * ...  - zero or more flags, available flags include IS_CONST, INHIBIT_CONST_PROP,</span>
+<span class="cm"> *        RESOURCE_HVX.</span>
+<span class="cm"> *        IS_CONST is used to mark an op should be treated as a constant op.</span>
+<span class="cm"> *        INHIBIT_CONST_PROP marks an op should not participate in constant propagation.</span>
+<span class="cm"> *        RESOURCE_HVX marks this op will use HVX resources.</span>
+<span class="cm"> */</span>
+<span class="n">DEF_PACKAGE_OP_AND_COST_AND_FLAGS</span><span class="p">(</span><span class="n">F</span><span class="p">,</span><span class="n">OP</span><span class="p">,</span><span class="n">COST</span><span class="p">,...)</span>
+</pre></div>
+</div>
+<p><strong>Example</strong></p>
+<p>DEF_PACKAGE_OP_AND_COST_AND_FLAGS((reluImplFp&lt;PlainFloat16Tensor&gt;), “Relufp16”, FAST)</p>
+</div>
+<div class="section" id="optimization-rule-definition">
+<h3>Optimization Rule Definition<a class="headerlink" href="#optimization-rule-definition" title="Permalink to this heading">¶</a></h3>
+<p>In order to correctly handle operations using float16 math, op-writers are required to add a DEF_PACKAGE_OPTIMIZATION_WITH_FLAGS macro that is set up at GRAPH_CLEANUP priority to convert the appropriate float32 tensors to float16 tensors. This DEF_PACKAGE_OPTIMIZATION_WITH_FLAGS is essentially an optimization rule that is applied on the graph during the graph optimization phase (which happens during QnnGraph_finalize()). The purpose of this optimization rule is to insert a QNN_Cast float32 to float16 on the inputs to the operation and a QNN_Cast float16 to float32 on the outputs of the operation.</p>
+<p>At a later pass of graph optimization, any sequence of QNN_Cast float16 to float32 followed by QNN_Cast float32 to float16 between consecutive FP ops are cancelled out. This results in a QNN graph with only QNN_Cast float32 to float16 for the graph inputs and a QNN_Cast float16 to float32 at graph outputs.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * PRIORITY       - unsigned integer value, used for indicating optimization pass number,</span>
+<span class="cm"> *                  smaller number indicates earlier optimization pass.</span>
+<span class="cm"> *                  Predefined values include GRAPH_CLEANUP(0), EARLY(2000), MIDDLE(3000),</span>
+<span class="cm"> *                  LATE(4000).</span>
+<span class="cm"> *</span>
+<span class="cm"> * FLAGS          - used to trigger all rules containing that flag.</span>
+<span class="cm"> *                  relaxed_precision_flag - if overall flag for relaxed precision is</span>
+<span class="cm"> *                  enabled all rules containing this flag will be triggered</span>
+<span class="cm"> *</span>
+<span class="cm"> * MATCHCODE      - subgraph matching pattern which this optimization rule should apply on</span>
+<span class="cm"> *</span>
+<span class="cm"> * CONSTRAINTCODE - constraints applied to the match pattern</span>
+<span class="cm"> *</span>
+<span class="cm"> * REPLACECODE    - new subgraph pattern which should replace the matching pattern if the</span>
+<span class="cm"> *                  constraints are met</span>
+<span class="cm"> */</span>
+<span class="w"> </span><span class="n">DEF_PACKAGE_OPTIMIZATION_WITH_FLAGS</span><span class="p">(</span><span class="n">PRIORITY</span><span class="p">,</span><span class="n">FLAGS</span><span class="p">,</span><span class="n">MATCHCODE</span><span class="p">,</span><span class="n">CONSTRAINTCODE</span><span class="p">,</span><span class="n">REPLACECODE</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Example</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">DEF_PACKAGE_OPTIMIZATION_WITH_FLAGS</span><span class="p">(</span>
+<span class="linenos"> 2</span><span class="w">   </span><span class="n">GRAPH_CLEANUP</span><span class="p">,</span><span class="w">          </span><span class="c1">// priority</span>
+<span class="hll"><span class="linenos"> 3</span><span class="w">   </span><span class="n">relaxed_precision_flag</span><span class="p">,</span><span class="w"> </span><span class="c1">// flag to ensure that this op should run relaxed float math i.e. float16 math</span>
+</span><span class="linenos"> 4</span><span class="w">   </span><span class="n">Op</span><span class="p">(</span><span class="n">QNN_OP_RELU</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;In&quot;</span><span class="p">),</span><span class="w">  </span><span class="c1">// matchcode</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="w">   </span><span class="c1">//constaintcode</span>
+<span class="linenos"> 7</span><span class="w">   </span><span class="n">AND</span><span class="p">(</span><span class="n">EQ</span><span class="p">(</span><span class="n">DTYPE_OF</span><span class="p">(</span><span class="s">&quot;In&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">DType</span><span class="o">::</span><span class="n">Float32</span><span class="p">),</span><span class="w"> </span><span class="n">EQ</span><span class="p">(</span><span class="n">DTYPE_OF</span><span class="p">(</span><span class="s">&quot;*&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">DType</span><span class="o">::</span><span class="n">Float32</span><span class="p">)),</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="w">   </span><span class="c1">// replacecode</span>
+<span class="linenos">10</span><span class="w">   </span><span class="n">WITH_OUTPUT_TYPE</span><span class="p">(</span><span class="n">DType</span><span class="o">::</span><span class="n">Float32</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0f</span><span class="p">,</span>
+<span class="linenos">11</span><span class="w">      </span><span class="n">Op</span><span class="p">(</span><span class="n">FROM_DEFAULT_PACKAGE</span><span class="p">(</span><span class="s">&quot;Cast&quot;</span><span class="p">),</span>
+<span class="linenos">12</span><span class="w">         </span><span class="n">WITH_SIZE</span><span class="p">(</span><span class="s">&quot;*&quot;</span><span class="p">,</span>
+<span class="linenos">13</span><span class="w">            </span><span class="n">WITH_OUTPUT_TYPE</span><span class="p">(</span><span class="n">DType</span><span class="o">::</span><span class="n">Float16</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0f</span><span class="p">,</span>
+<span class="linenos">14</span><span class="w">               </span><span class="n">Op</span><span class="p">(</span><span class="n">OP</span><span class="p">,</span>
+<span class="linenos">15</span><span class="w">                  </span><span class="n">WITH_SIZE</span><span class="p">(</span><span class="s">&quot;In&quot;</span><span class="p">,</span>
+<span class="linenos">16</span><span class="w">                     </span><span class="n">WITH_OUTPUT_TYPE</span><span class="p">(</span><span class="n">DType</span><span class="o">::</span><span class="n">Float16</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0f</span><span class="p">,</span>
+<span class="linenos">17</span><span class="w">                        </span><span class="n">Op</span><span class="p">(</span><span class="n">FROM_DEFAULT_PACKAGE</span><span class="p">(</span><span class="s">&quot;Cast&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;In&quot;</span><span class="p">)</span>
+<span class="linenos">18</span><span class="w">                     </span><span class="p">)</span>
+<span class="linenos">19</span><span class="w">                  </span><span class="p">)</span>
+<span class="linenos">20</span><span class="w">               </span><span class="p">)</span>
+<span class="linenos">21</span><span class="w">            </span><span class="p">)</span>
+<span class="linenos">22</span><span class="w">         </span><span class="p">)</span>
+<span class="linenos">23</span><span class="w">      </span><span class="p">)</span>
+<span class="linenos">24</span><span class="w">   </span><span class="p">)</span>
+<span class="linenos">25</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="scheduling_and_allocation.html" class="btn btn-neutral float-right" title="Scheduling and Allocation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="relu_example.html" class="btn btn-neutral float-left" title="QNN HTP Op Package - Relu Op Example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

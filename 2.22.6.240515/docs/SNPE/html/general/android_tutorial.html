@@ -1,0 +1,527 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Android Tutorial &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Windows Tutorial" href="build_samplecode_windows.html" />
+    <link rel="prev" title="C API Guidelines" href="c_api_guidelines.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup1.html">Network Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="usergroup6.html">Tutorials and Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial_setup.html">Tutorials Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snpe2_migration_guidelines.html">SNPE1 to SNPE2 Migration Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup7.html">Running Nets</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="usergroup8.html">Code Examples</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="cplus_plus_tutorial.html">C++ Tutorial - Build the Sample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="c_tutorial.html">C Tutorial - Build the Sample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="c_api_guidelines.html">C API Guidelines</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Android Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="build_samplecode_windows.html">Windows Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_inceptionv3_udo.html">UDO Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_inceptionv3_udo_dsp.html">UDO DSP tutorial for Quantized DLC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_inceptionv3_udo_dsp_win.html">UDO DSP tutorial on Windows for Quantized DLC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_onnx_udo_weights.html">UDO Tutorial With Weights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_psnpe_introduction.html">PSNPE Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_psnpe_c_tutorial.html">PSNPE C Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_psnpe_cplus_plus_tutorial.html">PSNPE C++ Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_psnpe_android_tutorial.html">PSNPE Android Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dsp_runtime.html">DSP Runtime Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="network_resize.html">Network Resizing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="input_batch.html">Input Image Batch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="init_caching.html">Init Caching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup9.html">Application Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="usergroup6.html">Tutorials and Examples</a> &raquo;</li>
+        
+          <li><a href="usergroup8.html">Code Examples</a> &raquo;</li>
+        
+      <li>Android Tutorial</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="android-tutorial">
+<h1>Android Tutorial<a class="headerlink" href="#android-tutorial" title="Permalink to this heading">¶</a></h1>
+<div class="ui-resizable side-nav-resizable docutils container" id="side-nav">
+<div class="docutils container" id="nav-tree">
+<div class="docutils container" id="nav-tree-contents">
+</div>
+</div>
+</div>
+<div class="docutils container" id="doc-content">
+<div class="header docutils container">
+</div>
+<div class="contents docutils container">
+<div class="textblock docutils container">
+<p class="rubric" id="prerequisites">Prerequisites</p>
+<ul class="simple">
+<li><p>The Qualcomm® Neural Processing SDK has been set up following the <a class="reference external" href="setup.html">Qualcomm (R) Neural Processing SDK
+Setup</a> chapter.</p></li>
+<li><p>The <a class="reference external" href="tutorial_setup.html">Tutorials Setup</a> has been
+completed.</p></li>
+</ul>
+<p class="rubric" id="introduction">Introduction</p>
+<p>This tutorial walks through the process of integrating the Qualcomm® Neural Processing SDK
+and <a class="reference external" href="tools.html#tools_snpe-platform-validator">snpe-platform-validator</a>
+Java APIs within an Android application.</p>
+<p>The Qualcomm® Neural Processing SDK and Platform Validator Java APIs are made available as
+an Android Archive (AAR) file which application developers
+include as a dependency of their applications.</p>
+<p class="rubric" id="gradle-project-dependency">Gradle project dependency</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>allprojects {
+    repositories {
+        ...
+        flatDir {
+            // Marks the directory as a repository for
+            // dependencies. Place the snpe-release.aar
+            // in the directory below.
+            dirs &#39;libs&#39;
+        }
+    }
+}
+...
+dependencies {
+    ...
+    // This adds the Qualcomm (R) Neural Processing SDK as a project dependency
+    compile(name: &#39;snpe-release&#39;, ext:&#39;aar&#39;)
+    // This adds the Platform Validator tool (optional) as a project dependency
+    compile(name: &#39;platformvalidator-release&#39;, ext:&#39;aar&#39;)
+}
+</pre></div>
+</div>
+<p>In case both the archives are required in a project,
+“pickFirst” need to be used in gradle to avoid library
+conflicts.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>android {
+    ...
+    packagingOptions {
+        pickFirst &#39;lib/arm64-v8a/libc++_shared.so&#39;
+        pickFirst &#39;lib/arm64-v8a/libSNPE.so&#39;
+        pickFirst &#39;lib/arm64-v8a/libSnpeHtpV73Skel.so&#39;
+        pickFirst &#39;lib/arm64-v8a/libSnpeHtpV73tub.so &#39;
+        pickFirst &#39;lib/arm64-v8a/libSnpeHtpV69Skel.so&#39;
+        pickFirst &#39;lib/arm64-v8a/libSnpeHtpV69tub.so &#39;
+        pickFirst &#39;lib/arm64-v8a/libSnpeHtpV68Skel.so&#39;
+        pickFirst &#39;lib/arm64-v8a/libSnpeHtpV68tub.so &#39;
+        pickFirst &#39;lib/arm64-v8a/libSnpeDspV66Skel.so&#39;
+        pickFirst &#39;lib/arm64-v8a/libSnpeDspV66Stub.so &#39;
+        pickFirst &#39;lib/arm64-v8a/libSnpeDspV65Skel.so&#39;
+        pickFirst &#39;lib/arm64-v8a/libSnpeDspV65Stub.so &#39;
+        pickFirst &#39;lib/arm64-v8a/libSnpeHtpPrepare.so &#39;
+    }
+</pre></div>
+</div>
+<p class="rubric" id="platform-validator-java-api-overview">Platform Validator Java API Overview</p>
+<p>Once the optional dependency of platform validator is
+added, the Platform Validator classes under the
+<strong>com.qualcomm.qti.platformvalidator</strong> package will be
+available in the application classpath. All applications
+will first create an object of Platform Validator
+with required runtime and then use that object to
+call validation APIs as described below.</p>
+<p class="rubric" id="using-platform-validator">Using Platform Validator</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>//Platform validator class for object creation
+import com.qualcomm.qti.platformvalidator.PlatformValidator;
+//available runtimes are defined in this class
+import com.qualcomm.qti.platformvalidator.PlatformValidatorUtil;
+...
+//This create platform validator object for GPU runtime class
+PlatformValidator pv = new PlatformValidator(PlatformValidatorUtil.Runtime.GPU);
+// To check in general runtime is working use isRuntimeAvailable
+boolean check = pv.isRuntimeAvailable(getApplication());
+// To check Qualcomm (R) Neural Processing SDK runtime is working use runtimeCheck
+boolean check = pv.runtimeCheck(getApplication());
+//To get core version use libVersion api
+String str = pv.coreVersion(getApplication());
+//To get core version use coreVersion api
+String str = pv.coreVersion(getApplication());
+//List of available runtimes
+PlatformValidatorUtil.Runtime.CPU
+PlatformValidatorUtil.Runtime.GPU
+PlatformValidatorUtil.Runtime.DSP
+PlatformValidatorUtil.Runtime.GPU_FLOAT16
+PlatformValidatorUtil.Runtime.AIP
+</pre></div>
+</div>
+<p class="rubric" id="snpe-java-api-overview">Qualcomm® Neural Processing SDK Java API Overview</p>
+<p>Once the dependency is added, the Qualcomm® Neural Processing SDK classes under the
+<strong>com.qualcomm.qti.snpe</strong> package will be available in the
+application classpath.</p>
+<p>Most applications will follow the following pattern while using
+a neural network:</p>
+<ol class="arabic simple">
+<li><p>Select the neural network model and runtime target</p></li>
+<li><p>Create one or more input tensor(s)</p></li>
+<li><p>Populate one or more input tensor(s) with the network
+input(s)</p></li>
+<li><p>Forward propagate the input tensor(s) through the network</p></li>
+<li><p>Process the network output tensor(s)</p></li>
+</ol>
+<p>The sections below describe how to implement each step
+described above.</p>
+<p class="rubric" id="configuring-a-neural-network">Configuring a Neural Network</p>
+<p>The code excerpt below illustrates how to configure and build a
+neural network using the JAVA APIs.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>final SNPE.NeuralNetworkBuilder builder = new SNPE.NeuralNetworkBuilder(application)
+    // Allows selecting a runtime order for the network.
+    // In the example below use DSP and fall back, in order, to GPU then CPU
+    // depending on whether any of the runtimes is available.
+    .setRuntimeOrder(DSP, GPU, CPU)
+    // Loads a model from DLC file
+    .setModel(new File(&quot;&lt;model-path&gt;&quot;));
+final NeuralNetwork network = builder.build();
+...
+// Calling release() once the application no longer needs the network instance
+// is highly recommended as it releases native resources. Alternatively the
+// resources will be released when the instance is garbage collected.
+network.release();
+</pre></div>
+</div>
+<p><strong>Multiple ways to load a model</strong></p>
+<p>The SDK currently supports loading a model from a
+<strong>java.io.File</strong> within the Android device or from an
+<strong>java.io.FileInputStream</strong>.</p>
+<p class="rubric" id="creating-an-input-tensor">Creating an Input Tensor</p>
+<p>The code excerpt below illustrates how to create an input
+tensor and fill it with the input data.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>final FloatTensor tensor = network.createFloatTensor(height, width, depth);
+float[] input = // input data from application...
+// Fills the tensor fully
+tensor.write(input, 0, input.length);
+// Fills the tensor at a specific position
+tensor.write(input[0], y, x, z);
+// Fills the input tensors map which will be passed to execute()
+final Map&lt;String, FloatTensor&gt; inputsMap;
+inputsMap.put(/*network input name*/, tensor);
+</pre></div>
+</div>
+<p><strong>Notes about tensors</strong></p>
+<ul class="simple">
+<li><p><strong>Reuse of input tensors</strong>
+Developers are encouraged to re-use the same input tensor
+instance across multiple calls to NeuralNetwork.execute(..).
+Tensors are memory bound types and the effect of creating
+new instances for every execute call may have an impact in
+the application responsiveness.</p></li>
+<li><p><strong>Batch write to tensor</strong>
+Tensors are backed by native memory and writing multiple
+values at once, if possible, will reduce the overhead of
+crossing the Java and Native boundaries.</p></li>
+</ul>
+<p class="rubric" id="propagate-input-tensors-through-the-network">Propagate Input Tensors Through the Network</p>
+<p>The excerpt of code below shows how to propagate input tensors
+through the neural network.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>final Map&lt;String, FloatTensor&gt; outputsMap = network.execute(inputsMap);
+for (Map.Entry&lt;String, FloatTensor&gt; output : outputsMap.entrySet()) {
+    // An output tensor for each output layer will be returned.
+}
+</pre></div>
+</div>
+<p class="rubric" id="process-the-neural-network-output">Process the Neural Network Output</p>
+<p>The excerpt of code below shows how to read the output tensor
+of an output layer.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>final Map&lt;String, FloatTensor&gt; outputsMap = network.execute(inputsMap);
+for (Map.Entry&lt;String, FloatTensor&gt; output : outputsMap.entrySet()) {
+    final FloatTensor tensor = output.getValue();
+    final float[] values = new float[tensor.getSize()];
+    tensor.read(values, 0, values.length);
+    // Process the output ...
+}
+</pre></div>
+</div>
+<p class="rubric" id="release-input-and-output-tensors">Release Input and Output Tensors</p>
+<p>Tensors are encouraged to be reused to reduce the application
+overhead. However, once the application no longer needs the
+input and/or output tensors, it is highly recommended to call
+release() on them to release native resources. This is
+particularly important for multi-threaded applications.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>// Release input tensors
+for (FloatTensor tensor: inputsMap) {
+    tensor.release();
+}
+// Release output tensors
+for (FloatTensor tensor: outputsMap) {
+    tensor.release();
+}
+</pre></div>
+</div>
+<p class="rubric" id="android-sample-application">Android Sample Application</p>
+<p>The Qualcomm® Neural Processing Android SDK includes a sample application that
+showcases the SDK features. The application source code is in:</p>
+<ul class="simple">
+<li><p>$SNPE_ROOT/examples/SNPE/android/image-classifiers</p></li>
+</ul>
+<p>Here is a screenshot of the sample:</p>
+<div class="docutils container">
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../images/snpe_root_sample_images.png"><img alt="../images/snpe_root_sample_images.png" src="../images/snpe_root_sample_images.png" style="width: 400px;" /></a>
+</div>
+</div>
+<p>Note that Qualcomm® Neural Processing SDK provides the following AAR file which include
+necessary binaries:</p>
+<ul class="simple">
+<li><p><strong>snpe-release.aar</strong>: Native binaries compiled with clang
+using libc++ STL. Available at $SNPE_ROOT/lib/android/snpe-release.aar</p></li>
+</ul>
+<p>Please set environment variable SNPE_AAR to this AAR file. Also, set the environment variable
+JAVA_HOME to Java installation location. For example,</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+</pre></div>
+</div>
+<p>To build this sample, include the Qualcomm® Neural Processing SDK AAR as described
+above and build with the following commands.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>export SNPE_AAR=snpe-release.aar
+cd $SNPE_ROOT/examples/SNPE/android/image-classifiers
+bash ./setup_inceptionv3.sh
+cp $SNPE_ROOT/lib/android/${SNPE_AAR} app/libs/snpe-release.aar
+
+# exporting gradle user_home is optional but suggested if USER_HOME storage is low
+export GRADLE_USER_HOME=&lt;local path for caching gradle files&gt;
+export ANDROID_SDK_ROOT=&lt;path to android-sdk-9&gt;
+./gradlew assembleDebug
+</pre></div>
+</div>
+<p><strong>Note:</strong></p>
+<ul class="simple">
+<li><p>When building the app through Android Studio with JVM VERSION &gt;=16, you may observe
+<strong>Unable to make field private final java.lang.String java.io.File.path accessible: module java.base does
+not “opens java.io” to unnamed module</strong>. To solve this issue, either update the JAVA_HOME to JDK &lt; 16, or
+add <strong>-–add-opens java.base/java.io=ALL-UNNAMED</strong> in gradle.properties.</p></li>
+<li><p>To build the sample, import the network model and sample
+images by invoking the <strong>setup_inceptionv3.sh</strong> script as
+described above.</p></li>
+<li><p>If building produces the error <strong>gradle build failure due to
+“SDK location not found”</strong>, set the environment variable
+ANDROID_HOME to point to your SDK location.</p></li>
+<li><p>Building the sample code with gradle requires Java 8.</p></li>
+<li><p>The unsigned PD switch in the app can only be set/unset once
+when the model is loaded. On returning back to the menu
+screen and changing the option might result in unexpected
+behaviour.</p></li>
+<li><p>Running networks with UDO on a specific runtime requires UDO
+packages for the corresponding runtime to be pushed on the
+device (Run setup_inceptionv3.sh). On running a UDO network
+without UDO package may result in unexpected behaviour.</p></li>
+</ul>
+<p>After the build successfully completes, the output APK can be
+found in the application build folder:</p>
+<ul class="simple">
+<li><p>$SNPE_ROOT/examples/SNPE/android/image-classifiers/app/build/outputs/apk/debug</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="build_samplecode_windows.html" class="btn btn-neutral float-right" title="Windows Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="c_api_guidelines.html" class="btn btn-neutral float-left" title="C API Guidelines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,443 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Tutorial - Profile Custom Models using Qualcomm® AI Engine Direct Delegate &mdash; Qualcomm® AI Engine Direct Delegate</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Frequently Asked Questions" href="faq.html" />
+    <link rel="prev" title="Tutorial - Use Mix-Precision Model with Qualcomm® AI Engine Direct Delegate" href="tutorial_mix_precision.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Qualcomm® AI Engine Direct Delegate
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qnn_libs.html">Qualcomm® AI Engine Direct Backend Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Acceleration Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom_op.html">Custom Operator Support</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial_qtld_net_run.html">Tutorial - Running Inference Using the Qualcomm® AI Engine Direct Delegate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_skip_node.html">Tutorial - Skip Delegation Ops Using the Qualcomm® AI Engine Direct Delegate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_benchmark_model.html">Tutorial - Benchmarking the Qualcomm® AI Engine Direct Delegate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_htp_shared_memory.html">Tutorial - Running Inference Using Shared Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_mix_precision.html">Tutorial - Use Mix-Precision Model with Qualcomm® AI Engine Direct Delegate</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Tutorial - Profile Custom Models using Qualcomm® AI Engine Direct Delegate</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#workflow-of-using-profiler-apis">Workflow of using Profiler APIs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#step-1-set-profiling-option">Step 1: Set profiling option</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-2-get-and-save-the-profiling-result">Step 2: Get and save the profiling result</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-3-clear-the-profiling-result">Step 3: Clear the profiling result</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-4-view-the-profiling-result">Step 4: View the profiling result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#a-running-example-using-profiler-apis">A Running Example using Profiler APIs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_version_history.html">API Version History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Qualcomm® AI Engine Direct Delegate</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="tutorials.html">Tutorials</a> &raquo;</li>
+        
+      <li>Tutorial - Profile Custom Models using Qualcomm® AI Engine Direct Delegate</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tutorial-profile-custom-models-using-qualcomm-r-ai-engine-direct-delegate">
+<h1>Tutorial - Profile Custom Models using Qualcomm® AI Engine Direct Delegate<a class="headerlink" href="#tutorial-profile-custom-models-using-qualcomm-r-ai-engine-direct-delegate" title="Permalink to this heading">¶</a></h1>
+<p>Qualcomm® AI Engine Direct provides APIs for users to profile custom models, capturing information including inference time, per-operator execute time, etc.
+This feature might reduce inference speed.</p>
+<div class="section" id="workflow-of-using-profiler-apis">
+<h2>Workflow of using Profiler APIs<a class="headerlink" href="#workflow-of-using-profiler-apis" title="Permalink to this heading">¶</a></h2>
+<p><a class="reference internal" href="#step-1-set-profiling-option">Step 1: Set profiling option</a></p>
+<p><a class="reference internal" href="#step-2-get-and-save-the-profiling-result">Step 2: Get and save the profiling result</a></p>
+<p><a class="reference internal" href="#step-3-clear-the-profiling-result">Step 3: Clear the profiling result</a></p>
+<p><a class="reference internal" href="#step-4-view-the-profiling-result">Step 4: View the profiling result</a></p>
+<div class="section" id="step-1-set-profiling-option">
+<h3>Step 1: Set profiling option<a class="headerlink" href="#step-1-set-profiling-option" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">TfLiteQnnDelegateOptions</span><span class="w"> </span><span class="n">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TfLiteQnnDelegateOptionsDefault</span><span class="p">();</span>
+<span class="c1">// for basic profiling, please use</span>
+<span class="n">options</span><span class="p">.</span><span class="n">profiling</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kBasicProfiling</span><span class="p">;</span>
+<span class="c1">// for detailed profiling, please use</span>
+<span class="n">options</span><span class="p">.</span><span class="n">profiling</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kPerOpProfiling</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>In basic profiling mode, user will get infomation of RPC time, execute time, etc. for both prepare stage and inference stage.</p>
+<p>In detailed profiling mode, user will get additional information showing execute time of each operator in the model and
+the top K operators consuming the most time.</p>
+</div>
+<div class="section" id="step-2-get-and-save-the-profiling-result">
+<h3>Step 2: Get and save the profiling result<a class="headerlink" href="#step-2-get-and-save-the-profiling-result" title="Permalink to this heading">¶</a></h3>
+<p>After setting the profiling option and invoking the model. User can get the profiling result by <code class="xref c c-member docutils literal notranslate"><span class="pre">TfLiteQnnDelegateGetProfilingResult</span></code>.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">interpreter_</span><span class="o">-&gt;</span><span class="n">Invoke</span><span class="p">();</span>
+
+<span class="n">TfLiteQnnDelegateProfilingResult</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TfLiteQnnDelegateGetProfilingResult</span><span class="p">(</span><span class="n">delegate</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Then, user need to save the result into a binary file.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">output_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;/path/to/output/profile_result.bin&quot;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">ofstream</span><span class="w"> </span><span class="n">outfile</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">ofstream</span><span class="o">::</span><span class="n">binary</span><span class="p">);</span>
+<span class="n">outfile</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">buffer</span><span class="p">),</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="n">buffer_length</span><span class="p">);</span>
+<span class="n">outfile</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="step-3-clear-the-profiling-result">
+<h3>Step 3: Clear the profiling result<a class="headerlink" href="#step-3-clear-the-profiling-result" title="Permalink to this heading">¶</a></h3>
+<p>User could clear the profiling result whenever needed. The profiling result will be accumulated until
+<code class="xref c c-member docutils literal notranslate"><span class="pre">TfLiteQnnDelegateClearProfilingResult</span></code> is called.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">TfLiteQnnDelegateClearProfilingResult</span><span class="p">(</span><span class="n">delegate</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="step-4-view-the-profiling-result">
+<h3>Step 4: View the profiling result<a class="headerlink" href="#step-4-view-the-profiling-result" title="Permalink to this heading">¶</a></h3>
+<p>Follow the steps in <a class="reference internal" href="tutorial_qtld_net_run.html#view-profiling-result-by-qtld-profile-viewer"><span class="std std-ref">View Profiling Result by qtld-profile-viewer</span></a> to view the saved binary file in <a class="reference internal" href="#step-2-get-and-save-the-profiling-result">Step 2: Get and save the profiling result</a>.</p>
+<p>The profiling result will contain the following sections.</p>
+<p>Meta data of the profiling result.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">PROFILER</span><span class="w"> </span><span class="n">API</span><span class="w"> </span><span class="n">VERSION</span><span class="p">]</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mf">1.0.0</span>
+<span class="p">[</span><span class="n">QNN</span><span class="w"> </span><span class="n">API</span><span class="w"> </span><span class="n">VERSION</span><span class="p">]</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mf">2.13.0</span>
+<span class="p">[</span><span class="n">QNN</span><span class="w"> </span><span class="n">DELEGATE</span><span class="w"> </span><span class="n">API</span><span class="w"> </span><span class="n">VERSION</span><span class="p">]</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mf">0.19.0</span>
+<span class="p">[</span><span class="n">LOG</span><span class="w"> </span><span class="n">DATE</span><span class="p">]</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Tue</span><span class="w"> </span><span class="n">Aug</span><span class="w"> </span><span class="mi">29</span><span class="w"> </span><span class="mo">01</span><span class="o">:</span><span class="mi">14</span><span class="o">:</span><span class="mi">49</span><span class="w"> </span><span class="mi">2023</span>
+</pre></div>
+</div>
+<p>Graph stats including total graph number and their number of finalize/execute.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>---------------Graph Stats----------------
+ Total Graph #: 2
+     Graph index: 0
+         Backend type: QNN_BACKEND_ID_HTP
+         Number of Finalize: 1
+         Number of Execute: 5
+</pre></div>
+</div>
+<p>Finalize Info descirbes the events run in finalize (prepare) stage.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">----------</span><span class="n">Finalize</span><span class="w"> </span><span class="n">Info</span><span class="o">----------</span>
+<span class="w">     </span><span class="n">Graph</span><span class="w"> </span><span class="n">index</span><span class="o">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">         </span><span class="n">RPC</span><span class="w"> </span><span class="p">(</span><span class="n">finalize</span><span class="p">)</span><span class="w"> </span><span class="n">time</span><span class="o">:</span><span class="w"> </span><span class="mi">2155</span><span class="w"> </span><span class="n">us</span>
+<span class="w">         </span><span class="n">QNN</span><span class="w"> </span><span class="n">accelerator</span><span class="w"> </span><span class="p">(</span><span class="n">finalize</span><span class="p">)</span><span class="w"> </span><span class="n">time</span><span class="o">:</span><span class="w"> </span><span class="mi">2055</span><span class="w"> </span><span class="n">us</span>
+<span class="w">         </span><span class="n">Accelerator</span><span class="w"> </span><span class="p">(</span><span class="n">finalize</span><span class="p">)</span><span class="w"> </span><span class="n">time</span><span class="o">:</span><span class="w"> </span><span class="mi">1969</span><span class="w"> </span><span class="n">us</span>
+<span class="w">         </span><span class="n">QNN</span><span class="w"> </span><span class="p">(</span><span class="n">finalize</span><span class="p">)</span><span class="w"> </span><span class="n">time</span><span class="o">:</span><span class="w"> </span><span class="mi">239965</span><span class="w"> </span><span class="n">us</span>
+</pre></div>
+</div>
+<p>Execute info describes the events run in excute (inference) stage, info of each operator can be only seen in detailed mode.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">------------</span><span class="n">Execute</span><span class="w"> </span><span class="n">Info</span><span class="o">------------</span>
+<span class="w">     </span><span class="n">Graph</span><span class="w"> </span><span class="n">index</span><span class="o">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">         </span><span class="n">Number</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">HVX</span><span class="w"> </span><span class="n">threads</span><span class="w"> </span><span class="n">used</span><span class="o">:</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="n">count</span>
+<span class="w">         </span><span class="n">RPC</span><span class="w"> </span><span class="p">(</span><span class="n">execute</span><span class="p">)</span><span class="w"> </span><span class="n">time</span><span class="o">:</span><span class="w"> </span><span class="mi">3309</span><span class="w"> </span><span class="n">us</span>
+<span class="w">         </span><span class="n">QNN</span><span class="w"> </span><span class="n">accelerator</span><span class="w"> </span><span class="p">(</span><span class="n">execute</span><span class="p">)</span><span class="w"> </span><span class="n">time</span><span class="o">:</span><span class="w"> </span><span class="mi">3235</span><span class="w"> </span><span class="n">us</span>
+<span class="w">         </span><span class="n">Num</span><span class="w"> </span><span class="n">times</span><span class="w"> </span><span class="n">yield</span><span class="w"> </span><span class="n">occured</span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="n">count</span>
+<span class="w">         </span><span class="n">Time</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">initial</span><span class="w"> </span><span class="n">VTCM</span><span class="w"> </span><span class="n">acquire</span><span class="o">:</span><span class="w"> </span><span class="mi">502</span><span class="w"> </span><span class="n">us</span>
+<span class="w">         </span><span class="n">Time</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">HVX</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">HMX</span><span class="w"> </span><span class="n">power</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">acquire</span><span class="o">:</span><span class="w"> </span><span class="mi">4135</span><span class="w"> </span><span class="n">us</span>
+<span class="w">         </span><span class="n">Accelerator</span><span class="w"> </span><span class="p">(</span><span class="n">execute</span><span class="p">)</span><span class="w"> </span><span class="n">time</span><span class="w"> </span><span class="p">(</span><span class="n">cycles</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="mi">1439530</span><span class="w"> </span><span class="n">cycles</span>
+<span class="w">              </span><span class="mf">0.00</span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Input</span><span class="w"> </span><span class="n">OpId_2</span><span class="w"> </span><span class="p">(</span><span class="n">cycles</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="n">cycles</span>
+<span class="w">              </span><span class="mf">0.04</span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">OpId_0</span><span class="w"> </span><span class="p">(</span><span class="n">cycles</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="mi">528</span><span class="w"> </span><span class="n">cycles</span>
+<span class="w">             </span><span class="mf">20.05</span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">node_id_0_op_type_Quantize_op_count_0</span><span class="o">:</span><span class="n">OpId_16</span><span class="w"> </span><span class="p">(</span><span class="n">cycles</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="mi">288565</span><span class="w"> </span><span class="n">cycles</span>
+<span class="w">              </span><span class="mf">0.00</span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">node_id_1_op_type_Pad_op_count_0</span><span class="o">:</span><span class="n">OpId_18</span><span class="w"> </span><span class="p">(</span><span class="n">cycles</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="n">cycles</span>
+<span class="w">              </span><span class="mf">7.23</span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">node_id_2_op_type_Conv2d_op_count_0</span><span class="o">:</span><span class="n">OpId_27</span><span class="w"> </span><span class="p">(</span><span class="n">cycles</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="mi">104082</span><span class="w"> </span><span class="n">cycles</span>
+</pre></div>
+</div>
+<p>For more than 2 times of Finalize/Execute, user can see a summary in the profiling result.</p>
+<p>The first n times of execute are usually slower, user can count them as Warmups and exclude them from being calculated in Mean &amp; Stdev.</p>
+<p>Please refer to <a class="reference internal" href="tutorial_qtld_net_run.html#view-profiling-result-by-qtld-profile-viewer"><span class="std std-ref">View Profiling Result by qtld-profile-viewer</span></a> for how to set Warmups.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">------------</span><span class="n">Summary</span><span class="o">------------</span>
+<span class="w">      </span><span class="n">Graph</span><span class="w"> </span><span class="n">index</span><span class="o">:</span><span class="mi">0</span>
+<span class="w">            </span><span class="n">Warmup</span><span class="w"> </span><span class="p">(</span><span class="n">first</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">events</span><span class="p">)</span><span class="o">:</span>
+<span class="w">               </span><span class="n">RPC</span><span class="w"> </span><span class="p">(</span><span class="n">execute</span><span class="p">)</span><span class="w"> </span><span class="n">time</span><span class="o">:</span><span class="w"> </span><span class="mf">3309.00</span><span class="w"> </span><span class="n">us</span>
+<span class="w">               </span><span class="n">QNN</span><span class="w"> </span><span class="n">accelerator</span><span class="w"> </span><span class="p">(</span><span class="n">execute</span><span class="p">)</span><span class="w"> </span><span class="n">time</span><span class="o">:</span><span class="w"> </span><span class="mf">3235.00</span><span class="w"> </span><span class="n">us</span>
+<span class="w">               </span><span class="n">Time</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">initial</span><span class="w"> </span><span class="n">VTCM</span><span class="w"> </span><span class="n">acquire</span><span class="o">:</span><span class="w"> </span><span class="mf">502.00</span><span class="w"> </span><span class="n">us</span>
+<span class="w">               </span><span class="n">Time</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">HVX</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">HMX</span><span class="w"> </span><span class="n">power</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">acquire</span><span class="o">:</span><span class="w"> </span><span class="mf">4135.00</span><span class="w"> </span><span class="n">us</span>
+<span class="w">               </span><span class="n">Accelerator</span><span class="w"> </span><span class="p">(</span><span class="n">execute</span><span class="p">)</span><span class="w"> </span><span class="n">time</span><span class="o">:</span><span class="w"> </span><span class="mf">578.00</span><span class="w"> </span><span class="n">us</span>
+<span class="w">               </span><span class="n">Accelerator</span><span class="w"> </span><span class="p">(</span><span class="n">execute</span><span class="w"> </span><span class="n">excluding</span><span class="w"> </span><span class="n">wait</span><span class="p">)</span><span class="w"> </span><span class="n">time</span><span class="o">:</span><span class="w"> </span><span class="mf">308.00</span><span class="w"> </span><span class="n">us</span>
+<span class="w">               </span><span class="n">QNN</span><span class="w"> </span><span class="p">(</span><span class="n">execute</span><span class="p">)</span><span class="w"> </span><span class="n">time</span><span class="o">:</span><span class="w"> </span><span class="mf">3584.00</span><span class="w"> </span><span class="n">us</span>
+<span class="w">            </span><span class="nl">Mean</span><span class="p">:</span>
+<span class="w">               </span><span class="n">RPC</span><span class="w"> </span><span class="p">(</span><span class="n">execute</span><span class="p">)</span><span class="w"> </span><span class="n">time</span><span class="o">:</span><span class="w"> </span><span class="mf">1483.50</span><span class="w"> </span><span class="n">us</span>
+<span class="w">               </span><span class="n">QNN</span><span class="w"> </span><span class="n">accelerator</span><span class="w"> </span><span class="p">(</span><span class="n">execute</span><span class="p">)</span><span class="w"> </span><span class="n">time</span><span class="o">:</span><span class="w"> </span><span class="mf">1474.00</span><span class="w"> </span><span class="n">us</span>
+<span class="w">               </span><span class="n">Time</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">initial</span><span class="w"> </span><span class="n">VTCM</span><span class="w"> </span><span class="n">acquire</span><span class="o">:</span><span class="w"> </span><span class="mf">112.25</span><span class="w"> </span><span class="n">us</span>
+<span class="w">               </span><span class="n">Time</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">HVX</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">HMX</span><span class="w"> </span><span class="n">power</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">acquire</span><span class="o">:</span><span class="w"> </span><span class="mf">26.00</span><span class="w"> </span><span class="n">us</span>
+<span class="w">               </span><span class="n">Accelerator</span><span class="w"> </span><span class="p">(</span><span class="n">execute</span><span class="p">)</span><span class="w"> </span><span class="n">time</span><span class="o">:</span><span class="w"> </span><span class="mf">303.25</span><span class="w"> </span><span class="n">us</span>
+<span class="w">               </span><span class="n">Accelerator</span><span class="w"> </span><span class="p">(</span><span class="n">execute</span><span class="w"> </span><span class="n">excluding</span><span class="w"> </span><span class="n">wait</span><span class="p">)</span><span class="w"> </span><span class="n">time</span><span class="o">:</span><span class="w"> </span><span class="mf">281.00</span><span class="w"> </span><span class="n">us</span>
+<span class="w">               </span><span class="n">QNN</span><span class="w"> </span><span class="p">(</span><span class="n">execute</span><span class="p">)</span><span class="w"> </span><span class="n">time</span><span class="o">:</span><span class="w"> </span><span class="mf">1653.75</span><span class="w"> </span><span class="n">us</span>
+<span class="w">            </span><span class="nl">Stdev</span><span class="p">:</span>
+<span class="w">               </span><span class="n">RPC</span><span class="w"> </span><span class="p">(</span><span class="n">execute</span><span class="p">)</span><span class="w"> </span><span class="n">time</span><span class="o">:</span><span class="w"> </span><span class="mf">30.49</span><span class="w"> </span><span class="n">us</span>
+<span class="w">               </span><span class="n">QNN</span><span class="w"> </span><span class="n">accelerator</span><span class="w"> </span><span class="p">(</span><span class="n">execute</span><span class="p">)</span><span class="w"> </span><span class="n">time</span><span class="o">:</span><span class="w"> </span><span class="mf">31.32</span><span class="w"> </span><span class="n">us</span>
+<span class="w">               </span><span class="n">Time</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">initial</span><span class="w"> </span><span class="n">VTCM</span><span class="w"> </span><span class="n">acquire</span><span class="o">:</span><span class="w"> </span><span class="mf">14.64</span><span class="w"> </span><span class="n">us</span>
+<span class="w">               </span><span class="n">Time</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">HVX</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">HMX</span><span class="w"> </span><span class="n">power</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">acquire</span><span class="o">:</span><span class="w"> </span><span class="mf">8.37</span><span class="w"> </span><span class="n">us</span>
+<span class="w">               </span><span class="n">Accelerator</span><span class="w"> </span><span class="p">(</span><span class="n">execute</span><span class="p">)</span><span class="w"> </span><span class="n">time</span><span class="o">:</span><span class="w"> </span><span class="mf">9.22</span><span class="w"> </span><span class="n">us</span>
+<span class="w">               </span><span class="n">Accelerator</span><span class="w"> </span><span class="p">(</span><span class="n">execute</span><span class="w"> </span><span class="n">excluding</span><span class="w"> </span><span class="n">wait</span><span class="p">)</span><span class="w"> </span><span class="n">time</span><span class="o">:</span><span class="w"> </span><span class="mf">7.35</span><span class="w"> </span><span class="n">us</span>
+<span class="w">               </span><span class="n">QNN</span><span class="w"> </span><span class="p">(</span><span class="n">execute</span><span class="p">)</span><span class="w"> </span><span class="n">time</span><span class="o">:</span><span class="w"> </span><span class="mf">37.66</span><span class="w"> </span><span class="n">us</span>
+</pre></div>
+</div>
+<p>Per-op Avg Time can be seen in detailed mode, descirbing the average time of each operators between multiple executes (inferences).</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">---------</span><span class="n">Per</span><span class="o">-</span><span class="n">op</span><span class="w"> </span><span class="n">Avg</span><span class="w"> </span><span class="n">Time</span><span class="o">----------</span>
+<span class="w">      </span><span class="mf">0.00</span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Input</span><span class="w"> </span><span class="n">OpId_2</span><span class="w"> </span><span class="p">(</span><span class="n">cycles</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="mf">0.00</span><span class="w"> </span><span class="n">cycles</span>
+<span class="w">      </span><span class="mf">0.04</span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">OpId_0</span><span class="w"> </span><span class="p">(</span><span class="n">cycles</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="mf">190.80</span><span class="w"> </span><span class="n">cycles</span>
+<span class="w">      </span><span class="mf">0.00</span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">node_id_0_op_type_Cast_op_count_0</span><span class="o">:</span><span class="n">OpId_16</span><span class="w"> </span><span class="p">(</span><span class="n">cycles</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="mf">0.00</span><span class="w"> </span><span class="n">cycles</span>
+<span class="w">     </span><span class="mf">22.07</span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">node_id_1_op_type_Conv2d_op_count_0</span><span class="o">:</span><span class="n">OpId_23</span><span class="w"> </span><span class="p">(</span><span class="n">cycles</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="mf">105402.30</span><span class="w"> </span><span class="n">cycles</span>
+<span class="w">      </span><span class="mf">0.00</span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">node_id_1_op_type_ReluMinMax_op_count_1</span><span class="o">:</span><span class="n">OpId_25</span><span class="w"> </span><span class="p">(</span><span class="n">cycles</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="mf">0.00</span><span class="w"> </span><span class="n">cycles</span>
+<span class="w">      </span><span class="mf">1.57</span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">node_id_2_op_type_DepthWiseConv2d_op_count_0</span><span class="o">:</span><span class="n">OpId_34</span><span class="w"> </span><span class="p">(</span><span class="n">cycles</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="mf">7503.50</span><span class="w"> </span><span class="n">cycles</span>
+<span class="w">      </span><span class="mf">0.00</span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">node_id_2_op_type_ReluMinMax_op_count_1</span><span class="o">:</span><span class="n">OpId_35</span><span class="w"> </span><span class="p">(</span><span class="n">cycles</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="mf">0.00</span><span class="w"> </span><span class="n">cycles</span>
+<span class="w">      </span><span class="mf">0.74</span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">node_id_3_op_type_Conv2d_op_count_0</span><span class="o">:</span><span class="n">OpId_44</span><span class="w"> </span><span class="p">(</span><span class="n">cycles</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="mf">3522.60</span><span class="w"> </span><span class="n">cycles</span>
+<span class="w">      </span><span class="mf">1.77</span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">node_id_4_op_type_Conv2d_op_count_0</span><span class="o">:</span><span class="n">OpId_52</span><span class="w"> </span><span class="p">(</span><span class="n">cycles</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="mf">8451.30</span><span class="w"> </span><span class="n">cycles</span>
+<span class="w">      </span><span class="mf">0.00</span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">node_id_4_op_type_ReluMinMax_op_count_1</span><span class="o">:</span><span class="n">OpId_54</span><span class="w"> </span><span class="p">(</span><span class="n">cycles</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="mf">0.00</span><span class="w"> </span><span class="n">cycles</span>
+<span class="w">     </span><span class="mf">16.28</span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">node_id_5_op_type_DepthWiseConv2d_op_count_0</span><span class="o">:</span><span class="n">OpId_63</span><span class="w"> </span><span class="p">(</span><span class="n">cycles</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="mf">77752.50</span><span class="w"> </span><span class="n">cycles</span>
+<span class="w">      </span><span class="mf">0.00</span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">node_id_5_op_type_ReluMinMax_op_count_1</span><span class="o">:</span><span class="n">OpId_64</span><span class="w"> </span><span class="p">(</span><span class="n">cycles</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="mf">0.00</span><span class="w"> </span><span class="n">cycles</span>
+<span class="w">      </span><span class="mf">0.51</span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">node_id_6_op_type_Conv2d_op_count_0</span><span class="o">:</span><span class="n">OpId_73</span><span class="w"> </span><span class="p">(</span><span class="n">cycles</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="mf">2442.10</span><span class="w"> </span><span class="n">cycles</span>
+<span class="w">      </span><span class="mf">0.78</span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">node_id_7_op_type_Conv2d_op_count_0</span><span class="o">:</span><span class="n">OpId_81</span><span class="w"> </span><span class="p">(</span><span class="n">cycles</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="mf">3732.40</span><span class="w"> </span><span class="n">cycles</span>
+<span class="w">      </span><span class="mf">0.00</span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">node_id_7_op_type_ReluMinMax_op_count_1</span><span class="o">:</span><span class="n">OpId_83</span><span class="w"> </span><span class="p">(</span><span class="n">cycles</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="mf">0.00</span><span class="w"> </span><span class="n">cycles</span>
+<span class="w">      </span><span class="mf">1.34</span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">node_id_8_op_type_DepthWiseConv2d_op_count_0</span><span class="o">:</span><span class="n">OpId_92</span><span class="w"> </span><span class="p">(</span><span class="n">cycles</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="mf">6378.90</span><span class="w"> </span><span class="n">cycles</span>
+<span class="w">      </span><span class="mf">0.00</span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">node_id_8_op_type_ReluMinMax_op_count_1</span><span class="o">:</span><span class="n">OpId_93</span><span class="w"> </span><span class="p">(</span><span class="n">cycles</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="mf">0.00</span><span class="w"> </span><span class="n">cycles</span>
+</pre></div>
+</div>
+<p>Top K by Computation Time (10 in this example). It shows K operators with the highest percentage in Per-op Avg Time.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">---------</span><span class="n">Top</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="n">Computation</span><span class="w"> </span><span class="n">Time</span><span class="o">----------</span>
+<span class="w">     </span><span class="mf">22.07</span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">105402</span><span class="w"> </span><span class="n">cycles</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">node_id_1_op_type_Conv2d_op_count_0</span><span class="o">:</span><span class="n">OpId_23</span><span class="w"> </span><span class="p">(</span><span class="n">cycles</span><span class="p">)</span>
+<span class="w">     </span><span class="mf">16.28</span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w">    </span><span class="mf">77752.5</span><span class="w"> </span><span class="n">cycles</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">node_id_5_op_type_DepthWiseConv2d_op_count_0</span><span class="o">:</span><span class="n">OpId_63</span><span class="w"> </span><span class="p">(</span><span class="n">cycles</span><span class="p">)</span>
+<span class="w">      </span><span class="mf">7.89</span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w">    </span><span class="mf">37703.2</span><span class="w"> </span><span class="n">cycles</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">node_id_12_op_type_DepthWiseConv2d_op_count_0</span><span class="o">:</span><span class="n">OpId_122</span><span class="w"> </span><span class="p">(</span><span class="n">cycles</span><span class="p">)</span>
+<span class="w">      </span><span class="mf">5.38</span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w">    </span><span class="mf">25670.2</span><span class="w"> </span><span class="n">cycles</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">node_id_49_op_type_DepthWiseConv2d_op_count_0</span><span class="o">:</span><span class="n">OpId_419</span><span class="w"> </span><span class="p">(</span><span class="n">cycles</span><span class="p">)</span>
+<span class="w">      </span><span class="mf">4.38</span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w">    </span><span class="mf">20895.2</span><span class="w"> </span><span class="n">cycles</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">node_id_23_op_type_DepthWiseConv2d_op_count_0</span><span class="o">:</span><span class="n">OpId_211</span><span class="w"> </span><span class="p">(</span><span class="n">cycles</span><span class="p">)</span>
+<span class="w">      </span><span class="mf">2.75</span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w">    </span><span class="mf">13117.7</span><span class="w"> </span><span class="n">cycles</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">node_id_15_op_type_DepthWiseConv2d_op_count_0</span><span class="o">:</span><span class="n">OpId_151</span><span class="w"> </span><span class="p">(</span><span class="n">cycles</span><span class="p">)</span>
+<span class="w">      </span><span class="mf">1.83</span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mf">8729.9</span><span class="w"> </span><span class="n">cycles</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">node_id_63_op_type_PoolAvg2d_op_count_0</span><span class="o">:</span><span class="n">OpId_534</span><span class="w"> </span><span class="p">(</span><span class="n">cycles</span><span class="p">)</span>
+<span class="w">      </span><span class="mf">1.77</span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mf">8451.3</span><span class="w"> </span><span class="n">cycles</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">node_id_4_op_type_Conv2d_op_count_0</span><span class="o">:</span><span class="n">OpId_52</span><span class="w"> </span><span class="p">(</span><span class="n">cycles</span><span class="p">)</span>
+<span class="w">      </span><span class="mf">1.73</span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mf">8268.2</span><span class="w"> </span><span class="n">cycles</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">node_id_41_op_type_DepthWiseConv2d_op_count_0</span><span class="o">:</span><span class="n">OpId_359</span><span class="w"> </span><span class="p">(</span><span class="n">cycles</span><span class="p">)</span>
+<span class="w">      </span><span class="mf">1.71</span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mf">8164.3</span><span class="w"> </span><span class="n">cycles</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">node_id_45_op_type_DepthWiseConv2d_op_count_0</span><span class="o">:</span><span class="n">OpId_389</span><span class="w"> </span><span class="p">(</span><span class="n">cycles</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="a-running-example-using-profiler-apis">
+<h2>A Running Example using Profiler APIs<a class="headerlink" href="#a-running-example-using-profiler-apis" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;QNN/TFLiteDelegate/QnnTFLiteDelegate.h&quot;</span>
+
+<span class="c1">// Setup interpreter with .tflite model.</span>
+
+<span class="c1">// Create QNN Delegate options structure.</span>
+<span class="n">TfLiteQnnDelegateOptions</span><span class="w"> </span><span class="n">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TfLiteQnnDelegateOptionsDefault</span><span class="p">();</span>
+
+<span class="c1">// Set profiling options to either kBasicProfiling or kPerOpProfiling</span>
+<span class="n">options</span><span class="p">.</span><span class="n">profiling</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kBasicProfiling</span><span class="p">;</span>
+
+<span class="c1">// Instantiate delegate. Must not be freed until interpreter is freed.</span>
+<span class="c1">// Please use QNN Delegate interface rather than external delegate interface.</span>
+<span class="n">TfLiteDelegate</span><span class="o">*</span><span class="w"> </span><span class="n">delegate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TfLiteQnnDelegateCreate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">options</span><span class="p">);</span>
+
+<span class="c1">// Register QNN Delegate with TfLite interpreter to automatically delegate nodes.</span>
+<span class="n">interpreter_</span><span class="o">-&gt;</span><span class="n">ModifyGraphWithDelegate</span><span class="p">(</span><span class="n">delegate</span><span class="p">);</span>
+
+<span class="c1">// Perform inference with interpreter as usual.</span>
+<span class="n">interpreter_</span><span class="o">-&gt;</span><span class="n">Invoke</span><span class="p">();</span>
+
+<span class="c1">// Get profling result.</span>
+<span class="n">TfLiteQnnDelegateProfilingResult</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TfLiteQnnDelegateGetProfilingResult</span><span class="p">(</span><span class="n">delegate</span><span class="p">);</span>
+
+<span class="c1">// Save the result to binary.</span>
+<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">output_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;/path/to/output/profiling_result.bin&quot;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">ofstream</span><span class="w"> </span><span class="n">outfile</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">ofstream</span><span class="o">::</span><span class="n">binary</span><span class="p">);</span>
+<span class="n">outfile</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">buffer</span><span class="p">),</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="n">buffer_length</span><span class="p">);</span>
+<span class="n">outfile</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
+
+<span class="c1">// Clear profiling result.</span>
+<span class="n">TfLiteQnnDelegateClearProfilingResult</span><span class="p">(</span><span class="n">delegate</span><span class="p">)</span>
+
+<span class="n">TfLiteQnnDelegateDelete</span><span class="p">(</span><span class="n">delegate</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="faq.html" class="btn btn-neutral float-right" title="Frequently Asked Questions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="tutorial_mix_precision.html" class="btn btn-neutral float-left" title="Tutorial - Use Mix-Precision Model with Qualcomm® AI Engine Direct Delegate" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

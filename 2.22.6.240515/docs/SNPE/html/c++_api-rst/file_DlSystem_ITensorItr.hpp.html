@@ -1,0 +1,713 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>File ITensorItr.hpp &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup1.html">Network Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup6.html">Tutorials and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>File ITensorItr.hpp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="file-itensoritr-hpp">
+<span id="file-dlsystem-itensoritr-hpp"></span><h1>File ITensorItr.hpp<a class="headerlink" href="#file-itensoritr-hpp" title="Permalink to this heading">¶</a></h1>
+<p>↰ <a class="reference internal" href="dir_DlSystem.html#dir-dlsystem"><span class="std std-ref">Parent directory</span></a> (<code class="docutils literal notranslate"><span class="pre">DlSystem</span></code>)</p>
+<div class="contents local topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#definition-dlsystem-itensoritr-hpp" id="id1">Definition (<code class="docutils literal notranslate"><span class="pre">DlSystem/ITensorItr.hpp</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#includes" id="id2">Includes</a></p></li>
+<li><p><a class="reference internal" href="#included-by" id="id3">Included By</a></p></li>
+<li><p><a class="reference internal" href="#namespaces" id="id4">Namespaces</a></p></li>
+<li><p><a class="reference internal" href="#classes" id="id5">Classes</a></p></li>
+<li><p><a class="reference internal" href="#functions" id="id6">Functions</a></p></li>
+<li><p><a class="reference internal" href="#typedefs" id="id7">Typedefs</a></p></li>
+<li><p><a class="reference internal" href="#full-file-listing" id="id8">Full File Listing</a></p></li>
+</ul>
+</div>
+<div class="section" id="definition-dlsystem-itensoritr-hpp">
+<h2>Definition (<code class="docutils literal notranslate"><span class="pre">DlSystem/ITensorItr.hpp</span></code>)<a class="headerlink" href="#definition-dlsystem-itensoritr-hpp" title="Permalink to this heading">¶</a></h2>
+</div>
+<div class="section" id="includes">
+<h2>Includes<a class="headerlink" href="#includes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ITensorItrImpl.hpp</span></code> (<a class="reference internal" href="file_DlSystem_ITensorItrImpl.hpp.html#file-dlsystem-itensoritrimpl-hpp"><span class="std std-ref">File ITensorItrImpl.hpp</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">algorithm</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iterator</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type_traits</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="included-by">
+<h2>Included By<a class="headerlink" href="#included-by" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="file_DlSystem_ITensor.hpp.html#file-dlsystem-itensor-hpp"><span class="std std-ref">File ITensor.hpp</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="namespaces">
+<h2>Namespaces<a class="headerlink" href="#namespaces" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="namespace_DlSystem.html#namespace-dlsystem"><span class="std std-ref">Namespace DlSystem</span></a></p></li>
+<li><p><a class="reference internal" href="namespace_zdl.html#namespace-zdl"><span class="std std-ref">Namespace zdl</span></a></p></li>
+<li><p><a class="reference internal" href="namespace_zdl__DlSystem.html#namespace-zdl-dlsystem"><span class="std std-ref">Namespace zdl::DlSystem</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#exhale-class-classdlsystem-1-1itensoritr"><span class="std std-ref">Template Class ITensorItr</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="function_group__c__plus__plus__apis_1ga423ddd52d6a4f36e5db3b2d4c059f7dc.html#exhale-function-group-c-plus-plus-apis-1ga423ddd52d6a4f36e5db3b2d4c059f7dc"><span class="std std-ref">Template Function DlSystem::copy</span></a></p></li>
+<li><p><a class="reference internal" href="function_group__c__plus__plus__apis_1gae81cd29125f70f0294b34bc75adf75e7.html#exhale-function-group-c-plus-plus-apis-1gae81cd29125f70f0294b34bc75adf75e7"><span class="std std-ref">Function DlSystem::fill</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="typedefs">
+<h2>Typedefs<a class="headerlink" href="#typedefs" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="typedef_group__c__plus__plus__apis_1ga497e04ce7a6b52fc462a330dee8d9107.html#exhale-typedef-group-c-plus-plus-apis-1ga497e04ce7a6b52fc462a330dee8d9107"><span class="std std-ref">Typedef zdl::DlSystem::ITensorItr</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="full-file-listing">
+<h2>Full File Listing<a class="headerlink" href="#full-file-listing" title="Permalink to this heading">¶</a></h2>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv48DlSystem">
+<span id="_CPPv38DlSystem"></span><span id="_CPPv28DlSystem"></span><span id="DlSystem"></span><span class="target" id="namespaceDlSystem"></span><span class="k"><span class="pre">namespace</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DlSystem</span></span></span><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem4fillE10ITensorItrIXL0EEE10ITensorItrIXL0EEEf">
+<span id="_CPPv3N8DlSystem4fillE10ITensorItrIXL0EEE10ITensorItrIXL0EEEf"></span><span id="_CPPv2N8DlSystem4fillE10ITensorItrIXfalseEE10ITensorItrIXfalseEEf"></span><span id="DlSystem::fill__ITensorItr:false:.ITensorItr:false:.float"></span><span class="target" id="group__c__plus__plus__apis_1gae81cd29125f70f0294b34bc75adf75e7"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fill</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4I_bEN8DlSystem10ITensorItrE" title="DlSystem::ITensorItr"><span class="n"><span class="pre">ITensorItr</span></span></a><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">false</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">first</span></span>, <a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4I_bEN8DlSystem10ITensorItrE" title="DlSystem::ITensorItr"><span class="n"><span class="pre">ITensorItr</span></span></a><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">false</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">end</span></span>, <span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">val</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem4fillE10ITensorItrIXL0EEE10ITensorItrIXL0EEEf" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I00EN8DlSystem4copyE6OutItr5InItr5InItr6OutItr">
+<span id="_CPPv3I00EN8DlSystem4copyE5InItr5InItr6OutItr"></span><span id="_CPPv2I00EN8DlSystem4copyE5InItr5InItr6OutItr"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InItr</span></span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OutItr</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="group__c__plus__plus__apis_1ga423ddd52d6a4f36e5db3b2d4c059f7dc"></span><a class="reference internal" href="function_group__c__plus__plus__apis_1ga423ddd52d6a4f36e5db3b2d4c059f7dc.html#_CPPv4I00EN8DlSystem4copyE6OutItr5InItr5InItr6OutItr" title="DlSystem::copy::OutItr"><span class="n"><span class="pre">OutItr</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">copy</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="function_group__c__plus__plus__apis_1ga423ddd52d6a4f36e5db3b2d4c059f7dc.html#_CPPv4I00EN8DlSystem4copyE6OutItr5InItr5InItr6OutItr" title="DlSystem::copy::InItr"><span class="n"><span class="pre">InItr</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">first</span></span>, <a class="reference internal" href="function_group__c__plus__plus__apis_1ga423ddd52d6a4f36e5db3b2d4c059f7dc.html#_CPPv4I00EN8DlSystem4copyE6OutItr5InItr5InItr6OutItr" title="DlSystem::copy::InItr"><span class="n"><span class="pre">InItr</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">last</span></span>, <a class="reference internal" href="function_group__c__plus__plus__apis_1ga423ddd52d6a4f36e5db3b2d4c059f7dc.html#_CPPv4I00EN8DlSystem4copyE6OutItr5InItr5InItr6OutItr" title="DlSystem::copy::OutItr"><span class="n"><span class="pre">OutItr</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">result</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I00EN8DlSystem4copyE6OutItr5InItr5InItr6OutItr" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4I_bEN8DlSystem10ITensorItrE">
+<span id="_CPPv3I_bEN8DlSystem10ITensorItrE"></span><span id="_CPPv2I_bEN8DlSystem10ITensorItrE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IS_CONST</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">true</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classDlSystem_1_1ITensorItr"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ITensorItr</span></span></span><a class="headerlink" href="#_CPPv4I_bEN8DlSystem10ITensorItrE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;ITensorItr.hpp&gt;</em></div>
+<p>A bidirectional iterator (with limited random access capabilities) for the zdl::DlSystem::ITensor class. </p>
+<p>This is a standard bidrectional iterator and is compatible with standard algorithm functions that operate on bidirectional access iterators (e.g., std::copy, std::fill, etc.). It uses a template parameter to create const and non-const iterators from the same code. Iterators are easiest to declare via the typedefs iterator and const_iterator in the <a class="reference internal" href="file_DlSystem_ITensor.hpp.html#classDlSystem_1_1ITensor"><span class="std std-ref">ITensor</span></a> class (e.g., zdl::DlSystem::ITensor::iterator).</p>
+<p>Note that if the tensor the iterator is traversing was created with nondefault (i.e., nontrivial) strides, the iterator will obey the strides when traversing the tensor data.</p>
+<p>Also note that nontrivial strides dramatically affect the performance of the iterator (on the order of 20x slower). </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-types">Public Types</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem10ITensorItr17iterator_categoryE">
+<span id="_CPPv3N8DlSystem10ITensorItr17iterator_categoryE"></span><span id="_CPPv2N8DlSystem10ITensorItr17iterator_categoryE"></span><span class="target" id="group__c__plus__plus__apis_1gad7d641f87b69f1fe1871720d32069d2e"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">iterator_category</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">bidirectional_iterator_tag</span></span><a class="headerlink" href="#_CPPv4N8DlSystem10ITensorItr17iterator_categoryE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem10ITensorItr7pointerE">
+<span id="_CPPv3N8DlSystem10ITensorItr7pointerE"></span><span id="_CPPv2N8DlSystem10ITensorItr7pointerE"></span><span class="target" id="group__c__plus__plus__apis_1gad62045b6a6f79afb4bf622254fbc312e"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pointer</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">conditional</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4I_bEN8DlSystem10ITensorItrE" title="DlSystem::ITensorItr::IS_CONST"><span class="n"><span class="pre">IS_CONST</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">float</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">float</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">type</span></span><a class="headerlink" href="#_CPPv4N8DlSystem10ITensorItr7pointerE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem10ITensorItr10value_typeE">
+<span id="_CPPv3N8DlSystem10ITensorItr10value_typeE"></span><span id="_CPPv2N8DlSystem10ITensorItr10value_typeE"></span><span class="target" id="group__c__plus__plus__apis_1ga7435e60b8a000f556f888c9709c18588"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">value_type</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="kt"><span class="pre">float</span></span><a class="headerlink" href="#_CPPv4N8DlSystem10ITensorItr10value_typeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem10ITensorItr15difference_typeE">
+<span id="_CPPv3N8DlSystem10ITensorItr15difference_typeE"></span><span id="_CPPv2N8DlSystem10ITensorItr15difference_typeE"></span><span class="target" id="group__c__plus__plus__apis_1ga1723d2b1a732b09e2b732206f17d5ac8"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">difference_type</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ptrdiff_t</span></span><a class="headerlink" href="#_CPPv4N8DlSystem10ITensorItr15difference_typeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem10ITensorItr9referenceE">
+<span id="_CPPv3N8DlSystem10ITensorItr9referenceE"></span><span id="_CPPv2N8DlSystem10ITensorItr9referenceE"></span><span class="target" id="group__c__plus__plus__apis_1ga19d166ab5c3c229f488c82e59cf632f4"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">reference</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">conditional</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4I_bEN8DlSystem10ITensorItrE" title="DlSystem::ITensorItr::IS_CONST"><span class="n"><span class="pre">IS_CONST</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">float</span></span><span class="p"><span class="pre">&amp;</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">float</span></span><span class="p"><span class="pre">&amp;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">type</span></span><a class="headerlink" href="#_CPPv4N8DlSystem10ITensorItr9referenceE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem10ITensorItr10ITensorItrEv">
+<span id="_CPPv3N8DlSystem10ITensorItr10ITensorItrEv"></span><span id="_CPPv2N8DlSystem10ITensorItr10ITensorItrEv"></span><span id="DlSystem::ITensorItr::ITensorItr"></span><span class="target" id="group__c__plus__plus__apis_1gabc234a663bc895ceec17cca9d51502f0"></span><span class="sig-name descname"><span class="n"><span class="pre">ITensorItr</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">delete</span></span><a class="headerlink" href="#_CPPv4N8DlSystem10ITensorItr10ITensorItrEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem10ITensorItrD0Ev">
+<span id="_CPPv3N8DlSystem10ITensorItrD0Ev"></span><span id="_CPPv2N8DlSystem10ITensorItrD0Ev"></span><span id="DlSystem::ITensorItr::~ITensorItr"></span><span class="target" id="group__c__plus__plus__apis_1gad1fcb4fd749058897bb54dd4d6da95f6"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">~ITensorItr</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">default</span></span><a class="headerlink" href="#_CPPv4N8DlSystem10ITensorItrD0Ev" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem10ITensorItr10ITensorItrE7pointer">
+<span id="_CPPv3N8DlSystem10ITensorItr10ITensorItrE7pointer"></span><span id="_CPPv2N8DlSystem10ITensorItr10ITensorItrE7pointer"></span><span id="DlSystem::ITensorItr::ITensorItr__pointer"></span><span class="target" id="group__c__plus__plus__apis_1ga0b2d02ef6a8b1581d581c4b06f06b3cb"></span><span class="k"><span class="pre">explicit</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ITensorItr</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4N8DlSystem10ITensorItr7pointerE" title="DlSystem::ITensorItr::pointer"><span class="n"><span class="pre">pointer</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">data</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N8DlSystem10ITensorItr10ITensorItrE7pointer" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Constructor of <a class="reference internal" href="#classDlSystem_1_1ITensorItr"><span class="std std-ref">ITensorItr</span></a> class. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> – <strong>[in]</strong> is pointer to data </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem10ITensorItr10ITensorItrENSt10unique_ptrI14ITensorItrImplEEbPf">
+<span id="_CPPv3N8DlSystem10ITensorItr10ITensorItrENSt10unique_ptrI14ITensorItrImplEEbPf"></span><span id="_CPPv2N8DlSystem10ITensorItr10ITensorItrENSt10unique_ptrI14ITensorItrImplEEbPf"></span><span id="DlSystem::ITensorItr::ITensorItr__std::unique_ptr:ITensorItrImpl:.b.floatP"></span><span class="target" id="group__c__plus__plus__apis_1gaee0bd181c9bc96fb86d9aa02a0996761"></span><span class="sig-name descname"><span class="n"><span class="pre">ITensorItr</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">unique_ptr</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="classDlSystem_1_1ITensorItrImpl.html#_CPPv4N8DlSystem14ITensorItrImplE" title="DlSystem::ITensorItrImpl"><span class="n"><span class="pre">ITensorItrImpl</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">impl</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">isTrivial</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span>, <span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">data</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">nullptr</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem10ITensorItr10ITensorItrENSt10unique_ptrI14ITensorItrImplEEbPf" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Constructor of <a class="reference internal" href="#classDlSystem_1_1ITensorItr"><span class="std std-ref">ITensorItr</span></a> class using member variables. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>impl</strong> – <strong>[in]</strong> is Pointer to <a class="reference internal" href="file_DlSystem_ITensorItrImpl.hpp.html#classDlSystem_1_1ITensorItrImpl"><span class="std std-ref">ITensorItrImpl</span></a> </p></li>
+<li><p><strong>isTrivial</strong> – <strong>[in]</strong> is set to false by default </p></li>
+<li><p><strong>data</strong> – <strong>[in]</strong> is pointer to data </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem10ITensorItr10ITensorItrERK10ITensorItr">
+<span id="_CPPv3N8DlSystem10ITensorItr10ITensorItrERK10ITensorItr"></span><span id="_CPPv2N8DlSystem10ITensorItr10ITensorItrERK10ITensorItr"></span><span id="DlSystem::ITensorItr::ITensorItr__ITensorItrCR"></span><span class="target" id="group__c__plus__plus__apis_1ga45adac97d4bfdd80379f6517716cb197"></span><span class="sig-name descname"><span class="n"><span class="pre">ITensorItr</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4N8DlSystem10ITensorItr10ITensorItrERK10ITensorItr" title="DlSystem::ITensorItr::ITensorItr"><span class="n"><span class="pre">ITensorItr</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">itr</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem10ITensorItr10ITensorItrERK10ITensorItr" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Constructor of <a class="reference internal" href="#classDlSystem_1_1ITensorItr"><span class="std std-ref">ITensorItr</span></a> class using another object. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>itr</strong> – <strong>[in]</strong> is reference to another object </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem10ITensorItr10ITensorItrERR10ITensorItr">
+<span id="_CPPv3N8DlSystem10ITensorItr10ITensorItrERR10ITensorItr"></span><span id="_CPPv2N8DlSystem10ITensorItr10ITensorItrERR10ITensorItr"></span><span id="DlSystem::ITensorItr::ITensorItr__ITensorItrRR"></span><span class="target" id="group__c__plus__plus__apis_1ga8e98ebbb7ed03def60468aa1be01ad78"></span><span class="sig-name descname"><span class="n"><span class="pre">ITensorItr</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4N8DlSystem10ITensorItr10ITensorItrERR10ITensorItr" title="DlSystem::ITensorItr::ITensorItr"><span class="n"><span class="pre">ITensorItr</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">itr</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N8DlSystem10ITensorItr10ITensorItrERR10ITensorItr" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Constructor of <a class="reference internal" href="#classDlSystem_1_1ITensorItr"><span class="std std-ref">ITensorItr</span></a> class using move constructor. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>itr</strong> – <strong>[in]</strong> is reference to another object </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem10ITensorItraSERK10ITensorItr">
+<span id="_CPPv3N8DlSystem10ITensorItraSERK10ITensorItr"></span><span id="_CPPv2N8DlSystem10ITensorItraSERK10ITensorItr"></span><span id="DlSystem::ITensorItr::assign-operator__ITensorItrCR"></span><span class="target" id="group__c__plus__plus__apis_1ga7cc3b652f3d85162d87517beb14ac301"></span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4I_bEN8DlSystem10ITensorItrE" title="DlSystem::ITensorItr"><span class="n"><span class="pre">ITensorItr</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">=</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4I_bEN8DlSystem10ITensorItrE" title="DlSystem::ITensorItr"><span class="n"><span class="pre">ITensorItr</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">other</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem10ITensorItraSERK10ITensorItr" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Constructor of <a class="reference internal" href="#classDlSystem_1_1ITensorItr"><span class="std std-ref">ITensorItr</span></a> class using assignment operator. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>other</strong> – <strong>[in]</strong> is reference to another object </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem10ITensorItraSERR10ITensorItr">
+<span id="_CPPv3N8DlSystem10ITensorItraSERR10ITensorItr"></span><span id="_CPPv2N8DlSystem10ITensorItraSERR10ITensorItr"></span><span id="DlSystem::ITensorItr::assign-operator__ITensorItrRR"></span><span class="target" id="group__c__plus__plus__apis_1gad270cc7d297f8d2d57acea0aa4f8a1af"></span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4I_bEN8DlSystem10ITensorItrE" title="DlSystem::ITensorItr"><span class="n"><span class="pre">ITensorItr</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">=</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4I_bEN8DlSystem10ITensorItrE" title="DlSystem::ITensorItr"><span class="n"><span class="pre">ITensorItr</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">other</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N8DlSystem10ITensorItraSERR10ITensorItr" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Constructor of <a class="reference internal" href="#classDlSystem_1_1ITensorItr"><span class="std std-ref">ITensorItr</span></a> class using assignment operator. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>other</strong> – <strong>[in]</strong> is reference to another object </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem10ITensorItrppEv">
+<span id="_CPPv3N8DlSystem10ITensorItrppEv"></span><span id="_CPPv2N8DlSystem10ITensorItrppEv"></span><span id="DlSystem::ITensorItr::inc-operator"></span><span class="target" id="group__c__plus__plus__apis_1ga2f8b64ee32ee2274f5ac16a72580df9f"></span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4I_bEN8DlSystem10ITensorItrE" title="DlSystem::ITensorItr"><span class="n"><span class="pre">ITensorItr</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">++</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem10ITensorItrppEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Overloading increment operator to parse through data. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem10ITensorItrppEi">
+<span id="_CPPv3N8DlSystem10ITensorItrppEi"></span><span id="_CPPv2N8DlSystem10ITensorItrppEi"></span><span id="DlSystem::ITensorItr::inc-operator__i"></span><span class="target" id="group__c__plus__plus__apis_1gafd22e1d1b47b5b6e9901eda2cf8ca0f1"></span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4I_bEN8DlSystem10ITensorItrE" title="DlSystem::ITensorItr"><span class="n"><span class="pre">ITensorItr</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">++</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem10ITensorItrppEi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Overloading increment operator to parse through data. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>int</strong> – <strong>[in]</strong> is unused </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem10ITensorItrmmEv">
+<span id="_CPPv3N8DlSystem10ITensorItrmmEv"></span><span id="_CPPv2N8DlSystem10ITensorItrmmEv"></span><span id="DlSystem::ITensorItr::dec-operator"></span><span class="target" id="group__c__plus__plus__apis_1ga364a407c268a0c81fc2d94ff5bf87909"></span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4I_bEN8DlSystem10ITensorItrE" title="DlSystem::ITensorItr"><span class="n"><span class="pre">ITensorItr</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">--</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem10ITensorItrmmEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Overloading decrement operator to parse through data. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem10ITensorItrmmEi">
+<span id="_CPPv3N8DlSystem10ITensorItrmmEi"></span><span id="_CPPv2N8DlSystem10ITensorItrmmEi"></span><span id="DlSystem::ITensorItr::dec-operator__i"></span><span class="target" id="group__c__plus__plus__apis_1ga7876a32558ddb62fcf38de7b0c5de1ec"></span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4I_bEN8DlSystem10ITensorItrE" title="DlSystem::ITensorItr"><span class="n"><span class="pre">ITensorItr</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">--</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem10ITensorItrmmEi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Overloading decrement operator to parse through data. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>int</strong> – <strong>[in]</strong> is unused </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem10ITensorItrpLEi">
+<span id="_CPPv3N8DlSystem10ITensorItrpLEi"></span><span id="_CPPv2N8DlSystem10ITensorItrpLEi"></span><span id="DlSystem::ITensorItr::add-assign-operator__i"></span><span class="target" id="group__c__plus__plus__apis_1gaeb24156da1a40c982439b989f51e12b0"></span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4I_bEN8DlSystem10ITensorItrE" title="DlSystem::ITensorItr"><span class="n"><span class="pre">ITensorItr</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">+=</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">rhs</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem10ITensorItrpLEi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Overloading addition operator to parse through data. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>Moves</strong> – <strong>[in]</strong> forward the data pointer by rhs elements </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem10ITensorItrmIEi">
+<span id="_CPPv3N8DlSystem10ITensorItrmIEi"></span><span id="_CPPv2N8DlSystem10ITensorItrmIEi"></span><span id="DlSystem::ITensorItr::sub-assign-operator__i"></span><span class="target" id="group__c__plus__plus__apis_1gab7a2ff2b0307c72e0fd41fcd0763a31d"></span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4I_bEN8DlSystem10ITensorItrE" title="DlSystem::ITensorItr"><span class="n"><span class="pre">ITensorItr</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">-=</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">rhs</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem10ITensorItrmIEi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Overloading subtraction operator to parse through data. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>Moves</strong> – <strong>[in]</strong> back the data pointer of the object by rhs elements </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem10ITensorItrmiERK10ITensorItr">
+<span id="_CPPv3N8DlSystem10ITensorItrmiERK10ITensorItr"></span><span id="_CPPv2N8DlSystem10ITensorItrmiERK10ITensorItr"></span><span id="DlSystem::ITensorItr::sub-operator__ITensorItrCR"></span><span class="target" id="group__c__plus__plus__apis_1ga3130410b9707adf8b4df9a16f9dc2942"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">-</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4I_bEN8DlSystem10ITensorItrE" title="DlSystem::ITensorItr"><span class="n"><span class="pre">ITensorItr</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">rhs</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem10ITensorItrmiERK10ITensorItr" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Overloading subtartion operator to get the offset between two objects. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rhs</strong> – <strong>[in]</strong> is reference to the object </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Offset between the two objects </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK8DlSystem10ITensorItreqERK10ITensorItr">
+<span id="_CPPv3NK8DlSystem10ITensorItreqERK10ITensorItr"></span><span id="_CPPv2NK8DlSystem10ITensorItreqERK10ITensorItr"></span><span id="DlSystem::ITensorItr::eq-operator__ITensorItrCRC"></span><span class="target" id="group__c__plus__plus__apis_1ga4a2d5a98d2e48b619203d2780b8fa57a"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">==</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4I_bEN8DlSystem10ITensorItrE" title="DlSystem::ITensorItr"><span class="n"><span class="pre">ITensorItr</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">rhs</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8DlSystem10ITensorItreqERK10ITensorItr" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Overloading == operator to work with <a class="reference internal" href="#classDlSystem_1_1ITensorItr"><span class="std std-ref">ITensorItr</span></a> objects. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lhs</strong> – <strong>[in]</strong> is reference to the first object </p></li>
+<li><p><strong>rhs</strong> – <strong>[in]</strong> is reference to the second object </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if data pointer of first object equals the data pointer of second object, else false </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK8DlSystem10ITensorItrneERK10ITensorItr">
+<span id="_CPPv3NK8DlSystem10ITensorItrneERK10ITensorItr"></span><span id="_CPPv2NK8DlSystem10ITensorItrneERK10ITensorItr"></span><span id="DlSystem::ITensorItr::neq-operator__ITensorItrCRC"></span><span class="target" id="group__c__plus__plus__apis_1gab066fd9e77328440f4f3280355f93b3e"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">!=</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4I_bEN8DlSystem10ITensorItrE" title="DlSystem::ITensorItr"><span class="n"><span class="pre">ITensorItr</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">rhs</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8DlSystem10ITensorItrneERK10ITensorItr" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Overloading != operator to work with <a class="reference internal" href="#classDlSystem_1_1ITensorItr"><span class="std std-ref">ITensorItr</span></a> objects. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lhs</strong> – <strong>[in]</strong> is reference to the first object </p></li>
+<li><p><strong>rhs</strong> – <strong>[in]</strong> is reference to the second object </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if data pointer of first object is not equal to the data pointer of second object, else false </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem10ITensorItrixE6size_t">
+<span id="_CPPv3N8DlSystem10ITensorItrixE6size_t"></span><span id="_CPPv2N8DlSystem10ITensorItrixE6size_t"></span><span id="DlSystem::ITensorItr::subscript-operator__s"></span><span class="target" id="group__c__plus__plus__apis_1ga2c0a11e893cee4e3d6c4e7d33978ead9"></span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4N8DlSystem10ITensorItr9referenceE" title="DlSystem::ITensorItr::reference"><span class="n"><span class="pre">reference</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">[]</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">idx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem10ITensorItrixE6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Overloading [] operator to work with <a class="reference internal" href="#classDlSystem_1_1ITensorItr"><span class="std std-ref">ITensorItr</span></a> objects. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>idx</strong> – <strong>[in]</strong> is index of the data </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Data at idx index </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem10ITensorItrmlEv">
+<span id="_CPPv3N8DlSystem10ITensorItrmlEv"></span><span id="_CPPv2N8DlSystem10ITensorItrmlEv"></span><span id="DlSystem::ITensorItr::mul-operator"></span><span class="target" id="group__c__plus__plus__apis_1gad818cdd5635a8ecb7d9f766fe220b407"></span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4N8DlSystem10ITensorItr9referenceE" title="DlSystem::ITensorItr::reference"><span class="n"><span class="pre">reference</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">*</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem10ITensorItrmlEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Overloading derefencing operator to work with <a class="reference internal" href="#classDlSystem_1_1ITensorItr"><span class="std std-ref">ITensorItr</span></a> objects. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Data at 0th index </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem10ITensorItrptEv">
+<span id="_CPPv3N8DlSystem10ITensorItrptEv"></span><span id="_CPPv2N8DlSystem10ITensorItrptEv"></span><span id="DlSystem::ITensorItr::pointer-operator"></span><span class="target" id="group__c__plus__plus__apis_1gadc713ba44d11950ca6ae62a7fef7d0d4"></span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4N8DlSystem10ITensorItr9referenceE" title="DlSystem::ITensorItr::reference"><span class="n"><span class="pre">reference</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">-&gt;</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem10ITensorItrptEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Overloading -&gt; operator to work with <a class="reference internal" href="#classDlSystem_1_1ITensorItr"><span class="std std-ref">ITensorItr</span></a> objects. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>reference of object </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK8DlSystem10ITensorItr11dataPointerEv">
+<span id="_CPPv3NK8DlSystem10ITensorItr11dataPointerEv"></span><span id="_CPPv2NK8DlSystem10ITensorItr11dataPointerEv"></span><span id="DlSystem::ITensorItr::dataPointerC"></span><span class="target" id="group__c__plus__plus__apis_1ga94a02548cd334a3af327aca4607562df"></span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4N8DlSystem10ITensorItr7pointerE" title="DlSystem::ITensorItr::pointer"><span class="n"><span class="pre">pointer</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dataPointer</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8DlSystem10ITensorItr11dataPointerEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns data pointer of the object. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-protected-attributes">Protected Attributes</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem10ITensorItr6m_ImplE">
+<span id="_CPPv3N8DlSystem10ITensorItr6m_ImplE"></span><span id="_CPPv2N8DlSystem10ITensorItr6m_ImplE"></span><span id="DlSystem::ITensorItr::m_Impl__std::unique_ptr:DlSystem::ITensorItrImpl:"></span><span class="target" id="group__c__plus__plus__apis_1ga982d1f848c85aabae6d70bcd4b6041e5"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">unique_ptr</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1ITensorItrImpl.html#_CPPv4N8DlSystem14ITensorItrImplE" title="DlSystem::ITensorItrImpl"><span class="n"><span class="pre">ITensorItrImpl</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">m_Impl</span></span></span><a class="headerlink" href="#_CPPv4N8DlSystem10ITensorItr6m_ImplE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem10ITensorItr11m_IsTrivialE">
+<span id="_CPPv3N8DlSystem10ITensorItr11m_IsTrivialE"></span><span id="_CPPv2N8DlSystem10ITensorItr11m_IsTrivialE"></span><span id="DlSystem::ITensorItr::m_IsTrivial__b"></span><span class="target" id="group__c__plus__plus__apis_1ga61878bf644251125b6065997d90d6c5b"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">m_IsTrivial</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span><a class="headerlink" href="#_CPPv4N8DlSystem10ITensorItr11m_IsTrivialE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem10ITensorItr6m_DataE">
+<span id="_CPPv3N8DlSystem10ITensorItr6m_DataE"></span><span id="_CPPv2N8DlSystem10ITensorItr6m_DataE"></span><span id="DlSystem::ITensorItr::m_Data__pointer"></span><span class="target" id="group__c__plus__plus__apis_1ga0f8cc36513f4918ba840c5fbc59fd361"></span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4N8DlSystem10ITensorItr7pointerE" title="DlSystem::ITensorItr::pointer"><span class="n"><span class="pre">pointer</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">m_Data</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">nullptr</span></span><a class="headerlink" href="#_CPPv4N8DlSystem10ITensorItr6m_DataE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem10ITensorItr11m_DataStartE">
+<span id="_CPPv3N8DlSystem10ITensorItr11m_DataStartE"></span><span id="_CPPv2N8DlSystem10ITensorItr11m_DataStartE"></span><span id="DlSystem::ITensorItr::m_DataStart__pointer"></span><span class="target" id="group__c__plus__plus__apis_1gad711f804102dcd818d0624ab47d0bd3b"></span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4N8DlSystem10ITensorItr7pointerE" title="DlSystem::ITensorItr::pointer"><span class="n"><span class="pre">pointer</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">m_DataStart</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">nullptr</span></span><a class="headerlink" href="#_CPPv4N8DlSystem10ITensorItr11m_DataStartE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-friends">Friends</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem10ITensorItrplE10ITensorItri">
+<span id="_CPPv3N8DlSystem10ITensorItrplE10ITensorItri"></span><span id="_CPPv2N8DlSystem10ITensorItrplE10ITensorItri"></span><span id="DlSystem::ITensorItr::add-operator__ITensorItr.i"></span><span class="target" id="group__c__plus__plus__apis_1ga487e201a13529a83fa7bd8f32221b656"></span><span class="k"><span class="pre">friend</span></span><span class="w"> </span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4I_bEN8DlSystem10ITensorItrE" title="DlSystem::ITensorItr"><span class="n"><span class="pre">ITensorItr</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">+</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4I_bEN8DlSystem10ITensorItrE" title="DlSystem::ITensorItr"><span class="n"><span class="pre">ITensorItr</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">lhs</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">rhs</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem10ITensorItrplE10ITensorItri" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Overloading addition operator to parse through data. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lhs</strong> – <strong>[in]</strong> is reference to the object </p></li>
+<li><p><strong>Moves</strong> – <strong>[in]</strong> forward the data pointer of the object by rhs elements </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem10ITensorItrmiE10ITensorItri">
+<span id="_CPPv3N8DlSystem10ITensorItrmiE10ITensorItri"></span><span id="_CPPv2N8DlSystem10ITensorItrmiE10ITensorItri"></span><span id="DlSystem::ITensorItr::sub-operator__ITensorItr.i"></span><span class="target" id="group__c__plus__plus__apis_1gaf0486d8535c93e66d10cf92b298154f6"></span><span class="k"><span class="pre">friend</span></span><span class="w"> </span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4I_bEN8DlSystem10ITensorItrE" title="DlSystem::ITensorItr"><span class="n"><span class="pre">ITensorItr</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">-</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4I_bEN8DlSystem10ITensorItrE" title="DlSystem::ITensorItr"><span class="n"><span class="pre">ITensorItr</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">lhs</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">rhs</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem10ITensorItrmiE10ITensorItri" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Overloading subtraction operator to parse through data. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lhs</strong> – <strong>[in]</strong> is reference to the object </p></li>
+<li><p><strong>Moves</strong> – <strong>[in]</strong> back the data pointer of the object by rhs elements </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem10ITensorItrltERK10ITensorItrRK10ITensorItr">
+<span id="_CPPv3N8DlSystem10ITensorItrltERK10ITensorItrRK10ITensorItr"></span><span id="_CPPv2N8DlSystem10ITensorItrltERK10ITensorItrRK10ITensorItr"></span><span id="DlSystem::ITensorItr::lt-operator__ITensorItrCR.ITensorItrCR"></span><span class="target" id="group__c__plus__plus__apis_1gaa599b6e48760535e04e1c26637f1980c"></span><span class="k"><span class="pre">friend</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">&lt;</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4I_bEN8DlSystem10ITensorItrE" title="DlSystem::ITensorItr"><span class="n"><span class="pre">ITensorItr</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">lhs</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4I_bEN8DlSystem10ITensorItrE" title="DlSystem::ITensorItr"><span class="n"><span class="pre">ITensorItr</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">rhs</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem10ITensorItrltERK10ITensorItrRK10ITensorItr" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Overloading &lt; operator to work with <a class="reference internal" href="#classDlSystem_1_1ITensorItr"><span class="std std-ref">ITensorItr</span></a> objects. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lhs</strong> – <strong>[in]</strong> is reference to the first object </p></li>
+<li><p><strong>rhs</strong> – <strong>[in]</strong> is reference to the second object </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if data pointer of first object is lesser than the second object, else false </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem10ITensorItrgtERK10ITensorItrRK10ITensorItr">
+<span id="_CPPv3N8DlSystem10ITensorItrgtERK10ITensorItrRK10ITensorItr"></span><span id="_CPPv2N8DlSystem10ITensorItrgtERK10ITensorItrRK10ITensorItr"></span><span id="DlSystem::ITensorItr::gt-operator__ITensorItrCR.ITensorItrCR"></span><span class="target" id="group__c__plus__plus__apis_1gaab008d20b6fa12a8cc96443c9872e3eb"></span><span class="k"><span class="pre">friend</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">&gt;</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4I_bEN8DlSystem10ITensorItrE" title="DlSystem::ITensorItr"><span class="n"><span class="pre">ITensorItr</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">lhs</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4I_bEN8DlSystem10ITensorItrE" title="DlSystem::ITensorItr"><span class="n"><span class="pre">ITensorItr</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">rhs</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem10ITensorItrgtERK10ITensorItrRK10ITensorItr" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Overloading &lt; operator to work with <a class="reference internal" href="#classDlSystem_1_1ITensorItr"><span class="std std-ref">ITensorItr</span></a> objects. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lhs</strong> – <strong>[in]</strong> is reference to the first object </p></li>
+<li><p><strong>rhs</strong> – <strong>[in]</strong> is reference to the second object </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if data pointer of first object is greater than the second object, else false </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem10ITensorItrleERK10ITensorItrRK10ITensorItr">
+<span id="_CPPv3N8DlSystem10ITensorItrleERK10ITensorItrRK10ITensorItr"></span><span id="_CPPv2N8DlSystem10ITensorItrleERK10ITensorItrRK10ITensorItr"></span><span id="DlSystem::ITensorItr::lte-operator__ITensorItrCR.ITensorItrCR"></span><span class="target" id="group__c__plus__plus__apis_1gabb2b72547425448891658431ca9540bc"></span><span class="k"><span class="pre">friend</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">&lt;=</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4I_bEN8DlSystem10ITensorItrE" title="DlSystem::ITensorItr"><span class="n"><span class="pre">ITensorItr</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">lhs</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4I_bEN8DlSystem10ITensorItrE" title="DlSystem::ITensorItr"><span class="n"><span class="pre">ITensorItr</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">rhs</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem10ITensorItrleERK10ITensorItrRK10ITensorItr" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Overloading &lt;= operator to work with <a class="reference internal" href="#classDlSystem_1_1ITensorItr"><span class="std std-ref">ITensorItr</span></a> objects. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lhs</strong> – <strong>[in]</strong> is reference to the first object </p></li>
+<li><p><strong>rhs</strong> – <strong>[in]</strong> is reference to the second object </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if data pointer of first object is &lt;= data pointer of second object, else false </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8DlSystem10ITensorItrgeERK10ITensorItrRK10ITensorItr">
+<span id="_CPPv3N8DlSystem10ITensorItrgeERK10ITensorItrRK10ITensorItr"></span><span id="_CPPv2N8DlSystem10ITensorItrgeERK10ITensorItrRK10ITensorItr"></span><span id="DlSystem::ITensorItr::gte-operator__ITensorItrCR.ITensorItrCR"></span><span class="target" id="group__c__plus__plus__apis_1ga5d3f2d9bf8f2c40addbe0b707e038371"></span><span class="k"><span class="pre">friend</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">&gt;=</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4I_bEN8DlSystem10ITensorItrE" title="DlSystem::ITensorItr"><span class="n"><span class="pre">ITensorItr</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">lhs</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4I_bEN8DlSystem10ITensorItrE" title="DlSystem::ITensorItr"><span class="n"><span class="pre">ITensorItr</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">rhs</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8DlSystem10ITensorItrgeERK10ITensorItrRK10ITensorItr" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Overloading &gt;= operator to work with <a class="reference internal" href="#classDlSystem_1_1ITensorItr"><span class="std std-ref">ITensorItr</span></a> objects. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lhs</strong> – <strong>[in]</strong> is reference to the first object </p></li>
+<li><p><strong>rhs</strong> – <strong>[in]</strong> is reference to the second object </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if data pointer of first object is &gt;= data pointer of second object, else false </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv43zdl">
+<span id="_CPPv33zdl"></span><span id="_CPPv23zdl"></span><span id="zdl"></span><span class="target" id="namespacezdl"></span><span class="k"><span class="pre">namespace</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">zdl</span></span></span><a class="headerlink" href="#_CPPv43zdl" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N3zdl8DlSystemE">
+<span id="_CPPv3N3zdl8DlSystemE"></span><span id="_CPPv2N3zdl8DlSystemE"></span><span id="zdl::DlSystem"></span><span class="target" id="namespacezdl_1_1DlSystem"></span><span class="k"><span class="pre">namespace</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DlSystem</span></span></span><a class="headerlink" href="#_CPPv4N3zdl8DlSystemE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4I_bEN3zdl8DlSystem10ITensorItrE">
+<span id="_CPPv3I_bEN3zdl8DlSystem10ITensorItrE"></span><span id="_CPPv2I_bEN3zdl8DlSystem10ITensorItrE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IS_CONST</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="group__c__plus__plus__apis_1ga497e04ce7a6b52fc462a330dee8d9107"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ITensorItr</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="file_DlSystem_TensorShape.hpp.html#_CPPv48DlSystem" title="DlSystem"><span class="n"><span class="pre">DlSystem</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="classDlSystem_1_1ITensorItr.html#_CPPv4I_bEN8DlSystem10ITensorItrE" title="DlSystem::ITensorItr"><span class="n"><span class="pre">ITensorItr</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="typedef_group__c__plus__plus__apis_1ga497e04ce7a6b52fc462a330dee8d9107.html#_CPPv4I_bEN3zdl8DlSystem10ITensorItrE" title="zdl::DlSystem::ITensorItr::IS_CONST"><span class="n"><span class="pre">IS_CONST</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4I_bEN3zdl8DlSystem10ITensorItrE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

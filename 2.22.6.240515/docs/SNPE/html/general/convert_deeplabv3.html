@@ -1,0 +1,356 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Using DeepLabv3 &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Input Data and Preprocessing" href="usergroup5.html" />
+    <link rel="prev" title="Using MobilenetSSD" href="convert_mobilenetssd.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="usergroup1.html">Network Models</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="network_layers.html">Supported Network Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supported_onnx_ops.html">Supported ONNX Ops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quantized_models.html">Quantized vs Non-Quantized Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup2.html">User-defined Operations</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="usergroup3.html">Model Conversion</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="model_conv_tensorflow.html">TensorFlow Model Conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensorflow_graphs.html">Tensorflow Graph Compatibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model_conv_tflite.html">TFLite Model Conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model_conv_pytorch.html">PyTorch Model Conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model_conv_onnx.html">ONNX Model Conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model_conversion.html">Quantizing a Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="offline_graph_caching.html">Offline Graph Caching for DSP Runtime on HTP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qairt_converter.html">Qairt Converter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qairt_quantizer.html">Qairt Quantizer</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="usergroup4.html">Model Tips</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="convert_mobilenetssd.html">Using MobilenetSSD</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Using DeepLabv3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup6.html">Tutorials and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="usergroup1.html">Network Models</a> &raquo;</li>
+        
+          <li><a href="usergroup3.html">Model Conversion</a> &raquo;</li>
+        
+          <li><a href="usergroup4.html">Model Tips</a> &raquo;</li>
+        
+      <li>Using DeepLabv3</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="using-deeplabv3">
+<h1>Using DeepLabv3<a class="headerlink" href="#using-deeplabv3" title="Permalink to this heading">¶</a></h1>
+<div class="ui-resizable side-nav-resizable docutils container" id="side-nav">
+<div class="docutils container" id="nav-tree">
+<div class="docutils container" id="nav-tree-contents">
+</div>
+</div>
+</div>
+<div class="docutils container" id="doc-content">
+<div class="header docutils container">
+</div>
+<div class="contents docutils container">
+<div class="textblock docutils container">
+<p class="rubric" id="tensorflow-deeplabv3-model">Tensorflow DeepLabv3 model</p>
+<p>A specific version of the Tensorflow DeepLabv3 model has been
+tested: <strong>deeplabv3_mnv2_pascal_train_aug_2018_01_29.tar</strong>.
+This version of DeepLabv3 uses MobileNet-v2 as the backbone and
+has been pretrained on the Pascal VOC 2012 dataset.</p>
+<p>Download the model.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>wget http://download.tensorflow.org/models/deeplabv3_mnv2_pascal_train_aug_2018_01_29.tar.gz
+</pre></div>
+</div>
+<p>After downloading the model extract the contents to a
+directory.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>tar xzvf deeplabv3_mnv2_pascal_train_aug_2018_01_29.tar.gz
+</pre></div>
+</div>
+<p>Convert the model using the
+<a class="reference external" href="tools.html#snpe-tensorflow-to-dlc">snpe-tensorflow-to-dlc</a>
+converter.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>snpe-tensorflow-to-dlc --input_network deeplabv3_mnv2_pascal_train_aug/frozen_inference_graph.pb --input_dim sub_7 1,513,513,3 --out_node ArgMax --output_path deeplabv3.dlc
+</pre></div>
+</div>
+<p>The output layer for the model is:</p>
+<ul class="simple">
+<li><p>ArgMax</p></li>
+</ul>
+<p>The output buffer names is:</p>
+<ul class="simple">
+<li><p>(Segmentation Map) ArgMax:0.raw</p></li>
+</ul>
+<p class="rubric" id="preprocessing-input-images">Preprocessing Input Images</p>
+<p>Qualcomm® Neural Processing SDK does not support the preprocessing done within the
+DeepLabv3 model. Preprocessing must be done offline before the
+images are run. In the preprocessing phase, images must be
+resized to 513x513x3 and the pixels must be normalized to be
+between -1 to 1.</p>
+<p>The following steps need to be performed on all input images in
+this exact order:</p>
+<ol class="arabic">
+<li><p>Calculate the resize ratio and target size of the image
+using the following:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>resize_ratio = 513.0 / max(width, height)
+target_size = (int(resize_ratio * width), int(resize_ratio * height))
+</pre></div>
+</div>
+</li>
+<li><p>Convert the image to the target_size, using an Anti-alias
+resampling filter. This will make the longer dimension of
+the image to be 513 and the other dimension will be smaller
+than 513.</p></li>
+<li><p>Pad the smaller dimension with the mean value of 128 to
+produce an image of 513x513x3.</p></li>
+<li><p>Convert the image to type float32.</p></li>
+<li><p>Multiply the image elementwise with 0.00784313771874.</p></li>
+<li><p>Elementwise subtract 1.0 from the image.</p></li>
+</ol>
+<p class="rubric" id="running-the-model-in-snpe">Running the model in Qualcomm® Neural Processing SDK</p>
+<p>The following are limitations and suggestions for running DLC
+model in Qualcomm® Neural Processing SDK:</p>
+<ul class="simple">
+<li><p>Some operations in the model are supported on CPU runtime
+processor only.
+To run the model using different runtime processor, such as
+GPU or DSP, CPU fallback mode must be enabled in Runtime
+List (see
+<span class="xref std std-ref">Snpe_SNPEBuilder_SetRuntimeProcessorOrder()</span>
+description in Qualcomm® Neural Processing SDK API).
+If using <a class="reference external" href="tools.html#snpe-net-run">snpe-net-run</a>
+tool, use <code class="docutils literal notranslate"><span class="pre">–runtime_order</span></code> option</p></li>
+</ul>
+<p class="rubric" id="postprocessing-output-segmentation-maps">Postprocessing Output Segmentation Maps</p>
+<p>Running DeepLabv3 with Qualcomm® Neural Processing SDK will produce an output
+segmentation map of size 513x513x1 where every element is an
+integer that represents a class (e.g. 0=background, etc.).
+However the output of Qualcomm® Neural Processing SDK still has the padding applied in
+the preprocessing step. This padding must be cropped out and
+the image should be resized to the orginal size.</p>
+<p>The following steps should be taken in order to get the same
+dimensions as the original image:</p>
+<ol class="arabic simple">
+<li><p>Crop off the padding that was applied to the shorter
+dimension in the pre-processing step. The ratio of the
+dimensions of the segmentation map should now be the same as
+the original image.</p></li>
+<li><p>Resize the segmentation map to the height and width of the
+original image.</p></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="usergroup5.html" class="btn btn-neutral float-right" title="Input Data and Preprocessing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="convert_mobilenetssd.html" class="btn btn-neutral float-left" title="Using MobilenetSSD" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

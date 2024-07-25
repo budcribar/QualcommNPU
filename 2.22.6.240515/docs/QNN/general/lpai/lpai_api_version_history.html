@@ -1,0 +1,360 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>QNN LPAI API Revision History &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Supported APIs" href="../supported_api.html" />
+    <link rel="prev" title="QNN HTP API Revision History" href="../htp/htp_api_version_history.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../operations.html">Operations</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api_overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api_usage_guidelines.html">Usage Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api_version_history.html">QNN API Revision History</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api_version_history.html#backend-specific-revision-history">Backend Specific Revision History</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../cpu/cpu_api_version_history.html">CPU Version History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dsp/dsp_api_version_history.html">DSP Version History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gpu/gpu_api_version_history.html">GPU Version History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hta/hta_api_version_history.html">HTA Version History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../htp/htp_api_version_history.html">HTP Version History</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">LPAI Version History</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api_version_history.html#qnn-system-api-revision-history">QNN System API Revision History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../supported_api.html">Supported APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../supported_capabilities.html">Supported Capabilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#c">C</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../api.html">API</a> &raquo;</li>
+        
+          <li><a href="../api_version_history.html">QNN API Revision History</a> &raquo;</li>
+        
+      <li>QNN LPAI API Revision History</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="qnn-lpai-api-revision-history">
+<h1>QNN LPAI API Revision History<a class="headerlink" href="#qnn-lpai-api-revision-history" title="Permalink to this heading">¶</a></h1>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 19%" />
+<col style="width: 14%" />
+<col style="width: 54%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>QNN LPAI API Version</p></th>
+<th class="head"><p>Introduced in QNN SDK Version</p></th>
+<th class="head"><p>Model Builder Version</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2.8.0</p></td>
+<td><p>2.22.1</p></td>
+<td><p>4.8.42ed4bf0-v73</p></td>
+<td><ul class="simple">
+<li><p>Added: Runtime eNPU5 Support, x86 generation, x86 Simulator and ARM execution</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.7.1</p></td>
+<td><p>2.20.1</p></td>
+<td><p>3.17.4446b3115</p></td>
+<td><ul class="simple">
+<li><p>Added: LPAI BE Adaptor getMap() APIs</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>2.7.0</p></td>
+<td><p>2.18.1</p></td>
+<td><p>3.17.4446b311</p></td>
+<td><ul class="simple">
+<li><p>Added: Support to model visualizer, eNPU4 for linux_x86, windows,hexagonsim and adsp</p></li>
+<li><p>Added: LPAI BE getSupportedOperations()</p></li>
+<li><p>Fixes: TensorID duplicate errors during QNN change from tensor name to tensorID</p></li>
+<li><p>Fixes: Sanitize quantizations with invalid parameters</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.6.0</p></td>
+<td><p>2.17.1</p></td>
+<td><p>3.16.ae82aa87</p></td>
+<td><ul class="simple">
+<li><p>Fixes: Fix resize op to account for annotations on sizes tensor</p></li>
+<li><p>Added: Support to multiple loaded HW compiler versions</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>2.5.0</p></td>
+<td><p>2.14.1</p></td>
+<td><p>3.14.827f8f95</p></td>
+<td><ul class="simple">
+<li><p>Fixes: Fix resize op to account for annotations on sizes tensor</p></li>
+<li><p>Fixes: Deconv2D segfault data size calculated from model builder is incorrect.</p></li>
+<li><p>Fixes: Fix segfault in case of min/max with constant tensor.</p></li>
+<li><p>Fixes: Expand tensor shape when rank is different.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.4.0</p></td>
+<td><p>2.13.1</p></td>
+<td><p>3.12.a4c0bd91</p></td>
+<td><ul class="simple">
+<li><p>Fixes: Proper bias alignment for gemm with square output</p></li>
+<li><p>Fixes: Improve layernorm accuracy for small hidden_size</p></li>
+<li><p>Added: Support to different permutations of 1d bias matmul.</p></li>
+<li><p>Added: New memory planning compiler pipeline</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>2.3.0</p></td>
+<td><p>2.12.1</p></td>
+<td><p>3.10.e4d3cfa4</p></td>
+<td><ul class="simple">
+<li><p>Fixes: per-channel quantization</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.2.0</p></td>
+<td><p>2.11.1</p></td>
+<td><p>3.8.74ea5d84</p></td>
+<td><ul class="simple">
+<li><p>See op support updates</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>2.1.0</p></td>
+<td><p>2.10.1</p></td>
+<td><p>3.6.546129c7</p></td>
+<td><ul class="simple">
+<li><p>Fixes: symmetric quantization and compression ratio calc</p></li>
+<li><p>Added: support multiple nodes with same id, input name from onnx node for perlayer dump</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2.0.0</p></td>
+<td><p>2.9.1</p></td>
+<td></td>
+<td><ul class="simple">
+<li><p>Initial release</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../supported_api.html" class="btn btn-neutral float-right" title="Supported APIs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../htp/htp_api_version_history.html" class="btn btn-neutral float-left" title="QNN HTP API Revision History" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

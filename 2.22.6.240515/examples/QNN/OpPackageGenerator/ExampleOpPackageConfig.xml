@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2020 Qualcomm Technologies, Inc.
+All Rights Reserved.
+Confidential and Proprietary - Qualcomm Technologies, Inc.
+-->
+<OpDefCollection
+        PackageName="ExamplePackage"
+        Domain="example"
+        Version="1.0"
+>
+    <OpDefList>
+        <!--Example Op Package which defines a generic Softmax,
+        Tensorflow Conv2D and Tensorflow BiasAdd as custom operations-->
+        <OpDef>
+            <Name>Softmax</Name>
+            <Description>
+                <Content>
+                    Computes data normalization exponentially on an input tensor given an optional positive
+                    scaling factor, beta. The computation is done element-wise per batch along the last dimension.
+
+                    See Softmax backend definition for supported datatypes and constraints per backend
+                </Content>
+            </Description>
+
+            <Reference Source="Android NDK NeuralNetworks"
+                       Url="ANEURALNETWORKS_SOFTMAX &lt;https://developer.android.com/ndk/reference/group/neural-networks#group___neural_networks_1ggaabbe492c60331b13038e39d4207940e0a2bfbb83a537701e2843a3d5004250c2c&gt;"/>
+
+            <Input>
+                <Name>in[0]</Name>
+                <Description>
+                    <Content>input activation</Content>
+                </Description>
+                <Mandatory>true</Mandatory>
+                <Datatype>BACKEND_SPECIFIC</Datatype>
+                <Shape>
+                    <Rank>2D</Rank>
+                    <Text>A 2-dimensional tensor</Text>
+                </Shape>
+            </Input>
+
+            <Output>
+                <Name>out[0]</Name>
+                <Description>
+                    <Content>output activation</Content>
+                </Description>
+                <Mandatory>true</Mandatory>
+                <Datatype>BACKEND_SPECIFIC</Datatype>
+                <Shape>
+                    <Rank>2D</Rank>
+                    <Text>A 2-dimensional tensor</Text>
+                </Shape>
+            </Output>
+
+            <Parameter>
+                <Name>axis</Name>
+                <Mandatory>false</Mandatory>
+                <Datatype>QNN_DATATYPE_UINT_32</Datatype>
+                <Shape>
+                    <Rank>SCALAR</Rank>
+                </Shape>
+                <Default>N-1</Default>
+            </Parameter>
+
+            <!-- This implies that the op will be translated natively by the converter -->
+            <UseDefaultTranslation>true</UseDefaultTranslation>
+
+            <!--This Op is implemented on these Backends-->
+            <SupportedBackend>HTP</SupportedBackend>
+        </OpDef>
+
+        <!--Conv2D-->
+        <OpDef>
+            <Name>Conv2D</Name>
+            <Description>
+                <Content>
+                    Performs 2D convolution: dot-product of a set of 2D filters with input activation, producing
+                    output activation.
+                    Application of the filter moves according to the specified strides. For backends supporting
+                    quantized data types, clients can pass filters which are either quantized per-tensor or per-axis
+                    with possible constraints on the axis value that is supported.
+                    For regular convolution, *group* is 1. Group field greater than 1 implies a grouped convolution
+                    where a
+                    group of different filters is applied to each input channel group and the result is concatenated
+                    together.
+                    Note that *channel_out* and *channel_in* must be evenly divisible by *group*.
+                </Content>
+            </Description>
+            <Reference Source="Tensorflow"
+                       Url="Conv 2D &lt;https://www.tensorflow.org/api_docs/python/tf/nn/conv2d&gt;"/>
+            <Input>
+                <Name>in[0]</Name>
+                <Description>
+                    <Content>input activation</Content>
+                </Description>
+                <Mandatory>true</Mandatory>
+                <Datatype>BACKEND_SPECIFIC</Datatype>
+                <Shape>
+                    <Rank>4D</Rank>
+                    <Layout>NHWC</Layout>
+                    <Text>[batch, height, width, channel_in]</Text>
+                </Shape>
+            </Input>
+
+            <Input>
+                <Name>filter</Name>
+                <Description>
+                    <Content>filters</Content>
+                </Description>
+                <Mandatory>true</Mandatory>
+                <Datatype>BACKEND_SPECIFIC</Datatype>
+                <Shape>
+                    <Rank>4D</Rank>
+                    <Text>[filter_height, filter_width, channel_in / group, channel_out]</Text>
+                </Shape>
+                <IsStaticTensor>true</IsStaticTensor>
+            </Input>
+
+            <Input>
+                <Name>bias</Name>
+                <Description>
+                    <Content>bias</Content>
+                </Description>
+                <Mandatory>false</Mandatory>
+                <Datatype>BACKEND_SPECIFIC</Datatype>
+                <Shape>
+                    <Rank>1D</Rank>
+                    <Text>[channel_out]</Text>
+                </Shape>
+                <Default>{0,..,0}</Default>
+                <IsStaticTensor>true</IsStaticTensor>
+            </Input>
+
+            <Output>
+                <Name>out[0]</Name>
+                <Description>
+                    <Content>The output 2D spatial dimensions are functions of the filter size, stride, and pad_amount.
+                    </Content>
+                    <Code>
+                        dilated_filter_height = (shape(in[1])[height] - 1) * dilation[0] + 1
+                        dilated_filter_width = (shape(in[1])[width] - 1) * dilation[1] + 1
+                        height_out = floor((pad_amount[0,0] + shape(in[0])[height] + pad_amount[0,1] -
+                        dilated_filter_height) / stride[0] + 1)
+                        width_out = floor((pad_amount[1,0] + shape(in[0])[width] + pad_amount[1,1] -
+                        dilated_filter_width) /
+                        stride[1] + 1)
+                    </Code>
+                </Description>
+                <Mandatory>true</Mandatory>
+                <Datatype>BACKEND_SPECIFIC</Datatype>
+                <Shape>
+                    <Rank>4D</Rank>
+                    <Layout>NHWC</Layout>
+                    <Text>[batch, height_out, width_out, channel_out]</Text>
+                </Shape>
+            </Output>
+
+            <Parameter>
+                <Name>strides</Name>
+                <Description>
+                    <Content>Defines stride for 2D spatial axes of in[0]</Content>
+                </Description>
+                <Mandatory>true</Mandatory>
+                <Datatype>QNN_DATATYPE_UINT_32</Datatype>
+                <Shape>
+                    <Rank>1D</Rank>
+                    <Text>[height_stride, width_stride]</Text>
+                </Shape>
+            </Parameter>
+
+            <Parameter>
+                <Name>groups</Name>
+                <Mandatory>false</Mandatory>
+                <Datatype>QNN_DATATYPE_UINT_32</Datatype>
+                <Shape>
+                    <Rank>SCALAR</Rank>
+                </Shape>
+                <Default>1</Default>
+            </Parameter>
+            <Parameter>
+                <Name>use_cudnn_on_gpu</Name>
+                <Mandatory>false</Mandatory>
+                <Datatype>QNN_DATATYPE_BOOL_8</Datatype>
+                <Shape>
+                    <Rank>SCALAR</Rank>
+                </Shape>
+                <Default>0</Default>
+            </Parameter>
+            <Parameter>
+                <Name>dilations</Name>
+                <Description>
+                    <Content>
+                        Dilation parameter for height and width dimensions.
+                    </Content>
+                </Description>
+                <Mandatory>false</Mandatory>
+                <Datatype>QNN_DATATYPE_UINT_32</Datatype>
+                <Shape>
+                    <Rank>1D</Rank>
+                    <Text>[height_dilation, width_dilation]</Text>
+                </Shape>
+                <Default>{1, 1}</Default>
+            </Parameter>
+            <!--This Op is implemented on these Backends-->
+            <SupportedBackend>HTP</SupportedBackend>
+        </OpDef>
+              <OpDef>
+            <Name>BiasAdd</Name>
+            <Description>
+                <Content>
+                   Adds the provided bias attribute to the input value. It is a special case of elementwise add where
+                    the bias must be 1D.
+                </Content>
+            </Description>
+            <Reference Source="Tensorflow"
+                     Url="Bias Add &lt;https://www.tensorflow.org/api_docs/python/tf/nn/bias_add&gt;"/>
+            <Input>
+                <Name>in[0]</Name>
+                <Description>
+                    <Content>value</Content>
+                </Description>
+                <Mandatory>true</Mandatory>
+                <Datatype>BACKEND_SPECIFIC</Datatype>
+                <Shape>
+                    <Rank>ND</Rank>
+                    <Text>a tensor of N dimension</Text>
+                </Shape>
+            </Input>
+            <Input>
+                  <Name>bias</Name>
+                  <Description>
+                      <Content>bias</Content>
+                  </Description>
+                  <Mandatory>false</Mandatory>
+                  <Datatype>BACKEND_SPECIFIC</Datatype>
+                  <Shape>
+                      <Rank>1D</Rank>
+                      <Text>[channel_out]</Text>
+                  </Shape>
+                  <Default>{0,..,0}</Default>
+                 <IsStaticTensor>true</IsStaticTensor>
+              </Input>
+
+            <Output>
+                <Name>out[0]</Name>
+                <Description>
+                    <Content>output activation</Content>
+                </Description>
+                <Mandatory>true</Mandatory>
+                <Datatype>BACKEND_SPECIFIC</Datatype>
+                <Shape>
+                    <Rank>ND</Rank>
+                    <Text>a tensor of N dimension</Text>
+                </Shape>
+            </Output>
+
+            <!--This Op is implemented on these Backends-->
+            <SupportedBackend>HTP</SupportedBackend>
+        </OpDef>
+    </OpDefList>
+
+    <SupplementalOpDefList Backend="HTP">
+        <SupportedOps>
+            <OpName>Conv2D</OpName>
+            <OpName>Softmax</OpName>
+            <OpName>BiasAdd</OpName>
+        </SupportedOps>
+
+        <!--Conv2D-->
+        <SupplementalOpDef>
+            <Name>Conv2D</Name>
+
+            <Input>
+                <Name>in[0]</Name>
+                <Datatype>QNN_DATATYPE_FLOAT_32</Datatype>
+                <Datatype>QNN_DATATYPE_UFIXED_POINT_8</Datatype>
+                <Datatype>QNN_DATATYPE_UFIXED_POINT_16</Datatype>
+            </Input>
+
+            <Input>
+                <Name>filter</Name>
+                <Datatype>QNN_DATATYPE_FLOAT_32</Datatype>
+                <Datatype>QNN_DATATYPE_UFIXED_POINT_8</Datatype>
+                <Datatype>QNN_DATATYPE_UFIXED_POINT_16</Datatype>
+            </Input>
+
+            <Input>
+                <Name>bias</Name>
+                <!--This will be quantization in the future-->
+                <Constraint id="0" Type="Description">Supports QNN_QUANTIZATION_ENCODING_AXIS_SCALE_OFFSET for filters
+                    with channel axis
+                </Constraint>
+                <Datatype>QNN_DATATYPE_FLOAT_32</Datatype>
+                <Datatype>QNN_DATATYPE_UFIXED_POINT_8</Datatype>
+                <Datatype>QNN_DATATYPE_UFIXED_POINT_16</Datatype>
+                <Datatype>QNN_DATATYPE_SFIXED_POINT_32</Datatype>
+            </Input>
+
+            <Output>
+                <Name>out[0]</Name>
+                <Datatype>QNN_DATATYPE_FLOAT_32</Datatype>
+                <Datatype>QNN_DATATYPE_UFIXED_POINT_8</Datatype>
+                <Datatype>QNN_DATATYPE_UFIXED_POINT_16</Datatype>
+            </Output>
+        </SupplementalOpDef>
+
+        <!--Softmax-->
+        <SupplementalOpDef>
+            <Name>Softmax</Name>
+
+            <Input>
+                <Name>in[0]</Name>
+                <Datatype>QNN_DATATYPE_FLOAT_32</Datatype>
+                <Datatype>QNN_DATATYPE_UFIXED_POINT_8</Datatype>
+                <Datatype>QNN_DATATYPE_UFIXED_POINT_16</Datatype>
+            </Input>
+
+            <Output>
+                <Name>out[0]</Name>
+                <Datatype>QNN_DATATYPE_FLOAT_32</Datatype>
+                <Datatype>QNN_DATATYPE_UFIXED_POINT_8</Datatype>
+                <Datatype>QNN_DATATYPE_UFIXED_POINT_16</Datatype>
+            </Output>
+        </SupplementalOpDef>
+
+        <!--BiasAdd-->
+        <SupplementalOpDef>
+            <Name>BiasAdd</Name>
+
+            <Input>
+                <Name>in[0]</Name>
+                <Datatype>QNN_DATATYPE_FLOAT_32</Datatype>
+                <Datatype>QNN_DATATYPE_UFIXED_POINT_8</Datatype>
+                <Datatype>QNN_DATATYPE_UFIXED_POINT_16</Datatype>
+            </Input>
+            <Input>
+                <Name>bias</Name>
+                <!--This will be quantization in the future-->
+                <Constraint id="0" Type="Description">Supports QNN_QUANTIZATION_ENCODING_AXIS_SCALE_OFFSET for filters
+                    with channel axis
+                </Constraint>
+                <Datatype>QNN_DATATYPE_FLOAT_32</Datatype>
+                <Datatype>QNN_DATATYPE_UFIXED_POINT_8</Datatype>
+                <Datatype>QNN_DATATYPE_UFIXED_POINT_16</Datatype>
+                <Datatype>QNN_DATATYPE_SFIXED_POINT_32</Datatype>
+            </Input>
+
+            <Output>
+                <Name>out[0]</Name>
+                <Datatype>QNN_DATATYPE_FLOAT_32</Datatype>
+                <Datatype>QNN_DATATYPE_UFIXED_POINT_8</Datatype>
+                <Datatype>QNN_DATATYPE_UFIXED_POINT_16</Datatype>
+            </Output>
+        </SupplementalOpDef>
+    </SupplementalOpDefList>
+
+</OpDefCollection>

@@ -1,0 +1,323 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Qairt Quantizer &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Model Tips" href="usergroup4.html" />
+    <link rel="prev" title="Qairt Converter" href="qairt_converter.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="usergroup1.html">Network Models</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="network_layers.html">Supported Network Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supported_onnx_ops.html">Supported ONNX Ops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quantized_models.html">Quantized vs Non-Quantized Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup2.html">User-defined Operations</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="usergroup3.html">Model Conversion</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="model_conv_tensorflow.html">TensorFlow Model Conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensorflow_graphs.html">Tensorflow Graph Compatibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model_conv_tflite.html">TFLite Model Conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model_conv_pytorch.html">PyTorch Model Conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model_conv_onnx.html">ONNX Model Conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model_conversion.html">Quantizing a Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="offline_graph_caching.html">Offline Graph Caching for DSP Runtime on HTP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qairt_converter.html">Qairt Converter</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Qairt Quantizer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#additional-details">Additional details</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="usergroup4.html">Model Tips</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup6.html">Tutorials and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="usergroup1.html">Network Models</a> &raquo;</li>
+        
+          <li><a href="usergroup3.html">Model Conversion</a> &raquo;</li>
+        
+      <li>Qairt Quantizer</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="qairt-quantizer">
+<h1>Qairt Quantizer<a class="headerlink" href="#qairt-quantizer" title="Permalink to this heading">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This tool is still in a Beta release status.</p>
+</div>
+<p>The <a class="reference external" href="tools.html#qairt-converter">qairt-converter</a> tool converts non-quantized models into a non-quantized DLC file.
+Quantizing requires another step. The <a class="reference external" href="tools.html#qairt-quantizer">qairt-quantizer</a> tool is used to quantize the model
+to one of supported fixed point formats.</p>
+<p>For example, the following command will convert an Inception v3 DLC file into a quantized Inception v3 DLC file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ qairt-quantizer --input_dlc inception_v3.dlc --input_list image_file_list.txt \
+                  --output_dlc inception_v3_quantized.dlc
+</pre></div>
+</div>
+<p>To properly calculate the ranges for the quantization parameters, a representative set of input data needs to be used as
+input into <a class="reference external" href="tools.html#qairt-quantizer">qairt-quantizer</a> using the <code class="docutils literal notranslate"><span class="pre">--input_list</span></code> parameter.
+The input list specifies paths to raw image files used for quantization.
+For specifying <code class="docutils literal notranslate"><span class="pre">--input_list</span></code>, refer to input_list argument in <a class="reference external" href="tools.html#snpe-net-run">snpe-net-run</a> for supported
+input formats (in order to calculate output activation encoding information for all layers, <strong>do not</strong> include the line
+which specifies desired outputs).</p>
+<p>The tool requires the batch dimension of the DLC input file to be set to 1 during model conversion. The batch dimension
+can be changed to a different value for inference, by <a class="reference external" href="network_resize.html">resizing</a> the network during initialization.</p>
+<div class="section" id="additional-details">
+<h2>Additional details<a class="headerlink" href="#additional-details" title="Permalink to this heading">¶</a></h2>
+<ul>
+<li><p>qairt-quantizer is majorly similar to snpe-dlc-quant with the following differences:</p>
+<ul>
+<li><p>External Overrides and Source Model Encodings (QAT) cached in Float DLC during
+Conversion stage are applied by default. Use the command line argument “–ignore_encodings”
+to ignore Overrides and Source Model Encodings and use Quantizer Runtime to
+generate encodings using calibration dataset provided through “–input_list”.</p></li>
+<li><p>Float_Fallback feature: A command line option “–float_fallback” is added to enable
+this feature. When the command line option is specified, Qairt quantizer produces a
+fully quantized or mixed precision graph by applying encoding overrides or
+Source model encodings, propagate encodings accross Data invariant Ops and fallback
+the missing tensors in float datatype.</p>
+<p>Note: float_fallback and input_list are mutually exclusive options. One of them is
+mandatory for quantizer</p>
+</li>
+</ul>
+</li>
+<li><p>Outputs can be specified for qairt-quantizer by modifying the input_list in the following ways:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>#&lt;output_layer_name&gt;[&lt;space&gt;&lt;output_layer_name&gt;]
+%&lt;output_tensor_name&gt;[&lt;space&gt;&lt;output_tensor_name&gt;]
+&lt;input_layer_name&gt;:=&lt;input_layer_path&gt;[&lt;space&gt;&lt;input_layer_name&gt;:=&lt;input_layer_path&gt;]
+</pre></div>
+</div>
+<p><strong>Note:</strong> Output tensors and layers can be specified individually, but when specifying both, the order shown must
+be used to specify each.</p>
+</li>
+<li><p>qairt-quantizer also supports quantization using AIMET, inplace of default Quantizer,
+when “–use_aimet_quantizer” command line option is provided. To use AIMET Quantizer,
+run the setup script to create AIMET specific environment, by executing the following command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ source {SNPE_ROOT}/bin/aimet_env_setup.sh --env_path &lt;path where AIMET venv needs to be created&gt; \
+                                            --aimet_sdk_tar &lt;AIMET Torch SDK tarball&gt;
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>Note:</strong></dt><dd><ol class="arabic simple">
+<li><p>AIMET Torch Tarball naming convention should be as follows -
+aimetpro-release-&lt;VERSION (optionally with build ID)&gt;.torch-&lt;cpu/gpu&gt;-.*.tar.gz.
+For example, aimetpro-release-x.xx.x.torch-xxx-release.tar.gz.</p></li>
+<li><p>Once the setup script is run, ensure that AIMET_ENV_PYTHON environment variable is set to
+&lt;AIMET virtual environment path&gt;/bin/python</p></li>
+<li><p>Minimum AIMET version supported is, <strong>AIMET-1.32.0</strong></p></li>
+</ol>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="usergroup4.html" class="btn btn-neutral float-right" title="Model Tips" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="qairt_converter.html" class="btn btn-neutral float-left" title="Qairt Converter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

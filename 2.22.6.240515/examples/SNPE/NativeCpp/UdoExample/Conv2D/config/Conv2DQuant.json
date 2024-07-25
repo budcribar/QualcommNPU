@@ -1,0 +1,29 @@
+{
+  "UdoPackage_0":
+  {
+    "Operators": [
+      {
+        "type": "Conv",
+        "inputs":[
+          {"name":"input", "data_type":"UINT_8", "tensor_layout": "NHWC", "quantization_mode":"TF"},
+          {"name":"weight", "data_type":"UINT_8", "static":true, "tensor_layout": "NHWC", "default_value": [1.0], "quantization_mode":"TF"},
+          {"name":"bias", "data_type":"UINT_8", "static":true, "tensor_layout": "NHWC", "default_value": [1.0], "quantization_mode":"TF"}
+        ],
+        "outputs":[
+          {"name":"output", "data_type":"UINT_8", "tensor_layout":"NHWC", "quantization_mode":"TF"}
+        ],
+        "scalar_params": [
+          {"name": "group", "data_type": "INT_32", "default_value": 1}
+        ],
+        "tensor_params": [
+          {"name": "pads", "data_type": "INT_32", "default_value": [1, 1]},
+          {"name": "strides", "data_type": "INT_32", "default_value": [1, 1]},
+          {"name": "dilations", "data_type": "INT_32", "default_value": [1, 1]},
+          {"name": "kernel_shape", "data_type": "INT_32", "default_value": [1]}
+        ],
+        "core_types": ["DSP"]
+      }
+    ],
+    "UDO_PACKAGE_NAME": "Conv2DPackage"
+  }
+}

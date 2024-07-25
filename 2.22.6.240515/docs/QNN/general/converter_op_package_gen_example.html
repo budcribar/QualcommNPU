@@ -1,0 +1,414 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Create a QNN converter Op Package shared library &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tools" href="tools.html" />
+    <link rel="prev" title="Example XML OpDef Configs" href="example_op_defs.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend.html">Backend</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="op_packages.html">Op Packages</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="generating_op_packages.html"> Generating Op Packages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="op_package_gen_example.html">QNN Op Package Code Generation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="op_def_schema.html">XML OpDef Schema Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="example_op_defs.html">Example XML OpDef Configs</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">QNN Converter Op Package Code Generation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#linux-platform">Linux Platform</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="op_packages.html">Op Packages</a> &raquo;</li>
+        
+          <li><a href="generating_op_packages.html">Generating Custom Op Packages</a> &raquo;</li>
+        
+      <li>Create a QNN converter Op Package shared library</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="create-a-qnn-converter-op-package-shared-library">
+<h1>Create a QNN converter Op Package shared library<a class="headerlink" href="#create-a-qnn-converter-op-package-shared-library" title="Permalink to this heading">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">qnn-op-package-generator</span></code> generates skeleton code and makefiles used to create a QNN converter Op Package shared
+library. <code class="docutils literal notranslate"><span class="pre">qnn-op-package-generator</span></code> takes an XML configuration as an input that describes the package attributes
+and the <code class="docutils literal notranslate"><span class="pre">--converter_op_package</span></code> or <code class="docutils literal notranslate"><span class="pre">-cop</span></code> option that specifies whether to generate the converter Op Package and
+produce a QNN converter Op Package directory structure.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Executing <code class="docutils literal notranslate"><span class="pre">qnn-op-package-generator</span></code> with the <code class="docutils literal notranslate"><span class="pre">--converter_op_pacakge</span></code> or <code class="docutils literal notranslate"><span class="pre">-cop</span></code> option creates a Converter Op Package
+in addition to the QNN Op Package. The name of the Converter Op Package generated will be <em>QNN Op Package</em> appended
+with the string <code class="docutils literal notranslate"><span class="pre">Converter_Op_Package</span></code>. <strong>The option is not supported on Windows platform yet</strong>.</p>
+</div>
+<div class="section" id="linux-platform">
+<h2>Linux Platform<a class="headerlink" href="#linux-platform" title="Permalink to this heading">¶</a></h2>
+<ol class="arabic">
+<li><p>Create a Converter Op Package skeleton - Using ReluOpPackage as an example.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These instructions assume that the general setup instructions <a class="footnote-reference brackets" href="#id3" id="id1">1</a> have been followed and that <code class="docutils literal notranslate"><span class="pre">qnn-op-package-generator</span></code>
+is accessible on the command line.
+For Linux users, the converter Op Package can be generated and compiled on a linux-86_64 platform.</p>
+</div>
+<ol class="loweralpha">
+<li><p>Define an XML OpDef configuration. This operation definition XML describes package information like name, version,
+and domain. See <a class="reference internal" href="op_def_schema.html"><span class="doc">XML OpDef Schema Breakdown</span></a> for more information about XML schema.</p>
+<p>Sample configurations can also be found at <a class="reference internal" href="example_op_defs.html"><span class="doc">Example XML Op Def Configs</span></a> and in the SDK at:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">OpPackageGenerator</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The XML configuration used to generate the QNN Converter Op Package is same as the XML configuration used in QNN Op Package generation.</p>
+</div>
+</li>
+<li><p>Run the <code class="docutils literal notranslate"><span class="pre">qnn-op-package-generator</span></code> tool and pass the XML configuration using the <code class="docutils literal notranslate"><span class="pre">--config_path</span></code> or <code class="docutils literal notranslate"><span class="pre">-p</span></code> option along with the
+<code class="docutils literal notranslate"><span class="pre">--converter_op_pacakge</span></code> or <code class="docutils literal notranslate"><span class="pre">-cop</span></code> option.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">qnn</span><span class="o">-</span><span class="n">op</span><span class="o">-</span><span class="n">package</span><span class="o">-</span><span class="n">generator</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="o">&lt;</span><span class="n">QNN_SDK_ROOT</span><span class="o">&gt;/</span><span class="n">examples</span><span class="o">/</span><span class="n">QNN</span><span class="o">/</span><span class="n">OpPackageGenerator</span><span class="o">/</span><span class="n">ReluOpPackageCpu</span><span class="p">.</span><span class="n">xml</span><span class="w"> </span><span class="o">-</span><span class="n">cop</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="o">&lt;</span><span class="n">output_dir</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>This command creates an Op Package named <em>ReluOpPackage</em> and a converter Op Package named <em>ReluOpPackage_Converter_Op_Package</em>. <a class="footnote-reference brackets" href="#id4" id="id2">2</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">-p</span></code> command line option can be specified multiple times to generate different packages, provided each
+package name is distinct. If the package name is not distinct, the tool will merge all ops defined in each
+configuration into a single package directory.</p>
+</div>
+</li>
+</ol>
+<ul>
+<li><p>Directory structure</p>
+<p>The package directory tree is shown and explained below:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>|-- Makefile
+|-- ConverterOpPackage
+    |-- ConverterOpPackage.cpp
+    `-- Makefile.linux-x86_64
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Makefile – Contains make targets and rules to compile the package source files for x86 targets.</p></li>
+<li><p>ConverterOpPackage – Contains generated source files for all operations defined in the configuration and target specific
+makefile.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The converter Op Package must be generated and compiled on a linux-86_64 platform.</p>
+</div>
+<ol class="arabic">
+<li><p>Implement the skeleton code</p>
+<ul>
+<li><p>Op source file – ConverterOpPackage.cpp</p>
+<p>The source file contains empty functions bodies that should be completed by users. The code used in this section
+references the generated package in <a class="reference internal" href="#package-directory-structure"><span class="std std-ref">Directory Structure</span></a>.
+The following example highlights the output for the Relu op defined in the example configuration.</p>
+<p>The following autogenerated code contains a structure that takes opConfig of type Qnn_OpConfig_t as its
+parameter. OpConfig is the operations configuration for storage and retrieval of inputs, outputs, and
+parameters.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">EXPORT_API</span><span class="w"> </span><span class="n">Qnn_ErrorHandle_t</span><span class="w"> </span><span class="n">ReluShapeInference</span><span class="p">(</span><span class="n">Qnn_OpConfig_t</span><span class="w"> </span><span class="o">*</span><span class="n">opConfig</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="cm">/**</span>
+<span class="linenos"> 4</span><span class="cm">* Add code here</span>
+<span class="linenos"> 5</span><span class="cm">**/</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="k">return</span><span class="w"> </span><span class="n">QNN_SUCCESS</span><span class="p">;</span>
+<span class="linenos"> 8</span><span class="p">}</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="n">Qnn_ErrorHandle_t</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">ReluOutputInfoInferencePtr</span><span class="p">)(</span><span class="n">Qnn_OpConfig_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ReluShapeInference</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Complete the function by implementing the logic to populate output shapes using the opConfig and add any
+necessary validation. The function is called by a function pointer associated by the converter.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">EXPORT_API</span><span class="w"> </span><span class="n">Qnn_ErrorHandle_t</span><span class="w"> </span><span class="n">ReluDataTypeInference</span><span class="p">(</span><span class="n">Qnn_OpConfig_t</span><span class="w"> </span><span class="o">*</span><span class="n">opConfig</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="cm">/**</span>
+<span class="linenos"> 4</span><span class="cm">* Add code here</span>
+<span class="linenos"> 5</span><span class="cm">**/</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="k">return</span><span class="w"> </span><span class="n">QNN_SUCCESS</span><span class="p">;</span>
+<span class="linenos"> 8</span><span class="p">}</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="n">Qnn_ErrorHandle_t</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">ReluDataTypeInferencePtr</span><span class="p">)(</span><span class="n">Qnn_OpConfig_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ReluDataTypeInference</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Complete the function by implementing the logic to populate output datatypes using the opConfig and add any
+necessary validation. The function is called by a function pointer associated by the converter</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Users can populate both the output shapes and output datatypes within a single function named operation name
+followed by ShapeInference (Eg: ReluShapeInference for Relu operation). This ensures backward compatibility.
+Users should note that populating both the output shapes and output datatypes within the same function will be
+deprecated and the logic to populate the output shapes must be written in OpNameShapeInference function and
+and output datatypes must be written in OpNameDataTypeInference function respectively.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The operation name <em>must</em> be a valid C++ identifier, meaning that it can only contain alphanumeric characters and
+underscores.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The inputs, outputs, and parameters order in the opConfig <em>must</em> follow the order they are present in the model.
+See <code class="docutils literal notranslate"><span class="pre">&lt;QNN_SDK_ROOT&gt;/examples/QNN/OpPackageGenerator/generated/CONVERTER</span></code> for sample Relu implementation.</p>
+</div>
+</li>
+</ul>
+</li>
+<li><p>Compile the package for x86 targets.</p>
+<ol class="loweralpha">
+<li><p>Set up the QNN environment.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="o">&lt;</span><span class="n">QNN_SDK_ROOT</span><span class="o">&gt;/</span><span class="n">bin</span><span class="o">/</span><span class="n">envsetup</span><span class="p">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Required for x86</strong>: Ensure clang compiler is in your path, or set CXX to point to a valid compiler path.[3]_</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Steps a-b can also be set manually in the makefiles or as a command line option to make without the use of scripts.</p>
+</div>
+<ol class="loweralpha" start="3">
+<li><p>Compile the package for x86 targets :</p>
+<blockquote>
+<div><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">make</span><span class="w"> </span><span class="n">cpu</span>
+<span class="n">or</span>
+<span class="n">make</span><span class="w"> </span><span class="n">cpu_x86</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>This creates a shared library at <em>&lt;current_dir&gt;/&lt;package_name&gt;_Converter_Op_Package/ConverterOpPackage/lib&lt;ConverterOpPackage&gt;.so</em></p>
+</li>
+</ol>
+</li>
+</ol>
+<dl class="footnote brackets">
+<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>For instructions on QNN tool setup, see <a class="reference internal" href="setup.html"><span class="doc">Setup</span></a>.</p>
+</dd>
+<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>If the directory already exists, the tool will only generate new files and attempt to append to existing files.
+To force a new package to be generated, use the <code class="docutils literal notranslate"><span class="pre">--force-generation</span></code> option.</p>
+</dd>
+<dt class="label" id="id5"><span class="brackets">3</span></dt>
+<dd><p>The script, <code class="docutils literal notranslate"><span class="pre">&lt;QNN_SDK_ROOT&gt;/bin/check-linux-dependency.sh</span></code>, can also be used to download
+the appropriate Clang version if it is not present.</p>
+</dd>
+</dl>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="tools.html" class="btn btn-neutral float-right" title="Tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="example_op_defs.html" class="btn btn-neutral float-left" title="Example XML OpDef Configs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,367 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Saver &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Op Packages" href="../op_packages.html" />
+    <link rel="prev" title="GPU" href="../gpu/gpu_backend.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup.html">Setup</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../backend.html">Backend</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../backend.html#backend-specific-pages">Backend Specific Pages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../dsp/dsp_backend.html">DSP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../htp/htp_backend.html">HTP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hta/hta_backend.html">HTA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lpai/lpai_backend.html">LPAI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cpu/cpu_backend.html">CPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gpu/gpu_backend.html">GPU</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Saver</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api-specializations">API Specializations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../backend.html">Backend</a> &raquo;</li>
+        
+      <li>Saver</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="saver">
+<h1>Saver<a class="headerlink" href="#saver" title="Permalink to this heading">¶</a></h1>
+<p>This section provides information specific to QNN Saver Backend.</p>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">¶</a></h2>
+<p>The QNN Saver is a backend provided by the QNN SDK primarily intended for debugging purposes. It is
+a backend in the sense that it is a shared library that implements all QNN APIs, but unlike all
+other backends, Saver does not execute any graphs. Instead, it records all QNN API calls and their
+arguments into files which can be replayed on any QNN backend.</p>
+<p>Here are some details on the files that Saver produces - <code class="docutils literal notranslate"><span class="pre">saver_output.c</span></code> and <code class="docutils literal notranslate"><span class="pre">params.bin</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">saver_output.c</span></code> is a C file containing all QNN API calls.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">params.bin</span></code> is an unstructured binary file that contains all input/output/parameter tensor data
+provided during tensor creation, op config validation, and graph execution.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">saver_output.c</span></code> can be used to visually inspect all QNN API calls to ensure they are being called
+in the correct order, the arguments are well-formed, etc. It can also be compiled and linked against
+a QNN backend library to be replayed.</p>
+<p>At runtime, the tensor data will be read from <code class="docutils literal notranslate"><span class="pre">params.bin</span></code> and the recorded QNN APIs will be
+called in the same order as they were invoked on the Saver backend. Any error codes returned from
+QNN APIs during replay will be printed to stdout.</p>
+<p>For instructions on how to generate and replay <code class="docutils literal notranslate"><span class="pre">saver_output.c</span></code>, refer to
+<a class="reference internal" href="saver_tutorial.html"><span class="doc">Save execution sequence with Saver and replay on a backend</span></a>.</p>
+</div>
+<div class="section" id="api-specializations">
+<h2>API Specializations<a class="headerlink" href="#api-specializations" title="Permalink to this heading">¶</a></h2>
+<p>This section contains information related to API specialization for the Saver backend. All QNN Saver
+backend specialization is available under <code class="docutils literal notranslate"><span class="pre">&lt;QNN_SDK_ROOT&gt;/include/QNN/Saver/</span></code> directory.</p>
+<div class="section" id="qnn-saver-api">
+<h3>QNN Saver API<a class="headerlink" href="#qnn-saver-api" title="Permalink to this heading">¶</a></h3>
+<p>In addition to all other QNN APIs, the Saver backend also implements
+<a class="reference internal" href="../../api-rst/function_QnnSaver_8h_1a5f8838a17d72b6c36e04d85dae510fc2.html#exhale-function-qnnsaver-8h-1a5f8838a17d72b6c36e04d85dae510fc2"><span class="std std-ref">QnnSaver_initialize()</span></a>. This
+function can be used to supply Saver with custom configuration. This function is optional, and is
+only needed if custom configuration is desired. If this function is used, it must be called <em>before</em>
+<span class="xref std std-ref">QnnBackend_initialize()</span>.</p>
+<p>This function and its corresponding datatypes are located in <a class="reference internal" href="../../api-rst/file_include_QNN_Saver_QnnSaver.h.html#file-include-qnn-saver-qnnsaver-h"><span class="std std-ref">File QnnSaver.h</span></a>.</p>
+<div class="section" id="usage">
+<h4>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h4>
+<p>Similar to other QNN APIs that support custom configurations (e.g.
+<span class="xref std std-ref">QnnBackend_initialize()</span>),
+<a class="reference internal" href="../../api-rst/function_QnnSaver_8h_1a5f8838a17d72b6c36e04d85dae510fc2.html#exhale-function-qnnsaver-8h-1a5f8838a17d72b6c36e04d85dae510fc2"><span class="std std-ref">QnnSaver_initialize()</span></a> also
+takes as input a NULL-terminated array of pointers to config objects. The appropriate config object
+for this API is <a class="reference internal" href="../../api-rst/structQnnSaver__Config__t.html#exhale-struct-structqnnsaver-config-t"><span class="std std-ref">Struct QnnSaver_Config_t</span></a>.</p>
+<p>A description of each config option as well as code examples are shown below.</p>
+<div class="section" id="output-directory">
+<h5>Output directory<a class="headerlink" href="#output-directory" title="Permalink to this heading">¶</a></h5>
+<p>The default output directory for Saver outputs (saver_output.c and params.bin) is
+<code class="docutils literal notranslate"><span class="pre">./saver_output/</span></code>. This can be configured to any directory. If a relative path is given, the
+output directory will be relative to the current working directory. If the specified directory
+does not exist, it will be created.</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Output directory configuration</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w"> </span><span class="n">QnnSaver_Config_t</span><span class="w"> </span><span class="n">outputDirCfg</span><span class="p">;</span>
+<span class="linenos">2</span><span class="w"> </span><span class="n">outputDirCfg</span><span class="p">.</span><span class="n">option</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QNN_SAVER_CONFIG_OPTION_OUTPUT_DIRECTORY</span><span class="p">;</span>
+<span class="linenos">3</span><span class="w"> </span><span class="n">outputDirCfg</span><span class="p">.</span><span class="n">outputDirectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;./saver_output_config_example/&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">//can be absolute e.g. &quot;/data/local/tmp/saver/&quot;</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">QnnSaver_Config_t</span><span class="w"> </span><span class="o">*</span><span class="n">saverCfg</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="o">&amp;</span><span class="n">outputDirCfg</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">};</span>
+<span class="linenos">6</span><span class="w"> </span><span class="n">QnnSaver_initialize</span><span class="p">(</span><span class="n">saverCfg</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="output-file-timestamp">
+<h5>Output file timestamp<a class="headerlink" href="#output-file-timestamp" title="Permalink to this heading">¶</a></h5>
+<p>By default, Saver outputs are overwritten between consecutive runs. To prevent overwriting, the
+filenames can be made unique by appending a timestamp. This option may be useful if Saver is being
+used in an automated environment, as all outputs will be saved for later debugging. Any nonzero
+value will enable this option.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Keep in mind that because params.bin contains all input tensor data, enabling this setting will
+result in duplication of this data, and may take up significant storage over time.</p>
+</div>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Timestamp configuration</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w"> </span><span class="n">QnnSaver_Config_t</span><span class="w"> </span><span class="n">appendTimestampCfg</span><span class="p">;</span>
+<span class="linenos">2</span><span class="w"> </span><span class="n">appendTimestampCfg</span><span class="p">.</span><span class="n">option</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QNN_SAVER_CONFIG_OPTION_APPEND_TIMESTAMP</span><span class="p">;</span>
+<span class="linenos">3</span><span class="w"> </span><span class="n">appendTimestampCfg</span><span class="p">.</span><span class="n">appendTimestamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">QnnSaver_Config_t</span><span class="w"> </span><span class="o">*</span><span class="n">saverCfg</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="o">&amp;</span><span class="n">appendTimestampCfg</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">};</span>
+<span class="linenos">6</span><span class="w"> </span><span class="n">QnnSaver_initialize</span><span class="p">(</span><span class="n">saverCfg</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="backend-id">
+<h5>Backend ID<a class="headerlink" href="#backend-id" title="Permalink to this heading">¶</a></h5>
+<p>By default, Saver does not record backend-specific custom configs when they are passed to supported
+APIs (e.g.
+<span class="xref std std-ref">QnnBackend_initialize()</span>).
+To enable these backend-specific configs to be recorded, Saver must be supplied with the desired
+backend ID of the backend to which these configs apply.</p>
+<p>IDs for the backends exposed by QNN are defined in
+<code class="docutils literal notranslate"><span class="pre">&lt;QNN_SDK_ROOT&gt;/include/QNN/&lt;backend&gt;/Qnn&lt;backend&gt;Common.h</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Backend ID configuration</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="w"> </span><span class="n">QnnSaver_Config_t</span><span class="w"> </span><span class="n">backendIdCfg</span><span class="p">;</span>
+<span class="linenos"> 2</span><span class="w"> </span><span class="n">backendIdCfg</span><span class="p">.</span><span class="n">option</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QNN_SAVER_CONFIG_OPTION_BACKEND_ID</span><span class="p">;</span>
+<span class="linenos"> 3</span><span class="w"> </span><span class="n">backendIdCfg</span><span class="p">.</span><span class="n">backendId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QNN_BACKEND_ID_GPU</span><span class="p">;</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">QnnSaver_Config_t</span><span class="w"> </span><span class="o">*</span><span class="n">saverCfg</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="o">&amp;</span><span class="n">backendIdCfg</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">};</span>
+<span class="linenos"> 6</span><span class="w"> </span><span class="n">QnnSaver_initialize</span><span class="p">(</span><span class="n">saverCfg</span><span class="p">)</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="w"> </span><span class="c1">// Can now pass GPU custom configs and have them recorded by Saver in saver_output.c</span>
+<span class="linenos"> 9</span><span class="w"> </span><span class="n">QnnGpuBackend_CustomConfig_t</span><span class="w"> </span><span class="n">gpuConfig</span><span class="p">;</span>
+<span class="linenos">10</span><span class="w"> </span><span class="n">gpuConfig</span><span class="p">.</span><span class="n">kernelRepoDir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;/data/local/tmp/example/&quot;</span><span class="p">;</span>
+<span class="linenos">11</span><span class="w"> </span><span class="n">gpuConfig</span><span class="p">.</span><span class="n">invalidateKernelRepo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="w"> </span><span class="n">QnnBackend_Config_t</span><span class="w"> </span><span class="n">backendConfigGpu</span><span class="p">;</span>
+<span class="linenos">14</span><span class="w"> </span><span class="n">backendConfigGpu</span><span class="p">.</span><span class="n">option</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QNN_BACKEND_CONFIG_OPTION_CUSTOM</span><span class="p">;</span>
+<span class="linenos">15</span><span class="w"> </span><span class="n">backendConfigGpu</span><span class="p">.</span><span class="n">customConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">gpuConfig</span><span class="p">;</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">QnnBackend_Config_t</span><span class="w"> </span><span class="o">*</span><span class="n">backendConfig</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="o">&amp;</span><span class="n">backendConfigGpu</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">};</span>
+<span class="linenos">18</span><span class="w"> </span><span class="n">QnnBackend_initialize</span><span class="p">(</span><span class="n">backendConfig</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../op_packages.html" class="btn btn-neutral float-right" title="Op Packages" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../gpu/gpu_backend.html" class="btn btn-neutral float-left" title="GPU" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

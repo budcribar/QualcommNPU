@@ -1,0 +1,362 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Compiling a UDO package for Windows &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Preparing a model with UDO" href="preparing_model_with_udo.html" />
+    <link rel="prev" title="Compiling a UDO package" href="compiling_udo_package.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="usergroup1.html">Network Models</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="network_layers.html">Supported Network Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supported_onnx_ops.html">Supported ONNX Ops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quantized_models.html">Quantized vs Non-Quantized Models</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="usergroup2.html">User-defined Operations</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="udo_overview.html">Overview of UDO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="udo_operator_definition.html">Defining a UDO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="udo_package_definition.html">Defining a UDO Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="creating_udo_package.html">Creating a UDO Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="compiling_udo_package.html">Compiling a UDO package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Compiling a UDO package for Windows</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#build-environment-on-windows">Build Environment on Windows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#essential-components">Essential Components</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-cmake-udo-package">Create CMake UDO package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compiling-a-windows-udo-for-registration-library-and-cpu-implementation-library-optional-on-devices">Compiling a Windows UDO for Registration Library and CPU Implementation Library (Optional) on Devices</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="preparing_model_with_udo.html">Preparing a model with UDO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running_model_with_udo.html">Running a model with UDO</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup3.html">Model Conversion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup6.html">Tutorials and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="usergroup1.html">Network Models</a> &raquo;</li>
+        
+          <li><a href="usergroup2.html">User-defined Operations</a> &raquo;</li>
+        
+      <li>Compiling a UDO package for Windows</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="compiling-a-udo-package-for-windows">
+<h1>Compiling a UDO package for Windows<a class="headerlink" href="#compiling-a-udo-package-for-windows" title="Permalink to this heading">¶</a></h1>
+<div class="ui-resizable side-nav-resizable docutils container" id="side-nav">
+<div class="docutils container" id="nav-tree">
+<div class="docutils container" id="nav-tree-contents">
+</div>
+</div>
+</div>
+<div class="docutils container" id="doc-content">
+<div class="header docutils container">
+</div>
+<div class="contents docutils container">
+</div>
+</div>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><p>This section provides information about how to prepare essential
+artifacts on Linux and compiling udo package on Windows.</p>
+<p>As explained in <a class="reference external" href="udo_overview.html">Overview of UDO</a>, This section explains detailed UDO library
+compilation flow on Windows.</p>
+</div></blockquote>
+</div>
+<div class="section" id="build-environment-on-windows">
+<h2>Build Environment on Windows<a class="headerlink" href="#build-environment-on-windows" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>CMake version minimum requirement 3.21</p></li>
+<li><p>MSVC v143 ARM64 build tools</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="essential-components">
+<h2>Essential Components<a class="headerlink" href="#essential-components" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><p>Listed below are the required components which need to be generated on Linux.</p>
+<blockquote>
+<div><ul>
+<li><p>For UDO with CPU Runtime implementation</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>UDO package</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>For UDO with V68 DSP Runtime implementation</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>UDO package</p></li>
+<li><p>Quantized DLC (HTP-enabled), see <a class="reference external" href="preparing_model_with_udo.html#quantize_network_with_udo">Preparing a model with UDO</a></p></li>
+<li><p>DSP implementation lib, see <a class="reference external" href="compiling_udo_package.html#implementing_udo_for_htp">Compiling a UDO package</a></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="create-cmake-udo-package">
+<h2>Create CMake UDO package<a class="headerlink" href="#create-cmake-udo-package" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><div class="line-block">
+<div class="line">This step is performed on Linux, and the package can be used in both Linux and Windows.</div>
+<div class="line">Add argument <strong>\-\-gen_cmakelists</strong> when using snpe-udo-package-generator. e.g:</div>
+</div>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>snpe-udo-package-generator --config_path &lt;config_path&gt; --output_path &lt;output_path&gt; --gen_cmakelists
+</pre></div>
+</div>
+<p>For more information about the tool to create a UDO package refer to <a class="reference external" href="creating_udo_package.html">Creating a UDO package</a></p>
+</div></blockquote>
+</div>
+<div class="section" id="compiling-a-windows-udo-for-registration-library-and-cpu-implementation-library-optional-on-devices">
+<h2>Compiling a Windows UDO for Registration Library and CPU Implementation Library (Optional) on Devices<a class="headerlink" href="#compiling-a-windows-udo-for-registration-library-and-cpu-implementation-library-optional-on-devices" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><div class="line-block">
+<div class="line">This step is performed on Windows, meaning that users have to copy the whole package from Linux to Windows.</div>
+<div class="line">Steps to compile the UDO Registration library on arm64 are as below:</div>
+</div>
+<ol class="arabic">
+<li><p>Copy the following item to a desired path on Host machine</p>
+<ul class="simple">
+<li><p>UDO package from Linux</p></li>
+<li><p>Qualcomm® AI Direct SDK</p></li>
+<li><p>toolchain file from $SNPE_ROOT/share/SNPE/SnpeUdo/cmakefiles/CMakeWindows.cmake</p></li>
+</ul>
+</li>
+<li><p>Open the <strong>Developer Powershell</strong> which comes with the Visual Studio</p></li>
+<li><p>Execute the environment setup script, set the environment variable <code class="docutils literal notranslate"><span class="pre">$env:QNN_SDK_ROOT</span></code> and run CMake commands</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>&amp; &quot;$SNPE_ROOT\bin\envsetup.ps1&quot;
+$env:QNN_SDK_ROOT = &lt;path_to_qnn_sdk_root&gt;
+cd &lt;path_to_udo_package&gt;
+cmake -S . -B &lt;build_dir&gt; -A arm64 -DCMAKE_TOOLCHAIN_FILE=&lt;path_to_toolchainfile&gt;
+</pre></div>
+</div>
+</li>
+<li><p>Run the cmake instruction below to compile the UDO package:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>cmake --build &lt;build_dir&gt; --config release --target install
+</pre></div>
+</div>
+</li>
+</ol>
+<p>The expected artifacts after compiling are</p>
+<ul class="simple">
+<li><p>The UDO CPU implementation library: &lt;UDO-Package&gt;/libs/arm64_windows/Udo&lt;UDO-Package&gt;ImplCpu.dll</p></li>
+<li><p>The UDO package registration library: &lt;UDO-Package&gt;/libs/arm64_windows/Udo&lt;UDO-Package&gt;Reg.dll</p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="preparing_model_with_udo.html" class="btn btn-neutral float-right" title="Preparing a model with UDO" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="compiling_udo_package.html" class="btn btn-neutral float-left" title="Compiling a UDO package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,345 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Tutorial - Running Inference Using Shared Memory &mdash; Qualcomm® AI Engine Direct Delegate</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tutorial - Use Mix-Precision Model with Qualcomm® AI Engine Direct Delegate" href="tutorial_mix_precision.html" />
+    <link rel="prev" title="Tutorial - Benchmarking the Qualcomm® AI Engine Direct Delegate" href="tutorial_benchmark_model.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Qualcomm® AI Engine Direct Delegate
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qnn_libs.html">Qualcomm® AI Engine Direct Backend Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Acceleration Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom_op.html">Custom Operator Support</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial_qtld_net_run.html">Tutorial - Running Inference Using the Qualcomm® AI Engine Direct Delegate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_skip_node.html">Tutorial - Skip Delegation Ops Using the Qualcomm® AI Engine Direct Delegate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_benchmark_model.html">Tutorial - Benchmarking the Qualcomm® AI Engine Direct Delegate</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Tutorial - Running Inference Using Shared Memory</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#workflow-of-using-shared-memory">Workflow of using shared memory</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#step-1-try-to-request-enough-memory-space-on-shared-memory">Step 1: Try to request enough memory space on shared memory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-2-set-the-custom-allocate-tensor-info">Step 2: Set the custom allocate tensor info</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-3-assign-a-custom-memory-allocation-for-the-given-tensor">Step 3: Assign a custom memory allocation for the given tensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-4-free-the-allocated-tensor-at-the-end">Step 4: Free the allocated tensor at the end</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#a-running-example-of-using-shared-memory">A Running Example of using shared memory</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_mix_precision.html">Tutorial - Use Mix-Precision Model with Qualcomm® AI Engine Direct Delegate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_qtld_profiler.html">Tutorial - Profile Custom Models using Qualcomm® AI Engine Direct Delegate</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_version_history.html">API Version History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Qualcomm® AI Engine Direct Delegate</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="tutorials.html">Tutorials</a> &raquo;</li>
+        
+      <li>Tutorial - Running Inference Using Shared Memory</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tutorial-running-inference-using-shared-memory">
+<h1>Tutorial - Running Inference Using Shared Memory<a class="headerlink" href="#tutorial-running-inference-using-shared-memory" title="Permalink to this heading">¶</a></h1>
+<p>Qualcomm® AI Engine Direct Delegate provides APIs for users to allocate specified tensors, usually graph inputs and outputs
+on shared memory to reduce huge tensor copying time from TFLlite CPU to Qualcomm® AI Engine Direct. This feature
+can accelerate inference speed.</p>
+<p>This feature is only able to use with HTP backend for now.</p>
+<p>Users need to do shared memory resource management by themselves.
+Please check <code class="xref c c-member docutils literal notranslate"><span class="pre">TfLiteQnnDelegateAllocCustomMem</span></code> and <code class="xref c c-member docutils literal notranslate"><span class="pre">TfLiteQnnDelegateFreeCustomMem</span></code> for more information.</p>
+<p>A TFLite interpreter provides <code class="docutils literal notranslate"><span class="pre">SetCustomAllocationForTensor</span></code> API to set a custom memory allocation
+for the given tensor. Please call <code class="docutils literal notranslate"><span class="pre">AllocateTensors</span></code> after setting custom allocation to
+make sure no invalid/insufficient buffers.</p>
+<p>A fully delegated model with huge graph input/output benefits the most.</p>
+<div class="section" id="workflow-of-using-shared-memory">
+<h2>Workflow of using shared memory<a class="headerlink" href="#workflow-of-using-shared-memory" title="Permalink to this heading">¶</a></h2>
+<p>For creating an application using shared memory, we prescribe the below pattern:</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#step-1-try-to-request-enough-memory-space-on-shared-memory">Step 1: Try to request enough memory space on shared memory</a></p></li>
+<li><p><a class="reference internal" href="#step-2-set-the-custom-allocate-tensor-info">Step 2: Set the custom allocate tensor info</a></p></li>
+<li><p><a class="reference internal" href="#step-3-assign-a-custom-memory-allocation-for-the-given-tensor">Step 3: Assign a custom memory allocation for the given tensor</a></p></li>
+<li><p><a class="reference internal" href="#step-4-free-the-allocated-tensor-at-the-end">Step 4: Free the allocated tensor at the end</a></p></li>
+</ol>
+<div class="section" id="step-1-try-to-request-enough-memory-space-on-shared-memory">
+<h3>Step 1: Try to request enough memory space on shared memory<a class="headerlink" href="#step-1-try-to-request-enough-memory-space-on-shared-memory" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">custom_ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TfLiteQnnDelegateAllocCustomMem</span><span class="p">(</span><span class="n">num_bytes</span><span class="p">,</span><span class="w"> </span><span class="n">tflite</span><span class="o">::</span><span class="n">kDefaultTensorAlignment</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>num_bytes</strong>: To get exact or _enough_ output tensor bytes.</p>
+<p><strong>tflite::kDefaultTensorAlignment</strong>: TfLite default alignment.</p>
+<p><strong>custom_ptr</strong>: Pointer to the shared buffer on success; NULL on failure.</p>
+</div>
+<div class="section" id="step-2-set-the-custom-allocate-tensor-info">
+<h3>Step 2: Set the custom allocate tensor info<a class="headerlink" href="#step-2-set-the-custom-allocate-tensor-info" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">TfLiteCustomAllocation</span><span class="w"> </span><span class="n">tensor_alloc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">custom_ptr</span><span class="p">,</span><span class="w"> </span><span class="n">num_bytes</span><span class="p">};</span>
+</pre></div>
+</div>
+<p>Wrap the shared buffer and tensor bytes together as a <code class="docutils literal notranslate"><span class="pre">TfLiteCustomAllocation</span></code>.</p>
+</div>
+<div class="section" id="step-3-assign-a-custom-memory-allocation-for-the-given-tensor">
+<h3>Step 3: Assign a custom memory allocation for the given tensor<a class="headerlink" href="#step-3-assign-a-custom-memory-allocation-for-the-given-tensor" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">interpreter_</span><span class="o">-&gt;</span><span class="n">SetCustomAllocationForTensor</span><span class="p">(</span><span class="n">tensor_idx</span><span class="p">,</span><span class="w"> </span><span class="n">tensor_alloc</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>tensor_idx</strong>: Tensor index</p>
+<p><strong>tensor_alloc</strong>: TfLiteCustomAllocation</p>
+</div>
+<div class="section" id="step-4-free-the-allocated-tensor-at-the-end">
+<h3>Step 4: Free the allocated tensor at the end<a class="headerlink" href="#step-4-free-the-allocated-tensor-at-the-end" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">TfLiteQnnDelegateFreeCustomMem</span><span class="p">(</span><span class="n">custom_ptr</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>custom_ptr</strong>: Allocated shared buffer pointer.</p>
+</div>
+</div>
+<div class="section" id="a-running-example-of-using-shared-memory">
+<h2>A Running Example of using shared memory<a class="headerlink" href="#a-running-example-of-using-shared-memory" title="Permalink to this heading">¶</a></h2>
+<p>This tutorial demonstrates how to run a model using shared memory.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;QNN/TFLiteDelegate/QnnTFLiteDelegate.h&quot;</span>
+
+<span class="c1">// Setup interpreter with .tflite model.</span>
+
+<span class="c1">// Create QNN Delegate options structure.</span>
+<span class="n">TfLiteQnnDelegateOptions</span><span class="w"> </span><span class="n">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TfLiteQnnDelegateOptionsDefault</span><span class="p">();</span>
+
+<span class="c1">// Set the mandatory backend_type option as HTP.</span>
+<span class="n">options</span><span class="p">.</span><span class="n">backend_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kHtpBackend</span><span class="p">;</span>
+
+<span class="c1">// Instantiate delegate. Must not be freed until interpreter is freed.</span>
+<span class="c1">// Please use QNN Delegate interface rather than external delegate interface.</span>
+<span class="n">TfLiteDelegate</span><span class="o">*</span><span class="w"> </span><span class="n">delegate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TfLiteQnnDelegateCreate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">options</span><span class="p">);</span>
+
+<span class="c1">// Allocate enough memory space on shared memory</span>
+<span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">custom_ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TfLiteQnnDelegateAllocCustomMem</span><span class="p">(</span><span class="n">num_bytes</span><span class="p">,</span><span class="w"> </span><span class="n">tflite</span><span class="o">::</span><span class="n">kDefaultTensorAlignment</span><span class="p">);</span>
+
+<span class="c1">// Assigns (or reassigns) a custom memory allocation for the given tensor and re-allocate tensors.</span>
+<span class="n">TfLiteCustomAllocation</span><span class="w"> </span><span class="n">tensor_alloc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">custom_ptr</span><span class="p">,</span><span class="w"> </span><span class="n">num_bytes</span><span class="p">};</span>
+<span class="n">interpreter_</span><span class="o">-&gt;</span><span class="n">SetCustomAllocationForTensor</span><span class="p">(</span><span class="n">tensor_idx</span><span class="p">,</span><span class="w"> </span><span class="n">tensor_alloc</span><span class="p">);</span>
+<span class="n">interpreter_</span><span class="o">-&gt;</span><span class="n">AllocateTensors</span><span class="p">();</span>
+
+<span class="c1">// Register QNN Delegate with TfLite interpreter to automatically delegate nodes.</span>
+<span class="n">interpreter_</span><span class="o">-&gt;</span><span class="n">ModifyGraphWithDelegate</span><span class="p">(</span><span class="n">delegate</span><span class="p">);</span>
+
+<span class="c1">// Perform inference with interpreter as usual.</span>
+<span class="n">interpreter_</span><span class="o">-&gt;</span><span class="n">Invoke</span><span class="p">();</span>
+
+<span class="c1">// User is responsible to free the allocated memory.</span>
+<span class="n">TfLiteQnnDelegateFreeCustomMem</span><span class="p">(</span><span class="n">custom_ptr</span><span class="p">);</span>
+
+<span class="c1">// Delete delegate after interpreter no longer needed.</span>
+<span class="n">TfLiteQnnDelegateDelete</span><span class="p">(</span><span class="n">delegate</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The output should look like:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>INFO: Initialized TensorFlow Lite runtime.
+INFO: TfLiteQnnDelegate delegate: 128 nodes delegated out of 128 nodes with 1 partitions.
+
+INFO: Replacing 128 node(s) with delegate (TfLiteQnnDelegate) node, yielding 1 partitions.
+INFO: Tensor 0 is successfully registered to shared memory.
+INFO: Tensor 319 is successfully registered to shared memory.
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="tutorial_mix_precision.html" class="btn btn-neutral float-right" title="Tutorial - Use Mix-Precision Model with Qualcomm® AI Engine Direct Delegate" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="tutorial_benchmark_model.html" class="btn btn-neutral float-left" title="Tutorial - Benchmarking the Qualcomm® AI Engine Direct Delegate" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

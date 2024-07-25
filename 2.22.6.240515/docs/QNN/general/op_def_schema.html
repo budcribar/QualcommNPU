@@ -1,0 +1,707 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>XML OpDef Schema Breakdown &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Example XML OpDef Configs" href="example_op_defs.html" />
+    <link rel="prev" title="Using the qnn-op-package-generator" href="op_package_gen_example.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend.html">Backend</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="op_packages.html">Op Packages</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="generating_op_packages.html"> Generating Op Packages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="op_package_gen_example.html">QNN Op Package Code Generation</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">XML OpDef Schema Reference</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#operation-definition-schema">Operation Definition Schema</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="example_op_defs.html">Example XML OpDef Configs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="converter_op_package_gen_example.html">QNN Converter Op Package Code Generation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="op_packages.html">Op Packages</a> &raquo;</li>
+        
+          <li><a href="generating_op_packages.html">Generating Custom Op Packages</a> &raquo;</li>
+        
+      <li>XML OpDef Schema Breakdown</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="xml-opdef-schema-breakdown">
+<h1>XML OpDef Schema Breakdown<a class="headerlink" href="#xml-opdef-schema-breakdown" title="Permalink to this heading">¶</a></h1>
+<p>This page provides an overview of the schema used to define Operation Definitions (Op Defs) in QNN.
+Op Defs specify the inputs, outputs, parameters, and descriptive metadata that constitute an operation.</p>
+<p>The schema is formalized using Extensible Markup Language (XML) and XML Schema Definition (XSD).
+The XSD file that defines Op Defs, as well as the constructs used to define multiple operations
+for use with the <code class="docutils literal notranslate"><span class="pre">qnn-op-package-generator</span></code>, is located at:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="p">{</span><span class="n">QNN_SDK_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">qti</span><span class="o">/</span><span class="n">aisw</span><span class="o">/</span><span class="n">op_package_generator</span><span class="o">/</span><span class="n">translator</span><span class="o">/</span><span class="n">OpDef</span><span class="p">.</span><span class="n">xsd</span>
+</pre></div>
+</div>
+<p>The remainder of this page will identify and detail the elements defined in the XSD that are most relevant
+for use with the <code class="docutils literal notranslate"><span class="pre">qnn-op-package-generator</span></code>. Example usage of the schema is available
+at <span class="xref std std-doc">Example</span>.</p>
+<div class="section" id="operation-definition-schema">
+<h2>Operation Definition Schema<a class="headerlink" href="#operation-definition-schema" title="Permalink to this heading">¶</a></h2>
+<p>The following elements will be explored in detail:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#opdef">OpDef</a></p></li>
+<li><p><a class="reference internal" href="#supplementalopdef">SupplementalOpDef</a></p></li>
+<li><p><a class="reference internal" href="#opdeflist">OpDefList</a></p></li>
+<li><p><a class="reference internal" href="#supplementalopdeflist">SupplementalOpDefList</a></p></li>
+<li><p><a class="reference internal" href="#opdefcollection">OpDefCollection</a></p></li>
+</ul>
+<p>A simple UML diagram describing the relationship between these entities is given here:</p>
+<p class="centered" id="qnn-op-def-uml">
+<strong><strong>QNN OpDef Schema UML</strong></strong></p><div class="figure align-center">
+<img alt="QNN OpDef Schema UML" src="../_static/resources/qnn_op_def_uml.png" />
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>members prefixed by &#64; are XML attributes, and those with no prefix are XML elements.</p>
+</div>
+<div class="section" id="opdef">
+<h3>OpDef<a class="headerlink" href="#opdef" title="Permalink to this heading">¶</a></h3>
+<p>An OpDef is an XML element that describes an operation at the highest level. Namely, it contains
+the following. Elements with content are required, and elements that are empty are optional.</p>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;OpDef&gt;</span>
+<span class="w">     </span><span class="nt">&lt;Name&gt;</span>OpName<span class="nt">&lt;/Name&gt;</span>
+
+<span class="w">     </span><span class="nt">&lt;Description&gt;</span>
+<span class="w">         </span><span class="nt">&lt;Content&gt;&lt;/Content&gt;</span>
+<span class="w">         </span><span class="nt">&lt;Code&gt;&lt;/Code&gt;</span>
+<span class="w">     </span><span class="nt">&lt;/Description&gt;</span>
+
+<span class="w">     </span><span class="nt">&lt;Reference</span><span class="w"> </span><span class="na">Source=</span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="na">Url=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;&lt;/Reference&gt;</span>
+
+<span class="w">     </span><span class="cm">&lt;!--Requires at least one input--&gt;</span>
+<span class="w">     </span><span class="nt">&lt;Input&gt;</span>
+<span class="w">         </span><span class="nt">&lt;Name&gt;</span>in[0]<span class="nt">&lt;/Name&gt;</span>
+<span class="w">         </span><span class="nt">&lt;Mandatory&gt;</span>true<span class="nt">&lt;/Mandatory&gt;</span>
+<span class="w">         </span><span class="nt">&lt;Constraint</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="na">Type=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;&lt;/Constraint&gt;</span>
+<span class="w">         </span><span class="nt">&lt;Datatype&gt;</span>QNN_DATATYPE_FLOAT_32<span class="nt">&lt;/Datatype&gt;</span>
+<span class="w">         </span><span class="nt">&lt;Shape&gt;</span>
+<span class="w">             </span><span class="nt">&lt;Rank&gt;</span>1D<span class="nt">&lt;/Rank&gt;</span>
+<span class="w">             </span><span class="nt">&lt;Layout&gt;&lt;/Layout&gt;</span>
+<span class="w">             </span><span class="nt">&lt;Text&gt;&lt;/Text&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/Shape&gt;</span>
+<span class="w">         </span><span class="nt">&lt;Default&gt;&lt;/Default&gt;</span>
+<span class="w">         </span><span class="nt">&lt;Repeated&gt;&lt;/Repeated&gt;</span>
+<span class="w">         </span><span class="nt">&lt;IsStaticTensor&gt;&lt;/IsStaticTensor&gt;</span>
+<span class="w">     </span><span class="nt">&lt;/Input&gt;</span>
+
+<span class="w">     </span><span class="cm">&lt;!--Requires at least one output--&gt;</span>
+<span class="w">     </span><span class="nt">&lt;Output&gt;</span>
+<span class="w">         </span><span class="nt">&lt;Name&gt;</span>out[0]<span class="nt">&lt;/Name&gt;</span>
+<span class="w">         </span><span class="nt">&lt;Mandatory&gt;</span>true<span class="nt">&lt;/Mandatory&gt;</span>
+<span class="w">         </span><span class="nt">&lt;Constraint</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="na">Type=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;&lt;/Constraint&gt;</span>
+<span class="w">         </span><span class="nt">&lt;Datatype&gt;</span>QNN_DATATYPE_FLOAT_32<span class="nt">&lt;/Datatype&gt;</span>
+<span class="w">         </span><span class="nt">&lt;Shape&gt;</span>
+<span class="w">             </span><span class="nt">&lt;Rank&gt;</span>1D<span class="nt">&lt;/Rank&gt;</span>
+<span class="w">             </span><span class="nt">&lt;Layout&gt;&lt;/Layout&gt;</span>
+<span class="w">             </span><span class="nt">&lt;Text&gt;&lt;/Text&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/Shape&gt;</span>
+<span class="w">         </span><span class="nt">&lt;Repeated&gt;&lt;/Repeated&gt;</span>
+<span class="w">     </span><span class="nt">&lt;/Output&gt;</span>
+
+<span class="w">     </span><span class="cm">&lt;!--Parameters are optional--&gt;</span>
+<span class="w">     </span><span class="nt">&lt;Parameter&gt;</span>
+<span class="w">         </span><span class="nt">&lt;Name&gt;</span>param<span class="nt">&lt;/Name&gt;</span>
+<span class="w">         </span><span class="nt">&lt;Mandatory&gt;</span>false<span class="nt">&lt;/Mandatory&gt;</span>
+<span class="w">         </span><span class="nt">&lt;Constraint</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="na">Type=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;&lt;/Constraint&gt;</span>
+<span class="w">         </span><span class="nt">&lt;Datatype&gt;</span>QNN_DATATYPE_INT_32<span class="nt">&lt;/Datatype&gt;</span>
+<span class="w">         </span><span class="nt">&lt;Shape&gt;</span>
+<span class="w">             </span><span class="nt">&lt;Rank&gt;</span>1D<span class="nt">&lt;/Rank&gt;</span>
+<span class="w">             </span><span class="nt">&lt;Layout&gt;&lt;/Layout&gt;</span>
+<span class="w">             </span><span class="nt">&lt;Text&gt;&lt;/Text&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/Shape&gt;</span>
+<span class="w">         </span><span class="nt">&lt;Default&gt;&lt;/Default&gt;</span>
+<span class="w">         </span><span class="nt">&lt;Enumeration&gt;</span>
+<span class="w">             </span><span class="nt">&lt;Enum&gt;&lt;/Enum&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/Enumeration&gt;</span>
+<span class="w">     </span><span class="nt">&lt;/Parameter&gt;</span>
+
+<span class="w">     </span><span class="nt">&lt;UseDefaultTranslation&gt;&lt;/UseDefaultTranslation&gt;</span>
+<span class="w">     </span><span class="nt">&lt;SupportedBackend&gt;</span>HTP<span class="nt">&lt;/SupportedBackend&gt;</span>
+<span class="w"> </span><span class="nt">&lt;/OpDef&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Name</strong>: The name of the operation.</p></li>
+<li><p><strong>Description</strong>: Optional field that describes the operation through sequences of content and code:</p>
+<ul>
+<li><p><strong>Content</strong>: String describing the operation.</p></li>
+<li><p><strong>Code</strong>: String that represents code describing the operation. e.g. output_height = input_height - crop_top - crop_bottom</p></li>
+</ul>
+</li>
+<li><p><strong>Reference</strong>: Optional field(s) that define one or more references for the operation.</p>
+<ul>
+<li><p><strong>Source</strong>: Attribute for the source of operation. E.g. Tensorflow, ONNX, etc.</p></li>
+<li><p><strong>Url</strong>: Attribute for the URL of the source.</p></li>
+</ul>
+</li>
+<li><p><strong>Input</strong>: Define one or more inputs to the operation. Inputs are extensions of <a class="reference internal" href="#qnn-op-def-tensor"><span class="std std-ref">Tensors</span></a>
+that have the following addition field(s):</p>
+<ul>
+<li><p><strong>IsStaticTensor</strong>: Optional boolean flag that if set to True, indicates that an input tensor is a
+parameter which contains or references static data. If unset, the tensor is treated as a dynamic
+input.</p></li>
+<li><p><strong>Repeated</strong>: Optional boolean that specifies whether this input is repeated. Used for operations which
+have variadic inputs, such as Concat <a class="footnote-reference brackets" href="#id6" id="id1">1</a>.</p></li>
+</ul>
+</li>
+<li><p><strong>Output</strong>: Define one or more outputs to the operation. Outputs are extensions of <a class="reference internal" href="#qnn-op-def-tensor"><span class="std std-ref">Tensors</span></a>
+that have the following additional field(s):</p>
+<ul>
+<li><p><strong>Repeated</strong>: Optional boolean that specifies whether this output is repeated. Used for operations which
+have variadic outputs, such as MultiClassNms <a class="footnote-reference brackets" href="#id6" id="id2">1</a>.</p></li>
+</ul>
+</li>
+<li><p><strong>Parameter</strong>: Optionally, define one or more parameters for the operation. Parameters are extensions of <a class="reference internal" href="#qnn-op-def-tensor"><span class="std std-ref">Tensors</span></a>
+that additionally define</p>
+<ul>
+<li><p><strong>Enumeration</strong>: Optional field for enumerated params. Enumerations are composed of subfields called <strong>Enum</strong>
+whose content gives the name of the enum representing a given value. Values are assigned in the order in which
+the Enum is specified.</p></li>
+</ul>
+</li>
+<li><p><strong>SupportedBackend</strong>: Field(s) that specify one or more backends on which this operation is supported. Used when backends share
+a common definition of an operation. If fields vary across backend for the same operation use <a class="reference internal" href="#supplementalopdef">SupplementalOpDef</a> and
+mark the field with BACKEND_SPECIFIC.</p></li>
+<li><p><strong>UseDefaultTranslation</strong>: Boolean field that if set to true, indicates that a custom operation
+overrides a QNN native operation. The <strong>custom operation type must match the type of the QNN
+native operation for accurate conversion</strong>. When set to false, a custom operation is converted
+as a generic user defined operation. In the false mode, <strong>the custom op type must match the
+source framework type.</strong></p></li>
+</ul>
+<p>A key component of creating an OpDef are Inputs, Outputs, and Parameters, all of which are extensions of Tensors.
+A Tensor element is defined as follows:</p>
+<ul id="qnn-op-def-tensor">
+<li><p><strong>Name</strong>: The name of the tensor.</p></li>
+<li><p><strong>Description</strong>: Optional field that describes the tensor through sequences of content and code:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Content</strong>: String describing the tensor.</p></li>
+<li><p><strong>Code</strong>: String that represents code describing the tensor. e.g. output_height = input_height - crop_top - crop_bottom</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>Constraint</strong>: Optional field that defines one or more constraints on the given tensor. The constraint is given as a string in the
+body of the element <a class="footnote-reference brackets" href="#id7" id="id3">2</a>.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>id</strong>: A number specifying the id of the constraint. Used to override constraints for supplemental operation definitions.</p></li>
+<li><p><strong>Type</strong>: The type of the constraint. Valid types are:</p>
+<ul>
+<li><p><strong>Number</strong>: a constraint characterized by cardinality. e.g. Number of inputs &gt;= 1</p></li>
+<li><p><strong>Shape</strong>: a constraint characterized by a restriction on dimension of the tensor. e.g. Rank &gt;= 1</p></li>
+<li><p><strong>Value</strong>: a constraint characterized by the value of the tensor. e.g. Tensor is only positive</p></li>
+<li><p><strong>Datatype</strong>: a constraint characterized by a restriction on datatype. Typically used for tensors
+which can be of several datatypes but must be of the same datatype as another tensor.</p></li>
+<li><p><strong>Description</strong>: a constraint which does not conform to any other category of constraint.</p></li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>Mandatory</strong>: A boolean indicating whether the tensor is must be provided/defined <a class="footnote-reference brackets" href="#id8" id="id4">3</a>.</p></li>
+<li><p><strong>Datatype</strong>: Define the allowable datatypes for the tensor. Must be one of:</p>
+<ul class="simple">
+<li><p>QNN_DATATYPE_INT_8</p></li>
+<li><p>QNN_DATATYPE_INT_16</p></li>
+<li><p>QNN_DATATYPE_INT_32</p></li>
+<li><p>QNN_DATATYPE_INT_64</p></li>
+<li><p>QNN_DATATYPE_UINT_8</p></li>
+<li><p>QNN_DATATYPE_UINT_16</p></li>
+<li><p>QNN_DATATYPE_UINT_32</p></li>
+<li><p>QNN_DATATYPE_UINT_64</p></li>
+<li><p>QNN_DATATYPE_SFIXED_POINT_4</p></li>
+<li><p>QNN_DATATYPE_SFIXED_POINT_8</p></li>
+<li><p>QNN_DATATYPE_SFIXED_POINT_16</p></li>
+<li><p>QNN_DATATYPE_SFIXED_POINT_32</p></li>
+<li><p>QNN_DATATYPE_UFIXED_POINT_4</p></li>
+<li><p>QNN_DATATYPE_UFIXED_POINT_8</p></li>
+<li><p>QNN_DATATYPE_UFIXED_POINT_16</p></li>
+<li><p>QNN_DATATYPE_UFIXED_POINT_32</p></li>
+<li><p>QNN_DATATYPE_BOOL_8</p></li>
+<li><p>QNN_DATATYPE_FLOAT_16</p></li>
+<li><p>QNN_DATATYPE_FLOAT_32</p></li>
+<li><p>QNN_DATATYPE_FLOAT_64</p></li>
+<li><p>BACKEND_SPECIFIC used to indicate that the datatype is dependent on the Backend. Must be used in conjunction
+with a <a class="reference internal" href="#supplementalopdef">SupplementalOpDef</a> to specify a concrete datatype.</p></li>
+</ul>
+</li>
+<li><p><strong>Shape</strong>: Specify the shape of the tensor.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Rank</strong>: The rank of the tensor as an enumeration with the following values:</p>
+<ul>
+<li><p>SCALAR: Scalar</p></li>
+<li><p>1D: Vector</p></li>
+<li><p>2D: Matrix</p></li>
+<li><p>3D: 3D Tensor or Image</p></li>
+<li><p>4D: 4D Tensor or Batched Image</p></li>
+<li><p>ND: Generic N-D Tensor N &gt;= 0</p></li>
+</ul>
+</li>
+<li><p><strong>Layout</strong>: Optional field that specifies the layout of the tensor. Must be one of:</p>
+<ul>
+<li><p>NHWC</p></li>
+<li><p>NHCW</p></li>
+<li><p>UNDEFINED used to identify that the layout is neither NHCW or NHWC</p></li>
+<li><p>BACKEND_SPECIFIC used to indicate that the layout is dependent on the Backend. Must be used in conjunction
+with a <a class="reference internal" href="#supplementalopdef">SupplementalOpDef</a> to specify a concrete layout.</p></li>
+</ul>
+</li>
+<li><p><strong>Text</strong>: Optionally provide text description for the shape of the tensor.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>Default</strong>: Optionally provide text representing the default value for the tensor. Can be one of</p>
+<ul class="simple">
+<li><p>Tensor: use braces or brackets to create list e.g. [[1, 2], [3, 4]]</p></li>
+<li><p>Scalar: provide scalar value e.g. 1, 1.1, -1</p></li>
+<li><p>Boolean: provide either 0 (false) or 1 (true)</p></li>
+<li><p>String: Any other string. If text cannot be resolved into one of above categories it will be stored as string.</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Inputs and Outputs of Custom op must have rank &gt;= 1.</p></li>
+<li><p>Custom op must have at least one input and output.</p></li>
+<li><p>Both IsDefaultTranslation and IsStaticTensor are only relevant for custom op conversion use cases.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="supplementalopdef">
+<h3>SupplementalOpDef<a class="headerlink" href="#supplementalopdef" title="Permalink to this heading">¶</a></h3>
+<p>SupplementalOpDef’s are XML elements which define content that is variable across backend(s). SupplementalOpDef’s extend
+the content defined in OpDef’s, but limits the fields that can be overridden.
+The SupplementalOpDef is structured as follows. Elements with content are required, and elements that are empty are optional.</p>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;SupplementalOpDef&gt;</span>
+
+<span class="w">      </span><span class="nt">&lt;Name&gt;</span>OpName<span class="nt">&lt;/Name&gt;</span>
+
+<span class="w">     </span><span class="cm">&lt;!--Only supplemented Inputs are required--&gt;</span>
+<span class="w">      </span><span class="nt">&lt;Input&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Name&gt;</span>in[0]<span class="nt">&lt;/Name&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Constraint</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="na">Type=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;&lt;/Constraint&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Datatype&gt;&lt;/Datatype&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Shape&gt;</span>
+<span class="w">              </span><span class="nt">&lt;Layout&gt;&lt;/Layout&gt;</span>
+<span class="w">              </span><span class="nt">&lt;Text&gt;&lt;/Text&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/Shape&gt;</span>
+<span class="w">          </span><span class="nt">&lt;OnlyDefaultSupported&gt;&lt;/OnlyDefaultSupported&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/Input&gt;</span>
+
+<span class="w">       </span><span class="cm">&lt;!--Only supplemented Outputs are required--&gt;</span>
+<span class="w">      </span><span class="nt">&lt;Output&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Name&gt;</span>out[0]<span class="nt">&lt;/Name&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Constraint</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="na">Type=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;&lt;/Constraint&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Datatype&gt;&lt;/Datatype&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Shape&gt;</span>
+<span class="w">              </span><span class="nt">&lt;Layout&gt;&lt;/Layout&gt;</span>
+<span class="w">              </span><span class="nt">&lt;Text&gt;&lt;/Text&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/Shape&gt;</span>
+<span class="w">          </span><span class="nt">&lt;OnlyDefaultSupported&gt;&lt;/OnlyDefaultSupported&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/Output&gt;</span>
+
+<span class="w">       </span><span class="cm">&lt;!--Only supplemented Params are required--&gt;</span>
+<span class="w">      </span><span class="nt">&lt;Parameter&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Name&gt;</span>param<span class="nt">&lt;/Name&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Constraint</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="na">Type=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;&lt;/Constraint&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Datatype&gt;&lt;/Datatype&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Shape&gt;</span>
+<span class="w">              </span><span class="nt">&lt;Layout&gt;&lt;/Layout&gt;</span>
+<span class="w">              </span><span class="nt">&lt;Text&gt;&lt;/Text&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/Shape&gt;</span>
+<span class="w">          </span><span class="nt">&lt;OnlyDefaultSupported&gt;&lt;/OnlyDefaultSupported&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/Parameter&gt;</span>
+
+<span class="nt">&lt;/SupplementalOpDef&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Name</strong>: The name of the operation. Must correspond to an OpDef defined in the same config.</p></li>
+<li><p><strong>Input</strong>: Optionally, extend one or more inputs to the operation. Supplemental inputs are
+<a class="reference internal" href="#qnn-op-def-supp-tensor"><span class="std std-ref">Supplemental Tensors</span></a>.</p></li>
+<li><p><strong>Output</strong>: Optionally, extend one or more outputs to the operation. Supplemental outputs are
+<a class="reference internal" href="#qnn-op-def-supp-tensor"><span class="std std-ref">Supplemental Tensors</span></a>.</p></li>
+<li><p><strong>Parameter</strong>: Optionally, extend one or more parameters for the operation. Supplemental parameters are
+<a class="reference internal" href="#qnn-op-def-supp-tensor"><span class="std std-ref">Supplemental Tensors</span></a>.</p></li>
+</ul>
+<p id="qnn-op-def-supp-tensor">Inputs, outputs, and parameters are all Supplemental Tensors, which can only specify certain fields.
+All fields, except name, in a supplemental tensor are optional.</p>
+<ul>
+<li><p><strong>Name</strong>: The name of the tensor. Must correspond to the name of the tensor in the original OpDef that
+is being extended.</p></li>
+<li><p><strong>Constraint</strong>: Optional field that defines one or more constraints on the given tensor. The constraint is given as a string in the
+body of the element <a class="footnote-reference brackets" href="#id7" id="id5">2</a>.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>id</strong>: A number specifying the id of the constraint. Used to override constraints for supplemental operation definitions.</p></li>
+<li><p><strong>Type</strong>: The type of the constraint. Valid types are:</p>
+<ul>
+<li><p><strong>Number</strong>: a constraint characterized by cardinality. e.g. Number of inputs &gt;= 1</p></li>
+<li><p><strong>Shape</strong>: a constraint characterized by a restriction on dimension of the tensor. e.g. Rank &gt;= 1</p></li>
+<li><p><strong>Value</strong>: a constraint characterized by the value of the tensor. e.g. Tensor is only positive</p></li>
+<li><p><strong>Datatype</strong>: a constraint characterized by a restriction on datatype. Typically used for tensors
+which can be of several datatypes but must be of the same datatype as another tensor.</p></li>
+<li><p><strong>Description</strong>: a constraint which does not conform to any other category of constraint.</p></li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>Datatype</strong>: Define the allowable datatypes for the tensor. Must be one of</p>
+<ul class="simple">
+<li><p>QNN_DATATYPE_INT_8</p></li>
+<li><p>QNN_DATATYPE_INT_16</p></li>
+<li><p>QNN_DATATYPE_INT_32</p></li>
+<li><p>QNN_DATATYPE_INT_64</p></li>
+<li><p>QNN_DATATYPE_UINT_8</p></li>
+<li><p>QNN_DATATYPE_UINT_16</p></li>
+<li><p>QNN_DATATYPE_UINT_32</p></li>
+<li><p>QNN_DATATYPE_UINT_64</p></li>
+<li><p>QNN_DATATYPE_SFIXED_POINT_4</p></li>
+<li><p>QNN_DATATYPE_SFIXED_POINT_8</p></li>
+<li><p>QNN_DATATYPE_SFIXED_POINT_16</p></li>
+<li><p>QNN_DATATYPE_SFIXED_POINT_32</p></li>
+<li><p>QNN_DATATYPE_UFIXED_POINT_4</p></li>
+<li><p>QNN_DATATYPE_UFIXED_POINT_8</p></li>
+<li><p>QNN_DATATYPE_UFIXED_POINT_16</p></li>
+<li><p>QNN_DATATYPE_UFIXED_POINT_32</p></li>
+<li><p>QNN_DATATYPE_BOOL_8</p></li>
+<li><p>QNN_DATATYPE_FLOAT_16</p></li>
+<li><p>QNN_DATATYPE_FLOAT_32</p></li>
+<li><p>QNN_DATATYPE_FLOAT_64</p></li>
+</ul>
+</li>
+<li><p><strong>Shape</strong>: Specify the shape of the tensor.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Layout</strong>: Optional field that specifies the layout of the tensor. Must be one of:</p>
+<ul>
+<li><p>NHWC</p></li>
+<li><p>NHCW</p></li>
+<li><p>UNDEFINED used to identify that the layout is neither NHCW or NHWC</p></li>
+<li><p>BACKEND_SPECIFIC used to indicate that the layout is dependent on the Backend. Used in conjunction
+with a SupplementalOpDef to specify a concrete layout.</p></li>
+</ul>
+</li>
+<li><p><strong>Text</strong>: Optionally provide text description for the shape of the tensor.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>OnlyDefaultSupported</strong>: Optional boolean to indicate that the backend only supports the default value defined in the
+corresponding OpDef for this tensor.</p></li>
+</ul>
+</div>
+<div class="section" id="opdeflist">
+<h3>OpDefList<a class="headerlink" href="#opdeflist" title="Permalink to this heading">¶</a></h3>
+<p>An OpDefList is an XML element composed of a sequence of <a class="reference internal" href="#opdef">OpDef</a> elements. OpDefLists are agnostic to backend,
+and serve only as a wrapper around multiple OpDefs.</p>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;OpDefList&gt;</span>
+
+<span class="w">    </span><span class="cm">&lt;!--One or more OpDef--&gt;</span>
+<span class="w">    </span><span class="nt">&lt;OpDef&gt;</span>
+<span class="w">      </span><span class="cm">&lt;!--OpDef defined above --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/OpDef&gt;</span>
+
+<span class="nt">&lt;/OpDefList&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="supplementalopdeflist">
+<h3>SupplementalOpDefList<a class="headerlink" href="#supplementalopdeflist" title="Permalink to this heading">¶</a></h3>
+<p>A SupplementalOpDefList is an XML element composed of a sequence of <a class="reference internal" href="#supplementalopdef">SupplementalOpDef</a> elements.
+In addition, SupplementalOpDefLists contain the following fields.</p>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;SupplementalOpDefList</span><span class="w"> </span><span class="na">Backend=</span><span class="s">&quot;HTP&quot;</span><span class="nt">&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;SupportedOps&gt;</span>
+<span class="w">      </span><span class="nt">&lt;OpName&gt;&lt;/OpName&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/SupportedOps&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;SupplementalOpDef&gt;</span>
+<span class="w">      </span><span class="cm">&lt;!--SupplementalOpDef defined above--&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/SupplementalOpDef&gt;</span>
+
+<span class="nt">&lt;/SupplementalOpDefList&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Backend</strong>: An attribute specifiying for which Backend the SupplementalOpDef’s are supplementing.</p></li>
+<li><p><strong>SupportedOps</strong>: An element containing a sequence of <strong>OpName</strong> elements. Each OpName corresponds
+to an operation defined in the corresponding OpDefList, and indicates the backend supports the Op.
+This information may be redundant with the <strong>SupportedBackend</strong> field of the OpDef element.</p></li>
+</ul>
+</div>
+<div class="section" id="opdefcollection">
+<h3>OpDefCollection<a class="headerlink" href="#opdefcollection" title="Permalink to this heading">¶</a></h3>
+<p>The OpDefCollection is the root XML element of the configuration file meant to be used with
+the <code class="docutils literal notranslate"><span class="pre">qnn-op-package-generator</span></code>. It contains all the information needed to specify all of a users packages.
+The OpDefCollection contains the following</p>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="w"> </span><span class="nt">&lt;OpDefCollection</span>
+<span class="w">      </span><span class="na">xmlns:xs=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+<span class="w">      </span><span class="na">xs:noNamespaceSchemaLocation=</span><span class="s">&quot;OpDef.xsd&quot;</span>
+<span class="w">      </span><span class="na">PackageName=</span><span class="s">&quot;ExamplePackage&quot;</span>
+<span class="w">      </span><span class="na">Domain=</span><span class="s">&quot;example&quot;</span>
+<span class="w">      </span><span class="na">Version=</span><span class="s">&quot;1.0&quot;</span>
+<span class="w"> </span><span class="nt">&gt;</span>
+
+<span class="w">   </span><span class="cm">&lt;!--One OpDefList--&gt;</span>
+<span class="w">   </span><span class="nt">&lt;OpDefList&gt;</span>
+<span class="w">      </span><span class="cm">&lt;!--OpDefList defined above--&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/OpDefList&gt;</span>
+
+<span class="w">   </span><span class="cm">&lt;!--SupplementalOpDefLists are not required--&gt;</span>
+<span class="w">   </span><span class="nt">&lt;SupplementalOpDefList</span><span class="w"> </span><span class="na">Backend=</span><span class="s">&quot;HTP&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="cm">&lt;!--SupplementalOpDefList defined above--&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/SupplementalOpDefList&gt;</span>
+
+<span class="nt">&lt;/OpDefCollection&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>PackageName</strong>: Attribute specifying the name for the user’s OpPackage. Because packages are per backend, the actual
+package name will be the value specified here appended with &lt;Backend&gt; e.g. MyPackageNameHtp</p></li>
+<li><p><strong>Domain</strong>: Attribute specifying the domain of the package.</p></li>
+<li><p><strong>Version</strong>: Attribute specifying the version of the package.</p></li>
+<li><p><strong>OpDefList</strong>: One <a class="reference internal" href="#opdeflist">OpDefList</a> specifying all operations for the package(s).</p></li>
+<li><p><strong>SupplementalOpDefList</strong>: Optionally specify one or more <a class="reference internal" href="#supplementalopdeflist">SupplementalOpDefList</a> to specify per-backend
+information.</p></li>
+</ul>
+<p>One OpDefCollection element can be used to produce multiple per-backend packages.</p>
+<p><strong>Notes</strong></p>
+<dl class="footnote brackets">
+<dt class="label" id="id6"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>)</span></dt>
+<dd><p>Operations with an unknown number of inputs/outputs are currently not supported
+on the HTP backend.</p>
+</dd>
+<dt class="label" id="id7"><span class="brackets">2</span><span class="fn-backref">(<a href="#id3">1</a>,<a href="#id5">2</a>)</span></dt>
+<dd><p>Constraints are purely a descriptive field and do not require mathematical expression.
+Constraints are currently not enforced.</p>
+</dd>
+<dt class="label" id="id8"><span class="brackets"><a class="fn-backref" href="#id4">3</a></span></dt>
+<dd><p>Outputs are not mandatory, but cannot have default values and are assumed to be NULL if
+not provided.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="example_op_defs.html" class="btn btn-neutral float-right" title="Example XML OpDef Configs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="op_package_gen_example.html" class="btn btn-neutral float-left" title="Using the qnn-op-package-generator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

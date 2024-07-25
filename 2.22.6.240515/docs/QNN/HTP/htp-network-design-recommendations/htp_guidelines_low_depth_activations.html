@@ -1,0 +1,343 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Avoid low depth Activations &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Avoid low depth Activations (Network examples)" href="htp_guidelines_low_depth_activation_more_examples.html" />
+    <link rel="prev" title="Op Package Migration Guide" href="../migration/writing_opPackage_migration_guide.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../general/backend.html">Backend</a> &raquo;</li>
+        
+          <li><a href="../../general/htp/htp_backend.html">HTP</a> &raquo;</li>
+        
+      <li>Avoid low depth Activations</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="avoid-low-depth-activations">
+<h1>Avoid low depth Activations<a class="headerlink" href="#avoid-low-depth-activations" title="Permalink to this heading">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#hardware-characteristics-of-hexagon-tensor-processor" id="id1">Hardware Characteristics of Hexagon Tensor Processor</a></p></li>
+<li><p><a class="reference internal" href="#network-design-techniques-and-examples" id="id2">Network design techniques and examples</a></p></li>
+</ul>
+</div>
+<div class="section" id="hardware-characteristics-of-hexagon-tensor-processor">
+<h2><a class="toc-backref" href="#id1">Hardware Characteristics of Hexagon Tensor Processor</a><a class="headerlink" href="#hardware-characteristics-of-hexagon-tensor-processor" title="Permalink to this heading">¶</a></h2>
+<p>The matrix processing engine of Hexagon is designed to be very efficient at dense dot products
+down many channels and producing many channels of output simultaneously. Activation data is typically
+stored with a fixed granularity of channels. In other words the channels are typically rounded to the
+next multiple of 32. When the number of channels is much smaller than 32 (like 4, 8, 16 channels) we
+currently have low efficiency and performance can be sub-optimal. Additionally, if the number of channels
+is not a multiple of 32 it can cause inefficient memory usage due to the amount of padding that needs
+to be added for the fixed sizes.
+Consider network design approaches and/ or architechtures that maximize the usage of channels.</p>
+</div>
+<div class="section" id="network-design-techniques-and-examples">
+<h2><a class="toc-backref" href="#id2">Network design techniques and examples</a><a class="headerlink" href="#network-design-techniques-and-examples" title="Permalink to this heading">¶</a></h2>
+<p>1. Use convolutions/matrix multiplications instead of separated out discrete kernels wherever
+possible to take advantage of the special purpose hardware.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Example: Figure 1 below shows a sequence in a network</p></li>
+</ul>
+<div class="figure align-center" id="figure-1-figure">
+<img alt="../../_static/resources/htp_guidelines_fig_1.png" src="../../_static/resources/htp_guidelines_fig_1.png" />
+</div>
+<p class="centered">
+<strong><strong>Figure 1</strong></strong></p><ul class="simple">
+<li><p>The sequence starts with an input of shape 1x1280x720x3.</p></li>
+<li><p>After this we slice out each of the three channels and work on it.</p></li>
+<li><p>This is very inefficient for HTP as the number of channels is too small (1 in this case).</p></li>
+<li><p>After the slice, lot of what done is elementwise multiply by a scalar and adding it to other values.
+This is just convolution! If we fuse this sequence of operations into convolutions as much as possible,
+as shown in Fig. 2, our performance on the end of the graph would be much better.</p></li>
+</ul>
+<div class="figure align-center" id="figure-2-figure">
+<img alt="../../_static/resources/htp_guidelines_fig_2.png" src="../../_static/resources/htp_guidelines_fig_2.png" />
+</div>
+<p class="centered">
+<strong><strong>Figure 2</strong></strong></p><ul class="simple">
+<li><p>Further still, we should combine the 3 convolutions on each of the 3 channels into a single convolution
+kernal with input 1x1280x720x3 and output 1x1280x720x3 as shown in Figure 3 below.</p></li>
+</ul>
+<div class="figure align-center" id="figure-3-figure">
+<img alt="../../_static/resources/htp_guidelines_fig_3.png" src="../../_static/resources/htp_guidelines_fig_3.png" />
+</div>
+<p class="centered">
+<strong><strong>Figure 3</strong></strong></p></div></blockquote>
+<p>2. Do transformations to the graph in such a way that the transformed graph is functionally
+equivalent, but where feasible, kernels are coalesced to increase the number of channels (optimal
+number of channels to have is 32). This will improve efficiency and performance.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Example: Consider the Figure 4</p></li>
+</ul>
+<div class="figure align-center" id="figure-4-figure">
+<img alt="../../_static/resources/htp_guidelines_fig_4.png" src="../../_static/resources/htp_guidelines_fig_4.png" />
+</div>
+<p class="centered">
+<strong><strong>Figure 4</strong></strong></p><ul class="simple">
+<li><p>After the ‘Slice’ op, there are series of channel convolutions, the first one 1 -&gt; 9 -&gt; 1
+(Conv2D_1 and Conv2D_3), and the second one 1 -&gt; 7 -&gt; 1 (Conv2D_2 and Conv2D_4). The outputs of
+the 2 series are then subtracted. The output of subtract op is then added to the scaled version
+of the first channel coming from ‘Slice’.</p></li>
+<li><p>Instead, we can equivalently formulate this as a single series of convolutions as 1 -&gt; 16 -&gt; 2,
+followed by a convolution with [+1, -1] weights, as shown in Figure 5.</p></li>
+</ul>
+<div class="figure align-center" id="figure-5-figure">
+<img alt="../../_static/resources/htp_guidelines_fig_5.png" src="../../_static/resources/htp_guidelines_fig_5.png" />
+</div>
+<p class="centered">
+<strong><strong>Figure 5</strong></strong></p><ul class="simple">
+<li><p>The result of that is then added to scaled version of other channel, which again is just
+beefing up the conv so instead of just [ +1, -1] weights you could combine with other channel
+as shown.  The weight vector in this case would be [k, +1, -1], where k is the scalar value with
+which to multiply, as shown in Figure 6 below.</p></li>
+</ul>
+<div class="figure align-center" id="figure-6-figure">
+<img alt="../../_static/resources/htp_guidelines_fig_6.png" src="../../_static/resources/htp_guidelines_fig_6.png" />
+</div>
+<p class="centered">
+<strong><strong>Figure 6</strong></strong></p></div></blockquote>
+<p>3. Some of these transformations may not be intuitive since they theoretically increase the amount
+of work required and consequently MACs, however we typically expect performance and power to be
+improved in these cases due to better alignment with hardware.</p>
+<p>4. Some of these transformations might not be lossless and might reduce accuracy but it’s
+worthwhile to consider network designs of this nature ahead of time at training time.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Example: Consider the Figure 7 below</p></li>
+</ul>
+<div class="figure align-center" id="figure-7-figure">
+<img alt="../../_static/resources/htp_guidelines_fig_7.png" src="../../_static/resources/htp_guidelines_fig_7.png" />
+</div>
+<p class="centered">
+<strong><strong>Figure 7</strong></strong></p><ul class="simple">
+<li><p>We have three separate convolutions of size [418,418,6] -&gt; [3x3] -&gt; [416,416,2]. The 3 outputs
+of size [416,416,2] are then concatenated in depth to get an output of size [416,416,6].</p></li>
+<li><p>For better performance, instead, it is best to concat 3 inputs of size [418,418,6] to a single
+[418,418,18]. Then a single convolution of [3x3] produces the [416,416,6] output, as shown in Figure 8.</p></li>
+</ul>
+<div class="figure align-center" id="figure-8-figure">
+<img alt="../../_static/resources/htp_guidelines_fig_8.png" src="../../_static/resources/htp_guidelines_fig_8.png" />
+</div>
+<p class="centered">
+<strong><strong>Figure 8</strong></strong></p></div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="htp_guidelines_low_depth_activation_more_examples.html" class="btn btn-neutral float-right" title="Avoid low depth Activations (Network examples)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../migration/writing_opPackage_migration_guide.html" class="btn btn-neutral float-left" title="Op Package Migration Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

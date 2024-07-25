@@ -1,0 +1,72 @@
+{
+    "graph": {
+        "g-1": {
+            "name": "activation_data",
+            "condition": "not self.is_8bit()",
+            "issue":"'This model uses 16-bit activation data. 16-bit activation data takes twice the amount of memory than 8-bit activation data does.'",
+            "recomm":"'Try to use a smaller datatype to get better performance. E.g., 8-bit'",
+            "modifiable": "False",
+            "mod_condition": "",
+            "mod_string": ""
+        }
+    },
+    "single_node": {
+        "sn-2": {
+            "name": "channel_size",
+            "condition": "self.is_conv(op) and not (self.is_conv_channel_less_than(op, 32)) and not (self.is_conv_channel_mul_of(op, 32))",
+            "issue":"'The channel size of input/output tensor of this convolution is not a multiple of 32'",
+            "recomm":"'Try adjusting the channel size of input/output tensor to a multiple of 32 to get better performance.'",
+            "modifiable": "False",
+            "mod_condition": "",
+            "mod_string": ""
+        },
+        "sn-3": {
+            "name": "prelu",
+            "condition": "op.type == ir_graph.QNN_OP_PRELU",
+            "issue":"'Prelu usually has poor performance compared to Relu.'",
+            "recomm":"'Try replacing Prelu with Relu to get better performance.'",
+            "modifiable": "True",
+            "mod_condition": "self.modify_prelu(i)",
+            "mod_string": "Prelu has been replaced by Relu"
+        },
+        "sn-4": {
+            "name": "elwisediv",
+            "condition": "self.is_divide_by_const(op)",
+            "issue":"'ElementWiseDivide usually has poor performance compared to ElementWiseMultiply.'",
+            "recomm":"'Try replacing ElementWiseDivide with ElementWiseMultiply using the reciprocal value to get better performance.'",
+            "modifiable": "True",
+            "mod_condition": "self.modify_div(i)",
+            "mod_string": "ElementWiseDivide has been replaced by ElementWiseMultiply using the reciprocal value"
+        },
+        "sn-5": {
+            "name": "reshape_transpose",
+            "condition": "op.type == ir_graph.QNN_OP_RESHAPE or op.type == ir_graph.QNN_OP_TRANSPOSE",
+            "issue":"'{} usually have poor performance'.format(op.type)",
+            "recomm":"'{}'.format(self.get_sn5_recomm(op))",
+            "modifiable": "False",
+            "mod_condition": "",
+            "mod_string": ""
+        }
+    },
+    "patterns": {
+        "p-1": {
+            "name": "middle_padding",
+            "condition": "self.is_conv_padding_in_middle()",
+            "issue":"'This is a convolution node with padding in the middle of a convolution sequence'",
+            "recomm":"'{}'.format(self.get_p1_recomm(op))",
+            "modifiable": "False",
+            "mod_condition": "",
+            "mod_string": ""
+        },
+        "p-2": {
+            "name": "low_channels",
+            "condition": "self.is_conv_seq_low_channel(32)",
+            "issue":"'The number of channels in the input/output tensor of this convolution node is low (smaller than 32).'",
+            "recomm":"'Try increasing the number of channels in the input/output tensor to 32 or greater to get better performance'",
+            "recomm_alt":"'This node appears in a sequence of convolutions. Try inserting space-to-depth node at the beginning of this sequence of convolutions to increase the number of channels of the input/output tensor of this convolution node to 32 or greater'",
+            "modifiable": "False",
+            "mod_condition": "",
+            "mod_string": ""
+        }
+    }
+}

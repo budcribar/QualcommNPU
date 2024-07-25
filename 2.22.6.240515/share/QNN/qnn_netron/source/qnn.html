@@ -1,0 +1,585 @@
+<!-- =============================================================================
+  Copyright (c) 2021-2022 Qualcomm Technologies, Inc.
+  All Rights Reserved.
+  Confidential and Proprietary - Qualcomm Technologies, Inc.
+
+  Copyright (c) 2021-2022 Qualcomm Technologies, Inc.
+  All Rights Reserved.
+  Confidential and Proprietary - Qualcomm Technologies, Inc.
+
+  MIT License
+
+  Copyright (c) Lutz Roeder
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
+ ============================================================================= -->
+
+<!--
+* OPEN_SOURCE_START
+* The following styling code is derived from the netron open source project in order to replicate the netron interface
+* Project Link: https://github.com/lutzroeder/netron/
+-->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Security-Policy" content="script-src 'self';">
+<title>Diff Customization</title>
+<style>
+html { touch-action: none; overflow: auto; width: 100%; height: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; text-rendering: optimizeLegibility; -webkit-text-rendering: optimizeLegibility; -moz-text-rendering: optimizeLegibility; -ms-text-rendering: optimizeLegibility; -o-text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; -ms-font-smoothing: antialiased; -o-font-smoothing: antialiased; }
+body { touch-action: none; overflow: auto; width: 100%; height: 100%; margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "PingFang SC"; font-size: 12px; text-rendering: geometricPrecision; }
+.center { position: absolute; margin: auto; top: 0; right: 0; bottom: 0; left: 0; user-select: none; -webkit-user-select: none; -moz-user-select: none; }
+.select { user-select: text; -webkit-user-select: text; -moz-user-select: text; }
+.open-file-dialog { display: none; }
+.graph { touch-action: pan-x pan-y; overflow: auto; height: 100%; }
+.canvas { display: block; position: absolute; text-rendering: geometricPrecision; user-select: none; -webkit-user-select: none; -moz-user-select: none; }
+.toolbar { background: #ffffff; position: absolute; top: 10px; left: 10px; padding: 0; margin: 0; user-select: none; -webkit-user-select: none; -moz-user-select: none; }
+.toolbar-button { background: None; border-radius: 6px; border: 0; margin: 0; padding: 0; fill: None; stroke: #777; cursor: hand; width: 24px; height: 24px; }
+.toolbar button:focus { outline: 0; }
+.icon .border { stroke: #fff; }
+.icon .stroke { stroke: #808080; }
+.icon:hover .stroke { stroke: #000000; }
+.dropdown { display: none; position: absolute; min-width: 225px; z-index: 1; border-radius: 4px; background-color: #f6f6f6; border: 1px solid rgba(0,0,0,.15); padding-top: 2px; padding-bottom: 2px; margin-left: 2px; overflow: hidden; }
+.dropdown button { display: block; border: none; border-radius: 0; background-color: transparent; color: black; width: 100%; text-align: left; padding: 4px 12px 5px 12px; white-space: no-wrap; font-size: 12px; }
+.dropdown button:hover { color: #ffffff; background-color: #2e6bd2; }
+.dropdown .separator { margin-top: 2px; margin-bottom: 2px; border-top: 1px; border-bottom: 0; border-style: solid; border-color: #e5e5e5; }
+.welcome { background-color: #ffffff; color: #242424; }
+.welcome .logo { width: 582px; height: 128px; }
+.welcome .logo-text { top: -57px; width: 582px; transition: 0.1s; }
+.welcome .logo-name { top: -170px; width: 582px; transition: 0.1s; }
+.welcome .logo-icon { left: 248px; top: -18px; width: 106px; height: 106px; transition: 0.1s; }
+.welcome .logo-spinner { left: center; top: -18px; width: 106px; height: 106px; display: none; }
+.welcome .logo-stroke { stroke: #444444;  stroke-width: 30px; }
+.welcome .logo-fill { fill: #444444; }
+.welcome .logo-border { stroke: #555555; }
+.welcome .logo-glyph { fill: #444444; }
+.welcome .logo-message { display: none; }
+.welcome .logo-github { display: none; }
+.welcome button { font-size: 12px; font-weight: bold; line-height: 1.25; text-align: center; vertical-align: middle; min-width: 60px; height: 32px; border-radius: 16px; transition: 0.1s; user-select: none; -webkit-user-select: none; -moz-user-select: none; color: #444444; background-color: #ececec; border: 1px solid #444444; }
+.welcome button:hover { color: #ececec; background-color: #444444; cursor: hand; transition: 0.2s; }
+.welcome button:focus { outline: 0; }
+.welcome .open-file-button { top: 170px; left: -150px; width: 125px; opacity: 1; }
+.welcome .github-button { top: 170px; left: 150px; width: 125px; opacity: 1; }
+.welcome .consent-accept-button { top: 220px; left: 0px; width: 125px; display: none; opacity: 0; }
+.welcome .consent-message { top: 120px; left: 0px; font-size: 13px; text-align: center; line-height: 20px; color: #444444; display: none; opacity: 0; }
+.welcome .graph { display: none; opacity: 0; }
+.welcome.spinner .logo-spinner { display: block; -webkit-animation: orbit 0.5s infinite linear; animation: orbit 0.5s infinite linear; cursor: wait; }
+@-webkit-keyframes orbit { 0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); } 100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); } }
+@keyframes orbit { 0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }  100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); } }
+.welcome.spinner .logo-spinner-stroke { stroke: #000000;stroke-width: 40px; }
+.welcome.spinner .logo-name { display: none; }
+.welcome.spinner .open-file-button { opacity: 0; display: none; }
+.welcome.spinner .github-button { opacity: 0; display: none; }
+.welcome.consent .logo-name { display: none; }
+.welcome.consent .open-file-button { opacity: 0; display: none; }
+.welcome.consent .github-button { opacity: 0; display: none; }
+.welcome.consent .consent-accept-button { opacity: 1; display: block; }
+.welcome.consent .consent-message { opacity: 1; display: block; }
+.welcome.spinner .graph { display: block; opacity: 0; }
+.welcome .toolbar { display: none; }
+.default { background-color: #ffffff; }
+.default .logo { display: none; }
+.default .graph { display: block; opacity: 1; }
+.default .toolbar { display: block; }
+@media (prefers-color-scheme: dark) {
+.default { background-color: #404040; }
+.graph { background-color: #404040; }
+.welcome { background-color: #1e1e1e; color: #888888; }
+.welcome .logo-stroke { stroke: #888888; }
+.welcome .logo-fill { fill: #888888; }
+.welcome .logo-border { stroke: #000000; }
+.welcome .logo-glyph { fill: #888888; }
+.welcome .logo-spinner-stroke { stroke: #000000; }
+.welcome .logo button { color: #888888; background-color: #1e1e1e; border-color: #888888; }
+.welcome .logo button:hover { color: #1e1e1e; background-color: #888888; }
+.welcome .consent-message { color: #888888; display: none; opacity: 0; }
+.icon .border { stroke: #1d1d1d; }
+.icon .stroke { stroke: #aaaaaa; }
+.icon:hover .stroke { stroke: #dfdfdf; }
+.dropdown { background-color: #373737; border-color: #000000; }
+.dropdown button { color: #ffffff; }
+.dropdown button:hover { color: #ffffff; background-color: #1d59d1; }
+.dropdown .separator { border-color: #5a5a5a; }
+}
+@media all and (max-width: 640px) {
+.welcome .logo { width: 240px; }
+.welcome .logo-text { opacity: 0; }
+.welcome .logo-name { opacity: 0; }
+.welcome .logo-icon { left: 0; top: 0; width: 128px; height: 128px; }
+.welcome .logo-spinner { left: 0; top: 0; width: 128px; height: 128px; }
+.welcome .logo .open-file-button { top: 180px; left: 0; }
+.welcome .logo .github-button { top: 270px; left: 0; }
+.welcome .logo .consent-message { top: 140px; }
+.welcome .logo .consent-accept-button { top: 310px; }
+.about .logo { border-radius: 0; border-left: 0px; border-right: 0px; width: 100%; padding-left: 0; padding-right: 0; }
+.about.desktop .logo { width: 320px; padding: 40px; }
+}
+@media only screen and (max-device-width: 1024px) {
+.toolbar-button { width: 32px; height: 32px; }
+}
+#caseTypeDiv{
+position: fixed;
+top: 0px;
+padding-left: 5px;
+}
+.inputs{
+width: 100px;
+}
+.row{
+padding-top: 50px;
+display: flex;
+}
+.column{
+padding-left: 20px;
+flex: 50%;
+}
+#useCase3Form{
+padding-top: 200px;
+}
+#useCase2Form{
+padding-top: 70px;
+padding-left: 300px;
+}
+input{
+}
+select option[disabled]{
+display:none;
+}
+
+.hide{
+display: none;
+}
+.diff_form {border-radius: 8px !important; font-weight: 500 !important; text-align: left !important;}
+
+<!-- OPEN_SOURCE_END -->
+
+</style>
+</head>
+<body>
+<div id="graph" class="graph">
+</div>
+<div class="welcome spinner" id="welcome_spinner">
+        <svg id="logo-spinner" class="center logo-spinner" viewbox="0 0 1024 1024">
+            <g transform="translate(512, 512)" style="opacity: 1">
+                <path class="logo-spinner-stroke" d="M-431,0 A-431,-431 0 0,1 0,-431" stroke-width="24" fill="None"></path>
+            </g>
+        </svg>
+</div>
+<div id="sidebar" ></div>
+<div id="qnnsidebar"></div>
+<div id="toolbar" class="toolbar">
+        <button class='diff_form' id="menu-button" class="toolbar-button" title="Model Properties">
+        <svg class="icon" viewbox="0 0 100 100">
+            <rect class="border" x="12" y="12" width="76" height="76" rx="16" ry="16" stroke-width="8"></rect>
+            <line class="border" x1="30" y1="37" x2="70" y2="37" stroke-width="8" stroke-linecap="round" stroke="#fff"></line>
+            <line class="border" x1="30" y1="50" x2="70" y2="50" stroke-width="8" stroke-linecap="round" stroke="#fff"></line>
+            <line class="border" x1="30" y1="63" x2="70" y2="63" stroke-width="8" stroke-linecap="round" stroke="#fff"></line>
+            <rect class="stroke" x="12" y="12" width="76" height="76" rx="16" ry="16" stroke-width="4"></rect>
+            <line class="stroke" x1="30" y1="37" x2="70" y2="37" stroke-width="4" stroke-linecap="round"></line>
+            <line class="stroke" x1="30" y1="50" x2="70" y2="50" stroke-width="4" stroke-linecap="round"></line>
+            <line class="stroke" x1="30" y1="63" x2="70" y2="63" stroke-width="4" stroke-linecap="round"></line>
+        </svg>
+    </button>
+    <button class='diff_form' id="zoom-in-button" class="toolbar-button" title="Zoom In"></button>
+    <button class='diff_form' id="zoom-out-button" class="toolbar-button" title="Zoom Out"></button>
+</div>
+    <!-- Preload fonts to workaround Chrome SVG layout issue -->
+    <div id="caseTypeDiv">
+    <p>*Choose Use Case:
+        <select id="caseType" name="caseType">
+          <option value="usecase1">Inference vs Inference</option>
+          <option value="usecase2">Golden vs Inference</option>
+          <option value="usecase3">Output vs Output</option>
+        </select>
+        <input type="submit"  value="Load Saved Run" id="saved_run_file"></input>
+        </p>
+        <p id="systemVal"></p>
+    </div>
+    <div id="useCase1Form" class="row" >
+        <div class="column">
+            <h1>Inference One</h1>
+           <p>*Target Device:
+            <select id="tarDev_1" name = "tarDev_1">
+                <option value="x86">host</option>
+                <option value="android">on-device</option>
+
+            </select>
+
+        </p>
+            <p id="devices_config_path_1_p">Device ID:
+            <input class="inputs" type="text" name="workspace" id="devices_config_path_1" value="" placeholder=""/>
+        </p>
+        <p>*Runtime:
+            <select id="runtime_1">
+                <option id="cpu_1" value="cpu">cpu</option>
+                <option id="gpu_1" value="gpu">gpu</option>
+                <option id="dspv68_1" value="dspv68">dspv68</option>
+                <option id="dspv69_1" value="dspv69">dspv69</option>
+                <option id="dspv73_1" value="dspv73">dspv73</option>
+            </select>
+
+        </p>
+        <p>*Architecture:
+            <select id="arch_1">
+                <option id="aarch64-android_1" value="aarch64-android">aarch64-android</option>
+                <option  id="x86_64-linux-clang_1" value="x86_64-linux-clang">x86_64-linux-clang</option>
+            </select>
+
+        </p>
+        <p>*Verifier:
+            <select id="default_ver_1">
+                <option value="RtolAtol">RtolAtol</option>
+                <option value="AdjustedRtolAtol">AdjustedRtolAtol</option>
+                <option value="TopK">TopK</option>
+                <option value="L1Error">L1Error</option>
+                <option value="CosineSimilarity">CosineSimilarity</option>
+                <option value="MSE">MSE</option>
+                <option value="MAE">MAE</option>
+                <option value="MeanIOU">MeanIOU</option>
+                <option value="SQNR">SQNR</option>
+            </select>
+        </p>
+        <p>
+            <p style="display: inline;">Accuracy Threshold:</p>
+            <input type="text" size="3em" placeholder="0.01" id="verifier_threshold_value_1"></input>
+
+        </p>
+        <p>
+            <p id="verifier_config_text_1" style="display: inline;">rtolmargin</p>
+            <input class="inputs" type="text" name="config1" id="verifier_input_1" value="0.01"  >
+            <p id="verifier_config_text_2" style="display: inline;">atolmargin</p>
+            <input class="inputs" type="text" name="config2" id="verifier_input_2" value="0.01" >
+        </p>
+
+
+
+        <p>*Model json:
+            <button class="diff_form" type="submit" id="model_json_1">Add File</button>
+        </p>
+        <p>*Model Cpp:
+            <button class="diff_form" type="submit" id="model_cpp_1">Add File</button>
+        </p>
+        <p>Model Bin:
+            <button class="diff_form" type="submit" id="model_bin_1">Add File</button>
+        </p>
+        <p id="ndk_path_1_p">*NDK Path:
+            <button class="diff_form" type="submit" id="ndk_path_1">Add Path</button>
+        </p>
+        <p>*Devices Engine Path:
+            <button class="diff_form" type="submit" id="engine_path_1">Add Path</button>
+        </p>
+            <p>*Input List:
+            <button class="diff_form" type="submit" id="input_list_1">Add File</button>
+        </p>
+
+
+                 <p>Input Data Type:
+            <select class="inputs" type="text" name="input_data_type" id="input_data_type_1">
+             <option>float</option>
+             <option>native</option>
+             </select>
+        </p>
+         <p>Output Data Type:
+            <select class="inputs" type="text" name="output_data_type" id="output_data_type_1">
+                <option>float_only</option>
+                <option>native_only</option>
+                <option>float_and_native</option>
+            </select>
+        </p>
+         <p>Perf Profile:
+            <select class="inputs" type="text" name="perf_profile" id="perf_prof_1">
+                <option>balanced</option>
+                <option>low_balanced</option>
+                <option>high_performance</option>
+                <option>sustained_high_performance</option>
+                <option>burst</option>
+                <option>low_power_saver</option>
+                <option>power_saver</option>
+                <option>high_power_saver</option>
+                <option>system_settings</option>
+                </select>
+        </p>
+        <p id="profile_comparison_1">Profile Comparison:
+            <select class="inputs" type="text" name="prof_level" id="prof_level_1">
+                <option>on</option>
+                <option>off</option>
+                </select>
+
+        </p>
+        <p id = "perf_threshold_input_1"style="display: inline;">Perf Threshold:
+            <input type="text" size="3em" placeholder="1" id="verifier_threshold_value_1_2"></input> %
+        </p>
+        <p>*Working Directory:
+            <button class="diff_form" type="submit" id="workspace_1">Add Path</button>
+        </p>
+
+        </div>
+        <div class="column">
+            <h1>Inference Two</h1>
+        <p>*Target Device:
+            <select id="tarDev_1_2">
+                <option value="x86">host</option>
+                <option value="android">on-device</option>
+<!--                <option value="linux-embedded">linux-embedded</option>-->
+
+            </select>
+
+        </p>
+        <p id="devices_config_path_1_2_p">Device ID:
+            <input class="inputs" type="text" name="workspace" id="devices_config_path_1_2" value="" placeholder=""/>
+        </p>
+        <p>*Runtime:
+            <select id="runtime_1_2">
+                <option id="cpu_1_2" value="cpu">cpu</option>
+                <option id="gpu_1_2" value="gpu">gpu</option>
+                <option id="dspv68_1_2" value="dspv68">dspv68</option>
+                <option id="dspv69_1_2" value="dspv69">dspv69</option>
+                <option id="dspv73_1_2" value="dspv73">dspv73</option>
+            </select>
+
+        </p>
+        <p>*Architecture:
+            <select id="arch_1_2">
+                <option id="aarch64-android_1_2" value="aarch64-android">aarch64-android</option>
+                <option id="x86_64-linux-clang_1_2" value="x86_64-linux-clang">x86_64-linux-clang</option>
+            </select>
+
+        </p>
+            <p>*Model json:
+            <button class="diff_form" type="submit" id="model_json_1_2">Add File</button>
+        </p>
+        <p>*Model Cpp:
+            <button class="diff_form" type="submit" id="model_cpp_1_2">Add File</button>
+        </p>
+        <p>Model Bin:
+            <button class="diff_form" type="submit" id="model_bin_1_2">Add File</button>
+        </p>
+        <p id="ndk_path_1_2_p">*NDK Path:
+            <button class="diff_form" type="submit" id="ndk_path_1_2">Add Path</button>
+        </p>
+        <p>*Devices Engine Path:
+            <button class="diff_form" type="submit" id="engine_path_1_2">Add Path</button>
+        </p>
+            <p>*Input List:
+            <button class="diff_form" type="submit" id="input_list_1_2">Add File</button>
+        </p>
+            <p>Input Data Type:
+            <select class="inputs" type="text" name="input_data_type" id="input_data_type_1_2">
+             <option>float</option>
+             <option>native</option>
+             </select>
+        </p>
+         <p>Output Data Type:
+            <select class="inputs" type="text" name="output_data_type" id="output_data_type_1_2">
+                <option>float_only</option>
+                <option>native_only</option>
+                <option>float_and_native</option>
+            </select>
+        </p>
+         <p>Perf Profile:
+            <select class="inputs" type="text" name="perf_profile" id="perf_prof_1_2">
+                <option>balanced</option>
+                <option>low_balanced</option>
+                <option>high_performance</option>
+                <option>sustained_high_performance</option>
+                <option>burst</option>
+                <option>low_power_saver</option>
+                <option>power_saver</option>
+                <option>high_power_saver</option>
+                <option>system_settings</option>
+                </select>
+        </p>
+        </div>
+    </div>
+
+    <div id="useCase2Form">
+        <h1>Inference</h1>
+        <p>*Target Device:
+            <select id="targetDevice_2">
+                <option value="x86">host</option>
+                <option value="android">on-device</option>
+
+            </select>
+
+        </p>
+        <p id="devices_config_path_2_p">Device ID:
+            <input class="inputs" type="text" name="workspace" id="devices_config_path_2" value="" placeholder=""/>
+        </p>
+        <p>*Runtime:
+            <select id="runtime_2">
+                <option id="cpu_2" value="cpu">cpu</option>
+                <option id="gpu_2" value="gpu">gpu</option>
+                <option id="dspv68_2" value="dspv68">dspv68</option>
+                <option id="dspv69_2" value="dspv69">dspv69</option>
+                <option id="dspv73_2" value="dspv73">dspv73</option>
+            </select>
+
+        </p>
+        <p>*Architecture:
+            <select id="arch_2">
+                <option id="aarch64-android_2" value="aarch64-android">aarch64-android</option>
+                <option id="x86_64-linux-clang_2" value="x86_64-linux-clang">x86_64-linux-clang</option>
+            </select>
+
+        </p>
+        <p>*Default Verifier:
+            <select id="default_ver_2">
+                <option value="RtolAtol">RtolAtol</option>
+                <option value="AdjustedRtolAtol">AdjustedRtolAtol</option>
+                <option value="TopK">TopK</option>
+                <option value="L1Error">L1Error</option>
+                <option value="CosineSimilarity">CosineSimilarity</option>
+                <option value="MSE">MSE</option>
+                <option value="MAE">MAE</option>
+                <option value="MeanIOU">MeanIOU</option>
+                <option value="SQNR">SQNR</option>
+
+            </select>
+        </p>
+        <p>
+            <p style="display: inline;">Accuracy Threshold:</p>
+            <input type="text" size="3em" placeholder="0.01" id="verifier_threshold_value_2"></input>
+
+        </p>
+        <p>
+            <p id="verifier_config_text_2_1" style="display: inline;">rtolmargin</p>
+            <input class="inputs" type="text" name="config1" id="verifier_input_2_1" value="0.01"  >
+            <p id="verifier_config_text_2_2" style="display: inline;">atolmargin</p>
+            <input class="inputs" type="text" name="config2" id="verifier_input_2_2" value="0.01" >
+        </p>
+
+
+        <p>*Model json:
+            <button class="diff_form" type="submit" id="model_json_2">Add File</button>
+        </p>
+        <p>*Model Cpp:
+            <button class="diff_form" type="submit" id="model_cpp_2">Add File</button>
+        </p>
+        <p>Model Bin:
+            <button class="diff_form" type="submit" id="model_bin_2">Add File</button>
+        </p>
+        <p id="ndk_path_2_p">*NDK Path:
+            <button class="diff_form" type="submit" id="ndk_path_2">Add Path</button>
+        </p>
+        <p>*Devices Engine Path:
+            <button class="diff_form" type="submit" id="dev_engine_path_2">Add Path</button>
+        </p>
+                 <p>*Input List:
+            <button class="diff_form" type="submit" id="input_list_2">Add File</button>
+        </p>
+                <p>*Path to Goldens:
+            <button class="diff_form" type="submit" id="path_to_goldens_2">Add Path</button>
+        </p>
+         <p>Input Data Type:
+            <select class="inputs" type="text" name="input_data_type" id="input_data_type_2">
+             <option>float</option>
+             <option>native</option>
+             </select>
+        </p>
+         <p>Output Data Type:
+            <select class="inputs" type="text" name="output_data_type" id="output_data_type_2">
+                <option>float_only</option>
+                <option>native_only</option>
+                <option>float_and_native</option>
+            </select>
+        </p>
+         <p>Profile Comparison:
+            <select class="inputs" type="text" name="prof_level" id="prof_level_2">
+                <option>on</option>
+                <option>off</option>
+                </select>
+        </p>
+        <p id="perf_threshold_input_2" style="display: inline;">Perf Threshold:
+            <input type="text" size="3em" placeholder="1" id="verifier_threshold_value_2_2"></input> %
+        </p>
+         <p>Perf Profile:
+            <select class="inputs" type="text" name="perf_profile" id="perf_prof_2">
+                <option>balanced</option>
+                <option>low_balanced</option>
+                <option>high_performance</option>
+                <option>sustained_high_performance</option>
+                <option>burst</option>
+                <option>low_power_saver</option>
+                <option>power_saver</option>
+                <option>high_power_saver</option>
+                <option>system_settings</option>
+                </select>
+        </p>
+        <p>*Working Directory:
+            <button class="diff_form" type="submit" id="workspace_2">Add Path</button>
+        </p>
+    </div>
+    <div id="useCase3Form" align="center">
+        <h1> </h1>
+        <p>*Model json:
+            <button class="diff_form" type="submit" id="model_json_3">Add File</button>
+        </p>
+        <p>Model Bin:
+            <button class="diff_form" type="submit" id="model_bin_3">Add File</button>
+        </p>
+        <p>*Path to Raw:
+            <button class="diff_form" type="submit" id="path_to_raw_3">Add Path</button>
+        </p>
+        <p>*Path to Goldens:
+            <button class="diff_form" type="submit" id="path_to_goldens_3">Add Path</button>
+        </p>
+        <p>*Default Verifier:
+            <select id="default_ver_3">
+                <option value="RtolAtol">RtolAtol</option>
+                <option value="AdjustedRtolAtol">AdjustedRtolAtol</option>
+                <option value="TopK">TopK</option>
+                <option value="L1Error">L1Error</option>
+                <option value="CosineSimilarity">CosineSimilarity</option>
+                <option value="MSE">MSE</option>
+                <option value="MAE">MAE</option>
+                <option value="MeanIOU">MeanIOU</option>
+                <option value="SQNR">SQNR</option>
+            </select>
+        </p>
+        <p>
+            <p style="display: inline;">Accuracy Threshold:</p>
+            <input type="text" size="3em" placeholder="0.01" id="verifier_threshold_value_3"></input>
+            <p style="display: inline;">Perf Threshold:</p>
+            <input type="text" size="3em" placeholder="1" id="verifier_threshold_value_3_2"></input> %
+        </p>
+        <p>
+            <p id="verifier_config_text_3_1" style="display: inline;">rtolmargin</p>
+            <input class="inputs" type="text" name="config1" id="verifier_input_3_1" value="0.01"  >
+            <p id="verifier_config_text_3_2" style="display: inline;">atolmargin</p>
+            <input class="inputs" type="text" name="config2" id="verifier_input_3_2" value="0.01" >
+        </p>
+
+        <p>*Working Directory:
+            <button class="diff_form"  type="submit"  id="workspace_3">Add Path</button>
+        </p>
+    </div>
+    <p align="center"> Save Run Configurations:
+        <button class="diff_form" type="submit" id="save_run_configs">Add Path</button>
+        <input type="text" placeholder="File Name" id="save_run_configs_name"></input>
+    </p>
+    <p align="center">
+        <input id="run" type="submit" value="Run" />
+    </p>
+    <div style="font-weight: normal; color: rgba(0, 0, 0, 0.01); user-select: none;">.</div>
+    <div style="font-weight: bold; color: rgba(0, 0, 0, 0.01); user-select: none;">.</div>
+    <div style="font-weight: bold; color: rgba(0, 0, 0, 0.01); user-select: none;">.</div>
+</body>
+</html>

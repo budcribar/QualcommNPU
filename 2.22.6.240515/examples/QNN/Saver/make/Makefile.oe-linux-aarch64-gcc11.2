@@ -1,0 +1,39 @@
+# ===============================================================
+#
+#  Copyright (c) 2023 Qualcomm Technologies, Inc.
+#  All Rights Reserved.
+#  Confidential and Proprietary - Qualcomm Technologies, Inc.
+#
+# ===============================================================
+
+# define directory for the executable
+QNN_TARGET ?= aarch64-oe-linux-gcc11.2
+export EXE_DIR := ./$(QNN_TARGET)
+CC=$(QNN_AARCH64_LINUX_OE_GCC_112)/sysroots/x86_64-qtisdk-linux/usr/bin/aarch64-oe-linux/aarch64-oe-linux-gcc --sysroot=$(QNN_AARCH64_LINUX_OE_GCC_112)/sysroots/armv8a-oe-linux
+
+# Include paths
+# QNN_SDK_ROOT should be set to point to the SDK path,
+ifdef QNN_SDK_ROOT
+INCLUDES =  -I$(QNN_SDK_ROOT)/include/QNN
+LINK_DIRECTORIES = -L$(QNN_SDK_ROOT)/lib/$(QNN_TARGET)
+export LD_LIBRARY_PATH := $(QNN_SDK_ROOT)/lib/$(QNN_TARGET):$(LD_LIBRARY_PATH)
+else
+$(error QNN_SDK_ROOT: Please set QNN_SDK_ROOT)
+endif
+
+directories: $(EXE_DIR)
+
+$(EXE_DIR):
+	mkdir -p $(EXE_DIR)
+
+cpu: | directories
+	$(CC) $(SAVER_OUTPUT_FILENAME) $(INCLUDES) $(LINK_DIRECTORIES) -l QnnCpu -o $(EXE_DIR)/saver_output_QnnCpu
+
+gpu: | directories
+	$(CC) $(SAVER_OUTPUT_FILENAME) $(INCLUDES) $(LINK_DIRECTORIES) -l QnnGpu -o $(EXE_DIR)/saver_output_QnnGpu
+
+htp: | directories
+	$(CC) $(SAVER_OUTPUT_FILENAME) $(INCLUDES) $(LINK_DIRECTORIES) -l QnnHtp -o $(EXE_DIR)/saver_output_QnnHtp
+
+hta: | directories
+	$(CC) $(SAVER_OUTPUT_FILENAME) $(INCLUDES) $(LINK_DIRECTORIES) -l QnnHta -o $(EXE_DIR)/saver_output_QnnHta

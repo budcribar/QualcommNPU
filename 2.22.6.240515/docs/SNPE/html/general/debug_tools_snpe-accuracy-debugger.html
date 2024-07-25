@@ -1,0 +1,1107 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Accuracy Debugger (Experimental) &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="API" href="api.html" />
+    <link rel="prev" title="Quantization Checker (Experimental)" href="debug_tools_snpe-quantization-checker.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup1.html">Network Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup6.html">Tutorials and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="usergroup11.html">Debug Tools</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="debug_tools_snpe-architecture-checker.html">Architecture Checker (Experimental)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debug_tools_snpe-quantization-checker.html">Quantization Checker (Experimental)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Accuracy Debugger (Experimental)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="usergroup11.html">Debug Tools</a> &raquo;</li>
+        
+      <li>Accuracy Debugger (Experimental)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="accuracy-debugger-experimental">
+<h1>Accuracy Debugger (Experimental)<a class="headerlink" href="#accuracy-debugger-experimental" title="Permalink to this heading">¶</a></h1>
+<p><strong>Dependencies</strong></p>
+<p>The Accuracy Debugger depends on the setup outlined in <a class="reference internal" href="setup.html"><span class="doc">Setup</span></a>.
+In particular, the following are required:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Platform dependencies are need to be met as per <a class="reference internal" href="setup.html#linux-platform-dependency"><span class="std std-ref">Platform Dependencies</span></a></p></li>
+<li><p>The desired ML frameworks need to be installed. Accuracy debugger is verified to work with the ML framework versions mentioned at <a class="reference internal" href="setup.html#environment-setup-linux"><span class="std std-ref">Environment Setup</span></a></p></li>
+</ol>
+</div></blockquote>
+<p>The following environment variables are used inside this guide (User may change the following paths depending on their needs):</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>RESOURCESPATH = {Path to the directory where all models and input files reside}</p></li>
+<li><p>PROJECTREPOPATH = {Path to your accuracy debugger project directory}</p></li>
+</ol>
+</div></blockquote>
+<p><strong>Supported models</strong></p>
+<p>The snpe-accuracy-debugger currently supports ONNX, TFLite, and Tensorflow 1.x models.</p>
+<p><strong>Overview</strong></p>
+<p>The <strong>accuracy-debugger</strong> tool finds inaccuracies in a neural-network at the layer level. The tool compares the golden outputs produced by running a model through a specific ML framework (ie. Tensorflow, Onnx, TFlite) with the results produced by running the same model through Qualcomm’s SNPE Inference Engine. The inference engine can be run on a variety of computing mediums including GPU, CPU and DSP.</p>
+<p>The following features are available in Accuracy Debugger. Each feature can be run with its corresponding option; for example, <code class="docutils literal notranslate"><span class="pre">snpe-accuracy-debugger</span> <span class="pre">--{option}</span></code>.</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p><strong>snpe-accuracy-debugger –framework_diagnosis</strong> This feature uses frameworks ie. tensorflow, tflite and onnx to run the model to get intermediate outputs.</p></li>
+<li><p><strong>snpe-accuracy-debugger –inference_engine</strong> This feature uses SNPE engine to run the models to get intermediate outputs.</p></li>
+<li><p><strong>snpe-accuracy-debugger –verification</strong> This feature compares the output generated by framework diagnosis and inference engine features using the verifiers like CosineSimilarity, RtolAtol, etc.</p></li>
+<li><p><strong>snpe-accuracy-debugger –compare_encodings</strong> This feature extracts encodings from a given SNPE DLC, compares them with the given AIMET encodings, and outputs an Excel sheet highlighting mismatches.</p></li>
+<li><p><strong>snpe-accuracy-debugger –tensor_inspection</strong> This feature compares given target outputs with reference outputs.</p></li>
+</ol>
+</div></blockquote>
+<dl class="simple">
+<dt>Tip:</dt><dd><ul class="simple">
+<li><p>You can use –help after the bin commands to see what other options (required or optional) you can add.</p></li>
+<li><p>If no option is provided, Accuracy Debugger runs framework_diagnosis, inference_engine, and verification sequentially.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Below are the instructons for running the Accuracy Debugger</p>
+<p><strong>Framework Diagnosis</strong></p>
+<p>The Framework diagnosis feature is designed to run models with different machine learning frameworks (i.e. Tensorflow, etc). A selected model is run with a specific ML framework. Golden outputs are produced for future comparison with inference results from the Inference Engine step.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>usage: snpe-accuracy-debugger --framework_diagnosis [-h]
+                                    -f FRAMEWORK [FRAMEWORK ...]
+                                    -m MODEL_PATH
+                                    -i INPUT_TENSOR [INPUT_TENSOR ...]
+                                    -o OUTPUT_TENSOR
+                                    [-w WORKING_DIR]
+                                    [--output_dirname OUTPUT_DIRNAME]
+                                    [-v]
+
+Script to generate intermediate tensors from a ML Framework.
+
+optional arguments:
+     -h, --help            show this help message and exit
+
+required arguments:
+     -f FRAMEWORK [FRAMEWORK ...], --framework FRAMEWORK [FRAMEWORK ...]
+                        Framework type and version, version is optional. Currently
+                        supported frameworks are [&quot;tensorflow&quot;,&quot;onnx&quot;,&quot;tflite&quot;] case
+                        insensitive but spelling sensitive
+     -m MODEL_PATH, --model_path MODEL_PATH
+                             Path to the model file(s).
+     -i INPUT_TENSOR [INPUT_TENSOR ...], --input_tensor INPUT_TENSOR [INPUT_TENSOR ...]
+                             The name, dimensions, raw data, and optionally data
+                             type of the network input tensor(s) specifiedin the
+                             format &quot;input_name&quot; comma-separated-dimensions path-
+                             to-raw-file, for example: &quot;data&quot; 1,224,224,3 data.raw
+                             float32. Note that the quotes should always be
+                             included in order to handle special characters,
+                             spaces, etc. For multiple inputs specify multiple
+                             --input_tensor on the command line like:
+                             --input_tensor &quot;data1&quot; 1,224,224,3 data1.raw
+                             --input_tensor &quot;data2&quot; 1,50,100,3 data2.raw float32.
+     -o OUTPUT_TENSOR, --output_tensor OUTPUT_TENSOR
+                             Name of the graph&#39;s specified output tensor(s).
+     optional arguments:
+     -w WORKING_DIR, --working_dir WORKING_DIR
+                             Working directory for the framework_diagnosis to store
+                             temporary files. Creates a new directory if the
+                             specified working directory does not exist
+     --output_dirname OUTPUT_DIRNAME
+                             output directory name for the framework_diagnosis to
+                             store temporary files under
+                             &lt;working_dir&gt;/framework_diagnosis. Creates a new
+                             directory if the specified working directory does not
+                             exist
+     -v, --verbose         Verbose printing
+</pre></div>
+</div>
+<p>Please note: All the command line arguments should either be provided through command line or through the config file. They will not override those in the config file if there is overlap.</p>
+<p><strong>Sample Commands</strong></p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>snpe-accuracy-debugger \
+    --framework_diagnosis \
+    --framework tensorflow \
+    --model_path $RESOURCESPATH/samples/InceptionV3Model/inception_v3_2016_08_28_frozen.pb \
+    --input_tensor &quot;input:0&quot; 1,299,299,3 $RESOURCESPATH/samples/InceptionV3Model/data/chairs.raw \
+    --output_tensor InceptionV3/Predictions/Reshape_1:0
+
+snpe-accuracy-debugger \
+    --framework_diagnosis \
+    --framework onnx \
+    --model_path $RESOURCESPATH/samples/dlv3onnx/dlv3plus_mbnet_513-513_op9_mod_basic.onnx \
+    --input_tensor Input 1,3,513,513 $RESOURCESPATH/samples/dlv3onnx/data/00000_1_3_513_513.raw \
+    --output_tensor Output
+</pre></div>
+</div>
+<p>TIP:</p>
+<ul class="simple">
+<li><p>a working_directory, if not otherwise specified, is generated wherever you are calling the script from; it is recommended to call all scripts from the same directory so all your outputs and results are stored under the same directory without having outputs everywhere.</p></li>
+<li><p>for tensorflow it is sometimes necessary to add the :0 after the input and output node name to signify the index of the node. Notice that the :0 is dropped for onnx models.</p></li>
+</ul>
+<p><strong>Output</strong></p>
+<p>The program also creates a folder named latest found in working_directory/framework_diagnosis which is symbolic linked to the most recently generated directory. In the example below, latest will have data that is symbol linked to the data in the most recent directory YYYY-MM-DD_HH:mm:ss. User may choose to override the directory name by passing it to –output_dirname (i.e. –output_dirname myTest1Ouput).</p>
+<p>The <em>float data</em> produced by the <strong>Framework Diagnosis</strong> step offers precise reference material for the <strong>Verification</strong> component to diagnose the accuracy of the network generated by the <strong>Inference Engine</strong>.
+Unless a path is otherwise specified, the Accuracy Debugger will create directories within the <cite>working_directory/framework_diagnosis</cite> directory found in the current working directory. The directories will be named with the date and time of the program’s execution, and contain tensor data. Depending on the tensor naming convention of the model, there may be numerous sub-directories within the new directory. This occurs when tensor names include a slash “/”. For example, for the tensor names ‘inception_3a/1x1/bn/sc’, ‘inception_3a/1x1/bn/sc_internal’ and ‘inception_3a/1x1/bn’, subdirectories will be generated.</p>
+<div class="docutils container">
+<div class="figure align-default">
+<img alt="../images/framework_diagnosis.png" src="../images/framework_diagnosis.png" />
+</div>
+</div>
+<p>The figure above shows a sample output from one of the framework_diagnosis runs. Framework diagnosis basically runs inference at each op in the network.
+InceptionV3 and Logits contain the outputs of each layer before the last layer. Each output directory contains the .raw files corresponding to each node. Every raw file that can be seen is the output of an op. The outputs of the final layer are saved inside Predictions directory. The file framework_diagnosis_options.json contains all the options used to run this feature.</p>
+<p><strong>Inference Engine</strong></p>
+<p>The Inference Engine feature is designed to find the outputs for a SNPE SDK compatible model. The output produced by this step can be compared with the Golden outputs produced by the framework diagnosis step.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>usage: snpe-accuracy-debugger --inference_engine [-h]
+                                 [--stage {source,converted,compiled}]
+                                 -r {cpu,gpu,dsp,dspv65,dspv66,dspv68,dspv69,dspv73,dspv75}
+                                 -p ENGINE_PATH
+                                 -a {aarch64-android,aarch64-android-clang6.0,aarch64-android-clang8.0,x86_64-linux-clang}
+                                 -l INPUT_LIST
+                                 [-i INPUT_TENSOR [INPUT_TENSOR ...]]
+                                 [-o OUTPUT_TENSOR] [-m MODEL_PATH]
+                                 [-f FRAMEWORK [FRAMEWORK ...]]
+                                 [--static_model STATIC_MODEL]
+                                 [--deviceId DEVICEID] [-v]
+                                 [--host_device {x86}] [-w WORKING_DIR]
+                                 [--output_dirname OUTPUT_DIRNAME]
+                                 [--debug_mode_off] [-bbw {8,32}]
+                                 [-abw {8,16}] [-wbw {8,16}]
+                                 [--float_bitwidth {32,16}]
+                                 [-nif] [-nof] [-qo QUANTIZATION_OVERRIDES]
+                                 [--golden_dir_for_mapping GOLDEN_DIR_FOR_MAPPING]
+                                 [-mn MODEL_NAME] [--args_config ARGS_CONFIG]
+                                 [--print_version PRINT_VERSION]
+                                 [--perf_profile
+                                 {low_balanced,balanced,high_performance,sustained_high_performance,burst,low_power_saver,power_saver,high_power_saver,system_settings}]
+                                 [--offline_prepare]
+                                 [--extra_converter_args EXTRA_CONVERTER_ARGS]
+                                 [--extra_runtime_args EXTRA_RUNTIME_ARGS]
+                                 [--profiling_level {off,basic,moderate,detailed,linting}]
+                                 [--extra_quantizer_args EXTRA_QUANTIZER_ARGS]
+                                 [--fine_grain_mode FINE_GRAIN_MODE]
+                                 [--no_weight_quantization]
+                                 [--use_symmetric_quantize_weights]
+                                 [--use_enhanced_quantizer]
+                                 [--htp_socs HTP_SOCS]
+                                 [--use_adjusted_weights_quantizer]
+                                 [--override_params]
+
+Script to run SNPE inference engine.
+
+optional arguments:
+-h, --help            show this help message and exit
+
+Core Arguments:
+--stage {source,converted,compiled}
+                      Specifies the starting stage in the Accuracy Debugger
+                      pipeline. Source: starting with a source framework model [default].
+                      Compiled: starting with a model&#39;s .so binary
+-r {cpu,gpu,dsp,aip,dspv65,dspv66,dspv68,dspv69,dspv73,dspv75}, --runtime {cpu,gpu,dsp,aip,dspv65,dspv66,dspv68,dspv69,dspv73,dspv75}
+                      Runtime to be used.
+-a {aarch64-android,aarch64-android-clang6.0,aarch64-android-clang8.0,x86_64-linux-clang}, --architecture {aarch64-android,aarch64-android-clang6.0,aarch64-android-clang8.0,x86_64-linux-clang}
+                      Name of the architecture to use for inference engine.
+-l INPUT_LIST, --input_list INPUT_LIST
+                      Path to the input list text.
+
+Arguments required for SOURCE stage:
+-i INPUT_TENSOR [INPUT_TENSOR ...], --input_tensor INPUT_TENSOR [INPUT_TENSOR ...]
+                      The name, dimension, and raw data of the network input
+                      tensor(s) specified in the format &quot;input_name&quot; comma-
+                      separated-dimensions path-to-raw-file, for example:
+                      &quot;data&quot; 1,224,224,3 data.raw. Note that the quotes
+                      should always be included in order to handle special
+                      characters, spaces, etc. For multiple inputs specify
+                      multiple --input_tensor on the command line like:
+                      --input_tensor &quot;data1&quot; 1,224,224,3 data1.raw
+                      --input_tensor &quot;data2&quot; 1,50,100,3 data2.raw.
+-o OUTPUT_TENSOR, --output_tensor OUTPUT_TENSOR
+                      Name of the graph&#39;s output tensor(s).
+-m MODEL_PATH, --model_path MODEL_PATH
+                      Path to the model file(s).
+-f FRAMEWORK [FRAMEWORK ...], --framework FRAMEWORK [FRAMEWORK ...]
+                     Framework type to be used, followed optionally by
+                     framework version.
+
+Arguments required for CONVERTED or COMPILED stage:
+--static_model STATIC_MODEL
+                     Path to the converted model.
+
+Optional Arguments:
+--deviceId DEVICEID  The serial number of the device to use. If not
+                     available, the first in a list of queried devices will
+                     be used for validation.
+-v, --verbose        Verbose printing
+--host_device {x86}  The device that will be running conversion. Set to x86
+                     by default.
+-p ENGINE_PATH, --engine_path ENGINE_PATH
+                     Path to the inference engine.
+-w WORKING_DIR, --working_dir WORKING_DIR
+                     Working directory for the inference_engine to store
+                     temporary files. Creates a new directory if the
+                     specified working directory does not exist
+--output_dirname OUTPUT_DIRNAME
+                     output directory name for the inference_engine to
+                     store temporary files under
+                     &lt;working_dir&gt;/inference_engine. Creates a new
+                     directory if the specified working directory does not
+                     exist
+--debug_mode_off     Specifies if wish to turn off debug_mode mode.
+--print_version PRINT_VERSION
+                     Print the SNPE SDK version alongside the output.
+--offline_prepare    Use offline prepare to run snpe model.
+-bbw {8,32}, --bias_bitwidth {8,32}
+                     option to select the bitwidth to use when quantizing
+                     the bias. default 8
+-abw {8,16}, --act_bitwidth {8,16}
+                     option to select the bitwidth to use when quantizing
+                     the activations. default 8
+--golden_output_reference_directory GOLDEN_OUTPUT_REFERENCE_DIRECTORY, --golden_dir_for_mapping GOLDEN_DIR_FOR_MAPPING
+                     Optional parameter to indicate the directory of the
+                     goldens, it&#39;s used for tensor mapping without
+                     framework.
+-mn MODEL_NAME, --model_name MODEL_NAME
+                     Name of the desired output sdk specific model.
+--args_config ARGS_CONFIG
+                     Path to a config file with arguments. This can be used
+                     to feed arguments to the AccuracyDebugger as an
+                     alternative to supplying them on the command line.
+-wbw {8,16}, --weights_bitwidth {8,16}
+                     option to select the bitwidth to use when quantizing
+                     the weights. default 8
+--float_bitwidth {32,16}
+                     Use the --float_bitwidth option to select the bitwidth
+                     to use when using float for parameters(weights/bias)
+                     and activations for all ops or specific Op (via
+                     encodings) selected through encoding, either 32
+                     (default) or 16.
+-nif, --use_native_input_files
+                     Specifies that the input files will be parsed in the
+                     data type native to the graph. If not specified, input
+                     files will be parsed in floating point.
+-nof, --use_native_output_files
+                     Specifies that the output files will be generated in
+                     the data type native to the graph. If not specified,
+                     output files will be generated in floating point.
+-qo QUANTIZATION_OVERRIDES, --quantization_overrides QUANTIZATION_OVERRIDES
+                     Path to quantization overrides json file.
+--extra_converter_args EXTRA_CONVERTER_ARGS
+                     additional converter arguments in a quoted string.
+                     example: --extra_converter_args &#39;input_dtype=data
+                     float;input_layout=data1 NCHW&#39;
+--extra_runtime_args EXTRA_RUNTIME_ARGS
+                     additional net runner arguments in a quoted string.
+                     example: --extra_runtime_args
+                     &#39;arg1=value1;arg2=value2&#39;
+--profiling_level {off,basic,moderate,detailed,linting}
+                     Enables profiling and sets its level.
+--extra_quantizer_args EXTRA_QUANTIZER_ARGS
+                     additional dlc quantizer arguments in a quoted string.
+                     example: --extra_runtime_args
+                     &#39;arg1=value1;arg2=value2&#39;
+--fine_grain_mode FINE_GRAIN_MODE
+                      Path to the model golden outputs required to run
+                      inference engine using fine-grain mode.
+--no_weight_quantization
+                      Generate and add the fixed-point encoding metadata but
+                      keep the weights in floating point
+--use_symmetric_quantize_weights
+                      Use the symmetric quantizer feature when quantizing
+                      the weights of the model
+--use_enhanced_quantizer
+                      Use the enhanced quantizer feature when quantizing the
+                      model
+--htp_socs HTP_SOCS   Specify SoC to generate HTP Offline Cache for.
+--use_adjusted_weights_quantizer
+                      Use the adjusted tf quantizer for quantizing the
+                      weights only
+--override_params     Use this option to override quantization parameters
+                      when quantization was provided from the original
+                      source framework
+</pre></div>
+</div>
+<p>Please note: All the command line arguments should either be provided through command line or through the config file. They will not override those in the config file if there is overlap.</p>
+<p>The inference engine config file can be found in {accuracy_debugger tool root directory}/python/qti/aisw/accuracy_debugger/lib/inference_engine/configs/config_files and is a JSON file. This config file stores information that helps the inference engine know which tool and parameters to read in. Each different inference engine, and possibly engine versions in certain cases, will require its own config file.</p>
+<p><strong>Sample Command</strong></p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>snpe-accuracy-debugger \
+    --inference_engine \
+    --framework tensorflow \
+    --runtime cpu \
+    --model_path $RESOURCESPATH/samples/InceptionV3Model/inception_v3_2016_08_28_frozen.pb \
+    --input_tensor &quot;input:0&quot; 1,299,299,3 $RESOURCESPATH/samples/InceptionV3Model/data/chairs.raw \
+    --output_tensor InceptionV3/Predictions/Reshape_1:0 \
+    --architecture x86_64-linux-clang \
+    --input_list $RESOURCESPATH/samples/InceptionV3Model/data/image_list.txt \
+    --verbose
+</pre></div>
+</div>
+<p><strong>Sample Command</strong></p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>snpe-accuracy-debugger \
+    --inference_engine \
+    --deviceId 357415c4 \
+    --framework tensorflow \
+    --soc_name &#39;kailua&#39; \
+    --runtime dsp \
+    --architecture aarch64-android \
+    --model_path $RESOURCESPATH/samples/InceptionV3Model/inception_v3_2016_08_28_frozen.pb \
+    --input_tensor &quot;input:0&quot; 1,299,299,3 $RESOURCESPATH/samples/InceptionV3Model/data/chairs.raw \
+    --output_tensor InceptionV3/Predictions/Reshape_1:0 \
+    --input_list $RESOURCESPATH/samples/InceptionV3Model/data/image_list.txt \
+    --verbose
+</pre></div>
+</div>
+<p>Tip:</p>
+<ul class="simple">
+<li><p>for –runtime (-r) dsp is used for snpe-net-run</p></li>
+<li><p>the input_tensor (–i) and output_tensor (-o) does not need the :0 indexing like when runing tensorflow framework diagnosis</p></li>
+<li><p>two files, namely tensor_mapping.json and snpe_model_graph_struct.json are generated to be used in verification, be sure to locate these 2 files in the working_directory/inference_engine/latest</p></li>
+<li><p>framework and golden_dir_for_mapping, or just golden_dir_for_mapping itself is an alternative to the original model to be provided to generate the tensor_mapping.json, however, providing only the golden_dir_for_mapping, the get_tensor_mapping module will try it’s best to map but it is not guaranteed the mapping would be 100% accurate.</p></li>
+</ul>
+<p><strong>Output</strong></p>
+<p>Once the inference engine has finished running, it will store the output in the specified directory (or the current working directory by default) and store the files in that folder. By default, it will store the output in working_directory/inference_engine in the current working directory.</p>
+<div class="docutils container">
+<div class="figure align-default">
+<img alt="../images/inference_engine_1.png" src="../images/inference_engine_1.png" />
+</div>
+</div>
+<p>The figure above shows the sample output from one of the runs of inference engine step. The output directory contains raw files. Each raw file is an output of an op involved in various layers in the network. File input_list.txt and the directory input_list_files contain the path for sample test images. inference_engine_options.json contains all the options with which this run was launched. In addition to generating the .raw files, inference_engine also generates the model’s graph structure in a .json file. The name of the file is the same as the name of the protobuf model file. The file base.dlc is the converted model graph. The file model_graph_struct.json aids in providing the structure related information of the converted model graph during the verification step. Specifically, it helps with organizing the nodes in order (for e.g. the beginning nodes should come earlier than ending nodes). It helps to see the nodes in a streamlined manner. Finally, tensor_mapping json file contains a mapping of the various intermediate output file names generated from the framework diagnosis step and the inference engine step.</p>
+<div class="docutils container">
+<div class="figure align-default">
+<img alt="../images/inference_engine_2.png" src="../images/inference_engine_2.png" />
+</div>
+</div>
+<p>The created .raw files are organized in the same manner as framework_diagnosis (see above).</p>
+<p><strong>Verification</strong></p>
+<p>The Verification step compares the output (from the intermediate tensors of a given model) produced by framework diagonsis step with the one that’s produced by the inference engine step. Once the comparison is complete the verification results are compiled and displayed visually in a format that can be easily interpreted by the user.</p>
+<p>There are different types of verifiers for e.g.: CosineSimilarity, RtolAtol, etc. To see what all verifiers are there please use the –help option like ./snpe_accuracy_debugger –verification –help. Each verifier compares the Framework Diagnosis and Inference Engine output using an error metric. It also prepares reports and/or visualizations to help the user analyze the network’s error data.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>usage: snpe-accuracy-debugger --verification [-h]
+
+Script to run verification.
+
+required arguments:
+    --default_verifier DEFAULT_VERIFIER [DEFAULT_VERIFIER ...]
+                           Default verifier used for verification. The options
+                           &quot;RtolAtol&quot;, &quot;AdjustedRtolAtol&quot;, &quot;TopK&quot;, &quot;L1Error&quot;,
+                           &quot;CosineSimilarity&quot;, &quot;MSE&quot;, &quot;MAE&quot;, &quot;SQNR&quot;, &quot;MeanIOU&quot;,
+                           &quot;ScaledDiff&quot; are supported. An optional list of
+                           hyperparameters can be appended. For example:
+                           --default_verifier
+                           rtolatol,rtolmargin,0.01,atolmargin,0,01. An optional
+                           list of placeholders can be appended. For example:
+                           --default_verifier CosineSimilarity param1 1 param2 2.
+                           to use multiple verifiers, add additional
+                           --default_verifier CosineSimilarity
+    --golden_output_reference_directory GOLDEN_OUTPUT_REFERENCE_DIRECTORY, --framework_results FRAMEWORK_RESULTS
+                           Path to root directory generated from framework
+                           diagnosis. Paths may be absolute, or relative to the
+                           working directory.
+    --inference_results INFERENCE_RESULTS
+                           Path to root directory generated from inference engine
+                           diagnosis. Paths may be absolute, or relative to the
+                           working directory.
+
+optional arguments:
+    --tensor_mapping TENSOR_MAPPING
+                           Path to the file describing the tensor name mapping
+                           between inference and golden tensors.can be generated
+                           with nd_run_{engine}_inference_engine
+    --verifier_config VERIFIER_CONFIG
+                           Path to the verifiers&#39; config file
+    --graph_struct GRAPH_STRUCT
+                           Path to the inference graph structure .json file.
+    -v, --verbose         Verbose printing
+    -w WORKING_DIR, --working_dir WORKING_DIR
+                           Working directory for the verification to store
+                           temporary files. Creates a new directory if the
+                           specified working directory does not exist
+    --output_dirname OUTPUT_DIRNAME
+                           output directory name for the verification to store
+                           temporary files under &lt;working_dir&gt;/verification.
+                           Creates a new directory if the specified working
+                           directory does not exist
+
+arguments for generating a new tensor_mapping.json:
+    -m MODEL_PATH, --model_path MODEL_PATH
+                           path to original model for tensor_mapping uses here.
+    -e ENGINE_NAME [ENGINE_VERSION ...], --engine ENGINE_NAME [ENGINE_VERSION ...]
+                           Name of engine that will be running inference,
+                           optionally followed by the engine version. Used here
+                           for tensor_mapping.
+    -f FRAMEWORK [FRAMEWORK ...], --framework FRAMEWORK [FRAMEWORK ...]
+                           Framework type to be used, followed optionally by
+                           framework version. Used here for tensor_mapping.
+</pre></div>
+</div>
+<p>Please note: All the command line arguments should either be provided through command line or through the config file. They will not override those in the config file if there is overlap.</p>
+<p>The main verification process run using snpe-accuracy-debugger -–verification optionally uses –tensor_mapping and -–graph_struct to find files to compare. These files are generated by the inference engine step, and should be supplied to verification for best results. By default they are named tensor_mapping.json and {model name}_graph_struct.json, and can be found in the output directory of the inference engine results.</p>
+<p><strong>Sample Command</strong></p>
+<p>Compare output of framework diagnosis with inference engine:</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>snpe-accuracy-debugger \
+    --verification \
+    --default_verifier CosineSimilarity param1 1 param2 2 \
+    --default_verifier SQNR param1 5 param2 1 \
+    --golden_output_reference_directory $PROJECTREPOPATH/working_directory/framework_diagnosis/2022-10-31_17-07-58/ \
+    --inference_results $PROJECTREPOPATH/working_directory/inference_engine/latest/output/Result_0/ \
+    --tensor_mapping $PROJECTREPOPATH/working_directory/inference_engine/latest/tensor_mapping.json \
+    --graph_struct $PROJECTREPOPATH/working_directory/inference_engine/latest/snpe_model_graph_struct.json
+</pre></div>
+</div>
+<p>Tip:</p>
+<ul class="simple">
+<li><p>If you passed multiple images in the image_list.txt from run inference engine diagnosis, you’ll receive multiple output/Result_x, choose result that matches the input you used for framework diagnosis for comparison (ie. in framework you used chair.raw and inference chair.raw was the first item in the image_list.txt then choose output/Result_0, if chair.raw was the second item in image_list.txt, then choose output/Result_1).</p></li>
+<li><p>It is recommended to always supply –graph_struct and –tensor_mapping to the command as it is used to line up the report and find the corresponding files for comparison. if –tensor_mapping did not get generated from previous steps, you can supplement with –model_path, –engine, –framework to have module generate tensor_mapping during runtime.</p></li>
+<li><p>You can also compare inference_engine outputs to inference_engine outputs by passing the /output of the inference_engine output to the –framework_results. If you want the outputs to be exact-name-matching, then you do not need to provide a tensor_mapping file.</p></li>
+<li><p>Note that if you need to generate a tensor mapping instead of providing a path to pre-existing tensor mapping file. You can provide the –model_path option.</p></li>
+</ul>
+<p>Verifier uses two optional config files. The first file is used to prefer parameters to specific verifiers, as well as which tensors to use these verifiers on. The second file is used to map tensor names from inference_engine to framework_diagnosis, since certain tensors generated by framework_diagnosis have different names than tensors generated by inference_engine.</p>
+<p><strong>Verifier Config:</strong></p>
+<p>The verifier config file is a JSON file that tells verification which verifiers (asides from the default verifier) to use and with which parameters and on what specific tensors. If no config file is provided, the tool will only use the default verifier specified from the command line, with its default parameters, on all the tensors. The JSON file is keyed by verifier names, with each verifier as its own dictionary keyed by “parameters” and “tensors”.</p>
+<p><strong>Config File</strong></p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>```json
+{
+  &quot;MeanIOU&quot;: {
+      &quot;parameters&quot;: {
+          &quot;background_classification&quot;: 1.0
+      },
+      &quot;tensors&quot;: [[&quot;Postprocessor/BatchMultiClassNonMaxSuppression_boxes&quot;, &quot;detection_classes:0&quot;]]
+  },
+  &quot;TopK&quot;: {
+      &quot;parameters&quot;: {
+          &quot;k&quot;: 5,
+          &quot;ordered&quot;: false
+      },
+      &quot;tensors&quot;: [[&quot;Reshape_1:0&quot;], [&quot;detection_classes:0&quot;]]
+  }
+}
+```
+</pre></div>
+</div>
+<p>Note that the “tensors” field is a list of lists. This is done because specific verifiers (e.g. MeanIOU) runs on two tensor at a time. Hence the two tensors are placed in a list. Otherwise if a verifier only runs on one tensor, it will have a list of lists with only one tensor name in each list.</p>
+<p><strong>Compare Encodings</strong></p>
+<p>The Compare Encodings feature is designed to compare SNPE DLC encodings with AIMET encodings. It takes a SNPE DLC file and AIMET encoding JSON files as inputs.
+This feature:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Extracts encodings from the given SNPE DLC file</p></li>
+<li><p>Compares extracted SNPE encodings with given AIMET encodings</p></li>
+<li><p>Writes results to an Excel file that highlights mismatches</p></li>
+<li><p>Warns the user if any encodings are present in SNPE and missing from AIMET and vice-versa</p></li>
+<li><p>Writes the extracted SNPE encodings to a JSON file for reference</p></li>
+</ol>
+</div></blockquote>
+<p><strong>Usage</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">snpe</span><span class="o">-</span><span class="n">accuracy</span><span class="o">-</span><span class="n">debugger</span> <span class="o">--</span><span class="n">compare_encodings</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span>
+                             <span class="o">--</span><span class="nb">input</span> <span class="n">INPUT</span>
+                             <span class="o">--</span><span class="n">aimet_encodings_json</span> <span class="n">AIMET_ENCODINGS_JSON</span>
+                             <span class="p">[</span><span class="o">--</span><span class="n">precision</span> <span class="n">PRECISION</span><span class="p">]</span>
+                             <span class="p">[</span><span class="o">--</span><span class="n">params_only</span><span class="p">]</span>
+                             <span class="p">[</span><span class="o">--</span><span class="n">activations_only</span><span class="p">]</span>
+                             <span class="p">[</span><span class="o">--</span><span class="n">specific_node</span> <span class="n">SPECIFIC_NODE</span><span class="p">]</span>
+                             <span class="p">[</span><span class="o">--</span><span class="n">working_dir</span> <span class="n">WORKING_DIR</span><span class="p">]</span>
+                             <span class="p">[</span><span class="o">--</span><span class="n">output_dirname</span> <span class="n">OUTPUT_DIRNAME</span><span class="p">]</span>
+                             <span class="p">[</span><span class="o">-</span><span class="n">v</span><span class="p">]</span>
+
+<span class="n">Script</span> <span class="n">to</span> <span class="n">compare</span> <span class="n">SNPE</span> <span class="n">encodings</span> <span class="k">with</span> <span class="n">AIMET</span> <span class="n">encodings</span>
+
+<span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>            <span class="n">Show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+
+<span class="n">required</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="o">--</span><span class="nb">input</span> <span class="n">INPUT</span>
+                        <span class="n">Path</span> <span class="n">to</span> <span class="n">SNPE</span> <span class="n">DLC</span> <span class="n">file</span>
+  <span class="o">--</span><span class="n">aimet_encodings_json</span> <span class="n">AIMET_ENCODINGS_JSON</span>
+                        <span class="n">Path</span> <span class="n">to</span> <span class="n">AIMET</span> <span class="n">encodings</span> <span class="n">JSON</span> <span class="n">file</span>
+
+<span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="o">--</span><span class="n">precision</span> <span class="n">PRECISION</span>
+                        <span class="n">Number</span> <span class="n">of</span> <span class="n">decimal</span> <span class="n">places</span> <span class="n">up</span> <span class="n">to</span> <span class="n">which</span> <span class="n">comparison</span> <span class="n">will</span> <span class="n">be</span> <span class="n">done</span><span class="p">;</span> <span class="n">default</span> <span class="ow">is</span> <span class="mi">17</span>
+  <span class="o">--</span><span class="n">params_only</span>         <span class="n">Compare</span> <span class="n">only</span> <span class="n">parameters</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">encodings</span>
+  <span class="o">--</span><span class="n">activations_only</span>    <span class="n">Compare</span> <span class="n">only</span> <span class="n">activations</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">encodings</span>
+  <span class="o">--</span><span class="n">specific_node</span> <span class="n">SPECIFIC_NODE</span>
+                        <span class="n">Display</span> <span class="n">encoding</span> <span class="n">differences</span> <span class="k">for</span> <span class="n">the</span> <span class="n">given</span> <span class="n">node</span>
+  <span class="o">--</span><span class="n">working_dir</span> <span class="n">WORKING_DIR</span>
+                        <span class="n">Working</span> <span class="n">directory</span> <span class="n">to</span> <span class="n">store</span> <span class="n">temporary</span> <span class="n">files</span><span class="p">;</span> <span class="n">the</span> <span class="n">directory</span> <span class="ow">is</span> <span class="n">created</span> <span class="k">if</span> <span class="n">it</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">already</span> <span class="n">exist</span>
+  <span class="o">--</span><span class="n">output_dirname</span> <span class="n">OUTPUT_DIRNAME</span>
+                        <span class="n">Output</span> <span class="n">directory</span> <span class="n">to</span> <span class="n">store</span> <span class="n">temporary</span> <span class="n">files</span> <span class="n">under</span> <span class="o">&lt;</span><span class="n">working_dir</span><span class="o">&gt;/</span><span class="n">compare_encodings</span><span class="p">;</span> <span class="n">the</span> <span class="n">directory</span> <span class="ow">is</span> <span class="n">created</span> <span class="k">if</span> <span class="n">it</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">already</span> <span class="n">exist</span>
+  <span class="o">-</span><span class="n">v</span><span class="p">,</span> <span class="o">--</span><span class="n">verbose</span>         <span class="n">Verbose</span> <span class="n">printing</span>
+</pre></div>
+</div>
+<p><strong>Sample Commands</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compare both params and activations</span>
+<span class="n">snpe</span><span class="o">-</span><span class="n">accuracy</span><span class="o">-</span><span class="n">debugger</span> \
+    <span class="o">--</span><span class="n">compare_encodings</span> \
+    <span class="o">--</span><span class="nb">input</span> <span class="n">mv2_quantized</span><span class="o">.</span><span class="n">dlc</span> \
+    <span class="o">--</span><span class="n">aimet_encodings_json</span> <span class="n">aimet_encodings</span><span class="o">.</span><span class="n">json</span>
+
+<span class="c1"># Compare only params</span>
+<span class="n">snpe</span><span class="o">-</span><span class="n">accuracy</span><span class="o">-</span><span class="n">debugger</span> \
+    <span class="o">--</span><span class="n">compare_encodings</span> \
+    <span class="o">--</span><span class="nb">input</span> <span class="n">mv2_quantized</span><span class="o">.</span><span class="n">dlc</span> \
+    <span class="o">--</span><span class="n">aimet_encodings_json</span> <span class="n">aimet_encodings</span><span class="o">.</span><span class="n">json</span> \
+    <span class="o">--</span><span class="n">params_only</span>
+
+<span class="c1"># Compare only activations</span>
+<span class="n">snpe</span><span class="o">-</span><span class="n">accuracy</span><span class="o">-</span><span class="n">debugger</span> \
+    <span class="o">--</span><span class="n">compare_encodings</span> \
+    <span class="o">--</span><span class="nb">input</span> <span class="n">mv2_quantized</span><span class="o">.</span><span class="n">dlc</span> \
+    <span class="o">--</span><span class="n">aimet_encodings_json</span> <span class="n">aimet_encodings</span><span class="o">.</span><span class="n">json</span> \
+    <span class="o">--</span><span class="n">activations_only</span>
+
+<span class="c1"># Compare only a specific encoding</span>
+<span class="n">snpe</span><span class="o">-</span><span class="n">accuracy</span><span class="o">-</span><span class="n">debugger</span> \
+    <span class="o">--</span><span class="n">compare_encodings</span> \
+    <span class="o">--</span><span class="nb">input</span> <span class="n">mv2_quantized</span><span class="o">.</span><span class="n">dlc</span> \
+    <span class="o">--</span><span class="n">aimet_encodings_json</span> <span class="n">aimet_encodings</span><span class="o">.</span><span class="n">json</span> \
+    <span class="o">--</span><span class="n">specific_node</span> <span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="n">Conv_output_0</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>A working_directory is generated at the location this script is called from unless otherwise specified.</p>
+</div>
+<p><strong>Output</strong></p>
+<p>The program creates a directory named <em>latest</em> in <cite>working_directory/compare_encodings</cite> which is symbolically linked to the most recently generated directory. In the example below, <em>latest</em> will
+have data that is symlinked to the data in the most recent directory <em>YYYY-MM-DD_HH:mm:ss</em>. Users may choose to override the directory name by passing it to –output_dirname, e.g., <cite>–output_dirname myTest</cite>.</p>
+<div class="docutils container">
+<div class="figure align-default">
+<img alt="../images/compare_encodings.png" src="../images/compare_encodings.png" />
+</div>
+</div>
+<p>The figure above shows a sample output from a compare_encodings run.
+The following details what each file contains.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>compare_encodings_options.json contains all the options used to run this feature</p></li>
+<li><p>encodings_diff.xlsx contains comparison results with mismatches highlighted</p></li>
+<li><p>extracted_encodings.json contains extracted SNPE encodings</p></li>
+<li><p>log.txt contains log statements for the run</p></li>
+</ul>
+</div></blockquote>
+<p><strong>Tensor inspection</strong></p>
+<p>Tensor inspection feature compares given reference output and target output tensors and dumps various statistics to represent differences between them.</p>
+<p>The Tensor inspection feature can:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Plot histograms for golden and target tensors</p></li>
+<li><p>Plot a graph indicating deviation between golden and target tensors</p></li>
+<li><p>Plot a cumulative distribution graph (CDF) for golden vs target tensors</p></li>
+<li><p>Plot a density (KDE) graph for target tensor highlighting target min/max and calibrated min/max values</p></li>
+<li><p>Create a CSV file containing information about: target min/max; calibrated min/max; golden output min/max; target/calibrated min/max differences; and computed metrics (verifiers).</p></li>
+</ol>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<div class="line-block">
+<div class="line">Only data with matching target/golden filenames is inspected; other data is ignored</div>
+<div class="line">Calibrated min/max values are extracted from a user provided encodings file. If an encodings file is not provided, density plot will be skipped and also the CSV summary output will not include calibrated min/max information.</div>
+</div>
+</div>
+<p><strong>Usage</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">snpe</span><span class="o">-</span><span class="n">accuracy</span><span class="o">-</span><span class="n">debugger</span> <span class="o">--</span><span class="n">tensor_inspection</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span>
+                        <span class="o">--</span><span class="n">golden_data</span> <span class="n">GOLDEN_DATA</span>
+                        <span class="o">--</span><span class="n">target_data</span> <span class="n">TARGET_DATA</span>
+                        <span class="o">--</span><span class="n">verifier</span> <span class="n">VERIFIER</span> <span class="p">[</span><span class="n">VERIFIER</span> <span class="o">...</span><span class="p">]</span>
+                        <span class="p">[</span><span class="o">-</span><span class="n">w</span> <span class="n">WORKING_DIR</span><span class="p">]</span>
+                        <span class="p">[</span><span class="o">--</span><span class="n">data_type</span> <span class="p">{</span><span class="n">int8</span><span class="p">,</span><span class="n">uint8</span><span class="p">,</span><span class="n">int16</span><span class="p">,</span><span class="n">uint16</span><span class="p">,</span><span class="n">float32</span><span class="p">}]</span>
+                        <span class="p">[</span><span class="o">--</span><span class="n">target_encodings</span> <span class="n">TARGET_ENCODINGS</span><span class="p">]</span>
+                        <span class="p">[</span><span class="o">-</span><span class="n">v</span><span class="p">]</span>
+
+<span class="n">Script</span> <span class="n">to</span> <span class="n">inspection</span> <span class="n">tensor</span><span class="o">.</span>
+
+<span class="n">required</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="o">--</span><span class="n">golden_data</span> <span class="n">GOLDEN_DATA</span>
+                        <span class="n">Path</span> <span class="n">to</span> <span class="n">golden</span><span class="o">/</span><span class="n">framework</span> <span class="n">outputs</span> <span class="n">folder</span><span class="o">.</span> <span class="n">Paths</span> <span class="n">may</span> <span class="n">be</span> <span class="n">absolute</span> <span class="ow">or</span>
+                        <span class="n">relative</span> <span class="n">to</span> <span class="n">the</span> <span class="n">working</span> <span class="n">directory</span><span class="o">.</span>
+  <span class="o">--</span><span class="n">target_data</span> <span class="n">TARGET_DATA</span>
+                        <span class="n">Path</span> <span class="n">to</span> <span class="n">target</span> <span class="n">outputs</span> <span class="n">folder</span><span class="o">.</span> <span class="n">Paths</span> <span class="n">may</span> <span class="n">be</span> <span class="n">absolute</span> <span class="ow">or</span> <span class="n">relative</span> <span class="n">to</span> <span class="n">the</span>
+                        <span class="n">working</span> <span class="n">directory</span><span class="o">.</span>
+  <span class="o">--</span><span class="n">verifier</span> <span class="n">VERIFIER</span> <span class="p">[</span><span class="n">VERIFIER</span> <span class="o">...</span><span class="p">]</span>
+                        <span class="n">Verifier</span> <span class="n">used</span> <span class="k">for</span> <span class="n">verification</span><span class="o">.</span> <span class="n">The</span> <span class="n">options</span> <span class="s2">&quot;RtolAtol&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;AdjustedRtolAtol&quot;</span><span class="p">,</span> <span class="s2">&quot;TopK&quot;</span><span class="p">,</span> <span class="s2">&quot;L1Error&quot;</span><span class="p">,</span> <span class="s2">&quot;CosineSimilarity&quot;</span><span class="p">,</span> <span class="s2">&quot;MSE&quot;</span><span class="p">,</span> <span class="s2">&quot;MAE&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;SQNR&quot;</span><span class="p">,</span> <span class="s2">&quot;MeanIOU&quot;</span><span class="p">,</span> <span class="s2">&quot;ScaledDiff&quot;</span> <span class="n">are</span> <span class="n">supported</span><span class="o">.</span>
+                        <span class="n">An</span> <span class="n">optional</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">hyperparameters</span> <span class="n">can</span> <span class="n">be</span> <span class="n">appended</span><span class="p">,</span> <span class="k">for</span> <span class="n">example</span><span class="p">:</span>
+                        <span class="o">--</span><span class="n">verifier</span> <span class="n">rtolatol</span><span class="p">,</span><span class="n">rtolmargin</span><span class="p">,</span><span class="mf">0.01</span><span class="p">,</span><span class="n">atolmargin</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">01.</span>
+                        <span class="n">To</span> <span class="n">use</span> <span class="n">multiple</span> <span class="n">verifiers</span><span class="p">,</span> <span class="n">add</span> <span class="n">additional</span> <span class="o">--</span><span class="n">verifier</span> <span class="n">CosineSimilarity</span>
+
+<span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="o">-</span><span class="n">w</span> <span class="n">WORKING_DIR</span><span class="p">,</span> <span class="o">--</span><span class="n">working_dir</span> <span class="n">WORKING_DIR</span>
+                        <span class="n">Working</span> <span class="n">directory</span> <span class="n">to</span> <span class="n">save</span> <span class="n">results</span><span class="o">.</span> <span class="n">Creates</span> <span class="n">a</span> <span class="n">new</span> <span class="n">directory</span> <span class="k">if</span> <span class="n">the</span>
+                        <span class="n">specified</span> <span class="n">working</span> <span class="n">directory</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span>
+  <span class="o">--</span><span class="n">data_type</span> <span class="p">{</span><span class="n">int8</span><span class="p">,</span><span class="n">uint8</span><span class="p">,</span><span class="n">int16</span><span class="p">,</span><span class="n">uint16</span><span class="p">,</span><span class="n">float32</span><span class="p">}</span>
+                        <span class="n">DataType</span> <span class="n">of</span> <span class="n">the</span> <span class="n">output</span> <span class="n">tensor</span><span class="o">.</span>
+  <span class="o">--</span><span class="n">target_encodings</span> <span class="n">TARGET_ENCODINGS</span>
+                        <span class="n">Path</span> <span class="n">to</span> <span class="n">target</span> <span class="n">encodings</span> <span class="n">json</span> <span class="n">file</span><span class="o">.</span>
+  <span class="o">-</span><span class="n">v</span><span class="p">,</span> <span class="o">--</span><span class="n">verbose</span>         <span class="n">Verbose</span> <span class="n">printing</span>
+</pre></div>
+</div>
+<p><strong>Sample Commands</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Basic run</span>
+<span class="n">snpe</span><span class="o">-</span><span class="n">accuracy</span><span class="o">-</span><span class="n">debugger</span> <span class="o">--</span><span class="n">tensor_inspection</span> \
+    <span class="o">--</span><span class="n">golden_data</span> <span class="n">golden_tensors_dir</span> \
+    <span class="o">--</span><span class="n">target_data</span> <span class="n">target_tensors_dir</span> \
+    <span class="o">--</span><span class="n">verifier</span> <span class="n">sqnr</span>
+
+<span class="c1"># Pass target encodings file and enable multiple verifiers</span>
+<span class="n">snpe</span><span class="o">-</span><span class="n">accuracy</span><span class="o">-</span><span class="n">debugger</span> <span class="o">--</span><span class="n">tensor_inspection</span> \
+    <span class="o">--</span><span class="n">golden_data</span> <span class="n">golden_tensors_dir</span> \
+    <span class="o">--</span><span class="n">target_data</span> <span class="n">target_tensors_dir</span> \
+    <span class="o">--</span><span class="n">verifier</span> <span class="n">mse</span> \
+    <span class="o">--</span><span class="n">verifier</span> <span class="n">sqnr</span> \
+    <span class="o">--</span><span class="n">verifier</span> <span class="n">rtolatol</span><span class="p">,</span><span class="n">rtolmargin</span><span class="p">,</span><span class="mf">0.01</span><span class="p">,</span><span class="n">atolmargin</span><span class="p">,</span><span class="mf">0.01</span> \
+    <span class="o">--</span><span class="n">target_encodings</span> <span class="n">reference_encodings</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>A working_directory is generated from wherever this script is called from unless otherwise specified.</p>
+</div>
+<div class="docutils container">
+<div class="figure align-default">
+<img alt="../images/tensor_inspection.png" src="../images/tensor_inspection.png" />
+</div>
+</div>
+<p>The figure above shows a sample output from a Tensor inspection run.
+The following details what each file contains.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Each tensor will have its own directory; the directory name matches the tensor name.</p>
+<ul>
+<li><p>CDF_plots.png – Golden vs target CDF graph</p></li>
+<li><p>Diff_plots.png – Golden and target deviation graph</p></li>
+<li><p>Distribution_min-max.png – Density plot for target tensor highlighting target vs calibrated min/max values</p></li>
+<li><p>Histograms.png – Golden and target histograms</p></li>
+<li><p>golden_data.csv – Golden tensor data</p></li>
+<li><p>target_data.csv – Target tensor data</p></li>
+</ul>
+</li>
+<li><p>log.txt – Log statements from the entire run</p></li>
+<li><p>summary.csv – Target min/max, calibrated min/max, golden output min/max, target vs calibrated min/max differences, and verifier outputs</p></li>
+</ul>
+</div></blockquote>
+<p><strong>Tensor Mapping:</strong></p>
+<p>Tensor mapping is a JSON file keyed by inference tensor names, of framework tensor names. If the tensor mapping is not provided, the tool will assume inference and golden tensor names are identical.</p>
+<p><strong>Tensor Mapping File</strong></p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>```json
+{
+  &quot;Postprocessor/BatchMultiClassNonMaxSuppression_boxes&quot;: &quot;detection_boxes:0&quot;,
+  &quot;Postprocessor/BatchMultiClassNonMaxSuppression_scores&quot;: &quot;detection_scores:0&quot;
+}
+```
+</pre></div>
+</div>
+<p><strong>Output</strong></p>
+<p>Verification’s output is divided into different verifiers. For example, if both RtolAtol and TopK verifiers are used, there will be two sub-folders named “RtolAtol” and “TopK”. Availble verifiers can be found by just issuing –help option.</p>
+<div class="docutils container">
+<div class="figure align-default">
+<img alt="../images/verification_1.png" src="../images/verification_1.png" />
+</div>
+</div>
+<p>Under each sub-folder, the verification analysis for each tensor is organized similar to how framework_diagnosis and inference_engine (see above) are organized. For each tensor, a CSV and HTML file is generated. In addition to the tensor-specific analysis, the tool also generates a summary CSV and HTML file which summarizes the data from all verifiers and their subsequent tensors. The following figure shows how a sample summary generated in the verification step looks. Each row in this summary corresponds to one tensor name that is identified by the framework diagnosis and inference engine steps. The final column shows cosinesimilarity score which can vary between 0 to 1 (this range might be different for other verifiers). If the score is high enough then it means that the result produced by both the steps for that particular tensor are fairly similar. However, if the score is too low then it gives the developer a point of inspection. The developer can then further investigate those specific tensors (if multiple) into details. Developer should inspect tensors from top-to-bottom order, meaning if a tensor is broken at an earlier node, anything that was generated post that node is unreliable until that node is properly fixed. Hence, this process might help in improving the overall accuracy of the sdk. That is how this tool helps in debugging.</p>
+<div class="docutils container">
+<div class="figure align-default">
+<img alt="../images/verification_2.png" src="../images/verification_2.png" />
+</div>
+</div>
+<p><strong>Run SNPE Accuracy Debugger E2E:</strong></p>
+<p>This feature is designed to run the framework diagnosis, inference engine, and verification features sequentially with a single command to debug the model. It provides quick analysis to identify layers of model causing accuracy deviation.
+Additionally, tensor inspection (when –enable_tensor_inspection is passed) is executed which dumps various plots for all intermediate outputs.</p>
+<p><strong>Usage</strong></p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>usage: snpe-accuracy-debugger [--framework_diagnosis] [--inference_engine] [--verification] [-h]
+
+Script that runs Framework Diagnosis, Inference Engine or Verification.
+
+Arguments to select which component of the tool to run.  Arguments are mutually exclusive (at most 1 can be selected).  If none are selected, then all components are run:
+--framework_diagnosis Run framework
+--inference_engine    Run inference engine
+--verification        Run verification
+
+optional arguments:
+-h, --help            Show this help message. To show help for any of the
+                      components, run script with --help and --&lt;component&gt;.
+                      For example, to show the help for Framework Diagnosis,
+                      run script with the following: --help
+                      --framework_diagnosis
+usage: snpe-accuracy-debugger [-h] -f FRAMEWORK [FRAMEWORK ...] -m MODEL_PATH
+                          -i INPUT_TENSOR [INPUT_TENSOR ...] -o
+                          OUTPUT_TENSOR -r RUNTIME -a
+                          {aarch64-android,x86_64-linux-clang}
+                          -l INPUT_LIST --default_verifier DEFAULT_VERIFIER
+                          [DEFAULT_VERIFIER ...] [-v] [-w WORKING_DIR]
+                          [--output_dirname OUTPUT_DIRNAME]
+                          [--deep_analyzer {modelDissectionAnalyzer}]
+
+Options for running the Accuracy Debugger components
+
+optional arguments:
+-h, --help            show this help message and exit
+
+Arguments required by both Framework Diagnosis and Inference Engine:
+   -f FRAMEWORK [FRAMEWORK ...], --framework FRAMEWORK [FRAMEWORK ...]
+                          Framework type and version, version is optional.
+   -m MODEL_PATH, --model_path MODEL_PATH
+                          Path to the model file(s).
+   -i INPUT_TENSOR [INPUT_TENSOR ...], --input_tensor INPUT_TENSOR [INPUT_TENSOR ...]
+                          The name, dimensions, raw data, and optionally data
+                          type of the network input tensor(s) specifiedin the
+                          format &quot;input_name&quot; comma-separated-dimensions path-
+                          to-raw-file, for example: &quot;data&quot; 1,224,224,3 data.raw
+                          float32. Note that the quotes should always be
+                          included in order to handle special characters,
+                          spaces, etc. For multiple inputs specify multiple
+                          --input_tensor on the command line like:
+                          --input_tensor &quot;data1&quot; 1,224,224,3 data1.raw
+                          --input_tensor &quot;data2&quot; 1,50,100,3 data2.raw float32.
+   -o OUTPUT_TENSOR, --output_tensor OUTPUT_TENSOR
+                          Name of the graph&#39;s specified output tensor(s).
+
+Arguments required by Inference Engine:
+-r RUNTIME, --runtime RUNTIME
+                      Runtime to be used for inference.
+-a {aarch64-android,x86_64-linux-clang}, --architecture {aarch64-android,x86_64-linux-clang}
+                      Name of the architecture to use for inference engine.
+-l INPUT_LIST, --input_list INPUT_LIST
+                      Path to the input list text.
+
+Arguments required by Verification:
+--default_verifier DEFAULT_VERIFIER [DEFAULT_VERIFIER ...]
+                      Default verifier used for verification. The options
+                      &quot;RtolAtol&quot;, &quot;AdjustedRtolAtol&quot;, &quot;TopK&quot;, &quot;L1Error&quot;,
+                      &quot;CosineSimilarity&quot;, &quot;MSE&quot;, &quot;MAE&quot;, &quot;SQNR&quot;, &quot;MeanIOU&quot;,
+                      &quot;ScaledDiff&quot; are supported. An optional list of
+                      hyperparameters can be appended. For example:
+                      --default_verifier
+                      rtolatol,rtolmargin,0.01,atolmargin,0,01. An optional
+                      list of placeholders can be appended. For example:
+                      --default_verifier CosineSimilarity param1 1 param2 2.
+                      to use multiple verifiers, add additional
+                      --default_verifier CosineSimilarity
+
+optional arguments:
+-v, --verbose         Verbose printing
+-w WORKING_DIR, --working_dir WORKING_DIR
+                      Working directory for the wrapper to store temporary
+                      files. Creates a new directory if the specified
+                      working directory does not exitst.
+--output_dirname OUTPUT_DIRNAME
+                      output directory name for the wrapper to store
+                      temporary files under &lt;working_dir&gt;/wrapper. Creates a
+                      new directory if the specified working directory does
+                      not exist
+--golden_output_reference_directory
+                      Optional parameter to indicate the directory of the golden reference outputs.
+                      When this option is provided, the framework diagnosis is step skipped.
+                      In inference engine step, it&#39;s used for tensor mapping without a framework.
+                      In verification step, it&#39;s used as a reference to compare
+                      outputs produced in the inference engine step.
+--enable_tensor_inspection
+                      Plots graphs (line, scatter, CDF etc.) for each
+                      layer&#39;s output. Additionally, summary sheet will have
+                      more details like golden min/max, target min/max etc.,
+--deep_analyzer {modelDissectionAnalyzer}
+                      Deep Analyzer to perform deep analysis
+</pre></div>
+</div>
+<p><strong>Sample Command</strong></p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>snpe-accuracy-debugger \
+    --framework tensorflow \
+    --runtime cpu \
+    --model_path $RESOURCESPATH/samples/InceptionV3Model/inception_v3_2016_08_28_frozen.pb \
+    --input_tensor &quot;input:0&quot; 1,299,299,3 $RESOURCESPATH/samples/InceptionV3Model/data/chairs.raw \
+    --output_tensor InceptionV3/Predictions/Reshape_1:0 \
+    --architecture x86_64-linux-clang \
+    --input_list $RESOURCESPATH/samples/InceptionV3Model/data/image_list.txt \
+    --default_verifier CosineSimilarity \
+    --framework_results $PROJECTREPOPATH/working_directory/framework_diagnosis/latest/ \
+    --inference_results $PROJECTREPOPATH/working_directory/inference_engine/latest/output/Result_0/ \
+    --tensor_mapping $PROJECTREPOPATH/working_directory/inference_engine/latest/tensor_mapping.json \
+    --graph_struct $PROJECTREPOPATH/working_directory/inference_engine/latest/model_graph_struct_graph_struct.json \
+    --enable_tensor_inspection \
+    --verbose
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The –enable_tensor_inspection argument significantly increases overall execution time when used with large models. To speed up execution, omit this argument.</p>
+</div>
+<p><strong>Output</strong></p>
+<p>The program creates framework_diagnosis, inference_engine, verification, and wrapper output directories as below:</p>
+<div class="docutils container">
+<div class="figure align-default">
+<img alt="../images/oneshot-layerwise.png" src="../images/oneshot-layerwise.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>framework_diagnosis – Contains a timestamped directory that contains the intermediate layer outputs (framework) stored in .raw format as described in the framework diagnosis step.</p></li>
+<li><p>inference_engine – Contains a timestamped directory that contains the intermediate layer outputs (inference engine) stored in .raw format as described in the inference engine step.</p></li>
+<li><p>verification directory – Contains a timestamped directory that contains the following:</p>
+<ul>
+<li><p>A directory for each verifier specified while running oneshot; it contains CSV and HTML files with metric details for each layer output</p></li>
+<li><p>tensor_inspection – Individual directories for each layer’s output with the following contents:</p>
+<ul>
+<li><p>CDF_plots.png – Golden vs target CDF graph</p></li>
+<li><p>Diff_plots.png – Golden and target deviation graph</p></li>
+<li><p>Histograms.png – Golden and target histograms</p></li>
+<li><p>golden_data.csv – Golden tensor data</p></li>
+<li><p>target_data.csv – Target tensor data</p></li>
+</ul>
+</li>
+<li><p>summary.csv – Report for verification results of each layers output</p></li>
+</ul>
+</li>
+<li><p>Wrapper directory containing log.txt with the entire log for the run.</p></li>
+</ul>
+<p>Note: Except wrapper directory all other directories will have a folder called latest which is a symlink to the latest run’s corresponding timestamped directory.</p>
+<p>Snapshot of summary.csv file:</p>
+<div class="docutils container">
+<div class="figure align-default">
+<img alt="../images/oneshot_summary.png" src="../images/oneshot_summary.png" />
+</div>
+</div>
+<p>Understanding the oneshot-layerwise report:</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 83%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Name</p></td>
+<td><p>Output name of the current layer</p></td>
+</tr>
+<tr class="row-odd"><td><p>Layer Type</p></td>
+<td><p>Type of the current layer</p></td>
+</tr>
+<tr class="row-even"><td><p>Size</p></td>
+<td><p>Size of this layer’s output</p></td>
+</tr>
+<tr class="row-odd"><td><p>Tensor_dims</p></td>
+<td><p>Shape of this layer’s output</p></td>
+</tr>
+<tr class="row-even"><td><p>&lt;Verifier name&gt;</p></td>
+<td><p>Verifier value of the current layer output compared to reference output</p></td>
+</tr>
+<tr class="row-odd"><td><p>golden_min</p></td>
+<td><p>minimum value in the reference output for current layer</p></td>
+</tr>
+<tr class="row-even"><td><p>golden_max</p></td>
+<td><p>maximum value in the reference output for current layer</p></td>
+</tr>
+<tr class="row-odd"><td><p>target_min</p></td>
+<td><p>minimum value in the target output for current layer</p></td>
+</tr>
+<tr class="row-even"><td><p>target_max</p></td>
+<td><p>maximum value in the target output for current layer</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="api.html" class="btn btn-neutral float-right" title="API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="debug_tools_snpe-quantization-checker.html" class="btn btn-neutral float-left" title="Quantization Checker (Experimental)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

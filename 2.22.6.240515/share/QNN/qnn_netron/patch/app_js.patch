@@ -1,0 +1,327 @@
+diff --git a/source/app.js b/source/app.js
+index 4b8b993..bf3a5dc 100644
+--- a/source/app.js
++++ b/source/app.js
+@@ -1,25 +1,25 @@
+ /* jshint esversion: 6 */
+ 
+ const electron = require('electron');
+-const updater = require('electron-updater');
++const BrowserWindow = require('electron');
+ const fs = require('fs');
+ const os = require('os');
+ const path = require('path');
+ const process = require('process');
+ const url = require('url');
+ 
++
++
++
+ class Application {
+ 
+     constructor() {
+-
+         this._views = new ViewCollection();
+         this._configuration = new ConfigurationService();
+         this._menu = new MenuService();
+         this._openFileQueue = [];
+-
+         electron.app.setAppUserModelId('com.lutzroeder.netron');
+         electron.app.allowRendererProcessReuse = true;
+-
+         if (!electron.app.requestSingleInstanceLock()) {
+             electron.app.quit();
+             return;
+@@ -44,6 +44,111 @@ class Application {
+             this._openFileDialog();
+         });
+ 
++        /*
++        Added custom code to add functionality for :
++        TODO: determine reason for added code
++         */
++       electron.ipcMain.on('choose-file-dialog', (event,arg) => {
++           const showOpenDialogOptions = {
++            properties: ['openFile'],
++            filters: [
++                { name: 'All Model Files',  extensions: [
++                    'onnx', 'pb',
++                    'h5', 'hd5', 'hdf5', 'json', 'keras',
++                    'mlmodel',
++                    'caffemodel',
++                    'model', 'dnn', 'cmf', 'mar', 'params',
++                    'pdmodel', 'pdparams',
++                    'meta',
++                    'tflite', 'lite', 'tfl',
++                    'armnn', 'mnn', 'nn', 'uff', 'uff.txt', 'rknn', 'xmodel',
++                    'ncnn', 'param', 'tnnproto', 'tmfile', 'ms',
++                    'pt', 'pth', 't7',
++                    'pkl', 'joblib',
++                    'pbtxt', 'prototxt',
++                    'cfg', 'xml',
++                    'zip', 'tar','txt','cpp' ] }
++            ]
++        };
++        const selectedFiles = electron.dialog.showOpenDialogSync(showOpenDialogOptions);
++        event.returnValue=selectedFiles;
++        });
++
++       electron.ipcMain.on('choose-path-dialog', (event,arg) => {
++           const showOpenDialogOptions = {
++            properties: ['openDirectory'],
++        };
++        const selectedFiles = electron.dialog.showOpenDialogSync(showOpenDialogOptions);
++        event.returnValue=selectedFiles;
++        });
++
++         electron.ipcMain.on('open-diff-dialog', () => {
++            this._openDiffDialog();
++        });
++
++         electron.ipcMain.on('open-diff-file', (event,file,csv,binFile,verifierThreshold) => {
++            this._runDiffModel(file,csv,binFile,verifierThreshold);
++
++        });
++
++        electron.ipcMain.on('open-diff-error-dialog', (event, err, errMsgTitle) => {
++            let buttons = []
++            let detailMsg = err.message
++            let maxMsgLen = 1000
++            if (err.message.length >= maxMsgLen) {
++                buttons = ['Save Log', 'Cancel']
++                detailMsg = "Log Message too long to show in dialog, click Save Log to dump log to file"
++            }
++            const owner = event.sender.getOwnerBrowserWindow();
++            electron.dialog.showMessageBox(
++                owner,
++                {
++                    title: "Running Diff Failed",
++                    type: 'error',
++                    message: errMsgTitle,
++                    detail: detailMsg,
++                    buttons: buttons
++                }).then(result => {
++                if (result.response === 0 && err.message.length >= maxMsgLen) {
++                    electron.dialog.showSaveDialog(owner,
++                        {
++                            title: "Error: Running Diff Failed",
++                            message: "Click Save Log to dump log. (Note: adb logcat might contain extra message).",
++                            buttonLabel: "Save Log",
++                            properties: ['showOverwriteConfirmation']
++                        }).then(result => {
++                        if (!result.canceled) {
++                            fs.writeFile(result.filePath, err.message, (fileErr) => {
++                                if (fileErr) {
++                                    electron.dialog.showMessageBoxSync(owner,
++                                        {type: 'error', message: "An error occurred saving log: " + fileErr.message});
++                                } else {
++                                    electron.dialog.showMessageBoxSync(owner,
++                                        {type: 'info', message: "Error log saved at: " + result.filePath});
++                                }
++                            });
++                        }
++                    });
++                }
++            });
++        });
++
++        electron.ipcMain.on('open-binFile-dialog', (event) => {
++            const showOpenDialogOptions = {
++            properties: ['openFile'],
++            filters: [
++                { name: 'All Model Files',  extensions: ['bin' ] }
++            ]
++        };
++        /*
++        End of added custom code.
++         */
++
++        const selectedFile = electron.dialog.showOpenDialogSync(showOpenDialogOptions);
++        event.returnValue = selectedFile;
++        });
++
++
+         electron.ipcMain.on('get-environment', (event) => {
+             event.returnValue = {
+                 version: electron.app.getVersion(),
+@@ -52,6 +157,7 @@ class Application {
+                 // zoom: 'scroll'
+             };
+         });
++
+         electron.ipcMain.on('get-configuration', (event, obj) => {
+             event.returnValue = this._configuration.has(obj.name) ? this._configuration.get(obj.name) : undefined;
+         });
+@@ -92,9 +198,10 @@ class Application {
+         });
+ 
+         this._parseCommandLine(process.argv);
+-        this._checkForUpdates();
+     }
+ 
++
++
+     _parseCommandLine(argv) {
+         let open = false;
+         if (argv.length > 1) {
+@@ -145,9 +252,46 @@ class Application {
+         return text.slice(0, 8) + '-' + text.slice(8, 12) + '-' + text.slice(12, 16) + '-' + text.slice(16, 20) + '-' + text.slice(20, 32);
+     }
+ 
++    /*
++    Added custom code to add functionality for opening a diff form if the user selected
++    the diff button and for calling diffLoading.js for further handling.
++     */
++    _openDiffDialog(){
++      let options = {
++            show: true,
++            title: "tester",
++            icon: electron.nativeImage.createFromPath(path.join(__dirname, 'icon.png')),
++            minWidth: 1300,
++            minHeight: 800,
++            webPreferences: {
++                preload: path.join(electron.app.getAppPath(), 'source/diffLoading.js'),
++                contextIsolation: true,
++                enableRemoteModule: true
++            }
++        };
++    this._win = new electron.BrowserWindow(options);
++    this._win.loadURL(url.format({
++    pathname:path.join(__dirname,'qnn.html'),
++    protocol:'file:',
++    slashes:true
++    }))
++
++    this._win.on('closed',() =>{
++    this._win =null;
++    });
++
++    }
++
++     _runDiffModel(file,csv,binFile,verifierThreshold){
++        this._openFile(file,csv,binFile,verifierThreshold);
++     }
++     /*
++     End of added custom code.
++      */
++
+     _openFileDialog() {
+         const showOpenDialogOptions = {
+-            properties: [ 'openFile' ],
++            properties: ['openFile'],
+             filters: [
+                 { name: 'All Model Files',  extensions: [
+                     'onnx', 'pb',
+@@ -164,7 +308,9 @@ class Application {
+                     'pkl', 'joblib',
+                     'pbtxt', 'prototxt',
+                     'cfg', 'xml',
+-                    'zip', 'tar' ] }
++                    // added txt to the list of model file extensions so that the user could load input_list.txt
++                    // also added cpp so that the user could load a qnn model
++                    'zip', 'tar' ,'txt','cpp'] }
+             ]
+         };
+         const selectedFiles = electron.dialog.showOpenDialogSync(showOpenDialogOptions);
+@@ -175,7 +321,8 @@ class Application {
+         }
+     }
+ 
+-    _openFile(file) {
++
++    _openFile(file,csv,binFile,verifierThreshold) {
+         if (this._openFileQueue) {
+             this._openFileQueue.push(file);
+             return;
+@@ -191,13 +338,17 @@ class Application {
+             if (view == null) {
+                 view = this._views.openView();
+             }
+-            this._loadFile(file, view);
++            this._loadFile(file,view,csv,binFile,verifierThreshold);
+         }
+     }
+-
+-    _loadFile(file, view) {
++     // added csv and binFile
++    _loadFile(file,view,csv,binFile,verifierThreshold) {
++        let csvPath = csv || null;
++        let binFilePath = binFile || null;
++        let verifierThresholdValue = verifierThreshold || null;
+         const recents = this._configuration.get('recents').filter(recent => file != recent.path);
+-        view.open(file);
++        // added csv and binFilePath
++        view.open(file,csvPath,binFilePath,verifierThresholdValue);
+         recents.unshift({ path: file });
+         if (recents.length > 9) {
+             recents.splice(9);
+@@ -267,21 +418,7 @@ class Application {
+         }
+     }
+ 
+-    _checkForUpdates() {
+-        if (!electron.app.isPackaged) {
+-            return;
+-        }
+-        const autoUpdater = updater.autoUpdater;
+-        if (autoUpdater.app && autoUpdater.app.appUpdateConfigPath && !fs.existsSync(autoUpdater.app.appUpdateConfigPath)) {
+-            return;
+-        }
+-        const promise = autoUpdater.checkForUpdates();
+-        if (promise) {
+-            promise.catch((error) => {
+-                console.log(error.message);
+-            });
+-        }
+-    }
++
+ 
+     get package() {
+         if (!this._package) {
+@@ -414,10 +551,17 @@ class Application {
+             label: '&File',
+             submenu: [
+                 {
+-                    label: '&Open...',
++                //added open visualizer option
++                    label: '&Open Visualizer...',
+                     accelerator: 'CmdOrCtrl+O',
+                     click: () => { this._openFileDialog(); }
+                 },
++                {
++                //added open diff option
++                    label: '&Open Diff...',
++                    accelerator: 'CmdOrCtrl+O',
++                    click: () => { this._openDiffDialog(); }
++                },
+                 {
+                     label: 'Open &Recent',
+                     submenu: menuRecentsTemplate
+@@ -720,21 +864,23 @@ class View {
+     }
+ 
+     get window() {
+-        return this._window;
++        return this ._window;
+     }
+ 
+     get path() {
+         return this._path;
+     }
+ 
+-    open(file) {
++    // added csv and binFile
++    open(file,csv,binFile,verifierThreshold) {
+         this._openPath = file;
+         if (this._didFinishLoad) {
+-            this._window.webContents.send('open', { file: file });
++            // added csv and binFile
++            this._window.webContents.send('open', { file: file, csv: csv,binFile: binFile,verifierThreshold: verifierThreshold });
+         }
+         else {
+             this._window.webContents.on('did-finish-load', () => {
+-                this._window.webContents.send('open', { file: file });
++                this._window.webContents.send('open', { file: file, csv: csv,binFile: binFile,verifierThreshold: verifierThreshold });
+             });
+             const location = url.format({ protocol: 'file:', slashes: true, pathname: path.join(__dirname, 'electron.html') });
+             this._window.loadURL(location);

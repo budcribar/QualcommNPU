@@ -1,0 +1,387 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Quantized 16 bit activations (A16) vs FP16 and Activation Fusion: Performance and power differences &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Avoid converting PyTorch models to onnx first" href="htp_guidelines_avoid_pytorch_to_onnx_conversion.html" />
+    <link rel="prev" title="Number of channels" href="htp_guidelines_channels.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../general/backend.html">Backend</a> &raquo;</li>
+        
+          <li><a href="../../general/htp/htp_backend.html">HTP</a> &raquo;</li>
+        
+      <li>Quantized 16 bit activations (A16) vs FP16 and Activation Fusion: Performance and power differences</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="quantized-16-bit-activations-a16-vs-fp16-and-activation-fusion-performance-and-power-differences">
+<h1>Quantized 16 bit activations (A16) vs FP16 and Activation Fusion: Performance and power differences<a class="headerlink" href="#quantized-16-bit-activations-a16-vs-fp16-and-activation-fusion-performance-and-power-differences" title="Permalink to this heading">¶</a></h1>
+<p>As mentioned previously in the document:
+<a class="reference internal" href="../../general/htp/htp_backend.html#recommendations-for-network-design"><span class="std std-ref">Recommendations for Network Design</span></a>,
+quantized A16 bit activations generally achieve higher performance and have lower
+power requirements. In order to get most benefit from using 16 bit activations, it
+is critical to maximize utilization of the hardware. We recommend that the network
+is designed to take maximum advantage of HMX. Some of these practices are outlined
+below with examples.</p>
+<div class="section" id="minimize-data-movement-operations">
+<h2>Minimize data movement operations<a class="headerlink" href="#minimize-data-movement-operations" title="Permalink to this heading">¶</a></h2>
+<p>Non computational operations that move or permute data in some way are expected to have similar
+performance on FP16 vs A16, as the data size is the same. If a network is heavily dominated by
+these operations then one might not see a very significant inf/sec gains and power benefits
+using A16 activations compared to FP16 ones.</p>
+<dl class="simple">
+<dt>These operations include (but are not limited to):</dt><dd><ul class="simple">
+<li><p>Reshape</p></li>
+<li><p>Transpose</p></li>
+<li><p>Depth to Space</p></li>
+<li><p>Space to Depth</p></li>
+<li><p>Concat</p></li>
+</ul>
+</dd>
+</dl>
+<p>Therefore, it is recommended to avoid these operations whenever it is feasible, and to consider approaches
+which minimize usage of data movers.</p>
+</div>
+<div class="section" id="activation-fusion">
+<h2>Activation Fusion<a class="headerlink" href="#activation-fusion" title="Permalink to this heading">¶</a></h2>
+<p>The latest hardware can fuse some non-trivial activation functions (i.e, non-Relu)
+into the previous convolution. We currently support fusing PRelu and HardSwish in
+all precisions, namely, A8, A16 and FP16. For A8 and A16 precisions, Relu and ReluMinMax
+activations have better performance.  For FP16 precisions, Relu activations have better
+performance. Many of the networks provided in A16 make heavy use of PRelu, which will
+benefit from this added support. However, there are some caveats, such as below and
+the networks should be designed to make the best use of this feature.:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>There is a constraint that the conv preceding the activation should not be used</p></li>
+</ul>
+</div></blockquote>
+<p>elsewhere in the network in order for the Activation Fusion to take place.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that simple activation functions like Relu are not subject to the above constraint,
+so we still recommend usage of Relu over PRelu/HardSwish whenever this can be achieved.</p>
+</div>
+<p>The following table shows the support for various activation fusions with the preceding <strong>Conv2D</strong> or <strong>DepthWiseConv2D</strong>:</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Activation</p></th>
+<th class="head"><p>Op Fusion for A8 and A16</p></th>
+<th class="head"><p>Efficiency for A8 and A16 precisions</p></th>
+<th class="head"><p>Op Fusion for FP16 precision</p></th>
+<th class="head"><p>Op Efficiency for FP16  precision</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Relu</p></td>
+<td><p>Yes</p></td>
+<td><p>best</p></td>
+<td><p>Yes</p></td>
+<td><p>Best</p></td>
+</tr>
+<tr class="row-odd"><td><p>ReluMinMax</p></td>
+<td><p>Yes</p></td>
+<td><p>best</p></td>
+<td><p>Support on 8550 and 8650</p></td>
+<td><p>Good</p></td>
+</tr>
+<tr class="row-even"><td><p>HardSwish</p></td>
+<td><p>Support on 8550 and 8650</p></td>
+<td><p>best</p></td>
+<td><p>Support on 8550 and 8650</p></td>
+<td><p>Good</p></td>
+</tr>
+<tr class="row-odd"><td><p>LeakyRelu</p></td>
+<td><p>Support on 8550 and 8650</p></td>
+<td><p>best</p></td>
+<td><p>Support on 8550 and 8650</p></td>
+<td><p>Good</p></td>
+</tr>
+<tr class="row-even"><td><p>Prelu</p></td>
+<td><p>Support on 8550 and 8650</p></td>
+<td><p>best</p></td>
+<td><p>Support on 8550 and 8650</p></td>
+<td><p>Good</p></td>
+</tr>
+<tr class="row-odd"><td><p>Elu</p></td>
+<td><p>No</p></td>
+<td><p>N/A</p></td>
+<td><p>No</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>Gelu</p></td>
+<td><p>No</p></td>
+<td><p>N/A</p></td>
+<td><p>No</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sigmoid</p></td>
+<td><p>No</p></td>
+<td><p>N/A</p></td>
+<td><p>No</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>Tanh</p></td>
+<td><p>No</p></td>
+<td><p>N/A</p></td>
+<td><p>No</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="example-network-topology">
+<h3>Example: Network Topology<a class="headerlink" href="#example-network-topology" title="Permalink to this heading">¶</a></h3>
+<p>When fusing an activation, if the results of the preceding convolution are needed
+elsewhere in the network, then the activation fusion is not done, as we would need to
+do the convolution twice. This type of pattern is quite common in many networks and
+prevents activation fusion.</p>
+<div class="figure align-center" id="figure-11-figure">
+<img alt="../../_static/resources/htp_guidelines_fig_11.png" src="../../_static/resources/htp_guidelines_fig_11.png" />
+</div>
+<p class="centered">
+<strong><strong>Figure 1</strong></strong></p><p>From the Fig. 1, one can see that the results of the convolution are fed to a PRelu
+(highlighted in yellow), and to an Add (the bottom AddV2), which prevents activation fusion.
+It is therefore recommended to optimize the network topology so that activation fusion is always possible.</p>
+</div>
+</div>
+<div class="section" id="example-replacing-add-with-convolution-to-maximize-activation-fusion">
+<h2>Example: Replacing Add with Convolution to Maximize Activation Fusion<a class="headerlink" href="#example-replacing-add-with-convolution-to-maximize-activation-fusion" title="Permalink to this heading">¶</a></h2>
+<p>Current activation fusion is supported for only convolution type ops. It does not apply
+to other ops such as Add or Mul. If these types of ops are followed by a non-trivial activation,
+it may be beneficial to replace these elementwise ops with convolution, which will allow
+the activation functions to be fused into the convolution. For example in the Fig. 2,
+the first Add can be replaced with a convolution which would allow the following PRelu to be fused
+with the convolution. However, we still have the restriction that the output of the replaced Add can
+not be used in another place. So some patterns like the one shown in Fig. 3 may not be fused.</p>
+<div class="figure align-center" id="figure-12-figure">
+<img alt="../../_static/resources/htp_guidelines_fig_12.png" src="../../_static/resources/htp_guidelines_fig_12.png" />
+</div>
+<p class="centered">
+<strong><strong>Figure 2</strong></strong></p><div class="figure align-center" id="figure-13-figure">
+<img alt="../../_static/resources/htp_guidelines_fig_13.png" src="../../_static/resources/htp_guidelines_fig_13.png" />
+</div>
+<p class="centered">
+<strong><strong>Figure 3</strong></strong></p></div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="htp_guidelines_avoid_pytorch_to_onnx_conversion.html" class="btn btn-neutral float-right" title="Avoid converting PyTorch models to onnx first" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="htp_guidelines_channels.html" class="btn btn-neutral float-left" title="Number of channels" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,466 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Windows Tutorial &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="UDO Tutorial" href="tutorial_inceptionv3_udo.html" />
+    <link rel="prev" title="Android Tutorial" href="android_tutorial.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup1.html">Network Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="usergroup6.html">Tutorials and Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial_setup.html">Tutorials Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snpe2_migration_guidelines.html">SNPE1 to SNPE2 Migration Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup7.html">Running Nets</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="usergroup8.html">Code Examples</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="cplus_plus_tutorial.html">C++ Tutorial - Build the Sample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="c_tutorial.html">C Tutorial - Build the Sample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="c_api_guidelines.html">C API Guidelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="android_tutorial.html">Android Tutorial</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Windows Tutorial</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#limitations-on-windows">Limitations on Windows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setup-visual-studio">Setup Visual Studio</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#link-with-snpe-dll">Link with SNPE.dll</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-cmake-to-build-samplecode">Using CMake to Build SampleCode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#build-and-run-a-network-in-visual-studio-on-x64">Build and run a network in Visual Studio on x64</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#build-and-run-a-network-on-arm64">Build and run a network on ARM64</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_inceptionv3_udo.html">UDO Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_inceptionv3_udo_dsp.html">UDO DSP tutorial for Quantized DLC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_inceptionv3_udo_dsp_win.html">UDO DSP tutorial on Windows for Quantized DLC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_onnx_udo_weights.html">UDO Tutorial With Weights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_psnpe_introduction.html">PSNPE Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_psnpe_c_tutorial.html">PSNPE C Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_psnpe_cplus_plus_tutorial.html">PSNPE C++ Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial_psnpe_android_tutorial.html">PSNPE Android Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dsp_runtime.html">DSP Runtime Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="network_resize.html">Network Resizing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="input_batch.html">Input Image Batch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="init_caching.html">Init Caching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup9.html">Application Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="usergroup6.html">Tutorials and Examples</a> &raquo;</li>
+        
+          <li><a href="usergroup8.html">Code Examples</a> &raquo;</li>
+        
+      <li>Windows Tutorial</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="windows-tutorial">
+<h1>Windows Tutorial<a class="headerlink" href="#windows-tutorial" title="Permalink to this heading">¶</a></h1>
+<div class="ui-resizable side-nav-resizable docutils container" id="side-nav">
+<div class="docutils container" id="nav-tree">
+<div class="docutils container" id="nav-tree-contents">
+</div>
+</div>
+</div>
+<div class="docutils container" id="doc-content">
+<div class="header docutils container">
+</div>
+<div class="contents docutils container">
+</div>
+</div>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>Reference the <a class="reference external" href="cplus_plus_tutorial.html">C++ Tutorial</a> and <a class="reference external" href="c_tutorial.html">C Tutorial</a> for more detail</p></li>
+<li><p>Prepare the input data and dlc from <a class="reference external" href="tutorial_inceptionv3_win.html">Running the Inception v3 Model in Windows</a></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>$SNPE_ROOT is the full path to Qualcomm® Neural Processing SDK</p>
+<ul class="simple">
+<li><p>C Sample Code Location: $SNPE_ROOT/examples/SNPE/NativeCpp/SampleCode_CAPI_Windows</p></li>
+<li><p>C++ Sample Code Location: $SNPE_ROOT/examples/SNPE/NativeCpp/SampleCode_Windows</p></li>
+</ul>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><div class="line-block">
+<div class="line">This tutorial demonstrates how to build a C++ sample application that can execute neural network models on the Windows PC or Windows device.</div>
+<div class="line">The steps for building and executing the CAPI sample are the same. Simply replace <strong>SampleCode_Windows</strong> with <strong>SampleCode_CAPI_Windows</strong>.</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>While this sample code does not do any error checking, it is strongly recommended that users check for errors when using the Qualcomm® Neural Processing SDK APIs.</p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="limitations-on-windows">
+<h2>Limitations on Windows<a class="headerlink" href="#limitations-on-windows" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>The Qualcomm® Neural Processing SDK DLL is built with the multithreaded, static version of the runtime library (/MT), but also specifies to use the dynamic version of libucrt.</p></li>
+<li><p>Furthermore, because it passes STL objects across the DLL boundary, the user’s code cannot be built with Debug runtime (/MTd)</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="setup-visual-studio">
+<h2>Setup Visual Studio<a class="headerlink" href="#setup-visual-studio" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><p>Tested Build Environment:</p>
+<ul class="simple">
+<li><p>Visual Studio 2022 17.4</p></li>
+<li><p>MSVC v143 C++ x86 build tools - 14.34</p></li>
+<li><p>MSVC v143 ARM64 build tools - 14.34</p></li>
+<li><p>Windows SDK 10.0.22621.0</p></li>
+</ul>
+<p>There are several steps to setup the project.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>$SNPE_ROOT is the full path to Qualcomm® Neural Processing SDK, need to register a system environment variable to use it in VS directly.</p>
+</div>
+<ul class="simple">
+<li><p>Create an empty project</p></li>
+<li><p>Unzip the SDK</p></li>
+<li><p>Add all .cpp and .hpp files in <code class="docutils literal notranslate"><span class="pre">$SNPE_ROOT/examples/SNPE/NativeCpp/SampleCode_Windows</span></code> to <strong>Source Files</strong> and <strong>Header Files</strong> in <strong>Solution Explorer</strong>, respectively.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../images/vs_add_source_to_solution.png"><img alt="VS_add_source" src="../images/vs_add_source_to_solution.png" style="width: 25.0%;" /></a>
+<ul class="simple">
+<li><p><strong>Right click on Solution -&gt; Properties</strong>, Change the configuration to <strong>Release/x64</strong></p></li>
+<li><p>Go to <strong>Properties -&gt; Configuration Manager</strong> and change all active configurations to <strong>Release/x64</strong></p></li>
+<li><p>Also Add ARM64 configuration to build the executable for ARM64</p></li>
+</ul>
+<a class="reference internal image-reference" href="../images/vs_configuration.png"><img alt="VS_configuration" src="../images/vs_configuration.png" style="width: 50.0%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="link-with-snpe-dll">
+<h2>Link with SNPE.dll<a class="headerlink" href="#link-with-snpe-dll" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>Go to <strong>Properties -&gt; C/C++ -&gt; Additional Include Directory</strong>, edit and add include path: <strong>$SNPE_ROOT/include/SNPE</strong></p></li>
+<li><p>Go to <strong>Properties -&gt; Linker -&gt; Input -&gt; Additional Dependencies</strong>, edit and add <strong>SNPE.lib</strong></p></li>
+<li><dl class="simple">
+<dt>Go to <strong>Properties -&gt; Linker -&gt; General -&gt; Additional Library Directory</strong>, edit and add path to SNPE.dll:</dt><dd><ul>
+<li><p>For x64, add <strong>$SNPE_ROOT/lib/x86_64-windows-msvc</strong></p></li>
+<li><p>For ARM64, add <strong>$SNPE_ROOT/lib/aarch64-windows-msvc</strong></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>$SNPE_ROOT can be replaced to the full path to SDK</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="using-cmake-to-build-samplecode">
+<h2>Using CMake to Build SampleCode<a class="headerlink" href="#using-cmake-to-build-samplecode" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><p>We also provide another way that using CMake to build SampleCode</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><p>Need to install “CMake Tools for Windows”</p></li>
+<li><p>Replace $SNPE_ROOT to full path if SNPE_ROOT is not in the system environment variables</p></li>
+</ol>
+</div>
+<ul>
+<li><p>Unzip the SDK</p></li>
+<li><p>Open the developer command prompt for VS</p></li>
+<li><p>Follow the instructions below</p>
+<blockquote>
+<div><ul>
+<li><p>cd $SNPE_ROOT/examples/SNPE/NativeCpp/SampleCode_Windows</p></li>
+<li><p>mkdir build &amp; cd build</p></li>
+<li><p>cmake ../ -A &lt;x64, ARM64&gt; [-DBUILD_WITH_VCRUNTIME=ON]</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>-A: x64 or ARM64, choose the platform you want to build</p></li>
+<li><p>-DBUILD_WITH_VCRUNTIME: Default OFF. Turning ON will build snpe-sample with Microsoft MSVC static runtime libraries</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>cmake -\-build ./ -\-config Release (or open the .sln in Visual Studio and build)</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="build-and-run-a-network-in-visual-studio-on-x64">
+<h2>Build and run a network in Visual Studio on x64<a class="headerlink" href="#build-and-run-a-network-in-visual-studio-on-x64" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><p>Taking Inception_v3 as an example:</p>
+<ul>
+<li><p>Skip this if build by CMake, Go to <strong>Properties -&gt; Build Events -&gt; Post-Build Event</strong>, edit and add <strong>copy /Y  “$SNPE_ROOT/lib/x86_64-windows-msvc” “$(OutDir)”</strong></p></li>
+<li><p>Go to <strong>Properties -&gt; Debugging -&gt; Command Argument</strong>, edit and add command arguments:</p>
+<blockquote>
+<div><ul>
+<li><p>Set Commandline Arguments to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">container</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">inception_v3</span><span class="o">/</span><span class="n">dlc</span><span class="o">/</span><span class="n">inception_v3</span><span class="o">.</span><span class="n">dlc</span> <span class="o">--</span><span class="n">input_list</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">inception_v3</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">cropped</span><span class="o">/</span><span class="n">raw_list</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">output_dir</span> <span class="n">output</span><span class="o">/</span>
+</pre></div>
+</div>
+</li>
+<li><p>Set Working Directory to path/to/inception_v3</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Click the <strong>Local Windows Debugger</strong> and observe the output which should resemble the following:</p></li>
+</ul>
+<a class="reference internal image-reference" href="../images/vs_x64_run.png"><img alt="VS_x64_run" src="../images/vs_x64_run.png" style="width: 30.0%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="build-and-run-a-network-on-arm64">
+<h2>Build and run a network on ARM64<a class="headerlink" href="#build-and-run-a-network-on-arm64" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><p>Again taking Inception_v3 as an example:</p>
+<ol class="arabic">
+<li><p>Build the exe with ARM64 configuration</p></li>
+<li><p>Copy executable file, SNPE.dll and inception_v3 directory to the device</p></li>
+<li><p>Setup DSP Runtime: please refer to <a class="reference external" href="tutorial_inceptionv3_win.html">Running on Windows using DSP Runtime</a></p></li>
+<li><p>Open the cmd and type:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$(EXE NAME) --container path/to/inception_v3/dlc/inception_v3.dlc --input_list path/to/inception_v3/data/cropped/raw_list.txt --output_dir output [--runtime dsp]
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="simple">
+<dt>If “VCRUNTIME140.dll was not found” or any error like “the application was unable to start” occurs, it can be fixed either by:</dt><dd><ol class="arabic simple">
+<li><p>Install <strong>Microsoft Visual C++ Redistributable</strong> on the device</p></li>
+<li><p>Refer to <a class="reference external" href="build_samplecode_windows.html#using-cmake-to-build-samplecode">Using CMake to Build SampleCode</a> to build snpe-sample with static VCRuntime libraries</p></li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><p>When executing snpe-sample in powershell, it will not display any error for VCRUNTIME issues. If snpe-sample quits without any message, check above VCRUNTIME solutions.</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="tutorial_inceptionv3_udo.html" class="btn btn-neutral float-right" title="UDO Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="android_tutorial.html" class="btn btn-neutral float-left" title="Android Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

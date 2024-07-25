@@ -1,0 +1,702 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>File SNPEBuilder.h &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup1.html">Network Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup6.html">Tutorials and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>File SNPEBuilder.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="file-snpebuilder-h">
+<span id="file-snpe-snpebuilder-h"></span><h1>File SNPEBuilder.h<a class="headerlink" href="#file-snpebuilder-h" title="Permalink to this heading">¶</a></h1>
+<p>↰ <a class="reference internal" href="dir_SNPE.html#dir-snpe"><span class="std std-ref">Parent directory</span></a> (<code class="docutils literal notranslate"><span class="pre">SNPE</span></code>)</p>
+<div class="contents local topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#definition-snpe-snpebuilder-h" id="id1">Definition (<code class="docutils literal notranslate"><span class="pre">SNPE/SNPEBuilder.h</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#includes" id="id2">Includes</a></p></li>
+<li><p><a class="reference internal" href="#functions" id="id3">Functions</a></p></li>
+<li><p><a class="reference internal" href="#typedefs" id="id4">Typedefs</a></p></li>
+<li><p><a class="reference internal" href="#full-file-listing" id="id5">Full File Listing</a></p></li>
+</ul>
+</div>
+<div class="section" id="definition-snpe-snpebuilder-h">
+<h2>Definition (<code class="docutils literal notranslate"><span class="pre">SNPE/SNPEBuilder.h</span></code>)<a class="headerlink" href="#definition-snpe-snpebuilder-h" title="Permalink to this heading">¶</a></h2>
+</div>
+<div class="section" id="includes">
+<h2>Includes<a class="headerlink" href="#includes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DlContainer/DlContainer.h</span></code> (<a class="reference internal" href="file_DlContainer_DlContainer.h.html#file-dlcontainer-dlcontainer-h"><span class="std std-ref">File DlContainer.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DlSystem/DlEnums.h</span></code> (<a class="reference internal" href="file_DlSystem_DlEnums.h.html#file-dlsystem-dlenums-h"><span class="std std-ref">File DlEnums.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DlSystem/DlError.h</span></code> (<a class="reference internal" href="file_DlSystem_DlError.h.html#file-dlsystem-dlerror-h"><span class="std std-ref">File DlError.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DlSystem/IOBufferDataTypeMap.h</span></code> (<a class="reference internal" href="file_DlSystem_IOBufferDataTypeMap.h.html#file-dlsystem-iobufferdatatypemap-h"><span class="std std-ref">File IOBufferDataTypeMap.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DlSystem/PlatformConfig.h</span></code> (<a class="reference internal" href="file_DlSystem_PlatformConfig.h.html#file-dlsystem-platformconfig-h"><span class="std std-ref">File PlatformConfig.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DlSystem/RuntimeList.h</span></code> (<a class="reference internal" href="file_DlSystem_RuntimeList.h.html#file-dlsystem-runtimelist-h"><span class="std std-ref">File RuntimeList.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DlSystem/TensorShapeMap.h</span></code> (<a class="reference internal" href="file_DlSystem_TensorShapeMap.h.html#file-dlsystem-tensorshapemap-h"><span class="std std-ref">File TensorShapeMap.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SNPE/SNPE.h</span></code> (<a class="reference internal" href="file_SNPE_SNPE.h.html#file-snpe-snpe-h"><span class="std std-ref">File SNPE.h</span></a>)</p></li>
+</ul>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="function_SNPEBuilder_8h_1ac61ef58c0d5b4c50b2dec6c48cede397.html#exhale-function-snpebuilder-8h-1ac61ef58c0d5b4c50b2dec6c48cede397"><span class="std std-ref">Function Snpe_SNPEBuilder_Build</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEBuilder_8h_1a01fbdaba9c2a1ec80846eaf7fb0ac95a.html#exhale-function-snpebuilder-8h-1a01fbdaba9c2a1ec80846eaf7fb0ac95a"><span class="std std-ref">Function Snpe_SNPEBuilder_Create</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEBuilder_8h_1adbe59b4f89f284d69a0df09f71e63b21.html#exhale-function-snpebuilder-8h-1adbe59b4f89f284d69a0df09f71e63b21"><span class="std std-ref">Function Snpe_SNPEBuilder_Delete</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEBuilder_8h_1a390a4c9d3dd745f539b6d81c3f00cd9a.html#exhale-function-snpebuilder-8h-1a390a4c9d3dd745f539b6d81c3f00cd9a"><span class="std std-ref">Function Snpe_SNPEBuilder_NetworkInit</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEBuilder_8h_1af54741960cca688c749268c1b5f2e5b7.html#exhale-function-snpebuilder-8h-1af54741960cca688c749268c1b5f2e5b7"><span class="std std-ref">Function Snpe_SNPEBuilder_SetBufferDataType</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEBuilder_8h_1a99fba442e066a703f1648a217b542bde.html#exhale-function-snpebuilder-8h-1a99fba442e066a703f1648a217b542bde"><span class="std std-ref">Function Snpe_SNPEBuilder_SetCacheCompatibilityMode</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEBuilder_8h_1a52d48c5197b97e1f222474467ef0f710.html#exhale-function-snpebuilder-8h-1a52d48c5197b97e1f222474467ef0f710"><span class="std std-ref">Function Snpe_SNPEBuilder_SetCpuFixedPointMode</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEBuilder_8h_1a62a6f0488fb2dbce0383a59d81063369.html#exhale-function-snpebuilder-8h-1a62a6f0488fb2dbce0383a59d81063369"><span class="std std-ref">Function Snpe_SNPEBuilder_SetCustomPerfProfile</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEBuilder_8h_1ab9d175ec0d751f6159695157afe74f32.html#exhale-function-snpebuilder-8h-1ab9d175ec0d751f6159695157afe74f32"><span class="std std-ref">Function Snpe_SNPEBuilder_SetDebugMode</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEBuilder_8h_1aa1d078c97ce5e85a585fefe37ee5b8c0.html#exhale-function-snpebuilder-8h-1aa1d078c97ce5e85a585fefe37ee5b8c0"><span class="std std-ref">Function Snpe_SNPEBuilder_SetExecutionPriorityHint</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEBuilder_8h_1af5f87bad68a05cf1fc3c18e992600bd8.html#exhale-function-snpebuilder-8h-1af5f87bad68a05cf1fc3c18e992600bd8"><span class="std std-ref">Function Snpe_SNPEBuilder_SetInitCacheMode</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEBuilder_8h_1a7554ce9986adc92cf149a109bfa31b77.html#exhale-function-snpebuilder-8h-1a7554ce9986adc92cf149a109bfa31b77"><span class="std std-ref">Function Snpe_SNPEBuilder_SetInputDimensions</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEBuilder_8h_1aee355f8a312537fe3c299dc2717f8bb2.html#exhale-function-snpebuilder-8h-1aee355f8a312537fe3c299dc2717f8bb2"><span class="std std-ref">Function Snpe_SNPEBuilder_SetInputDimensionsForNetwork</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEBuilder_8h_1ab40c37fcaab31ff8dd2312d878f186f3.html#exhale-function-snpebuilder-8h-1ab40c37fcaab31ff8dd2312d878f186f3"><span class="std std-ref">Function Snpe_SNPEBuilder_SetMemoryLimitHint</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEBuilder_8h_1a3c16c31ebcfe0fc308da8723d2bb8253.html#exhale-function-snpebuilder-8h-1a3c16c31ebcfe0fc308da8723d2bb8253"><span class="std std-ref">Function Snpe_SNPEBuilder_SetModelName</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEBuilder_8h_1a16d1645f334c18f0f5e92fc6746fbb60.html#exhale-function-snpebuilder-8h-1a16d1645f334c18f0f5e92fc6746fbb60"><span class="std std-ref">Function Snpe_SNPEBuilder_SetOutputLayers</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEBuilder_8h_1afa0a2e49580aa0d27e5bf6778d2c676f.html#exhale-function-snpebuilder-8h-1afa0a2e49580aa0d27e5bf6778d2c676f"><span class="std std-ref">Function Snpe_SNPEBuilder_SetOutputLayersForNetwork</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEBuilder_8h_1a2c76fb68ad626ae02bf07e68f8bf0290.html#exhale-function-snpebuilder-8h-1a2c76fb68ad626ae02bf07e68f8bf0290"><span class="std std-ref">Function Snpe_SNPEBuilder_SetOutputTensors</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEBuilder_8h_1a3aa68dc7e6d463e975472f397fbdfd8c.html#exhale-function-snpebuilder-8h-1a3aa68dc7e6d463e975472f397fbdfd8c"><span class="std std-ref">Function Snpe_SNPEBuilder_SetOutputTensorsForNetwork</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEBuilder_8h_1aa946d8bf0bd9ad23acc69746a9fe8eac.html#exhale-function-snpebuilder-8h-1aa946d8bf0bd9ad23acc69746a9fe8eac"><span class="std std-ref">Function Snpe_SNPEBuilder_SetPerformanceProfile</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEBuilder_8h_1a340b427c7ca4f05764a73ec7b0f540ba.html#exhale-function-snpebuilder-8h-1a340b427c7ca4f05764a73ec7b0f540ba"><span class="std std-ref">Function Snpe_SNPEBuilder_SetPlatformConfig</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEBuilder_8h_1aed06432b1ff5792f7a9c7db6c3c77c73.html#exhale-function-snpebuilder-8h-1aed06432b1ff5792f7a9c7db6c3c77c73"><span class="std std-ref">Function Snpe_SNPEBuilder_SetProfilingLevel</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEBuilder_8h_1adac2ed4af1f98049f03e38898aaab520.html#exhale-function-snpebuilder-8h-1adac2ed4af1f98049f03e38898aaab520"><span class="std std-ref">Function Snpe_SNPEBuilder_SetRuntimeProcessorOrder</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEBuilder_8h_1af315dec4c39c28b41914781e9b0e849d.html#exhale-function-snpebuilder-8h-1af315dec4c39c28b41914781e9b0e849d"><span class="std std-ref">Function Snpe_SNPEBuilder_SetSingleThreadedInit</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEBuilder_8h_1a917f01727ed87dfe38a47d1a0d8d096d.html#exhale-function-snpebuilder-8h-1a917f01727ed87dfe38a47d1a0d8d096d"><span class="std std-ref">Function Snpe_SNPEBuilder_SetTimeOut</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEBuilder_8h_1a617b7706851055e3ad4256dbdd57baa1.html#exhale-function-snpebuilder-8h-1a617b7706851055e3ad4256dbdd57baa1"><span class="std std-ref">Function Snpe_SNPEBuilder_SetUnconsumedTensorsAsOutputs</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEBuilder_8h_1a542187dad3f5c861dc8862d0563be997.html#exhale-function-snpebuilder-8h-1a542187dad3f5c861dc8862d0563be997"><span class="std std-ref">Function Snpe_SNPEBuilder_SetUseUserSuppliedBuffers</span></a></p></li>
+<li><p><a class="reference internal" href="function_SNPEBuilder_8h_1aebecad096a399b9033daae535594803f.html#exhale-function-snpebuilder-8h-1aebecad096a399b9033daae535594803f"><span class="std std-ref">Function Snpe_SNPEBuilder_ValidateCache</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="typedefs">
+<h2>Typedefs<a class="headerlink" href="#typedefs" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="typedef_SNPEBuilder_8h_1a5525f7c887b922195624658ef8f12478.html#exhale-typedef-snpebuilder-8h-1a5525f7c887b922195624658ef8f12478"><span class="std std-ref">Typedef Snpe_SNPEBuilder_Handle_t</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="full-file-listing">
+<h2>Full File Listing<a class="headerlink" href="#full-file-listing" title="Permalink to this heading">¶</a></h2>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv425Snpe_SNPEBuilder_Handle_t">
+<span id="_CPPv325Snpe_SNPEBuilder_Handle_t"></span><span id="_CPPv225Snpe_SNPEBuilder_Handle_t"></span><span id="Snpe_SNPEBuilder_Handle_t"></span><span class="target" id="SNPEBuilder_8h_1a5525f7c887b922195624658ef8f12478"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_SNPEBuilder_Handle_t</span></span></span><a class="headerlink" href="#_CPPv425Snpe_SNPEBuilder_Handle_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A typedef to indicate a SNPEBuilder handle </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423Snpe_SNPEBuilder_Create25Snpe_DlContainer_Handle_t">
+<span id="_CPPv323Snpe_SNPEBuilder_Create25Snpe_DlContainer_Handle_t"></span><span id="_CPPv223Snpe_SNPEBuilder_Create25Snpe_DlContainer_Handle_t"></span><span id="Snpe_SNPEBuilder_Create__Snpe_DlContainer_Handle_t"></span><span class="target" id="SNPEBuilder_8h_1a01fbdaba9c2a1ec80846eaf7fb0ac95a"></span><a class="reference internal" href="typedef_SNPEBuilder_8h_1a5525f7c887b922195624658ef8f12478.html#_CPPv425Snpe_SNPEBuilder_Handle_t" title="Snpe_SNPEBuilder_Handle_t"><span class="n"><span class="pre">Snpe_SNPEBuilder_Handle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_SNPEBuilder_Create</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="file_DlContainer_DlContainer.h.html#_CPPv425Snpe_DlContainer_Handle_t" title="Snpe_DlContainer_Handle_t"><span class="n"><span class="pre">Snpe_DlContainer_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">containerHandle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423Snpe_SNPEBuilder_Create25Snpe_DlContainer_Handle_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Constructor of NeuralNetwork Builder ith a supplied model. </p>
+<p>The builder class for creating SNPE objects. Not meant to be extended.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>containerHandle</strong> – <strong>[in]</strong> A DlContainer holding the model.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A new instance of a SNPEBuilder object that can be used to configure and build an instance of SNPE. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423Snpe_SNPEBuilder_Delete25Snpe_SNPEBuilder_Handle_t">
+<span id="_CPPv323Snpe_SNPEBuilder_Delete25Snpe_SNPEBuilder_Handle_t"></span><span id="_CPPv223Snpe_SNPEBuilder_Delete25Snpe_SNPEBuilder_Handle_t"></span><span id="Snpe_SNPEBuilder_Delete__Snpe_SNPEBuilder_Handle_t"></span><span class="target" id="SNPEBuilder_8h_1adbe59b4f89f284d69a0df09f71e63b21"></span><a class="reference internal" href="enum_DlError_8h_1aa40d44ade537087ac80f867eb4e7d50f.html#_CPPv416Snpe_ErrorCode_t" title="Snpe_ErrorCode_t"><span class="n"><span class="pre">Snpe_ErrorCode_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_SNPEBuilder_Delete</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_SNPEBuilder_8h_1a5525f7c887b922195624658ef8f12478.html#_CPPv425Snpe_SNPEBuilder_Handle_t" title="Snpe_SNPEBuilder_Handle_t"><span class="n"><span class="pre">Snpe_SNPEBuilder_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">snpeBuilderHandle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423Snpe_SNPEBuilder_Delete25Snpe_SNPEBuilder_Handle_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Destroys/frees a SNPEBuilder object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>snpeBuilderHandle</strong> – <strong>[in]</strong> Handle to access the SNPEBuilder object</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>SNPE_SUCCESS if Delete operation successful. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv438Snpe_SNPEBuilder_SetPerformanceProfile25Snpe_SNPEBuilder_Handle_t25Snpe_PerformanceProfile_t">
+<span id="_CPPv338Snpe_SNPEBuilder_SetPerformanceProfile25Snpe_SNPEBuilder_Handle_t25Snpe_PerformanceProfile_t"></span><span id="_CPPv238Snpe_SNPEBuilder_SetPerformanceProfile25Snpe_SNPEBuilder_Handle_t25Snpe_PerformanceProfile_t"></span><span id="Snpe_SNPEBuilder_SetPerformanceProfile__Snpe_SNPEBuilder_Handle_t.Snpe_PerformanceProfile_t"></span><span class="target" id="SNPEBuilder_8h_1aa946d8bf0bd9ad23acc69746a9fe8eac"></span><a class="reference internal" href="enum_DlError_8h_1aa40d44ade537087ac80f867eb4e7d50f.html#_CPPv416Snpe_ErrorCode_t" title="Snpe_ErrorCode_t"><span class="n"><span class="pre">Snpe_ErrorCode_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_SNPEBuilder_SetPerformanceProfile</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_SNPEBuilder_8h_1a5525f7c887b922195624658ef8f12478.html#_CPPv425Snpe_SNPEBuilder_Handle_t" title="Snpe_SNPEBuilder_Handle_t"><span class="n"><span class="pre">Snpe_SNPEBuilder_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">snpeBuilderHandle</span></span>, <a class="reference internal" href="enum_DlEnums_8h_1a2bbf863c52b6010323663938721ed29a.html#_CPPv425Snpe_PerformanceProfile_t" title="Snpe_PerformanceProfile_t"><span class="n"><span class="pre">Snpe_PerformanceProfile_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">performanceProfile</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv438Snpe_SNPEBuilder_SetPerformanceProfile25Snpe_SNPEBuilder_Handle_t25Snpe_PerformanceProfile_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Requests a performance profile. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>snpeBuilderHandle</strong> – <strong>[in]</strong> Handle to access the SNPEBuilder object</p></li>
+<li><p><strong>performanceProfile</strong> – <strong>[in]</strong> The target performance profile. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv434Snpe_SNPEBuilder_SetProfilingLevel25Snpe_SNPEBuilder_Handle_t21Snpe_ProfilingLevel_t">
+<span id="_CPPv334Snpe_SNPEBuilder_SetProfilingLevel25Snpe_SNPEBuilder_Handle_t21Snpe_ProfilingLevel_t"></span><span id="_CPPv234Snpe_SNPEBuilder_SetProfilingLevel25Snpe_SNPEBuilder_Handle_t21Snpe_ProfilingLevel_t"></span><span id="Snpe_SNPEBuilder_SetProfilingLevel__Snpe_SNPEBuilder_Handle_t.Snpe_ProfilingLevel_t"></span><span class="target" id="SNPEBuilder_8h_1aed06432b1ff5792f7a9c7db6c3c77c73"></span><a class="reference internal" href="enum_DlError_8h_1aa40d44ade537087ac80f867eb4e7d50f.html#_CPPv416Snpe_ErrorCode_t" title="Snpe_ErrorCode_t"><span class="n"><span class="pre">Snpe_ErrorCode_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_SNPEBuilder_SetProfilingLevel</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_SNPEBuilder_8h_1a5525f7c887b922195624658ef8f12478.html#_CPPv425Snpe_SNPEBuilder_Handle_t" title="Snpe_SNPEBuilder_Handle_t"><span class="n"><span class="pre">Snpe_SNPEBuilder_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">snpeBuilderHandle</span></span>, <a class="reference internal" href="enum_DlEnums_8h_1a56dcaf62bd867a86649e4cab49a4aadd.html#_CPPv421Snpe_ProfilingLevel_t" title="Snpe_ProfilingLevel_t"><span class="n"><span class="pre">Snpe_ProfilingLevel_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">profilingLevel</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv434Snpe_SNPEBuilder_SetProfilingLevel25Snpe_SNPEBuilder_Handle_t21Snpe_ProfilingLevel_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets the profiling level. Default profiling level for SNPEBuilder is off. Off and basic only applies to DSP runtime. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>snpeBuilderHandle</strong> – <strong>[in]</strong> Handle to access the SNPEBuilder object</p></li>
+<li><p><strong>profilingLevel</strong> – <strong>[in]</strong> The target profiling level. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv441Snpe_SNPEBuilder_SetExecutionPriorityHint25Snpe_SNPEBuilder_Handle_t28Snpe_ExecutionPriorityHint_t">
+<span id="_CPPv341Snpe_SNPEBuilder_SetExecutionPriorityHint25Snpe_SNPEBuilder_Handle_t28Snpe_ExecutionPriorityHint_t"></span><span id="_CPPv241Snpe_SNPEBuilder_SetExecutionPriorityHint25Snpe_SNPEBuilder_Handle_t28Snpe_ExecutionPriorityHint_t"></span><span id="Snpe_SNPEBuilder_SetExecutionPriorityHint__Snpe_SNPEBuilder_Handle_t.Snpe_ExecutionPriorityHint_t"></span><span class="target" id="SNPEBuilder_8h_1aa1d078c97ce5e85a585fefe37ee5b8c0"></span><a class="reference internal" href="enum_DlError_8h_1aa40d44ade537087ac80f867eb4e7d50f.html#_CPPv416Snpe_ErrorCode_t" title="Snpe_ErrorCode_t"><span class="n"><span class="pre">Snpe_ErrorCode_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_SNPEBuilder_SetExecutionPriorityHint</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_SNPEBuilder_8h_1a5525f7c887b922195624658ef8f12478.html#_CPPv425Snpe_SNPEBuilder_Handle_t" title="Snpe_SNPEBuilder_Handle_t"><span class="n"><span class="pre">Snpe_SNPEBuilder_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">snpeBuilderHandle</span></span>, <a class="reference internal" href="enum_DlEnums_8h_1a5cdef49ab6a3d845d5da0089bda28fce.html#_CPPv428Snpe_ExecutionPriorityHint_t" title="Snpe_ExecutionPriorityHint_t"><span class="n"><span class="pre">Snpe_ExecutionPriorityHint_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">priority</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv441Snpe_SNPEBuilder_SetExecutionPriorityHint25Snpe_SNPEBuilder_Handle_t28Snpe_ExecutionPriorityHint_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets a preference for execution priority. </p>
+<p>This allows the caller to give coarse hint to SNPE runtime about the priority of the network. SNPE runtime is free to use this information to co-ordinate between different workloads that may or may not extend beyond SNPE.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>snpeBuilderHandle</strong> – <strong>[in]</strong> Handle to access the SNPEBuilder object</p></li>
+<li><p><strong>priority</strong> – <strong>[in]</strong> The target performance profile. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv428Snpe_SNPEBuilder_NetworkInit25Snpe_SNPEBuilder_Handle_t24Snpe_StringList_Handle_t">
+<span id="_CPPv328Snpe_SNPEBuilder_NetworkInit25Snpe_SNPEBuilder_Handle_t24Snpe_StringList_Handle_t"></span><span id="_CPPv228Snpe_SNPEBuilder_NetworkInit25Snpe_SNPEBuilder_Handle_t24Snpe_StringList_Handle_t"></span><span id="Snpe_SNPEBuilder_NetworkInit__Snpe_SNPEBuilder_Handle_t.Snpe_StringList_Handle_t"></span><span class="target" id="SNPEBuilder_8h_1a390a4c9d3dd745f539b6d81c3f00cd9a"></span><a class="reference internal" href="enum_DlError_8h_1aa40d44ade537087ac80f867eb4e7d50f.html#_CPPv416Snpe_ErrorCode_t" title="Snpe_ErrorCode_t"><span class="n"><span class="pre">Snpe_ErrorCode_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_SNPEBuilder_NetworkInit</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_SNPEBuilder_8h_1a5525f7c887b922195624658ef8f12478.html#_CPPv425Snpe_SNPEBuilder_Handle_t" title="Snpe_SNPEBuilder_Handle_t"><span class="n"><span class="pre">Snpe_SNPEBuilder_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">snpeBuilderHandle</span></span>, <a class="reference internal" href="typedef_StringList_8h_1a86a9e0d044299b1ed6b8a85280830503.html#_CPPv424Snpe_StringList_Handle_t" title="Snpe_StringList_Handle_t"><span class="n"><span class="pre">Snpe_StringList_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">snpeNetworkNames</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv428Snpe_SNPEBuilder_NetworkInit25Snpe_SNPEBuilder_Handle_t24Snpe_StringList_Handle_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets the layers that will generate output. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>snpeBuilderHandle</strong> – <strong>[in]</strong> Handle to access the SNPEBuilder object</p></li>
+<li><p><strong>snpeNetworkNames</strong> – <strong>[in]</strong> List of network names to to be initialized. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv432Snpe_SNPEBuilder_SetOutputLayers25Snpe_SNPEBuilder_Handle_t24Snpe_StringList_Handle_t">
+<span id="_CPPv332Snpe_SNPEBuilder_SetOutputLayers25Snpe_SNPEBuilder_Handle_t24Snpe_StringList_Handle_t"></span><span id="_CPPv232Snpe_SNPEBuilder_SetOutputLayers25Snpe_SNPEBuilder_Handle_t24Snpe_StringList_Handle_t"></span><span id="Snpe_SNPEBuilder_SetOutputLayers__Snpe_SNPEBuilder_Handle_t.Snpe_StringList_Handle_t"></span><span class="target" id="SNPEBuilder_8h_1a16d1645f334c18f0f5e92fc6746fbb60"></span><a class="reference internal" href="enum_DlError_8h_1aa40d44ade537087ac80f867eb4e7d50f.html#_CPPv416Snpe_ErrorCode_t" title="Snpe_ErrorCode_t"><span class="n"><span class="pre">Snpe_ErrorCode_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_SNPEBuilder_SetOutputLayers</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_SNPEBuilder_8h_1a5525f7c887b922195624658ef8f12478.html#_CPPv425Snpe_SNPEBuilder_Handle_t" title="Snpe_SNPEBuilder_Handle_t"><span class="n"><span class="pre">Snpe_SNPEBuilder_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">snpeBuilderHandle</span></span>, <a class="reference internal" href="typedef_StringList_8h_1a86a9e0d044299b1ed6b8a85280830503.html#_CPPv424Snpe_StringList_Handle_t" title="Snpe_StringList_Handle_t"><span class="n"><span class="pre">Snpe_StringList_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">outputLayerNames</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv432Snpe_SNPEBuilder_SetOutputLayers25Snpe_SNPEBuilder_Handle_t24Snpe_StringList_Handle_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets the layers that will generate output. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>snpeBuilderHandle</strong> – <strong>[in]</strong> Handle to access the SNPEBuilder object</p></li>
+<li><p><strong>outputLayerNames</strong> – <strong>[in]</strong> List of layer names to output. An empty list will result in only the final layer of the model being the output layer. The list will be copied. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv442Snpe_SNPEBuilder_SetOutputLayersForNetwork25Snpe_SNPEBuilder_Handle_tPKc24Snpe_StringList_Handle_t">
+<span id="_CPPv342Snpe_SNPEBuilder_SetOutputLayersForNetwork25Snpe_SNPEBuilder_Handle_tPKc24Snpe_StringList_Handle_t"></span><span id="_CPPv242Snpe_SNPEBuilder_SetOutputLayersForNetwork25Snpe_SNPEBuilder_Handle_tPKc24Snpe_StringList_Handle_t"></span><span id="Snpe_SNPEBuilder_SetOutputLayersForNetwork__Snpe_SNPEBuilder_Handle_t.cCP.Snpe_StringList_Handle_t"></span><span class="target" id="SNPEBuilder_8h_1afa0a2e49580aa0d27e5bf6778d2c676f"></span><a class="reference internal" href="enum_DlError_8h_1aa40d44ade537087ac80f867eb4e7d50f.html#_CPPv416Snpe_ErrorCode_t" title="Snpe_ErrorCode_t"><span class="n"><span class="pre">Snpe_ErrorCode_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_SNPEBuilder_SetOutputLayersForNetwork</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_SNPEBuilder_8h_1a5525f7c887b922195624658ef8f12478.html#_CPPv425Snpe_SNPEBuilder_Handle_t" title="Snpe_SNPEBuilder_Handle_t"><span class="n"><span class="pre">Snpe_SNPEBuilder_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">snpeBuilderHandle</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">networkName</span></span>, <a class="reference internal" href="typedef_StringList_8h_1a86a9e0d044299b1ed6b8a85280830503.html#_CPPv424Snpe_StringList_Handle_t" title="Snpe_StringList_Handle_t"><span class="n"><span class="pre">Snpe_StringList_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">outputLayerNames</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv442Snpe_SNPEBuilder_SetOutputLayersForNetwork25Snpe_SNPEBuilder_Handle_tPKc24Snpe_StringList_Handle_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets the layers that will generate output. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>snpeBuilderHandle</strong> – <strong>[in]</strong> Handle to access the SNPEBuilder object</p></li>
+<li><p><strong>networkName</strong> – <strong>[in]</strong> specifies network name on which the output layer names are to be set</p></li>
+<li><p><strong>outputLayerNames</strong> – <strong>[in]</strong> List of layer names to output. An empty list will result in only the final layer of the model being the output layer. The list will be copied. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv433Snpe_SNPEBuilder_SetOutputTensors25Snpe_SNPEBuilder_Handle_t24Snpe_StringList_Handle_t">
+<span id="_CPPv333Snpe_SNPEBuilder_SetOutputTensors25Snpe_SNPEBuilder_Handle_t24Snpe_StringList_Handle_t"></span><span id="_CPPv233Snpe_SNPEBuilder_SetOutputTensors25Snpe_SNPEBuilder_Handle_t24Snpe_StringList_Handle_t"></span><span id="Snpe_SNPEBuilder_SetOutputTensors__Snpe_SNPEBuilder_Handle_t.Snpe_StringList_Handle_t"></span><span class="target" id="SNPEBuilder_8h_1a2c76fb68ad626ae02bf07e68f8bf0290"></span><a class="reference internal" href="enum_DlError_8h_1aa40d44ade537087ac80f867eb4e7d50f.html#_CPPv416Snpe_ErrorCode_t" title="Snpe_ErrorCode_t"><span class="n"><span class="pre">Snpe_ErrorCode_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_SNPEBuilder_SetOutputTensors</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_SNPEBuilder_8h_1a5525f7c887b922195624658ef8f12478.html#_CPPv425Snpe_SNPEBuilder_Handle_t" title="Snpe_SNPEBuilder_Handle_t"><span class="n"><span class="pre">Snpe_SNPEBuilder_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">snpeBuilderHandle</span></span>, <a class="reference internal" href="typedef_StringList_8h_1a86a9e0d044299b1ed6b8a85280830503.html#_CPPv424Snpe_StringList_Handle_t" title="Snpe_StringList_Handle_t"><span class="n"><span class="pre">Snpe_StringList_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">outputTensorNames</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv433Snpe_SNPEBuilder_SetOutputTensors25Snpe_SNPEBuilder_Handle_t24Snpe_StringList_Handle_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets the output tensor names. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>snpeBuilderHandle</strong> – <strong>[in]</strong> Handle to access the SNPEBuilder object</p></li>
+<li><p><strong>outputTensorNames</strong> – <strong>[in]</strong> List of tensor names to output. An empty list will result in producing output for the final output tensor of the model. The list will be copied. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv443Snpe_SNPEBuilder_SetOutputTensorsForNetwork25Snpe_SNPEBuilder_Handle_tPKc24Snpe_StringList_Handle_t">
+<span id="_CPPv343Snpe_SNPEBuilder_SetOutputTensorsForNetwork25Snpe_SNPEBuilder_Handle_tPKc24Snpe_StringList_Handle_t"></span><span id="_CPPv243Snpe_SNPEBuilder_SetOutputTensorsForNetwork25Snpe_SNPEBuilder_Handle_tPKc24Snpe_StringList_Handle_t"></span><span id="Snpe_SNPEBuilder_SetOutputTensorsForNetwork__Snpe_SNPEBuilder_Handle_t.cCP.Snpe_StringList_Handle_t"></span><span class="target" id="SNPEBuilder_8h_1a3aa68dc7e6d463e975472f397fbdfd8c"></span><a class="reference internal" href="enum_DlError_8h_1aa40d44ade537087ac80f867eb4e7d50f.html#_CPPv416Snpe_ErrorCode_t" title="Snpe_ErrorCode_t"><span class="n"><span class="pre">Snpe_ErrorCode_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_SNPEBuilder_SetOutputTensorsForNetwork</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_SNPEBuilder_8h_1a5525f7c887b922195624658ef8f12478.html#_CPPv425Snpe_SNPEBuilder_Handle_t" title="Snpe_SNPEBuilder_Handle_t"><span class="n"><span class="pre">Snpe_SNPEBuilder_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">snpeBuilderHandle</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">networkName</span></span>, <a class="reference internal" href="typedef_StringList_8h_1a86a9e0d044299b1ed6b8a85280830503.html#_CPPv424Snpe_StringList_Handle_t" title="Snpe_StringList_Handle_t"><span class="n"><span class="pre">Snpe_StringList_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">outputTensorNames</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv443Snpe_SNPEBuilder_SetOutputTensorsForNetwork25Snpe_SNPEBuilder_Handle_tPKc24Snpe_StringList_Handle_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets the output tensor names. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>snpeBuilderHandle</strong> – <strong>[in]</strong> Handle to access the SNPEBuilder object</p></li>
+<li><p><strong>networkName</strong> – <strong>[in]</strong> specifies network name on which the output tensor names are to be set</p></li>
+<li><p><strong>outputTensorNames</strong> – <strong>[in]</strong> List of tensor names to output. An empty list will result in producing output for the final output tensor of the model. The list will be copied. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv442Snpe_SNPEBuilder_SetUseUserSuppliedBuffers25Snpe_SNPEBuilder_Handle_ti">
+<span id="_CPPv342Snpe_SNPEBuilder_SetUseUserSuppliedBuffers25Snpe_SNPEBuilder_Handle_ti"></span><span id="_CPPv242Snpe_SNPEBuilder_SetUseUserSuppliedBuffers25Snpe_SNPEBuilder_Handle_ti"></span><span id="Snpe_SNPEBuilder_SetUseUserSuppliedBuffers__Snpe_SNPEBuilder_Handle_t.i"></span><span class="target" id="SNPEBuilder_8h_1a542187dad3f5c861dc8862d0563be997"></span><a class="reference internal" href="enum_DlError_8h_1aa40d44ade537087ac80f867eb4e7d50f.html#_CPPv416Snpe_ErrorCode_t" title="Snpe_ErrorCode_t"><span class="n"><span class="pre">Snpe_ErrorCode_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_SNPEBuilder_SetUseUserSuppliedBuffers</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_SNPEBuilder_8h_1a5525f7c887b922195624658ef8f12478.html#_CPPv425Snpe_SNPEBuilder_Handle_t" title="Snpe_SNPEBuilder_Handle_t"><span class="n"><span class="pre">Snpe_SNPEBuilder_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">snpeBuilderHandle</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bufferMode</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv442Snpe_SNPEBuilder_SetUseUserSuppliedBuffers25Snpe_SNPEBuilder_Handle_ti" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets whether this neural network will perform inference with input from user-supplied buffers, and write output to user-supplied buffers. Default behaviour is to use tensors created by ITensorFactory. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>snpeBuilderHandle</strong> – <strong>[in]</strong> Handle to access the SNPEBuilder object</p></li>
+<li><p><strong>bufferMode</strong> – <strong>[in]</strong> Boolean whether to use user-supplied buffer or not. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv429Snpe_SNPEBuilder_SetDebugMode25Snpe_SNPEBuilder_Handle_ti">
+<span id="_CPPv329Snpe_SNPEBuilder_SetDebugMode25Snpe_SNPEBuilder_Handle_ti"></span><span id="_CPPv229Snpe_SNPEBuilder_SetDebugMode25Snpe_SNPEBuilder_Handle_ti"></span><span id="Snpe_SNPEBuilder_SetDebugMode__Snpe_SNPEBuilder_Handle_t.i"></span><span class="target" id="SNPEBuilder_8h_1ab9d175ec0d751f6159695157afe74f32"></span><a class="reference internal" href="enum_DlError_8h_1aa40d44ade537087ac80f867eb4e7d50f.html#_CPPv416Snpe_ErrorCode_t" title="Snpe_ErrorCode_t"><span class="n"><span class="pre">Snpe_ErrorCode_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_SNPEBuilder_SetDebugMode</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_SNPEBuilder_8h_1a5525f7c887b922195624658ef8f12478.html#_CPPv425Snpe_SNPEBuilder_Handle_t" title="Snpe_SNPEBuilder_Handle_t"><span class="n"><span class="pre">Snpe_SNPEBuilder_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">snpeBuilderHandle</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">debugMode</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv429Snpe_SNPEBuilder_SetDebugMode25Snpe_SNPEBuilder_Handle_ti" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets the debug mode of the runtime. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>snpeBuilderHandle</strong> – <strong>[in]</strong> Handle to access the SNPEBuilder object</p></li>
+<li><p><strong>debugMode</strong> – <strong>[in]</strong> This enables debug mode for the runtime. It does two things. For an empty outputLayerNames list, all layers will be output. It might also disable some internal runtime optimizations (e.g., some networks might be optimized by combining layers, etc.). </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv435Snpe_SNPEBuilder_SetInputDimensions25Snpe_SNPEBuilder_Handle_t28Snpe_TensorShapeMap_Handle_t">
+<span id="_CPPv335Snpe_SNPEBuilder_SetInputDimensions25Snpe_SNPEBuilder_Handle_t28Snpe_TensorShapeMap_Handle_t"></span><span id="_CPPv235Snpe_SNPEBuilder_SetInputDimensions25Snpe_SNPEBuilder_Handle_t28Snpe_TensorShapeMap_Handle_t"></span><span id="Snpe_SNPEBuilder_SetInputDimensions__Snpe_SNPEBuilder_Handle_t.Snpe_TensorShapeMap_Handle_t"></span><span class="target" id="SNPEBuilder_8h_1a7554ce9986adc92cf149a109bfa31b77"></span><a class="reference internal" href="enum_DlError_8h_1aa40d44ade537087ac80f867eb4e7d50f.html#_CPPv416Snpe_ErrorCode_t" title="Snpe_ErrorCode_t"><span class="n"><span class="pre">Snpe_ErrorCode_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_SNPEBuilder_SetInputDimensions</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_SNPEBuilder_8h_1a5525f7c887b922195624658ef8f12478.html#_CPPv425Snpe_SNPEBuilder_Handle_t" title="Snpe_SNPEBuilder_Handle_t"><span class="n"><span class="pre">Snpe_SNPEBuilder_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">snpeBuilderHandle</span></span>, <a class="reference internal" href="typedef_TensorShapeMap_8h_1ae8e826453db558bff10f2ac433681685.html#_CPPv428Snpe_TensorShapeMap_Handle_t" title="Snpe_TensorShapeMap_Handle_t"><span class="n"><span class="pre">Snpe_TensorShapeMap_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">inputDimensionsMapHandle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv435Snpe_SNPEBuilder_SetInputDimensions25Snpe_SNPEBuilder_Handle_t28Snpe_TensorShapeMap_Handle_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets network’s input dimensions to enable resizing of the spatial dimensions of each layer for fully convolutional networks, and the batch dimension for all networks. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>tensorShapeMapHandle</strong> – <strong>[in]</strong> : Handle to the map of input names and their new dimensions. The new dimensions overwrite the input dimensions embedded in the model and then resize each layer of the model. If the model contains layers whose dimensions cannot be resized e.g FullyConnected, exception will be thrown when SNPE instance is actually built. In general the batch dimension is always resizable. After resizing of layers’ dimensions in model based on new input dimensions, the new model is revalidated against all runtime constraints, whose failures may result in cpu fallback situation. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv445Snpe_SNPEBuilder_SetInputDimensionsForNetwork25Snpe_SNPEBuilder_Handle_tPKc28Snpe_TensorShapeMap_Handle_t">
+<span id="_CPPv345Snpe_SNPEBuilder_SetInputDimensionsForNetwork25Snpe_SNPEBuilder_Handle_tPKc28Snpe_TensorShapeMap_Handle_t"></span><span id="_CPPv245Snpe_SNPEBuilder_SetInputDimensionsForNetwork25Snpe_SNPEBuilder_Handle_tPKc28Snpe_TensorShapeMap_Handle_t"></span><span id="Snpe_SNPEBuilder_SetInputDimensionsForNetwork__Snpe_SNPEBuilder_Handle_t.cCP.Snpe_TensorShapeMap_Handle_t"></span><span class="target" id="SNPEBuilder_8h_1aee355f8a312537fe3c299dc2717f8bb2"></span><a class="reference internal" href="enum_DlError_8h_1aa40d44ade537087ac80f867eb4e7d50f.html#_CPPv416Snpe_ErrorCode_t" title="Snpe_ErrorCode_t"><span class="n"><span class="pre">Snpe_ErrorCode_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_SNPEBuilder_SetInputDimensionsForNetwork</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_SNPEBuilder_8h_1a5525f7c887b922195624658ef8f12478.html#_CPPv425Snpe_SNPEBuilder_Handle_t" title="Snpe_SNPEBuilder_Handle_t"><span class="n"><span class="pre">Snpe_SNPEBuilder_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">snpeBuilderHandle</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">networkName</span></span>, <a class="reference internal" href="typedef_TensorShapeMap_8h_1ae8e826453db558bff10f2ac433681685.html#_CPPv428Snpe_TensorShapeMap_Handle_t" title="Snpe_TensorShapeMap_Handle_t"><span class="n"><span class="pre">Snpe_TensorShapeMap_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">inputDimensionsMapHandle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv445Snpe_SNPEBuilder_SetInputDimensionsForNetwork25Snpe_SNPEBuilder_Handle_tPKc28Snpe_TensorShapeMap_Handle_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets network’s input dimensions to enable resizing of the spatial dimensions of each layer for fully convolutional networks, and the batch dimension for all networks. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>networkName</strong> – <strong>[in]</strong> : specifies network name on which the input dims are to be set</p></li>
+<li><p><strong>tensorShapeMapHandle</strong> – <strong>[in]</strong> : Handle to the map of input names and their new dimensions. The new dimensions overwrite the input dimensions embedded in the model and then resize each layer of the model. If the model contains layers whose dimensions cannot be resized e.g FullyConnected, exception will be thrown when SNPE instance is actually built. In general the batch dimension is always resizable. After resizing of layers’ dimensions in model based on new input dimensions, the new model is revalidated against all runtime constraints, whose failures may result in cpu fallback situation. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv433Snpe_SNPEBuilder_SetInitCacheMode25Snpe_SNPEBuilder_Handle_ti">
+<span id="_CPPv333Snpe_SNPEBuilder_SetInitCacheMode25Snpe_SNPEBuilder_Handle_ti"></span><span id="_CPPv233Snpe_SNPEBuilder_SetInitCacheMode25Snpe_SNPEBuilder_Handle_ti"></span><span id="Snpe_SNPEBuilder_SetInitCacheMode__Snpe_SNPEBuilder_Handle_t.i"></span><span class="target" id="SNPEBuilder_8h_1af5f87bad68a05cf1fc3c18e992600bd8"></span><a class="reference internal" href="enum_DlError_8h_1aa40d44ade537087ac80f867eb4e7d50f.html#_CPPv416Snpe_ErrorCode_t" title="Snpe_ErrorCode_t"><span class="n"><span class="pre">Snpe_ErrorCode_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_SNPEBuilder_SetInitCacheMode</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_SNPEBuilder_8h_1a5525f7c887b922195624658ef8f12478.html#_CPPv425Snpe_SNPEBuilder_Handle_t" title="Snpe_SNPEBuilder_Handle_t"><span class="n"><span class="pre">Snpe_SNPEBuilder_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">snpeBuilderHandle</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">cacheMode</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv433Snpe_SNPEBuilder_SetInitCacheMode25Snpe_SNPEBuilder_Handle_ti" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets the mode of init caching functionality. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>snpeBuilderHandle</strong> – <strong>[in]</strong> Handle to access the SNPEBuilder object</p></li>
+<li><p><strong>mode</strong> – <strong>[in]</strong> Boolean. This flag enables/disables the functionality of init caching. When init caching functionality is enabled, a set of init caches will be created during network building/initialization process and will be added to DLC container. If such DLC container is saved by the user, in subsequent network building/initialization processes these init caches will be loaded from the DLC so as to reduce initialization time. In disable mode, no init caches will be added to DLC container. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422Snpe_SNPEBuilder_Build25Snpe_SNPEBuilder_Handle_t">
+<span id="_CPPv322Snpe_SNPEBuilder_Build25Snpe_SNPEBuilder_Handle_t"></span><span id="_CPPv222Snpe_SNPEBuilder_Build25Snpe_SNPEBuilder_Handle_t"></span><span id="Snpe_SNPEBuilder_Build__Snpe_SNPEBuilder_Handle_t"></span><span class="target" id="SNPEBuilder_8h_1ac61ef58c0d5b4c50b2dec6c48cede397"></span><a class="reference internal" href="typedef_SNPE_8h_1ac4d946a1db4097746e726714e145e08a.html#_CPPv418Snpe_SNPE_Handle_t" title="Snpe_SNPE_Handle_t"><span class="n"><span class="pre">Snpe_SNPE_Handle_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_SNPEBuilder_Build</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_SNPEBuilder_8h_1a5525f7c887b922195624658ef8f12478.html#_CPPv425Snpe_SNPEBuilder_Handle_t" title="Snpe_SNPEBuilder_Handle_t"><span class="n"><span class="pre">Snpe_SNPEBuilder_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">snpeBuilderHandle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422Snpe_SNPEBuilder_Build25Snpe_SNPEBuilder_Handle_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns an instance of SNPE based on the current parameters. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>snpeBuilderHandle</strong> – <strong>[in]</strong> Handle to access the SNPEBuilder object</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A new instance of a SNPE object that can be used to execute models or null if any errors occur. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv434Snpe_SNPEBuilder_SetPlatformConfig25Snpe_SNPEBuilder_Handle_t28Snpe_PlatformConfig_Handle_t">
+<span id="_CPPv334Snpe_SNPEBuilder_SetPlatformConfig25Snpe_SNPEBuilder_Handle_t28Snpe_PlatformConfig_Handle_t"></span><span id="_CPPv234Snpe_SNPEBuilder_SetPlatformConfig25Snpe_SNPEBuilder_Handle_t28Snpe_PlatformConfig_Handle_t"></span><span id="Snpe_SNPEBuilder_SetPlatformConfig__Snpe_SNPEBuilder_Handle_t.Snpe_PlatformConfig_Handle_t"></span><span class="target" id="SNPEBuilder_8h_1a340b427c7ca4f05764a73ec7b0f540ba"></span><a class="reference internal" href="enum_DlError_8h_1aa40d44ade537087ac80f867eb4e7d50f.html#_CPPv416Snpe_ErrorCode_t" title="Snpe_ErrorCode_t"><span class="n"><span class="pre">Snpe_ErrorCode_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_SNPEBuilder_SetPlatformConfig</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_SNPEBuilder_8h_1a5525f7c887b922195624658ef8f12478.html#_CPPv425Snpe_SNPEBuilder_Handle_t" title="Snpe_SNPEBuilder_Handle_t"><span class="n"><span class="pre">Snpe_SNPEBuilder_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">snpeBuilderHandle</span></span>, <a class="reference internal" href="typedef_PlatformConfig_8h_1ae58aee13fd1d72185e173efc1a26eee1.html#_CPPv428Snpe_PlatformConfig_Handle_t" title="Snpe_PlatformConfig_Handle_t"><span class="n"><span class="pre">Snpe_PlatformConfig_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">platformConfigHandle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv434Snpe_SNPEBuilder_SetPlatformConfig25Snpe_SNPEBuilder_Handle_t28Snpe_PlatformConfig_Handle_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets the platform configuration. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>snpeBuilderHandle</strong> – <strong>[in]</strong> Handle to access the SNPEBuilder object</p></li>
+<li><p><strong>platformConfig</strong> – <strong>[in]</strong> The platform configuration. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv441Snpe_SNPEBuilder_SetRuntimeProcessorOrder25Snpe_SNPEBuilder_Handle_t25Snpe_RuntimeList_Handle_t">
+<span id="_CPPv341Snpe_SNPEBuilder_SetRuntimeProcessorOrder25Snpe_SNPEBuilder_Handle_t25Snpe_RuntimeList_Handle_t"></span><span id="_CPPv241Snpe_SNPEBuilder_SetRuntimeProcessorOrder25Snpe_SNPEBuilder_Handle_t25Snpe_RuntimeList_Handle_t"></span><span id="Snpe_SNPEBuilder_SetRuntimeProcessorOrder__Snpe_SNPEBuilder_Handle_t.Snpe_RuntimeList_Handle_t"></span><span class="target" id="SNPEBuilder_8h_1adac2ed4af1f98049f03e38898aaab520"></span><a class="reference internal" href="enum_DlError_8h_1aa40d44ade537087ac80f867eb4e7d50f.html#_CPPv416Snpe_ErrorCode_t" title="Snpe_ErrorCode_t"><span class="n"><span class="pre">Snpe_ErrorCode_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_SNPEBuilder_SetRuntimeProcessorOrder</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_SNPEBuilder_8h_1a5525f7c887b922195624658ef8f12478.html#_CPPv425Snpe_SNPEBuilder_Handle_t" title="Snpe_SNPEBuilder_Handle_t"><span class="n"><span class="pre">Snpe_SNPEBuilder_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">snpeBuilderHandle</span></span>, <a class="reference internal" href="typedef_RuntimeList_8h_1af5de4fb49e732ad0d0ffc094b6d8d94e.html#_CPPv425Snpe_RuntimeList_Handle_t" title="Snpe_RuntimeList_Handle_t"><span class="n"><span class="pre">Snpe_RuntimeList_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">runtimeListHandle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv441Snpe_SNPEBuilder_SetRuntimeProcessorOrder25Snpe_SNPEBuilder_Handle_t25Snpe_RuntimeList_Handle_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets network’s runtime order of precedence. Example: CPU_FLOAT32, GPU_FLOAT16, AIP_FIXED8_TF. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>snpeBuilderHandle</strong> – <strong>[in]</strong> Handle to access the SNPEBuilder object</p></li>
+<li><p><strong>runtimeListHandle</strong> – <strong>[in]</strong> The list of runtime in order of precedence </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv446Snpe_SNPEBuilder_SetUnconsumedTensorsAsOutputs25Snpe_SNPEBuilder_Handle_ti">
+<span id="_CPPv346Snpe_SNPEBuilder_SetUnconsumedTensorsAsOutputs25Snpe_SNPEBuilder_Handle_ti"></span><span id="_CPPv246Snpe_SNPEBuilder_SetUnconsumedTensorsAsOutputs25Snpe_SNPEBuilder_Handle_ti"></span><span id="Snpe_SNPEBuilder_SetUnconsumedTensorsAsOutputs__Snpe_SNPEBuilder_Handle_t.i"></span><span class="target" id="SNPEBuilder_8h_1a617b7706851055e3ad4256dbdd57baa1"></span><a class="reference internal" href="enum_DlError_8h_1aa40d44ade537087ac80f867eb4e7d50f.html#_CPPv416Snpe_ErrorCode_t" title="Snpe_ErrorCode_t"><span class="n"><span class="pre">Snpe_ErrorCode_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_SNPEBuilder_SetUnconsumedTensorsAsOutputs</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_SNPEBuilder_8h_1a5525f7c887b922195624658ef8f12478.html#_CPPv425Snpe_SNPEBuilder_Handle_t" title="Snpe_SNPEBuilder_Handle_t"><span class="n"><span class="pre">Snpe_SNPEBuilder_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">snpeBuilderHandle</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">setOutput</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv446Snpe_SNPEBuilder_SetUnconsumedTensorsAsOutputs25Snpe_SNPEBuilder_Handle_ti" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets the unconsumed tensors as output. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>snpeBuilderHandle</strong> – <strong>[in]</strong> Handle to access the SNPEBuilder object</p></li>
+<li><p><strong>setOutput</strong> – <strong>[in]</strong> Boolean. This enables unconsumed tensors (i.e) outputs which are not inputs to any layer (basically dead ends) to be marked for output </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv427Snpe_SNPEBuilder_SetTimeOut25Snpe_SNPEBuilder_Handle_t8uint64_t">
+<span id="_CPPv327Snpe_SNPEBuilder_SetTimeOut25Snpe_SNPEBuilder_Handle_t8uint64_t"></span><span id="_CPPv227Snpe_SNPEBuilder_SetTimeOut25Snpe_SNPEBuilder_Handle_t8uint64_t"></span><span id="Snpe_SNPEBuilder_SetTimeOut__Snpe_SNPEBuilder_Handle_t.uint64_t"></span><span class="target" id="SNPEBuilder_8h_1a917f01727ed87dfe38a47d1a0d8d096d"></span><a class="reference internal" href="enum_DlError_8h_1aa40d44ade537087ac80f867eb4e7d50f.html#_CPPv416Snpe_ErrorCode_t" title="Snpe_ErrorCode_t"><span class="n"><span class="pre">Snpe_ErrorCode_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_SNPEBuilder_SetTimeOut</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_SNPEBuilder_8h_1a5525f7c887b922195624658ef8f12478.html#_CPPv425Snpe_SNPEBuilder_Handle_t" title="Snpe_SNPEBuilder_Handle_t"><span class="n"><span class="pre">Snpe_SNPEBuilder_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">snpeBuilderHandle</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">timeoutMicroSec</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv427Snpe_SNPEBuilder_SetTimeOut25Snpe_SNPEBuilder_Handle_t8uint64_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Execution terminated when exceeding time limit. Only valid for dsp runtime currently. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>snpeBuilderHandle</strong> – <strong>[in]</strong> Handle to access the SNPEBuilder object</p></li>
+<li><p><strong>timeout</strong> – <strong>[in]</strong> Time limit value in microseconds </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv434Snpe_SNPEBuilder_SetBufferDataType25Snpe_SNPEBuilder_Handle_t33Snpe_IOBufferDataTypeMap_Handle_t">
+<span id="_CPPv334Snpe_SNPEBuilder_SetBufferDataType25Snpe_SNPEBuilder_Handle_t33Snpe_IOBufferDataTypeMap_Handle_t"></span><span id="_CPPv234Snpe_SNPEBuilder_SetBufferDataType25Snpe_SNPEBuilder_Handle_t33Snpe_IOBufferDataTypeMap_Handle_t"></span><span id="Snpe_SNPEBuilder_SetBufferDataType__Snpe_SNPEBuilder_Handle_t.Snpe_IOBufferDataTypeMap_Handle_t"></span><span class="target" id="SNPEBuilder_8h_1af54741960cca688c749268c1b5f2e5b7"></span><a class="reference internal" href="enum_DlError_8h_1aa40d44ade537087ac80f867eb4e7d50f.html#_CPPv416Snpe_ErrorCode_t" title="Snpe_ErrorCode_t"><span class="n"><span class="pre">Snpe_ErrorCode_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_SNPEBuilder_SetBufferDataType</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_SNPEBuilder_8h_1a5525f7c887b922195624658ef8f12478.html#_CPPv425Snpe_SNPEBuilder_Handle_t" title="Snpe_SNPEBuilder_Handle_t"><span class="n"><span class="pre">Snpe_SNPEBuilder_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">snpeBuilderHandle</span></span>, <a class="reference internal" href="file_DlSystem_IOBufferDataTypeMap.h.html#_CPPv433Snpe_IOBufferDataTypeMap_Handle_t" title="Snpe_IOBufferDataTypeMap_Handle_t"><span class="n"><span class="pre">Snpe_IOBufferDataTypeMap_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">dataTypeMapHandle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv434Snpe_SNPEBuilder_SetBufferDataType25Snpe_SNPEBuilder_Handle_t33Snpe_IOBufferDataTypeMap_Handle_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets the datatype of the buffer. Only valid for dsp runtime currently. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>snpeBuilderHandle</strong> – <strong>[in]</strong> Handle to access the SNPEBuilder object</p></li>
+<li><p><strong>dataTypeMapHandle</strong> – <strong>[in]</strong> Map of the buffer names and the datatype that needs to be set. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv438Snpe_SNPEBuilder_SetSingleThreadedInit25Snpe_SNPEBuilder_Handle_ti">
+<span id="_CPPv338Snpe_SNPEBuilder_SetSingleThreadedInit25Snpe_SNPEBuilder_Handle_ti"></span><span id="_CPPv238Snpe_SNPEBuilder_SetSingleThreadedInit25Snpe_SNPEBuilder_Handle_ti"></span><span id="Snpe_SNPEBuilder_SetSingleThreadedInit__Snpe_SNPEBuilder_Handle_t.i"></span><span class="target" id="SNPEBuilder_8h_1af315dec4c39c28b41914781e9b0e849d"></span><a class="reference internal" href="enum_DlError_8h_1aa40d44ade537087ac80f867eb4e7d50f.html#_CPPv416Snpe_ErrorCode_t" title="Snpe_ErrorCode_t"><span class="n"><span class="pre">Snpe_ErrorCode_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_SNPEBuilder_SetSingleThreadedInit</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_SNPEBuilder_8h_1a5525f7c887b922195624658ef8f12478.html#_CPPv425Snpe_SNPEBuilder_Handle_t" title="Snpe_SNPEBuilder_Handle_t"><span class="n"><span class="pre">Snpe_SNPEBuilder_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">snpeBuilderHandle</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">singleThreadedInit</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv438Snpe_SNPEBuilder_SetSingleThreadedInit25Snpe_SNPEBuilder_Handle_ti" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets up the entire initialization callflow to happen on the user’s thread. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>snpeBuilderHandle</strong> – <strong>[in]</strong> Handle to access the SNPEBuilder object</p></li>
+<li><p><strong>singleThreadedInit</strong> – <strong>[in]</strong> Flag indicating user’s intent to perform initialization callflow on caller’s thread. When set to 1, initialization will happen on the user’s thread When set to 0, initialization will happen on a new thread. This is the default behavior (analogous to not calling this API) </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv437Snpe_SNPEBuilder_SetCpuFixedPointMode25Snpe_SNPEBuilder_Handle_tb">
+<span id="_CPPv337Snpe_SNPEBuilder_SetCpuFixedPointMode25Snpe_SNPEBuilder_Handle_tb"></span><span id="_CPPv237Snpe_SNPEBuilder_SetCpuFixedPointMode25Snpe_SNPEBuilder_Handle_tb"></span><span id="Snpe_SNPEBuilder_SetCpuFixedPointMode__Snpe_SNPEBuilder_Handle_t.b"></span><span class="target" id="SNPEBuilder_8h_1a52d48c5197b97e1f222474467ef0f710"></span><a class="reference internal" href="enum_DlError_8h_1aa40d44ade537087ac80f867eb4e7d50f.html#_CPPv416Snpe_ErrorCode_t" title="Snpe_ErrorCode_t"><span class="n"><span class="pre">Snpe_ErrorCode_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_SNPEBuilder_SetCpuFixedPointMode</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_SNPEBuilder_8h_1a5525f7c887b922195624658ef8f12478.html#_CPPv425Snpe_SNPEBuilder_Handle_t" title="Snpe_SNPEBuilder_Handle_t"><span class="n"><span class="pre">Snpe_SNPEBuilder_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">snpeBuilderHandle</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">cpuFxpMode</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv437Snpe_SNPEBuilder_SetCpuFixedPointMode25Snpe_SNPEBuilder_Handle_tb" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets the fixed point execution mode for CPU runtime. If a floating point DLC is executed with this option set, the program will be terminated with an exception. If a quantized DLC is executed without this option set, the execution will be in floating point mode in CPU. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>snpeBuilderHandle</strong> – <strong>[in]</strong> Handle to access the SNPEBuilder object</p></li>
+<li><p><strong>cpuFxpMode</strong> – <strong>[in]</strong> Boolean If set to true, enables the fixed point mode. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv435Snpe_SNPEBuilder_SetMemoryLimitHint25Snpe_SNPEBuilder_Handle_t8uint64_t">
+<span id="_CPPv335Snpe_SNPEBuilder_SetMemoryLimitHint25Snpe_SNPEBuilder_Handle_t8uint64_t"></span><span id="_CPPv235Snpe_SNPEBuilder_SetMemoryLimitHint25Snpe_SNPEBuilder_Handle_t8uint64_t"></span><span id="Snpe_SNPEBuilder_SetMemoryLimitHint__Snpe_SNPEBuilder_Handle_t.uint64_t"></span><span class="target" id="SNPEBuilder_8h_1ab40c37fcaab31ff8dd2312d878f186f3"></span><a class="reference internal" href="enum_DlError_8h_1aa40d44ade537087ac80f867eb4e7d50f.html#_CPPv416Snpe_ErrorCode_t" title="Snpe_ErrorCode_t"><span class="n"><span class="pre">Snpe_ErrorCode_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_SNPEBuilder_SetMemoryLimitHint</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_SNPEBuilder_8h_1a5525f7c887b922195624658ef8f12478.html#_CPPv425Snpe_SNPEBuilder_Handle_t" title="Snpe_SNPEBuilder_Handle_t"><span class="n"><span class="pre">Snpe_SNPEBuilder_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">snpeBuilderHandle</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">memoryLimitHintInMb</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv435Snpe_SNPEBuilder_SetMemoryLimitHint25Snpe_SNPEBuilder_Handle_t8uint64_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets memoryLimitHint for DSP Based on the memory limit provided graphs will be switched from cache blob when execute is invoked. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>snpeBuilderHandle</strong> – <strong>[in]</strong> Handle to access the SNPEBuilder object</p></li>
+<li><p><strong>memoryLimitHintInMb</strong> – <strong>[in]</strong> Sets the peak memory limit hint of a cache in megabytes.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Memory footprint is reduced at the cost of slower first execution after graph switching. Default is set to 0, set to any non zero value to enter low memory mode with multi graph init. User must first load the largest graph inside the cache to avoid undefined behaviors. User can strategically specify Snpe_SNPEBuilder_NetworkInit to ensure the first graph is the largest graph if it has not been serialized as the first graph in the cache. Currently any non zero value would enable graph switching. </p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv429Snpe_SNPEBuilder_SetModelName25Snpe_SNPEBuilder_Handle_tPKc">
+<span id="_CPPv329Snpe_SNPEBuilder_SetModelName25Snpe_SNPEBuilder_Handle_tPKc"></span><span id="_CPPv229Snpe_SNPEBuilder_SetModelName25Snpe_SNPEBuilder_Handle_tPKc"></span><span id="Snpe_SNPEBuilder_SetModelName__Snpe_SNPEBuilder_Handle_t.cCP"></span><span class="target" id="SNPEBuilder_8h_1a3c16c31ebcfe0fc308da8723d2bb8253"></span><a class="reference internal" href="enum_DlError_8h_1aa40d44ade537087ac80f867eb4e7d50f.html#_CPPv416Snpe_ErrorCode_t" title="Snpe_ErrorCode_t"><span class="n"><span class="pre">Snpe_ErrorCode_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_SNPEBuilder_SetModelName</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_SNPEBuilder_8h_1a5525f7c887b922195624658ef8f12478.html#_CPPv425Snpe_SNPEBuilder_Handle_t" title="Snpe_SNPEBuilder_Handle_t"><span class="n"><span class="pre">Snpe_SNPEBuilder_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">snpeBuilderHandle</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">modelName</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv429Snpe_SNPEBuilder_SetModelName25Snpe_SNPEBuilder_Handle_tPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets model name for logging. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>snpeBuilderHandle</strong> – <strong>[in]</strong> Handle to access the SNPEBuilder object</p></li>
+<li><p><strong>modelName</strong> – <strong>[in]</strong> String Model name for logging. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv442Snpe_SNPEBuilder_SetCacheCompatibilityMode25Snpe_SNPEBuilder_Handle_t25Snpe_CacheCompatibility_t">
+<span id="_CPPv342Snpe_SNPEBuilder_SetCacheCompatibilityMode25Snpe_SNPEBuilder_Handle_t25Snpe_CacheCompatibility_t"></span><span id="_CPPv242Snpe_SNPEBuilder_SetCacheCompatibilityMode25Snpe_SNPEBuilder_Handle_t25Snpe_CacheCompatibility_t"></span><span id="Snpe_SNPEBuilder_SetCacheCompatibilityMode__Snpe_SNPEBuilder_Handle_t.Snpe_CacheCompatibility_t"></span><span class="target" id="SNPEBuilder_8h_1a99fba442e066a703f1648a217b542bde"></span><a class="reference internal" href="enum_DlError_8h_1aa40d44ade537087ac80f867eb4e7d50f.html#_CPPv416Snpe_ErrorCode_t" title="Snpe_ErrorCode_t"><span class="n"><span class="pre">Snpe_ErrorCode_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_SNPEBuilder_SetCacheCompatibilityMode</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_SNPEBuilder_8h_1a5525f7c887b922195624658ef8f12478.html#_CPPv425Snpe_SNPEBuilder_Handle_t" title="Snpe_SNPEBuilder_Handle_t"><span class="n"><span class="pre">Snpe_SNPEBuilder_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">snpeBuilderHandle</span></span>, <a class="reference internal" href="enum_DlEnums_8h_1a13ae607b488079df75f899a0cbabe0dd.html#_CPPv425Snpe_CacheCompatibility_t" title="Snpe_CacheCompatibility_t"><span class="n"><span class="pre">Snpe_CacheCompatibility_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">mode</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv442Snpe_SNPEBuilder_SetCacheCompatibilityMode25Snpe_SNPEBuilder_Handle_t25Snpe_CacheCompatibility_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets compatibility check mode. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>snpeBuilderHandle</strong> – <strong>[in]</strong> Handle to access the SNPEBuilder object</p></li>
+<li><p><strong>mode</strong> – <strong>[in]</strong> Mode of checking compatibility </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv430Snpe_SNPEBuilder_ValidateCache25Snpe_SNPEBuilder_Handle_t">
+<span id="_CPPv330Snpe_SNPEBuilder_ValidateCache25Snpe_SNPEBuilder_Handle_t"></span><span id="_CPPv230Snpe_SNPEBuilder_ValidateCache25Snpe_SNPEBuilder_Handle_t"></span><span id="Snpe_SNPEBuilder_ValidateCache__Snpe_SNPEBuilder_Handle_t"></span><span class="target" id="SNPEBuilder_8h_1aebecad096a399b9033daae535594803f"></span><a class="reference internal" href="enum_DlError_8h_1aa40d44ade537087ac80f867eb4e7d50f.html#_CPPv416Snpe_ErrorCode_t" title="Snpe_ErrorCode_t"><span class="n"><span class="pre">Snpe_ErrorCode_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_SNPEBuilder_ValidateCache</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_SNPEBuilder_8h_1a5525f7c887b922195624658ef8f12478.html#_CPPv425Snpe_SNPEBuilder_Handle_t" title="Snpe_SNPEBuilder_Handle_t"><span class="n"><span class="pre">Snpe_SNPEBuilder_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">snpeBuilderHandle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv430Snpe_SNPEBuilder_ValidateCache25Snpe_SNPEBuilder_Handle_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Validates the cache records available in the DLC for compatibility with the current hardware depending on the set cache compatibility mode. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>snpeBuilderHandle</strong> – <strong>[in]</strong> Handle to access the SNPEBuilder object</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>One of the following Snpe_ErrorCode_t SNPE_SUCCESS: The DLC contains a valid and usable cache record SNPE_ERRORCODE_DLCACHING_INCOMPATIBLE: None of the existing caches are compatible on the current hardware SNPE_ERRORCODE_DLCACHING_SUBOPTIMAL_CACHE: Compatibility mode is strict and the best available cache is suboptimal SNPE_ERRORCODE_DLCONTAINER_MISSING_RECORDS: The DLC contains no cache records SNPE_ERRORCODE_DLCONTAINER_INVALID_RECORD: Failed to read DLC records SNPE_ERRORCODE_CONFIG_INVALID_PARAM: An invalid builder configurations is set at the time of invocation SNPE_ERRORCODE_UNKNOWN_EXCEPTION: Encountered an unexpected miscellaneous error </p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The intended usage of this function is to validate the cache ahead of time to determine the need for setting the init cache option before calling the build function. It is expected to be called after all other builder options have been set and before the build function is invoked. In particular, this function is sensitive to the resized input dimensions, output op and tensor names, and cache compatibility mode settings</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Validation will always fail with SNPE_ERRORCODE_CONFIG_INVALID_PARAM if coupled with cache compatibility mode ALWAYS_GENERATE_NEW_CACHE</p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv437Snpe_SNPEBuilder_SetCustomPerfProfile25Snpe_SNPEBuilder_Handle_t29Snpe_SNPEPerfProfile_Handle_t">
+<span id="_CPPv337Snpe_SNPEBuilder_SetCustomPerfProfile25Snpe_SNPEBuilder_Handle_t29Snpe_SNPEPerfProfile_Handle_t"></span><span id="_CPPv237Snpe_SNPEBuilder_SetCustomPerfProfile25Snpe_SNPEBuilder_Handle_t29Snpe_SNPEPerfProfile_Handle_t"></span><span id="Snpe_SNPEBuilder_SetCustomPerfProfile__Snpe_SNPEBuilder_Handle_t.Snpe_SNPEPerfProfile_Handle_t"></span><span class="target" id="SNPEBuilder_8h_1a62a6f0488fb2dbce0383a59d81063369"></span><a class="reference internal" href="enum_DlError_8h_1aa40d44ade537087ac80f867eb4e7d50f.html#_CPPv416Snpe_ErrorCode_t" title="Snpe_ErrorCode_t"><span class="n"><span class="pre">Snpe_ErrorCode_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Snpe_SNPEBuilder_SetCustomPerfProfile</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="typedef_SNPEBuilder_8h_1a5525f7c887b922195624658ef8f12478.html#_CPPv425Snpe_SNPEBuilder_Handle_t" title="Snpe_SNPEBuilder_Handle_t"><span class="n"><span class="pre">Snpe_SNPEBuilder_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">snpeBuilderHandle</span></span>, <a class="reference internal" href="typedef_SNPEPerfProfile_8h_1a8e0c1fc1e4ff1e57296365e9fdc7759e.html#_CPPv429Snpe_SNPEPerfProfile_Handle_t" title="Snpe_SNPEPerfProfile_Handle_t"><span class="n"><span class="pre">Snpe_SNPEPerfProfile_Handle_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">perfProfileHandle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv437Snpe_SNPEBuilder_SetCustomPerfProfile25Snpe_SNPEBuilder_Handle_t29Snpe_SNPEPerfProfile_Handle_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

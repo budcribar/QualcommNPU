@@ -1,0 +1,478 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Op Definition Revision History &mdash; Qualcomm® AI Engine Direct</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="QNN CPU Op Support Revision History" href="../general/cpu/cpu_opdef_version_history.html" />
+    <link rel="prev" title="Supported Operations" href="SupportedOps.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® AI Engine Direct
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/op_packages.html">Op Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/quantization.html">Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../general/operations.html">Operations</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="SupportedOps.html">Supported Operations</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Op Definition Revision History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#backend-specific-revision-history">Backend Specific Revision History</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../general/cpu/cpu_opdef_version_history.html">QNN CPU Op Definition Revision History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/dsp/dsp_opdef_version_history.html">QNN DSP Op Definition Revision History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/gpu/gpu_opdef_version_history.html">QNN GPU Op Definition Revision History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/hta/hta_opdef_version_history.html">QNN HTA Op Definition Revision History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/htp/htp_opdef_version_history.html">QNN HTP Op Definition Revision History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../general/lpai/lpai_opdef_version_history.html">QNN LPAI Op Definition Revision History</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../general/operations.html#operation-definitions">Operation Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/operations.html#backend-supplements">Backend Supplements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® AI Engine Direct</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../general/operations.html">Operations</a> &raquo;</li>
+        
+      <li>Op Definition Revision History</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="op-definition-revision-history">
+<h1>Op Definition Revision History<a class="headerlink" href="#op-definition-revision-history" title="Permalink to this heading">¶</a></h1>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 11%" />
+<col style="width: 73%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Op Set Version</p></th>
+<th class="head"><p>SDK Version</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1.32.0</p></td>
+<td><p>2.22.0</p></td>
+<td><ul class="simple">
+<li><p>Added op definition for ReduceSumSquare.</p></li>
+<li><p>Added 0-D support for ElementWiseBinary and Reshape ops.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>1.31.0</p></td>
+<td><p>2.21.0</p></td>
+<td><ul class="simple">
+<li><p>Added op definition for Buffer.</p></li>
+<li><p>Added optional reset input to GRU op.</p></li>
+<li><p>Updated mask tensor input description for the MaskedSoftmax op.</p></li>
+<li><p>Added QNN_DATATYPE_SFIXED_POINT_4 and QNN_DATATYPE_UFIXED_POINT_4 support for
+Quantize and Dequantize ops.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>1.30.0</p></td>
+<td><p>2.20.0</p></td>
+<td><ul class="simple">
+<li><p>Added new ops to support tensor sparsity: CreateSparse, GetSparseIndices,
+GetSparseValues, SparseToDense</p></li>
+<li><p>Allow sparse tensors usage in Conv3d, BatchNorm, ElementWiseAdd, and Relu.</p></li>
+<li><p>Added new reuse_sparse_indicies param to Conv3d to support tensor sparsity.</p></li>
+<li><p>Added support for single batch input and output in DistributeFPNProposals op.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>1.29.0</p></td>
+<td><p>2.19.0</p></td>
+<td><ul class="simple">
+<li><p>Fix issue where constraint for split_index parameter for Split op allowed
+creation of empty output tensors.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>1.28.0</p></td>
+<td><p>2.18.0</p></td>
+<td><ul class="simple">
+<li><p>Added op definition for MaskedSoftmax.</p></li>
+<li><p>Added support for optional param time_major and support for multi time-step input
+and output in LSTM op.</p></li>
+<li><p>Added support for optional param time_major in GRU op.</p></li>
+<li><p>Added support for negative index values in the Gather op.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>1.27.0</p></td>
+<td><p>2.16.0</p></td>
+<td><ul class="simple">
+<li><p>Fixed QNN_OP_GRID_SAMPLE_PADDING_MODE_REFLECTION example in GridSample Op.</p></li>
+<li><p>Fixed index value constraint range for in[1] in Gather Op.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>1.26.0</p></td>
+<td><p>2.15.0</p></td>
+<td><ul class="simple">
+<li><p>Added If op definition.</p></li>
+<li><p>Clarified behavior with regards to how the parameters normalize and centered
+affect glimpse window in ExtractGlimpse.</p></li>
+<li><p>Added support for cubic as an interpolation mode in Resize Op.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>1.25.0</p></td>
+<td><p>2.14.0</p></td>
+<td><ul class="simple">
+<li><p>Added optional parameter mode to SpaceToDepth.</p></li>
+<li><p>Updated BatchPermutation Op to use shape of in[1] to determine batch dimension of
+out[0]. Relaxed constraint on index values of in[1].</p></li>
+<li><p>Updated constraint of out[0] index values to be based on FPN levels for
+DistributeFpnProposals.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>1.24.0</p></td>
+<td><p>2.13.0</p></td>
+<td><ul class="simple">
+<li><p>Added Conv1d, DepthWiseConv1d, and TransposeConv1d op definitions.</p></li>
+<li><p>Added ElementWiseXor op definition and added XOR option to ElementWiseBinary.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>1.23.0</p></td>
+<td><p>2.12.0</p></td>
+<td><ul class="simple">
+<li><p>Added ElementWiseBinary op definition.</p></li>
+<li><p>Added GroupNorm op definition.</p></li>
+<li><p>Added optional parameter weights and optional output batch splits to
+AxisAlignedBboxTransform.</p></li>
+<li><p>Added optional input batch splits and optional outputs batch splits, keeps,
+and keeps size to BoxWithNmsLimit.</p></li>
+<li><p>DistributeFpnProposals rois_idx_restore (out[0]) will output -1 for invalid ROIs.</p></li>
+<li><p>Added optional parameter bbox_xform_clip to GenerateProposals.</p></li>
+<li><p>Added optional parameters aligned and allow_invalid_roi to RoiAlign.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>1.22.0</p></td>
+<td><p>2.11.0</p></td>
+<td><ul class="simple">
+<li><p>Added ElementWiseNeuron op definition.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>1.21.0</p></td>
+<td><p>2.10.0</p></td>
+<td><ul class="simple">
+<li><p>Added ElementWiseAsin, ElementWiseFmod and ElementWiseMod op definitions.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>1.20.0</p></td>
+<td><p>2.9.0</p></td>
+<td><ul class="simple">
+<li><p>Constrained all ND inputs to have a rank greater than 0.</p></li>
+<li><p>Added constraint for dilation &gt; 0 in Convolution Ops.</p></li>
+<li><p>Added ElementWiseUnary op definition.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>1.19.1</p></td>
+<td><p>2.8.2</p></td>
+<td><ul class="simple">
+<li><p>Added NonMaxSuppression op definition.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>1.19.0</p></td>
+<td><p>2.8.0</p></td>
+<td><ul class="simple">
+<li><p>Added ElementWiseSign op definition.</p></li>
+<li><p>Added QNN_DATATYPE_UINT_32 support for Gather in[1].</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>1.18.0</p></td>
+<td><p>2.7.0</p></td>
+<td><ul class="simple">
+<li><p>Added ExtractPatches op definition.</p></li>
+<li><p>Added QNN_DATATYPE_INT_32 support for GatherNd in[1].</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>1.17.0</p></td>
+<td><p>2.6.0</p></td>
+<td><ul class="simple">
+<li><p>Added NonZero, CollectRpnProposals, and DistributeFpnProposals op definitions.</p></li>
+<li><p>Added QNN_DATATYPE_INT_32 support for CropAndResize in[2] and ScatterNd in[1].</p></li>
+<li><p>Added support for broadcasting in ElementWiseLess Op.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>1.16.0</p></td>
+<td><p>2.5.0</p></td>
+<td><ul class="simple">
+<li><p>Added BatchPermutation op definition.</p></li>
+<li><p>Added QNN_DATATYPE_INT_32 support for ArgMax out[0], ArgMin out[0], and
+GatherElements in[1].</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>1.15.0</p></td>
+<td><p>2.4.0</p></td>
+<td><ul class="simple">
+<li><p>Added ScatterElements op definition.</p></li>
+<li><p>Remove incorrect shape constraints for Tile out[0] and multiples param.</p></li>
+<li><p>Added support for broadcasting in ElementwiseSelect Op.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>1.14.0</p></td>
+<td><p>2.2.0</p></td>
+<td><ul class="simple">
+<li><p>Added ConstantOfShape op definition.</p></li>
+<li><p>Added GridSample op definition.</p></li>
+<li><p>Added PoolMax3d op definition.</p></li>
+<li><p>Added Shape op definition.</p></li>
+<li><p>Add 32-bit data types for Quantize and Dequantize.</p></li>
+<li><p>Extend OneHot to support N-dimensional inputs.</p></li>
+<li><p>Add optional bias input tensor for MatMul.</p></li>
+<li><p>Remove Prelu in[1] data type constraint.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>1.13.0</p></td>
+<td><p>2.1.0</p></td>
+<td><ul class="simple">
+<li><p>Added GRU op definition.</p></li>
+<li><p>Added constraint that Conv2d and TransposeConv2d strides must be positive.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>1.12.0</p></td>
+<td><p>2.0.0</p></td>
+<td><ul class="simple">
+<li><p>Initial independent version of op definition set to match prior API version.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="backend-specific-revision-history">
+<h1>Backend Specific Revision History<a class="headerlink" href="#backend-specific-revision-history" title="Permalink to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/cpu/cpu_opdef_version_history.html">QNN CPU Op Definition Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/dsp/dsp_opdef_version_history.html">QNN DSP Op Definition Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/gpu/gpu_opdef_version_history.html">QNN GPU Op Definition Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/hta/hta_opdef_version_history.html">QNN HTA Op Definition Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/htp/htp_opdef_version_history.html">QNN HTP Op Definition Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/lpai/lpai_opdef_version_history.html">QNN LPAI Op Definition Revision History</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../general/cpu/cpu_opdef_version_history.html" class="btn btn-neutral float-right" title="QNN CPU Op Support Revision History" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="SupportedOps.html" class="btn btn-neutral float-left" title="Supported Operations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2024, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

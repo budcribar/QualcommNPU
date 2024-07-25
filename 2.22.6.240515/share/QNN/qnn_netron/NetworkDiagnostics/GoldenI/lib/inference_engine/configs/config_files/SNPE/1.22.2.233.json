@@ -1,0 +1,90 @@
+{
+    "inference_engine": {
+        "snpe_lib_python": "lib/python",
+        "snpe_dlc_utils_package": "lib/python/snpe",
+        "converter_location": "{engine_path}/bin/x86_64-linux-clang",
+        "binary_paths": [
+            [
+                "{engine_path}/bin/{target_arch}/",
+                "{target_path}/bin/{target_arch}/"
+            ],
+            [
+                "{engine_path}/lib/{target_arch}/",
+                "{target_path}/lib/{target_arch}/"
+            ],
+            [
+                "{engine_path}/lib/dsp/",
+                "{target_path}/lib/dsp/"
+            ]
+        ]
+    },
+    "devices": {
+        "host": ["x86"],
+        "target": ["x86", "linux-embedded", "android"]
+    },
+    "converter": {
+        "tensorflow": {
+            "executable": "snpe-tensorflow-to-dlc",
+            "arguments": {
+                "flags": [
+
+                    "--allow_unconsumed_nodes"
+                ],
+                "model_path_flags": [
+                    "--graph"
+                ],
+                "input_tensor_flag": "--input_dim",
+                "output_tensor_flag": "--out_node",
+                "output_path_flag": "--dlc"
+            }
+        },
+        "caffe2": {
+            "executable": "snpe-caffe2-to-dlc",
+            "arguments": {
+                "flags": [
+                    "--verbose"
+                ],
+                "model_path_flags":[
+                    "--predict_net",
+                    "--exec_net"
+                ],
+                "input_tensor_flag": "--input_dim",
+                "output_tensor_flag": "",
+                "output_path_flag": "--dlc"
+            }
+        },
+        "onnx": {
+            "executable": "snpe-onnx-to-dlc",
+            "arguments": {
+                "flags": [
+                    "--disable_batchnorm_folding"
+                ],
+                "model_path_flags": [
+                    "-i"
+                ],
+                "input_tensor_flag": "",
+                "output_tensor_flag": "",
+                "output_path_flag": "--output_path"
+            }
+        }
+    },
+    "executor": {
+        "executable":"snpe-net-run",
+        "arguments": {
+            "container": "--container",
+            "input_list": "--input_list",
+            "runtime": {
+                "cpu": "",
+                "gpu": "--use_gpu",
+                "dsp": "--use_dsp",
+                "aip": "--use_aip"
+            }
+        },
+        "environment_variables": {
+            "LD_LIBRARY_PATH": "{target_path}/lib/{target_arch}:$LD_LIBRARY_PATH",
+            "PATH": "{target_path}/bin/{target_arch}:$PATH",
+            "ADSP_LIBRARY_PATH": "{target_path}/lib/dsp;/system/lib/rfsa/adsp;/system/vendor/lib/rfsa/adsp;/dsp"
+        },
+        "target_path": "/data/local/tmp/network_diagnosis"
+    }
+}

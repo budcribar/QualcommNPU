@@ -1,0 +1,488 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Defining a UDO &mdash; Snapdragon Neural Processing Engine SDK</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_css.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Defining a UDO Package" href="udo_package_definition.html" />
+    <link rel="prev" title="Overview of UDO" href="udo_overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qualcomm® Neural Processing SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v2.22.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="revision_history.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revision_history_windows.html">Revision History - Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="usergroup1.html">Network Models</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="network_layers.html">Supported Network Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supported_onnx_ops.html">Supported ONNX Ops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quantized_models.html">Quantized vs Non-Quantized Models</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="usergroup2.html">User-defined Operations</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="udo_overview.html">Overview of UDO</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Defining a UDO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="udo_package_definition.html">Defining a UDO Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="creating_udo_package.html">Creating a UDO Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="compiling_udo_package.html">Compiling a UDO package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="compiling_udo_package_for_windows.html">Compiling a UDO package for Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="preparing_model_with_udo.html">Preparing a model with UDO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running_model_with_udo.html">Running a model with UDO</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usergroup3.html">Model Conversion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup5.html">Input Data and Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup6.html">Tutorials and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup10.html">Benchmarking and Accuracy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usergroup11.html">Debug Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appx_ref.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qualcomm® Neural Processing SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="usergroup1.html">Network Models</a> &raquo;</li>
+        
+          <li><a href="usergroup2.html">User-defined Operations</a> &raquo;</li>
+        
+      <li>Defining a UDO</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="defining-a-udo">
+<h1>Defining a UDO<a class="headerlink" href="#defining-a-udo" title="Permalink to this heading">¶</a></h1>
+<div class="ui-resizable side-nav-resizable docutils container" id="side-nav">
+<div class="docutils container" id="nav-tree">
+<div class="docutils container" id="nav-tree-contents">
+</div>
+</div>
+</div>
+<div class="docutils container" id="doc-content">
+<div class="header docutils container">
+</div>
+<div class="contents docutils container">
+<div class="textblock docutils container">
+<p>A User-Defined Operation (UDO) allows users to integrate their
+custom operations with Qualcomm® Neural Processing SDK to enable execution on any
+supported hardware accelerator. The UDO mechanism accepts a
+specification of a custom operation (defined below), and
+processes that information to process a model containing that
+custom operation. This section explains how such a UDO can be
+specified. See <a class="reference external" href="udo_overview.html">Overview of UDO</a> for more
+details about UDO and <a class="reference external" href="preparing_model_with_udo.html">Preparing a model with
+UDO</a> for details on how to
+convert a model that contains a UDO into a Qualcomm® Neural Processing SDK DLC for
+supported frameworks.</p>
+<p class="rubric" id="the-udo-configuration-specification">The UDO Configuration Specification</p>
+<p>As described in the <a class="reference external" href="udo_overview.html">Overview of UDO</a>
+section, a user can express the attributes of their custom
+operation with a configuration specification file. This UDO
+configuration (henceforth known as UDO config) is a description
+of the operation created using the Javascript Object Notation
+(JSON) syntax and formatting. The configuration file syntax
+defines fields that can be specified in key-value pairs, and
+arranged in a tree-like structure in accordance with JSON
+rules. The fields are pre-determined and will ultimately be
+parsed into the required information that constitutes a UDO.
+The information provided should be generic and independent of a
+particular model, meaning model-specific parameters or names
+need not be part of the configuration. The information will be
+used to identify the op within a framework model, and then
+ultimately serialized into the DLC model. This implies that any
+changes in the config would require re-generation of the DLC
+model to ensure the correct information is serialized.</p>
+<p class="rubric" id="udo-config-field-description">UDO Config Field Description</p>
+<p>The details of the aforementioned UDO config file can be
+described below.</p>
+<div class="highlight-fragment notranslate"><div class="highlight"><pre><span></span>{
+    &quot;UdoPackage_0&quot;:
+    {
+        &quot;Operators&quot;: [
+            {
+                &quot;type&quot;: &quot;&quot;,
+                &quot;inputs&quot;:[
+                    {&quot;name&quot;:&quot;&quot;, &quot;per_core_data_types&quot;:{&quot;CPU&quot;:&quot;FLOAT_32&quot;, &quot;GPU&quot;:&quot;FLOAT_32&quot;, &quot;DSP&quot;:&quot;UINT_8&quot;},
+                    &quot;static&quot;: true, &quot;tensor_layout&quot;: &quot;NHWC&quot;},
+                    {&quot;name&quot;:&quot;&quot;, &quot;data_type&quot;: &quot;FLOAT_32&quot;,
+                    &quot;static&quot;: true, &quot;tensor_layout&quot;: &quot;NHWC&quot;},
+                ],
+                &quot;outputs&quot;:[
+                    {&quot;name&quot;:&quot;&quot;, &quot;per_core_data_types&quot;:{&quot;CPU&quot;:&quot;FLOAT_32&quot;, &quot;GPU&quot;:&quot;FLOAT_32&quot;, &quot;DSP&quot;:&quot;UINT_8&quot;}},
+                    {&quot;name&quot;:&quot;&quot;, &quot;data_type&quot;: &quot;FLOAT_32&quot;}
+                ],
+                &quot;scalar_params&quot;: [
+                    {&quot;name&quot;:&quot;scalar_param_1&quot;, &quot;data_type&quot;: &quot;INT_32&quot;}
+                ],
+                &quot;tensor_params&quot;: [
+                    {&quot;name&quot;:&quot;tensor_param_1&quot;, &quot;data_type&quot;: &quot;FLOAT_32&quot;, &quot;tensor_layout&quot;: &quot;NHWC&quot;},
+                ],
+                &quot;core_types&quot;: [&quot;CPU&quot;, &quot;GPU&quot;, &quot;DSP&quot;],
+                &quot;dsp_arch_types&quot;: [&quot;v66&quot;, &quot;v68&quot;, &quot;v69&quot;, &quot;v73&quot;]
+            }
+        ],
+        &quot;UDO_PACKAGE_NAME&quot;: &quot;MyCustomUdoPackage&quot;
+    }
+}
+</pre></div>
+</div>
+<p>The above description is simply a generic configuration file to
+aid the definition of the fields that the user can fill.
+Required fields are provided with a specific value, while
+optional fields are denoted with empty strings. Note that an
+optional field only implies that there is either a default
+value if it is not provided, or that an empty string will be
+used. The full details of each available field is described
+hierarchically below:</p>
+<ul class="simple">
+<li><p><strong>UdoPackage:</strong> Every UDO package can be described as
+<em>“UdoPackage_i”</em> where <em>i</em> indicates the order in which the
+packages will be generated. The user is also free to use
+empty strings but the dictionary structure is
+necessary.<sup>1</sup></p></li>
+<li><p><strong>Operators:</strong> This is a child node of a particular
+UdoPackage indicating the number of operators present.
+<sup>5</sup></p>
+<ul>
+<li><p><strong>type:</strong> defines the type of the operation.</p></li>
+<li><p><strong>inputs:</strong> a list of input tensors to the operation.
+Each input is a dictionary object. <sup>2</sup></p>
+<ul>
+<li><p><strong>name:</strong> An optional field that describes the name of
+the input tensor. Since the name of the input tensor
+is variable, the user is not required to provide this.</p></li>
+<li><p><strong>per_core_data_type:</strong> A dictionary object specifying
+the data-type of this input tensor in each core.
+Alternatively, if the user wishes to have the same
+data-type across all specified cores, then the user
+can specify the option “data_type” followed by the
+data-type. The supported data-types are:</p>
+<ul>
+<li><p>FLOAT_16</p></li>
+<li><p>FLOAT_32</p></li>
+<li><p>FIXED_4</p></li>
+<li><p>FIXED_8</p></li>
+<li><p>FIXED_16</p></li>
+<li><p>UINT_8</p></li>
+<li><p>UINT_16</p></li>
+<li><p>UINT_32</p></li>
+<li><p>STRING</p></li>
+</ul>
+</li>
+<li><p><strong>static:</strong> A boolean field that is required if the
+input data is static, i.e data is provided in the
+model. This field needs to be set if the input tensor
+will contain data, otherwise the input will be treated
+dynamically, and the data will not be serialized.</p></li>
+<li><p><strong>tensor_layout:</strong> A string field that describes the
+canonical dimension format of the input tensor. The
+supported values are: <sup>4</sup></p>
+<ul>
+<li><p>NCHW</p></li>
+<li><p>NHWC</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>outputs:</strong> A list of output tensors to the
+operation.<sup>2</sup></p></li>
+<li><p><strong>scalar_params:</strong> A list of scalar-valued
+attributes.<sup>3</sup></p>
+<ul>
+<li><p><strong>name:</strong> A required field that describes the name of
+the scalar parameter.</p></li>
+<li><p><strong>data_type:</strong> A required field that describes the
+data-type supported by this scalar parameter.</p></li>
+</ul>
+</li>
+<li><p><strong>tensor_params:</strong> A list of tensor-valued
+attributes.<sup>2</sup> <sup>3</sup></p></li>
+<li><p><strong>core_types:</strong> The intended IP cores for this particular
+operation. The supported core_types:</p>
+<ul>
+<li><p>CPU</p></li>
+<li><p>GPU</p></li>
+<li><p>DSP</p></li>
+</ul>
+</li>
+<li><p><strong>dsp_arch_types:</strong> The intended DSP architecture types
+for DSP core type. The supported dsp_arch_types:</p>
+<ul>
+<li><p>v65</p></li>
+<li><p>v66</p></li>
+<li><p>v68</p></li>
+<li><p>v69</p></li>
+<li><p>v73</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>UDO_PACKAGE_NAME:</strong> The name of the UDO Package, which can
+be any valid string.<sup>1</sup></p></li>
+</ul>
+<p class="rubric" id="creating-a-udo-config">Creating a UDO config</p>
+<p>The user should aim to fill out the fields described in the
+config above to adequately describe a UDO. In some cases, the
+information required in this config could be easily obtained
+from framework documentation about the operation. However,
+there may be subtle caveats, therefore the user is encouraged
+to ensure that inputs, outputs and params are properly
+categorized and described. A potential caveat is that inputs
+can be mis-categorized as parameters and vice versa, if the
+config is written only according to documentation. In this
+scenario, a useful tip is to visualize the model using an open
+source tool such as Netron (found here:
+<a class="reference external" href="https://github.com/lutzroeder/netron">https://github.com/lutzroeder/netron</a>) to assist with crafting
+the UDO config correctly.</p>
+<p>Once an adequately descriptive config has been created, it can
+be used as an argument to the framework converters as described
+in <a class="reference external" href="preparing_model_with_udo.html">Preparing a model with
+UDO</a>.</p>
+<p><strong>Notes:</strong></p>
+<ol class="arabic simple">
+<li><p>More than one UDO package can be defined in a single config
+file. Users should note that the package name specified here
+must match the package name used in creating the
+corresponding package.</p></li>
+<li><p>Each input, output and tensor parameter is categorized as
+the same kind of tensor object, meaning that all the fields
+are shared. The names of inputs and outputs are not required
+since the config is a generic description of an operation.
+An operator must have at least one input and output.</p></li>
+<li><p>In the case of the parameters, the name field is always
+required.</p></li>
+<li><p>The tensor layout is a convention to indicate the
+arrangement of data within the tensor. Therefore a tensor
+layout of <strong>NHWC</strong> means that the data is organized in
+<code class="docutils literal notranslate"><span class="pre">(batch</span> <span class="pre">x</span> <span class="pre">height</span> <span class="pre">x</span> <span class="pre">width</span> <span class="pre">x</span> <span class="pre">channel)</span></code>, where channel is the
+fastest changing dimension. Note this is the default
+arrangement for Qualcomm® Neural Processing SDK, and that may have implications on a
+model containing a UDO if other tensor layouts are selected.
+Notably, if a tensor layout of <strong>NCHW</strong> is selected, then
+the data and/or tensor parameters may need to be reshaped to
+the Qualcomm® Neural Processing SDK default to maintain dimensional understanding.
+Should the user encounter this scenario, they may notice the
+introduction of intermediary permute layers prior to the UDO
+layer which will ultimately feed the tensors in question.
+These caveats should be visible as either converter
+warnings, debug messages or through outputs of the
+visualization tools described in <a class="reference external" href="tools.html">Tools</a>. For
+more details on tensor layouts, the user can consult the
+section: <a class="reference external" href="image_input.html">Input Image Formatting</a> of
+the documentation.</p></li>
+<li><p>For CPU, GPU and DSP coretypes, there can be an arbitrary
+number of operators defined per UDO package. However the
+provided skeleton code is tailored to define only one
+operation in one package. One subtle distinction is that the
+generated DSP V65 or DSP V66 implementation source code
+expects one operation per implementation library. While in
+the CPU, GPU, and DSP V68 or later cases, there may be an
+arbitrary number of operations in a library.</p></li>
+<li><p>The data-type of a tensor determines both how the data
+contained in the tensor will be stored in the DLC, and the
+type of memory handed over by Qualcomm® Neural Processing SDK during runtime execution.
+While tensors get stored within the DLC in the exact
+data-type specified by the UDO definition, there may be
+runtime restrictions on the type of memory users can expect
+to receive depending on the chosen core-type. Users should
+visit the following section: <a class="reference external" href="compiling_udo_package.html">Compiling a UDO
+package</a> for more details.</p></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="udo_package_definition.html" class="btn btn-neutral float-right" title="Defining a UDO Package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="udo_overview.html" class="btn btn-neutral float-left" title="Overview of UDO" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020-2023, Qualcomm Technologies, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

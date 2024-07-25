@@ -1,0 +1,131 @@
+#
+# Copyright (c) 2024 Qualcomm Technologies, Inc.
+# All Rights Reserved.
+# Confidential and Proprietary - Qualcomm Technologies, Inc.
+#
+
+# define relevant directories
+
+ifndef HEXAGON_SDK_ROOT
+$(error "Hexagon SDK environment not set")
+endif
+
+ifndef HEXAGON_TOOLS_ROOT
+HEXAGON_TOOLS_ROOT = $(DEFAULT_HEXAGON_TOOLS_ROOT)
+endif
+
+ifndef V
+V=v69
+endif
+
+SRC_DIR := src
+SRC_DIR_LOG := src/Log
+SRC_DIR_PAL_LINUX := src/PAL/src/linux
+SRC_DIR_PAL_COMMON := src/PAL/src/common
+SRC_DIR_UTILS := src/Utils
+SRC_DIR_WRAPPER_UTILS := src/WrapperUtils
+QNN_API_INCLUDE := ../../../include/QNN
+PAL_INCLUDE := src/PAL/include
+QURT_INCLUDE := $(HEXAGON_SDK_ROOT)/rtos/qurt/compute$(V)/include/qurt/
+POSIX_INCLUDE := $(HEXAGON_SDK_ROOT)/rtos/qurt/compute$(V)/include/posix/
+
+QNN_TARGET ?= hexagon
+export TARGET_DIR := ./bin/$(QNN_TARGET)
+
+CXX = $(HEXAGON_TOOLS_ROOT)/Tools/bin/hexagon-clang++
+
+shared_library := $(TARGET_DIR)/libQnnSampleApp$(V).so
+sample_app_libs := libfile.a
+
+.PHONY: sample_app_all
+.DEFAULT: sample_app_all
+sample_app_all: shared_library
+
+# Include paths
+INCLUDES += -I$(SRC_DIR) -I$(SRC_DIR_LOG) -I$(SRC_DIR_UTILS) -I$(SRC_DIR_WRAPPER_UTILS) -I$(PAL_INCLUDE) -I$(QNN_API_INCLUDE) -I$(QURT_INCLUDE) -I$(POSIX_INCLUDE)
+
+# set compiler flags
+# pthread is needed for AIC and HTP-MCP Backend
+COMMON_CXXFLAGS = -fPIC -Wall -Werror -fno-exceptions $(INCLUDES)
+COMMON_LDFLAGS = -shared -s -fPIC
+
+ifdef QNN_DEBUG_ENABLE
+CXXFLAGS += $(COMMON_CXXFLAGS) -O0 -g -DQNN_API=""
+LDFLAGS += $(COMMON_LDFLAGS)
+else
+CXXFLAGS += $(COMMON_CXXFLAGS) -O3 -g
+LDFLAGS += $(COMMON_LDFLAGS) -G0 -Wl
+endif
+
+# define library sources
+SOURCES := $(wildcard $(SRC_DIR)/*.cpp)
+SOURCES_LOG := $(wildcard $(SRC_DIR_LOG)/*.cpp)
+SOURCES_PAL := src/PAL/src/linux/DynamicLoading.cpp
+SOURCES_PAL += $(wildcard $(SRC_DIR_PAL_COMMON)/*.cpp)
+SOURCES_UTILS := $(wildcard $(SRC_DIR_UTILS)/*.cpp)
+SOURCES_WRAPPER_UTILS := $(wildcard $(SRC_DIR_WRAPPER_UTILS)/*.cpp)
+
+# define object directory
+OBJ_ROOT := obj
+OBJ_DIR := obj/$(QNN_TARGET)
+OBJ_DIR_LOG := obj/$(QNN_TARGET)/Log/
+OBJ_DIR_PAL := obj/$(QNN_TARGET)/PAL
+OBJ_DIR_UTILS := obj/$(QNN_TARGET)/Utils/
+OBJ_DIR_WRAPPER_UTILS := obj/$(QNN_TARGET)/WrapperUtils/
+
+# setup object files in object directory
+OBJECTS := $(patsubst %.cpp,$(OBJ_DIR)/%.o,$(foreach x,$(SOURCES),$(notdir $(x))))
+OBJECTS_LOG := $(patsubst %.cpp,$(OBJ_DIR_LOG)/%.o,$(foreach x,$(SOURCES_LOG),$(notdir $(x))))
+OBJECTS_PAL := $(patsubst %.cpp,$(OBJ_DIR_PAL)/%.o,$(foreach x,$(SOURCES_PAL),$(notdir $(x))))
+OBJECTS_UTILS := $(patsubst %.cpp,$(OBJ_DIR_UTILS)/%.o,$(foreach x,$(SOURCES_UTILS),$(notdir $(x))))
+OBJECTS_WRAPPER_UTILS := $(patsubst %.cpp,$(OBJ_DIR_WRAPPER_UTILS)/%.o,$(foreach x,$(SOURCES_WRAPPER_UTILS),$(notdir $(x))))
+
+# Rule to make executable
+.PHONY: shared_library
+shared_library: $(sample_app_libs) $(shared_library)
+
+# Implicit rule to compile and link object files
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $^ -o $@
+
+$(OBJ_DIR_LOG)/%.o: $(SRC_DIR_LOG)/%.cpp
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $^ -o $@
+
+$(OBJ_DIR_PAL)/%.o: $(SRC_DIR_PAL_LINUX)/%.cpp
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $^ -o $@
+
+$(OBJ_DIR_PAL)/%.o: $(SRC_DIR_PAL_COMMON)/%.cpp
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $^ -o $@
+
+$(OBJ_DIR_UTILS)/%.o: $(SRC_DIR_UTILS)/%.cpp
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $^ -o $@
+
+$(OBJ_DIR_WRAPPER_UTILS)/%.o: $(SRC_DIR_WRAPPER_UTILS)/%.cpp
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $^ -o $@
+
+# set up resources
+directories := $(TARGET_DIR) $(OBJ_DIR) $(OBJ_DIR_LOG) $(OBJ_DIR_PAL) $(OBJ_DIR_UTILS) $(OBJ_DIR_WRAPPER_UTILS)
+
+$(sample_app_libs): obj/hexagon/QnnSampleApp.o $(OBJECTS_LOG) $(OBJECTS_PAL) $(OBJECTS_UTILS) $(OBJECTS_WRAPPER_UTILS) | $(directories)
+	ar rcs $@ $^
+	mv $@ $(TARGET_DIR)
+
+#Compile
+$(shared_library): obj/hexagon/main.o
+	$(CXX) $(LDFLAGS) $(INCLUDES) -o $@ $< $(TARGET_DIR)/$(sample_app_libs)
+	rm $(TARGET_DIR)/$(sample_app_libs)
+
+# rule for object directory resource
+$(OBJECTS): | $(OBJ_DIR)
+$(OBJECTS_LOG): | $(OBJ_DIR_LOG)
+$(OBJECTS_PAL): | $(OBJ_DIR_PAL)
+$(OBJECTS_UTILS): | $(OBJ_DIR_UTILS)
+$(OBJECTS_WRAPPER_UTILS): | $(OBJ_DIR_WRAPPER_UTILS)
+
+# rule to create directories
+$(directories):
+	mkdir -p $@
+
+.PHONY: clean
+clean:
+	rm -rf $(OBJ_ROOT) $(TARGET_DIR)
