@@ -1,25 +1,60 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Runtime.InteropServices;
-using System;
+using System.Diagnostics;
 using Qnn_ErrorHandle_t = System.Int32;
-using Qnn_LogHandle_t = System.IntPtr;
-using Qnn_BackendHandle_t = System.IntPtr;
 
 namespace SampleCSharpApplication
 {
-    public class QnnSampleApp
+    using Qnn_LogHandle_t = IntPtr;
+    using Qnn_BackendHandle_t = IntPtr;
+
+    public unsafe class QnnSampleApp
     {
-        QnnFunctionPointers m_qnnFunctionPointers = null;
-        private IntPtr m_logHandle;
-        
-        private IntPtr m_backendHandle;
+        private QnnFunctionPointers m_qnnFunctionPointers = null;
+        private Qnn_LogHandle_t m_logHandle;
+        private Qnn_BackendHandle_t m_backendHandle;
         private bool m_isBackendInitialized;
-        private IntPtr m_backendConfig; // Changed to IntPtr
+        private IntPtr m_backendConfig;
 
         private string model;
         private string backend;
         private string inputList;
         private int duration;
+
+        // Constants
+        private const int QNN_API_VERSION_MAJOR = 2;
+        private const int QNN_API_VERSION_MINOR = 15;
+
+        // Structures
+        [StructLayout(LayoutKind.Sequential)]
+        public struct CoreApiVersion
+        {
+            public uint Major;
+            public uint Minor;
+            public uint Patch;
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct ApiVersion
+        {
+            public CoreApiVersion CoreApiVersion;
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct QnnInterface
+        {
+            public ApiVersion ApiVersion;
+            public IntPtr QNN_INTERFACE_VER_NAME;
+        }
+
+        // Delegate types
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        private unsafe delegate Qnn_ErrorHandle_t QnnBackend_CreateFn_t(
+            Qnn_LogHandle_t logger,
+            IntPtr* config,
+            ref Qnn_BackendHandle_t backend);
 
         public QnnSampleApp(string model, string backend, string inputList, int duration)
         {
@@ -31,7 +66,6 @@ namespace SampleCSharpApplication
 
         public int Run()
         {
-           
             Console.WriteLine($"Model: {model}");
             Console.WriteLine($"Backend: {backend}");
 
@@ -55,7 +89,7 @@ namespace SampleCSharpApplication
 
             Console.WriteLine("Initializing...");
             var initializer = new QnnInitializer();
-            m_qnnFunctionPointers = initializer.Initialize(backend,model,false);
+            m_qnnFunctionPointers = initializer.Initialize(backend, model, false);
 
             Console.WriteLine("Initializing backend...");
             var status = InitializeBackend();
@@ -131,34 +165,9 @@ namespace SampleCSharpApplication
             return 0;
         }
 
-       
-
-        [StructLayout(LayoutKind.Sequential)]
-        public struct QnnSystemContext
+        public unsafe StatusCode InitializeBackend()
         {
-            public IntPtr handle;
-            // Add other fields as necessary
-        }
-
-        [DllImport("kernel32.dll")]
-        static extern IntPtr LoadLibrary(string dllToLoad);
-
-        [DllImport("kernel32.dll")]
-        static extern IntPtr GetProcAddress(IntPtr hModule, string procedureName);
-        
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        private delegate Qnn_ErrorHandle_t QnnBackend_CreateFn_t(
-        Qnn_LogHandle_t logger,
-        IntPtr config,  // Pointer to array of pointers, so we use IntPtr
-        ref Qnn_BackendHandle_t backend);
-
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        private delegate int QnnBackend_Create_t(IntPtr logHandle, IntPtr[] config, out IntPtr backendHandle);
-
-        public StatusCode InitializeBackend()
-        {
-           
-        Console.WriteLine("Entering InitializeBackend method");
+            Console.WriteLine("Entering InitializeBackend method");
             Console.WriteLine($"QnnInterface pointer: {m_qnnFunctionPointers.QnnInterface}");
 
             if (m_qnnFunctionPointers.QnnInterface == IntPtr.Zero)
@@ -187,7 +196,7 @@ namespace SampleCSharpApplication
 
             try
             {
-                Qnn_ErrorHandle_t qnnStatus = backendCreate(m_logHandle, m_backendConfig, ref m_backendHandle);
+                Qnn_ErrorHandle_t qnnStatus = backendCreate(m_logHandle, (IntPtr*)m_backendConfig, ref m_backendHandle);
 
                 if (qnnStatus != 0) // Assuming 0 is QNN_SUCCESS
                 {
@@ -205,9 +214,8 @@ namespace SampleCSharpApplication
                 return StatusCode.FAILURE;
             }
         }
-    
 
-    private bool CreateDevice()
+        private bool CreateDevice()
         {
             // Implementation for device creation
             return true;
@@ -273,7 +281,5 @@ namespace SampleCSharpApplication
             // Implementation for freeing device
             return true;
         }
-
-        
     }
 }
