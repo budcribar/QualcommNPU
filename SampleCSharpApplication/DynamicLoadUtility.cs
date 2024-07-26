@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Qnn_ErrorHandle_t = System.Int32;
 
@@ -8,6 +7,7 @@ namespace SampleCSharpApplication
 {
     public static class DynamicLoadUtil
     {
+        // Windows API imports
         [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
         private static extern IntPtr LoadLibrary(string lpFileName);
 
@@ -22,14 +22,16 @@ namespace SampleCSharpApplication
         private static extern uint GetLastError();
 
         // Constants
-        private const uint LOAD_WITH_ALTERED_SEARCH_PATH = 0x00000008;
+        private const int QNN_API_VERSION_MAJOR = 2;
+        private const int QNN_API_VERSION_MINOR = 15;
 
         // Structures
         [StructLayout(LayoutKind.Sequential)]
         public struct CoreApiVersion
         {
-            public int Major;
-            public int Minor;
+            public uint Major;
+            public uint Minor;
+            public uint Patch;
         }
 
         [StructLayout(LayoutKind.Sequential)]
@@ -43,23 +45,14 @@ namespace SampleCSharpApplication
         {
             public ApiVersion ApiVersion;
             public IntPtr QNN_INTERFACE_VER_NAME;
+            // Add other fields if necessary
         }
 
         // Delegate types
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public unsafe delegate Qnn_ErrorHandle_t QnnInterfaceGetProvidersFn_t(
-            out IntPtr* providerList,
+        private unsafe delegate Qnn_ErrorHandle_t QnnInterfaceGetProvidersFn_t(
+            out IntPtr providerList,
             ref uint numProviders);
-
-        //public enum StatusCode
-        //{
-        //    SUCCESS,
-        //    FAILURE,
-        //    FAIL_LOAD_BACKEND,
-        //    FAIL_LOAD_MODEL,
-        //    FAIL_SYM_FUNCTION,
-        //    FAIL_GET_INTERFACE_PROVIDERS
-        //}
 
         private static void SetLastErrorMessage(string message)
         {
@@ -74,8 +67,6 @@ namespace SampleCSharpApplication
             bool loadModelLib,
             out IntPtr modelHandle)
         {
-            const int QNN_API_VERSION_MAJOR = 2;
-            const int QNN_API_VERSION_MINOR = 15;
             backendHandle = IntPtr.Zero;
             modelHandle = IntPtr.Zero;
 
@@ -99,11 +90,11 @@ namespace SampleCSharpApplication
 
             var getProviders = Marshal.GetDelegateForFunctionPointer<QnnInterfaceGetProvidersFn_t>(getInterfaceProvidersPtr);
 
-            IntPtr* providerList;
+            IntPtr providerListPtr;
             uint numProviders = 0;
-            int result = getProviders(out providerList, ref numProviders);
+            int result = getProviders(out providerListPtr, ref numProviders);
 
-            if (result != 0 || numProviders == 0 || providerList == null)
+            if (result != 0 || numProviders == 0 || providerListPtr == IntPtr.Zero)
             {
                 Console.Error.WriteLine("Failed to get interface providers.");
                 FreeLibrary(libBackendHandle);
@@ -112,9 +103,14 @@ namespace SampleCSharpApplication
 
             bool foundValidInterface = false;
 
+            IntPtr[] providerPointers = new IntPtr[numProviders];
+            Marshal.Copy(providerListPtr, providerPointers, 0, (int)numProviders);
+
             for (int i = 0; i < numProviders; i++)
             {
-                QnnInterface provider = Marshal.PtrToStructure<QnnInterface>(providerList[i]);
+                IntPtr providerPtr = providerPointers[i];
+                QnnInterface provider = Marshal.PtrToStructure<QnnInterface>(providerPtr);
+
                 if (QNN_API_VERSION_MAJOR == provider.ApiVersion.CoreApiVersion.Major &&
                     QNN_API_VERSION_MINOR <= provider.ApiVersion.CoreApiVersion.Minor)
                 {
@@ -179,5 +175,4 @@ namespace SampleCSharpApplication
         }
     }
 
-    
 }
