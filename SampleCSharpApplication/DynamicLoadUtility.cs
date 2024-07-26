@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -174,11 +175,11 @@ namespace SampleCSharpApplication
                 // TODO
                 //if (QNN_API_VERSION_MAJOR == interfaceProvider.ApiVersion.CoreApiVersion.Major &&
                 //    QNN_API_VERSION_MINOR <= interfaceProvider.ApiVersion.CoreApiVersion.Minor)
-                //{
-                //    foundValidInterface = true;
-                //    qnnFunctionPointers.QnnInterface = interfaceProvider.QNN_INTERFACE_VER_NAME;
-                //    break;
-                //}
+                {
+                    foundValidInterface = true;
+                    qnnFunctionPointers.QnnInterface = interfaceProvider.QNN_INTERFACE_VER_NAME;
+                    break;
+                }
             }
 
             if (!foundValidInterface)
@@ -190,6 +191,12 @@ namespace SampleCSharpApplication
 
             if (loadModelLib)
             {
+                if (!File.Exists(modelPath))
+                {
+                    Console.WriteLine($"Error: Could not load model: {modelPath}");
+                    return StatusCode.FAIL_LOAD_MODEL; 
+                }
+
                 Console.WriteLine("Loading model shared library ([model].dll)");
                 IntPtr libModelHandle = DlOpen(modelPath, DL_NOW | DL_LOCAL);
                 if (libModelHandle == IntPtr.Zero)
