@@ -38,20 +38,21 @@ namespace SampleCSharpApplication
         public struct ApiVersion
         {
             public CoreApiVersion CoreApiVersion;
+            public CoreApiVersion BackendApiVersion;
         }
 
         [StructLayout(LayoutKind.Sequential)]
         public struct QnnInterface
         {
+            public uint BackendId;
+            public IntPtr ProviderName;  // const char* in C++ becomes IntPtr in C#
             public ApiVersion ApiVersion;
-            public IntPtr QNN_INTERFACE_VER_NAME;
-            // Add other fields if necessary
+            public IntPtr QNN_INTERFACE_VER_NAME;  // We'll treat the union as an IntPtr
         }
-
         // Delegate types
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         private unsafe delegate Qnn_ErrorHandle_t QnnInterfaceGetProvidersFn_t(
-            out IntPtr providerList,
+            out IntPtr* providerList,
             ref uint numProviders);
 
         private static void SetLastErrorMessage(string message)
@@ -90,11 +91,11 @@ namespace SampleCSharpApplication
 
             var getProviders = Marshal.GetDelegateForFunctionPointer<QnnInterfaceGetProvidersFn_t>(getInterfaceProvidersPtr);
 
-            IntPtr providerListPtr;
+            IntPtr* providerListPtr;
             uint numProviders = 0;
             int result = getProviders(out providerListPtr, ref numProviders);
 
-            if (result != 0 || numProviders == 0 || providerListPtr == IntPtr.Zero)
+            if (result != 0 || numProviders == 0 || providerListPtr == null)
             {
                 Console.Error.WriteLine("Failed to get interface providers.");
                 FreeLibrary(libBackendHandle);
@@ -103,12 +104,9 @@ namespace SampleCSharpApplication
 
             bool foundValidInterface = false;
 
-            IntPtr[] providerPointers = new IntPtr[numProviders];
-            Marshal.Copy(providerListPtr, providerPointers, 0, (int)numProviders);
-
             for (int i = 0; i < numProviders; i++)
             {
-                IntPtr providerPtr = providerPointers[i];
+                IntPtr providerPtr = providerListPtr[i];
                 QnnInterface provider = Marshal.PtrToStructure<QnnInterface>(providerPtr);
 
                 if (QNN_API_VERSION_MAJOR == provider.ApiVersion.CoreApiVersion.Major &&
@@ -174,5 +172,4 @@ namespace SampleCSharpApplication
             return StatusCode.SUCCESS;
         }
     }
-
 }
