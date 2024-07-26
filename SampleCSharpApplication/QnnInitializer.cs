@@ -11,7 +11,7 @@ namespace SampleCSharpApplication
         private IntPtr sg_backendHandle;
         private IntPtr sg_modelHandle;
 
-        public void Initialize(string backEndPath, string modelPath, bool loadFromCachedBinary)
+        public QnnFunctionPointers Initialize(string backEndPath, string modelPath, bool loadFromCachedBinary) 
         {
             QnnFunctionPointers qnnFunctionPointers = new QnnFunctionPointers();
 
@@ -39,6 +39,8 @@ namespace SampleCSharpApplication
                     ExitWithMessage("Error initializing QNN Function Pointers", 1);
                 }
             }
+
+            return qnnFunctionPointers;
         }
 
         private void ExitWithMessage(string message, int exitCode)
