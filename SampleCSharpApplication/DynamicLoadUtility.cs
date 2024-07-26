@@ -27,8 +27,12 @@ namespace SampleCSharpApplication
         [DllImport("psapi.dll", SetLastError = true)]
         private static extern bool EnumProcessModules(IntPtr hProcess, IntPtr[] lphModule, uint cb, out uint lpcbNeeded);
 
+        [DllImport("kernel32.dll")]
+        private static extern uint GetLastError();
+
         // Constants
         private const uint LOAD_WITH_ALTERED_SEARCH_PATH = 0x00000008;
+        private const uint LOAD_LIBRARY_SEARCH_DEFAULT_DIRS = 0x00001000;
         private const int DL_NOW = 2;
         private const int DL_LOCAL = 0;
         private const int DL_GLOBAL = 1;
@@ -47,49 +51,58 @@ namespace SampleCSharpApplication
                 return IntPtr.Zero;
             }
 
-            if ((flags & DL_NOW) == 0)
+            // Check if file exists
+            if (!File.Exists(filename))
             {
-                SetLastErrorMessage("flags must include DL_NOW");
+                SetLastErrorMessage($"File does not exist: {filename}");
                 return IntPtr.Zero;
             }
 
-            IntPtr curProc = GetCurrentProcess();
-            uint asIs;
-            if (!EnumProcessModules(curProc, null, 0, out asIs))
+            // Try to get the full path
+            try
             {
-                SetLastErrorMessage("enumerate modules failed before loading module");
-                return IntPtr.Zero;
+                filename = Path.GetFullPath(filename);
+            }
+            catch (Exception ex)
+            {
+                SetLastErrorMessage($"Error getting full path: {ex.Message}");
             }
 
-            IntPtr mod = LoadLibraryExA(filename, IntPtr.Zero, LOAD_WITH_ALTERED_SEARCH_PATH);
-            if (mod == IntPtr.Zero)
+            IntPtr mod;
+
+            // First attempt: with LOAD_WITH_ALTERED_SEARCH_PATH
+            mod = LoadLibraryExA(filename, IntPtr.Zero, LOAD_WITH_ALTERED_SEARCH_PATH);
+            if (mod != IntPtr.Zero)
             {
-                SetLastErrorMessage("load library failed");
-                return IntPtr.Zero;
+                return mod;
             }
 
-            uint toBe;
-            if (!EnumProcessModules(curProc, null, 0, out toBe))
+            uint error = GetLastError();
+            SetLastErrorMessage($"LoadLibraryExA failed with LOAD_WITH_ALTERED_SEARCH_PATH. Error code: {error}");
+
+            // Second attempt: with LOAD_LIBRARY_SEARCH_DEFAULT_DIRS
+            mod = LoadLibraryExA(filename, IntPtr.Zero, LOAD_LIBRARY_SEARCH_DEFAULT_DIRS);
+            if (mod != IntPtr.Zero)
             {
-                SetLastErrorMessage("enumerate modules failed after loading module");
-                FreeLibrary(mod);
-                return IntPtr.Zero;
+                return mod;
             }
 
-            bool loadedBefore = asIs == toBe;
+            error = GetLastError();
+            SetLastErrorMessage($"LoadLibraryExA failed with LOAD_LIBRARY_SEARCH_DEFAULT_DIRS. Error code: {error}");
 
-            if (!loadedBefore && (flags & DL_LOCAL) != 0)
+            // Third attempt: without any special flags
+            mod = LoadLibraryExA(filename, IntPtr.Zero, 0);
+            if (mod != IntPtr.Zero)
             {
-                modHandles.Add(mod);
+                return mod;
             }
 
-            if ((flags & DL_GLOBAL) != 0)
-            {
-                modHandles.Remove(mod);
-            }
+            error = GetLastError();
+            SetLastErrorMessage($"LoadLibraryExA failed without flags. Error code: {error}");
 
-            return mod;
+            return IntPtr.Zero;
         }
+
 
         private static void SetLastErrorMessage(string message)
         {
