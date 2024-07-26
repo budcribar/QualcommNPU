@@ -1,5 +1,9 @@
 ﻿using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System;
+using Qnn_ErrorHandle_t = System.Int32;
+using Qnn_LogHandle_t = System.IntPtr;
+using Qnn_BackendHandle_t = System.IntPtr;
 
 namespace SampleCSharpApplication
 {
@@ -7,9 +11,10 @@ namespace SampleCSharpApplication
     {
         QnnFunctionPointers m_qnnFunctionPointers = null;
         private IntPtr m_logHandle;
-        private IntPtr[] m_backendConfig;
+        
         private IntPtr m_backendHandle;
         private bool m_isBackendInitialized;
+        private IntPtr m_backendConfig; // Changed to IntPtr
 
         private string model;
         private string backend;
@@ -22,11 +27,6 @@ namespace SampleCSharpApplication
             this.backend = backend;
             this.inputList = inputList;
             this.duration = duration;
-        }
-        public enum StatusCode
-        {
-            SUCCESS,
-            FAILURE
         }
 
         public int Run()
@@ -59,7 +59,7 @@ namespace SampleCSharpApplication
 
             Console.WriteLine("Initializing backend...");
             var status = InitializeBackend();
-            if (status == QnnSampleApp.StatusCode.FAILURE)
+            if (status == StatusCode.FAILURE)
             {
                 Console.WriteLine("Backend Initialization failure");
                 return 1;
@@ -145,31 +145,69 @@ namespace SampleCSharpApplication
 
         [DllImport("kernel32.dll")]
         static extern IntPtr GetProcAddress(IntPtr hModule, string procedureName);
+        
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        private delegate Qnn_ErrorHandle_t QnnBackend_CreateFn_t(
+        Qnn_LogHandle_t logger,
+        IntPtr config,  // Pointer to array of pointers, so we use IntPtr
+        ref Qnn_BackendHandle_t backend);
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         private delegate int QnnBackend_Create_t(IntPtr logHandle, IntPtr[] config, out IntPtr backendHandle);
 
-
         public StatusCode InitializeBackend()
         {
-            // Assuming m_qnnFunctionPointers.QnnInterface contains the function pointer for backendCreate
-            var backendCreate = Marshal.GetDelegateForFunctionPointer<QnnBackend_Create_t>(
-                m_qnnFunctionPointers.QnnInterface);
+           
+        Console.WriteLine("Entering InitializeBackend method");
+            Console.WriteLine($"QnnInterface pointer: {m_qnnFunctionPointers.QnnInterface}");
 
-            int qnnStatus = backendCreate(m_logHandle, m_backendConfig, out m_backendHandle);
-
-            if (qnnStatus != 0) // Assuming 0 is QNN_BACKEND_NO_ERROR
+            if (m_qnnFunctionPointers.QnnInterface == IntPtr.Zero)
             {
-                Console.Error.WriteLine($"Could not initialize backend due to error = {qnnStatus}");
+                Console.Error.WriteLine("QnnInterface pointer is null");
                 return StatusCode.FAILURE;
             }
 
-            Console.WriteLine($"Initialize Backend Returned Status = {qnnStatus}");
-            m_isBackendInitialized = true;
-            return StatusCode.SUCCESS;
-        }
+            QnnBackend_CreateFn_t backendCreate;
+            try
+            {
+                backendCreate = Marshal.GetDelegateForFunctionPointer<QnnBackend_CreateFn_t>(
+                    m_qnnFunctionPointers.QnnInterface);
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine($"Failed to get delegate for function pointer: {ex.Message}");
+                return StatusCode.FAILURE;
+            }
 
-        private bool CreateDevice()
+            if (backendCreate == null)
+            {
+                Console.Error.WriteLine("Failed to create delegate for backendCreate");
+                return StatusCode.FAILURE;
+            }
+
+            try
+            {
+                Qnn_ErrorHandle_t qnnStatus = backendCreate(m_logHandle, m_backendConfig, ref m_backendHandle);
+
+                if (qnnStatus != 0) // Assuming 0 is QNN_SUCCESS
+                {
+                    Console.Error.WriteLine($"Could not initialize backend due to error = {qnnStatus}");
+                    return StatusCode.FAILURE;
+                }
+
+                Console.WriteLine($"Initialize Backend Returned Status = {qnnStatus}");
+                m_isBackendInitialized = true;
+                return StatusCode.SUCCESS;
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine($"Exception occurred while calling backendCreate: {ex.Message}");
+                return StatusCode.FAILURE;
+            }
+        }
+    
+
+    private bool CreateDevice()
         {
             // Implementation for device creation
             return true;

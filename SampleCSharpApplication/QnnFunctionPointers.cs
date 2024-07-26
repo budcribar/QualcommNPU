@@ -12,5 +12,6 @@ namespace SampleCSharpApplication
         public IntPtr ComposeGraphsFnHandle;
         public IntPtr FreeGraphInfoFnHandle;
     }
-    
+   
+
 }
