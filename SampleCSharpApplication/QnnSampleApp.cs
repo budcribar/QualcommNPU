@@ -4,11 +4,20 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 using Qnn_ErrorHandle_t = System.Int32;
+using System.Security.Cryptography;
+using Qnn_LogHandle_t = System.IntPtr;
+using Qnn_BackendHandle_t = System.IntPtr;
+
+
+
 
 namespace SampleCSharpApplication
 {
-    using Qnn_LogHandle_t = IntPtr;
-    using Qnn_BackendHandle_t = IntPtr;
+   
+
+    
+
+   
 
     [StructLayout(LayoutKind.Sequential)]
     public struct QnnApiVersion
@@ -19,65 +28,79 @@ namespace SampleCSharpApplication
     }
 
     [StructLayout(LayoutKind.Sequential)]
+    public struct Qnn_ApiVersion_t
+    {
+        public uint Major;
+        public uint Minor;
+        public uint Patch;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
     public struct QnnInterface
     {
-        public QnnApiVersion ApiVersion;
-
-        // Backend functions
+        public IntPtr PropertyHasCapability;
         public IntPtr BackendCreate;
-        public IntPtr BackendFree;
+        public IntPtr BackendSetConfig;
         public IntPtr BackendGetApiVersion;
         public IntPtr BackendGetBuildId;
         public IntPtr BackendRegisterOpPackage;
-
-        // Context functions
+        public IntPtr BackendGetSupportedOperations;
+        public IntPtr BackendValidateOpConfig;
+        public IntPtr BackendFree;
         public IntPtr ContextCreate;
-        public IntPtr ContextFree;
-        public IntPtr ContextGetBinary;
+        public IntPtr ContextSetConfig;
         public IntPtr ContextGetBinarySize;
+        public IntPtr ContextGetBinary;
         public IntPtr ContextCreateFromBinary;
-
-        // Graph functions
+        public IntPtr ContextFree;
         public IntPtr GraphCreate;
-        public IntPtr GraphFree;
-        public IntPtr GraphRetrieve;
+        public IntPtr GraphCreateSubgraph;
+        public IntPtr GraphSetConfig;
+        public IntPtr GraphAddNode;
         public IntPtr GraphFinalize;
-        public IntPtr GraphGetIoTensors;
+        public IntPtr GraphRetrieve;
         public IntPtr GraphExecute;
-
-        // Tensor functions
-        public IntPtr TensorCreate;
-        public IntPtr TensorCreateFromTensor;
-        public IntPtr TensorFree;
-
-        // Profile functions
-        public IntPtr ProfileCreate;
-        public IntPtr ProfileFree;
-        public IntPtr ProfileGetEvents;
-        public IntPtr ProfileGetEventData;
-        public IntPtr ProfileGetSubEvents;
-
-        // Log functions
+        public IntPtr GraphExecuteAsync;
+        public IntPtr TensorCreateContextTensor;
+        public IntPtr TensorCreateGraphTensor;
         public IntPtr LogCreate;
+        public IntPtr LogSetLogLevel;
         public IntPtr LogFree;
-
-        // Memory functions
-        public IntPtr MemCreate;
-        public IntPtr MemFree;
+        public IntPtr ProfileCreate;
+        public IntPtr ProfileSetConfig;
+        public IntPtr ProfileGetEvents;
+        public IntPtr ProfileGetSubEvents;
+        public IntPtr ProfileGetEventData;
+        public IntPtr ProfileGetExtendedEventData;
+        public IntPtr ProfileFree;
         public IntPtr MemRegister;
-        public IntPtr MemDeregister;
-        public IntPtr MemGetInfo;
-
-        // Property functions
-        public IntPtr PropertyHasCapability;
-
-        // Device functions
+        public IntPtr MemDeRegister;
+        public IntPtr DeviceGetPlatformInfo;
+        public IntPtr DeviceFreePlatformInfo;
+        public IntPtr DeviceGetInfrastructure;
         public IntPtr DeviceCreate;
+        public IntPtr DeviceSetConfig;
+        public IntPtr DeviceGetInfo;
         public IntPtr DeviceFree;
+        public IntPtr SignalCreate;
+        public IntPtr SignalSetConfig;
+        public IntPtr SignalTrigger;
+        public IntPtr SignalFree;
+        public IntPtr ErrorGetMessage;
+        public IntPtr ErrorGetVerboseMessage;
+        public IntPtr ErrorFreeVerboseMessage;
+        public IntPtr GraphPrepareExecutionEnvironment;
+        public IntPtr GraphReleaseExecutionEnvironment;
+        public IntPtr GraphGetProperty;
+        public IntPtr ContextValidateBinary;
+        public IntPtr ContextCreateFromBinaryWithSignal;
     }
 
     public unsafe class QnnSampleApp
     {
+        [DllImport("../../../QnnHtpArm64.dll", CallingConvention = CallingConvention.Cdecl)]
+        static extern Qnn_ErrorHandle_t QnnLog_Create(  IntPtr logCallback,  int logLevel,  ref Qnn_LogHandle_t logHandle);
+
         private QnnLog_CallbackFn_t m_logCallback; // Class member to keep the delegate alive
         private QnnFunctionPointers m_qnnFunctionPointers = null;
         private Qnn_LogHandle_t m_logHandle;
@@ -155,7 +178,7 @@ namespace SampleCSharpApplication
 
             Console.WriteLine("Initializing...");
             var initializer = new QnnInitializer();
-            m_qnnFunctionPointers = initializer.Initialize(backend, model, false);
+            //m_qnnFunctionPointers = initializer.Initialize(backend, model, false);
 
             InitializeLogging();
 
@@ -237,22 +260,14 @@ namespace SampleCSharpApplication
         {
             if (IsLogInitialized())
             {
-                m_logCallback = LogMessage; // Store the delegate as a class member
+                m_logCallback = LogMessage;
                 var logLevel = GetLogLevel();
                 Console.WriteLine($"Initializing logging in the backend. Callback: [{m_logCallback.Method.Name}], Log Level: [{logLevel}]");
 
                 try
                 {
-                    IntPtr logCreatePtr = GetFunctionPointerForDelegate("QnnLog_Create");
-                    if (logCreatePtr == IntPtr.Zero)
-                    {
-                        Console.WriteLine("Unable to get function pointer for QnnLog_Create");
-                        return;
-                    }
-
-                    var logCreateFn = Marshal.GetDelegateForFunctionPointer<QnnLog_CreateFn_t>(logCreatePtr);
                     IntPtr logCallbackPtr = Marshal.GetFunctionPointerForDelegate(m_logCallback);
-                    Qnn_ErrorHandle_t result = logCreateFn(logCallbackPtr, (int)logLevel, ref m_logHandle);
+                    Qnn_ErrorHandle_t result = QnnLog_Create(logCallbackPtr, (int)logLevel, ref m_logHandle);
 
                     if (result != QNN_SUCCESS)
                     {
@@ -273,6 +288,47 @@ namespace SampleCSharpApplication
                 Console.WriteLine("Logging not available in the backend.");
             }
         }
+
+        //private void InitializeLogging()
+        //{
+        //    if (IsLogInitialized())
+        //    {
+        //        m_logCallback = LogMessage; // Store the delegate as a class member
+        //        var logLevel = GetLogLevel();
+        //        Console.WriteLine($"Initializing logging in the backend. Callback: [{m_logCallback.Method.Name}], Log Level: [{logLevel}]");
+
+        //        try
+        //        {
+        //            IntPtr logCreatePtr = GetFunctionPointerForDelegate("QnnLog_Create");
+        //            if (logCreatePtr == IntPtr.Zero)
+        //            {
+        //                Console.WriteLine("Unable to get function pointer for QnnLog_Create");
+        //                return;
+        //            }
+
+        //            var logCreateFn = Marshal.GetDelegateForFunctionPointer<QnnLog_CreateFn_t>(logCreatePtr);
+        //            IntPtr logCallbackPtr = Marshal.GetFunctionPointerForDelegate(m_logCallback);
+        //            Qnn_ErrorHandle_t result = logCreateFn(logCallbackPtr, (int)logLevel, ref m_logHandle);
+
+        //            if (result != QNN_SUCCESS)
+        //            {
+        //                Console.WriteLine($"Unable to initialize logging in the backend. Error code: {result}");
+        //            }
+        //            else
+        //            {
+        //                Console.WriteLine("Logging initialized successfully");
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            Console.WriteLine($"Exception occurred while initializing logging: {ex.Message}");
+        //        }
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine("Logging not available in the backend.");
+        //    }
+        //}
 
         private bool IsLogInitialized()
         {
@@ -302,21 +358,29 @@ namespace SampleCSharpApplication
                 return IntPtr.Zero;
             }
 
-            QnnInterface qnnInterface = Marshal.PtrToStructure<QnnInterface>(m_qnnFunctionPointers.QnnInterface);
+            IntPtr* interfacePtr = (IntPtr*)m_qnnFunctionPointers.QnnInterface;
 
             switch (functionName)
             {
-                case "QnnLog_Create":
-                    return qnnInterface.LogCreate;
+                case "QnnProperty_HasCapability":
+                    return interfacePtr[0];
                 case "QnnBackend_Create":
-                    return qnnInterface.BackendCreate;
-                // Add cases for other functions as needed
+                    return interfacePtr[1];
+                case "QnnBackend_SetConfig":
+                    return interfacePtr[2];
+                case "QnnBackend_GetApiVersion":
+                    return interfacePtr[3];
+                case "QnnBackend_GetBuildId":
+                    return interfacePtr[4];
+                // Add more cases as needed, incrementing the index for each function pointer
+                case "QnnLog_Create":
+                    return interfacePtr[25]; // Adjust this index based on the actual position in the struct
+                                             // ... other cases ...
                 default:
                     Console.WriteLine($"Unknown function name: {functionName}");
                     return IntPtr.Zero;
             }
         }
-
         public unsafe StatusCode InitializeBackend()
         {
             Console.WriteLine("Entering InitializeBackend method");
