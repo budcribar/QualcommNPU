@@ -37,12 +37,12 @@ qnn_wrapper_api::ModelError_t qnn_wrapper_api::freeGraphsInfo(GraphInfoPtr_t **g
     return MODEL_TENSOR_ERROR;
   }
   for (uint32_t i = 0; i < numGraphs; i++) {
-    //free((*graphsInfo)[i]->graphName);
-    //freeQnnTensors((*graphsInfo)[i]->inputTensors, (*graphsInfo)[i]->numInputTensors);
-    //freeQnnTensors((*graphsInfo)[i]->outputTensors, (*graphsInfo)[i]->numOutputTensors);
+    free((*graphsInfo)[i]->graphName);
+    freeQnnTensors((*graphsInfo)[i]->inputTensors, (*graphsInfo)[i]->numInputTensors);
+    freeQnnTensors((*graphsInfo)[i]->outputTensors, (*graphsInfo)[i]->numOutputTensors);
   }
-  //free(**graphsInfo);
-  //free(*graphsInfo);
+  free(**graphsInfo);
+  free(*graphsInfo);
   *graphsInfo = nullptr;
   return MODEL_NO_ERROR;
 }

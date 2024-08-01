@@ -6,14 +6,21 @@ using System.Diagnostics;
 namespace SampleCSharpApplication
 {
     public class Program { 
-    public static int Main(string[] args)
+    public unsafe static int Main(string[] args)
     {
         string model = null;
         string backend = null;
         string inputList = null;
         int duration = 3; // Default duration
 
-        for (int i = 0; i < args.Length; i++)
+            QnnInterface q1 = new QnnInterface();
+            QnnInterface2 q2 = new QnnInterface2();
+
+            var x = sizeof(QnnInterface);
+            var xy = sizeof(QnnInterface2);
+
+
+            for (int i = 0; i < args.Length; i++)
         {
             switch (args[i])
             {

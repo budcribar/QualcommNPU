@@ -35,66 +35,7 @@ namespace SampleCSharpApplication
         public uint Patch;
     }
 
-    [StructLayout(LayoutKind.Sequential)]
-    public struct QnnInterface
-    {
-        public IntPtr PropertyHasCapability;
-        public IntPtr BackendCreate;
-        public IntPtr BackendSetConfig;
-        public IntPtr BackendGetApiVersion;
-        public IntPtr BackendGetBuildId;
-        public IntPtr BackendRegisterOpPackage;
-        public IntPtr BackendGetSupportedOperations;
-        public IntPtr BackendValidateOpConfig;
-        public IntPtr BackendFree;
-        public IntPtr ContextCreate;
-        public IntPtr ContextSetConfig;
-        public IntPtr ContextGetBinarySize;
-        public IntPtr ContextGetBinary;
-        public IntPtr ContextCreateFromBinary;
-        public IntPtr ContextFree;
-        public IntPtr GraphCreate;
-        public IntPtr GraphCreateSubgraph;
-        public IntPtr GraphSetConfig;
-        public IntPtr GraphAddNode;
-        public IntPtr GraphFinalize;
-        public IntPtr GraphRetrieve;
-        public IntPtr GraphExecute;
-        public IntPtr GraphExecuteAsync;
-        public IntPtr TensorCreateContextTensor;
-        public IntPtr TensorCreateGraphTensor;
-        public IntPtr LogCreate;
-        public IntPtr LogSetLogLevel;
-        public IntPtr LogFree;
-        public IntPtr ProfileCreate;
-        public IntPtr ProfileSetConfig;
-        public IntPtr ProfileGetEvents;
-        public IntPtr ProfileGetSubEvents;
-        public IntPtr ProfileGetEventData;
-        public IntPtr ProfileGetExtendedEventData;
-        public IntPtr ProfileFree;
-        public IntPtr MemRegister;
-        public IntPtr MemDeRegister;
-        public IntPtr DeviceGetPlatformInfo;
-        public IntPtr DeviceFreePlatformInfo;
-        public IntPtr DeviceGetInfrastructure;
-        public IntPtr DeviceCreate;
-        public IntPtr DeviceSetConfig;
-        public IntPtr DeviceGetInfo;
-        public IntPtr DeviceFree;
-        public IntPtr SignalCreate;
-        public IntPtr SignalSetConfig;
-        public IntPtr SignalTrigger;
-        public IntPtr SignalFree;
-        public IntPtr ErrorGetMessage;
-        public IntPtr ErrorGetVerboseMessage;
-        public IntPtr ErrorFreeVerboseMessage;
-        public IntPtr GraphPrepareExecutionEnvironment;
-        public IntPtr GraphReleaseExecutionEnvironment;
-        public IntPtr GraphGetProperty;
-        public IntPtr ContextValidateBinary;
-        public IntPtr ContextCreateFromBinaryWithSignal;
-    }
+   
 
     public unsafe class QnnSampleApp
     {
@@ -106,7 +47,7 @@ namespace SampleCSharpApplication
         private Qnn_LogHandle_t m_logHandle;
         private Qnn_BackendHandle_t m_backendHandle;
         private bool m_isBackendInitialized;
-        private IntPtr m_backendConfig;
+        private IntPtr* m_backendConfig;
 
         private string model;
         private string backend;
@@ -124,10 +65,11 @@ namespace SampleCSharpApplication
 
         private enum LogLevel
         {
-            ERROR,
-            WARN,
-            INFO,
-            DEBUG
+            ERROR = 1,
+            WARN = 2,
+            INFO = 3,
+            VERBOSE = 4,
+            DEBUG = 5
         }
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
@@ -178,7 +120,7 @@ namespace SampleCSharpApplication
 
             Console.WriteLine("Initializing...");
             var initializer = new QnnInitializer();
-            //m_qnnFunctionPointers = initializer.Initialize(backend, model, false);
+            m_qnnFunctionPointers = initializer.Initialize(backend, model, false);
 
             InitializeLogging();
 
@@ -266,8 +208,21 @@ namespace SampleCSharpApplication
 
                 try
                 {
+                   
                     IntPtr logCallbackPtr = Marshal.GetFunctionPointerForDelegate(m_logCallback);
-                    Qnn_ErrorHandle_t result = QnnLog_Create(logCallbackPtr, (int)logLevel, ref m_logHandle);
+
+                    IntPtr logCreatePtr = GetFunctionPointerForDelegate("QnnLog_Create");
+                    if (logCreatePtr == IntPtr.Zero)
+                    {
+                        Console.Error.WriteLine("Failed to get function pointer for QnnLog_Create");
+                        return;
+                    }
+
+                    QnnLog_CreateFn_t backendCreate = Marshal.GetDelegateForFunctionPointer<QnnLog_CreateFn_t>(logCreatePtr);
+
+                    Qnn_ErrorHandle_t result = backendCreate(new IntPtr(0), (int)logLevel, ref m_logHandle);
+                   // Qnn_ErrorHandle_t result = backendCreate(logCallbackPtr, (int)logLevel, ref m_logHandle);
+                    //Qnn_ErrorHandle_t result = QnnLog_Create(logCallbackPtr, (int)logLevel, ref m_logHandle);
 
                     if (result != QNN_SUCCESS)
                     {
@@ -350,6 +305,18 @@ namespace SampleCSharpApplication
             Console.WriteLine($"[{(LogLevel)level}] {message}");
         }
 
+        public IntPtr GetOffsetQnnInterface(int offset)
+        {
+            if (m_qnnFunctionPointers.QnnInterface == IntPtr.Zero)
+            {
+                throw new Exception("QnnInterface pointer is null");
+            }
+
+            byte* ptr = (byte*)m_qnnFunctionPointers.QnnInterface.ToPointer();
+            ptr += offset;
+            return new IntPtr(ptr);
+        }
+
         private IntPtr GetFunctionPointerForDelegate(string functionName)
         {
             if (m_qnnFunctionPointers.QnnInterface == IntPtr.Zero)
@@ -358,24 +325,31 @@ namespace SampleCSharpApplication
                 return IntPtr.Zero;
             }
 
-            IntPtr* interfacePtr = (IntPtr*)m_qnnFunctionPointers.QnnInterface;
+            //IntPtr* interfacePtr = (IntPtr*)m_qnnFunctionPointers.QnnInterface;
+
+            //QnnInterface* interfacePtr = (QnnInterface*)m_qnnFunctionPointers.QnnInterface;
+            //QnnInterface interfacex = m_qnnFunctionPointers.QnnInterface 
 
             switch (functionName)
             {
                 case "QnnProperty_HasCapability":
-                    return interfacePtr[0];
+                    return GetOffsetQnnInterface(0);
                 case "QnnBackend_Create":
-                    return interfacePtr[1];
+                    return GetOffsetQnnInterface(1*8);
                 case "QnnBackend_SetConfig":
-                    return interfacePtr[2];
+                    return GetOffsetQnnInterface(2 * 8);
+                 
                 case "QnnBackend_GetApiVersion":
-                    return interfacePtr[3];
+                    return GetOffsetQnnInterface(3 * 8);
+                   
                 case "QnnBackend_GetBuildId":
-                    return interfacePtr[4];
+                    return GetOffsetQnnInterface(4 * 8);
+                   
                 // Add more cases as needed, incrementing the index for each function pointer
                 case "QnnLog_Create":
-                    return interfacePtr[25]; // Adjust this index based on the actual position in the struct
-                                             // ... other cases ...
+                    return GetOffsetQnnInterface(400);
+                    //return interfacePtr[25]; // Adjust this index based on the actual position in the struct
+                                           // ... other cases ...
                 default:
                     Console.WriteLine($"Unknown function name: {functionName}");
                     return IntPtr.Zero;
@@ -403,7 +377,7 @@ namespace SampleCSharpApplication
 
             try
             {
-                Qnn_ErrorHandle_t qnnStatus = backendCreate(m_logHandle, (IntPtr*)m_backendConfig, ref m_backendHandle);
+                Qnn_ErrorHandle_t qnnStatus = backendCreate(m_logHandle, m_backendConfig, ref m_backendHandle);
 
                 if (qnnStatus != QNN_SUCCESS)
                 {
