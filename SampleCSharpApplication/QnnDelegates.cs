@@ -14,6 +14,10 @@ namespace SampleCSharpApplication
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         unsafe public delegate Qnn_ErrorHandle_t QnnBackend_CreateFn_t(Qnn_LogHandle_t logger, IntPtr* config, ref Qnn_BackendHandle_t backend);
+
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate Qnn_ErrorHandle_t QnnProperty_HasCapabilityFn_t(QnnProperty_Key_t key);
+
     }
 }
 

@@ -87,6 +87,11 @@ namespace SampleCSharpApplication
                 return 1;
             }
 
+            if (IsDevicePropertySupported() != StatusCode.SUCCESS)
+            {
+                return 1;
+            }
+
             Console.WriteLine("Creating device...");
             if (!CreateDevice())
             {
@@ -259,69 +264,48 @@ namespace SampleCSharpApplication
             string message = Marshal.PtrToStringAnsi(msgPtr);
             Console.WriteLine($"[{(LogLevel)level}] {message}");
         }
+        public StatusCode IsDevicePropertySupported()
+        {
+            if (m_qnnFunctionPointers?.QnnInterface.PropertyHasCapability == IntPtr.Zero)
+            {
+                Console.Error.WriteLine("PropertyHasCapability pointer is null");
+                return StatusCode.FAILURE;
+            }
+            IntPtr propertyHasCapabilityPtr = m_qnnFunctionPointers?.QnnInterface.PropertyHasCapability ?? IntPtr.Zero;
 
-        //public IntPtr GetOffsetQnnInterface(int offset)
-        //{
-        //    //if (**m_qnnFunctionPointers.QnnInterface == IntPtr.Zero)  //0x540005a87104fc1f
-        //    //{
-        //    //    throw new Exception("QnnInterface pointer is null");
-        //    //}
+            QnnProperty_HasCapabilityFn_t propertyHasCapability = Marshal.GetDelegateForFunctionPointer<QnnProperty_HasCapabilityFn_t>(propertyHasCapabilityPtr);
+            try
+            {
+                Qnn_ErrorHandle_t qnnStatus = propertyHasCapability(1501);
 
-        //    IntPtr** ptr  = m_qnnFunctionPointers.QnnInterface;
-        //    ptr += offset;
-        //    return new IntPtr(*ptr);
-        //}
+                if (qnnStatus != QNN_SUCCESS)
+                {
+                    Console.Error.WriteLine($"Device property is not supported {qnnStatus}");
+                    return StatusCode.FAILURE;
+                }
 
-        //private IntPtr GetFunctionPointerForDelegate(string functionName)
-        //{
-        //    if ((**m_qnnFunctionPointers.QnnInterface) == IntPtr.Zero)
-        //    {
-        //        Console.WriteLine("QnnInterface pointer is null");
-        //        return IntPtr.Zero;
-        //    }
+                Console.WriteLine($"Initialize Backend Returned Status = {qnnStatus}");
+                return StatusCode.SUCCESS;
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine($"Exception occurred while calling QnnProperty_HasCapabilityFn_t: {ex.Message}");
+                return StatusCode.FAILURE;
+            }
+        }
 
-        //    switch (functionName)
-        //    {
-        //        case "QnnProperty_HasCapability":
-        //            return GetOffsetQnnInterface(0);
-        //        case "QnnBackend_Create":
-        //            return GetOffsetQnnInterface(1*8);
-        //        case "QnnBackend_SetConfig":
-        //            return GetOffsetQnnInterface(2 * 8);
-                 
-        //        case "QnnBackend_GetApiVersion":
-        //            return GetOffsetQnnInterface(3 * 8);
-                   
-        //        case "QnnBackend_GetBuildId":
-        //            return GetOffsetQnnInterface(4 * 8);
-                   
-        //        // Add more cases as needed, incrementing the index for each function pointer
-        //        case "QnnLog_Create":
-        //            return GetOffsetQnnInterface(25);
-
-        //        // 0x000001defa1347a8 is start
-        //        // 0x000001defa134870 is where log create is
-                
-        //        // {propertyHasCapability=QnnHtpArm64.dll!0x00007ffeaceeb970 backendCreate=QnnHtpArm64.dll!0x00007ffeaceecc40 ...}
-        //        // 0x000001defa134870 { QnnHtpArm64.dll!0x00007ffeaceef410}
-        //        // 0x00007ffeaceef410
-        //        default:
-        //            Console.WriteLine($"Unknown function name: {functionName}");
-        //            return IntPtr.Zero;
-        //    }
-        //}
-        public unsafe StatusCode InitializeBackend()
+        public StatusCode InitializeBackend()
         {
             Console.WriteLine("Entering InitializeBackend method");
-            Console.WriteLine($"QnnInterface pointer: {m_qnnFunctionPointers.QnnInterface}");
+            Console.WriteLine($"QnnInterface pointer: {m_qnnFunctionPointers?.QnnInterface}");
 
-            //if (**m_qnnFunctionPointers.QnnInterface == IntPtr.Zero)
-            //{
-            //    Console.Error.WriteLine("QnnInterface pointer is null");
-            //    return StatusCode.FAILURE;
-            //}
+            if (m_qnnFunctionPointers?.QnnInterface.BackendCreate == IntPtr.Zero)
+            {
+                Console.Error.WriteLine("QnnInterface pointer is null");
+                return StatusCode.FAILURE;
+            }
 
-            IntPtr backendCreatePtr = m_qnnFunctionPointers.QnnInterface.BackendCreate;// GetFunctionPointerForDelegate("QnnBackend_Create");
+            IntPtr backendCreatePtr = m_qnnFunctionPointers?.QnnInterface.BackendCreate ?? IntPtr.Zero;
             if (backendCreatePtr == IntPtr.Zero)
             {
                 Console.Error.WriteLine("Failed to get function pointer for QnnBackend_Create");
