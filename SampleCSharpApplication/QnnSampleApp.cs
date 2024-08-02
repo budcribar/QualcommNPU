@@ -12,6 +12,7 @@ namespace SampleCSharpApplication
         private QnnFunctionPointers? m_qnnFunctionPointers = null;
         private Qnn_LogHandle_t m_logHandle;
         private Qnn_BackendHandle_t m_backendHandle;
+        private Qnn_DeviceHandle_t m_deviceHandle = IntPtr.Zero;
         private bool m_isBackendInitialized;
         private IntPtr* m_backendConfig;
 
@@ -93,7 +94,7 @@ namespace SampleCSharpApplication
             }
 
             Console.WriteLine("Creating device...");
-            if (!CreateDevice())
+            if (CreateDevice() != StatusCode.SUCCESS)
             {
                 Console.WriteLine("Device Creation failure");
                 return 1;
@@ -335,10 +336,36 @@ namespace SampleCSharpApplication
             }
         }
 
-        private bool CreateDevice()
+        private StatusCode CreateDevice()
         {
+            if (m_qnnFunctionPointers?.QnnInterface.DeviceCreate == IntPtr.Zero)
+            {
+                Console.Error.WriteLine("DeviceCreate pointer is null");
+                return StatusCode.FAILURE;
+            }
+            IntPtr deviceCreatePtr = m_qnnFunctionPointers?.QnnInterface.DeviceCreate ?? IntPtr.Zero;
+
+            QnnDevice_CreateFn_t deviceCreate = Marshal.GetDelegateForFunctionPointer<QnnDevice_CreateFn_t>(deviceCreatePtr);
+            try
+            {
+                Qnn_ErrorHandle_t qnnStatus = deviceCreate(m_logHandle,IntPtr.Zero, ref m_deviceHandle);
+
+                if (qnnStatus != QNN_SUCCESS)
+                {
+                    Console.Error.WriteLine($"Device property is not supported {qnnStatus}");
+                    return StatusCode.FAILURE;
+                }
+
+                Console.WriteLine($"Initialize Backend Returned Status = {qnnStatus}");
+                return StatusCode.SUCCESS;
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine($"Exception occurred while calling QnnProperty_HasCapabilityFn_t: {ex.Message}");
+                return StatusCode.FAILURE;
+            }
             // Implementation for device creation
-            return true;
+            
         }
 
         private bool InitializeProfiling()
