@@ -5,42 +5,13 @@ using Qnn_LogHandle_t = System.IntPtr;
 using Qnn_BackendHandle_t = System.IntPtr;
 using static SampleCSharpApplication.DynamicLoadUtil;
 
-
-
-
 namespace SampleCSharpApplication
 {
-
-
-
-
-
-
-    [StructLayout(LayoutKind.Sequential)]
-    public struct QnnApiVersion
-    {
-        public uint Major;
-        public uint Minor;
-        public uint Patch;
-    }
-
-    [StructLayout(LayoutKind.Sequential)]
-    public struct Qnn_ApiVersion_t
-    {
-        public uint Major;
-        public uint Minor;
-        public uint Patch;
-    }
-
-   
-
+  
     public unsafe class QnnSampleApp
     {
-        [DllImport("../../../QnnHtpArm64.dll", CallingConvention = CallingConvention.Cdecl)]
-        static extern Qnn_ErrorHandle_t QnnLog_Create(  IntPtr logCallback,  int logLevel,  ref Qnn_LogHandle_t logHandle);
-
         private QnnLog_CallbackFn_t m_logCallback; // Class member to keep the delegate alive
-        private QnnFunctionPointers m_qnnFunctionPointers = null;
+        private QnnFunctionPointers? m_qnnFunctionPointers = null;
         private Qnn_LogHandle_t m_logHandle;
         private Qnn_BackendHandle_t m_backendHandle;
         private bool m_isBackendInitialized;
@@ -69,37 +40,7 @@ namespace SampleCSharpApplication
             DEBUG = 5
         }
 
-        /*
-         * 
-         * C++ Definitions
-        typedef enum {
-  // Enum Levels must be in ascending order, so that the enum value
-  // can be compared with the "maximum" set in QnnLog_create().
-  QNN_LOG_LEVEL_ERROR   = 1,
-  QNN_LOG_LEVEL_WARN    = 2,
-  QNN_LOG_LEVEL_INFO    = 3,
-  QNN_LOG_LEVEL_VERBOSE = 4,
-  /// Reserved for developer debugging
-  QNN_LOG_LEVEL_DEBUG = 5,
-  // Present to ensure 32 bits
-  QNN_LOG_LEVEL_MAX = 0x7fffffff
-} QnnLog_Level_t;
-
-        typedef void* Qnn_Handle_t;
-
-        typedef Qnn_Handle_t Qnn_LogHandle_t;
-
-
-
-        typedef void (*QnnLog_Callback_t)(const char* fmt,
-                                  QnnLog_Level_t level,
-                                  uint64_t timestamp,
-                                  va_list args);
-
-        typedef Qnn_ErrorHandle_t(*QnnLog_CreateFn_t)(QnnLog_Callback_t callback,
-                                               QnnLog_Level_t maxLogLevel,
-                                               Qnn_LogHandle_t* logger);
-        */
+      
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         private delegate Qnn_ErrorHandle_t QnnLog_CreateFn_t(
