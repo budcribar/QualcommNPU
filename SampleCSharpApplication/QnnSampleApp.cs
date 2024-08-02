@@ -1,8 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 using System.Diagnostics;
-using Qnn_ErrorHandle_t = System.UInt64;
-using Qnn_LogHandle_t = System.IntPtr;
-using Qnn_BackendHandle_t = System.IntPtr;
+using static SampleCSharpApplication.QnnDelegates;
 using static SampleCSharpApplication.DynamicLoadUtil;
 
 namespace SampleCSharpApplication
@@ -42,20 +40,7 @@ namespace SampleCSharpApplication
 
       
 
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        private delegate Qnn_ErrorHandle_t QnnLog_CreateFn_t(
-        IntPtr logCallback,
-        int logLevel,
-        ref Qnn_LogHandle_t logHandle);
-
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        private delegate void QnnLog_CallbackFn_t(int level, IntPtr msg);
-
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        private delegate Qnn_ErrorHandle_t QnnBackend_CreateFn_t(
-            Qnn_LogHandle_t logger,
-            IntPtr* config,
-            ref Qnn_BackendHandle_t backend);
+       
 
         public QnnSampleApp(string model, string backend, string inputList, int duration)
         {
@@ -190,7 +175,7 @@ namespace SampleCSharpApplication
                         return;
                     }
 
-                    QnnLog_CreateFn_t logCreate = Marshal.GetDelegateForFunctionPointer<QnnLog_CreateFn_t>(logCreatePtr);
+                    QnnDelegates.QnnLog_CreateFn_t logCreate = Marshal.GetDelegateForFunctionPointer<QnnLog_CreateFn_t>(logCreatePtr);
 
                     Qnn_ErrorHandle_t result = logCreate(new IntPtr(0), (int)logLevel, ref m_logHandle);
                    

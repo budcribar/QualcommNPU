@@ -1,7 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Runtime.InteropServices;
-using Qnn_ErrorHandle_t = System.Int32;
+﻿using System.Runtime.InteropServices;
 
 namespace SampleCSharpApplication
 {
@@ -68,7 +65,7 @@ namespace SampleCSharpApplication
 
             IntPtr* providerListPtr;
             uint numProviders = 0;
-            int result = getProviders(out providerListPtr, ref numProviders);
+            Qnn_ErrorHandle_t result = getProviders(out providerListPtr, ref numProviders);
 
             if (result != 0 || numProviders == 0 || providerListPtr == null)
             {
