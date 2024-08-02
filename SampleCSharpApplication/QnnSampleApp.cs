@@ -13,6 +13,7 @@ namespace SampleCSharpApplication
         private Qnn_LogHandle_t m_logHandle;
         private Qnn_BackendHandle_t m_backendHandle;
         private Qnn_DeviceHandle_t m_deviceHandle = IntPtr.Zero;
+        private Qnn_ContextHandle_t m_context = IntPtr.Zero;
         private bool m_isBackendInitialized;
         private IntPtr* m_backendConfig;
 
@@ -100,22 +101,22 @@ namespace SampleCSharpApplication
                 return 1;
             }
 
-            Console.WriteLine("Initializing profiling...");
-            if (!InitializeProfiling())
-            {
-                Console.WriteLine("Profiling Initialization failure");
-                return 1;
-            }
+            //Console.WriteLine("Initializing profiling...");
+            //if (!InitializeProfiling())
+            //{
+            //    Console.WriteLine("Profiling Initialization failure");
+            //    return 1;
+            //}
 
-            Console.WriteLine("Registering op packages...");
-            if (!RegisterOpPackages())
-            {
-                Console.WriteLine("Register Op Packages failure");
-                return 1;
-            }
+            //Console.WriteLine("Registering op packages...");
+            //if (!RegisterOpPackages())
+            //{
+            //    Console.WriteLine("Register Op Packages failure");
+            //    return 1;
+            //}
 
             Console.WriteLine("Creating context...");
-            if (!CreateContext())
+            if (CreateContext() != StatusCode.SUCCESS)
             {
                 Console.WriteLine("Context Creation failure");
                 return 1;
@@ -368,22 +369,47 @@ namespace SampleCSharpApplication
             
         }
 
-        private bool InitializeProfiling()
-        {
-            // Implementation for profiling initialization
-            return true;
-        }
+        //private bool InitializeProfiling()
+        //{
+        //    // Implementation for profiling initialization
+        //    return true;
+        //}
 
-        private bool RegisterOpPackages()
-        {
-            // Implementation for registering op packages
-            return true;
-        }
+        //private bool RegisterOpPackages()
+        //{
+        //    // Implementation for registering op packages
+        //    return true;
+        //}
 
-        private bool CreateContext()
+        private StatusCode CreateContext()
         {
-            // Implementation for context creation
-            return true;
+            if (m_qnnFunctionPointers?.QnnInterface.ContextCreate == IntPtr.Zero)
+            {
+                Console.Error.WriteLine("ContextCreate pointer is null");
+                return StatusCode.FAILURE;
+            }
+            IntPtr contextCreatePtr = m_qnnFunctionPointers?.QnnInterface.ContextCreate ?? IntPtr.Zero;
+
+            QnnContext_CreateFn_t contextCreate = Marshal.GetDelegateForFunctionPointer<QnnContext_CreateFn_t>(contextCreatePtr);
+            try
+            {
+                Qnn_ErrorHandle_t qnnStatus = contextCreate(m_backendHandle, m_deviceHandle, IntPtr.Zero, ref m_context);
+
+                if (qnnStatus != QNN_SUCCESS)
+                {
+                    Console.Error.WriteLine($"contextCreate failed {qnnStatus}");
+                    return StatusCode.FAILURE;
+                }
+
+                Console.WriteLine($"contextCreate Returned Status = {qnnStatus}");
+                return StatusCode.SUCCESS;
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine($"Exception occurred while calling QnnContext_CreateFn_t: {ex.Message}");
+                return StatusCode.FAILURE;
+            }
+            // Implementation for device creation
         }
 
         private bool ComposeGraphs()

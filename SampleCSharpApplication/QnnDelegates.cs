@@ -21,6 +21,9 @@ namespace SampleCSharpApplication
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         public delegate Qnn_ErrorHandle_t QnnDevice_CreateFn_t(Qnn_LogHandle_t logger,IntPtr config, ref Qnn_DeviceHandle_t device);
 
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate Qnn_ErrorHandle_t QnnContext_CreateFn_t(Qnn_BackendHandle_t backend, Qnn_DeviceHandle_t device,IntPtr config, ref Qnn_ContextHandle_t context);
+
     }
 }
 
