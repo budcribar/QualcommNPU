@@ -57,6 +57,19 @@ dynamicloadutil::StatusCode dynamicloadutil::getQnnFunctionPointers(
     return StatusCode::FAIL_SYM_FUNCTION;
   }
   QnnInterface_t** interfaceProviders{nullptr};
+
+  std::cout << "Offset of backendId: " << offsetof(QnnInterface_t, backendId) << " bytes\n";
+  std::cout << "Offset of providerName: " << offsetof(QnnInterface_t, providerName) << " bytes\n";
+  std::cout << "Offset of apiVersion: " << offsetof(QnnInterface_t, apiVersion) << " bytes\n";
+  std::cout << "Offset of QNN_INTERFACE_VER_NAME: " << offsetof(QnnInterface_t, QNN_INTERFACE_VER_NAME) << " bytes\n";
+
+
+  // Potential padding 
+  std::cout << "\nSize of QnnInterface_t: " << sizeof(QnnInterface_t) << " bytes\n";
+  std::cout << "Sum of field sizes: "
+      << sizeof(uint32_t) + sizeof(const char*) + sizeof(Qnn_ApiVersion_t) + sizeof(QNN_INTERFACE_VER_TYPE)
+      << " bytes\n";
+
   uint32_t numProviders{0};
   if (QNN_SUCCESS !=
       getInterfaceProviders((const QnnInterface_t***)&interfaceProviders, &numProviders)) {

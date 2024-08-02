@@ -11,7 +11,7 @@ namespace SampleCSharpApplication
     
         public IntPtr ComposeGraphsFnHandle;
         public IntPtr FreeGraphInfoFnHandle;
-        public IntPtr QnnInterface;
+        unsafe public QnnInterface QnnInterface;
     }
    
 

@@ -21,34 +21,9 @@ namespace SampleCSharpApplication
         [DllImport("kernel32.dll")]
         private static extern uint GetLastError();
 
-        // Constants
         private const int QNN_API_VERSION_MAJOR = 2;
         private const int QNN_API_VERSION_MINOR = 15;
 
-        // Structures
-        [StructLayout(LayoutKind.Sequential)]
-        public struct CoreApiVersion
-        {
-            public uint Major;
-            public uint Minor;
-            public uint Patch;
-        }
-
-        [StructLayout(LayoutKind.Sequential)]
-        public struct ApiVersion
-        {
-            public CoreApiVersion CoreApiVersion;
-            public CoreApiVersion BackendApiVersion;
-        }
-
-        [StructLayout(LayoutKind.Sequential)]
-        public struct QnnInterface
-        {
-            public uint BackendId;
-            public IntPtr ProviderName;  // const char* in C++ becomes IntPtr in C#
-            public ApiVersion ApiVersion;
-            public IntPtr QNN_INTERFACE_VER_NAME;  // We'll treat the union as an IntPtr
-        }
         // Delegate types
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         private unsafe delegate Qnn_ErrorHandle_t QnnInterfaceGetProvidersFn_t(
@@ -107,13 +82,16 @@ namespace SampleCSharpApplication
             for (int i = 0; i < numProviders; i++)
             {
                 IntPtr providerPtr = providerListPtr[i];
-                QnnInterface provider = Marshal.PtrToStructure<QnnInterface>(providerPtr);
+                QnnInterface_t provider = Marshal.PtrToStructure<QnnInterface_t>(providerPtr);
 
                 if (QNN_API_VERSION_MAJOR == provider.ApiVersion.CoreApiVersion.Major &&
                     QNN_API_VERSION_MINOR <= provider.ApiVersion.CoreApiVersion.Minor)
                 {
-                    foundValidInterface = true;
-                    qnnFunctionPointers.QnnInterface = provider.QNN_INTERFACE_VER_NAME;
+                    foundValidInterface = true;//0x000001defa1347a8 is the start of the interface table
+                    qnnFunctionPointers.QnnInterface = Marshal.PtrToStructure<QnnInterface>( provider.QNN_INTERFACE_VER_NAME);
+                    //qnnFunctionPointers.QnnInterface = (IntPtr**)Marshal.ReadIntPtr(providerPtr, 40);
+
+
                     break;
                 }
             }

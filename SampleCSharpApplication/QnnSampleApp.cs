@@ -1,23 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 using System.Diagnostics;
-using Qnn_ErrorHandle_t = System.Int32;
-using System.Security.Cryptography;
+using Qnn_ErrorHandle_t = System.UInt64;
 using Qnn_LogHandle_t = System.IntPtr;
 using Qnn_BackendHandle_t = System.IntPtr;
+using static SampleCSharpApplication.DynamicLoadUtil;
 
 
 
 
 namespace SampleCSharpApplication
 {
-   
 
-    
 
-   
+
+
+
 
     [StructLayout(LayoutKind.Sequential)]
     public struct QnnApiVersion
@@ -72,6 +69,38 @@ namespace SampleCSharpApplication
             DEBUG = 5
         }
 
+        /*
+         * 
+         * C++ Definitions
+        typedef enum {
+  // Enum Levels must be in ascending order, so that the enum value
+  // can be compared with the "maximum" set in QnnLog_create().
+  QNN_LOG_LEVEL_ERROR   = 1,
+  QNN_LOG_LEVEL_WARN    = 2,
+  QNN_LOG_LEVEL_INFO    = 3,
+  QNN_LOG_LEVEL_VERBOSE = 4,
+  /// Reserved for developer debugging
+  QNN_LOG_LEVEL_DEBUG = 5,
+  // Present to ensure 32 bits
+  QNN_LOG_LEVEL_MAX = 0x7fffffff
+} QnnLog_Level_t;
+
+        typedef void* Qnn_Handle_t;
+
+        typedef Qnn_Handle_t Qnn_LogHandle_t;
+
+
+
+        typedef void (*QnnLog_Callback_t)(const char* fmt,
+                                  QnnLog_Level_t level,
+                                  uint64_t timestamp,
+                                  va_list args);
+
+        typedef Qnn_ErrorHandle_t(*QnnLog_CreateFn_t)(QnnLog_Callback_t callback,
+                                               QnnLog_Level_t maxLogLevel,
+                                               Qnn_LogHandle_t* logger);
+        */
+
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         private delegate Qnn_ErrorHandle_t QnnLog_CreateFn_t(
         IntPtr logCallback,
@@ -121,7 +150,7 @@ namespace SampleCSharpApplication
             Console.WriteLine("Initializing...");
             var initializer = new QnnInitializer();
             m_qnnFunctionPointers = initializer.Initialize(backend, model, false);
-
+           
             InitializeLogging();
 
             Console.WriteLine("Initializing backend...");
@@ -208,22 +237,22 @@ namespace SampleCSharpApplication
 
                 try
                 {
-                   
+                    Qnn_LogHandle_t logHandle = IntPtr.Zero;
                     IntPtr logCallbackPtr = Marshal.GetFunctionPointerForDelegate(m_logCallback);
 
-                    IntPtr logCreatePtr = GetFunctionPointerForDelegate("QnnLog_Create");
+                    //IntPtr logCreatePtr = GetFunctionPointerForDelegate("QnnLog_Create");
+                    IntPtr logCreatePtr = m_qnnFunctionPointers.QnnInterface.LogCreate;
+                   
                     if (logCreatePtr == IntPtr.Zero)
                     {
                         Console.Error.WriteLine("Failed to get function pointer for QnnLog_Create");
                         return;
                     }
 
-                    QnnLog_CreateFn_t backendCreate = Marshal.GetDelegateForFunctionPointer<QnnLog_CreateFn_t>(logCreatePtr);
+                    QnnLog_CreateFn_t logCreate = Marshal.GetDelegateForFunctionPointer<QnnLog_CreateFn_t>(logCreatePtr);
 
-                    Qnn_ErrorHandle_t result = backendCreate(new IntPtr(0), (int)logLevel, ref m_logHandle);
-                   // Qnn_ErrorHandle_t result = backendCreate(logCallbackPtr, (int)logLevel, ref m_logHandle);
-                    //Qnn_ErrorHandle_t result = QnnLog_Create(logCallbackPtr, (int)logLevel, ref m_logHandle);
-
+                    Qnn_ErrorHandle_t result = logCreate(new IntPtr(0), (int)logLevel, ref m_logHandle);
+                   
                     if (result != QNN_SUCCESS)
                     {
                         Console.WriteLine($"Unable to initialize logging in the backend. Error code: {result}");
@@ -305,68 +334,68 @@ namespace SampleCSharpApplication
             Console.WriteLine($"[{(LogLevel)level}] {message}");
         }
 
-        public IntPtr GetOffsetQnnInterface(int offset)
-        {
-            if (m_qnnFunctionPointers.QnnInterface == IntPtr.Zero)
-            {
-                throw new Exception("QnnInterface pointer is null");
-            }
+        //public IntPtr GetOffsetQnnInterface(int offset)
+        //{
+        //    //if (**m_qnnFunctionPointers.QnnInterface == IntPtr.Zero)  //0x540005a87104fc1f
+        //    //{
+        //    //    throw new Exception("QnnInterface pointer is null");
+        //    //}
 
-            byte* ptr = (byte*)m_qnnFunctionPointers.QnnInterface.ToPointer();
-            ptr += offset;
-            return new IntPtr(ptr);
-        }
+        //    IntPtr** ptr  = m_qnnFunctionPointers.QnnInterface;
+        //    ptr += offset;
+        //    return new IntPtr(*ptr);
+        //}
 
-        private IntPtr GetFunctionPointerForDelegate(string functionName)
-        {
-            if (m_qnnFunctionPointers.QnnInterface == IntPtr.Zero)
-            {
-                Console.WriteLine("QnnInterface pointer is null");
-                return IntPtr.Zero;
-            }
+        //private IntPtr GetFunctionPointerForDelegate(string functionName)
+        //{
+        //    if ((**m_qnnFunctionPointers.QnnInterface) == IntPtr.Zero)
+        //    {
+        //        Console.WriteLine("QnnInterface pointer is null");
+        //        return IntPtr.Zero;
+        //    }
 
-            //IntPtr* interfacePtr = (IntPtr*)m_qnnFunctionPointers.QnnInterface;
-
-            //QnnInterface* interfacePtr = (QnnInterface*)m_qnnFunctionPointers.QnnInterface;
-            //QnnInterface interfacex = m_qnnFunctionPointers.QnnInterface 
-
-            switch (functionName)
-            {
-                case "QnnProperty_HasCapability":
-                    return GetOffsetQnnInterface(0);
-                case "QnnBackend_Create":
-                    return GetOffsetQnnInterface(1*8);
-                case "QnnBackend_SetConfig":
-                    return GetOffsetQnnInterface(2 * 8);
+        //    switch (functionName)
+        //    {
+        //        case "QnnProperty_HasCapability":
+        //            return GetOffsetQnnInterface(0);
+        //        case "QnnBackend_Create":
+        //            return GetOffsetQnnInterface(1*8);
+        //        case "QnnBackend_SetConfig":
+        //            return GetOffsetQnnInterface(2 * 8);
                  
-                case "QnnBackend_GetApiVersion":
-                    return GetOffsetQnnInterface(3 * 8);
+        //        case "QnnBackend_GetApiVersion":
+        //            return GetOffsetQnnInterface(3 * 8);
                    
-                case "QnnBackend_GetBuildId":
-                    return GetOffsetQnnInterface(4 * 8);
+        //        case "QnnBackend_GetBuildId":
+        //            return GetOffsetQnnInterface(4 * 8);
                    
-                // Add more cases as needed, incrementing the index for each function pointer
-                case "QnnLog_Create":
-                    return GetOffsetQnnInterface(400);
-                    //return interfacePtr[25]; // Adjust this index based on the actual position in the struct
-                                           // ... other cases ...
-                default:
-                    Console.WriteLine($"Unknown function name: {functionName}");
-                    return IntPtr.Zero;
-            }
-        }
+        //        // Add more cases as needed, incrementing the index for each function pointer
+        //        case "QnnLog_Create":
+        //            return GetOffsetQnnInterface(25);
+
+        //        // 0x000001defa1347a8 is start
+        //        // 0x000001defa134870 is where log create is
+                
+        //        // {propertyHasCapability=QnnHtpArm64.dll!0x00007ffeaceeb970 backendCreate=QnnHtpArm64.dll!0x00007ffeaceecc40 ...}
+        //        // 0x000001defa134870 { QnnHtpArm64.dll!0x00007ffeaceef410}
+        //        // 0x00007ffeaceef410
+        //        default:
+        //            Console.WriteLine($"Unknown function name: {functionName}");
+        //            return IntPtr.Zero;
+        //    }
+        //}
         public unsafe StatusCode InitializeBackend()
         {
             Console.WriteLine("Entering InitializeBackend method");
             Console.WriteLine($"QnnInterface pointer: {m_qnnFunctionPointers.QnnInterface}");
 
-            if (m_qnnFunctionPointers.QnnInterface == IntPtr.Zero)
-            {
-                Console.Error.WriteLine("QnnInterface pointer is null");
-                return StatusCode.FAILURE;
-            }
+            //if (**m_qnnFunctionPointers.QnnInterface == IntPtr.Zero)
+            //{
+            //    Console.Error.WriteLine("QnnInterface pointer is null");
+            //    return StatusCode.FAILURE;
+            //}
 
-            IntPtr backendCreatePtr = GetFunctionPointerForDelegate("QnnBackend_Create");
+            IntPtr backendCreatePtr = m_qnnFunctionPointers.QnnInterface.BackendCreate;// GetFunctionPointerForDelegate("QnnBackend_Create");
             if (backendCreatePtr == IntPtr.Zero)
             {
                 Console.Error.WriteLine("Failed to get function pointer for QnnBackend_Create");
