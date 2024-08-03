@@ -268,13 +268,13 @@ namespace SampleCSharpApplication
         public delegate Qnn_ErrorHandle_t QnnContext_CreateFn_t(Qnn_BackendHandle_t backend, Qnn_DeviceHandle_t device,IntPtr config, ref Qnn_ContextHandle_t context);
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate ModelError_t ComposeGraphsFnHandleType_t(
+        unsafe public delegate ModelError_t ComposeGraphsFnHandleType_t(
             Qnn_BackendHandle_t backendHandle,
             IntPtr qnnInterface,
             Qnn_ContextHandle_t context,
             [In] IntPtr[] graphConfigInfos,  // const qnn_wrapper_api::GraphConfigInfo_t**
             uint graphConfigInfosCount,
-            out IntPtr[] graphInfos,  // qnn_wrapper_api::GraphInfo_t***
+            out GraphInfo_t* graphInfos,  // qnn_wrapper_api::GraphInfo_t***
             out uint graphInfosCount,
             [MarshalAs(UnmanagedType.I1)] bool debug,
             QnnLog_Callback_t logCallback,

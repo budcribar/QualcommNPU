@@ -15,7 +15,7 @@ namespace SampleCSharpApplication
         private Qnn_BackendHandle_t m_backendHandle;
         private Qnn_DeviceHandle_t m_deviceHandle = IntPtr.Zero;
         private Qnn_ContextHandle_t m_context = IntPtr.Zero;
-        private IntPtr[] m_graphInfos = Array.Empty<IntPtr>();
+        private unsafe GraphInfo_t* m_graphsInfos;
         private uint m_graphsCount = 0;
         private bool m_isBackendInitialized;
         private IntPtr* m_backendConfig;
@@ -177,8 +177,7 @@ namespace SampleCSharpApplication
                     Qnn_LogHandle_t logHandle = IntPtr.Zero;
                     IntPtr logCallbackPtr = Marshal.GetFunctionPointerForDelegate(m_logCallback);
 
-                    //IntPtr logCreatePtr = GetFunctionPointerForDelegate("QnnLog_Create");
-                    IntPtr logCreatePtr = m_qnnFunctionPointers.QnnInterface.LogCreate;
+                    IntPtr logCreatePtr = m_qnnFunctionPointers?.QnnInterface.LogCreate ?? IntPtr.Zero;
                    
                     if (logCreatePtr == IntPtr.Zero)
                     {
@@ -210,46 +209,7 @@ namespace SampleCSharpApplication
             }
         }
 
-        //private void InitializeLogging()
-        //{
-        //    if (IsLogInitialized())
-        //    {
-        //        m_logCallback = LogMessage; // Store the delegate as a class member
-        //        var logLevel = GetLogLevel();
-        //        Console.WriteLine($"Initializing logging in the backend. Callback: [{m_logCallback.Method.Name}], Log Level: [{logLevel}]");
-
-        //        try
-        //        {
-        //            IntPtr logCreatePtr = GetFunctionPointerForDelegate("QnnLog_Create");
-        //            if (logCreatePtr == IntPtr.Zero)
-        //            {
-        //                Console.WriteLine("Unable to get function pointer for QnnLog_Create");
-        //                return;
-        //            }
-
-        //            var logCreateFn = Marshal.GetDelegateForFunctionPointer<QnnLog_CreateFn_t>(logCreatePtr);
-        //            IntPtr logCallbackPtr = Marshal.GetFunctionPointerForDelegate(m_logCallback);
-        //            Qnn_ErrorHandle_t result = logCreateFn(logCallbackPtr, (int)logLevel, ref m_logHandle);
-
-        //            if (result != QNN_SUCCESS)
-        //            {
-        //                Console.WriteLine($"Unable to initialize logging in the backend. Error code: {result}");
-        //            }
-        //            else
-        //            {
-        //                Console.WriteLine("Logging initialized successfully");
-        //            }
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            Console.WriteLine($"Exception occurred while initializing logging: {ex.Message}");
-        //        }
-        //    }
-        //    else
-        //    {
-        //        Console.WriteLine("Logging not available in the backend.");
-        //    }
-        //}
+       
 
         private bool IsLogInitialized()
         {
@@ -452,7 +412,7 @@ namespace SampleCSharpApplication
                 QnnLog_Callback_t qnnLog_Callback_T = null;
                 QnnLog_Level_t log_level = QnnLog_Level_t.QNN_LOG_LEVEL_ERROR;
 
-                ModelError_t qnnStatus = composeGraphs(m_backendHandle, GetPropertyHasCapabilityPointerAddress(), m_context, m_graphConfigsInfo, graphConfigInfosCount, out m_graphInfos, out m_graphsCount, false, m_logCallback, log_level);
+                ModelError_t qnnStatus = composeGraphs(m_backendHandle, GetPropertyHasCapabilityPointerAddress(), m_context, m_graphConfigsInfo, graphConfigInfosCount,out  m_graphsInfos, out m_graphsCount, false, m_logCallback, log_level);
 
                 if (qnnStatus != QNN_SUCCESS)
                 {
@@ -484,7 +444,12 @@ namespace SampleCSharpApplication
                 QnnGraph_FinalizeFn_t graphFinalize = Marshal.GetDelegateForFunctionPointer<QnnGraph_FinalizeFn_t>(graphFinalizePtr);
                 try
                 {
-                    Qnn_ErrorHandle_t qnnStatus = graphFinalize(m_graphInfos[graphIdx],IntPtr.Zero,IntPtr.Zero);
+                    GraphInfo_t* graphInfoArray = m_graphsInfos;
+
+                    // Access the specific GraphInfo_t at the given index
+                    GraphInfo_t* graphInfo = &graphInfoArray[graphIdx];
+
+                    Qnn_ErrorHandle_t qnnStatus = graphFinalize(new IntPtr(graphInfo), IntPtr.Zero,IntPtr.Zero);
 
                     if (qnnStatus != QNN_SUCCESS)
                     {
