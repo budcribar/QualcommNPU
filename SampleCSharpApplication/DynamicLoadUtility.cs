@@ -84,7 +84,7 @@ namespace SampleCSharpApplication
                 if (QNN_API_VERSION_MAJOR == provider.ApiVersion.CoreApiVersion.Major &&
                     QNN_API_VERSION_MINOR <= provider.ApiVersion.CoreApiVersion.Minor)
                 {
-                    foundValidInterface = true;//0x000001defa1347a8 is the start of the interface table
+                    foundValidInterface = true;
                     qnnFunctionPointers.QnnInterface = Marshal.PtrToStructure<QnnInterface_t>(providerPtr);
                     //qnnFunctionPointers.QnnInterface = (IntPtr**)Marshal.ReadIntPtr(providerPtr, 40);
 

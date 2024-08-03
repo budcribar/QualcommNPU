@@ -73,3 +73,177 @@ typedef struct {
                                                Qnn_LogHandle_t* logger);
         */
 
+
+typedef enum ModelError {
+  MODEL_NO_ERROR               = 0,
+  MODEL_TENSOR_ERROR           = 1,
+  MODEL_PARAMS_ERROR           = 2,
+  MODEL_NODES_ERROR            = 3,
+  MODEL_GRAPH_ERROR            = 4,
+  MODEL_CONTEXT_ERROR          = 5,
+  MODEL_GENERATION_ERROR       = 6,
+  MODEL_SETUP_ERROR            = 7,
+  MODEL_INVALID_ARGUMENT_ERROR = 8,
+  MODEL_FILE_ERROR             = 9,
+  MODEL_MEMORY_ALLOCATE_ERROR  = 10,
+  // Value selected to ensure 32 bits.
+  MODEL_UNKNOWN_ERROR = 0x7FFFFFFF
+} ModelError_t;
+
+
+typedef struct {
+  QnnProperty_HasCapabilityFn_t             propertyHasCapability;
+
+  QnnBackend_CreateFn_t                     backendCreate;
+  QnnBackend_SetConfigFn_t                  backendSetConfig;
+  QnnBackend_GetApiVersionFn_t              backendGetApiVersion;
+  QnnBackend_GetBuildIdFn_t                 backendGetBuildId;
+  QnnBackend_RegisterOpPackageFn_t          backendRegisterOpPackage;
+  QnnBackend_GetSupportedOperationsFn_t     backendGetSupportedOperations;
+  QnnBackend_ValidateOpConfigFn_t           backendValidateOpConfig;
+  QnnBackend_FreeFn_t                       backendFree;
+
+  QnnContext_CreateFn_t                     contextCreate;
+  QnnContext_SetConfigFn_t                  contextSetConfig;
+  QnnContext_GetBinarySizeFn_t              contextGetBinarySize;
+  QnnContext_GetBinaryFn_t                  contextGetBinary;
+  QnnContext_CreateFromBinaryFn_t           contextCreateFromBinary;
+  QnnContext_FreeFn_t                       contextFree;
+
+  QnnGraph_CreateFn_t                       graphCreate;
+  QnnGraph_CreateSubgraphFn_t               graphCreateSubgraph;
+  QnnGraph_SetConfigFn_t                    graphSetConfig;
+  QnnGraph_AddNodeFn_t                      graphAddNode;
+  QnnGraph_FinalizeFn_t                     graphFinalize;
+  QnnGraph_RetrieveFn_t                     graphRetrieve;
+  QnnGraph_ExecuteFn_t                      graphExecute;
+  QnnGraph_ExecuteAsyncFn_t                 graphExecuteAsync;
+
+  QnnTensor_CreateContextTensorFn_t         tensorCreateContextTensor;
+  QnnTensor_CreateGraphTensorFn_t           tensorCreateGraphTensor;
+
+  QnnLog_CreateFn_t                         logCreate;
+  QnnLog_SetLogLevelFn_t                    logSetLogLevel;
+  QnnLog_FreeFn_t                           logFree;
+
+  QnnProfile_CreateFn_t                     profileCreate;
+  QnnProfile_SetConfigFn_t                  profileSetConfig;
+  QnnProfile_GetEventsFn_t                  profileGetEvents;
+  QnnProfile_GetSubEventsFn_t               profileGetSubEvents;
+  QnnProfile_GetEventDataFn_t               profileGetEventData;
+  QnnProfile_GetExtendedEventDataFn_t       profileGetExtendedEventData;
+  QnnProfile_FreeFn_t                       profileFree;
+
+  QnnMem_RegisterFn_t                       memRegister;
+  QnnMem_DeRegisterFn_t                     memDeRegister;
+
+  QnnDevice_GetPlatformInfoFn_t             deviceGetPlatformInfo;
+  QnnDevice_FreePlatformInfoFn_t            deviceFreePlatformInfo;
+  QnnDevice_GetInfrastructureFn_t           deviceGetInfrastructure;
+  QnnDevice_CreateFn_t                      deviceCreate;
+  QnnDevice_SetConfigFn_t                   deviceSetConfig;
+  QnnDevice_GetInfoFn_t                     deviceGetInfo;
+  QnnDevice_FreeFn_t                        deviceFree;
+
+  QnnSignal_CreateFn_t                      signalCreate;
+  QnnSignal_SetConfigFn_t                   signalSetConfig;
+  QnnSignal_TriggerFn_t                     signalTrigger;
+  QnnSignal_FreeFn_t                        signalFree;
+
+  QnnError_GetMessageFn_t                   errorGetMessage;
+  QnnError_GetVerboseMessageFn_t            errorGetVerboseMessage;
+  QnnError_FreeVerboseMessageFn_t           errorFreeVerboseMessage;
+
+  QnnGraph_PrepareExecutionEnvironmentFn_t  graphPrepareExecutionEnvironment;
+  QnnGraph_ReleaseExecutionEnvironmentFn_t  graphReleaseExecutionEnvironment;
+  QnnGraph_GetPropertyFn_t                  graphGetProperty;
+
+  QnnContext_ValidateBinaryFn_t             contextValidateBinary;
+  QnnContext_CreateFromBinaryWithSignalFn_t contextCreateFromBinaryWithSignal;
+
+} QNN_INTERFACE_VER_TYPE;
+
+
+typedef struct GraphConfigInfo {
+  char *graphName;
+  const QnnGraph_Config_t **graphConfigs;
+} GraphConfigInfo_t;
+typedef struct {
+  QnnGraph_ConfigOption_t option;
+  union UNNAMED {
+    QnnGraph_CustomConfig_t customConfig;
+    Qnn_Priority_t priority;
+    Qnn_ProfileHandle_t profileHandle;
+    QnnGraph_ProfilingState_t profilingState;
+    uint32_t numProfilingExecutions;
+  };
+} QnnGraph_Config_t;
+
+typedef enum {
+  /// QNN_PRIORITY_LOW is always available for use.
+  QNN_PRIORITY_LOW = 0,
+  /// QNN_PRIORITY_NORMAL is always available for use.
+  QNN_PRIORITY_NORMAL  = 100,
+  QNN_PRIORITY_DEFAULT = QNN_PRIORITY_NORMAL,
+  /// QNN_PRIORITY_NORMAL_HIGH usage may be restricted and would silently be treated as
+  /// QNN_PRIORITY_NORMAL
+  QNN_PRIORITY_NORMAL_HIGH = 150,
+  /// QNN_PRIORITY_HIGH usage may be restricted and would silently be treated as
+  /// QNN_PRIORITY_NORMAL
+  QNN_PRIORITY_HIGH = 200,
+  // Unused, present to ensure 32 bits.
+  QNN_PRIORITY_UNDEFINED = 0x7FFFFFFF
+} Qnn_Priority_t;
+typedef enum {
+  /// Profiling is enabled for the graph
+  QNN_GRAPH_PROFILING_STATE_ENABLED = 1,
+  /// Profiling is disabled for the graph
+  QNN_GRAPH_PROFILING_STATE_DISABLED = 2,
+  // Unused, present to ensure 32 bits.
+  QNN_GRAPH_PROFILING_STATE_UNDEFINED = 0x7FFFFFFF
+} QnnGraph_ProfilingState_t;
+
+typedef Qnn_Handle_t Qnn_ProfileHandle_t;
+
+typedef void* QnnGraph_CustomConfig_t;
+
+typedef enum {
+  /// Sets backend custom configs, see backend specific documentation.
+  QNN_GRAPH_CONFIG_OPTION_CUSTOM = 0,
+  /// Sets priority of a graph within the context. This config overrides
+  /// QNN_CONTEXT_CONFIG_OPTION_PRIORITY which provides the default graph priority.
+  QNN_GRAPH_CONFIG_OPTION_PRIORITY = 3,
+  /// Enables continuous profiling of a graph. This can include finalize and execute data. The
+  /// profile handle will be bound to the graph until a new handle is bound or the graph has been
+  /// freed. This feature is mutually exclusive with the per-API profile handles. A
+  /// Qnn_ProfileHandle_t bound to a graph can be concurrently used with QnnProfile_get* APIs. A
+  /// Qnn_ProfileHandle_t may only be bound to one graph at a time. A different Qnn_ProfileHandle_t
+  /// may be bound to the graph via QnnGraph_setConfig.
+  QNN_GRAPH_CONFIG_OPTION_PROFILE_HANDLE = 4,
+  /// Sets the profiling state of a graph. This config should only be used in conjunction with
+  /// profiling handles bound with QNN_GRAPH_CONFIG_OPTION_PROFILE_HANDLE. The behaviour is that
+  /// the profiling data is only collected when the state is enabled. Setting the state to disabled
+  /// causes the profiling data collection to cease. The default state is
+  /// QNN_GRAPH_PROFILING_STATE_ENABLED.
+  QNN_GRAPH_CONFIG_OPTION_SET_PROFILING_STATE = 5,
+  /// Sets the maximum number of QnnGraph_execute/QnnGraph_executeAsync calls that will be profiled.
+  /// This config should only be used in conjunction with profiling handles bound with
+  /// QNN_GRAPH_CONFIG_OPTION_PROFILE_HANDLE. The default is the
+  /// QnnGraph_Config_t::numProfilingExecutions maximum numerical limit.
+  QNN_GRAPH_CONFIG_OPTION_SET_PROFILING_NUM_EXECUTIONS = 6,
+  // Unused, present to ensure 32 bits.
+  QNN_GRAPH_CONFIG_OPTION_UNDEFINED = 0x7FFFFFFF
+} QnnGraph_ConfigOption_t;
+
+        typedef qnn_wrapper_api::ModelError_t (*ComposeGraphsFnHandleType_t)(
+    Qnn_BackendHandle_t,
+    QNN_INTERFACE_VER_TYPE,
+    Qnn_ContextHandle_t,
+    const qnn_wrapper_api::GraphConfigInfo_t **,
+    const uint32_t,
+    qnn_wrapper_api::GraphInfo_t ***,
+    uint32_t *,
+    bool,
+    QnnLog_Callback_t,
+    QnnLog_Level_t);
+

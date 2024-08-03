@@ -8,7 +8,7 @@ namespace SampleCSharpApplication
   
     public unsafe class QnnSampleApp
     {
-        private QnnLog_CallbackFn_t m_logCallback; // Class member to keep the delegate alive
+        private QnnLog_Callback_t m_logCallback; // Class member to keep the delegate alive
         private QnnFunctionPointers? m_qnnFunctionPointers = null;
         private Qnn_LogHandle_t m_logHandle;
         private Qnn_BackendHandle_t m_backendHandle;
@@ -16,6 +16,7 @@ namespace SampleCSharpApplication
         private Qnn_ContextHandle_t m_context = IntPtr.Zero;
         private bool m_isBackendInitialized;
         private IntPtr* m_backendConfig;
+        private IntPtr[] m_graphConfigsInfo;
 
         private string model;
         private string backend;
@@ -123,7 +124,7 @@ namespace SampleCSharpApplication
             }
 
             Console.WriteLine("Composing graphs...");
-            if (!ComposeGraphs())
+            if (ComposeGraphs() != StatusCode.SUCCESS)
             {
                 Console.WriteLine("Graph Prepare failure");
                 return 1;
@@ -412,10 +413,58 @@ namespace SampleCSharpApplication
             // Implementation for device creation
         }
 
-        private bool ComposeGraphs()
+        public IntPtr GetPropertyHasCapabilityPointerAddress()
         {
-            // Implementation for composing graphs
-            return true;
+            if (m_qnnFunctionPointers == null)
+            {
+                throw new InvalidOperationException("QnnFunctionPointers is not initialized");
+            }
+
+            // Get a pointer to the QnnInterface_t struct
+            fixed (QnnInterface_t* qnnInterfacePtr = &m_qnnFunctionPointers.QnnInterface)
+            {
+                // Calculate the address of the PropertyHasCapability field
+                IntPtr propertyHasCapabilityPtrAddress = (IntPtr)(&qnnInterfacePtr->PropertyHasCapability);
+                return propertyHasCapabilityPtrAddress;
+            }
+        }
+
+
+        private StatusCode ComposeGraphs()
+        {
+            if (m_qnnFunctionPointers?.ComposeGraphsFnHandle == IntPtr.Zero)
+            {
+                Console.Error.WriteLine("ComposeGraphsFnHandle pointer is null");
+                return StatusCode.FAILURE;
+            }
+            IntPtr composeGraphsPtr = m_qnnFunctionPointers?.ComposeGraphsFnHandle ?? IntPtr.Zero;
+
+            ComposeGraphsFnHandleType_t composeGraphs = Marshal.GetDelegateForFunctionPointer<ComposeGraphsFnHandleType_t>(composeGraphsPtr);
+            try
+            {
+               
+                uint graphConfigInfosCount = 0;
+                uint graphInfosCount = 0;
+                IntPtr graphInfos = IntPtr.Zero;
+                QnnLog_Callback_t qnnLog_Callback_T = null;
+                QnnLog_Level_t log_level = QnnLog_Level_t.QNN_LOG_LEVEL_ERROR;
+
+                ModelError_t qnnStatus = composeGraphs(m_backendHandle, GetPropertyHasCapabilityPointerAddress(), m_context, m_graphConfigsInfo, graphConfigInfosCount, out graphInfos, out graphInfosCount, false, m_logCallback, log_level);
+
+                if (qnnStatus != QNN_SUCCESS)
+                {
+                    Console.Error.WriteLine($"composeGraphs failed {qnnStatus}");
+                    return StatusCode.FAILURE;
+                }
+
+                Console.WriteLine($"composeGraphs Returned Status = {qnnStatus}");
+                return StatusCode.SUCCESS;
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine($"Exception occurred while calling composeGraphs: {ex.Message}");
+                return StatusCode.FAILURE;
+            }
         }
 
         private bool FinalizeGraphs()
