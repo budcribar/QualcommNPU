@@ -5,20 +5,14 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using static SampleCSharpApplication.DynamicLoadUtil;
+using static SampleCSharpApplication.QnnDelegates;
 
 namespace SampleCSharpApplication
 {
     // Constants
    
 
-    [StructLayout(LayoutKind.Sequential)]
-    public struct CoreApiVersion
-    {
-        public uint Major;
-        public uint Minor;
-        public uint Patch;
-    }
-
+   
     [StructLayout(LayoutKind.Sequential)]
     public struct QnnInterface_t
     {

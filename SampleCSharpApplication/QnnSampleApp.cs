@@ -15,6 +15,7 @@ namespace SampleCSharpApplication
         private Qnn_BackendHandle_t m_backendHandle;
         private Qnn_DeviceHandle_t m_deviceHandle = IntPtr.Zero;
         private Qnn_ContextHandle_t m_context = IntPtr.Zero;
+        private IntPtr[] m_graphInfos = Array.Empty<IntPtr>();
         private uint m_graphsCount = 0;
         private bool m_isBackendInitialized;
         private IntPtr* m_backendConfig;
@@ -447,11 +448,11 @@ namespace SampleCSharpApplication
                
                 uint graphConfigInfosCount = 0;
                 //uint graphInfosCount = 0;
-                IntPtr graphInfos = IntPtr.Zero;
+              
                 QnnLog_Callback_t qnnLog_Callback_T = null;
                 QnnLog_Level_t log_level = QnnLog_Level_t.QNN_LOG_LEVEL_ERROR;
 
-                ModelError_t qnnStatus = composeGraphs(m_backendHandle, GetPropertyHasCapabilityPointerAddress(), m_context, m_graphConfigsInfo, graphConfigInfosCount, out graphInfos, out m_graphsCount, false, m_logCallback, log_level);
+                ModelError_t qnnStatus = composeGraphs(m_backendHandle, GetPropertyHasCapabilityPointerAddress(), m_context, m_graphConfigsInfo, graphConfigInfosCount, out m_graphInfos, out m_graphsCount, false, m_logCallback, log_level);
 
                 if (qnnStatus != QNN_SUCCESS)
                 {
@@ -473,6 +474,32 @@ namespace SampleCSharpApplication
         {
             for (uint graphIdx = 0; graphIdx < m_graphsCount; graphIdx++)
             {
+                if (m_qnnFunctionPointers?.QnnInterface.GraphFinalize == IntPtr.Zero)
+                {
+                    Console.Error.WriteLine("GraphFinalize pointer is null");
+                    return StatusCode.FAILURE;
+                }
+                IntPtr graphFinalizePtr = m_qnnFunctionPointers?.QnnInterface.GraphFinalize ?? IntPtr.Zero;
+
+                QnnGraph_FinalizeFn_t graphFinalize = Marshal.GetDelegateForFunctionPointer<QnnGraph_FinalizeFn_t>(graphFinalizePtr);
+                try
+                {
+                    Qnn_ErrorHandle_t qnnStatus = graphFinalize(m_graphInfos[graphIdx],IntPtr.Zero,IntPtr.Zero);
+
+                    if (qnnStatus != QNN_SUCCESS)
+                    {
+                        Console.Error.WriteLine($"GraphFinalize failed {qnnStatus}");
+                        return StatusCode.FAILURE;
+                    }
+
+                    Console.WriteLine($"GraphFinalize Returned Status = {qnnStatus}");
+                    return StatusCode.SUCCESS;
+                }
+                catch (Exception ex)
+                {
+                    Console.Error.WriteLine($"Exception occurred while calling GraphFinalize: {ex.Message}");
+                    return StatusCode.FAILURE;
+                }
                 // TODO
                 //if (0 !=
                 //    m_qnnFunctionPointers.QnnInterface.GraphFinalize(
