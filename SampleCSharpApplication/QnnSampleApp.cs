@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using static SampleCSharpApplication.QnnDelegates;
 using static SampleCSharpApplication.DynamicLoadUtil;
+using System;
 
 namespace SampleCSharpApplication
 {
@@ -14,6 +15,7 @@ namespace SampleCSharpApplication
         private Qnn_BackendHandle_t m_backendHandle;
         private Qnn_DeviceHandle_t m_deviceHandle = IntPtr.Zero;
         private Qnn_ContextHandle_t m_context = IntPtr.Zero;
+        private uint m_graphsCount = 0;
         private bool m_isBackendInitialized;
         private IntPtr* m_backendConfig;
         private IntPtr[] m_graphConfigsInfo;
@@ -131,7 +133,7 @@ namespace SampleCSharpApplication
             }
 
             Console.WriteLine("Finalizing graphs...");
-            if (!FinalizeGraphs())
+            if (FinalizeGraphs() != StatusCode.SUCCESS)
             {
                 Console.WriteLine("Graph Finalize failure");
                 return 1;
@@ -444,12 +446,12 @@ namespace SampleCSharpApplication
             {
                
                 uint graphConfigInfosCount = 0;
-                uint graphInfosCount = 0;
+                //uint graphInfosCount = 0;
                 IntPtr graphInfos = IntPtr.Zero;
                 QnnLog_Callback_t qnnLog_Callback_T = null;
                 QnnLog_Level_t log_level = QnnLog_Level_t.QNN_LOG_LEVEL_ERROR;
 
-                ModelError_t qnnStatus = composeGraphs(m_backendHandle, GetPropertyHasCapabilityPointerAddress(), m_context, m_graphConfigsInfo, graphConfigInfosCount, out graphInfos, out graphInfosCount, false, m_logCallback, log_level);
+                ModelError_t qnnStatus = composeGraphs(m_backendHandle, GetPropertyHasCapabilityPointerAddress(), m_context, m_graphConfigsInfo, graphConfigInfosCount, out graphInfos, out m_graphsCount, false, m_logCallback, log_level);
 
                 if (qnnStatus != QNN_SUCCESS)
                 {
@@ -467,10 +469,20 @@ namespace SampleCSharpApplication
             }
         }
 
-        private bool FinalizeGraphs()
+        private StatusCode FinalizeGraphs()
         {
-            // Implementation for finalizing graphs
-            return true;
+            for (uint graphIdx = 0; graphIdx < m_graphsCount; graphIdx++)
+            {
+                // TODO
+                //if (0 !=
+                //    m_qnnFunctionPointers.QnnInterface.GraphFinalize(
+                //        (*m_graphsInfo)[graphIdx].graph, m_profileBackendHandle, nullptr))
+                //{
+                //    return StatusCode.FAILURE;
+                //}
+            }
+
+            return StatusCode.SUCCESS;
         }
 
         private bool ExecuteGraphs()
