@@ -243,7 +243,8 @@ namespace SampleCSharpApplication
 
                 for (int tensorIdx = 0; tensorIdx < tensorCount; tensorIdx++)
                 {
-                    Qnn_Tensor_t wrapperTensor = tensorWrappers[tensorIdx];
+                    // Qnn_Tensor_t wrapperTensor = tensorWrappers[tensorIdx];
+                    Qnn_Tensor_t wrapperTensor = *tensorWrappers;
                     var dims = new List<int>();
                     FillDims(dims, wrapperTensor.v2.dimensions, wrapperTensor.v2.rank);
 

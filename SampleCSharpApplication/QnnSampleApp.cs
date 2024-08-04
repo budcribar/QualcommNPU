@@ -21,6 +21,7 @@ namespace SampleCSharpApplication
         private bool m_isBackendInitialized;
         private IntPtr* m_backendConfig;
         private IntPtr[] m_graphConfigsInfo;
+        private IOTensor m_iOTensor = new IOTensor();
 
         private string model;
         private string backend;
@@ -670,16 +671,20 @@ namespace SampleCSharpApplication
                         return StatusCode.FAILURE;
 
                     }
-                    Qnn_Tensor_t* inputs = null;
-                    Qnn_Tensor_t* outputs = null;
+                    Qnn_Tensor_t[] inputs = null;
+                    Qnn_Tensor_t[] outputs = null;
 
-                    //if (iotensor::StatusCode::SUCCESS !=
-                    //    m_ioTensor.setupInputAndOutputTensors(&inputs, &outputs, (*m_graphsInfo)[graphIdx]))
-                    //{
-                    //    QNN_ERROR("Error in setting up Input and output Tensors for graphIdx: %d", graphIdx);
-                    //    returnStatus = StatusCode::FAILURE;
-                    //    break;
-                    //}
+                    // TODO
+                    // (m_iOTensor.SetupInputAndOutputTensors(out inputs, out outputs, (**m_graphsInfos)[graphIdx]) != IOTensor.StatusCode.SUCCESS)
+                    if (m_iOTensor.SetupInputAndOutputTensors (out inputs,out outputs, (**m_graphsInfos)) != IOTensor.StatusCode.SUCCESS)
+                    {
+                        Console.WriteLine("Error in setting up Input and output Tensors for graphIdx: %d", graphIdx);
+                        return StatusCode.FAILURE;
+                    }
+
+                    //populateInputTensors
+
+
                 }
             }
 
