@@ -3,6 +3,7 @@ using System.Diagnostics;
 using static SampleCSharpApplication.QnnDelegates;
 using static SampleCSharpApplication.DynamicLoadUtil;
 using System;
+using System.Text.RegularExpressions;
 
 namespace SampleCSharpApplication
 {
@@ -15,7 +16,7 @@ namespace SampleCSharpApplication
         private Qnn_BackendHandle_t m_backendHandle;
         private Qnn_DeviceHandle_t m_deviceHandle = IntPtr.Zero;
         private Qnn_ContextHandle_t m_context = IntPtr.Zero;
-        private unsafe GraphInfo_t* m_graphsInfos;
+        private unsafe GraphInfo_t** m_graphsInfos;
         private uint m_graphsCount = 0;
         private bool m_isBackendInitialized;
         private IntPtr* m_backendConfig;
@@ -44,11 +45,152 @@ namespace SampleCSharpApplication
             DEBUG = 5
         }
 
-      
+        public struct ReadInputListsResult
+        {
+            public List<List<List<string>>> FilePathsLists;         
+            public List<Dictionary<string, uint>> InputNameToIndexMaps;   
+            public bool ReadSuccess;             // Indicates success or failure of the read operation
+        }
 
-       
+        private static Dictionary<string, uint> ExtractInputNameIndices(string inputLine, string separator)
+        {
+            var inputFilePaths = inputLine.Split(' ').ToList();
+            var inputNameToIndex = new Dictionary<string, uint>();
+            uint inputCount = 0;
 
-        public QnnSampleApp(string model, string backend, string inputList, int duration)
+            for (uint idx = 0; idx < inputFilePaths.Count; idx++)
+            {
+                int position = inputFilePaths[(int)idx].IndexOf(separator);
+                if (position != -1)
+                {
+                    var unsanitizedTensorName = inputFilePaths[(int)idx].Substring(0, position);
+                    var sanitizedTensorName = SanitizeTensorName(unsanitizedTensorName);
+
+                    if (sanitizedTensorName != unsanitizedTensorName)
+                    {
+                        inputNameToIndex[unsanitizedTensorName] = idx;
+                    }
+
+                    inputNameToIndex[sanitizedTensorName] = idx;
+                    inputCount++;
+                }
+            }
+
+            return (inputCount == inputFilePaths.Count) ? inputNameToIndex : new Dictionary<string, uint>();
+        }
+
+        private static (List<List<string>>, Dictionary<string, uint>, bool) ReadInputList(string inputFileListPath)
+        {
+            var lines = new Queue<string>();
+            var filePathsList = new List<List<string>>();
+            var inputNameToIndex = new Dictionary<string, uint>();
+
+            try
+            {
+                using (StreamReader fileListStream = new StreamReader(inputFileListPath))
+                {
+                    string fileLine;
+                    while ((fileLine = fileListStream.ReadLine()) != null)
+                    {
+                        if (!string.IsNullOrEmpty(fileLine))
+                        {
+                            lines.Enqueue(fileLine);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error reading input file: {ex.Message}");
+                return (filePathsList, inputNameToIndex, false); // Indicate failure
+            }
+
+            // Remove lines starting with '#' or '%'
+            while (lines.Any() && (lines.Peek().StartsWith('#') || lines.Peek().StartsWith('%')))
+            {
+                lines.Dequeue();
+            }
+
+            const string separator = ":=";
+            if (lines.Any())
+            {
+                inputNameToIndex = ExtractInputNameIndices(lines.Dequeue(), separator);
+            }
+
+            while (lines.Any())
+            {
+                var paths = lines.Dequeue().Split(' ').ToList();
+                filePathsList.Add(ParseInputFilePaths(paths, separator));
+            }
+
+            return (filePathsList, inputNameToIndex, true); // Indicate success
+        }
+
+        private static List<string> ParseInputFilePaths(List<string> inputFilePaths, string separator)
+        {
+            var paths = new List<string>();
+
+            foreach (var inputInfo in inputFilePaths)
+            {
+                int position = inputInfo.IndexOf(separator);
+                if (position != -1)  // -1 is the C# equivalent of std::string::npos
+                {
+                    string path = inputInfo.Substring(position + separator.Length);
+                    paths.Add(path);
+                }
+                else
+                {
+                    paths.Add(inputInfo);
+                }
+            }
+
+            return paths;
+        }
+
+        private static string SanitizeTensorName(string name)
+        {
+            string sanitizedName = Regex.Replace(name, "\\W+", "_");
+            if (!char.IsLetter(sanitizedName[0]) && sanitizedName[0] != '_')
+            {
+                sanitizedName = "_" + sanitizedName;
+            }
+            return sanitizedName;
+        }
+
+        public static ReadInputListsResult ReadInputLists(string[] inputFileListPaths)
+        {
+            var filePathsLists = new List<List<List<string>>>();
+            var inputNameToIndexMaps = new List<Dictionary<string, uint>>();
+
+            foreach (var path in inputFileListPaths)
+            {
+                var (filePathList, inputNameToIndex, readSuccess) = ReadInputList(path);
+
+                if (!readSuccess)
+                {
+                    filePathsLists.Clear(); // Clear any data read so far
+                    return new ReadInputListsResult
+                    {
+                        FilePathsLists = new(),
+                        InputNameToIndexMaps = new(),
+                        ReadSuccess = false
+                    };
+                }
+
+                filePathsLists.Add(filePathList);
+                inputNameToIndexMaps.Add(inputNameToIndex);
+            }
+
+            return new ReadInputListsResult
+            {
+                FilePathsLists = filePathsLists,
+                InputNameToIndexMaps = inputNameToIndexMaps,
+                ReadSuccess = true
+            };
+        }
+    
+
+    public QnnSampleApp(string model, string backend, string inputList, int duration)
         {
             this.model = model;
             this.backend = backend;
@@ -76,6 +218,12 @@ namespace SampleCSharpApplication
             if (!File.Exists(inputList))
             {
                 Console.WriteLine($"Error: Could not find input list: {inputList}");
+                return 1;
+            }
+            var inputListResult = ReadInputLists(inputList.Split(','));
+            if (!inputListResult.ReadSuccess)
+            {
+                Console.WriteLine($"Error: Could not read inputList");
                 return 1;
             }
 
@@ -141,7 +289,7 @@ namespace SampleCSharpApplication
             }
 
             Console.WriteLine("Executing graphs...");
-            if (!ExecuteGraphs())
+            if (ExecuteGraphs(inputListResult.FilePathsLists) != StatusCode.SUCCESS)
             {
                 Console.WriteLine("Graph Execution failure");
                 return 1;
@@ -444,12 +592,14 @@ namespace SampleCSharpApplication
                 QnnGraph_FinalizeFn_t graphFinalize = Marshal.GetDelegateForFunctionPointer<QnnGraph_FinalizeFn_t>(graphFinalizePtr);
                 try
                 {
-                    GraphInfo_t* graphInfoArray = m_graphsInfos;
+                    GraphInfo_t** graphInfoArray = m_graphsInfos;
 
                     // Access the specific GraphInfo_t at the given index
-                    GraphInfo_t* graphInfo = &graphInfoArray[graphIdx];
+                    //GraphInfo_t graphInfo = (*graphInfoArray)[graphIdx];
+                    // todo
+                    GraphInfo_t graphInfo = (**graphInfoArray);
 
-                    Qnn_ErrorHandle_t qnnStatus = graphFinalize(new IntPtr(graphInfo), IntPtr.Zero,IntPtr.Zero);
+                    Qnn_ErrorHandle_t qnnStatus = graphFinalize(graphInfo.graph, IntPtr.Zero,IntPtr.Zero);
 
                     if (qnnStatus != QNN_SUCCESS)
                     {
@@ -465,37 +615,11 @@ namespace SampleCSharpApplication
                     Console.Error.WriteLine($"Exception occurred while calling GraphFinalize: {ex.Message}");
                     return StatusCode.FAILURE;
                 }
-                // TODO
-                //if (0 !=
-                //    m_qnnFunctionPointers.QnnInterface.GraphFinalize(
-                //        (*m_graphsInfo)[graphIdx].graph, m_profileBackendHandle, nullptr))
-                //{
-                //    return StatusCode.FAILURE;
-                //}
+               
             }
 
             return StatusCode.SUCCESS;
         }
-
-        private bool ExecuteGraphs()
-        {
-            Console.WriteLine($"Executing for {duration} seconds...");
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
-
-            while (stopwatch.Elapsed.TotalSeconds < duration)
-            {
-                // Simulating graph execution
-                Console.WriteLine($"Elapsed time: {stopwatch.Elapsed.TotalSeconds} seconds");
-                System.Threading.Thread.Sleep(1000); // Sleep for 1 second
-            }
-
-            stopwatch.Stop();
-            Console.WriteLine($"End time: {DateTimeOffset.Now.ToUnixTimeSeconds()} seconds since epoch");
-
-            return true;
-        }
-
         private bool FreeContext()
         {
             // Implementation for freeing context
@@ -507,5 +631,32 @@ namespace SampleCSharpApplication
             // Implementation for freeing device
             return true;
         }
+
+        private StatusCode ExecuteGraphs(List<List<List<string>>> filePathsLists)
+        {
+            Console.WriteLine($"Executing for {duration} seconds...");
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
+            while (stopwatch.Elapsed.TotalSeconds < duration)
+            {
+                // Simulating graph execution
+                Console.WriteLine($"Elapsed time: {stopwatch.Elapsed.TotalSeconds} seconds");
+                for (int graphIdx = 0; graphIdx < m_graphsCount; graphIdx++)
+                {
+                    if (graphIdx >= filePathsLists.Count)
+                    {
+                        Console.WriteLine("No Inputs available for: %d", graphIdx);
+                        return StatusCode.FAILURE;
+
+                    }
+                }
+            }
+
+            stopwatch.Stop();
+            Console.WriteLine($"End time: {DateTimeOffset.Now.ToUnixTimeSeconds()} seconds since epoch");
+
+            return StatusCode.SUCCESS;
+        }  
     }
 }

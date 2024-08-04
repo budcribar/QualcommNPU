@@ -414,3 +414,25 @@ typedef struct {
   uint32_t numOutputTensors;
 } GraphInfo_t;
 
+using ReadInputListsRetType_t = std::tuple<std::vector<std::vector<std::vector<std::string>>>,
+                                           std::vector<std::unordered_map<std::string, uint32_t>>,
+                                           bool>;
+
+                                           sample_app::ReadInputListsRetType_t sample_app::readInputLists(
+    std::vector<std::string> inputFileListPaths) {
+  std::vector<std::vector<std::vector<std::string>>> filePathsLists;
+  std::vector<std::unordered_map<std::string, uint32_t>> inputNameToIndexMaps;
+  for (auto const &path : inputFileListPaths) {
+    bool readSuccess;
+    std::vector<std::vector<std::string>> filePathList;
+    std::unordered_map<std::string, uint32_t> inputNameToIndex;
+    std::tie(filePathList, inputNameToIndex, readSuccess) = readInputList(path);
+    if (!readSuccess) {
+      filePathsLists.clear();
+      return std::make_tuple(filePathsLists, inputNameToIndexMaps, false);
+    }
+    filePathsLists.push_back(filePathList);
+    inputNameToIndexMaps.push_back(inputNameToIndex);
+  }
+  return std::make_tuple(filePathsLists, inputNameToIndexMaps, true);
+}

@@ -36,11 +36,14 @@ namespace SampleCSharpApplication
             QNN_LOG_LEVEL_DEBUG
         }
 
-
-        // GraphInfo_t structure (you'll need to define this based on your C++ definition)
         public struct GraphInfo_t
         {
-            // Define the fields of GraphInfo_t here
+            public Qnn_GraphHandle_t graph;                
+            public IntPtr graphName;             // char* in C++ is IntPtr in C#
+            public Qnn_Tensor_t inputTensors;          
+            public uint numInputTensors;
+            public Qnn_Tensor_t outputTensors;         
+            public uint numOutputTensors;
         }
         [StructLayout(LayoutKind.Sequential)]
         public struct CoreApiVersion
@@ -233,18 +236,6 @@ namespace SampleCSharpApplication
             public byte isProduced;
         }
 
-        //[StructLayout(LayoutKind.Sequential)]
-        //public struct GraphInfo_t
-        //{
-        //    public Qnn_GraphHandle_t graph;
-        //    [MarshalAs(UnmanagedType.LPStr)]
-        //    public string graphName;
-        //    public IntPtr inputTensors;
-        //    public uint numInputTensors;
-        //    public IntPtr outputTensors;
-        //    public uint numOutputTensors;
-        //}
-
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         public delegate void QnnLog_Callback_t(int level, IntPtr msg);
 
@@ -274,7 +265,7 @@ namespace SampleCSharpApplication
             Qnn_ContextHandle_t context,
             [In] IntPtr[] graphConfigInfos,  // const qnn_wrapper_api::GraphConfigInfo_t**
             uint graphConfigInfosCount,
-            out GraphInfo_t* graphInfos,  // qnn_wrapper_api::GraphInfo_t***
+            out GraphInfo_t** graphInfos,  // qnn_wrapper_api::GraphInfo_t***
             out uint graphInfosCount,
             [MarshalAs(UnmanagedType.I1)] bool debug,
             QnnLog_Callback_t logCallback,
