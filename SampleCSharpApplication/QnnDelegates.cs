@@ -40,9 +40,9 @@ namespace SampleCSharpApplication
         {
             public Qnn_GraphHandle_t graph;                
             public IntPtr graphName;             // char* in C++ is IntPtr in C#
-            public Qnn_Tensor_t inputTensors;          
+            unsafe public Qnn_Tensor_t* inputTensors;          
             public uint numInputTensors;
-            public Qnn_Tensor_t outputTensors;         
+            unsafe public Qnn_Tensor_t* outputTensors;         
             public uint numOutputTensors;
         }
         [StructLayout(LayoutKind.Sequential)]
@@ -228,8 +228,11 @@ namespace SampleCSharpApplication
             public Qnn_DataType_t dataType;
             public Qnn_QuantizeParams_t quantizeParams;
             public uint rank;
-            public IntPtr dimensions;
+            public IntPtr[] dimensions;
             public Qnn_TensorMemType_t memType;
+
+            public Qnn_ClientBuffer_t clientBuf;
+            public Qnn_MemHandle_t memHandle;
             public IntPtr memoryUnion; // This will need to be handled carefully in managed code
             public IntPtr isDynamicDimensions;
             public Qnn_SparseParams_t sparseParams;
