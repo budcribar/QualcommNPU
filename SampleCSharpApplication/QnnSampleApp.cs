@@ -56,27 +56,47 @@ namespace SampleCSharpApplication
         {
             var inputFilePaths = inputLine.Split(' ').ToList();
             var inputNameToIndex = new Dictionary<string, uint>();
-            uint inputCount = 0;
+            int inputCount = 0; // Change idx to int
 
-            for (uint idx = 0; idx < inputFilePaths.Count; idx++)
+            for (int idx = 0; idx < inputFilePaths.Count; idx++)
             {
-                int position = inputFilePaths[(int)idx].IndexOf(separator);
+                int position = inputFilePaths[idx].IndexOf(separator, StringComparison.OrdinalIgnoreCase);
                 if (position != -1)
                 {
-                    var unsanitizedTensorName = inputFilePaths[(int)idx].Substring(0, position);
+                    var unsanitizedTensorName = inputFilePaths[idx].Substring(0, position);
                     var sanitizedTensorName = SanitizeTensorName(unsanitizedTensorName);
 
                     if (sanitizedTensorName != unsanitizedTensorName)
                     {
-                        inputNameToIndex[unsanitizedTensorName] = idx;
+                        inputNameToIndex[unsanitizedTensorName] = (uint)idx; // Add explicit cast
                     }
 
-                    inputNameToIndex[sanitizedTensorName] = idx;
+                    inputNameToIndex[sanitizedTensorName] = (uint)idx; // Add explicit cast
                     inputCount++;
                 }
             }
+            if (inputCount != inputFilePaths.Count)
+            {
+                //Handle Error. 
+            }
+            return inputNameToIndex;
+        }
 
-            return (inputCount == inputFilePaths.Count) ? inputNameToIndex : new Dictionary<string, uint>();
+        private static void Split(ref List<string> splitString, string tokenizedString, char separator)
+        {
+            splitString.Clear(); // Clear the existing list
+
+            using (StringReader reader = new StringReader(tokenizedString))
+            {
+                string value;
+                while ((value = reader.ReadLine()) != null) // Read until end of string
+                {
+                    if (!string.IsNullOrEmpty(value))
+                    {
+                        splitString.Add(value);
+                    }
+                }
+            }
         }
 
         private static (List<List<string>>, Dictionary<string, uint>, bool) ReadInputList(string inputFileListPath)
@@ -114,7 +134,7 @@ namespace SampleCSharpApplication
             const string separator = ":=";
             if (lines.Any())
             {
-                inputNameToIndex = ExtractInputNameIndices(lines.Dequeue(), separator);
+                inputNameToIndex = ExtractInputNameIndices(lines.Peek(), separator);
             }
 
             while (lines.Any())
@@ -650,6 +670,16 @@ namespace SampleCSharpApplication
                         return StatusCode.FAILURE;
 
                     }
+                    Qnn_Tensor_t* inputs = null;
+                    Qnn_Tensor_t* outputs = null;
+
+                    //if (iotensor::StatusCode::SUCCESS !=
+                    //    m_ioTensor.setupInputAndOutputTensors(&inputs, &outputs, (*m_graphsInfo)[graphIdx]))
+                    //{
+                    //    QNN_ERROR("Error in setting up Input and output Tensors for graphIdx: %d", graphIdx);
+                    //    returnStatus = StatusCode::FAILURE;
+                    //    break;
+                    //}
                 }
             }
 
