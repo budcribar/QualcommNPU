@@ -221,8 +221,7 @@ namespace SampleCSharpApplication
         public struct Qnn_TensorV2_t
         {
             public uint id;
-            [MarshalAs(UnmanagedType.LPStr)]
-            public string name;
+            public IntPtr name;
             public Qnn_TensorType_t type;
             public Qnn_TensorDataFormat_t dataFormat;
             public Qnn_DataType_t dataType;
@@ -237,6 +236,16 @@ namespace SampleCSharpApplication
             public IntPtr isDynamicDimensions;
             public Qnn_SparseParams_t sparseParams;
             public byte isProduced;
+
+            public string NameString
+            {
+                get
+                {
+                    if (name == IntPtr.Zero)
+                        return null;
+                    return Marshal.PtrToStringAnsi(name);
+                }
+            }
         }
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]

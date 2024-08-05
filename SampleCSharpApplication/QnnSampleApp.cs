@@ -655,6 +655,23 @@ namespace SampleCSharpApplication
 
         private StatusCode ExecuteGraphs(List<List<List<string>>> filePathsLists)
         {
+            Console.WriteLine("Offsets for Qnn_TensorV2_t:");
+            Console.WriteLine($"Offset of id: {Marshal.OffsetOf<Qnn_TensorV2_t>("id")}");
+            Console.WriteLine($"Offset of name: {Marshal.OffsetOf<Qnn_TensorV2_t>("name")}");
+            Console.WriteLine($"Offset of type: {Marshal.OffsetOf<Qnn_TensorV2_t>("type")}");
+            Console.WriteLine($"Offset of dataFormat: {Marshal.OffsetOf<Qnn_TensorV2_t>("dataFormat")}");
+            Console.WriteLine($"Offset of dataType: {Marshal.OffsetOf<Qnn_TensorV2_t>("dataType")}");
+            Console.WriteLine($"Offset of quantizeParams: {Marshal.OffsetOf<Qnn_TensorV2_t>("quantizeParams")}");
+            Console.WriteLine($"Offset of rank: {Marshal.OffsetOf<Qnn_TensorV2_t>("rank")}");
+            Console.WriteLine($"Offset of dimensions: {Marshal.OffsetOf<Qnn_TensorV2_t>("dimensions")}");
+            Console.WriteLine($"Offset of memType: {Marshal.OffsetOf<Qnn_TensorV2_t>("memType")}");
+            Console.WriteLine($"Offset of memoryUnion: {Marshal.OffsetOf<Qnn_TensorV2_t>("memoryUnion")}");
+            Console.WriteLine($"Offset of isDynamicDimensions: {Marshal.OffsetOf<Qnn_TensorV2_t>("isDynamicDimensions")}");
+            Console.WriteLine($"Offset of sparseParams: {Marshal.OffsetOf<Qnn_TensorV2_t>("sparseParams")}");
+            Console.WriteLine($"Offset of isProduced: {Marshal.OffsetOf<Qnn_TensorV2_t>("isProduced")}");
+
+            Console.WriteLine($"Size of Qnn_TensorV2_t: {Marshal.SizeOf<Qnn_TensorV2_t>()}");
+
             Console.WriteLine($"Executing for {duration} seconds...");
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();

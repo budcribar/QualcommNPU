@@ -159,8 +159,8 @@ namespace SampleCSharpApplication
                 dest.v2.memType = src.v2.memType;
                 dest.v2.isProduced = src.v2.isProduced;
 
-                // Deep copy name
-                dest.v2.name = src.v2.name != null ? string.Copy(src.v2.name) : null;
+                // Deep copy name -- todo
+                // dest.v2.name = src.v2.name != null ? string.Copy(src.v2.name) : null;
 
                 // Deep copy dimensions
                 if (src.v2.dimensions != null && src.v2.rank > 0)

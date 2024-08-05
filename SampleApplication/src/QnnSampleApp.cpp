@@ -580,6 +580,25 @@ sample_app::StatusCode sample_app::QnnSampleApp::freeDevice() {
 // This function runs all the graphs present in model.so by reading
 // inputs from input_list based files and writes output to .raw files.
 sample_app::StatusCode sample_app::QnnSampleApp::executeGraphs(int seconds) {
+    printf("Offsets for Qnn_TensorV2_t:\n");
+    printf("Offset of id: %zu\n", offsetof(Qnn_TensorV2_t, id));
+    printf("Offset of name: %zu\n", offsetof(Qnn_TensorV2_t, name));
+    printf("Offset of type: %zu\n", offsetof(Qnn_TensorV2_t, type));
+    printf("Offset of dataFormat: %zu\n", offsetof(Qnn_TensorV2_t, dataFormat));
+    printf("Offset of dataType: %zu\n", offsetof(Qnn_TensorV2_t, dataType));
+    printf("Offset of quantizeParams: %zu\n", offsetof(Qnn_TensorV2_t, quantizeParams));
+    printf("Offset of rank: %zu\n", offsetof(Qnn_TensorV2_t, rank));
+    printf("Offset of dimensions: %zu\n", offsetof(Qnn_TensorV2_t, dimensions));
+    printf("Offset of memType: %zu\n", offsetof(Qnn_TensorV2_t, memType));
+    printf("Offset of clientBuf: %zu\n", offsetof(Qnn_TensorV2_t, clientBuf));
+    printf("Offset of memHandle: %zu\n", offsetof(Qnn_TensorV2_t, memHandle));
+    printf("Offset of isDynamicDimensions: %zu\n", offsetof(Qnn_TensorV2_t, isDynamicDimensions));
+    printf("Offset of sparseParams: %zu\n", offsetof(Qnn_TensorV2_t, sparseParams));
+    printf("Offset of isProduced: %zu\n", offsetof(Qnn_TensorV2_t, isProduced));
+
+    printf("Size of Qnn_TensorV2_t: %zu\n", sizeof(Qnn_TensorV2_t));
+
+
   auto returnStatus = StatusCode::SUCCESS;
   for (size_t graphIdx = 0; graphIdx < m_graphsCount; graphIdx++) {
     QNN_DEBUG("Starting execution for graphIdx: %d", graphIdx);

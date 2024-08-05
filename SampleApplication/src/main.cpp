@@ -17,6 +17,7 @@
 #include "PAL/GetOpt.hpp"
 #include "QnnSampleApp.hpp"
 #include "QnnSampleAppUtils.hpp"
+#include "../StructOffsetGenerator.cpp"
 
 static void* sg_backendHandle{nullptr};
 static void* sg_modelHandle{nullptr};
@@ -393,7 +394,7 @@ std::unique_ptr<sample_app::QnnSampleApp> processCommandLine(int argc,
 
 int main(int argc, char** argv) {
   using namespace qnn::tools;
-
+  StructOffsetGenerator::generateAndPrintOffsets();
   if (!qnn::log::initializeLogging()) {
     std::cerr << "ERROR: Unable to initialize logging!\n";
     return EXIT_FAILURE;
