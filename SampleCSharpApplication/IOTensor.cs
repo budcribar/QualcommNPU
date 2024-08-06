@@ -116,9 +116,9 @@ namespace SampleCSharpApplication
         }
         private void FreeTensorResources(ref Qnn_Tensor_t tensor)
         {
-            if (tensor.v2.dimensions != null)
+            if (tensor.v2.Dimensions != null)
             {
-                tensor.v2.dimensions = null;
+                //tensor.v2.Dimensions = null;
             }
 
             if (tensor.v2.memType == Qnn_TensorMemType_t.QNN_TENSORMEMTYPE_RAW && tensor.v2.clientBuf.data != IntPtr.Zero)
@@ -140,6 +140,82 @@ namespace SampleCSharpApplication
 
             // Add any other necessary cleanup here
         }
+
+        private static long CalculateElementCount(List<long> dims)
+        {
+            long count = 1;
+            foreach (var dim in dims)
+            {
+                count *= dim;
+            }
+            return count;
+        }
+
+        private static StatusCode AllocateBuffer<T>(ref IntPtr buffer, ref int length,  long elementCount) where T : unmanaged
+        {
+            try
+            {
+                length = (int)(elementCount * Marshal.SizeOf<T>());
+                buffer = Marshal.AllocHGlobal(length);
+                return StatusCode.SUCCESS;
+            }
+            catch (OutOfMemoryException)
+            {
+                buffer = IntPtr.Zero;
+                Console.WriteLine("Failed to allocate memory");
+                return StatusCode.FAILURE;
+            }
+        }
+
+        public static StatusCode AllocateBuffer(ref IntPtr buffer, ref int length, List<long> dims, Qnn_DataType_t dataType)
+        {
+            long elementCount = CalculateElementCount(dims);
+            StatusCode returnStatus = StatusCode.SUCCESS;
+
+            switch (dataType)
+            {
+                case Qnn_DataType_t.QNN_DATATYPE_FLOAT_32:
+                    Console.WriteLine("Allocating float buffer");
+                    returnStatus = AllocateBuffer<float>(ref buffer,ref length, elementCount);
+                    break;
+                case Qnn_DataType_t.QNN_DATATYPE_UINT_8:
+                case Qnn_DataType_t.QNN_DATATYPE_UFIXED_POINT_8:
+                    Console.WriteLine("Allocating uint8_t buffer");
+                    returnStatus = AllocateBuffer<byte>(ref buffer, ref length, elementCount);
+                    break;
+                case Qnn_DataType_t.QNN_DATATYPE_UINT_16:
+                case Qnn_DataType_t.QNN_DATATYPE_UFIXED_POINT_16:
+                    Console.WriteLine("Allocating uint16_t buffer");
+                    returnStatus = AllocateBuffer<ushort>(ref buffer, ref length, elementCount);
+                    break;
+                case Qnn_DataType_t.QNN_DATATYPE_UINT_32:
+                    Console.WriteLine("Allocating uint32_t buffer");
+                    returnStatus = AllocateBuffer<uint>(ref buffer, ref length, elementCount);
+                    break;
+                case Qnn_DataType_t.QNN_DATATYPE_INT_8:
+                    Console.WriteLine("Allocating int8_t buffer");
+                    returnStatus = AllocateBuffer<sbyte>(ref buffer, ref length, elementCount);
+                    break;
+                case Qnn_DataType_t.QNN_DATATYPE_INT_16:
+                    Console.WriteLine("Allocating int16_t buffer");
+                    returnStatus = AllocateBuffer<short>(ref buffer, ref length, elementCount);
+                    break;
+                case Qnn_DataType_t.QNN_DATATYPE_INT_32:
+                    Console.WriteLine("Allocating int32_t buffer");
+                    returnStatus = AllocateBuffer<int>(ref buffer, ref length, elementCount);
+                    break;
+                case Qnn_DataType_t.QNN_DATATYPE_BOOL_8:
+                    Console.WriteLine("Allocating bool buffer");
+                    returnStatus = AllocateBuffer<byte>(ref buffer, ref length, elementCount);
+                    break;
+                default:
+                    Console.WriteLine("Datatype not supported yet!");
+                    returnStatus = StatusCode.FAILURE;
+                    break;
+            }
+
+            return returnStatus;
+        }
         private bool DeepCopyQnnTensorInfo(ref Qnn_Tensor_t dest, Qnn_Tensor_t src)
         {
             try
@@ -155,18 +231,16 @@ namespace SampleCSharpApplication
                 dest.v2.type = src.v2.type;
                 dest.v2.dataFormat = src.v2.dataFormat;
                 dest.v2.dataType = src.v2.dataType;
-                dest.v2.rank = src.v2.rank;
+                dest.v2.Rank = src.v2.Rank;
                 dest.v2.memType = src.v2.memType;
                 dest.v2.isProduced = src.v2.isProduced;
 
-                // Deep copy name -- todo
-                // dest.v2.name = src.v2.name != null ? string.Copy(src.v2.name) : null;
-
+                dest.v2.Name = src.v2.Name;
+                
                 // Deep copy dimensions
-                if (src.v2.dimensions != null && src.v2.rank > 0)
+                if (src.v2.Dimensions != null && src.v2.Rank > 0)
                 {
-                    dest.v2.dimensions = new IntPtr[src.v2.rank];
-                    Array.Copy(src.v2.dimensions, dest.v2.dimensions, src.v2.rank);
+                    dest.v2.Dimensions = src.v2.Dimensions;
                 }
 
                 // Deep copy quantization parameters
@@ -180,14 +254,16 @@ namespace SampleCSharpApplication
                 // Handle memoryUnion based on memType
                 if (src.v2.memType == Qnn_TensorMemType_t.QNN_TENSORMEMTYPE_RAW)
                 {
-                    var srcClientBuf = Marshal.PtrToStructure<Qnn_ClientBuffer_t>(src.v2.clientBuf.data);
-                    var destClientBuf = new Qnn_ClientBuffer_t();
-                    if (srcClientBuf.data != IntPtr.Zero && srcClientBuf.dataSize > 0)
-                    {
-                        destClientBuf.data = Marshal.AllocHGlobal((int)srcClientBuf.dataSize);
-                        Marshal.Copy(srcClientBuf.data, new byte[srcClientBuf.dataSize], 0, (int)srcClientBuf.dataSize);
-                        destClientBuf.dataSize = srcClientBuf.dataSize;
-                    }
+
+
+                    //var srcClientBuf = Marshal.PtrToStructure<Qnn_ClientBuffer_t>(src.v2.clientBuf.data);
+                    //var destClientBuf = new Qnn_ClientBuffer_t();
+                    //if (srcClientBuf.data != IntPtr.Zero && srcClientBuf.dataSize > 0)
+                    //{
+                    //    destClientBuf.data = Marshal.AllocHGlobal((int)srcClientBuf.dataSize);
+                    //    Marshal.Copy(srcClientBuf.data, new byte[srcClientBuf.dataSize], 0, (int)srcClientBuf.dataSize);
+                    //    destClientBuf.dataSize = srcClientBuf.dataSize;
+                    //}
                     //dest.v2.memoryUnion = Marshal.AllocHGlobal(Marshal.SizeOf<Qnn_ClientBuffer_t>());
                     //Marshal.StructureToPtr(destClientBuf, dest.v2.memoryUnion, false);
                 }
@@ -197,9 +273,9 @@ namespace SampleCSharpApplication
                 }
 
                 // Deep copy dynamic dimensions flag
-                if (src.v2.isDynamicDimensions != IntPtr.Zero && src.v2.rank > 0)
+                if (src.v2.isDynamicDimensions != IntPtr.Zero && src.v2.Rank > 0)
                 {
-                    int size = (int)src.v2.rank * sizeof(byte);
+                    int size = (int)src.v2.Rank * sizeof(byte);
                     dest.v2.isDynamicDimensions = Marshal.AllocHGlobal(size);
                     Marshal.Copy(src.v2.isDynamicDimensions, new byte[size], 0, size);
                 }
@@ -245,8 +321,8 @@ namespace SampleCSharpApplication
                 {
                     // Qnn_Tensor_t wrapperTensor = tensorWrappers[tensorIdx];
                     Qnn_Tensor_t wrapperTensor = *tensorWrappers;
-                    var dims = new List<int>();
-                    FillDims(dims, wrapperTensor.v2.dimensions, wrapperTensor.v2.rank);
+                    var dims = new List<long>();
+                    FillDims(dims, wrapperTensor.v2.Dimensions, wrapperTensor.v2.Rank);
 
                     tensors[tensorIdx] = new Qnn_Tensor_t(); // Assuming Qnn_Tensor_t has a default constructor
                     if (!DeepCopyQnnTensorInfo(ref tensors[tensorIdx], wrapperTensor))
@@ -257,14 +333,34 @@ namespace SampleCSharpApplication
                     tensors[tensorIdx].v2.memType = Qnn_TensorMemType_t.QNN_TENSORMEMTYPE_RAW;
 
                     var clientBuffer = new Qnn_ClientBuffer_t();
-                    if (AllocateBuffer(out byte[] buffer, dims, tensors[tensorIdx].v2.dataType) != StatusCode.SUCCESS)
+
+                    IntPtr buffer = IntPtr.Zero;
+                    int length = 0;
+                    if (AllocateBuffer(ref buffer,ref length, dims, tensors[tensorIdx].v2.dataType) != StatusCode.SUCCESS)
                     {
                         throw new Exception("Failed to allocate buffer");
                     }
 
-                    clientBuffer.data = Marshal.AllocHGlobal(buffer.Length);
-                    Marshal.Copy(buffer, 0, clientBuffer.data, buffer.Length);
-                    clientBuffer.dataSize = (uint)buffer.Length;
+                    clientBuffer.data = Marshal.AllocHGlobal(length);
+                    clientBuffer.dataSize = (uint)length;
+
+                    try
+                    {
+                        clientBuffer.data = Marshal.AllocHGlobal(length);
+                        unsafe
+                        {
+                            Buffer.MemoryCopy(buffer.ToPointer(), clientBuffer.data.ToPointer(), length, length);
+                        }
+                    }
+                    finally
+                    {
+                        // Free the temporary buffer
+                        if (buffer != IntPtr.Zero)
+                        {
+                            Marshal.FreeHGlobal(buffer);
+                        }
+                    }
+
 
                     tensors[tensorIdx].v2.clientBuf = clientBuffer;
                 }
@@ -344,13 +440,7 @@ namespace SampleCSharpApplication
             return StatusCode.SUCCESS;
         }
 
-        // Helper method to allocate a buffer.
-        public StatusCode AllocateBuffer(out byte[] buffer, List<int> dims, Qnn_DataType_t dataType)
-        {
-            // Implementation needed
-            buffer = null;
-            return StatusCode.SUCCESS;
-        }
+        
 
         // Helper method to allocate a buffer.
         public StatusCode AllocateBuffer<T>(out T[] buffer, int elementCount)
@@ -415,7 +505,7 @@ namespace SampleCSharpApplication
             return StatusCode.SUCCESS;
         }
 
-        public StatusCode FillDims(List<int> dims, nint[] inDimensions, uint rank)
+        public StatusCode FillDims(List<long> dims, uint[] inDimensions, uint rank)
         {
             if (inDimensions == null)
             {
@@ -429,7 +519,7 @@ namespace SampleCSharpApplication
             {
                 for (int r = 0; r < rank; r++)
                 {
-                    dims.Add((int)inDimensions[r]);
+                    dims.Add(inDimensions[r]);
                 }
                 return StatusCode.SUCCESS;
             }

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Runtime.InteropServices;
+using System.Xml.Linq;
 using static SampleCSharpApplication.QnnDelegates;
 
 namespace SampleCSharpApplication
@@ -26,6 +28,16 @@ namespace SampleCSharpApplication
         {
             public IntPtr GraphName;  // char* in C++
             public IntPtr GraphConfigs;  // const QnnGraph_Config_t** in C++
+
+            public string GraphNameString
+            {
+                get
+                {
+                    if (GraphName == IntPtr.Zero)
+                        return string.Empty;
+                    return Marshal.PtrToStringAnsi(GraphName) ?? string.Empty;
+                }
+            }
         }
 
         public enum QnnLog_Level_t
@@ -44,6 +56,16 @@ namespace SampleCSharpApplication
             public uint numInputTensors;
             unsafe public Qnn_Tensor_t* outputTensors;         
             public uint numOutputTensors;
+
+            public string GraphNameString
+            {
+                get
+                {
+                    if (graphName == IntPtr.Zero)
+                        return string.Empty;
+                    return Marshal.PtrToStringAnsi(graphName) ?? string.Empty;
+                }
+            }
         }
         [StructLayout(LayoutKind.Sequential)]
         public struct CoreApiVersion
@@ -270,41 +292,44 @@ namespace SampleCSharpApplication
             /// <summary>
             /// Union of different sparse layout types
             /// </summary>
-            public SparseLayoutUnion layoutUnion;
-        }
-
-        [StructLayout(LayoutKind.Explicit)]
-        public struct SparseLayoutUnion
-        {
-            /// <summary>
-            /// Hybrid coordinate list layout. Used when type is QNN_SPARSE_LAYOUT_HYBRID_COO.
-            /// </summary>
-            [FieldOffset(0)]
             public Qnn_SparseLayoutHybridCoo_t hybridCoo;
         }
 
+       
         // You'll need to define these types:
         public enum Qnn_SparseLayoutType_t : uint
         {
             // Define the enum values here
         }
 
+        [StructLayout(LayoutKind.Sequential)]
         public struct Qnn_SparseLayoutHybridCoo_t
         {
-            // Define the struct fields here
+            /// <summary>
+            /// Number of specified elements of a sparse tensor. Treated as the maximum when creating a tensor.
+            /// </summary>
+            public uint NumSpecifiedElements;
+
+            /// <summary>
+            /// Size of the index for a hybrid COO sparse tensor. The size of the index can range from 1 to
+            /// the rank of the tensor. This feature allows for partially sparse tensors.
+            /// </summary>
+            public uint NumSparseDimensions;
         }
 
         [StructLayout(LayoutKind.Sequential)]
         public struct Qnn_TensorV2_t
         {
             public uint id;
-            public IntPtr name;
+            private IntPtr name;
             public Qnn_TensorType_t type;
             public Qnn_TensorDataFormat_t dataFormat;
             public Qnn_DataType_t dataType;
             public Qnn_QuantizeParams_t quantizeParams;
-            public uint rank;
-            public IntPtr[] dimensions;
+            public uint Rank;
+
+            private IntPtr dimensions;
+         
             public Qnn_TensorMemType_t memType;
 
             public Qnn_ClientBuffer_t clientBuf;
@@ -314,13 +339,80 @@ namespace SampleCSharpApplication
             public Qnn_SparseParams_t sparseParams;
             public byte isProduced;
 
-            public string NameString
+            public string Name
             {
                 get
                 {
                     if (name == IntPtr.Zero)
+                        return string.Empty;
+                    return Marshal.PtrToStringAnsi(name) ?? string.Empty;
+                }
+                set
+                {
+                    // Free the existing name if it exists
+                    if (name != IntPtr.Zero)
+                    {
+                        Marshal.FreeHGlobal(name);
+                        name = IntPtr.Zero;
+                    }
+
+                    // If the new value is not null or empty, allocate memory and copy the string
+                    if (!string.IsNullOrEmpty(value))
+                    {
+                        name = Marshal.StringToHGlobalAnsi(value);
+                    }
+                }
+            }
+            public void FreeName()
+            {
+                if (name != IntPtr.Zero)
+                {
+                    Marshal.FreeHGlobal(name);
+                    name = IntPtr.Zero;
+                }
+            }
+            public uint[] Dimensions
+            {
+                get
+                {
+                    if (dimensions == IntPtr.Zero || Rank == 0)
                         return null;
-                    return Marshal.PtrToStringAnsi(name);
+                    uint[] dims = new uint[Rank];
+                    for (int i = 0; i < Rank; i++)
+                    {
+                        dims[i] = (uint)Marshal.ReadInt32(dimensions, i * sizeof(uint));
+                    }
+                    return dims;
+                }
+                set
+                {
+                    if (value == null)
+                    {
+                        dimensions = IntPtr.Zero;
+                        Rank = 0;
+                        return;
+                    }
+
+                    Rank = (uint)value.Length;
+                    if (dimensions != IntPtr.Zero)
+                    {
+                        Marshal.FreeHGlobal(dimensions);
+                    }
+                    dimensions = Marshal.AllocHGlobal(value.Length * sizeof(uint));
+                    for (int i = 0; i < value.Length; i++)
+                    {
+                        Marshal.WriteInt32(dimensions, i * sizeof(uint), (int)value[i]);
+                    }
+                }
+            }
+
+            public void FreeDimensions()
+            {
+                if (dimensions != IntPtr.Zero)
+                {
+                    Marshal.FreeHGlobal(dimensions);
+                    dimensions = IntPtr.Zero;
+                    Rank = 0;
                 }
             }
         }
