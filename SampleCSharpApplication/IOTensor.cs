@@ -121,15 +121,15 @@ namespace SampleCSharpApplication
                 tensor.v2.dimensions = null;
             }
 
-            if (tensor.v2.memType == Qnn_TensorMemType_t.QNN_TENSORMEMTYPE_RAW && tensor.v2.memoryUnion != IntPtr.Zero)
+            if (tensor.v2.memType == Qnn_TensorMemType_t.QNN_TENSORMEMTYPE_RAW && tensor.v2.clientBuf.data != IntPtr.Zero)
             {
-                var clientBuf = Marshal.PtrToStructure<Qnn_ClientBuffer_t>(tensor.v2.memoryUnion);
-                if (clientBuf.data != IntPtr.Zero)
-                {
-                    Marshal.FreeHGlobal(clientBuf.data);
-                }
-                Marshal.FreeHGlobal(tensor.v2.memoryUnion);
-                tensor.v2.memoryUnion = IntPtr.Zero;
+                //var clientBuf = Marshal.PtrToStructure<Qnn_ClientBuffer_t>(tensor.v2.memoryUnion);
+                //if (clientBuf.data != IntPtr.Zero)
+                //{
+                //    Marshal.FreeHGlobal(clientBuf.data);
+                //}
+                //Marshal.FreeHGlobal(tensor.v2.memoryUnion);
+                //tensor.v2.memoryUnion = IntPtr.Zero;
             }
 
             if (tensor.v2.isDynamicDimensions != IntPtr.Zero)
@@ -180,7 +180,7 @@ namespace SampleCSharpApplication
                 // Handle memoryUnion based on memType
                 if (src.v2.memType == Qnn_TensorMemType_t.QNN_TENSORMEMTYPE_RAW)
                 {
-                    var srcClientBuf = Marshal.PtrToStructure<Qnn_ClientBuffer_t>(src.v2.memoryUnion);
+                    var srcClientBuf = Marshal.PtrToStructure<Qnn_ClientBuffer_t>(src.v2.clientBuf.data);
                     var destClientBuf = new Qnn_ClientBuffer_t();
                     if (srcClientBuf.data != IntPtr.Zero && srcClientBuf.dataSize > 0)
                     {
@@ -188,12 +188,12 @@ namespace SampleCSharpApplication
                         Marshal.Copy(srcClientBuf.data, new byte[srcClientBuf.dataSize], 0, (int)srcClientBuf.dataSize);
                         destClientBuf.dataSize = srcClientBuf.dataSize;
                     }
-                    dest.v2.memoryUnion = Marshal.AllocHGlobal(Marshal.SizeOf<Qnn_ClientBuffer_t>());
-                    Marshal.StructureToPtr(destClientBuf, dest.v2.memoryUnion, false);
+                    //dest.v2.memoryUnion = Marshal.AllocHGlobal(Marshal.SizeOf<Qnn_ClientBuffer_t>());
+                    //Marshal.StructureToPtr(destClientBuf, dest.v2.memoryUnion, false);
                 }
                 else if (src.v2.memType == Qnn_TensorMemType_t.QNN_TENSORMEMTYPE_MEMHANDLE)
                 {
-                    dest.v2.memoryUnion = src.v2.memoryUnion; // Just copy the handle
+                    //dest.v2.memoryUnion = src.v2.memoryUnion; // Just copy the handle
                 }
 
                 // Deep copy dynamic dimensions flag

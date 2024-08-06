@@ -161,11 +161,88 @@ namespace SampleCSharpApplication
         }
 
         [StructLayout(LayoutKind.Sequential)]
+        public struct QnnBwAxisScaleOffset
+        {
+            /// <summary>
+            /// Bitwidth must be <= number of bits specified by data type of tensor
+            /// </summary>
+            public uint Bitwidth;
+
+            public int Axis;
+
+            /// <summary>
+            /// NumElements applies to both scales and offsets and they are supposed to be a one-to-one match
+            /// </summary>
+            public uint NumElements;
+
+            /// <summary>
+            /// Scales must be strictly positive
+            /// </summary>
+            public IntPtr Scales;
+
+            /// <summary>
+            /// Offsets must match scales in their dimension except when it can be IntPtr.Zero to indicate that the
+            /// value is symmetrically quantized and hence, offset = 0
+            /// </summary>
+            public IntPtr Offsets;
+
+            // Helper methods to work with the unmanaged pointers
+            public float[] GetScales()
+            {
+                if (Scales == IntPtr.Zero) return null;
+                float[] result = new float[NumElements];
+                Marshal.Copy(Scales, result, 0, (int)NumElements);
+                return result;
+            }
+
+            public void SetScales(float[] scales)
+            {
+                if (scales == null)
+                {
+                    Scales = IntPtr.Zero;
+                    return;
+                }
+                Scales = Marshal.AllocHGlobal(scales.Length * sizeof(float));
+                Marshal.Copy(scales, 0, Scales, scales.Length);
+                NumElements = (uint)scales.Length;
+            }
+
+            public int[] GetOffsets()
+            {
+                if (Offsets == IntPtr.Zero) return null;
+                int[] result = new int[NumElements];
+                Marshal.Copy(Offsets, result, 0, (int)NumElements);
+                return result;
+            }
+
+            public void SetOffsets(int[] offsets)
+            {
+                if (offsets == null)
+                {
+                    Offsets = IntPtr.Zero;
+                    return;
+                }
+                Offsets = Marshal.AllocHGlobal(offsets.Length * sizeof(int));
+                Marshal.Copy(offsets, 0, Offsets, offsets.Length);
+                NumElements = (uint)offsets.Length;
+            }
+
+            // Don't forget to free the allocated memory when you're done with the struct
+            public void Dispose()
+            {
+                if (Scales != IntPtr.Zero)
+                    Marshal.FreeHGlobal(Scales);
+                if (Offsets != IntPtr.Zero)
+                    Marshal.FreeHGlobal(Offsets);
+            }
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
         public struct Qnn_QuantizeParams_t
         {
             public Qnn_Definition_t encodingDefinition;
             public Qnn_QuantizationEncoding_t quantizationEncoding;
-            public IntPtr encodingUnion; // This will need to be handled carefully in managed code
+            public QnnBwAxisScaleOffset encodingUnion; // This will need to be handled carefully in managed code
         }
 
         [StructLayout(LayoutKind.Sequential)]
@@ -231,8 +308,8 @@ namespace SampleCSharpApplication
             public Qnn_TensorMemType_t memType;
 
             public Qnn_ClientBuffer_t clientBuf;
-            public Qnn_MemHandle_t memHandle;
-            public IntPtr memoryUnion; // This will need to be handled carefully in managed code
+            //public Qnn_MemHandle_t memHandle;
+            //public IntPtr memoryUnion; // This will need to be handled carefully in managed code
             public IntPtr isDynamicDimensions;
             public Qnn_SparseParams_t sparseParams;
             public byte isProduced;

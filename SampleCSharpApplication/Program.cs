@@ -11,6 +11,7 @@ namespace SampleCSharpApplication
         {
 
             StructOffsetGenerator.GenerateStructOffsetsJson("StructOffsets");
+            StructOffsetGenerator.CompareOffsetDirectories("CPPStructOffsets", "StructOffsets");
             Console.WriteLine("Struct offset JSON files have been generated.");
 
             string model = null;

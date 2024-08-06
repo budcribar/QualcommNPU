@@ -394,7 +394,7 @@ std::unique_ptr<sample_app::QnnSampleApp> processCommandLine(int argc,
 
 int main(int argc, char** argv) {
   using namespace qnn::tools;
-  StructOffsetGenerator::generateAndPrintOffsets();
+  StructOffsetGenerator::generateAndWriteOffsets("./struct_offsets");
   if (!qnn::log::initializeLogging()) {
     std::cerr << "ERROR: Unable to initialize logging!\n";
     return EXIT_FAILURE;

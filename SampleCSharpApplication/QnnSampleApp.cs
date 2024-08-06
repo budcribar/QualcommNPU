@@ -665,7 +665,7 @@ namespace SampleCSharpApplication
             Console.WriteLine($"Offset of rank: {Marshal.OffsetOf<Qnn_TensorV2_t>("rank")}");
             Console.WriteLine($"Offset of dimensions: {Marshal.OffsetOf<Qnn_TensorV2_t>("dimensions")}");
             Console.WriteLine($"Offset of memType: {Marshal.OffsetOf<Qnn_TensorV2_t>("memType")}");
-            Console.WriteLine($"Offset of memoryUnion: {Marshal.OffsetOf<Qnn_TensorV2_t>("memoryUnion")}");
+            //Console.WriteLine($"Offset of memoryUnion: {Marshal.OffsetOf<Qnn_TensorV2_t>("memoryUnion")}");
             Console.WriteLine($"Offset of isDynamicDimensions: {Marshal.OffsetOf<Qnn_TensorV2_t>("isDynamicDimensions")}");
             Console.WriteLine($"Offset of sparseParams: {Marshal.OffsetOf<Qnn_TensorV2_t>("sparseParams")}");
             Console.WriteLine($"Offset of isProduced: {Marshal.OffsetOf<Qnn_TensorV2_t>("isProduced")}");

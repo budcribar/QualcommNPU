@@ -1,26 +1,41 @@
-#include "StructOffsetGenerator.h"
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <sstream>
 #include <iomanip>
 #include <cstddef>
+#include <sys/stat.h>
 #include "QnnTypes.h"
+
+#ifdef _WIN32
+#include <direct.h>
+#define CREATE_DIR(dir) _mkdir(dir)
+#else
+#include <sys/types.h>
+#define CREATE_DIR(dir) mkdir(dir, 0777)
+#endif
 
 class StructOffsetGenerator {
 public:
-    static void generateAndPrintOffsets() {
-        printOffsets<Qnn_TensorV1_t>("Qnn_TensorV1_t");
-        printOffsets<Qnn_TensorV2_t>("Qnn_TensorV2_t");
-        printOffsets<Qnn_Tensor_t>("Qnn_Tensor_t");
-        printOffsets<Qnn_TensorSetV1_t>("Qnn_TensorSetV1_t");
-        printOffsets<Qnn_TensorSet_t>("Qnn_TensorSet_t");
-        printOffsets<Qnn_OpConfigV1_t>("Qnn_OpConfigV1_t");
-        printOffsets<Qnn_OpConfig_t>("Qnn_OpConfig_t");
+    static void generateAndWriteOffsets(const std::string& outputDir) {
+        createDirectory(outputDir);
+        writeOffsets<Qnn_TensorV1_t>(outputDir, "Qnn_TensorV1_t");
+        writeOffsets<Qnn_TensorV2_t>(outputDir, "Qnn_TensorV2_t");
+        writeOffsets<Qnn_Tensor_t>(outputDir, "Qnn_Tensor_t");
+        writeOffsets<Qnn_TensorSetV1_t>(outputDir, "Qnn_TensorSetV1_t");
+        writeOffsets<Qnn_TensorSet_t>(outputDir, "Qnn_TensorSet_t");
+        writeOffsets<Qnn_OpConfigV1_t>(outputDir, "Qnn_OpConfigV1_t");
+        writeOffsets<Qnn_OpConfig_t>(outputDir, "Qnn_OpConfig_t");
+        std::cout << "Offset files have been written to: " << outputDir << std::endl;
     }
 
 private:
+    static void createDirectory(const std::string& dir) {
+        CREATE_DIR(dir.c_str());
+    }
+
     template<typename T>
-    static void printOffsets(const std::string& structName) {
+    static void writeOffsets(const std::string& outputDir, const std::string& structName) {
         std::stringstream ss;
         ss << "{\n";
         ss << "    \"StructName\": \"" << structName << "\",\n";
@@ -35,7 +50,16 @@ private:
         ss << "    \"TotalSize\": " << sizeof(T) << "\n";
         ss << "}\n";
 
-        std::cout << ss.str() << std::endl;
+        std::string filename = outputDir + "/" + structName + "_offsets.json";
+        std::ofstream outFile(filename);
+        if (outFile.is_open()) {
+            outFile << ss.str();
+            outFile.close();
+            std::cout << "Written: " << filename << std::endl;
+        }
+        else {
+            std::cerr << "Unable to open file: " << filename << std::endl;
+        }
     }
 
     static void addOffset(std::stringstream& ss, const std::string& name, size_t offset) {
@@ -121,8 +145,7 @@ private:
     }
 };
 
-// Usage example
 //int main() {
-//    StructOffsetGenerator::generateAndPrintOffsets();
+//    StructOffsetGenerator::generateAndWriteOffsets("./struct_offsets");
 //    return 0;
 //}
