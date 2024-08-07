@@ -20,15 +20,15 @@ namespace SampleCSharpApplication
         private unsafe GraphInfo_t** m_graphsInfos;
         private uint m_graphsCount = 0;
         private bool m_isBackendInitialized;
-        private IntPtr* m_backendConfig;
-        private IntPtr[]? m_graphConfigsInfo;
-        private IOTensor m_iOTensor = new IOTensor();
-        private ReadInputListsResult readInputListsResult = new ReadInputListsResult();
+        private readonly IntPtr* m_backendConfig;
+        private readonly IntPtr[]? m_graphConfigsInfo;
+        private readonly IOTensor m_iOTensor = new();
+        private ReadInputListsResult readInputListsResult = new();
 
-        private string model;
-        private string backend;
-        private string inputList;
-        private int duration;
+        private readonly string model;
+        private readonly string backend;
+        private readonly string inputList;
+        private readonly int duration;
 
         // Constants
         private const int QNN_API_VERSION_MAJOR = 2;
@@ -66,7 +66,7 @@ namespace SampleCSharpApplication
                 int position = inputFilePaths[idx].IndexOf(separator, StringComparison.OrdinalIgnoreCase);
                 if (position != -1)
                 {
-                    var unsanitizedTensorName = inputFilePaths[idx].Substring(0, position);
+                    var unsanitizedTensorName = inputFilePaths[idx][..position];
                     var sanitizedTensorName = SanitizeTensorName(unsanitizedTensorName);
 
                     if (sanitizedTensorName != unsanitizedTensorName)
@@ -93,17 +93,17 @@ namespace SampleCSharpApplication
 
             try
             {
-                using (StreamReader fileListStream = new StreamReader(inputFileListPath))
+                using StreamReader fileListStream = new(inputFileListPath);
+               
+                string? fileLine;
+                while ((fileLine = fileListStream.ReadLine()) != null)
                 {
-                    string? fileLine;
-                    while ((fileLine = fileListStream.ReadLine()) != null)
+                    if (!string.IsNullOrEmpty(fileLine))
                     {
-                        if (!string.IsNullOrEmpty(fileLine))
-                        {
-                            lines.Enqueue(fileLine);
-                        }
+                        lines.Enqueue(fileLine);
                     }
                 }
+                
             }
             catch (Exception ex)
             {
@@ -141,7 +141,7 @@ namespace SampleCSharpApplication
                 int position = inputInfo.IndexOf(separator);
                 if (position != -1)  // -1 is the C# equivalent of std::string::npos
                 {
-                    string path = inputInfo.Substring(position + separator.Length);
+                    string path = inputInfo[(position + separator.Length)..];
                     paths.Add(path);
                 }
                 else
@@ -365,7 +365,7 @@ namespace SampleCSharpApplication
 
        
 
-        private bool IsLogInitialized()
+        private static bool IsLogInitialized()
         {
             // Implement your logic to check if logging is initialized
             return true; // Placeholder
@@ -373,7 +373,7 @@ namespace SampleCSharpApplication
 
        
 
-        private LogLevel GetLogLevel()
+        private static LogLevel GetLogLevel()
         {
             // Implement your logic to get the current log level
             return LogLevel.INFO; // Placeholder
@@ -623,13 +623,13 @@ namespace SampleCSharpApplication
 
             return StatusCode.SUCCESS;
         }
-        private bool FreeContext()
+        private static bool FreeContext()
         {
             // Implementation for freeing context
             return true;
         }
 
-        private bool FreeDevice()
+        private static bool FreeDevice()
         {
             // Implementation for freeing device
             return true;
@@ -639,7 +639,7 @@ namespace SampleCSharpApplication
         {
             var returnStatus = StatusCode.SUCCESS; // TODO
             Console.WriteLine($"Executing for {duration} seconds...");
-            Stopwatch stopwatch = new Stopwatch();
+            Stopwatch stopwatch = new();
             stopwatch.Start();
 
             while (stopwatch.Elapsed.TotalSeconds < duration)
@@ -650,7 +650,7 @@ namespace SampleCSharpApplication
                 {
                     if (graphIdx >= filePathsLists.Count)
                     {
-                        Console.WriteLine("No Inputs available for: %d", graphIdx);
+                        Console.WriteLine($"No Inputs available for: {graphIdx}");
                         return StatusCode.FAILURE;
 
                     }
@@ -661,7 +661,7 @@ namespace SampleCSharpApplication
                     // (m_iOTensor.SetupInputAndOutputTensors(out inputs, out outputs, (**m_graphsInfos)[graphIdx]) != IOTensor.StatusCode.SUCCESS)
                     if (m_iOTensor.SetupInputAndOutputTensors (out inputs,out outputs, (**m_graphsInfos)) != IOTensor.StatusCode.SUCCESS)
                     {
-                        Console.WriteLine("Error in setting up Input and output Tensors for graphIdx: %d", graphIdx);
+                        Console.WriteLine("Error in setting up Input and output Tensors for graphIdx: {graphIdx}" );
                         return StatusCode.FAILURE;
                     }
 
@@ -671,14 +671,10 @@ namespace SampleCSharpApplication
 
                     if (inputFileList.Any())
                     {
-                        int totalCount = inputFileList[0].Count();
+                        int totalCount = inputFileList[0].Count;
                         int inputFileIndexOffset = 0;
                         while (inputFileIndexOffset < totalCount)
                         {
-                            IOTensor.StatusCode eturnStatus;
-                            int numInputFilesPopulated;
-                            int batchSize;
-
                             var result = IOTensor.PopulateInputTensors(graphIdx, inputFileList, inputFileIndexOffset, false, readInputListsResult.InputNameToIndexMaps[(int)graphIdx], inputs, graphInfo, IOTensor.InputDataType.FLOAT);
 
                             if (result.Status != IOTensor.StatusCode.SUCCESS)
@@ -688,7 +684,7 @@ namespace SampleCSharpApplication
 
                             if (returnStatus == StatusCode.SUCCESS)
                             {
-                                Console.WriteLine("Successfully populated input tensors for graphIdx: %d", graphIdx);
+                                Console.WriteLine("Successfully populated input tensors for graphIdx: {graphIdx}");
                                 Qnn_ErrorHandle_t executeStatus = 0;// QNN_GRAPH_NO_ERROR;
 
                                 IntPtr graphExecutePtr = m_qnnFunctionPointers?.QnnInterface.GraphExecute ?? IntPtr.Zero;
