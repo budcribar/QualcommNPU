@@ -55,7 +55,8 @@ namespace SampleCSharpApplication
             }
 
             QnnSampleApp app = new QnnSampleApp(model, backend, inputList, duration);
-            return app.Run();
+            int res = app.Run();
+            return res;
         }
     }
 }

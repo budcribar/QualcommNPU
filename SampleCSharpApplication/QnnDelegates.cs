@@ -424,6 +424,16 @@ namespace SampleCSharpApplication
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         public delegate Qnn_ErrorHandle_t QnnLog_CreateFn_t(IntPtr logCallback, int logLevel, ref Qnn_LogHandle_t logHandle);
 
+        public delegate ulong QnnGraphExecuteDelegate(
+        IntPtr graphHandle,
+        [In] Qnn_Tensor_t[] inputs,
+        uint numInputs,
+        [In, Out] Qnn_Tensor_t[] outputs,
+        uint numOutputs,
+        IntPtr profileHandle,
+        IntPtr signalHandle
+        );
+
         //[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         //public delegate void QnnLog_CallbackFn_t(int level, IntPtr msg);
 
