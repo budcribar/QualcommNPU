@@ -64,8 +64,9 @@ public class DllExportReader
             for (int i = 0; i < exportDir.NumberOfNames; i++)
             {
                 int nameRva = ConvertUIntToInt((uint)addressOfNames[i], $"Name RVA for function {i}");
-                string functionName = Marshal.PtrToStringAnsi(IntPtr.Add(m_libHandle, nameRva));
-                exports.Add(functionName);
+                string? functionName = Marshal.PtrToStringAnsi(IntPtr.Add(m_libHandle, nameRva));
+                if (functionName != null) 
+                    exports.Add(functionName);
             }
         }
         catch (Exception ex)

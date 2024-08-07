@@ -14,17 +14,12 @@ namespace SampleCSharpApplication
             StructOffsetGenerator.CompareOffsetDirectories("CPPStructOffsets", "StructOffsets");
             Console.WriteLine("Struct offset JSON files have been generated.");
 
-            string model = null;
-            string backend = null;
-            string inputList = null;
+            string model = string.Empty;
+            string backend = string.Empty;
+            string inputList = string.Empty;
             int duration = 3; // Default duration
 
-            QnnInterface q1 = new QnnInterface();
-            QnnInterface2 q2 = new QnnInterface2();
-
-            var x = sizeof(QnnInterface);
-            var xy = sizeof(QnnInterface2);
-
+           // QnnInterface q1 = new QnnInterface();
 
             for (int i = 0; i < args.Length; i++)
             {
@@ -56,6 +51,8 @@ namespace SampleCSharpApplication
 
             QnnSampleApp app = new QnnSampleApp(model, backend, inputList, duration);
             int res = app.Run();
+
+            Environment.Exit(res);
             return res;
         }
     }

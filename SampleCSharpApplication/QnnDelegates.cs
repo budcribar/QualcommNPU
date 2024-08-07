@@ -26,16 +26,16 @@ namespace SampleCSharpApplication
         [StructLayout(LayoutKind.Sequential)]
         public struct GraphConfigInfo_t
         {
-            public IntPtr GraphName;  // char* in C++
+            private IntPtr graphName;  // char* in C++
             public IntPtr GraphConfigs;  // const QnnGraph_Config_t** in C++
 
-            public string GraphNameString
+            public string GraphName
             {
                 get
                 {
-                    if (GraphName == IntPtr.Zero)
+                    if (graphName == IntPtr.Zero)
                         return string.Empty;
-                    return Marshal.PtrToStringAnsi(GraphName) ?? string.Empty;
+                    return Marshal.PtrToStringAnsi(graphName) ?? string.Empty;
                 }
             }
         }
@@ -211,7 +211,7 @@ namespace SampleCSharpApplication
             // Helper methods to work with the unmanaged pointers
             public float[] GetScales()
             {
-                if (Scales == IntPtr.Zero) return null;
+                if (Scales == IntPtr.Zero) return Array.Empty<float>();
                 float[] result = new float[NumElements];
                 Marshal.Copy(Scales, result, 0, (int)NumElements);
                 return result;
@@ -231,7 +231,7 @@ namespace SampleCSharpApplication
 
             public int[] GetOffsets()
             {
-                if (Offsets == IntPtr.Zero) return null;
+                if (Offsets == IntPtr.Zero) return Array.Empty<int>();  
                 int[] result = new int[NumElements];
                 Marshal.Copy(Offsets, result, 0, (int)NumElements);
                 return result;
@@ -376,7 +376,7 @@ namespace SampleCSharpApplication
                 get
                 {
                     if (dimensions == IntPtr.Zero || Rank == 0)
-                        return null;
+                        return Array.Empty<uint>();
                     uint[] dims = new uint[Rank];
                     for (int i = 0; i < Rank; i++)
                     {
@@ -454,12 +454,12 @@ namespace SampleCSharpApplication
             Qnn_BackendHandle_t backendHandle,
             IntPtr qnnInterface,
             Qnn_ContextHandle_t context,
-            [In] IntPtr[] graphConfigInfos,  // const qnn_wrapper_api::GraphConfigInfo_t**
+            [In] IntPtr[]? graphConfigInfos,  // const qnn_wrapper_api::GraphConfigInfo_t**
             uint graphConfigInfosCount,
             out GraphInfo_t** graphInfos,  // qnn_wrapper_api::GraphInfo_t***
             out uint graphInfosCount,
             [MarshalAs(UnmanagedType.I1)] bool debug,
-            QnnLog_Callback_t logCallback,
+            QnnLog_Callback_t? logCallback,
             QnnLog_Level_t logLevel);
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]

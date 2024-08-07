@@ -256,18 +256,19 @@ namespace SampleCSharpApplication
 
 
         // Helper method to read data from files to a buffer.
-        public PopulateInputTensorsRetType ReadDataAndAllocateBuffer(
-            List<string> filePaths,
-            int filePathsIndexOffset,
-            bool loopBackToStart,
-            List<int> dims,
-            Qnn_DataType_t dataType,
-            out byte[] bufferToCopy)
-        {
-            // Implementation needed
-            bufferToCopy = null;
-            return new PopulateInputTensorsRetType();
-        }
+        // TODO Unused 
+        //public PopulateInputTensorsRetType ReadDataAndAllocateBuffer(
+        //    List<string> filePaths,
+        //    int filePathsIndexOffset,
+        //    bool loopBackToStart,
+        //    List<int> dims,
+        //    Qnn_DataType_t dataType,
+        //    out byte[] bufferToCopy)
+        //{
+        //    // Implementation needed
+        //    bufferToCopy = null;
+        //    return new PopulateInputTensorsRetType();
+        //}
 
         // Helper method to copy a float buffer, quantize it, and copy
         // it to a tensor (Qnn_Tensor_t) buffer.
@@ -605,7 +606,7 @@ namespace SampleCSharpApplication
         // Setup details for Qnn_Tensor_t for execution
         unsafe private StatusCode SetupTensors(out Qnn_Tensor_t[] tensors, uint tensorCount, Qnn_Tensor_t* tensorWrappers)
         {
-            tensors = null;
+            tensors = Array.Empty<Qnn_Tensor_t>();
             if (tensorWrappers == null)
             {
                 Console.Error.WriteLine("tensorWrappers is null");
@@ -675,7 +676,7 @@ namespace SampleCSharpApplication
             {
                 Console.Error.WriteLine($"Failure in SetupTensors: {ex.Message}");
                 TearDownTensors(tensors, tensorCount);
-                tensors = null;
+                tensors = Array.Empty<Qnn_Tensor_t>();
                 return StatusCode.FAILURE;
             }
         }
@@ -686,8 +687,8 @@ namespace SampleCSharpApplication
             out Qnn_Tensor_t[] outputs,
             GraphInfo_t graphInfo)
         {
-            inputs = null;
-            outputs = null;
+            inputs = Array.Empty<Qnn_Tensor_t>();
+            outputs = Array.Empty<Qnn_Tensor_t>(); 
             StatusCode returnStatus = StatusCode.SUCCESS;
 
             try
@@ -713,12 +714,12 @@ namespace SampleCSharpApplication
                 if (inputs != null)
                 {
                     TearDownTensors(inputs, graphInfo.numInputTensors);
-                    inputs = null;
+                    inputs = Array.Empty<Qnn_Tensor_t>(); 
                 }
                 if (outputs != null)
                 {
                     TearDownTensors(outputs, graphInfo.numOutputTensors);
-                    outputs = null;
+                    outputs = Array.Empty<Qnn_Tensor_t>();
                 }
             }
 
@@ -747,20 +748,20 @@ namespace SampleCSharpApplication
         
 
         // Helper method to allocate a buffer.
-        public StatusCode AllocateBuffer<T>(out T[] buffer, int elementCount)
-        {
-            // Implementation needed
-            buffer = null;
-            return StatusCode.SUCCESS;
-        }
+        //public StatusCode AllocateBuffer<T>(out T[] buffer, int elementCount)
+        //{
+        //    // Implementation needed
+        //    buffer = null;
+        //    return StatusCode.SUCCESS;
+        //}
 
         // Convert data to float or de-quantization.
-        public StatusCode ConvertToFloat(out float[] output, Qnn_Tensor_t tensor)
-        {
-            // Implementation needed
-            output = null;
-            return StatusCode.SUCCESS;
-        }
+        //public StatusCode ConvertToFloat(out float[] output, Qnn_Tensor_t tensor)
+        //{
+        //    // Implementation needed
+        //    output = null;
+        //    return StatusCode.SUCCESS;
+        //}
 
         // Helper method to convert Output tensors to float and write them out to files.
         public StatusCode ConvertAndWriteOutputTensorInFloat(
@@ -802,12 +803,12 @@ namespace SampleCSharpApplication
         }
 
         // Helper method to allocate a buffer and copy data to it.
-        public StatusCode AllocateAndCopyBuffer(out byte[] buffer, Qnn_Tensor_t tensor)
-        {
-            // Implementation needed
-            buffer = null;
-            return StatusCode.SUCCESS;
-        }
+        //public StatusCode AllocateAndCopyBuffer(out byte[] buffer, Qnn_Tensor_t tensor)
+        //{
+        //    // Implementation needed
+        //    buffer = null;
+        //    return StatusCode.SUCCESS;
+        //}
 
         public static StatusCode FillDims(List<long> dims, uint[] inDimensions, uint rank)
         {

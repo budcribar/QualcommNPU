@@ -11,7 +11,7 @@ namespace SampleCSharpApplication
   
     public unsafe class QnnSampleApp
     {
-        private QnnLog_Callback_t m_logCallback; // Class member to keep the delegate alive
+        private QnnLog_Callback_t? m_logCallback = null;
         private QnnFunctionPointers? m_qnnFunctionPointers = null;
         private Qnn_LogHandle_t m_logHandle;
         private Qnn_BackendHandle_t m_backendHandle;
@@ -21,7 +21,7 @@ namespace SampleCSharpApplication
         private uint m_graphsCount = 0;
         private bool m_isBackendInitialized;
         private IntPtr* m_backendConfig;
-        private IntPtr[] m_graphConfigsInfo;
+        private IntPtr[]? m_graphConfigsInfo;
         private IOTensor m_iOTensor = new IOTensor();
         private ReadInputListsResult readInputListsResult = new ReadInputListsResult();
 
@@ -85,23 +85,6 @@ namespace SampleCSharpApplication
             return inputNameToIndex;
         }
 
-        private static void Split(ref List<string> splitString, string tokenizedString, char separator)
-        {
-            splitString.Clear(); // Clear the existing list
-
-            using (StringReader reader = new StringReader(tokenizedString))
-            {
-                string value;
-                while ((value = reader.ReadLine()) != null) // Read until end of string
-                {
-                    if (!string.IsNullOrEmpty(value))
-                    {
-                        splitString.Add(value);
-                    }
-                }
-            }
-        }
-
         private static (List<List<string>>, Dictionary<string, uint>, bool) ReadInputList(string inputFileListPath)
         {
             var lines = new Queue<string>();
@@ -112,7 +95,7 @@ namespace SampleCSharpApplication
             {
                 using (StreamReader fileListStream = new StreamReader(inputFileListPath))
                 {
-                    string fileLine;
+                    string? fileLine;
                     while ((fileLine = fileListStream.ReadLine()) != null)
                     {
                         if (!string.IsNullOrEmpty(fileLine))
@@ -398,7 +381,7 @@ namespace SampleCSharpApplication
 
         private void LogMessage(int level, IntPtr msgPtr)
         {
-            string message = Marshal.PtrToStringAnsi(msgPtr);
+            string message = Marshal.PtrToStringAnsi(msgPtr) ?? string.Empty;
             Console.WriteLine($"[{(LogLevel)level}] {message}");
         }
         public StatusCode IsDevicePropertySupported()
@@ -575,13 +558,10 @@ namespace SampleCSharpApplication
 
             ComposeGraphsFnHandleType_t composeGraphs = Marshal.GetDelegateForFunctionPointer<ComposeGraphsFnHandleType_t>(composeGraphsPtr);
             try
-            {
-               
+            {  
                 uint graphConfigInfosCount = 0;
-                //uint graphInfosCount = 0;
-              
-                QnnLog_Callback_t qnnLog_Callback_T = null;
-                QnnLog_Level_t log_level = QnnLog_Level_t.QNN_LOG_LEVEL_ERROR;
+               
+                QnnLog_Level_t log_level = QnnLog_Level_t.QNN_LOG_LEVEL_ERROR;  
 
                 ModelError_t qnnStatus = composeGraphs(m_backendHandle, GetPropertyHasCapabilityPointerAddress(), m_context, m_graphConfigsInfo, graphConfigInfosCount,out  m_graphsInfos, out m_graphsCount, false, m_logCallback, log_level);
 
@@ -674,8 +654,8 @@ namespace SampleCSharpApplication
                         return StatusCode.FAILURE;
 
                     }
-                    Qnn_Tensor_t[] inputs = null;
-                    Qnn_Tensor_t[] outputs = null;
+                    Qnn_Tensor_t[] inputs = Array.Empty<Qnn_Tensor_t>();
+                    Qnn_Tensor_t[] outputs = Array.Empty<Qnn_Tensor_t>(); 
 
                     // TODO
                     // (m_iOTensor.SetupInputAndOutputTensors(out inputs, out outputs, (**m_graphsInfos)[graphIdx]) != IOTensor.StatusCode.SUCCESS)
