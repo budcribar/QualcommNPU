@@ -696,7 +696,7 @@ namespace SampleCSharpApplication
                             int numInputFilesPopulated;
                             int batchSize;
 
-                            //populateInputTensors
+                            //IOTensor.PopulateInputTensors(graphIdx, inputFileList, out numInputFilesPopulated,
                         }
                     }
                 }

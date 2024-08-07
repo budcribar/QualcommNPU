@@ -10,6 +10,21 @@ namespace SampleCSharpApplication
 {
     public class IOTensor
     {
+        [DllImport("kernel32.dll", EntryPoint = "RtlZeroMemory", SetLastError = false)]
+        private static extern void ZeroMemory(IntPtr dest, IntPtr size);
+
+        public static void ZeroMemory(IntPtr buffer, int startOffset, long length)
+        {
+            // Ensure we're not trying to write beyond the end of the buffer
+            if (startOffset < 0 || length < 0)
+            {
+                throw new ArgumentOutOfRangeException("Offset and length must be non-negative.");
+            }
+
+            // Use the Win32 ZeroMemory function via P/Invoke
+            ZeroMemory(buffer + startOffset, (IntPtr)length);
+        }
+
         public enum OutputDataType
         {
             /// <summary>
@@ -63,8 +78,182 @@ namespace SampleCSharpApplication
         {
             public StatusCode Status;
             public int NumFilesPopulated;
-            public int BatchSize;
+            public long BatchSize;
+
+            public PopulateInputTensorsRetType(StatusCode status, int numFilesPopulated, long numBatchSize)
+            {
+                Status = status;
+                NumFilesPopulated = numFilesPopulated;
+                BatchSize = numBatchSize;
+            }
         }
+
+        public struct ReadBatchDataRetType
+        {
+            public DataStatusCode Status;
+            public int NumInputsCopied;
+            public long NumBatchSize;
+
+            public ReadBatchDataRetType(DataStatusCode status, int numInputsCopied, long numBatchSize)
+            {
+                Status = status;
+                NumInputsCopied = numInputsCopied;
+                NumBatchSize = numBatchSize;
+            }
+        }
+
+        public struct CalculateLengthResult
+        {
+            public DataStatusCode Status;
+            public long Length;
+
+            public CalculateLengthResult(DataStatusCode status, long length)
+            {
+                Status = status;
+                Length = length;
+            }
+        }
+
+        public enum DataStatusCode
+        {
+            SUCCESS,
+            DATA_READ_FAIL,
+            DATA_WRITE_FAIL,
+            FILE_OPEN_FAIL,
+            DIRECTORY_CREATE_FAIL,
+            INVALID_DIMENSIONS,
+            INVALID_DATA_TYPE,
+            DATA_SIZE_MISMATCH,
+            INVALID_BUFFER
+        }
+
+        private static (DataStatusCode, int) GetDataTypeSizeInBytes(Qnn_DataType_t dataType)
+        {
+            switch (dataType)
+            {
+                case Qnn_DataType_t.QNN_DATATYPE_FLOAT_32:
+                    return (DataStatusCode.SUCCESS, sizeof(float));
+                case Qnn_DataType_t.QNN_DATATYPE_UINT_8:
+                case Qnn_DataType_t.QNN_DATATYPE_UFIXED_POINT_8:
+                    return (DataStatusCode.SUCCESS, sizeof(byte));
+                case Qnn_DataType_t.QNN_DATATYPE_UINT_16:
+                case Qnn_DataType_t.QNN_DATATYPE_UFIXED_POINT_16:
+                    return (DataStatusCode.SUCCESS, sizeof(short));
+                case Qnn_DataType_t.QNN_DATATYPE_UINT_32:
+                case Qnn_DataType_t.QNN_DATATYPE_INT_32:
+                    return (DataStatusCode.SUCCESS, sizeof(int));
+                // Add more cases as needed
+                default:
+                    Console.WriteLine($"Unsupported data type: {dataType}");
+                    return (DataStatusCode.INVALID_DATA_TYPE, 0);
+            }
+        }
+        public static CalculateLengthResult CalculateLength(List<long> dims, Qnn_DataType_t dataType)
+        {
+            if (dims.Count == 0)
+            {
+                Console.WriteLine("dims.Count is zero");
+                return new CalculateLengthResult(DataStatusCode.INVALID_DIMENSIONS, 0);
+            }
+
+            var (returnStatus, elementSize) = GetDataTypeSizeInBytes(dataType);
+            if (returnStatus != DataStatusCode.SUCCESS)
+            {
+                return new CalculateLengthResult(returnStatus, 0);
+            }
+
+            long length = elementSize * CalculateElementCount(dims);
+            return new CalculateLengthResult(DataStatusCode.SUCCESS, length);
+        }
+
+
+        public static ReadBatchDataRetType ReadBatchData(
+        List<string> filePaths,
+        int filePathsIndexOffset,
+        bool loopBackToStart,
+        List<long> dims,
+        Qnn_DataType_t dataType,
+        IntPtr buffer)
+        {
+            uint tensorLength = 0;
+            if (buffer == IntPtr.Zero)
+            {
+                Console.WriteLine("buffer is null");
+                return new ReadBatchDataRetType(DataStatusCode.INVALID_BUFFER, 0, 0);
+            }
+
+            CalculateLengthResult result = CalculateLength(dims, dataType);
+            if (result.Status!= DataStatusCode.SUCCESS)
+            {
+                return new ReadBatchDataRetType(result.Status, 0, 0);
+            }
+
+            int numInputsCopied = 0;
+            long numBatchSize = 0;
+            int totalLength = 0;
+            int fileIndex = filePathsIndexOffset;
+
+            while (true)
+            {
+                if (fileIndex >= filePaths.Count)
+                {
+                    if (loopBackToStart)
+                    {
+                        fileIndex = fileIndex % filePaths.Count;
+                    }
+                    else
+                    {
+                        numBatchSize += (tensorLength - totalLength) / (totalLength / numBatchSize);
+                        // pad the vector with zeros
+                        ZeroMemory(buffer, totalLength, tensorLength - totalLength);
+                        break;
+                    }
+                }
+
+                try
+                {
+                    using (FileStream fileStream = new FileStream(filePaths[fileIndex], FileMode.Open, FileAccess.Read))
+                    {
+                        int fileSize = (int)fileStream.Length;
+
+                        if ((tensorLength % fileSize) != 0 || fileSize > tensorLength || fileSize == 0)
+                        {
+                            Console.WriteLine($"Given input file {filePaths[fileIndex]} with file size in bytes {fileSize}. " +
+                                              $"If the model expects a batch size of one, the file size should match the tensor extent: {tensorLength} bytes. " +
+                                              $"If the model expects a batch size > 1, the file size should evenly divide the tensor extent: {tensorLength} bytes.");
+                            return new ReadBatchDataRetType(DataStatusCode.DATA_SIZE_MISMATCH, numInputsCopied, numBatchSize);
+                        }
+
+                        byte[] tempBuffer = new byte[fileSize];
+                        if (fileStream.Read(tempBuffer, 0, fileSize) != fileSize)
+                        {
+                            Console.WriteLine($"Failed to read the contents of: {filePaths[fileIndex]}");
+                            return new ReadBatchDataRetType(DataStatusCode.DATA_READ_FAIL, numInputsCopied, numBatchSize);
+                        }
+
+                        Marshal.Copy(tempBuffer, 0, buffer + (numInputsCopied * fileSize), fileSize);
+
+                        totalLength += fileSize;
+                        numInputsCopied += 1;
+                        numBatchSize += 1;
+                        fileIndex += 1;
+
+                        if (totalLength >= tensorLength)
+                        {
+                            break;
+                        }
+                    }
+                }
+                catch (IOException)
+                {
+                    Console.WriteLine($"Failed to open input file: {filePaths[fileIndex]}");
+                    return new ReadBatchDataRetType(DataStatusCode.FILE_OPEN_FAIL, numInputsCopied, numBatchSize);
+                }
+            }
+
+            return new ReadBatchDataRetType(DataStatusCode.SUCCESS, numInputsCopied, numBatchSize);
+        }
+
 
         // Helper method to read data from files to a buffer.
         public PopulateInputTensorsRetType ReadDataAndAllocateBuffer(
@@ -89,30 +278,145 @@ namespace SampleCSharpApplication
         }
 
         // Helper method to populate an input tensor in the graph during execution.
-        public PopulateInputTensorsRetType PopulateInputTensor(
-            List<string> filePaths,
-            int filePathsIndexOffset,
-            bool loopBackToStart,
-            Qnn_Tensor_t input,
-            InputDataType inputDataType)
+        
+        public static PopulateInputTensorsRetType PopulateInputTensor(
+        List<string> filePaths,
+        int filePathsIndexOffset,
+        bool loopBackToStart,
+        Qnn_Tensor_t input,
+        InputDataType inputDataType)
         {
-            // Implementation needed
-            return new PopulateInputTensorsRetType();
+            // TODO
+            //if (input == null)
+            //{
+            //    Console.WriteLine("input is null");
+            //    return new PopulateInputTensorsRetType(StatusCode.FAILURE, 0, 0);
+            //}
+
+            //StatusCode returnStatus = StatusCode.SUCCESS;
+            //int numFilesPopulated = 0;
+            //int batchSize = 0;
+            ReadBatchDataRetType rbd = new ReadBatchDataRetType();
+            
+            StatusCode status = StatusCode.SUCCESS;
+            List<long> dims = new List<long>();
+            FillDims(dims, input.v2.Dimensions, input.v2.Rank);
+
+            if (inputDataType == InputDataType.FLOAT && input.v2.dataType != Qnn_DataType_t.QNN_DATATYPE_FLOAT_32)
+            {
+                IntPtr fileToBuffer = IntPtr.Zero;
+                try
+                {
+                    //ReadBatchDataRetType rbd = ReadDataAndAllocateBuffer(
+                    //    filePaths, filePathsIndexOffset, loopBackToStart, dims, QnnDataType.QNN_DATATYPE_FLOAT_32, ref fileToBuffer);
+
+                    // TODO
+                    //if (returnStatus == StatusCode.SUCCESS)
+                    //{
+                    //    Console.WriteLine("readDataFromFileToBuffer successful");
+                    //    returnStatus = CopyFromFloatToNative(fileToBuffer, input);
+                    //}
+                }
+                finally
+                {
+                    if (fileToBuffer != IntPtr.Zero)
+                    {
+                        Marshal.FreeHGlobal(fileToBuffer);
+                    }
+                }
+            }
+            else
+            {
+                
+                rbd = /*(status, numFilesPopulated, batchSize)*/ ReadBatchData(
+                    filePaths,
+                    filePathsIndexOffset,
+                    loopBackToStart,
+                    dims,
+                    input.v2.dataType,
+                    input.v2.clientBuf.data);
+
+                if (rbd.Status != DataStatusCode.SUCCESS)
+                {
+                    Console.WriteLine("Failure in DataUtil.ReadBatchData");
+                    status = StatusCode.FAILURE;  
+                }
+            }
+
+            return new PopulateInputTensorsRetType(status, rbd.NumInputsCopied, rbd.NumBatchSize);// numFilesPopulated, batchSize);
         }
 
         // Helper method to populate all input tensors during execution.
-        public PopulateInputTensorsRetType PopulateInputTensors(
-            uint graphIdx,
-            List<List<string>> filePathsVector,
-            int filePathsIndexOffset,
-            bool loopBackToStart,
-            Dictionary<string, uint> inputNameToIndex,
-            Qnn_Tensor_t[] inputs,
-            GraphInfo_t graphInfo,
-            InputDataType inputDataType)
+        public static PopulateInputTensorsRetType PopulateInputTensors(
+         uint graphIdx,
+         List<List<string>> filePathsVector,
+         int filePathsIndexOffset,
+         bool loopBackToStart,
+         Dictionary<string, uint> inputNameToIndex,
+         Qnn_Tensor_t[] inputs,
+         GraphInfo_t graphInfo,
+         InputDataType inputDataType)
         {
-            // Implementation needed
-            return new PopulateInputTensorsRetType();
+            Console.WriteLine($"populateInputTensors() graphIndx {graphIdx}");
+            if (inputs == null)
+            {
+                Console.WriteLine("inputs is null");
+                return new PopulateInputTensorsRetType(StatusCode.FAILURE, 0, 0);
+            }
+
+            uint inputCount = graphInfo.numInputTensors;
+            if (filePathsVector.Count != inputCount)
+            {
+                Console.WriteLine($"Incorrect amount of Input files for graphIdx: {graphIdx}. " +
+                                  $"Expected: {inputCount}, received: {filePathsVector.Count}");
+                return new PopulateInputTensorsRetType(StatusCode.FAILURE, 0, 0);
+            }
+
+            int numFilesPopulated = 0;
+            long numBatchSize = 0;
+
+            for (int inputIdx = 0; inputIdx < inputCount; inputIdx++)
+            {
+                int inputNameIdx = inputIdx;
+                Console.WriteLine($"index = {inputIdx} input column index = {inputNameIdx}");
+
+                // TODO
+                //string inputNodeName = graphInfo.inputTensors.inputTensors[inputIdx]
+                string inputNodeName = "TODO";
+                //if (!string.IsNullOrEmpty(inputNodeName) && inputNameToIndex.ContainsKey(inputNodeName))
+                //{
+                //    inputNameIdx = (int)inputNameToIndex[inputNodeName];
+                //}
+
+                var pit = // (returnStatus, currentInputNumFilesPopulated, currentInputNumBatchSize) =
+                    PopulateInputTensor(filePathsVector[inputNameIdx],
+                                        filePathsIndexOffset,
+                                        loopBackToStart,
+                                        inputs[inputIdx],
+                                        inputDataType);
+
+                if (pit.Status != StatusCode.SUCCESS)
+                {
+                    // TODO
+                    //Console.WriteLine($"populateInputTensorFromFiles failed for input {inputNodeName} with index {inputIdx}");
+                    return new PopulateInputTensorsRetType(StatusCode.FAILURE, pit.NumFilesPopulated, pit.BatchSize);
+                }
+
+                if (inputIdx == 0)
+                {
+                    numFilesPopulated = pit.NumFilesPopulated;
+                    numBatchSize = pit.BatchSize;
+                }
+                else if (numFilesPopulated != pit.NumFilesPopulated || numBatchSize != pit.BatchSize)
+                {
+                    Console.WriteLine($"Current input tensor with name: {inputNodeName} with index {inputIdx} " +
+                                      $"files populated = {pit.NumFilesPopulated}, batch size = {pit.BatchSize} " +
+                                      $"does not match with expected files populated = {numFilesPopulated}, batch size = {numBatchSize}");
+                    return new PopulateInputTensorsRetType(StatusCode.FAILURE, numFilesPopulated, numBatchSize);
+                }
+            }
+
+            return new PopulateInputTensorsRetType(StatusCode.SUCCESS, numFilesPopulated, numBatchSize);
         }
         private void FreeTensorResources(ref Qnn_Tensor_t tensor)
         {
@@ -505,7 +809,7 @@ namespace SampleCSharpApplication
             return StatusCode.SUCCESS;
         }
 
-        public StatusCode FillDims(List<long> dims, uint[] inDimensions, uint rank)
+        public static StatusCode FillDims(List<long> dims, uint[] inDimensions, uint rank)
         {
             if (inDimensions == null)
             {
