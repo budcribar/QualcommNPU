@@ -49,10 +49,10 @@ namespace SampleCSharpApplication
                 return 1;
             }
 
-            QnnSampleApp app = new QnnSampleApp(model, backend, inputList, duration);
+            using QnnSampleApp app = new QnnSampleApp(model, backend, inputList, duration);
             int res = app.Run();
 
-            Environment.Exit(res);
+            //Environment.Exit(res);
             return res;
         }
     }

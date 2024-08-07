@@ -9,7 +9,7 @@ using System.Reflection;
 namespace SampleCSharpApplication
 {
   
-    public unsafe class QnnSampleApp
+    public unsafe class QnnSampleApp : IDisposable
     {
         private QnnLog_Callback_t? m_logCallback = null;
         private QnnFunctionPointers? m_qnnFunctionPointers = null;
@@ -19,12 +19,13 @@ namespace SampleCSharpApplication
         private Qnn_ContextHandle_t m_context = IntPtr.Zero;
         private unsafe GraphInfo_t** m_graphsInfos;
         private uint m_graphsCount = 0;
-        private bool m_isBackendInitialized;
+        private bool m_isBackendInitialized = false;
         private readonly IntPtr* m_backendConfig;
         private readonly IntPtr[]? m_graphConfigsInfo;
         private readonly IOTensor m_iOTensor = new();
         private ReadInputListsResult readInputListsResult = new();
-
+        private Qnn_ProfileHandle_t m_profileBackendHandle = IntPtr.Zero;
+        private bool m_isContextCreated = false; // todo
         private readonly string model;
         private readonly string backend;
         private readonly string inputList;
@@ -339,7 +340,7 @@ namespace SampleCSharpApplication
                         return;
                     }
 
-                    QnnDelegates.QnnLog_CreateFn_t logCreate = Marshal.GetDelegateForFunctionPointer<QnnLog_CreateFn_t>(logCreatePtr);
+                    QnnLog_CreateFn_t logCreate = Marshal.GetDelegateForFunctionPointer<QnnLog_CreateFn_t>(logCreatePtr);
 
                     Qnn_ErrorHandle_t result = logCreate(new IntPtr(0), (int)logLevel, ref m_logHandle);
                    
@@ -718,6 +719,81 @@ namespace SampleCSharpApplication
             Console.WriteLine($"End time: {DateTimeOffset.Now.ToUnixTimeSeconds()} seconds since epoch");
 
             return StatusCode.SUCCESS;
-        }  
+        }
+
+        private bool disposed = false;
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposed)
+                return;
+
+            if (disposing)
+            {
+                // Free Profiling object if it was created
+                if (m_profileBackendHandle != IntPtr.Zero)
+                {
+                    Console.WriteLine("Freeing backend profile object.");
+                    if (m_qnnFunctionPointers?.QnnInterface.ProfileFree != IntPtr.Zero)
+                    {
+                        var profileFreeFn = Marshal.GetDelegateForFunctionPointer<QnnProfile_FreeFn_t>(m_qnnFunctionPointers.QnnInterface.ProfileFree);
+                        if (profileFreeFn(m_profileBackendHandle) != QnnProfile_Error_t.QNN_PROFILE_NO_ERROR)
+                        {
+                            Console.WriteLine("Could not free backend profile handle.");
+                        }
+                    }
+                }
+
+                // Free context if not already done
+                if (m_isContextCreated)
+                {
+                    Console.WriteLine("Freeing context");
+                    if (m_qnnFunctionPointers?.QnnInterface.ContextFree != IntPtr.Zero)
+                    {
+                        var contextFreeFn = Marshal.GetDelegateForFunctionPointer<QnnContext_FreeFn_t>(m_qnnFunctionPointers.QnnInterface.ContextFree);
+                        if (contextFreeFn(m_context, IntPtr.Zero) != QnnContextError.QNN_CONTEXT_NO_ERROR)
+                        {
+                            Console.WriteLine("Could not free context");
+                        }
+                    }
+                }
+                m_isContextCreated = false;
+
+                // Terminate backend
+                if (m_isBackendInitialized && m_qnnFunctionPointers?.QnnInterface.BackendFree != IntPtr.Zero)
+                {
+                    Console.WriteLine("Freeing backend");
+                    var backendFreeFn = Marshal.GetDelegateForFunctionPointer<QnnBackend_FreeFn_t>(m_qnnFunctionPointers.QnnInterface.BackendFree);
+                    if (backendFreeFn(m_backendHandle) != QnnBackend_Error_t.QNN_BACKEND_NO_ERROR)
+                    {
+                        Console.WriteLine("Could not free backend");
+                    }
+                }
+                m_isBackendInitialized = false;
+
+                // Terminate logging in the backend
+                if (m_qnnFunctionPointers?.QnnInterface.LogFree != IntPtr.Zero && m_logHandle != IntPtr.Zero)
+                {
+                    var logFreeFn = Marshal.GetDelegateForFunctionPointer<QnnLog_FreeFn_t>(m_qnnFunctionPointers.QnnInterface.LogFree);
+                    if (logFreeFn(m_logHandle) != QNN_SUCCESS)
+                    {
+                        Console.WriteLine("Unable to terminate logging in the backend.");
+                    }
+                }
+            }
+
+            disposed = true;
+        }
+        ~QnnSampleApp()
+        {
+            Dispose(false);
+        }
+
+
     }
 }
