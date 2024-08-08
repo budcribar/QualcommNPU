@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -183,7 +184,7 @@ namespace SampleCSharpApplication
             }
 
             CalculateLengthResult result = CalculateLength(dims, dataType);
-            if (result.Status!= DataStatusCode.SUCCESS)
+            if (result.Status != DataStatusCode.SUCCESS)
             {
                 return new ReadBatchDataRetType(result.Status, 0, 0);
             }
@@ -255,37 +256,242 @@ namespace SampleCSharpApplication
         }
 
 
-        // Helper method to read data from files to a buffer.
-        // TODO Unused 
-        //public PopulateInputTensorsRetType ReadDataAndAllocateBuffer(
-        //    List<string> filePaths,
-        //    int filePathsIndexOffset,
-        //    bool loopBackToStart,
-        //    List<int> dims,
-        //    Qnn_DataType_t dataType,
-        //    out byte[] bufferToCopy)
-        //{
-        //    // Implementation needed
-        //    bufferToCopy = null;
-        //    return new PopulateInputTensorsRetType();
-        //}
-
-        // Helper method to copy a float buffer, quantize it, and copy
-        // it to a tensor (Qnn_Tensor_t) buffer.
-        public StatusCode CopyFromFloatToNative(float[] floatBuffer, Qnn_Tensor_t tensor)
+        public static PopulateInputTensorsRetType ReadDataAndAllocateBuffer(
+            List<string> filePaths,
+            int filePathsIndexOffset,
+            bool loopBackToStart,
+            List<long> dims,
+            Qnn_DataType_t dataType,
+            out IntPtr bufferToCopy)
         {
-            // Implementation needed
+            StatusCode returnStatus = StatusCode.SUCCESS;
+            bufferToCopy = IntPtr.Zero;
+
+            returnStatus = AllocateBuffer(out bufferToCopy, dims, dataType);
+            int numFilesPopulated = 0;
+            long batchSize = 0;
+            //(status, filesPopulated, size)
+            ReadBatchDataRetType rbd = ReadBatchData(
+                filePaths,
+                filePathsIndexOffset,
+                loopBackToStart,
+                dims,
+                dataType,
+                bufferToCopy);
+
+            if (rbd.Status != DataStatusCode.SUCCESS)
+            {
+                Console.Error.WriteLine("Failure in DataUtil.ReadBatchData");
+                returnStatus = StatusCode.FAILURE;
+            }
+
+            if (returnStatus != StatusCode.SUCCESS)
+            {
+                if (bufferToCopy != IntPtr.Zero)
+                {
+                    Marshal.FreeHGlobal(bufferToCopy);
+                    bufferToCopy = IntPtr.Zero;
+                }
+            }
+
+            numFilesPopulated = rbd.NumInputsCopied;
+            batchSize = rbd.NumBatchSize;
+
+            return new PopulateInputTensorsRetType
+            {
+                Status = returnStatus,
+                NumFilesPopulated = numFilesPopulated,
+                BatchSize = batchSize
+            };
+        }
+
+
+        // TODO
+        private static StatusCode AllocateBuffer(out IntPtr buffer, List<long> dims, Qnn_DataType_t dataType)
+        {
+            // Implement buffer allocation logic here
+            buffer = IntPtr.Zero;
             return StatusCode.SUCCESS;
         }
 
+        public static void GenericMarshalCopy<T>(T[] sourceArray, IntPtr destination, int length) where T : struct
+        {
+            int sizeOfT = Marshal.SizeOf<T>();
+            int totalSize = length * sizeOfT;
+
+            byte[] byteArray = new byte[totalSize];
+            Buffer.BlockCopy(sourceArray, 0, byteArray, 0, totalSize);
+            Marshal.Copy(byteArray, 0, destination, totalSize);
+        }
+
+        public static DataStatusCode FloatToTfN<T>(IntPtr outPtr, float[] inArray, int offset, float scale, int numElements) where T : struct, IConvertible
+        {
+            if (outPtr == IntPtr.Zero || inArray == null)
+            {
+                Console.Error.WriteLine("Received a null argument");
+                return DataStatusCode.INVALID_BUFFER;
+            }
+
+            if (!typeof(T).IsValueType || !IsUnsignedInteger<T>())
+            {
+                throw new ArgumentException("FloatToTfN supports unsigned integers only!");
+            }
+
+            int dataTypeSizeInBytes = Marshal.SizeOf<T>();
+            int bitWidth = dataTypeSizeInBytes * 8; // 8 bits per byte
+            double trueBitWidthMax = Math.Pow(2, bitWidth) - 1;
+            double encodingMin = offset * scale;
+            double encodingMax = (trueBitWidthMax + offset) * scale;
+            double encodingRange = encodingMax - encodingMin;
+
+            T[] outArray = new T[numElements];
+
+            for (int i = 0; i < numElements; ++i)
+            {
+                int quantizedValue = (int)Math.Round(trueBitWidthMax * (inArray[i] - encodingMin) / encodingRange);
+                quantizedValue = Math.Max(0, Math.Min(quantizedValue, (int)trueBitWidthMax));
+                outArray[i] = (T)Convert.ChangeType(quantizedValue, typeof(T));
+            }
+
+            byte[] byteArray = new byte[numElements * dataTypeSizeInBytes];
+            Buffer.BlockCopy(outArray, 0, byteArray, 0, byteArray.Length);
+
+            Marshal.Copy(byteArray, 0, outPtr, byteArray.Length);
+
+            return DataStatusCode.SUCCESS;
+        }
+
+        public static DataStatusCode CastFromFloat<T>(IntPtr outPtr, float[] inArray, int numElements) where T : struct
+        {
+            if (outPtr == IntPtr.Zero || inArray == null)
+            {
+                Console.Error.WriteLine("Received a null argument");
+                return DataStatusCode.INVALID_BUFFER;
+            }
+
+            T[] outArray = new T[numElements];
+
+            for (int i = 0; i < numElements; i++)
+            {
+                outArray[i] = (T)Convert.ChangeType(inArray[i], typeof(T));
+            }
+
+            Marshal.Copy(outArray, 0, outPtr, numElements);
+
+            return DataStatusCode.SUCCESS;
+        }
+
+        private static bool IsUnsignedInteger<T>() where T : struct, IConvertible
+        {
+            return typeof(T) == typeof(byte) || typeof(T) == typeof(ushort) || typeof(T) == typeof(uint) || typeof(T) == typeof(ulong);
+        }
+
+        // Helper method to copy a float buffer, quantize it, and copy
+        // it to a tensor (Qnn_Tensor_t) buffer.
+        public static StatusCode CopyFromFloatToNative(float[] floatBuffer, Qnn_Tensor_t tensor)
+        {
+            if (floatBuffer == null)
+            {
+                Console.Error.WriteLine("CopyFromFloatToNative(): received a null argument");
+                return StatusCode.FAILURE;
+            }
+
+            StatusCode returnStatus = StatusCode.SUCCESS;
+            int elementCount = CalculateElementCount(tensor.v2.Dimensions);
+
+            switch (tensor.v2.dataType)
+            {
+                case Qnn_DataType_t.QNN_DATATYPE_UFIXED_POINT_8:
+                    FloatToTfN<byte>(tensor.v2.clientBuf.data, floatBuffer, tensor.v2.quantizeParams.scaleOffsetEncoding.offset, tensor.v2.quantizeParams.scaleOffsetEncoding.scale, elementCount);
+                    break;
+
+                case Qnn_DataType_t.QNN_DATATYPE_UFIXED_POINT_16:
+                    FloatToTfN<ushort>(tensor.v2.clientBuf.data, floatBuffer, tensor.v2.quantizeParams.scaleOffsetEncoding.offset, tensor.v2.quantizeParams.scaleOffsetEncoding.scale, elementCount);
+                    break;
+
+                case Qnn_DataType_t.QNN_DATATYPE_UINT_8:
+                    if (CastFromFloat<byte>(tensor.v2.clientBuf.data, floatBuffer, elementCount) != DataStatusCode.SUCCESS)
+                    {
+                        Console.Error.WriteLine("Failure in CastFromFloat<byte>");
+                        returnStatus = StatusCode.FAILURE;
+                    }
+                    break;
+
+                case Qnn_DataType_t.QNN_DATATYPE_UINT_16:
+                    if (CastFromFloat<ushort>(tensor.v2.clientBuf.data, floatBuffer, elementCount) != DataStatusCode.SUCCESS)
+                    {
+                        Console.Error.WriteLine("Failure in CastFromFloat<ushort>");
+                        returnStatus = StatusCode.FAILURE;
+                    }
+                    break;
+
+                case Qnn_DataType_t.QNN_DATATYPE_UINT_32:
+                    if (CastFromFloat<uint>(tensor.v2.clientBuf.data, floatBuffer, elementCount) != DataStatusCode.SUCCESS)
+                    {
+                        Console.Error.WriteLine("Failure in CastFromFloat<uint>");
+                        returnStatus = StatusCode.FAILURE;
+                    }
+                    break;
+
+                case Qnn_DataType_t.QNN_DATATYPE_INT_8:
+                    if (CastFromFloat<sbyte>(tensor.v2.clientBuf.data, floatBuffer, elementCount) != DataStatusCode.SUCCESS)
+                    {
+                        Console.Error.WriteLine("Failure in CastFromFloat<sbyte>");
+                        returnStatus = StatusCode.FAILURE;
+                    }
+                    break;
+
+                case Qnn_DataType_t.QNN_DATATYPE_INT_16:
+                    if (CastFromFloat<short>(tensor.v2.clientBuf.data, floatBuffer, elementCount) != DataStatusCode.SUCCESS)
+                    {
+                        Console.Error.WriteLine("Failure in CastFromFloat<short>");
+                        returnStatus = StatusCode.FAILURE;
+                    }
+                    break;
+
+                case Qnn_DataType_t.QNN_DATATYPE_INT_32:
+                    if (CastFromFloat<int>(tensor.v2.clientBuf.data, floatBuffer, elementCount) != DataStatusCode.SUCCESS)
+                    {
+                        Console.Error.WriteLine("Failure in CastFromFloat<int>");
+                        returnStatus = StatusCode.FAILURE;
+                    }
+                    break;
+
+                case Qnn_DataType_t.QNN_DATATYPE_BOOL_8:
+                    if (CastFromFloat<byte>(tensor.v2.clientBuf.data, floatBuffer, elementCount) != DataStatusCode.SUCCESS)
+                    {
+                        Console.Error.WriteLine("Failure in CastFromFloat<bool>");
+                        returnStatus = StatusCode.FAILURE;
+                    }
+                    break;
+
+                default:
+                    Console.Error.WriteLine("Datatype not supported yet!");
+                    returnStatus = StatusCode.FAILURE;
+                    break;
+            }
+
+            return returnStatus;
+        }
+
+        private static int CalculateElementCount(uint[] dimensions)
+        {
+            int count = 1;
+            foreach (int dim in dimensions)
+            {
+                count *= dim;
+            }
+            return count;
+        }
+
         // Helper method to populate an input tensor in the graph during execution.
-        
+
         public static PopulateInputTensorsRetType PopulateInputTensor(
-        List<string> filePaths,
-        int filePathsIndexOffset,
-        bool loopBackToStart,
-        Qnn_Tensor_t input,
-        InputDataType inputDataType)
+            List<string> filePaths,
+            int filePathsIndexOffset,
+            bool loopBackToStart,
+            Qnn_Tensor_t input,
+            InputDataType inputDataType)
         {
             // TODO
             //if (input == null)
@@ -298,7 +504,7 @@ namespace SampleCSharpApplication
             //int numFilesPopulated = 0;
             //int batchSize = 0;
             ReadBatchDataRetType rbd = new ReadBatchDataRetType();
-            
+
             StatusCode status = StatusCode.SUCCESS;
             List<long> dims = new List<long>();
             FillDims(dims, input.v2.Dimensions, input.v2.Rank);
@@ -308,15 +514,13 @@ namespace SampleCSharpApplication
                 IntPtr fileToBuffer = IntPtr.Zero;
                 try
                 {
-                    //ReadBatchDataRetType rbd = ReadDataAndAllocateBuffer(
-                    //    filePaths, filePathsIndexOffset, loopBackToStart, dims, QnnDataType.QNN_DATATYPE_FLOAT_32, ref fileToBuffer);
+                    PopulateInputTensorsRetType rda = ReadDataAndAllocateBuffer(filePaths, filePathsIndexOffset, loopBackToStart, dims, Qnn_DataType_t.QNN_DATATYPE_FLOAT_32, out fileToBuffer);
 
-                    // TODO
-                    //if (returnStatus == StatusCode.SUCCESS)
-                    //{
-                    //    Console.WriteLine("readDataFromFileToBuffer successful");
-                    //    returnStatus = CopyFromFloatToNative(fileToBuffer, input);
-                    //}
+                    if (rda.Status == StatusCode.SUCCESS)
+                    {
+                        Console.WriteLine("readDataFromFileToBuffer successful");
+                        rda.Status = CopyFromFloatToNative(fileToBuffer, input);
+                    }
                 }
                 finally
                 {
@@ -328,8 +532,7 @@ namespace SampleCSharpApplication
             }
             else
             {
-                
-                rbd = /*(status, numFilesPopulated, batchSize)*/ ReadBatchData(
+                rbd = ReadBatchData(
                     filePaths,
                     filePathsIndexOffset,
                     loopBackToStart,
@@ -340,7 +543,7 @@ namespace SampleCSharpApplication
                 if (rbd.Status != DataStatusCode.SUCCESS)
                 {
                     Console.WriteLine("Failure in DataUtil.ReadBatchData");
-                    status = StatusCode.FAILURE;  
+                    status = StatusCode.FAILURE;
                 }
             }
 
@@ -348,15 +551,8 @@ namespace SampleCSharpApplication
         }
 
         // Helper method to populate all input tensors during execution.
-        public static PopulateInputTensorsRetType PopulateInputTensors(
-         uint graphIdx,
-         List<List<string>> filePathsVector,
-         int filePathsIndexOffset,
-         bool loopBackToStart,
-         Dictionary<string, uint> inputNameToIndex,
-         Qnn_Tensor_t[] inputs,
-         GraphInfo_t graphInfo,
-         InputDataType inputDataType)
+        public static PopulateInputTensorsRetType PopulateInputTensors(uint graphIdx, List<List<string>> filePathsVector, int filePathsIndexOffset,
+               bool loopBackToStart, Dictionary<string, uint> inputNameToIndex, Qnn_Tensor_t[] inputs, GraphInfo_t graphInfo, InputDataType inputDataType)
         {
             Console.WriteLine($"populateInputTensors() graphIndx {graphIdx}");
             if (inputs == null)
@@ -456,7 +652,7 @@ namespace SampleCSharpApplication
             return count;
         }
 
-        private static StatusCode AllocateBuffer<T>(ref IntPtr buffer, ref int length,  long elementCount) where T : unmanaged
+        private static StatusCode AllocateBuffer<T>(ref IntPtr buffer, ref int length, long elementCount) where T : unmanaged
         {
             try
             {
@@ -481,7 +677,7 @@ namespace SampleCSharpApplication
             {
                 case Qnn_DataType_t.QNN_DATATYPE_FLOAT_32:
                     Console.WriteLine("Allocating float buffer");
-                    returnStatus = AllocateBuffer<float>(ref buffer,ref length, elementCount);
+                    returnStatus = AllocateBuffer<float>(ref buffer, ref length, elementCount);
                     break;
                 case Qnn_DataType_t.QNN_DATATYPE_UINT_8:
                 case Qnn_DataType_t.QNN_DATATYPE_UFIXED_POINT_8:
@@ -541,7 +737,7 @@ namespace SampleCSharpApplication
                 dest.v2.isProduced = src.v2.isProduced;
 
                 dest.v2.Name = src.v2.Name;
-                
+
                 // Deep copy dimensions
                 if (src.v2.Dimensions != null && src.v2.Rank > 0)
                 {
@@ -641,7 +837,7 @@ namespace SampleCSharpApplication
 
                     IntPtr buffer = IntPtr.Zero;
                     int length = 0;
-                    if (AllocateBuffer(ref buffer,ref length, dims, tensors[tensorIdx].v2.dataType) != StatusCode.SUCCESS)
+                    if (AllocateBuffer(ref buffer, ref length, dims, tensors[tensorIdx].v2.dataType) != StatusCode.SUCCESS)
                     {
                         throw new Exception("Failed to allocate buffer");
                     }
@@ -688,7 +884,7 @@ namespace SampleCSharpApplication
             GraphInfo_t graphInfo)
         {
             inputs = Array.Empty<Qnn_Tensor_t>();
-            outputs = Array.Empty<Qnn_Tensor_t>(); 
+            outputs = Array.Empty<Qnn_Tensor_t>();
             StatusCode returnStatus = StatusCode.SUCCESS;
 
             try
@@ -714,7 +910,7 @@ namespace SampleCSharpApplication
                 if (inputs != null)
                 {
                     TearDownTensors(inputs, graphInfo.numInputTensors);
-                    inputs = Array.Empty<Qnn_Tensor_t>(); 
+                    inputs = Array.Empty<Qnn_Tensor_t>();
                 }
                 if (outputs != null)
                 {
@@ -745,7 +941,7 @@ namespace SampleCSharpApplication
             return StatusCode.SUCCESS;
         }
 
-        
+
 
         // Helper method to allocate a buffer.
         //public StatusCode AllocateBuffer<T>(out T[] buffer, int elementCount)
@@ -834,7 +1030,7 @@ namespace SampleCSharpApplication
                 return StatusCode.FAILURE;
             }
         }
-    
+
         public static OutputDataType ParseOutputDataType(string dataTypeString)
         {
             var lowercaseDataType = dataTypeString.ToLower();

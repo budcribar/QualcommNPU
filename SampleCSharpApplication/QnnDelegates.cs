@@ -357,14 +357,29 @@ namespace SampleCSharpApplication
             QNN_TENSOR_VERSION_UNDEFINED = 0x7FFFFFFF
         }
 
-        [StructLayout(LayoutKind.Sequential)]
+        [StructLayout(LayoutKind.Explicit)]
         public struct Qnn_Tensor_t
         {
+            /// <summary>
+            /// Version of the QNN tensor
+            /// </summary>
+            [FieldOffset(0)]
             public Qnn_TensorVersion_t version;
+
+            /// <summary>
+            /// Tensor version 1 (see QNN_TENSOR_VERSION_1)
+            /// </summary>
+            [FieldOffset(sizeof(Qnn_TensorVersion_t))]
+            public Qnn_TensorV1_t v1;
+
+            /// <summary>
+            /// Tensor version 2 (see QNN_TENSOR_VERSION_2)
+            /// </summary>
+            [FieldOffset(sizeof(Qnn_TensorVersion_t))]
             public Qnn_TensorV2_t v2;
         }
 
-        public enum Qnn_TensorType_t : uint
+    public enum Qnn_TensorType_t : uint
         {
             QNN_TENSOR_TYPE_APP_WRITE = 0,
             QNN_TENSOR_TYPE_APP_READ = 1,
@@ -523,15 +538,43 @@ namespace SampleCSharpApplication
             }
         }
 
-        [StructLayout(LayoutKind.Sequential)]
-        public struct Qnn_QuantizeParams_t
-        {
-            public Qnn_Definition_t encodingDefinition;
-            public Qnn_QuantizationEncoding_t quantizationEncoding;
-            public QnnBwAxisScaleOffset encodingUnion; // This will need to be handled carefully in managed code
-        }
+    public struct Qnn_ScaleOffset_t
+    {
+        /// <summary>
+        /// Scale must be strictly positive
+        /// </summary>
+        public float scale;
 
-        [StructLayout(LayoutKind.Sequential)]
+        public int offset;
+    }
+
+    [StructLayout(LayoutKind.Explicit)]
+    public struct Qnn_QuantizeParams_t
+    {
+        [FieldOffset(0)]
+        public Qnn_Definition_t encodingDefinition;
+
+        /// <summary>
+        /// Quantization encoding type identifying quantization encoding structure to use
+        /// </summary>
+        [FieldOffset(sizeof(Qnn_Definition_t))]
+        public Qnn_QuantizationEncoding_t quantizationEncoding;
+
+        [FieldOffset(sizeof(Qnn_Definition_t) + sizeof(Qnn_QuantizationEncoding_t))]
+        public Qnn_ScaleOffset_t scaleOffsetEncoding;
+
+        // TODO
+        //[FieldOffset(sizeof(Qnn_Definition_t) + sizeof(Qnn_QuantizationEncoding_t))]
+        //public Qnn_AxisScaleOffset_t axisScaleOffsetEncoding;
+
+        //[FieldOffset(sizeof(Qnn_Definition_t) + sizeof(Qnn_QuantizationEncoding_t))]
+        //public Qnn_BwScaleOffset_t bwScaleOffsetEncoding;
+
+        //[FieldOffset(sizeof(Qnn_Definition_t) + sizeof(Qnn_QuantizationEncoding_t))]
+        //public Qnn_BwAxisScaleOffset_t bwAxisScaleOffsetEncoding;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
         public struct Qnn_ClientBuffer_t
         {
             public IntPtr data;
@@ -581,7 +624,105 @@ namespace SampleCSharpApplication
             public uint NumSparseDimensions;
         }
 
-        [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential)]
+    public struct Qnn_TensorV1_t
+    {
+        public uint id;
+        private IntPtr name;
+        public Qnn_TensorType_t type;
+        public Qnn_TensorDataFormat_t dataFormat;
+        public Qnn_DataType_t dataType;
+        public Qnn_QuantizeParams_t quantizeParams;
+        public uint Rank;
+
+        private IntPtr dimensions;
+
+        public Qnn_TensorMemType_t memType;
+
+        public Qnn_ClientBuffer_t clientBuf;
+        public IntPtr isDynamicDimensions;
+        public Qnn_SparseParams_t sparseParams;
+        public byte isProduced;
+
+        public string Name
+        {
+            get
+            {
+                if (name == IntPtr.Zero)
+                    return string.Empty;
+                return Marshal.PtrToStringAnsi(name) ?? string.Empty;
+            }
+            set
+            {
+                // Free the existing name if it exists
+                if (name != IntPtr.Zero)
+                {
+                    Marshal.FreeHGlobal(name);
+                    name = IntPtr.Zero;
+                }
+
+                // If the new value is not null or empty, allocate memory and copy the string
+                if (!string.IsNullOrEmpty(value))
+                {
+                    name = Marshal.StringToHGlobalAnsi(value);
+                }
+            }
+        }
+        public void FreeName()
+        {
+            if (name != IntPtr.Zero)
+            {
+                Marshal.FreeHGlobal(name);
+                name = IntPtr.Zero;
+            }
+        }
+        public uint[] Dimensions
+        {
+            get
+            {
+                if (dimensions == IntPtr.Zero || Rank == 0)
+                    return Array.Empty<uint>();
+                uint[] dims = new uint[Rank];
+                for (int i = 0; i < Rank; i++)
+                {
+                    dims[i] = (uint)Marshal.ReadInt32(dimensions, i * sizeof(uint));
+                }
+                return dims;
+            }
+            set
+            {
+                if (value == null)
+                {
+                    dimensions = IntPtr.Zero;
+                    Rank = 0;
+                    return;
+                }
+
+                Rank = (uint)value.Length;
+                if (dimensions != IntPtr.Zero)
+                {
+                    Marshal.FreeHGlobal(dimensions);
+                }
+                dimensions = Marshal.AllocHGlobal(value.Length * sizeof(uint));
+                for (int i = 0; i < value.Length; i++)
+                {
+                    Marshal.WriteInt32(dimensions, i * sizeof(uint), (int)value[i]);
+                }
+            }
+        }
+
+        public void FreeDimensions()
+        {
+            if (dimensions != IntPtr.Zero)
+            {
+                Marshal.FreeHGlobal(dimensions);
+                dimensions = IntPtr.Zero;
+                Rank = 0;
+            }
+        }
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
         public struct Qnn_TensorV2_t
         {
             public uint id;
@@ -597,8 +738,6 @@ namespace SampleCSharpApplication
             public Qnn_TensorMemType_t memType;
 
             public Qnn_ClientBuffer_t clientBuf;
-            //public Qnn_MemHandle_t memHandle;
-            //public IntPtr memoryUnion; // This will need to be handled carefully in managed code
             public IntPtr isDynamicDimensions;
             public Qnn_SparseParams_t sparseParams;
             public byte isProduced;
