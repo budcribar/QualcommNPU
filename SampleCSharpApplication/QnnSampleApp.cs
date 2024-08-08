@@ -5,6 +5,7 @@ using static SampleCSharpApplication.DynamicLoadUtil;
 using System;
 using System.Text.RegularExpressions;
 using System.Reflection;
+using System.Xml.Linq;
 
 namespace SampleCSharpApplication
 {
@@ -303,14 +304,14 @@ namespace SampleCSharpApplication
             }
 
             Console.WriteLine("Freeing context...");
-            if (!FreeContext())
+            if (FreeContext() != StatusCode.SUCCESS)
             {
                 Console.WriteLine("Context Free failure");
                 return 1;
             }
 
             Console.WriteLine("Freeing device...");
-            if (!FreeDevice())
+            if (FreeDevice() != StatusCode.SUCCESS)
             {
                 Console.WriteLine("Device Free failure");
                 return 1;
@@ -521,6 +522,7 @@ namespace SampleCSharpApplication
                 }
 
                 Console.WriteLine($"contextCreate Returned Status = {qnnStatus}");
+                m_isContextCreated = true;
                 return StatusCode.SUCCESS;
             }
             catch (Exception ex)
@@ -624,16 +626,45 @@ namespace SampleCSharpApplication
 
             return StatusCode.SUCCESS;
         }
-        private static bool FreeContext()
+        private StatusCode FreeContext()
         {
+            if (!m_isContextCreated) return StatusCode.SUCCESS;
+
+            Console.WriteLine("Freeing context");
+            if (m_qnnFunctionPointers?.QnnInterface.ContextFree != IntPtr.Zero)
+            {
+                var contextFreeFn = Marshal.GetDelegateForFunctionPointer<QnnContext_FreeFn_t>(m_qnnFunctionPointers?.QnnInterface.ContextFree ?? IntPtr.Zero);
+                if (contextFreeFn(m_context, IntPtr.Zero) != QnnContextError.QNN_CONTEXT_NO_ERROR)
+                {
+                    Console.WriteLine("Could not free context");
+                    return StatusCode.FAILURE;
+                }
+            }
+            m_isContextCreated = false;
             // Implementation for freeing context
-            return true;
+            return StatusCode.SUCCESS;
         }
 
-        private static bool FreeDevice()
+        private StatusCode FreeDevice()
         {
+            if (m_qnnFunctionPointers?.QnnInterface.DeviceFree == IntPtr.Zero)
+            {
+                Console.Error.WriteLine("DeviceFree pointer is null");
+                return StatusCode.FAILURE;
+            }
+            IntPtr deviceFreePtr = m_qnnFunctionPointers?.QnnInterface.DeviceFree ?? IntPtr.Zero;
+
+            QnnDevice_FreeFn_t deviceFree = Marshal.GetDelegateForFunctionPointer<QnnDevice_FreeFn_t>(deviceFreePtr);
+
+            Qnn_ErrorHandle_t qnnStatus =deviceFree(m_deviceHandle);
+
+            if (qnnStatus != QNN_SUCCESS && qnnStatus != (ulong)QnnCommon_Error_t.QNN_COMMON_ERROR_NOT_SUPPORTED) // TODO QNN_DEVICE_ERROR_UNSUPPORTED_FEATURE
+            {
+                Console.Error.WriteLine("Failed to free device");
+                return StatusCode.FAILURE;
+            }
             // Implementation for freeing device
-            return true;
+            return StatusCode.SUCCESS;
         }
 
         private StatusCode ExecuteGraphs(List<List<List<string>>> filePathsLists)
@@ -712,6 +743,16 @@ namespace SampleCSharpApplication
                         }
                     
                     }
+
+                    for (int i = 0; i < inputs.Length; i++)
+                    {
+                        inputs[i].Dispose();
+                    }
+                    for (int i = 0; i < outputs.Length; i++)
+                    {
+                        outputs[i].Dispose();
+                    }
+
                 }
             }
 
@@ -753,15 +794,7 @@ namespace SampleCSharpApplication
                 // Free context if not already done
                 if (m_isContextCreated)
                 {
-                    Console.WriteLine("Freeing context");
-                    if (m_qnnFunctionPointers?.QnnInterface.ContextFree != IntPtr.Zero)
-                    {
-                        var contextFreeFn = Marshal.GetDelegateForFunctionPointer<QnnContext_FreeFn_t>(m_qnnFunctionPointers?.QnnInterface.ContextFree ?? IntPtr.Zero);
-                        if (contextFreeFn(m_context, IntPtr.Zero) != QnnContextError.QNN_CONTEXT_NO_ERROR)
-                        {
-                            Console.WriteLine("Could not free context");
-                        }
-                    }
+                    FreeContext();             
                 }
                 m_isContextCreated = false;
 

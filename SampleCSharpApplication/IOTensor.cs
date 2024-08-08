@@ -826,7 +826,7 @@ namespace SampleCSharpApplication
                         throw new Exception("Failed to allocate buffer");
                     }
 
-                    clientBuffer.data = Marshal.AllocHGlobal(length);
+                    clientBuffer.data = buffer;
                     clientBuffer.dataSize = (uint)length;
 
                     try

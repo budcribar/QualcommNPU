@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Runtime.InteropServices;
+using System.Windows.Markup;
 using System.Xml.Linq;
 using static SampleCSharpApplication.QnnDelegates;
 
@@ -18,7 +19,7 @@ namespace SampleCSharpApplication
         public const uint QNN_MIN_ERROR_CONTEXT = 5000;
         public const uint QNN_MAX_ERROR_CONTEXT = 5999;
     }
-   
+
     public enum QnnBackend_Error_t : uint
     {
         QNN_BACKEND_MIN_ERROR = QnnConstants.QNN_MIN_ERROR_BACKEND,
@@ -272,90 +273,92 @@ namespace SampleCSharpApplication
         }
     }
     public enum ModelError_t
-        {
-            MODEL_NO_ERROR = 0,
-            MODEL_TENSOR_ERROR = 1,
-            MODEL_PARAMS_ERROR = 2,
-            MODEL_NODES_ERROR = 3,
-            MODEL_GRAPH_ERROR = 4,
-            MODEL_CONTEXT_ERROR = 5,
-            MODEL_GENERATION_ERROR = 6,
-            MODEL_SETUP_ERROR = 7,
-            MODEL_INVALID_ARGUMENT_ERROR = 8,
-            MODEL_FILE_ERROR = 9,
-            MODEL_MEMORY_ALLOCATE_ERROR = 10,
-            MODEL_UNKNOWN_ERROR = 0x7FFFFFFF
-        }
+    {
+        MODEL_NO_ERROR = 0,
+        MODEL_TENSOR_ERROR = 1,
+        MODEL_PARAMS_ERROR = 2,
+        MODEL_NODES_ERROR = 3,
+        MODEL_GRAPH_ERROR = 4,
+        MODEL_CONTEXT_ERROR = 5,
+        MODEL_GENERATION_ERROR = 6,
+        MODEL_SETUP_ERROR = 7,
+        MODEL_INVALID_ARGUMENT_ERROR = 8,
+        MODEL_FILE_ERROR = 9,
+        MODEL_MEMORY_ALLOCATE_ERROR = 10,
+        MODEL_UNKNOWN_ERROR = 0x7FFFFFFF
+    }
 
-        [StructLayout(LayoutKind.Sequential)]
-        public struct GraphConfigInfo_t
-        {
-            private readonly IntPtr graphName;  // char* in C++
-            public IntPtr GraphConfigs;  // const QnnGraph_Config_t** in C++
+    // TODO QnnDevice_Error_t
 
-            public string GraphName
+    [StructLayout(LayoutKind.Sequential)]
+    public struct GraphConfigInfo_t
+    {
+        private readonly IntPtr graphName;  // char* in C++
+        public IntPtr GraphConfigs;  // const QnnGraph_Config_t** in C++
+
+        public string GraphName
+        {
+            get
             {
-                get
-                {
-                    if (graphName == IntPtr.Zero)
-                        return string.Empty;
-                    return Marshal.PtrToStringAnsi(graphName) ?? string.Empty;
-                }
+                if (graphName == IntPtr.Zero)
+                    return string.Empty;
+                return Marshal.PtrToStringAnsi(graphName) ?? string.Empty;
             }
         }
+    }
 
-        public enum QnnLog_Level_t
+    public enum QnnLog_Level_t
+    {
+        QNN_LOG_LEVEL_ERROR,
+        QNN_LOG_LEVEL_WARN,
+        QNN_LOG_LEVEL_INFO,
+        QNN_LOG_LEVEL_DEBUG
+    }
+
+    public struct GraphInfo_t
+    {
+        public Qnn_GraphHandle_t graph;
+        public IntPtr graphName;             // char* in C++ is IntPtr in C#
+        unsafe public Qnn_Tensor_t* inputTensors;
+        public uint numInputTensors;
+        unsafe public Qnn_Tensor_t* outputTensors;
+        public uint numOutputTensors;
+
+        public string GraphNameString
         {
-            QNN_LOG_LEVEL_ERROR,
-            QNN_LOG_LEVEL_WARN,
-            QNN_LOG_LEVEL_INFO,
-            QNN_LOG_LEVEL_DEBUG
-        }
-
-        public struct GraphInfo_t
-        {
-            public Qnn_GraphHandle_t graph;                
-            public IntPtr graphName;             // char* in C++ is IntPtr in C#
-            unsafe public Qnn_Tensor_t* inputTensors;          
-            public uint numInputTensors;
-            unsafe public Qnn_Tensor_t* outputTensors;         
-            public uint numOutputTensors;
-
-            public string GraphNameString
+            get
             {
-                get
-                {
-                    if (graphName == IntPtr.Zero)
-                        return string.Empty;
-                    return Marshal.PtrToStringAnsi(graphName) ?? string.Empty;
-                }
+                if (graphName == IntPtr.Zero)
+                    return string.Empty;
+                return Marshal.PtrToStringAnsi(graphName) ?? string.Empty;
             }
         }
-        [StructLayout(LayoutKind.Sequential)]
-        public struct CoreApiVersion
-        {
-            public uint Major;
-            public uint Minor;
-            public uint Patch;
-        }
-        [Flags]
-        public enum Qnn_TensorVersion_t : uint
-        {
-            /// <summary>
-            /// Enum to choose usage of Qnn_TensorV1_t in Qnn_Tensor_t
-            /// </summary>
-            QNN_TENSOR_VERSION_1 = 1,
+    }
+    [StructLayout(LayoutKind.Sequential)]
+    public struct CoreApiVersion
+    {
+        public uint Major;
+        public uint Minor;
+        public uint Patch;
+    }
+    [Flags]
+    public enum Qnn_TensorVersion_t : uint
+    {
+        /// <summary>
+        /// Enum to choose usage of Qnn_TensorV1_t in Qnn_Tensor_t
+        /// </summary>
+        QNN_TENSOR_VERSION_1 = 1,
 
-            /// <summary>
-            /// Enum to choose usage of Qnn_TensorV2_t in Qnn_Tensor_t
-            /// </summary>
-            QNN_TENSOR_VERSION_2 = 2,
+        /// <summary>
+        /// Enum to choose usage of Qnn_TensorV2_t in Qnn_Tensor_t
+        /// </summary>
+        QNN_TENSOR_VERSION_2 = 2,
 
-            /// <summary>
-            /// Unused, present to ensure 32 bits.
-            /// </summary>
-            QNN_TENSOR_VERSION_UNDEFINED = 0x7FFFFFFF
-        }
+        /// <summary>
+        /// Unused, present to ensure 32 bits.
+        /// </summary>
+        QNN_TENSOR_VERSION_UNDEFINED = 0x7FFFFFFF
+    }
 
     [StructLayout(LayoutKind.Explicit)]
     public struct Qnn_Tensor_t
@@ -371,166 +374,179 @@ namespace SampleCSharpApplication
 
         [FieldOffset(8)]
         public Qnn_TensorV1_t v1;
+
+        public void Dispose()
+        {
+            if (version == Qnn_TensorVersion_t.QNN_TENSOR_VERSION_1)
+            {
+            }
+            else
+            {
+                v2.FreeDimensions();
+                v2.FreeName();
+                v2.FreeClientBuffer();
+            }
+        }
     }
 
     public enum Qnn_TensorType_t : uint
+    {
+        QNN_TENSOR_TYPE_APP_WRITE = 0,
+        QNN_TENSOR_TYPE_APP_READ = 1,
+        QNN_TENSOR_TYPE_APP_READWRITE = 2,
+        QNN_TENSOR_TYPE_NATIVE = 3,
+        QNN_TENSOR_TYPE_STATIC = 4,
+        QNN_TENSOR_TYPE_NULL = 5,
+        QNN_TENSOR_TYPE_UNDEFINED = 0x7FFFFFFF
+    }
+
+    public enum Qnn_DataType_t : uint
+    {
+        QNN_DATATYPE_INT_8 = 0x0008,
+        QNN_DATATYPE_INT_16 = 0x0016,
+        QNN_DATATYPE_INT_32 = 0x0032,
+        QNN_DATATYPE_INT_64 = 0x0064,
+        QNN_DATATYPE_UINT_8 = 0x0108,
+        QNN_DATATYPE_UINT_16 = 0x0116,
+        QNN_DATATYPE_UINT_32 = 0x0132,
+        QNN_DATATYPE_UINT_64 = 0x0164,
+        QNN_DATATYPE_FLOAT_16 = 0x0216,
+        QNN_DATATYPE_FLOAT_32 = 0x0232,
+        QNN_DATATYPE_FLOAT_64 = 0x0264,
+        QNN_DATATYPE_SFIXED_POINT_4 = 0x0304,
+        QNN_DATATYPE_SFIXED_POINT_8 = 0x0308,
+        QNN_DATATYPE_SFIXED_POINT_16 = 0x0316,
+        QNN_DATATYPE_SFIXED_POINT_32 = 0x0332,
+        QNN_DATATYPE_UFIXED_POINT_4 = 0x0404,
+        QNN_DATATYPE_UFIXED_POINT_8 = 0x0408,
+        QNN_DATATYPE_UFIXED_POINT_16 = 0x0416,
+        QNN_DATATYPE_UFIXED_POINT_32 = 0x0432,
+        QNN_DATATYPE_BOOL_8 = 0x0508,
+        QNN_DATATYPE_STRING = 0x0608,
+        QNN_DATATYPE_UNDEFINED = 0x7FFFFFFF
+    }
+
+    public enum Qnn_Definition_t : uint
+    {
+        /// <summary>
+        /// Indicates backend implementation to update or decide
+        /// </summary>
+        QNN_DEFINITION_IMPL_GENERATED = 0,
+
+        /// <summary>
+        /// Indicates that provided definition needs to be used
+        /// </summary>
+        QNN_DEFINITION_DEFINED = 1,
+
+        /// <summary>
+        /// Unused, present to ensure 32 bits.
+        /// </summary>
+        QNN_DEFINITION_UNDEFINED = 0x7FFFFFFF
+    }
+    public enum Qnn_QuantizationEncoding_t : uint
+    {
+        /// <summary>
+        /// Indicates Qnn_ScaleOffset_t encoding type
+        /// </summary>
+        QNN_QUANTIZATION_ENCODING_SCALE_OFFSET = 0,
+
+        /// <summary>
+        /// Indicates Qnn_AxisScaleOffset_t encoding type
+        /// </summary>
+        QNN_QUANTIZATION_ENCODING_AXIS_SCALE_OFFSET = 1,
+
+        /// <summary>
+        /// Indicates Qnn_BwScaleOffset_t encoding type
+        /// </summary>
+        QNN_QUANTIZATION_ENCODING_BW_SCALE_OFFSET = 2,
+
+        /// <summary>
+        /// Indicates Qnn_BwAxisScaleOffset_t encoding type
+        /// </summary>
+        QNN_QUANTIZATION_ENCODING_BW_AXIS_SCALE_OFFSET = 3,
+
+        /// <summary>
+        /// Unused, present to ensure 32 bits.
+        /// </summary>
+        QNN_QUANTIZATION_ENCODING_UNDEFINED = 0x7FFFFFFF
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct QnnBwAxisScaleOffset
+    {
+        /// <summary>
+        /// Bitwidth must be <= number of bits specified by data type of tensor
+        /// </summary>
+        public uint Bitwidth;
+
+        public int Axis;
+
+        /// <summary>
+        /// NumElements applies to both scales and offsets and they are supposed to be a one-to-one match
+        /// </summary>
+        public uint NumElements;
+
+        /// <summary>
+        /// Scales must be strictly positive
+        /// </summary>
+        public IntPtr Scales;
+
+        /// <summary>
+        /// Offsets must match scales in their dimension except when it can be IntPtr.Zero to indicate that the
+        /// value is symmetrically quantized and hence, offset = 0
+        /// </summary>
+        public IntPtr Offsets;
+
+        // Helper methods to work with the unmanaged pointers
+        public float[] GetScales()
         {
-            QNN_TENSOR_TYPE_APP_WRITE = 0,
-            QNN_TENSOR_TYPE_APP_READ = 1,
-            QNN_TENSOR_TYPE_APP_READWRITE = 2,
-            QNN_TENSOR_TYPE_NATIVE = 3,
-            QNN_TENSOR_TYPE_STATIC = 4,
-            QNN_TENSOR_TYPE_NULL = 5,
-            QNN_TENSOR_TYPE_UNDEFINED = 0x7FFFFFFF
+            if (Scales == IntPtr.Zero) return Array.Empty<float>();
+            float[] result = new float[NumElements];
+            Marshal.Copy(Scales, result, 0, (int)NumElements);
+            return result;
         }
 
-        public enum Qnn_DataType_t : uint
+        public void SetScales(float[] scales)
         {
-            QNN_DATATYPE_INT_8 = 0x0008,
-            QNN_DATATYPE_INT_16 = 0x0016,
-            QNN_DATATYPE_INT_32 = 0x0032,
-            QNN_DATATYPE_INT_64 = 0x0064,
-            QNN_DATATYPE_UINT_8 = 0x0108,
-            QNN_DATATYPE_UINT_16 = 0x0116,
-            QNN_DATATYPE_UINT_32 = 0x0132,
-            QNN_DATATYPE_UINT_64 = 0x0164,
-            QNN_DATATYPE_FLOAT_16 = 0x0216,
-            QNN_DATATYPE_FLOAT_32 = 0x0232,
-            QNN_DATATYPE_FLOAT_64 = 0x0264,
-            QNN_DATATYPE_SFIXED_POINT_4 = 0x0304,
-            QNN_DATATYPE_SFIXED_POINT_8 = 0x0308,
-            QNN_DATATYPE_SFIXED_POINT_16 = 0x0316,
-            QNN_DATATYPE_SFIXED_POINT_32 = 0x0332,
-            QNN_DATATYPE_UFIXED_POINT_4 = 0x0404,
-            QNN_DATATYPE_UFIXED_POINT_8 = 0x0408,
-            QNN_DATATYPE_UFIXED_POINT_16 = 0x0416,
-            QNN_DATATYPE_UFIXED_POINT_32 = 0x0432,
-            QNN_DATATYPE_BOOL_8 = 0x0508,
-            QNN_DATATYPE_STRING = 0x0608,
-            QNN_DATATYPE_UNDEFINED = 0x7FFFFFFF
+            if (scales == null)
+            {
+                Scales = IntPtr.Zero;
+                return;
+            }
+            Scales = Marshal.AllocHGlobal(scales.Length * sizeof(float));
+            Marshal.Copy(scales, 0, Scales, scales.Length);
+            NumElements = (uint)scales.Length;
         }
 
-        public enum Qnn_Definition_t : uint
+        public int[] GetOffsets()
         {
-            /// <summary>
-            /// Indicates backend implementation to update or decide
-            /// </summary>
-            QNN_DEFINITION_IMPL_GENERATED = 0,
-
-            /// <summary>
-            /// Indicates that provided definition needs to be used
-            /// </summary>
-            QNN_DEFINITION_DEFINED = 1,
-
-            /// <summary>
-            /// Unused, present to ensure 32 bits.
-            /// </summary>
-            QNN_DEFINITION_UNDEFINED = 0x7FFFFFFF
-        }
-        public enum Qnn_QuantizationEncoding_t : uint
-        {
-            /// <summary>
-            /// Indicates Qnn_ScaleOffset_t encoding type
-            /// </summary>
-            QNN_QUANTIZATION_ENCODING_SCALE_OFFSET = 0,
-
-            /// <summary>
-            /// Indicates Qnn_AxisScaleOffset_t encoding type
-            /// </summary>
-            QNN_QUANTIZATION_ENCODING_AXIS_SCALE_OFFSET = 1,
-
-            /// <summary>
-            /// Indicates Qnn_BwScaleOffset_t encoding type
-            /// </summary>
-            QNN_QUANTIZATION_ENCODING_BW_SCALE_OFFSET = 2,
-
-            /// <summary>
-            /// Indicates Qnn_BwAxisScaleOffset_t encoding type
-            /// </summary>
-            QNN_QUANTIZATION_ENCODING_BW_AXIS_SCALE_OFFSET = 3,
-
-            /// <summary>
-            /// Unused, present to ensure 32 bits.
-            /// </summary>
-            QNN_QUANTIZATION_ENCODING_UNDEFINED = 0x7FFFFFFF
+            if (Offsets == IntPtr.Zero) return Array.Empty<int>();
+            int[] result = new int[NumElements];
+            Marshal.Copy(Offsets, result, 0, (int)NumElements);
+            return result;
         }
 
-        [StructLayout(LayoutKind.Sequential)]
-        public struct QnnBwAxisScaleOffset
+        public void SetOffsets(int[] offsets)
         {
-            /// <summary>
-            /// Bitwidth must be <= number of bits specified by data type of tensor
-            /// </summary>
-            public uint Bitwidth;
-
-            public int Axis;
-
-            /// <summary>
-            /// NumElements applies to both scales and offsets and they are supposed to be a one-to-one match
-            /// </summary>
-            public uint NumElements;
-
-            /// <summary>
-            /// Scales must be strictly positive
-            /// </summary>
-            public IntPtr Scales;
-
-            /// <summary>
-            /// Offsets must match scales in their dimension except when it can be IntPtr.Zero to indicate that the
-            /// value is symmetrically quantized and hence, offset = 0
-            /// </summary>
-            public IntPtr Offsets;
-
-            // Helper methods to work with the unmanaged pointers
-            public float[] GetScales()
+            if (offsets == null)
             {
-                if (Scales == IntPtr.Zero) return Array.Empty<float>();
-                float[] result = new float[NumElements];
-                Marshal.Copy(Scales, result, 0, (int)NumElements);
-                return result;
+                Offsets = IntPtr.Zero;
+                return;
             }
-
-            public void SetScales(float[] scales)
-            {
-                if (scales == null)
-                {
-                    Scales = IntPtr.Zero;
-                    return;
-                }
-                Scales = Marshal.AllocHGlobal(scales.Length * sizeof(float));
-                Marshal.Copy(scales, 0, Scales, scales.Length);
-                NumElements = (uint)scales.Length;
-            }
-
-            public int[] GetOffsets()
-            {
-                if (Offsets == IntPtr.Zero) return Array.Empty<int>();  
-                int[] result = new int[NumElements];
-                Marshal.Copy(Offsets, result, 0, (int)NumElements);
-                return result;
-            }
-
-            public void SetOffsets(int[] offsets)
-            {
-                if (offsets == null)
-                {
-                    Offsets = IntPtr.Zero;
-                    return;
-                }
-                Offsets = Marshal.AllocHGlobal(offsets.Length * sizeof(int));
-                Marshal.Copy(offsets, 0, Offsets, offsets.Length);
-                NumElements = (uint)offsets.Length;
-            }
-
-            // Don't forget to free the allocated memory when you're done with the struct
-            public void Dispose()
-            {
-                if (Scales != IntPtr.Zero)
-                    Marshal.FreeHGlobal(Scales);
-                if (Offsets != IntPtr.Zero)
-                    Marshal.FreeHGlobal(Offsets);
-            }
+            Offsets = Marshal.AllocHGlobal(offsets.Length * sizeof(int));
+            Marshal.Copy(offsets, 0, Offsets, offsets.Length);
+            NumElements = (uint)offsets.Length;
         }
+
+        // Don't forget to free the allocated memory when you're done with the struct
+        public void Dispose()
+        {
+            if (Scales != IntPtr.Zero)
+                Marshal.FreeHGlobal(Scales);
+            if (Offsets != IntPtr.Zero)
+                Marshal.FreeHGlobal(Offsets);
+        }
+    }
 
     public struct Qnn_ScaleOffset_t
     {
@@ -569,54 +585,54 @@ namespace SampleCSharpApplication
     }
 
     [StructLayout(LayoutKind.Sequential)]
-        public struct Qnn_ClientBuffer_t
-        {
-            public IntPtr data;
-            public uint dataSize;
-        }
+    public struct Qnn_ClientBuffer_t
+    {
+        public IntPtr data;
+        public uint dataSize;
+    }
 
-        public enum Qnn_TensorMemType_t : uint
-        {
-            QNN_TENSORMEMTYPE_RAW = 0,
-            QNN_TENSORMEMTYPE_MEMHANDLE = 1,
-            QNN_TENSORMEMTYPE_UNDEFINED = 0x7FFFFFFF
-        }
+    public enum Qnn_TensorMemType_t : uint
+    {
+        QNN_TENSORMEMTYPE_RAW = 0,
+        QNN_TENSORMEMTYPE_MEMHANDLE = 1,
+        QNN_TENSORMEMTYPE_UNDEFINED = 0x7FFFFFFF
+    }
 
-        [StructLayout(LayoutKind.Sequential)]
-        public struct Qnn_SparseParams_t
-        {
-            /// <summary>
-            /// Specifies the sparse tensor layout
-            /// </summary>
-            public Qnn_SparseLayoutType_t type;
+    [StructLayout(LayoutKind.Sequential)]
+    public struct Qnn_SparseParams_t
+    {
+        /// <summary>
+        /// Specifies the sparse tensor layout
+        /// </summary>
+        public Qnn_SparseLayoutType_t type;
 
-            /// <summary>
-            /// Union of different sparse layout types
-            /// </summary>
-            public Qnn_SparseLayoutHybridCoo_t hybridCoo;
-        }
+        /// <summary>
+        /// Union of different sparse layout types
+        /// </summary>
+        public Qnn_SparseLayoutHybridCoo_t hybridCoo;
+    }
 
-       
-        // You'll need to define these types:
-        public enum Qnn_SparseLayoutType_t : uint
-        {
-            // Define the enum values here
-        }
 
-        [StructLayout(LayoutKind.Sequential)]
-        public struct Qnn_SparseLayoutHybridCoo_t
-        {
-            /// <summary>
-            /// Number of specified elements of a sparse tensor. Treated as the maximum when creating a tensor.
-            /// </summary>
-            public uint NumSpecifiedElements;
+    // You'll need to define these types:
+    public enum Qnn_SparseLayoutType_t : uint
+    {
+        // Define the enum values here
+    }
 
-            /// <summary>
-            /// Size of the index for a hybrid COO sparse tensor. The size of the index can range from 1 to
-            /// the rank of the tensor. This feature allows for partially sparse tensors.
-            /// </summary>
-            public uint NumSparseDimensions;
-        }
+    [StructLayout(LayoutKind.Sequential)]
+    public struct Qnn_SparseLayoutHybridCoo_t
+    {
+        /// <summary>
+        /// Number of specified elements of a sparse tensor. Treated as the maximum when creating a tensor.
+        /// </summary>
+        public uint NumSpecifiedElements;
+
+        /// <summary>
+        /// Size of the index for a hybrid COO sparse tensor. The size of the index can range from 1 to
+        /// the rank of the tensor. This feature allows for partially sparse tensors.
+        /// </summary>
+        public uint NumSparseDimensions;
+    }
 
     [StructLayout(LayoutKind.Sequential)]
     public struct Qnn_TensorV1_t
@@ -717,138 +733,150 @@ namespace SampleCSharpApplication
     }
 
     [StructLayout(LayoutKind.Sequential)]
-        public struct Qnn_TensorV2_t
+    public struct Qnn_TensorV2_t
+    {
+        public Qnn_TensorV2_t() { }
+        public uint id;
+        private IntPtr name = IntPtr.Zero;
+        public Qnn_TensorType_t type;
+        public Qnn_TensorDataFormat_t dataFormat;
+        public Qnn_DataType_t dataType;
+        public Qnn_QuantizeParams_t quantizeParams;
+        public uint Rank;
+
+        private IntPtr dimensions = IntPtr.Zero;
+
+        public Qnn_TensorMemType_t memType;
+
+        public Qnn_ClientBuffer_t clientBuf;
+        public IntPtr isDynamicDimensions;
+        public Qnn_SparseParams_t sparseParams;
+        public byte isProduced;
+
+        public string Name
         {
-            public Qnn_TensorV2_t() { }
-            public uint id;
-            private IntPtr name = IntPtr.Zero;
-            public Qnn_TensorType_t type;
-            public Qnn_TensorDataFormat_t dataFormat;
-            public Qnn_DataType_t dataType;
-            public Qnn_QuantizeParams_t quantizeParams;
-            public uint Rank;
-
-            private IntPtr dimensions = IntPtr.Zero;
-         
-            public Qnn_TensorMemType_t memType;
-
-            public Qnn_ClientBuffer_t clientBuf;
-            public IntPtr isDynamicDimensions;
-            public Qnn_SparseParams_t sparseParams;
-            public byte isProduced;
-
-            public string Name
+            get
             {
-                get
-                {
-                    if (name == IntPtr.Zero)
-                        return string.Empty;
-                    return Marshal.PtrToStringAnsi(name) ?? string.Empty;
-                }
-                set
-                {
-                    // Free the existing name if it exists
-                    if (name != IntPtr.Zero)
-                    {
-                        Marshal.FreeHGlobal(name);
-                        name = IntPtr.Zero;
-                    }
-
-                    // If the new value is not null or empty, allocate memory and copy the string
-                    if (!string.IsNullOrEmpty(value))
-                    {
-                        name = Marshal.StringToHGlobalAnsi(value);
-                    }
-                }
+                if (name == IntPtr.Zero)
+                    return string.Empty;
+                return Marshal.PtrToStringAnsi(name) ?? string.Empty;
             }
-            public void FreeName()
+            set
             {
+                // Free the existing name if it exists
                 if (name != IntPtr.Zero)
                 {
                     Marshal.FreeHGlobal(name);
                     name = IntPtr.Zero;
                 }
-            }
-            public uint[] Dimensions
-            {
-                get
-                {
-                    if (dimensions == IntPtr.Zero || Rank == 0)
-                        return Array.Empty<uint>();
-                    uint[] dims = new uint[Rank];
-                    for (int i = 0; i < Rank; i++)
-                    {
-                        dims[i] = (uint)Marshal.ReadInt32(dimensions, i * sizeof(uint));
-                    }
-                    return dims;
-                }
-                set
-                {
-                    if (value == null)
-                    {
-                        dimensions = IntPtr.Zero;
-                        Rank = 0;
-                        return;
-                    }
 
-                    Rank = (uint)value.Length;
-                    if (dimensions != IntPtr.Zero)
-                    {
-                        Marshal.FreeHGlobal(dimensions);
-                    }
-                    dimensions = Marshal.AllocHGlobal(value.Length * sizeof(uint));
-                    for (int i = 0; i < value.Length; i++)
-                    {
-                        Marshal.WriteInt32(dimensions, i * sizeof(uint), (int)value[i]);
-                    }
+                // If the new value is not null or empty, allocate memory and copy the string
+                if (!string.IsNullOrEmpty(value))
+                {
+                    name = Marshal.StringToHGlobalAnsi(value);
                 }
             }
-
-            public void FreeDimensions()
+        }
+        public void FreeName()
+        {
+            if (name != IntPtr.Zero)
             {
+                Marshal.FreeHGlobal(name);
+                name = IntPtr.Zero;
+            }
+        }
+        public uint[] Dimensions
+        {
+            get
+            {
+                if (dimensions == IntPtr.Zero || Rank == 0)
+                    return Array.Empty<uint>();
+                uint[] dims = new uint[Rank];
+                for (int i = 0; i < Rank; i++)
+                {
+                    dims[i] = (uint)Marshal.ReadInt32(dimensions, i * sizeof(uint));
+                }
+                return dims;
+            }
+            set
+            {
+                if (value == null)
+                {
+                    dimensions = IntPtr.Zero;
+                    Rank = 0;
+                    return;
+                }
+
+                Rank = (uint)value.Length;
                 if (dimensions != IntPtr.Zero)
                 {
                     Marshal.FreeHGlobal(dimensions);
-                    dimensions = IntPtr.Zero;
-                    Rank = 0;
+                }
+                dimensions = Marshal.AllocHGlobal(value.Length * sizeof(uint));
+                for (int i = 0; i < value.Length; i++)
+                {
+                    Marshal.WriteInt32(dimensions, i * sizeof(uint), (int)value[i]);
                 }
             }
         }
 
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate void QnnLog_Callback_t(int level, IntPtr msg);
+        public void FreeClientBuffer()
+        {
+            if (clientBuf.data != IntPtr.Zero)
+            {
+                Marshal.FreeHGlobal(clientBuf.data);
+                clientBuf.data = IntPtr.Zero;
+            }
+        }
 
-        // Type definitions
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate Qnn_ErrorHandle_t QnnLog_CreateFn_t(IntPtr logCallback, int logLevel, ref Qnn_LogHandle_t logHandle);
+        public void FreeDimensions()
+        {
+            if (dimensions != IntPtr.Zero)
+            {
+                Marshal.FreeHGlobal(dimensions);
+                dimensions = IntPtr.Zero;
+                Rank = 0;
+            }
+        }
+    }
 
-        public delegate ulong QnnGraphExecuteDelegate(
-        IntPtr graphHandle,
-        [In] Qnn_Tensor_t[] inputs,
-        uint numInputs,
-        [In, Out] Qnn_Tensor_t[] outputs,
-        uint numOutputs,
-        IntPtr profileHandle,
-        IntPtr signalHandle
-        );
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    public delegate void QnnLog_Callback_t(int level, IntPtr msg);
 
-        //[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        //public delegate void QnnLog_CallbackFn_t(int level, IntPtr msg);
+    // Type definitions
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    public delegate Qnn_ErrorHandle_t QnnLog_CreateFn_t(IntPtr logCallback, int logLevel, ref Qnn_LogHandle_t logHandle);
 
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        unsafe public delegate Qnn_ErrorHandle_t QnnBackend_CreateFn_t(Qnn_LogHandle_t logger, IntPtr* config, ref Qnn_BackendHandle_t backend);
+    public delegate ulong QnnGraphExecuteDelegate(
+    IntPtr graphHandle,
+    [In] Qnn_Tensor_t[] inputs,
+    uint numInputs,
+    [In, Out] Qnn_Tensor_t[] outputs,
+    uint numOutputs,
+    IntPtr profileHandle,
+    IntPtr signalHandle
+    );
 
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate Qnn_ErrorHandle_t QnnProperty_HasCapabilityFn_t(QnnProperty_Key_t key);
+    //[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    //public delegate void QnnLog_CallbackFn_t(int level, IntPtr msg);
 
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate Qnn_ErrorHandle_t QnnDevice_CreateFn_t(Qnn_LogHandle_t logger,IntPtr config, ref Qnn_DeviceHandle_t device);
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    unsafe public delegate Qnn_ErrorHandle_t QnnBackend_CreateFn_t(Qnn_LogHandle_t logger, IntPtr* config, ref Qnn_BackendHandle_t backend);
 
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate Qnn_ErrorHandle_t QnnContext_CreateFn_t(Qnn_BackendHandle_t backend, Qnn_DeviceHandle_t device,IntPtr config, ref Qnn_ContextHandle_t context);
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    public delegate Qnn_ErrorHandle_t QnnProperty_HasCapabilityFn_t(QnnProperty_Key_t key);
 
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        unsafe public delegate ModelError_t ComposeGraphsFnHandleType_t(
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    public delegate Qnn_ErrorHandle_t QnnDevice_CreateFn_t(Qnn_LogHandle_t logger, IntPtr config, ref Qnn_DeviceHandle_t device);
+
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    public delegate Qnn_ErrorHandle_t QnnContext_CreateFn_t(Qnn_BackendHandle_t backend, Qnn_DeviceHandle_t device, IntPtr config, ref Qnn_ContextHandle_t context);
+
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    public delegate Qnn_ErrorHandle_t QnnDevice_FreeFn_t(Qnn_DeviceHandle_t device);
+
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    unsafe public delegate ModelError_t ComposeGraphsFnHandleType_t(
             Qnn_BackendHandle_t backendHandle,
             IntPtr qnnInterface,
             Qnn_ContextHandle_t context,
@@ -860,25 +888,25 @@ namespace SampleCSharpApplication
             QnnLog_Callback_t? logCallback,
             QnnLog_Level_t logLevel);
 
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate Qnn_ErrorHandle_t QnnGraph_FinalizeFn_t(
-            Qnn_GraphHandle_t graphHandle,
-            Qnn_ProfileHandle_t profileHandle,
-            Qnn_SignalHandle_t signalHandle);
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    public delegate Qnn_ErrorHandle_t QnnGraph_FinalizeFn_t(
+        Qnn_GraphHandle_t graphHandle,
+        Qnn_ProfileHandle_t profileHandle,
+        Qnn_SignalHandle_t signalHandle);
 
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate QnnProfile_Error_t QnnProfile_FreeFn_t(Qnn_ProfileHandle_t profile);
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    public delegate QnnProfile_Error_t QnnProfile_FreeFn_t(Qnn_ProfileHandle_t profile);
 
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate QnnBackend_Error_t QnnBackend_FreeFn_t(Qnn_BackendHandle_t backend);
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    public delegate QnnBackend_Error_t QnnBackend_FreeFn_t(Qnn_BackendHandle_t backend);
 
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate QnnProfile_Error_t QnnLog_FreeFn_t(Qnn_LogHandle_t logger);
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    public delegate QnnProfile_Error_t QnnLog_FreeFn_t(Qnn_LogHandle_t logger);
 
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate QnnContextError QnnContext_FreeFn_t(
-               Qnn_ContextHandle_t context,
-               Qnn_ProfileHandle_t profile);
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    public delegate QnnContextError QnnContext_FreeFn_t(
+           Qnn_ContextHandle_t context,
+           Qnn_ProfileHandle_t profile);
 
 
 }
