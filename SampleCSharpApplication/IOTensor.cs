@@ -331,21 +331,17 @@ namespace SampleCSharpApplication
                 Console.Error.WriteLine("Received a null argument");
                 return DataStatusCode.INVALID_BUFFER;
             }
-
             if (!typeof(T).IsValueType || !IsUnsignedInteger<T>())
             {
                 throw new ArgumentException("FloatToTfN supports unsigned integers only!");
             }
-
             int dataTypeSizeInBytes = Marshal.SizeOf<T>();
             int bitWidth = dataTypeSizeInBytes * 8; // 8 bits per byte
             double trueBitWidthMax = Math.Pow(2, bitWidth) - 1;
             double encodingMin = offset * scale;
             double encodingMax = (trueBitWidthMax + offset) * scale;
             double encodingRange = encodingMax - encodingMin;
-
             T[] outArray = new T[numElements];
-
             for (int i = 0; i < numElements; ++i)
             {
                 int quantizedValue = (int)Math.Round(trueBitWidthMax * (inArray[i] - encodingMin) / encodingRange);
@@ -353,14 +349,9 @@ namespace SampleCSharpApplication
                 outArray[i] = (T)Convert.ChangeType(quantizedValue, typeof(T));
             }
 
-            byte[] byteArray = new byte[numElements * dataTypeSizeInBytes];
-            Buffer.BlockCopy(outArray, 0, byteArray, 0, byteArray.Length);
-
-            Marshal.Copy(byteArray, 0, outPtr, byteArray.Length);
-
+            GenericMarshalCopy(outArray, outPtr, numElements);
             return DataStatusCode.SUCCESS;
         }
-
         public static DataStatusCode CastFromFloat<T>(IntPtr outPtr, float[] inArray, int numElements) where T : struct
         {
             if (outPtr == IntPtr.Zero || inArray == null)
@@ -375,8 +366,7 @@ namespace SampleCSharpApplication
             {
                 outArray[i] = (T)Convert.ChangeType(inArray[i], typeof(T));
             }
-
-            Marshal.Copy(outArray, 0, outPtr, numElements);
+            GenericMarshalCopy(outArray, outPtr, numElements);
 
             return DataStatusCode.SUCCESS;
         }
