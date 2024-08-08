@@ -378,92 +378,84 @@ namespace SampleCSharpApplication
 
         // Helper method to copy a float buffer, quantize it, and copy
         // it to a tensor (Qnn_Tensor_t) buffer.
-        public static StatusCode CopyFromFloatToNative(float[] floatBuffer, Qnn_Tensor_t tensor)
+        public static StatusCode CopyFromFloatToNative(IntPtr floatBuffer, Qnn_Tensor_t tensor)
         {
-            if (floatBuffer == null)
+            if (floatBuffer == IntPtr.Zero)
             {
                 Console.Error.WriteLine("CopyFromFloatToNative(): received a null argument");
                 return StatusCode.FAILURE;
             }
-
             StatusCode returnStatus = StatusCode.SUCCESS;
             int elementCount = CalculateElementCount(tensor.v2.Dimensions);
+
+            // Create a float array from the IntPtr
+            float[] floatArray = new float[elementCount];
+            Marshal.Copy(floatBuffer, floatArray, 0, elementCount);
 
             switch (tensor.v2.dataType)
             {
                 case Qnn_DataType_t.QNN_DATATYPE_UFIXED_POINT_8:
-                    FloatToTfN<byte>(tensor.v2.clientBuf.data, floatBuffer, tensor.v2.quantizeParams.scaleOffsetEncoding.offset, tensor.v2.quantizeParams.scaleOffsetEncoding.scale, elementCount);
+                    FloatToTfN<byte>(tensor.v2.clientBuf.data, floatArray, tensor.v2.quantizeParams.scaleOffsetEncoding.offset, tensor.v2.quantizeParams.scaleOffsetEncoding.scale, elementCount);
                     break;
-
                 case Qnn_DataType_t.QNN_DATATYPE_UFIXED_POINT_16:
-                    FloatToTfN<ushort>(tensor.v2.clientBuf.data, floatBuffer, tensor.v2.quantizeParams.scaleOffsetEncoding.offset, tensor.v2.quantizeParams.scaleOffsetEncoding.scale, elementCount);
+                    FloatToTfN<ushort>(tensor.v2.clientBuf.data, floatArray, tensor.v2.quantizeParams.scaleOffsetEncoding.offset, tensor.v2.quantizeParams.scaleOffsetEncoding.scale, elementCount);
                     break;
-
                 case Qnn_DataType_t.QNN_DATATYPE_UINT_8:
-                    if (CastFromFloat<byte>(tensor.v2.clientBuf.data, floatBuffer, elementCount) != DataStatusCode.SUCCESS)
+                    if (CastFromFloat<byte>(tensor.v2.clientBuf.data, floatArray, elementCount) != DataStatusCode.SUCCESS)
                     {
                         Console.Error.WriteLine("Failure in CastFromFloat<byte>");
                         returnStatus = StatusCode.FAILURE;
                     }
                     break;
-
                 case Qnn_DataType_t.QNN_DATATYPE_UINT_16:
-                    if (CastFromFloat<ushort>(tensor.v2.clientBuf.data, floatBuffer, elementCount) != DataStatusCode.SUCCESS)
+                    if (CastFromFloat<ushort>(tensor.v2.clientBuf.data, floatArray, elementCount) != DataStatusCode.SUCCESS)
                     {
                         Console.Error.WriteLine("Failure in CastFromFloat<ushort>");
                         returnStatus = StatusCode.FAILURE;
                     }
                     break;
-
                 case Qnn_DataType_t.QNN_DATATYPE_UINT_32:
-                    if (CastFromFloat<uint>(tensor.v2.clientBuf.data, floatBuffer, elementCount) != DataStatusCode.SUCCESS)
+                    if (CastFromFloat<uint>(tensor.v2.clientBuf.data, floatArray, elementCount) != DataStatusCode.SUCCESS)
                     {
                         Console.Error.WriteLine("Failure in CastFromFloat<uint>");
                         returnStatus = StatusCode.FAILURE;
                     }
                     break;
-
                 case Qnn_DataType_t.QNN_DATATYPE_INT_8:
-                    if (CastFromFloat<sbyte>(tensor.v2.clientBuf.data, floatBuffer, elementCount) != DataStatusCode.SUCCESS)
+                    if (CastFromFloat<sbyte>(tensor.v2.clientBuf.data, floatArray, elementCount) != DataStatusCode.SUCCESS)
                     {
                         Console.Error.WriteLine("Failure in CastFromFloat<sbyte>");
                         returnStatus = StatusCode.FAILURE;
                     }
                     break;
-
                 case Qnn_DataType_t.QNN_DATATYPE_INT_16:
-                    if (CastFromFloat<short>(tensor.v2.clientBuf.data, floatBuffer, elementCount) != DataStatusCode.SUCCESS)
+                    if (CastFromFloat<short>(tensor.v2.clientBuf.data, floatArray, elementCount) != DataStatusCode.SUCCESS)
                     {
                         Console.Error.WriteLine("Failure in CastFromFloat<short>");
                         returnStatus = StatusCode.FAILURE;
                     }
                     break;
-
                 case Qnn_DataType_t.QNN_DATATYPE_INT_32:
-                    if (CastFromFloat<int>(tensor.v2.clientBuf.data, floatBuffer, elementCount) != DataStatusCode.SUCCESS)
+                    if (CastFromFloat<int>(tensor.v2.clientBuf.data, floatArray, elementCount) != DataStatusCode.SUCCESS)
                     {
                         Console.Error.WriteLine("Failure in CastFromFloat<int>");
                         returnStatus = StatusCode.FAILURE;
                     }
                     break;
-
                 case Qnn_DataType_t.QNN_DATATYPE_BOOL_8:
-                    if (CastFromFloat<byte>(tensor.v2.clientBuf.data, floatBuffer, elementCount) != DataStatusCode.SUCCESS)
+                    if (CastFromFloat<byte>(tensor.v2.clientBuf.data, floatArray, elementCount) != DataStatusCode.SUCCESS)
                     {
                         Console.Error.WriteLine("Failure in CastFromFloat<bool>");
                         returnStatus = StatusCode.FAILURE;
                     }
                     break;
-
                 default:
                     Console.Error.WriteLine("Datatype not supported yet!");
                     returnStatus = StatusCode.FAILURE;
                     break;
             }
-
             return returnStatus;
         }
-
         private static int CalculateElementCount(uint[] dimensions)
         {
             int count = 1;
@@ -739,13 +731,14 @@ namespace SampleCSharpApplication
                 {
                     encodingDefinition = src.v2.quantizeParams.encodingDefinition,
                     quantizationEncoding = src.v2.quantizeParams.quantizationEncoding
+                    // TODO
                     // You may need to add more logic here depending on the union structure in Qnn_QuantizeParams_t
                 };
 
                 // Handle memoryUnion based on memType
                 if (src.v2.memType == Qnn_TensorMemType_t.QNN_TENSORMEMTYPE_RAW)
                 {
-
+                    // TODO
 
                     //var srcClientBuf = Marshal.PtrToStructure<Qnn_ClientBuffer_t>(src.v2.clientBuf.data);
                     //var destClientBuf = new Qnn_ClientBuffer_t();
@@ -775,6 +768,7 @@ namespace SampleCSharpApplication
                 dest.v2.sparseParams = new Qnn_SparseParams_t
                 {
                     type = src.v2.sparseParams.type
+                    // TODO
                     // You may need to add more logic here depending on the structure of Qnn_SparseParams_t
                 };
 
@@ -998,7 +992,7 @@ namespace SampleCSharpApplication
 
         public static StatusCode FillDims(List<long> dims, uint[] inDimensions, uint rank)
         {
-            if (inDimensions == null)
+            if (inDimensions == null || inDimensions.Count() == 0)
             {
                 Console.Error.WriteLine("Input dimensions is null");
                 return StatusCode.FAILURE;

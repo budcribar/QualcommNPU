@@ -357,27 +357,21 @@ namespace SampleCSharpApplication
             QNN_TENSOR_VERSION_UNDEFINED = 0x7FFFFFFF
         }
 
-        [StructLayout(LayoutKind.Explicit)]
-        public struct Qnn_Tensor_t
-        {
-            /// <summary>
-            /// Version of the QNN tensor
-            /// </summary>
-            [FieldOffset(0)]
-            public Qnn_TensorVersion_t version;
+    [StructLayout(LayoutKind.Explicit)]
+    public struct Qnn_Tensor_t
+    {
+        /// <summary>
+        /// Version of the QNN tensor
+        /// </summary>
+        [FieldOffset(0)]
+        public Qnn_TensorVersion_t version;
 
-            /// <summary>
-            /// Tensor version 1 (see QNN_TENSOR_VERSION_1)
-            /// </summary>
-            [FieldOffset(sizeof(Qnn_TensorVersion_t))]
-            public Qnn_TensorV1_t v1;
+        [FieldOffset(8)]  // Offset includes padding
+        public Qnn_TensorV2_t v2;
 
-            /// <summary>
-            /// Tensor version 2 (see QNN_TENSOR_VERSION_2)
-            /// </summary>
-            [FieldOffset(sizeof(Qnn_TensorVersion_t))]
-            public Qnn_TensorV2_t v2;
-        }
+        [FieldOffset(8)]
+        public Qnn_TensorV1_t v1;
+    }
 
     public enum Qnn_TensorType_t : uint
         {
@@ -570,8 +564,8 @@ namespace SampleCSharpApplication
         //[FieldOffset(sizeof(Qnn_Definition_t) + sizeof(Qnn_QuantizationEncoding_t))]
         //public Qnn_BwScaleOffset_t bwScaleOffsetEncoding;
 
-        //[FieldOffset(sizeof(Qnn_Definition_t) + sizeof(Qnn_QuantizationEncoding_t))]
-        //public Qnn_BwAxisScaleOffset_t bwAxisScaleOffsetEncoding;
+        [FieldOffset(sizeof(Qnn_Definition_t) + sizeof(Qnn_QuantizationEncoding_t))]
+        public QnnBwAxisScaleOffset bwAxisScaleOffsetEncoding;
     }
 
     [StructLayout(LayoutKind.Sequential)]
@@ -725,15 +719,16 @@ namespace SampleCSharpApplication
     [StructLayout(LayoutKind.Sequential)]
         public struct Qnn_TensorV2_t
         {
+            public Qnn_TensorV2_t() { }
             public uint id;
-            private IntPtr name;
+            private IntPtr name = IntPtr.Zero;
             public Qnn_TensorType_t type;
             public Qnn_TensorDataFormat_t dataFormat;
             public Qnn_DataType_t dataType;
             public Qnn_QuantizeParams_t quantizeParams;
             public uint Rank;
 
-            private IntPtr dimensions;
+            private IntPtr dimensions = IntPtr.Zero;
          
             public Qnn_TensorMemType_t memType;
 

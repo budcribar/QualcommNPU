@@ -741,7 +741,8 @@ namespace SampleCSharpApplication
                     Console.WriteLine("Freeing backend profile object.");
                     if (m_qnnFunctionPointers?.QnnInterface.ProfileFree != IntPtr.Zero)
                     {
-                        var profileFreeFn = Marshal.GetDelegateForFunctionPointer<QnnProfile_FreeFn_t>(m_qnnFunctionPointers.QnnInterface.ProfileFree);
+                        var profileFreeFn = Marshal.GetDelegateForFunctionPointer<QnnProfile_FreeFn_t>(m_qnnFunctionPointers?.QnnInterface.ProfileFree ?? IntPtr.Zero);
+                        
                         if (profileFreeFn(m_profileBackendHandle) != QnnProfile_Error_t.QNN_PROFILE_NO_ERROR)
                         {
                             Console.WriteLine("Could not free backend profile handle.");
@@ -755,7 +756,7 @@ namespace SampleCSharpApplication
                     Console.WriteLine("Freeing context");
                     if (m_qnnFunctionPointers?.QnnInterface.ContextFree != IntPtr.Zero)
                     {
-                        var contextFreeFn = Marshal.GetDelegateForFunctionPointer<QnnContext_FreeFn_t>(m_qnnFunctionPointers.QnnInterface.ContextFree);
+                        var contextFreeFn = Marshal.GetDelegateForFunctionPointer<QnnContext_FreeFn_t>(m_qnnFunctionPointers?.QnnInterface.ContextFree ?? IntPtr.Zero);
                         if (contextFreeFn(m_context, IntPtr.Zero) != QnnContextError.QNN_CONTEXT_NO_ERROR)
                         {
                             Console.WriteLine("Could not free context");
@@ -768,7 +769,7 @@ namespace SampleCSharpApplication
                 if (m_isBackendInitialized && m_qnnFunctionPointers?.QnnInterface.BackendFree != IntPtr.Zero)
                 {
                     Console.WriteLine("Freeing backend");
-                    var backendFreeFn = Marshal.GetDelegateForFunctionPointer<QnnBackend_FreeFn_t>(m_qnnFunctionPointers.QnnInterface.BackendFree);
+                    var backendFreeFn = Marshal.GetDelegateForFunctionPointer<QnnBackend_FreeFn_t>(m_qnnFunctionPointers?.QnnInterface.BackendFree ?? IntPtr.Zero);
                     if (backendFreeFn(m_backendHandle) != QnnBackend_Error_t.QNN_BACKEND_NO_ERROR)
                     {
                         Console.WriteLine("Could not free backend");
@@ -779,7 +780,7 @@ namespace SampleCSharpApplication
                 // Terminate logging in the backend
                 if (m_qnnFunctionPointers?.QnnInterface.LogFree != IntPtr.Zero && m_logHandle != IntPtr.Zero)
                 {
-                    var logFreeFn = Marshal.GetDelegateForFunctionPointer<QnnLog_FreeFn_t>(m_qnnFunctionPointers.QnnInterface.LogFree);
+                    var logFreeFn = Marshal.GetDelegateForFunctionPointer<QnnLog_FreeFn_t>(m_qnnFunctionPointers?.QnnInterface.LogFree ?? IntPtr.Zero);
                     if (logFreeFn(m_logHandle) != QNN_SUCCESS)
                     {
                         Console.WriteLine("Unable to terminate logging in the backend.");
