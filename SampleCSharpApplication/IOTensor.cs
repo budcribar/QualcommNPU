@@ -143,7 +143,7 @@ namespace SampleCSharpApplication
                 case Qnn_DataType_t.QNN_DATATYPE_UINT_32:
                 case Qnn_DataType_t.QNN_DATATYPE_INT_32:
                     return (DataStatusCode.SUCCESS, sizeof(int));
-                // Add more cases as needed
+                //TODO Add more cases as needed
                 default:
                     Console.WriteLine($"Unsupported data type: {dataType}");
                     return (DataStatusCode.INVALID_DATA_TYPE, 0);
@@ -306,11 +306,17 @@ namespace SampleCSharpApplication
         }
 
 
-        // TODO
         private static StatusCode AllocateBuffer(out IntPtr buffer, List<long> dims, Qnn_DataType_t dataType)
         {
-            // Implement buffer allocation logic here
-            buffer = IntPtr.Zero;
+            var res = CalculateLength(dims, dataType);
+            if(res.Status != DataStatusCode.SUCCESS)
+            {
+                buffer = IntPtr.Zero;
+                return StatusCode.FAILURE;
+            }
+
+            buffer = UnmanagedMemoryTracker.AllocateMemory((int)res.Length); // TODO long vs int
+
             return StatusCode.SUCCESS;
         }
 

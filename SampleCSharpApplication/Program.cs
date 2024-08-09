@@ -49,10 +49,12 @@ namespace SampleCSharpApplication
                 return 1;
             }
             Console.ReadLine();
+            UnmanagedMemoryTracker.PrintMemoryUsage();
             for (int i = 0; i<1000; i++)
             {
                 using QnnSampleApp app = new QnnSampleApp(model, backend, inputList, duration);
                 int res = app.Run();
+                UnmanagedMemoryTracker.PrintMemoryUsage();
             }
            
             Console.ReadLine();

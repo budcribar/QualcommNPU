@@ -13,7 +13,7 @@ namespace SampleCSharpApplication
 
         public static IntPtr AllocateMemory(int size)
         {
-            IntPtr ptr = Marshal.AllocHGlobal(size);
+            IntPtr ptr = Marshal.AllocHGlobal(size); // todo catch exception
             allocations[ptr] = size;
             Interlocked.Add(ref totalAllocated, size);
             return ptr;
