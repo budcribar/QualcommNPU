@@ -513,7 +513,7 @@ namespace SampleCSharpApplication
                 Scales = IntPtr.Zero;
                 return;
             }
-            Scales = Marshal.AllocHGlobal(scales.Length * sizeof(float));
+            Scales = UnmanagedMemoryTracker.AllocateMemory(scales.Length * sizeof(float)); 
             Marshal.Copy(scales, 0, Scales, scales.Length);
             NumElements = (uint)scales.Length;
         }
@@ -533,7 +533,7 @@ namespace SampleCSharpApplication
                 Offsets = IntPtr.Zero;
                 return;
             }
-            Offsets = Marshal.AllocHGlobal(offsets.Length * sizeof(int));
+            Offsets = UnmanagedMemoryTracker.AllocateMemory(offsets.Length * sizeof(int)); 
             Marshal.Copy(offsets, 0, Offsets, offsets.Length);
             NumElements = (uint)offsets.Length;
         }
@@ -542,9 +542,9 @@ namespace SampleCSharpApplication
         public void Dispose()
         {
             if (Scales != IntPtr.Zero)
-                Marshal.FreeHGlobal(Scales);
+                UnmanagedMemoryTracker. FreeMemory(Scales);
             if (Offsets != IntPtr.Zero)
-                Marshal.FreeHGlobal(Offsets);
+                UnmanagedMemoryTracker.FreeMemory(Offsets);
         }
     }
 
@@ -667,7 +667,7 @@ namespace SampleCSharpApplication
                 // Free the existing name if it exists
                 if (name != IntPtr.Zero)
                 {
-                    Marshal.FreeHGlobal(name);
+                    UnmanagedMemoryTracker.FreeMemory(name);
                     name = IntPtr.Zero;
                 }
 
@@ -682,7 +682,7 @@ namespace SampleCSharpApplication
         {
             if (name != IntPtr.Zero)
             {
-                Marshal.FreeHGlobal(name);
+                UnmanagedMemoryTracker.FreeMemory(name);
                 name = IntPtr.Zero;
             }
         }
@@ -711,9 +711,9 @@ namespace SampleCSharpApplication
                 Rank = (uint)value.Length;
                 if (dimensions != IntPtr.Zero)
                 {
-                    Marshal.FreeHGlobal(dimensions);
+                    UnmanagedMemoryTracker.FreeMemory(dimensions);
                 }
-                dimensions = Marshal.AllocHGlobal(value.Length * sizeof(uint));
+                dimensions = UnmanagedMemoryTracker.AllocateMemory(value.Length * sizeof(uint)); 
                 for (int i = 0; i < value.Length; i++)
                 {
                     Marshal.WriteInt32(dimensions, i * sizeof(uint), (int)value[i]);
@@ -725,7 +725,7 @@ namespace SampleCSharpApplication
         {
             if (dimensions != IntPtr.Zero)
             {
-                Marshal.FreeHGlobal(dimensions);
+                UnmanagedMemoryTracker.FreeMemory(dimensions);
                 dimensions = IntPtr.Zero;
                 Rank = 0;
             }
@@ -766,7 +766,7 @@ namespace SampleCSharpApplication
                 // Free the existing name if it exists
                 if (name != IntPtr.Zero)
                 {
-                    Marshal.FreeHGlobal(name);
+                    UnmanagedMemoryTracker.FreeMemory(name);
                     name = IntPtr.Zero;
                 }
 
@@ -781,7 +781,7 @@ namespace SampleCSharpApplication
         {
             if (name != IntPtr.Zero)
             {
-                Marshal.FreeHGlobal(name);
+                UnmanagedMemoryTracker.FreeMemory(name);
                 name = IntPtr.Zero;
             }
         }
@@ -810,9 +810,9 @@ namespace SampleCSharpApplication
                 Rank = (uint)value.Length;
                 if (dimensions != IntPtr.Zero)
                 {
-                    Marshal.FreeHGlobal(dimensions);
+                    UnmanagedMemoryTracker.FreeMemory(dimensions);
                 }
-                dimensions = Marshal.AllocHGlobal(value.Length * sizeof(uint));
+                dimensions = UnmanagedMemoryTracker.AllocateMemory(value.Length * sizeof(uint)); 
                 for (int i = 0; i < value.Length; i++)
                 {
                     Marshal.WriteInt32(dimensions, i * sizeof(uint), (int)value[i]);
@@ -824,7 +824,7 @@ namespace SampleCSharpApplication
         {
             if (clientBuf.data != IntPtr.Zero)
             {
-                Marshal.FreeHGlobal(clientBuf.data);
+                UnmanagedMemoryTracker.FreeMemory(clientBuf.data);
                 clientBuf.data = IntPtr.Zero;
             }
         }
@@ -833,7 +833,7 @@ namespace SampleCSharpApplication
         {
             if (dimensions != IntPtr.Zero)
             {
-                Marshal.FreeHGlobal(dimensions);
+                UnmanagedMemoryTracker.FreeMemory(dimensions);
                 dimensions = IntPtr.Zero;
                 Rank = 0;
             }

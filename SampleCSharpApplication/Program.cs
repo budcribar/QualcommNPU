@@ -48,13 +48,14 @@ namespace SampleCSharpApplication
                 Console.WriteLine("Missing required arguments. Usage: program --model <FILE> --backend <FILE> --input_list <FILE> [--duration <SECONDS>]");
                 return 1;
             }
-
+            Console.ReadLine();
             for (int i = 0; i<1000; i++)
             {
                 using QnnSampleApp app = new QnnSampleApp(model, backend, inputList, duration);
                 int res = app.Run();
             }
            
+            Console.ReadLine();
 
             //Environment.Exit(res);
             return 0;

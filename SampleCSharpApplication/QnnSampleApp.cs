@@ -26,7 +26,7 @@ namespace SampleCSharpApplication
         private readonly IOTensor m_iOTensor = new();
         private ReadInputListsResult readInputListsResult = new();
         private Qnn_ProfileHandle_t m_profileBackendHandle = IntPtr.Zero;
-        private bool m_isContextCreated = false; // todo
+        private bool m_isContextCreated = false;
         private readonly string model;
         private readonly string backend;
         private readonly string inputList;
@@ -739,19 +739,26 @@ namespace SampleCSharpApplication
 
                             }
                             //inputFileIndexOffset++;
-                            if (stopwatch.Elapsed.TotalSeconds > duration) return StatusCode.SUCCESS;
+                            if (stopwatch.Elapsed.TotalSeconds > duration)
+                            {
+                                UnmanagedMemoryTracker.PrintMemoryUsage();
+                                for (int i = 0; i < inputs.Length; i++)
+                                {
+                                    inputs[i].Dispose();
+                                }
+                                for (int i = 0; i < outputs.Length; i++)
+                                {
+                                    outputs[i].Dispose();
+                                }
+                                UnmanagedMemoryTracker.PrintMemoryUsage();
+                                return StatusCode.SUCCESS;
+
+                            }
+                           
                         }
                     
                     }
-
-                    for (int i = 0; i < inputs.Length; i++)
-                    {
-                        inputs[i].Dispose();
-                    }
-                    for (int i = 0; i < outputs.Length; i++)
-                    {
-                        outputs[i].Dispose();
-                    }
+                 
 
                 }
             }
@@ -822,6 +829,7 @@ namespace SampleCSharpApplication
             }
 
             disposed = true;
+            UnmanagedMemoryTracker.PrintMemoryUsage();
         }
         ~QnnSampleApp()
         {

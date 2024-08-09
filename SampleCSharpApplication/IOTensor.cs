@@ -289,7 +289,7 @@ namespace SampleCSharpApplication
             {
                 if (bufferToCopy != IntPtr.Zero)
                 {
-                    Marshal.FreeHGlobal(bufferToCopy);
+                    UnmanagedMemoryTracker.FreeMemory(bufferToCopy);
                     bufferToCopy = IntPtr.Zero;
                 }
             }
@@ -508,7 +508,8 @@ namespace SampleCSharpApplication
                 {
                     if (fileToBuffer != IntPtr.Zero)
                     {
-                        Marshal.FreeHGlobal(fileToBuffer);
+                        UnmanagedMemoryTracker.FreeMemory(fileToBuffer);
+                       
                     }
                 }
             }
@@ -617,7 +618,7 @@ namespace SampleCSharpApplication
 
             if (tensor.v2.isDynamicDimensions != IntPtr.Zero)
             {
-                Marshal.FreeHGlobal(tensor.v2.isDynamicDimensions);
+                UnmanagedMemoryTracker.FreeMemory(tensor.v2.isDynamicDimensions);
                 tensor.v2.isDynamicDimensions = IntPtr.Zero;
             }
 
@@ -639,7 +640,7 @@ namespace SampleCSharpApplication
             try
             {
                 length = (int)(elementCount * Marshal.SizeOf<T>());
-                buffer = Marshal.AllocHGlobal(length);
+                buffer = UnmanagedMemoryTracker.AllocateMemory(length);
                 return StatusCode.SUCCESS;
             }
             catch (OutOfMemoryException)
@@ -760,7 +761,7 @@ namespace SampleCSharpApplication
                 if (src.v2.isDynamicDimensions != IntPtr.Zero && src.v2.Rank > 0)
                 {
                     int size = (int)src.v2.Rank * sizeof(byte);
-                    dest.v2.isDynamicDimensions = Marshal.AllocHGlobal(size);
+                    dest.v2.isDynamicDimensions = UnmanagedMemoryTracker.AllocateMemory(size); 
                     Marshal.Copy(src.v2.isDynamicDimensions, new byte[size], 0, size);
                 }
 
@@ -829,22 +830,22 @@ namespace SampleCSharpApplication
                     clientBuffer.data = buffer;
                     clientBuffer.dataSize = (uint)length;
 
-                    try
-                    {
-                        clientBuffer.data = Marshal.AllocHGlobal(length);
-                        unsafe
-                        {
-                            Buffer.MemoryCopy(buffer.ToPointer(), clientBuffer.data.ToPointer(), length, length);
-                        }
-                    }
-                    finally
-                    {
-                        // Free the temporary buffer
-                        if (buffer != IntPtr.Zero)
-                        {
-                            Marshal.FreeHGlobal(buffer);
-                        }
-                    }
+                    //try
+                    //{
+                    //    //clientBuffer.data = UnmanagedMemoryTracker.AllocateMemory(length); 
+                    //    unsafe
+                    //    {
+                    //        Buffer.MemoryCopy(buffer.ToPointer(), clientBuffer.data.ToPointer(), length, length);
+                    //    }
+                    //}
+                    //finally
+                    //{
+                    //    // Free the temporary buffer
+                    //    if (buffer != IntPtr.Zero)
+                    //    {
+                    //        UnmanagedMemoryTracker.FreeMemory(buffer);
+                    //    }
+                    //}
 
 
                     tensors[tensorIdx].v2.clientBuf = clientBuffer;
