@@ -73,36 +73,36 @@ namespace SampleCSharpApplication
                              t.IsValueType &&
                              !t.IsEnum)
                 .ToList();
-           
 
             foreach (var structType in structTypes)
             {
-                var offsets = new System.Collections.Generic.Dictionary<string, long>();
-                var fields = structType.GetFields();
+                var offsets = new SortedDictionary<string, int>();
+                var fields = structType.GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 
                 foreach (var field in fields)
                 {
                     try
                     {
-                        long offset = Marshal.OffsetOf(structType, field.Name).ToInt64();
+                        int offset = (int)Marshal.OffsetOf(structType, field.Name).ToInt64();
                         offsets.Add(field.Name, offset);
                     }
-                    catch { }
+                    catch { } // Consider adding more specific error handling
                 }
 
-                // Add total size of the struct
-                try
+                if (offsets.Count == 0) continue;
+                // Create the output object
+                var outputObject = new
                 {
-                    offsets.Add("TotalSize", Marshal.SizeOf(structType));
-                    string json = JsonSerializer.Serialize(offsets, new JsonSerializerOptions { WriteIndented = true });
-                    string fileName = $"{structType.Name}_offsets.json";
-                    File.WriteAllText(Path.Combine(outputDirectory, fileName), json);
+                    StructName = structType.Name,
+                    Offsets = offsets,
+                    TotalSize = Marshal.SizeOf(structType)
+                };
 
-                    Console.WriteLine($"Generated offset file for {structType.Name}");
-                } catch { }
-               
+                string json = JsonSerializer.Serialize(outputObject, new JsonSerializerOptions { WriteIndented = true });
+                string fileName = $"{structType.Name}.json";
+                File.WriteAllText(Path.Combine(outputDirectory, fileName), json);
 
-               
+                Console.WriteLine($"Generated offset file for {structType.Name}");
             }
         }
     }

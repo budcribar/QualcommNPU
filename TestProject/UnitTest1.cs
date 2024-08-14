@@ -2,6 +2,9 @@
 using NUnit.Framework;
 using Newtonsoft.Json.Linq;
 using System.IO;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Text.Json;
 
 namespace TestProject // Replace with your actual namespace
 {
@@ -41,36 +44,49 @@ namespace TestProject // Replace with your actual namespace
             // C:\Users\Andaz-8CBE\source\repos\QualcommNPU\TestProject\SampleCSharpApplication\bin\Debug\net7.0\StructOffsets\ApiVersion_offsets.json
             // Load JSON offset files
             string cppOffsetFile = Path.Combine(CppOffsetDir, $"{structureName}_offsets.json");
-            string csharpOffsetFile = Path.Combine(CSharpOffsetDir, $"{structureName}_offsets.json");
+            string csharpOffsetFile = Path.Combine(CSharpOffsetDir, $"{structureName}.json");
 
-            JObject? csharpOffsets = null;
-            JObject? cppOffsets = null;
+            JObject? csharpJson = null;
+            JObject? cppJson = null;
 
             try
-            { 
-                csharpOffsets = JObject.Parse(File.ReadAllText(csharpOffsetFile));
-                cppOffsets = JObject.Parse(File.ReadAllText(cppOffsetFile));
+            {
+                csharpJson = JObject.Parse(File.ReadAllText(csharpOffsetFile));
+                cppJson = JObject.Parse(File.ReadAllText(cppOffsetFile));
 
 
             }
             catch (Exception ex) { }
-            Assert.IsNotNull(csharpOffsets, $"Could not find C# {structureName}");
-            Assert.IsNotNull(cppOffsets,$"Could not find C++ {structureName}");
+            Assert.IsNotNull(csharpJson, $"Could not find C# {structureName}");
+            Assert.IsNotNull(cppJson, $"Could not find C++ {structureName}");
 
-            var memberNames = cppOffsets.Properties().Select(p => p.Name).ToList();
+            // Extract data from JSON objects
+            string cppStructName = cppJson["StructName"].Value<string>();
+            JObject cppOffsets = cppJson["Offsets"].Value<JObject>();
+            int cppTotalSize = cppJson["TotalSize"].Value<int>();
 
-            // Iterate through the member names and compare offsets
-            foreach (var memberName in memberNames)
+            string csharpStructName = csharpJson["StructName"].Value<string>();
+            JObject csharpOffsets = csharpJson["Offsets"].Value<JObject>();
+            int csharpTotalSize = csharpJson["TotalSize"].Value<int>();
+
+            // Assert structure names match
+            Assert.AreEqual(cppStructName, csharpStructName,
+                $"Structure name mismatch for '{structureName}' (C++: {cppStructName}, C#: {csharpStructName}).");
+
+            // Assert total sizes match
+            Assert.AreEqual(cppTotalSize, csharpTotalSize,
+                $"Total size mismatch for structure '{structureName}' (C++: {cppTotalSize}, C#: {csharpTotalSize}).");
+
+            // Compare offsets
+            foreach (var cppProperty in cppOffsets.Properties())
             {
-                // Check if the member exists in both C++ and C# offset files
-                Assert.IsTrue(cppOffsets.ContainsKey(memberName),
-                    $"Member '{memberName}' not found in C++ offsets for structure '{structureName}'.");
+                string memberName = cppProperty.Name;
+                int cppOffset = cppProperty.Value.Value<int>();
 
+                // Check if the member exists in the C# offsets
                 Assert.IsTrue(csharpOffsets.ContainsKey(memberName),
                     $"Member '{memberName}' not found in C# offsets for structure '{structureName}'.");
 
-                // Get the offset values
-                int cppOffset = cppOffsets[memberName].Value<int>();
                 int csharpOffset = csharpOffsets[memberName].Value<int>();
 
                 // Compare the offset values
@@ -80,22 +96,6 @@ namespace TestProject // Replace with your actual namespace
         }
 
 
-        //    // Compare offsets
-        //    foreach (var cppProperty in cppOffsets.Properties())
-        //    {
-        //        string propertyName = cppProperty.Name;
-        //        int cppOffset = cppProperty.Value.Value<int>();
-
-        //        // Check if the property exists in the C# offsets
-        //        Assert.IsTrue(csharpOffsets.ContainsKey(propertyName),
-        //            $"Property '{propertyName}' not found in C# offsets for structure '{structureName}'.");
-
-        //        int csharpOffset = csharpOffsets[propertyName].Value<int>();
-
-        //        // Compare the offset values
-        //        Assert.AreEqual(cppOffset, csharpOffset,
-        //            $"Offset mismatch for property '{propertyName}' in structure '{structureName}' (C++: {cppOffset}, C#: {csharpOffset}).");
-        //    }
-        //}
-    }
+    } 
 }
+
