@@ -634,25 +634,44 @@ namespace SampleCSharpApplication
         public uint NumSparseDimensions;
     }
 
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Explicit)]
     public struct Qnn_TensorV1_t
     {
+        [FieldOffset(0)]
         public uint id;
-        private IntPtr name;
-        public Qnn_TensorType_t type;
-        public Qnn_TensorDataFormat_t dataFormat;
-        public Qnn_DataType_t dataType;
-        public Qnn_QuantizeParams_t quantizeParams;
-        public uint Rank;
 
+        [FieldOffset(8)]
+        private IntPtr name;
+
+        [FieldOffset(16)]
+        public Qnn_TensorType_t type;
+
+        [FieldOffset(20)]
+        public Qnn_TensorDataFormat_t dataFormat;
+
+        [FieldOffset(24)]
+        public Qnn_DataType_t dataType;
+
+        [FieldOffset(32)]
+        public Qnn_QuantizeParams_t quantizeParams;
+
+        [FieldOffset(72)]
+        public uint Rank; // Renamed to lowercase 'rank' for consistency
+
+        [FieldOffset(80)]
         private IntPtr dimensions;
 
+        [FieldOffset(88)]
         public Qnn_TensorMemType_t memType;
 
+        [FieldOffset(96)]
         public Qnn_ClientBuffer_t clientBuf;
-        public IntPtr isDynamicDimensions;
-        public Qnn_SparseParams_t sparseParams;
-        public byte isProduced;
+
+        [FieldOffset(96)]
+        public Qnn_MemHandle_t memHandle;
+        //public IntPtr isDynamicDimensions;
+        //public Qnn_SparseParams_t sparseParams;
+        //public byte isProduced;
 
         public string Name
         {

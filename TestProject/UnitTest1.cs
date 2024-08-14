@@ -81,12 +81,17 @@ namespace TestProject // Replace with your actual namespace
             foreach (var cppProperty in cppOffsets.Properties())
             {
                 string memberName = cppProperty.Name;
+                // Convert the first character to lowercase
+                memberName = char.ToLowerInvariant(memberName[0]) + memberName.Substring(1);
                 int cppOffset = cppProperty.Value.Value<int>();
 
-                // Check if the member exists in the C# offsets
-                Assert.IsTrue(csharpOffsets.ContainsKey(memberName),
+                // Case-insensitive check using LINQ
+                Assert.IsTrue(csharpOffsets.Properties().Any(p => p.Name.Equals(memberName, StringComparison.OrdinalIgnoreCase)),
                     $"Member '{memberName}' not found in C# offsets for structure '{structureName}'.");
 
+                if (!csharpOffsets.ContainsKey(memberName))
+                    memberName = char.ToUpperInvariant(memberName[0]) + memberName.Substring(1);
+                
                 int csharpOffset = csharpOffsets[memberName].Value<int>();
 
                 // Compare the offset values

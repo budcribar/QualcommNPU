@@ -94,7 +94,8 @@ namespace SampleCSharpApplication
                 var outputObject = new
                 {
                     StructName = structType.Name,
-                    Offsets = offsets,
+                    Offsets = offsets.OrderBy(x => x.Value)
+                                        .ToDictionary(x => x.Key, x => x.Value),
                     TotalSize = Marshal.SizeOf(structType)
                 };
 
