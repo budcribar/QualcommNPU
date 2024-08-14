@@ -68,9 +68,12 @@ namespace SampleCSharpApplication
                 Directory.CreateDirectory(outputDirectory);
             }
 
-            var structTypes = typeof(QnnDelegates).GetNestedTypes()
-                .Where(t => t.IsValueType && !t.IsEnum)
+            var structTypes = Assembly.GetExecutingAssembly().GetTypes()
+                .Where(t => t.Namespace == "SampleCSharpApplication" &&
+                             t.IsValueType &&
+                             !t.IsEnum)
                 .ToList();
+           
 
             foreach (var structType in structTypes)
             {
@@ -79,18 +82,27 @@ namespace SampleCSharpApplication
 
                 foreach (var field in fields)
                 {
-                    long offset = Marshal.OffsetOf(structType, field.Name).ToInt64();
-                    offsets.Add(field.Name, offset);
+                    try
+                    {
+                        long offset = Marshal.OffsetOf(structType, field.Name).ToInt64();
+                        offsets.Add(field.Name, offset);
+                    }
+                    catch { }
                 }
 
                 // Add total size of the struct
-                offsets.Add("TotalSize", Marshal.SizeOf(structType));
+                try
+                {
+                    offsets.Add("TotalSize", Marshal.SizeOf(structType));
+                    string json = JsonSerializer.Serialize(offsets, new JsonSerializerOptions { WriteIndented = true });
+                    string fileName = $"{structType.Name}_offsets.json";
+                    File.WriteAllText(Path.Combine(outputDirectory, fileName), json);
 
-                string json = JsonSerializer.Serialize(offsets, new JsonSerializerOptions { WriteIndented = true });
-                string fileName = $"{structType.Name}_offsets.json";
-                File.WriteAllText(Path.Combine(outputDirectory, fileName), json);
+                    Console.WriteLine($"Generated offset file for {structType.Name}");
+                } catch { }
+               
 
-                Console.WriteLine($"Generated offset file for {structType.Name}");
+               
             }
         }
     }
