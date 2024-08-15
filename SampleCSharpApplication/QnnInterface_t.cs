@@ -19,7 +19,7 @@ namespace SampleCSharpApplication
         public uint BackendId;
         public uint pad;
         public IntPtr ProviderName;  // const char* in C++ becomes IntPtr in C# 
-        public ApiVersion ApiVersion;
+        public Qnn_ApiVersion_t ApiVersion;
         //unsafe public IntPtr QNN_INTERFACE_VER_NAME;  // We'll treat the union as an IntPtr
         public IntPtr PropertyHasCapability;
         public IntPtr BackendCreate;
@@ -79,10 +79,10 @@ namespace SampleCSharpApplication
         public IntPtr ContextCreateFromBinaryWithSignal;
     }
     [StructLayout(LayoutKind.Sequential)]
-    public struct ApiVersion
+    public struct Qnn_ApiVersion_t
     {
-        public CoreApiVersion CoreApiVersion;
-        public CoreApiVersion BackendApiVersion;
+        public Qnn_Version_t CoreApiVersion;
+        public Qnn_Version_t BackendApiVersion;
     }
 
 }

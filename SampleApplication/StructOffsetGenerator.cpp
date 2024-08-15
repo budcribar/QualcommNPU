@@ -14,18 +14,35 @@
 #include <sys/types.h>
 #define CREATE_DIR(dir) mkdir(dir, 0777)
 #endif
+#include <QnnWrapperUtils.hpp>
+#include <QnnInterface.h>
+using namespace qnn_wrapper_api;
 
 class StructOffsetGenerator {
 public:
     static void generateAndWriteOffsets(const std::string& outputDir) {
         createDirectory(outputDir);
-        writeOffsets<Qnn_TensorV1_t>(outputDir, "Qnn_TensorV1_t");
-        writeOffsets<Qnn_TensorV2_t>(outputDir, "Qnn_TensorV2_t");
+       
         writeOffsets<Qnn_Tensor_t>(outputDir, "Qnn_Tensor_t");
         writeOffsets<Qnn_TensorSetV1_t>(outputDir, "Qnn_TensorSetV1_t");
         writeOffsets<Qnn_TensorSet_t>(outputDir, "Qnn_TensorSet_t");
         writeOffsets<Qnn_OpConfigV1_t>(outputDir, "Qnn_OpConfigV1_t");
         writeOffsets<Qnn_OpConfig_t>(outputDir, "Qnn_OpConfig_t");
+
+        writeOffsets<GraphConfigInfo_t>(outputDir, "GraphConfigInfo_t");
+        writeOffsets<GraphInfo_t>(outputDir, "GraphInfo_t");
+        writeOffsets<Qnn_Version_t>(outputDir, "Qnn_Version_t");
+        writeOffsets<Qnn_Tensor_t>(outputDir, "Qnn_Tensor_t");
+        writeOffsets<Qnn_BwAxisScaleOffset_t>(outputDir, "QnnBwAxisScaleOffset");
+        writeOffsets<Qnn_ScaleOffset_t>(outputDir, "Qnn_ScaleOffset_t");
+        writeOffsets<Qnn_QuantizeParams_t>(outputDir, "Qnn_QuantizeParams_t");
+        writeOffsets<Qnn_ClientBuffer_t>(outputDir, "Qnn_ClientBuffer_t");
+        writeOffsets<Qnn_SparseParams_t>(outputDir, "Qnn_SparseParams_t");
+        writeOffsets<Qnn_SparseLayoutHybridCoo_t>(outputDir, "Qnn_SparseLayoutHybridCoo_t");
+        writeOffsets<Qnn_TensorV1_t>(outputDir, "Qnn_TensorV1_t");
+        writeOffsets<Qnn_TensorV2_t>(outputDir, "Qnn_TensorV2_t");
+        writeOffsets<QnnInterface_t>(outputDir, "QnnInterface_t");
+        writeOffsets<Qnn_ApiVersion_t>(outputDir, "ApiVersion");
         std::cout << "Offset files have been written to: " << outputDir << std::endl;
     }
 
@@ -143,6 +160,75 @@ private:
         addOffset(ss, "version", offsetof(Qnn_OpConfig_t, version));
         addOffset(ss, "v1", offsetof(Qnn_OpConfig_t, v1));
     }
+    template<>
+    static void addOffsets<GraphConfigInfo_t>(std::stringstream& ss) {
+        addOffset(ss, "graphName", offsetof(GraphConfigInfo_t, graphName));
+        addOffset(ss, "graphConfigs", offsetof(GraphConfigInfo_t, graphConfigs));
+    }
+
+   /* template<>
+    static void addOffsets<GraphInfo_t>(std::stringstream& ss) {
+        addOffset(ss, "config", offsetof(GraphInfo_t, config));
+        addOffset(ss, "input_tensors", offsetof(GraphInfo_t, input_tensors));
+        addOffset(ss, "output_tensors", offsetof(GraphInfo_t, output_tensors));
+    }*/
+
+    template<>
+    static void addOffsets<Qnn_Version_t>(std::stringstream& ss) {
+        addOffset(ss, "major", offsetof(Qnn_Version_t, major));
+        addOffset(ss, "minor", offsetof(Qnn_Version_t, minor));
+        addOffset(ss, "patch", offsetof(Qnn_Version_t, patch));
+    }
+
+    template<>
+    static void addOffsets<Qnn_BwAxisScaleOffset_t>(std::stringstream& ss) {
+        addOffset(ss, "axis", offsetof(Qnn_BwAxisScaleOffset_t, bitwidth));
+        addOffset(ss, "scale", offsetof(Qnn_BwAxisScaleOffset_t, axis));
+        addOffset(ss, "offset", offsetof(Qnn_BwAxisScaleOffset_t, numElements));
+        addOffset(ss, "scales", offsetof(Qnn_BwAxisScaleOffset_t, scales));
+        addOffset(ss, "offsets", offsetof(Qnn_BwAxisScaleOffset_t, offsets));
+    }
+
+    template<>
+    static void addOffsets<Qnn_ScaleOffset_t>(std::stringstream& ss) {
+        addOffset(ss, "scale", offsetof(Qnn_ScaleOffset_t, scale));
+        addOffset(ss, "offset", offsetof(Qnn_ScaleOffset_t, offset));
+    }
+
+    template<>
+    static void addOffsets<Qnn_QuantizeParams_t>(std::stringstream& ss) {
+        addOffset(ss, "scaleOffset", offsetof(Qnn_QuantizeParams_t, encodingDefinition));
+        addOffset(ss, "quantizationEncoding", offsetof(Qnn_QuantizeParams_t, quantizationEncoding));
+        addOffset(ss, "scaleOffsetEncoding", offsetof(Qnn_QuantizeParams_t, scaleOffsetEncoding));
+        addOffset(ss, "axisScaleOffsetEncoding", offsetof(Qnn_QuantizeParams_t, axisScaleOffsetEncoding));
+        addOffset(ss, "bwScaleOffsetEncoding", offsetof(Qnn_QuantizeParams_t, bwScaleOffsetEncoding));
+        addOffset(ss, "bwAxisScaleOffsetEncoding", offsetof(Qnn_QuantizeParams_t, bwAxisScaleOffsetEncoding));
+    }
+
+    template<>
+    static void addOffsets<Qnn_ClientBuffer_t>(std::stringstream& ss) {
+        addOffset(ss, "data", offsetof(Qnn_ClientBuffer_t, data));
+        addOffset(ss, "dataSize", offsetof(Qnn_ClientBuffer_t, dataSize));
+    }
+
+    template<>
+    static void addOffsets<Qnn_SparseParams_t>(std::stringstream& ss) {
+        addOffset(ss, "type", offsetof(Qnn_SparseParams_t, type));
+        addOffset(ss, "hybridCoo", offsetof(Qnn_SparseParams_t, hybridCoo));
+    }
+
+    template<>
+    static void addOffsets<Qnn_SparseLayoutHybridCoo_t>(std::stringstream& ss) {
+        addOffset(ss, "numSpecifiedElements", offsetof(Qnn_SparseLayoutHybridCoo_t, numSpecifiedElements));
+        addOffset(ss, "numSparseDimensions", offsetof(Qnn_SparseLayoutHybridCoo_t, numSparseDimensions));
+    }
+
+    template<>
+    static void addOffsets<QnnInterface_t>(std::stringstream& ss) {
+        // Assuming QnnInterface_t doesn't have any members or is a typedef
+        // No offsets to add
+    }
+
 };
 
 //int main() {

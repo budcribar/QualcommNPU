@@ -335,7 +335,7 @@ namespace SampleCSharpApplication
         }
     }
     [StructLayout(LayoutKind.Sequential)]
-    public struct CoreApiVersion
+    public struct Qnn_Version_t
     {
         public uint Major;
         public uint Minor;
@@ -472,7 +472,7 @@ namespace SampleCSharpApplication
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    public struct QnnBwAxisScaleOffset
+    public struct Qnn_BwAxisScaleOffset_t
     {
         /// <summary>
         /// Bitwidth must be <= number of bits specified by data type of tensor
@@ -581,7 +581,7 @@ namespace SampleCSharpApplication
         //public Qnn_BwScaleOffset_t bwScaleOffsetEncoding;
 
         [FieldOffset(sizeof(Qnn_Definition_t) + sizeof(Qnn_QuantizationEncoding_t))]
-        public QnnBwAxisScaleOffset bwAxisScaleOffsetEncoding;
+        public Qnn_BwAxisScaleOffset_t bwAxisScaleOffsetEncoding;
     }
 
     [StructLayout(LayoutKind.Sequential)]

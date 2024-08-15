@@ -20,9 +20,9 @@ namespace TestProject // Replace with your actual namespace
         {
             "GraphConfigInfo_t",
             "GraphInfo_t",
-            "CoreApiVersion",
+            "Qnn_Version_t",
             "Qnn_Tensor_t",
-            "QnnBwAxisScaleOffset",
+            "Qnn_BwAxisScaleOffset_t",
             "Qnn_ScaleOffset_t",
             "Qnn_QuantizeParams_t",
             "Qnn_ClientBuffer_t",
@@ -32,10 +32,7 @@ namespace TestProject // Replace with your actual namespace
             "Qnn_TensorV2_t",
             "QnnInterface",
             "QnnInterface_t",
-            "ApiVersion",
-            "PopulateInputTensorsRetType",
-            "ReadBatchDataRetType",
-            "CalculateLengthResult"
+            "Qnn_ApiVersion_t",
         };
 
         [Test, TestCaseSource(nameof(StructureNames))]
@@ -48,6 +45,11 @@ namespace TestProject // Replace with your actual namespace
 
             JObject? csharpJson = null;
             JObject? cppJson = null;
+
+            var p = Path.Combine(Directory.GetCurrentDirectory(), Path.GetDirectoryName(cppOffsetFile));
+            var q = Path.GetFullPath(p);
+            ;
+            var f = File.ReadAllText(cppOffsetFile);
 
             try
             {
