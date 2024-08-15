@@ -166,12 +166,15 @@ private:
         addOffset(ss, "graphConfigs", offsetof(GraphConfigInfo_t, graphConfigs));
     }
 
-   /* template<>
+   template<>
     static void addOffsets<GraphInfo_t>(std::stringstream& ss) {
-        addOffset(ss, "config", offsetof(GraphInfo_t, config));
-        addOffset(ss, "input_tensors", offsetof(GraphInfo_t, input_tensors));
-        addOffset(ss, "output_tensors", offsetof(GraphInfo_t, output_tensors));
-    }*/
+        addOffset(ss, "graph", offsetof(GraphInfo_t, graph));
+        addOffset(ss, "graphName", offsetof(GraphInfo_t, graphName));
+        addOffset(ss, "inputTensors", offsetof(GraphInfo_t, inputTensors));
+        addOffset(ss, "numInputTensors", offsetof(GraphInfo_t, numInputTensors));
+        addOffset(ss, "outputTensors", offsetof(GraphInfo_t, outputTensors));
+        addOffset(ss, "numOutputTensors", offsetof(GraphInfo_t, numOutputTensors));
+    }
 
     template<>
     static void addOffsets<Qnn_Version_t>(std::stringstream& ss) {
