@@ -558,6 +558,21 @@ namespace SampleCSharpApplication
         public int offset;
     }
 
+    public struct Qnn_BwScaleOffset_t
+    {
+        /// <summary>
+        /// bitwidth must be <= number of bits specified by data type of tensor
+        /// </summary>
+        public uint bitwidth;
+
+        /// <summary>
+        /// scale must be strictly positive
+        /// </summary>
+        public float scale;
+
+        public int offset;
+    }
+
     [StructLayout(LayoutKind.Explicit)]
     public struct Qnn_QuantizeParams_t
     {
@@ -573,17 +588,21 @@ namespace SampleCSharpApplication
         [FieldOffset(sizeof(Qnn_Definition_t) + sizeof(Qnn_QuantizationEncoding_t))]
         public Qnn_ScaleOffset_t scaleOffsetEncoding;
 
-        // TODO
-        //[FieldOffset(sizeof(Qnn_Definition_t) + sizeof(Qnn_QuantizationEncoding_t))]
-        //public Qnn_AxisScaleOffset_t axisScaleOffsetEncoding;
+        [FieldOffset(sizeof(Qnn_Definition_t) + sizeof(Qnn_QuantizationEncoding_t))]
+        public Qnn_AxisScaleOffset_t axisScaleOffsetEncoding;
 
-        //[FieldOffset(sizeof(Qnn_Definition_t) + sizeof(Qnn_QuantizationEncoding_t))]
-        //public Qnn_BwScaleOffset_t bwScaleOffsetEncoding;
+        [FieldOffset(sizeof(Qnn_Definition_t) + sizeof(Qnn_QuantizationEncoding_t))]
+        public Qnn_BwScaleOffset_t bwScaleOffsetEncoding;
 
         [FieldOffset(sizeof(Qnn_Definition_t) + sizeof(Qnn_QuantizationEncoding_t))]
         public Qnn_BwAxisScaleOffset_t bwAxisScaleOffsetEncoding;
     }
-
+    public struct Qnn_AxisScaleOffset_t
+    {
+        public int axis;
+        public uint numScaleOffsets;
+        public IntPtr scaleOffset; // Use IntPtr for the pointer to Qnn_ScaleOffset_t
+    }
     [StructLayout(LayoutKind.Sequential)]
     public struct Qnn_ClientBuffer_t
     {

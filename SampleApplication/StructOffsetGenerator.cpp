@@ -33,7 +33,7 @@ public:
         writeOffsets<GraphInfo_t>(outputDir, "GraphInfo_t");
         writeOffsets<Qnn_Version_t>(outputDir, "Qnn_Version_t");
         writeOffsets<Qnn_Tensor_t>(outputDir, "Qnn_Tensor_t");
-        writeOffsets<Qnn_BwAxisScaleOffset_t>(outputDir, "QnnBwAxisScaleOffset");
+        writeOffsets<Qnn_BwAxisScaleOffset_t>(outputDir, "Qnn_BwAxisScaleOffset_t");
         writeOffsets<Qnn_ScaleOffset_t>(outputDir, "Qnn_ScaleOffset_t");
         writeOffsets<Qnn_QuantizeParams_t>(outputDir, "Qnn_QuantizeParams_t");
         writeOffsets<Qnn_ClientBuffer_t>(outputDir, "Qnn_ClientBuffer_t");
@@ -42,7 +42,7 @@ public:
         writeOffsets<Qnn_TensorV1_t>(outputDir, "Qnn_TensorV1_t");
         writeOffsets<Qnn_TensorV2_t>(outputDir, "Qnn_TensorV2_t");
         writeOffsets<QnnInterface_t>(outputDir, "QnnInterface_t");
-        writeOffsets<Qnn_ApiVersion_t>(outputDir, "ApiVersion");
+        writeOffsets<Qnn_ApiVersion_t>(outputDir, "Qnn_ApiVersion_t");
         std::cout << "Offset files have been written to: " << outputDir << std::endl;
     }
 
@@ -181,6 +181,13 @@ private:
         addOffset(ss, "major", offsetof(Qnn_Version_t, major));
         addOffset(ss, "minor", offsetof(Qnn_Version_t, minor));
         addOffset(ss, "patch", offsetof(Qnn_Version_t, patch));
+    }
+
+    template<>
+    static void addOffsets<Qnn_ApiVersion_t>(std::stringstream& ss) {
+        addOffset(ss, "coreApiVersion", offsetof(Qnn_ApiVersion_t, coreApiVersion));
+        addOffset(ss, "backendApiVersion", offsetof(Qnn_ApiVersion_t, backendApiVersion));
+       
     }
 
     template<>

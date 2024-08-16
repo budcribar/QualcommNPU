@@ -30,7 +30,6 @@ namespace TestProject // Replace with your actual namespace
             "Qnn_SparseLayoutHybridCoo_t",
             "Qnn_TensorV1_t",
             "Qnn_TensorV2_t",
-            "QnnInterface",
             "QnnInterface_t",
             "Qnn_ApiVersion_t",
         };
