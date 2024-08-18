@@ -48,7 +48,7 @@ namespace SampleCSharpApplication
                 Console.WriteLine("Missing required arguments. Usage: program --model <FILE> --backend <FILE> --input_list <FILE> [--duration <SECONDS>]");
                 return 1;
             }
-            Console.ReadLine();
+            // Console.ReadLine();
             UnmanagedMemoryTracker.PrintMemoryUsage();
             for (int i = 0; i<1000; i++)
             {
@@ -57,7 +57,7 @@ namespace SampleCSharpApplication
                 UnmanagedMemoryTracker.PrintMemoryUsage();
             }
            
-            Console.ReadLine();
+            //Console.ReadLine();
 
             //Environment.Exit(res);
             return 0;
