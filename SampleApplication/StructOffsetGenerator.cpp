@@ -192,9 +192,9 @@ private:
 
 	template<>
 	static void addOffsets<Qnn_BwAxisScaleOffset_t>(std::stringstream& ss) {
-		addOffset(ss, "axis", offsetof(Qnn_BwAxisScaleOffset_t, bitwidth));
-		addOffset(ss, "scale", offsetof(Qnn_BwAxisScaleOffset_t, axis));
-		addOffset(ss, "offset", offsetof(Qnn_BwAxisScaleOffset_t, numElements));
+		addOffset(ss, "bitwidth", offsetof(Qnn_BwAxisScaleOffset_t, bitwidth));
+		addOffset(ss, "axis", offsetof(Qnn_BwAxisScaleOffset_t, axis));
+		addOffset(ss, "numElements", offsetof(Qnn_BwAxisScaleOffset_t, numElements));
 		addOffset(ss, "scales", offsetof(Qnn_BwAxisScaleOffset_t, scales));
 		addOffset(ss, "offsets", offsetof(Qnn_BwAxisScaleOffset_t, offsets));
 	}
@@ -207,7 +207,7 @@ private:
 
 	template<>
 	static void addOffsets<Qnn_QuantizeParams_t>(std::stringstream& ss) {
-		addOffset(ss, "scaleOffset", offsetof(Qnn_QuantizeParams_t, encodingDefinition));
+		addOffset(ss, "encodingDefinition", offsetof(Qnn_QuantizeParams_t, encodingDefinition));
 		addOffset(ss, "quantizationEncoding", offsetof(Qnn_QuantizeParams_t, quantizationEncoding));
 		addOffset(ss, "scaleOffsetEncoding", offsetof(Qnn_QuantizeParams_t, scaleOffsetEncoding));
 		addOffset(ss, "axisScaleOffsetEncoding", offsetof(Qnn_QuantizeParams_t, axisScaleOffsetEncoding));
