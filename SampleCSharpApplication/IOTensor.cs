@@ -853,7 +853,7 @@ namespace SampleCSharpApplication
         }
 
         // Setup details for all input and output tensors for graph execution.
-        unsafe public StatusCode SetupInputAndOutputTensors(
+       unsafe public StatusCode SetupInputAndOutputTensors(
             out Qnn_Tensor_t[] inputs,
             out Qnn_Tensor_t[] outputs,
             GraphInfo_t graphInfo)

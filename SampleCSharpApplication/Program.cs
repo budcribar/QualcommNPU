@@ -7,7 +7,7 @@ namespace SampleCSharpApplication
 {
     public class Program
     {
-        public unsafe static int Main(string[] args)
+        public static int Main(string[] args)
         {
 
             StructOffsetGenerator.GenerateStructOffsetsJson("StructOffsets");

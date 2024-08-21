@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿
 using System.Runtime.InteropServices;
 
 namespace SampleCSharpApplication
@@ -16,7 +14,7 @@ namespace SampleCSharpApplication
             Count = count;    
         }
 
-        public unsafe GraphInfo_t this[uint index]
+        public GraphInfo_t this[uint index]
         {
             get
             {
@@ -28,7 +26,7 @@ namespace SampleCSharpApplication
             }
         }
 
-        public unsafe void Dispose()
+        public void Dispose()
         {
             if (GraphInfos != IntPtr.Zero)
             {
