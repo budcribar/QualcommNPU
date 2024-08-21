@@ -19,7 +19,6 @@ namespace SampleCSharpApplication
         private Qnn_DeviceHandle_t m_deviceHandle = IntPtr.Zero;
         private Qnn_ContextHandle_t m_context = IntPtr.Zero;
         private GraphInfoManager? m_graphInfoManager;
-        //private uint m_graphsCount = 0;
         private bool m_isBackendInitialized = false;
         private readonly IntPtr* m_backendConfig;
         private readonly IntPtr[]? m_graphConfigsInfo;
@@ -587,7 +586,7 @@ namespace SampleCSharpApplication
 
         private StatusCode FinalizeGraphs()
         {
-            for (uint graphIdx = 0; graphIdx < m_graphInfoManager.Count; graphIdx++)
+            for (uint graphIdx = 0; graphIdx < m_graphInfoManager?.Count; graphIdx++)
             {
                 if (m_qnnFunctionPointers?.QnnInterface.GraphFinalize == IntPtr.Zero)
                 {
@@ -610,7 +609,6 @@ namespace SampleCSharpApplication
                     }
 
                     Console.WriteLine($"GraphFinalize Returned Status = {qnnStatus}");
-                    return StatusCode.SUCCESS;
                 }
                 catch (Exception ex)
                 {
@@ -673,7 +671,7 @@ namespace SampleCSharpApplication
 
             // Simulating graph execution
             Console.WriteLine($"Elapsed time: {stopwatch.Elapsed.TotalSeconds} seconds");
-            for (uint graphIdx = 0; graphIdx < m_graphInfoManager.Count; graphIdx++)
+            for (uint graphIdx = 0; graphIdx < m_graphInfoManager?.Count; graphIdx++)
             {
                 if (graphIdx >= filePathsLists.Count)
                 {
@@ -734,7 +732,7 @@ namespace SampleCSharpApplication
                             }
 
                         }
-                        //inputFileIndexOffset++;
+                        inputFileIndexOffset++;
                         if (stopwatch.Elapsed.TotalSeconds > duration)
                         {
                             UnmanagedMemoryTracker.PrintMemoryUsage();

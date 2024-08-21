@@ -50,7 +50,7 @@ namespace SampleCSharpApplication
             }
             // Console.ReadLine();
             UnmanagedMemoryTracker.PrintMemoryUsage();
-            for (int i = 0; i<1000; i++)
+            for (int i = 0; i<10; i++)
             {
                 using QnnSampleApp app = new QnnSampleApp(model, backend, inputList, duration);
                 int res = app.Run();

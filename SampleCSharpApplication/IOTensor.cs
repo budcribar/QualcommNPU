@@ -529,7 +529,7 @@ namespace SampleCSharpApplication
         }
 
         // Helper method to populate all input tensors during execution.
-        public static PopulateInputTensorsRetType PopulateInputTensors(uint graphIdx, List<List<string>> filePathsVector, int filePathsIndexOffset,
+        public unsafe static PopulateInputTensorsRetType PopulateInputTensors(uint graphIdx, List<List<string>> filePathsVector, int filePathsIndexOffset,
                bool loopBackToStart, Dictionary<string, uint> inputNameToIndex, Qnn_Tensor_t[] inputs, GraphInfo_t graphInfo, InputDataType inputDataType)
         {
             Console.WriteLine($"populateInputTensors() graphIndx {graphIdx}");
@@ -550,20 +550,21 @@ namespace SampleCSharpApplication
             int numFilesPopulated = 0;
             long numBatchSize = 0;
 
-            for (int inputIdx = 0; inputIdx < inputCount; inputIdx++)
+            for (uint inputIdx = 0; inputIdx < inputCount; inputIdx++)
             {
-                int inputNameIdx = inputIdx;
+                uint inputNameIdx = inputIdx;
                 Console.WriteLine($"index = {inputIdx} input column index = {inputNameIdx}");
 
-                // TODO
-                //string inputNodeName = graphInfo.inputTensors.inputTensors[inputIdx]
-                string inputNodeName = "TODO";
-                //if (!string.IsNullOrEmpty(inputNodeName) && inputNameToIndex.ContainsKey(inputNodeName))
-                //{
-                //    inputNameIdx = (int)inputNameToIndex[inputNodeName];
-                //}
+                TensorManager tensorManager = new TensorManager(graphInfo.inputTensors, graphInfo.numInputTensors);
 
-                var pit = PopulateInputTensor(filePathsVector[inputNameIdx], filePathsIndexOffset, loopBackToStart, inputs[inputIdx], inputDataType);
+                string inputNodeName = tensorManager[inputIdx].v2.Name;
+
+                if (!string.IsNullOrEmpty(inputNodeName) && inputNameToIndex.ContainsKey(inputNodeName))
+                {
+                    inputNameIdx = (uint)inputNameToIndex[inputNodeName];
+                }
+
+                var pit = PopulateInputTensor(filePathsVector[(int)inputNameIdx], filePathsIndexOffset, loopBackToStart, inputs[inputIdx], inputDataType);
 
                 if (pit.Status != StatusCode.SUCCESS)
                 {
@@ -775,15 +776,11 @@ namespace SampleCSharpApplication
         }
 
         // Setup details for Qnn_Tensor_t for execution
-        unsafe private StatusCode SetupTensors(out Qnn_Tensor_t[] tensors, uint tensorCount, Qnn_Tensor_t* tensorWrappers)
+        private StatusCode SetupTensors(out Qnn_Tensor_t[] tensors, TensorManager tensorManager)
         {
             tensors = Array.Empty<Qnn_Tensor_t>();
-            if (tensorWrappers == null)
-            {
-                Console.Error.WriteLine("tensorWrappers is null");
-                return StatusCode.FAILURE;
-            }
-            if (tensorCount == 0)
+            
+            if (tensorManager.Count == 0)
             {
                 Console.WriteLine("tensor count is 0. Nothing to setup.");
                 return StatusCode.SUCCESS;
@@ -791,12 +788,11 @@ namespace SampleCSharpApplication
 
             try
             {
-                tensors = new Qnn_Tensor_t[tensorCount];
+                tensors = new Qnn_Tensor_t[tensorManager.Count];
 
-                for (int tensorIdx = 0; tensorIdx < tensorCount; tensorIdx++)
+                for (uint tensorIdx = 0; tensorIdx < tensorManager.Count; tensorIdx++)
                 {
-                    // Qnn_Tensor_t wrapperTensor = tensorWrappers[tensorIdx];
-                    Qnn_Tensor_t wrapperTensor = *tensorWrappers;
+                    Qnn_Tensor_t wrapperTensor = tensorManager[tensorIdx];
                     var dims = new List<long>();
                     FillDims(dims, wrapperTensor.v2.Dimensions, wrapperTensor.v2.Rank);
 
@@ -846,7 +842,7 @@ namespace SampleCSharpApplication
             catch (Exception ex)
             {
                 Console.Error.WriteLine($"Failure in SetupTensors: {ex.Message}");
-                TearDownTensors(tensors, tensorCount);
+                TearDownTensors(tensors, tensorManager.Count);
                 tensors = Array.Empty<Qnn_Tensor_t>();
                 return StatusCode.FAILURE;
             }
@@ -864,14 +860,16 @@ namespace SampleCSharpApplication
 
             try
             {
+                TensorManager tensorManager = new TensorManager(graphInfo.inputTensors, graphInfo.numInputTensors);
                 // Setup input tensors
-                if (SetupTensors(out inputs, graphInfo.numInputTensors, graphInfo.inputTensors) != StatusCode.SUCCESS)
+                if (SetupTensors(out inputs, tensorManager) != StatusCode.SUCCESS)
                 {
                     throw new Exception("Failure in setting up input tensors");
                 }
 
+                tensorManager = new TensorManager(graphInfo.outputTensors, graphInfo.numOutputTensors);
                 // Setup output tensors
-                if (SetupTensors(out outputs, graphInfo.numOutputTensors, graphInfo.outputTensors) != StatusCode.SUCCESS)
+                if (SetupTensors(out outputs, tensorManager) != StatusCode.SUCCESS)
                 {
                     throw new Exception("Failure in setting up output tensors");
                 }
@@ -901,7 +899,7 @@ namespace SampleCSharpApplication
         // Clean up all tensors related data after execution.
         public StatusCode TearDownTensors(Qnn_Tensor_t[] tensors, uint tensorCount)
         {
-            // Implementation needed
+            // TAODOImplementation needed
             return StatusCode.SUCCESS;
         }
 

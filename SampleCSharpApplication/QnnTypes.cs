@@ -25,9 +25,9 @@ namespace SampleCSharpApplication
     {
         public Qnn_GraphHandle_t graph;
         public IntPtr graphName;             // char* in C++ is IntPtr in C#
-        unsafe public Qnn_Tensor_t* inputTensors;
+        unsafe public IntPtr inputTensors;
         public uint numInputTensors;
-        unsafe public Qnn_Tensor_t* outputTensors;
+        unsafe public IntPtr outputTensors;
         public uint numOutputTensors;
 
         public string GraphNameString
