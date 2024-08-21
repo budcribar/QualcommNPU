@@ -176,7 +176,6 @@ namespace SampleCSharpApplication
         Qnn_DataType_t dataType,
         IntPtr buffer)
         {
-            uint tensorLength = 0;
             if (buffer == IntPtr.Zero)
             {
                 Console.WriteLine("buffer is null");
@@ -204,9 +203,9 @@ namespace SampleCSharpApplication
                     }
                     else
                     {
-                        numBatchSize += (tensorLength - totalLength) / (totalLength / numBatchSize);
+                        numBatchSize += (result.Length - totalLength) / (totalLength / numBatchSize);
                         // pad the vector with zeros
-                        ZeroMemory(buffer, totalLength, tensorLength - totalLength);
+                        ZeroMemory(buffer, totalLength, result.Length - totalLength);
                         break;
                     }
                 }
@@ -217,11 +216,11 @@ namespace SampleCSharpApplication
                     {
                         int fileSize = (int)fileStream.Length;
 
-                        if ((tensorLength % fileSize) != 0 || fileSize > tensorLength || fileSize == 0)
+                        if ((result.Length % fileSize) != 0 || fileSize > result.Length || fileSize == 0)
                         {
                             Console.WriteLine($"Given input file {filePaths[fileIndex]} with file size in bytes {fileSize}. " +
-                                              $"If the model expects a batch size of one, the file size should match the tensor extent: {tensorLength} bytes. " +
-                                              $"If the model expects a batch size > 1, the file size should evenly divide the tensor extent: {tensorLength} bytes.");
+                                              $"If the model expects a batch size of one, the file size should match the tensor extent: {result.Length} bytes. " +
+                                              $"If the model expects a batch size > 1, the file size should evenly divide the tensor extent: {result.Length} bytes.");
                             return new ReadBatchDataRetType(DataStatusCode.DATA_SIZE_MISMATCH, numInputsCopied, numBatchSize);
                         }
 
@@ -239,7 +238,7 @@ namespace SampleCSharpApplication
                         numBatchSize += 1;
                         fileIndex += 1;
 
-                        if (totalLength >= tensorLength)
+                        if (totalLength >= result.Length)
                         {
                             break;
                         }
@@ -481,16 +480,6 @@ namespace SampleCSharpApplication
             Qnn_Tensor_t input,
             InputDataType inputDataType)
         {
-            // TODO
-            //if (input == null)
-            //{
-            //    Console.WriteLine("input is null");
-            //    return new PopulateInputTensorsRetType(StatusCode.FAILURE, 0, 0);
-            //}
-
-            //StatusCode returnStatus = StatusCode.SUCCESS;
-            //int numFilesPopulated = 0;
-            //int batchSize = 0;
             ReadBatchDataRetType rbd = new ReadBatchDataRetType();
 
             StatusCode status = StatusCode.SUCCESS;
@@ -574,12 +563,7 @@ namespace SampleCSharpApplication
                 //    inputNameIdx = (int)inputNameToIndex[inputNodeName];
                 //}
 
-                var pit = // (returnStatus, currentInputNumFilesPopulated, currentInputNumBatchSize) =
-                    PopulateInputTensor(filePathsVector[inputNameIdx],
-                                        filePathsIndexOffset,
-                                        loopBackToStart,
-                                        inputs[inputIdx],
-                                        inputDataType);
+                var pit = PopulateInputTensor(filePathsVector[inputNameIdx], filePathsIndexOffset, loopBackToStart, inputs[inputIdx], inputDataType);
 
                 if (pit.Status != StatusCode.SUCCESS)
                 {

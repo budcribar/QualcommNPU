@@ -26,7 +26,7 @@ namespace SampleCSharpApplication
             foreach (var cppFile in cppFiles)
             {
                 var fileName = Path.GetFileName(cppFile);
-                var csharpFile = Path.Combine(csharpDir, fileName);
+                var csharpFile = Path.Combine(csharpDir, fileName.Replace("_offsets",""));
 
                 if (!File.Exists(csharpFile))
                 {

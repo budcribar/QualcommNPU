@@ -18,8 +18,8 @@ namespace SampleCSharpApplication
         private Qnn_BackendHandle_t m_backendHandle;
         private Qnn_DeviceHandle_t m_deviceHandle = IntPtr.Zero;
         private Qnn_ContextHandle_t m_context = IntPtr.Zero;
-        private unsafe GraphInfo_t** m_graphsInfos;
-        private uint m_graphsCount = 0;
+        private GraphInfoManager? m_graphInfoManager;
+        //private uint m_graphsCount = 0;
         private bool m_isBackendInitialized = false;
         private readonly IntPtr* m_backendConfig;
         private readonly IntPtr[]? m_graphConfigsInfo;
@@ -564,10 +564,11 @@ namespace SampleCSharpApplication
             {  
                 uint graphConfigInfosCount = 0;
                
-                QnnLog_Level_t log_level = QnnLog_Level_t.QNN_LOG_LEVEL_ERROR;  
-
-                ModelError_t qnnStatus = composeGraphs(m_backendHandle, GetPropertyHasCapabilityPointerAddress(), m_context, m_graphConfigsInfo, graphConfigInfosCount,out  m_graphsInfos, out m_graphsCount, false, m_logCallback, log_level);
-
+                QnnLog_Level_t log_level = QnnLog_Level_t.QNN_LOG_LEVEL_ERROR;
+               
+                ModelError_t qnnStatus = composeGraphs(m_backendHandle, GetPropertyHasCapabilityPointerAddress(), m_context, m_graphConfigsInfo, graphConfigInfosCount,out IntPtr graphsInfos, out uint graphsCount, false, m_logCallback, log_level);
+                m_graphInfoManager = new GraphInfoManager (graphsInfos, graphsCount);
+               
                 if (qnnStatus != QNN_SUCCESS)
                 {
                     Console.Error.WriteLine($"composeGraphs failed {qnnStatus}");
@@ -586,7 +587,7 @@ namespace SampleCSharpApplication
 
         private StatusCode FinalizeGraphs()
         {
-            for (uint graphIdx = 0; graphIdx < m_graphsCount; graphIdx++)
+            for (uint graphIdx = 0; graphIdx < m_graphInfoManager.Count; graphIdx++)
             {
                 if (m_qnnFunctionPointers?.QnnInterface.GraphFinalize == IntPtr.Zero)
                 {
@@ -598,12 +599,7 @@ namespace SampleCSharpApplication
                 QnnGraph_FinalizeFn_t graphFinalize = Marshal.GetDelegateForFunctionPointer<QnnGraph_FinalizeFn_t>(graphFinalizePtr);
                 try
                 {
-                    GraphInfo_t** graphInfoArray = m_graphsInfos;
-
-                    // Access the specific GraphInfo_t at the given index
-                    //GraphInfo_t graphInfo = (*graphInfoArray)[graphIdx];
-                    // todo
-                    GraphInfo_t graphInfo = (**graphInfoArray);
+                    GraphInfo_t graphInfo = m_graphInfoManager[graphIdx];
 
                     Qnn_ErrorHandle_t qnnStatus = graphFinalize(graphInfo.graph, IntPtr.Zero,IntPtr.Zero);
 
@@ -674,61 +670,60 @@ namespace SampleCSharpApplication
             Stopwatch stopwatch = new();
             stopwatch.Start();
 
-            while (stopwatch.Elapsed.TotalSeconds < duration)
+
+            // Simulating graph execution
+            Console.WriteLine($"Elapsed time: {stopwatch.Elapsed.TotalSeconds} seconds");
+            for (uint graphIdx = 0; graphIdx < m_graphInfoManager.Count; graphIdx++)
             {
-                // Simulating graph execution
-                Console.WriteLine($"Elapsed time: {stopwatch.Elapsed.TotalSeconds} seconds");
-                for (uint graphIdx = 0; graphIdx < m_graphsCount; graphIdx++)
+                if (graphIdx >= filePathsLists.Count)
                 {
-                    if (graphIdx >= filePathsLists.Count)
+                    Console.WriteLine($"No Inputs available for: {graphIdx}");
+                    return StatusCode.FAILURE;
+
+                }
+                Qnn_Tensor_t[] inputs = Array.Empty<Qnn_Tensor_t>();
+                Qnn_Tensor_t[] outputs = Array.Empty<Qnn_Tensor_t>();
+
+                var graphInfo = m_graphInfoManager[graphIdx];
+               
+                if (m_iOTensor.SetupInputAndOutputTensors(out inputs, out outputs, graphInfo) != IOTensor.StatusCode.SUCCESS)
+                {
+                    Console.WriteLine("Error in setting up Input and output Tensors for graphIdx: {graphIdx}");
+                    return StatusCode.FAILURE;
+                }
+
+                //populateInputTensors
+                var inputFileList = filePathsLists[(int)graphIdx];
+
+                if (inputFileList.Any())
+                {
+                    int totalCount = inputFileList[0].Count;
+                    int inputFileIndexOffset = 0;
+                    while (inputFileIndexOffset < totalCount)
                     {
-                        Console.WriteLine($"No Inputs available for: {graphIdx}");
-                        return StatusCode.FAILURE;
+                        var result = IOTensor.PopulateInputTensors(graphIdx, inputFileList, inputFileIndexOffset, false, readInputListsResult.InputNameToIndexMaps[(int)graphIdx], inputs, graphInfo, IOTensor.InputDataType.FLOAT);
 
-                    }
-                    Qnn_Tensor_t[] inputs = Array.Empty<Qnn_Tensor_t>();
-                    Qnn_Tensor_t[] outputs = Array.Empty<Qnn_Tensor_t>(); 
-
-                    // TODO
-                    // (m_iOTensor.SetupInputAndOutputTensors(out inputs, out outputs, (**m_graphsInfos)[graphIdx]) != IOTensor.StatusCode.SUCCESS)
-                    if (m_iOTensor.SetupInputAndOutputTensors (out inputs,out outputs, (**m_graphsInfos)) != IOTensor.StatusCode.SUCCESS)
-                    {
-                        Console.WriteLine("Error in setting up Input and output Tensors for graphIdx: {graphIdx}" );
-                        return StatusCode.FAILURE;
-                    }
-
-                    //populateInputTensors
-                    var inputFileList = filePathsLists[(int)graphIdx];
-                    var graphInfo = **m_graphsInfos;// (*m_graphsInfo)[graphIdx];
-
-                    if (inputFileList.Any())
-                    {
-                        int totalCount = inputFileList[0].Count;
-                        int inputFileIndexOffset = 0;
-                        while (inputFileIndexOffset < totalCount)
+                        if (result.Status != IOTensor.StatusCode.SUCCESS)
                         {
-                            var result = IOTensor.PopulateInputTensors(graphIdx, inputFileList, inputFileIndexOffset, false, readInputListsResult.InputNameToIndexMaps[(int)graphIdx], inputs, graphInfo, IOTensor.InputDataType.FLOAT);
+                            returnStatus = StatusCode.FAILURE;
+                        }
 
-                            if (result.Status != IOTensor.StatusCode.SUCCESS)
+                        if (returnStatus == StatusCode.SUCCESS)
+                        {
+                            Console.WriteLine("Successfully populated input tensors for graphIdx: {graphIdx}");
+                            Qnn_ErrorHandle_t executeStatus = 0;// QNN_GRAPH_NO_ERROR;
+
+                            IntPtr graphExecutePtr = m_qnnFunctionPointers?.QnnInterface.GraphExecute ?? IntPtr.Zero;
+                            if (graphExecutePtr == IntPtr.Zero)
                             {
-                                returnStatus = StatusCode.FAILURE;
+                                Console.Error.WriteLine("Failed to get function pointer for GraphExecute");
+                                return StatusCode.FAILURE;
                             }
 
-                            if (returnStatus == StatusCode.SUCCESS)
+                            QnnGraphExecuteDelegate executeGraph = Marshal.GetDelegateForFunctionPointer<QnnGraphExecuteDelegate>(graphExecutePtr);
+
+                            while (stopwatch.Elapsed.TotalSeconds < duration)
                             {
-                                Console.WriteLine("Successfully populated input tensors for graphIdx: {graphIdx}");
-                                Qnn_ErrorHandle_t executeStatus = 0;// QNN_GRAPH_NO_ERROR;
-
-                                IntPtr graphExecutePtr = m_qnnFunctionPointers?.QnnInterface.GraphExecute ?? IntPtr.Zero;
-                                if (graphExecutePtr == IntPtr.Zero)
-                                {
-                                    Console.Error.WriteLine("Failed to get function pointer for GraphExecute");
-                                    return StatusCode.FAILURE;
-                                }
-
-                                QnnGraphExecuteDelegate executeGraph = Marshal.GetDelegateForFunctionPointer<QnnGraphExecuteDelegate>(graphExecutePtr);
-
-
                                 executeStatus = executeGraph(graphInfo.graph, inputs, graphInfo.numInputTensors, outputs, graphInfo.numOutputTensors, IntPtr.Zero, IntPtr.Zero);
 
                                 if (0 /*QNN_GRAPH_NO_ERROR*/ != executeStatus)
@@ -736,32 +731,33 @@ namespace SampleCSharpApplication
                                     returnStatus = StatusCode.FAILURE;
                                     break;
                                 }
-
                             }
-                            //inputFileIndexOffset++;
-                            if (stopwatch.Elapsed.TotalSeconds > duration)
-                            {
-                                UnmanagedMemoryTracker.PrintMemoryUsage();
-                                for (int i = 0; i < inputs.Length; i++)
-                                {
-                                    inputs[i].Dispose();
-                                }
-                                for (int i = 0; i < outputs.Length; i++)
-                                {
-                                    outputs[i].Dispose();
-                                }
-                                UnmanagedMemoryTracker.PrintMemoryUsage();
-                                return StatusCode.SUCCESS;
 
-                            }
-                           
                         }
-                    
+                        //inputFileIndexOffset++;
+                        if (stopwatch.Elapsed.TotalSeconds > duration)
+                        {
+                            UnmanagedMemoryTracker.PrintMemoryUsage();
+                            for (int i = 0; i < inputs.Length; i++)
+                            {
+                                inputs[i].Dispose();
+                            }
+                            for (int i = 0; i < outputs.Length; i++)
+                            {
+                                outputs[i].Dispose();
+                            }
+                            UnmanagedMemoryTracker.PrintMemoryUsage();
+                            return StatusCode.SUCCESS;
+
+                        }
+
                     }
-                 
 
                 }
+
+
             }
+
 
             stopwatch.Stop();
             Console.WriteLine($"End time: {DateTimeOffset.Now.ToUnixTimeSeconds()} seconds since epoch");

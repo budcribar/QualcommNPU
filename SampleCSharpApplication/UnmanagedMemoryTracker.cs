@@ -4,8 +4,6 @@ using System.Collections.Concurrent;
 
 namespace SampleCSharpApplication
 {
-   
-
     public static class UnmanagedMemoryTracker
     {
         private static ConcurrentDictionary<IntPtr, long> allocations = new ConcurrentDictionary<IntPtr, long>();

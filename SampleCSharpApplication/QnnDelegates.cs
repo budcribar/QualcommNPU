@@ -28,7 +28,7 @@ namespace SampleCSharpApplication
     public delegate Qnn_ErrorHandle_t QnnDevice_FreeFn_t(Qnn_DeviceHandle_t device);
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    unsafe public delegate ModelError_t ComposeGraphsFnHandleType_t(Qnn_BackendHandle_t backendHandle,IntPtr qnnInterface,Qnn_ContextHandle_t context, [In] IntPtr[]? graphConfigInfos,uint graphConfigInfosCount, out GraphInfo_t** graphInfos, out uint graphInfosCount, [MarshalAs(UnmanagedType.I1)] bool debug,QnnLog_Callback_t? logCallback, QnnLog_Level_t logLevel);
+    unsafe public delegate ModelError_t ComposeGraphsFnHandleType_t(Qnn_BackendHandle_t backendHandle,IntPtr qnnInterface,Qnn_ContextHandle_t context, [In] IntPtr[]? graphConfigInfos,uint graphConfigInfosCount, out IntPtr graphInfos, out uint graphInfosCount, [MarshalAs(UnmanagedType.I1)] bool debug,QnnLog_Callback_t? logCallback, QnnLog_Level_t logLevel);
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public delegate Qnn_ErrorHandle_t QnnGraph_FinalizeFn_t(Qnn_GraphHandle_t graphHandle,Qnn_ProfileHandle_t profileHandle,Qnn_SignalHandle_t signalHandle);
