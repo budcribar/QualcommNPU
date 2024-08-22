@@ -7,11 +7,31 @@ namespace SampleCSharpApplication
 {
     public class Program
     {
+        public static int Main2(string[] args)
+        {
+            try
+            {
+                using INPUInference inference = new NPUInference();
+
+                inference.SetupInference("../../../Inception_v3_quantizedArm64.dll", "../../../QnnHtp.dll");
+
+                for (int i = 0; i < 1000; i++)
+                {
+                    inference.Execute();
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+           
+            return 0;
+        }
+
+
         public static int Main(string[] args)
         {
 
             StructOffsetGenerator.GenerateStructOffsetsJson("StructOffsets");
-            //StructOffsetGenerator.CompareOffsetDirectories("CPPStructOffsets", "StructOffsets");
             Console.WriteLine("Struct offset JSON files have been generated.");
 
             string model = string.Empty;
@@ -53,7 +73,7 @@ namespace SampleCSharpApplication
             for (int i = 0; i<10; i++)
             {
                 using QnnSampleApp app = new QnnSampleApp(model, backend, inputList, duration);
-                int res = app.Run();
+                int res = (int)app.Run();
                 UnmanagedMemoryTracker.PrintMemoryUsage();
             }
            

@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿
+using System.Runtime.InteropServices;
 
 namespace SampleCSharpApplication
 {
@@ -60,6 +61,9 @@ namespace SampleCSharpApplication
         public const uint QNN_MAX_ERROR_BACKEND = 4999;  // Assuming this value, please adjust if different
         public const uint QNN_MIN_ERROR_CONTEXT = 5000;
         public const uint QNN_MAX_ERROR_CONTEXT = 5999;
+        public const uint QNN_MIN_ERROR_GRAPH = 6000;
+        public const uint QNN_MAX_ERROR_GRAPH = 6999;
+
     }
 
     public enum QnnBackend_Error_t : uint
@@ -904,6 +908,158 @@ namespace SampleCSharpApplication
             }
         }
     }
-}
 
+    public enum QnnGraph_Error_t : UInt64
+    {
+        QNN_GRAPH_MIN_ERROR = QnnConstants.QNN_MIN_ERROR_GRAPH,
+
+        /// <summary>
+        /// Qnn Graph success
+        /// </summary>
+        QNN_GRAPH_NO_ERROR = QnnConstants.QNN_SUCCESS,
+
+        /// <summary>
+        /// There is optional API component that is not supported yet. See QnnProperty.
+        /// </summary>
+        QNN_GRAPH_ERROR_UNSUPPORTED_FEATURE = QnnCommon_Error_t.QNN_COMMON_ERROR_NOT_SUPPORTED,
+
+        /// <summary>
+        /// General error relating to memory allocation in processing graph API
+        /// </summary>
+        QNN_GRAPH_ERROR_MEM_ALLOC = QnnCommon_Error_t.QNN_COMMON_ERROR_MEM_ALLOC,
+
+        /// <summary>
+        /// General type of graph error, which has not been identified as any
+        /// other error type. Any Graph API can return this error code.
+        /// </summary>
+        QNN_GRAPH_ERROR_GENERAL = QnnCommon_Error_t.QNN_COMMON_ERROR_GENERAL,
+
+        /// <summary>
+        /// An argument to QNN API is deemed invalid by a backend
+        /// </summary>
+        QNN_GRAPH_ERROR_INVALID_ARGUMENT = QnnConstants.QNN_MIN_ERROR_GRAPH + 0,
+
+        /// <summary>
+        /// Invalid graph handle
+        /// </summary>
+        QNN_GRAPH_ERROR_INVALID_HANDLE = QnnConstants.QNN_MIN_ERROR_GRAPH + 1,
+
+        /// <summary>
+        /// No graph with specified info is registered in the backend
+        /// </summary>
+        QNN_GRAPH_ERROR_GRAPH_DOES_NOT_EXIST = QnnConstants.QNN_MIN_ERROR_GRAPH + 2,
+
+        /// <summary>
+        /// Invalid or duplicate graph name
+        /// </summary>
+        QNN_GRAPH_ERROR_INVALID_NAME = QnnConstants.QNN_MIN_ERROR_GRAPH + 3,
+
+        /// <summary>
+        /// Invalid or NULL QNN tensor
+        /// </summary>
+        QNN_GRAPH_ERROR_INVALID_TENSOR = QnnConstants.QNN_MIN_ERROR_GRAPH + 4,
+
+        /// <summary>
+        /// Some elements in the op config data are invalid
+        /// </summary>
+        QNN_GRAPH_ERROR_INVALID_OP_CONFIG = QnnConstants.QNN_MIN_ERROR_GRAPH + 5,
+
+        /// <summary>
+        /// Failure to set profile
+        /// </summary>
+        QNN_GRAPH_ERROR_SET_PROFILE = QnnConstants.QNN_MIN_ERROR_GRAPH + 6,
+
+        /// <summary>
+        /// Node added before its dependent node(s)
+        /// </summary>
+        QNN_GRAPH_ERROR_UNCONNECTED_NODE = QnnConstants.QNN_MIN_ERROR_GRAPH + 7,
+
+        /// <summary>
+        /// Failure in creating graph with specified configuration
+        /// </summary>
+        QNN_GRAPH_ERROR_CREATE_FAILED = QnnConstants.QNN_MIN_ERROR_GRAPH + 20,
+
+        /// <summary>
+        /// Graph couldn't be optimized with specified list of ops or config
+        /// </summary>
+        QNN_GRAPH_ERROR_OPTIMIZATION_FAILED = QnnConstants.QNN_MIN_ERROR_GRAPH + 21,
+
+        /// <summary>
+        /// Graph finalize failed
+        /// </summary>
+        QNN_GRAPH_ERROR_FINALIZE_FAILED = QnnConstants.QNN_MIN_ERROR_GRAPH + 22,
+
+        /// <summary>
+        /// Attempt to execute graph before finalizing it
+        /// </summary>
+        QNN_GRAPH_ERROR_GRAPH_NOT_FINALIZED = QnnConstants.QNN_MIN_ERROR_GRAPH + 23,
+
+        /// <summary>
+        /// Attempt to modify graph after finalizing it
+        /// </summary>
+        QNN_GRAPH_ERROR_GRAPH_FINALIZED = QnnConstants.QNN_MIN_ERROR_GRAPH + 24,
+
+        /// <summary>
+        /// FIFO queue cannot register any more async execution requests
+        /// </summary>
+        QNN_GRAPH_ERROR_EXECUTION_ASYNC_FIFO_FULL = QnnConstants.QNN_MIN_ERROR_GRAPH + 25,
+
+        /// <summary>
+        /// A control signal object was provided to a call, but that signal object
+        /// is already in-use by another call.
+        /// </summary>
+        QNN_GRAPH_ERROR_SIGNAL_IN_USE = QnnConstants.QNN_MIN_ERROR_GRAPH + 30,
+
+        /// <summary>
+        /// Call aborted early due to a QnnSignal_trigger call issued
+        /// to the observed signal object.
+        /// </summary>
+        QNN_GRAPH_ERROR_ABORTED = QnnConstants.QNN_MIN_ERROR_GRAPH + 31,
+
+        /// <summary>
+        /// Attempt to bind to a graph a profile handle that is already in-use
+        /// by another graph.
+        /// </summary>
+        QNN_GRAPH_ERROR_PROFILE_IN_USE = QnnConstants.QNN_MIN_ERROR_GRAPH + 32,
+
+        /// <summary>
+        /// Call aborted early due to a QnnSignal timeout
+        /// </summary>
+        QNN_GRAPH_ERROR_TIMED_OUT = QnnConstants.QNN_MIN_ERROR_GRAPH + 33,
+
+        /// <summary>
+        /// Operation not permitted on a subgraph
+        /// </summary>
+        QNN_GRAPH_ERROR_SUBGRAPH = QnnConstants.QNN_MIN_ERROR_GRAPH + 34,
+
+        /// <summary>
+        /// Graph is not enabled
+        /// </summary>
+        QNN_GRAPH_ERROR_DISABLED = QnnConstants.QNN_MIN_ERROR_GRAPH + 35,
+
+        /// <summary>
+        /// Dynamic tensor shape error
+        /// </summary>
+        QNN_GRAPH_ERROR_DYNAMIC_TENSOR_SHAPE = QnnConstants.QNN_MIN_ERROR_GRAPH + 36,
+
+        /// <summary>
+        /// Tensor sparsity error
+        /// </summary>
+        QNN_GRAPH_ERROR_TENSOR_SPARSITY = QnnConstants.QNN_MIN_ERROR_GRAPH + 37,
+
+        /// <summary>
+        /// Early termination error
+        /// </summary>
+        QNN_GRAPH_ERROR_EARLY_TERMINATION = QnnConstants.QNN_MIN_ERROR_GRAPH + 38,
+
+        ////////////////////////////////////////
+        QNN_GRAPH_MAX_ERROR = QnnConstants.QNN_MAX_ERROR_GRAPH,
+
+        /// <summary>
+        /// Unused, present to ensure 32 bits.
+        /// </summary>
+        QNN_GRAPH_ERROR_UNDEFINED = 0x7FFFFFFF
+    }
+  
+}
 

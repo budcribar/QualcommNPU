@@ -816,24 +816,6 @@ namespace SampleCSharpApplication
                     clientBuffer.data = buffer;
                     clientBuffer.dataSize = (uint)length;
 
-                    //try
-                    //{
-                    //    //clientBuffer.data = UnmanagedMemoryTracker.AllocateMemory(length); 
-                    //    unsafe
-                    //    {
-                    //        Buffer.MemoryCopy(buffer.ToPointer(), clientBuffer.data.ToPointer(), length, length);
-                    //    }
-                    //}
-                    //finally
-                    //{
-                    //    // Free the temporary buffer
-                    //    if (buffer != IntPtr.Zero)
-                    //    {
-                    //        UnmanagedMemoryTracker.FreeMemory(buffer);
-                    //    }
-                    //}
-
-
                     tensors[tensorIdx].v2.clientBuf = clientBuffer;
                 }
 

@@ -10,57 +10,6 @@ namespace SampleCSharpApplication
 {
     public static class StructOffsetGenerator
     {
-        public static bool CompareOffsetDirectories(string cppDir, string csharpDir)
-        {
-            var cppFiles = Directory.GetFiles(cppDir, "*.json");
-            var csharpFiles = Directory.GetFiles(csharpDir, "*.json");
-
-            if (cppFiles.Length != csharpFiles.Length)
-            {
-                Console.WriteLine($"Number of files mismatch: C++ ({cppFiles.Length}) vs C# ({csharpFiles.Length})");
-                //return false;
-            }
-
-            bool allMatch = true;
-
-            foreach (var cppFile in cppFiles)
-            {
-                var fileName = Path.GetFileName(cppFile);
-                var csharpFile = Path.Combine(csharpDir, fileName.Replace("_offsets",""));
-
-                if (!File.Exists(csharpFile))
-                {
-                    Console.WriteLine($"File {fileName} not found in C# directory");
-                    allMatch = false;
-                    continue;
-                }
-
-                var cppJson = JObject.Parse(File.ReadAllText(cppFile));
-                var csharpJson = JObject.Parse(File.ReadAllText(csharpFile));
-
-                var differences = cppJson.Properties()
-                    .Select(p => new
-                    {
-                        Property = p.Name,
-                        CppValue = p.Value.ToString(),
-                        CSharpValue = csharpJson[p.Name]?.ToString()
-                    })
-                    .Where(d => d.CppValue != d.CSharpValue)
-                    .ToList();
-
-                if (differences.Any())
-                {
-                    Console.WriteLine($"Differences found in {fileName}:");
-                    foreach (var diff in differences)
-                    {
-                        Console.WriteLine($"  {diff.Property}: C++ = {diff.CppValue}, C# = {diff.CSharpValue}");
-                    }
-                    allMatch = false;
-                }
-            }
-
-            return allMatch;
-        }
         public static void GenerateStructOffsetsJson(string outputDirectory)
         {
             if (!Directory.Exists(outputDirectory))

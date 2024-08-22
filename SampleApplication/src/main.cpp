@@ -389,8 +389,6 @@ std::unique_ptr<sample_app::QnnSampleApp> processCommandLine(int argc,
 }  // namespace sample_app
 }  // namespace tools
 }  // namespace qnn
-#define PRINT_OFFSET(Type, Member) \
-    std::cout << "Offset of " #Member ": " << offsetof(Type, Member) << " bytes" << std::endl
 
 int main(int argc, char** argv) {
   using namespace qnn::tools;
@@ -416,67 +414,7 @@ int main(int argc, char** argv) {
     if (sample_app::StatusCode::SUCCESS != app->initialize()) {
       return app->reportError("Initialization failure");
     }
-    std::cout << "Size of QnnInterface: " << sizeof(QNN_INTERFACE_VER_TYPE) << " bytes" << std::endl;
-    std::cout << std::endl;
-
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, propertyHasCapability);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, backendCreate);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, backendSetConfig);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, backendGetApiVersion);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, backendGetBuildId);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, backendRegisterOpPackage);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, backendGetSupportedOperations);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, backendValidateOpConfig);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, backendFree);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, contextCreate);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, contextSetConfig);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, contextGetBinarySize);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, contextGetBinary);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, contextCreateFromBinary);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, contextFree);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, graphCreate);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, graphCreateSubgraph);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, graphSetConfig);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, graphAddNode);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, graphFinalize);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, graphRetrieve);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, graphExecute);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, graphExecuteAsync);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, tensorCreateContextTensor);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, tensorCreateGraphTensor);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, logCreate);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, logSetLogLevel);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, logFree);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, profileCreate);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, profileSetConfig);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, profileGetEvents);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, profileGetSubEvents);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, profileGetEventData);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, profileGetExtendedEventData);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, profileFree);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, memRegister);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, memDeRegister);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, deviceGetPlatformInfo);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, deviceFreePlatformInfo);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, deviceGetInfrastructure);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, deviceCreate);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, deviceSetConfig);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, deviceGetInfo);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, deviceFree);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, signalCreate);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, signalSetConfig);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, signalTrigger);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, signalFree);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, errorGetMessage);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, errorGetVerboseMessage);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, errorFreeVerboseMessage);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, graphPrepareExecutionEnvironment);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, graphReleaseExecutionEnvironment);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, graphGetProperty);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, contextValidateBinary);
-    PRINT_OFFSET(QNN_INTERFACE_VER_TYPE, contextCreateFromBinaryWithSignal);
-                
-
+    
     if (sample_app::StatusCode::SUCCESS != app->initializeBackend()) {
       return app->reportError("Backend Initialization failure");
     }

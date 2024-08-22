@@ -10,10 +10,10 @@ namespace SampleCSharpApplication
     public delegate Qnn_ErrorHandle_t QnnLog_CreateFn_t(IntPtr logCallback, int logLevel, ref Qnn_LogHandle_t logHandle);
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate ulong QnnGraphExecuteDelegate(IntPtr graphHandle,[In] Qnn_Tensor_t[] inputs, uint numInputs, [In, Out] Qnn_Tensor_t[] outputs, uint numOutputs, IntPtr profileHandle, IntPtr signalHandle );
+    public delegate QnnGraph_Error_t QnnGraphExecuteDelegate(IntPtr graphHandle,[In] Qnn_Tensor_t[] inputs, uint numInputs, [In, Out] Qnn_Tensor_t[] outputs, uint numOutputs, IntPtr profileHandle, IntPtr signalHandle );
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    unsafe public delegate Qnn_ErrorHandle_t QnnBackend_CreateFn_t(Qnn_LogHandle_t logger, IntPtr* config, ref Qnn_BackendHandle_t backend);
+    unsafe public delegate Qnn_ErrorHandle_t QnnBackend_CreateFn_t(Qnn_LogHandle_t logger, IntPtr config, ref Qnn_BackendHandle_t backend);
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public delegate Qnn_ErrorHandle_t QnnProperty_HasCapabilityFn_t(QnnProperty_Key_t key);
