@@ -63,7 +63,6 @@ namespace SampleCSharpApplication
         public const uint QNN_MAX_ERROR_CONTEXT = 5999;
         public const uint QNN_MIN_ERROR_GRAPH = 6000;
         public const uint QNN_MAX_ERROR_GRAPH = 6999;
-
     }
 
     public enum QnnBackend_Error_t : uint

@@ -2,33 +2,61 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace SampleCSharpApplication
 {
     public class Program
     {
-        public static int Main2(string[] args)
+        public static int Main(string[] args)
         {
+            string model = string.Empty;
+            string backend = string.Empty;
+           
+            int duration = 3; // Default duration
+            for (int i = 0; i < args.Length; i++)
+            {
+                switch (args[i])
+                {
+                    case "--model":
+                        model = args[++i];
+                        break;
+                    case "--backend":
+                        backend = args[++i];
+                        break;
+                    case "--duration":
+                        if (int.TryParse(args[++i], out int parsedDuration))
+                        {
+                            duration = parsedDuration;
+                        }
+                        break;
+                }
+            }
+
             try
             {
                 using INPUInference inference = new NPUInference();
 
                 inference.SetupInference("../../../Inception_v3_quantizedArm64.dll", "../../../QnnHtp.dll");
 
-                for (int i = 0; i < 1000; i++)
+                Stopwatch stopwatch = new();
+                stopwatch.Start();
+
+                while (stopwatch.Elapsed.TotalSeconds < duration)
                 {
                     inference.Execute();
                 }
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
             }
            
             return 0;
         }
 
 
-        public static int Main(string[] args)
+        public static int Main2(string[] args)
         {
 
             StructOffsetGenerator.GenerateStructOffsetsJson("StructOffsets");
@@ -73,7 +101,15 @@ namespace SampleCSharpApplication
             for (int i = 0; i<10; i++)
             {
                 using QnnSampleApp app = new QnnSampleApp(model, backend, inputList, duration);
-                int res = (int)app.Run();
+                int res;
+                try
+                {
+                    res = (int)app.Run();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                }
                 UnmanagedMemoryTracker.PrintMemoryUsage();
             }
            

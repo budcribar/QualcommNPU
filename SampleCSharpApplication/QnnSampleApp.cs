@@ -34,7 +34,7 @@ namespace SampleCSharpApplication
         // Constants
         private const int QNN_API_VERSION_MAJOR = 2;
         private const int QNN_API_VERSION_MINOR = 15;
-        private const int QNN_SUCCESS = 0;
+      
 
         // Logging related delegates and enums
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
@@ -241,24 +241,21 @@ namespace SampleCSharpApplication
             InitializeLogging();
 
             Console.WriteLine("Initializing backend...");
-            var status = InitializeBackend();
+            var status = initializer.InitializeBackend(m_qnnFunctionPointers.QnnInterface);
             if (status == StatusCode.FAILURE)
             {
                 Console.WriteLine("Backend Initialization failure");
                 return StatusCode.FAILURE;
             }
 
-            if (IsDevicePropertySupported() != StatusCode.SUCCESS)
+            if (!initializer.IsDevicePropertySupported(m_qnnFunctionPointers.QnnInterface))
             {
                 return StatusCode.FAILURE;
             }
 
             Console.WriteLine("Creating device...");
-            if (CreateDevice() != StatusCode.SUCCESS)
-            {
-                Console.WriteLine("Device Creation failure");
-                return StatusCode.FAILURE;
-            }
+            initializer.CreateDevice(m_qnnFunctionPointers.QnnInterface);
+            
 
             //Console.WriteLine("Initializing profiling...");
             //if (!InitializeProfiling())
@@ -275,35 +272,25 @@ namespace SampleCSharpApplication
             //}
 
             Console.WriteLine("Creating context...");
-            if (CreateContext() != StatusCode.SUCCESS)
-            {
-                Console.WriteLine("Context Creation failure");
-                return StatusCode.FAILURE;
-            }
+            initializer.CreateContext();
 
             Console.WriteLine("Composing graphs...");
-            if (ComposeGraphs() != StatusCode.SUCCESS)
-            {
-                Console.WriteLine("Graph Prepare failure");
-                return StatusCode.FAILURE;
-            }
-
+            initializer.ComposeGraphs();
+           
             Console.WriteLine("Finalizing graphs...");
-            if (FinalizeGraphs() != StatusCode.SUCCESS)
-            {
-                Console.WriteLine("Graph Finalize failure");
-                return StatusCode.FAILURE;
-            }
+            initializer.FinalizeGraphs();
+            
 
             Console.WriteLine("Executing graphs...");
 
-            if (InitializeTensors(0, out Qnn_Tensor_t[] inputs, out Qnn_Tensor_t[] outputs, out GraphInfo_t graphInfo) == StatusCode.FAILURE)
-                return StatusCode.FAILURE;
+            initializer.InitializeTensors(0, out Qnn_Tensor_t[] inputs, out Qnn_Tensor_t[] outputs, out GraphInfo_t graphInfo);
 
-            if (ExecuteTensors(graphInfo,inputs,outputs,m_qnnFunctionPointers, duration) != QnnGraph_Error_t.QNN_GRAPH_MIN_ERROR)
+            Stopwatch stopwatch = new();
+            stopwatch.Start();
+
+            while (stopwatch.Elapsed.TotalSeconds < duration)
             {
-                Console.WriteLine("Graph Execution failure");
-                return StatusCode.FAILURE;
+                initializer.ExecuteTensors(graphInfo, inputs, outputs, m_qnnFunctionPointers);
             }
 
 
@@ -313,19 +300,19 @@ namespace SampleCSharpApplication
             //    return 1;
             //}
 
-            Console.WriteLine("Freeing context...");
-            if (FreeContext() != StatusCode.SUCCESS)
-            {
-                Console.WriteLine("Context Free failure");
-                return StatusCode.FAILURE;
-            }
+            //Console.WriteLine("Freeing context...");
+            //if (FreeContext() != StatusCode.SUCCESS)
+            //{
+            //    Console.WriteLine("Context Free failure");
+            //    return StatusCode.FAILURE;
+            //}
 
             Console.WriteLine("Freeing device...");
-            if (FreeDevice() != StatusCode.SUCCESS)
-            {
-                Console.WriteLine("Device Free failure");
-                return StatusCode.FAILURE;
-            }
+            //if (FreeDevice() != StatusCode.SUCCESS)
+            //{
+            //    Console.WriteLine("Device Free failure");
+            //    return StatusCode.FAILURE;
+            //}
 
             return StatusCode.SUCCESS;
         }
@@ -355,7 +342,7 @@ namespace SampleCSharpApplication
 
                     Qnn_ErrorHandle_t result = logCreate(new IntPtr(0), (int)logLevel, ref m_logHandle);
                    
-                    if (result != QNN_SUCCESS)
+                    if (result != QnnConstants.QNN_SUCCESS)
                     {
                         Console.WriteLine($"Unable to initialize logging in the backend. Error code: {result}");
                     }
@@ -375,48 +362,7 @@ namespace SampleCSharpApplication
             }
         }
 
-        public StatusCode InitializeBackend()
-        {
-            Console.WriteLine("Entering InitializeBackend method");
-            Console.WriteLine($"QnnInterface pointer: {m_qnnFunctionPointers?.QnnInterface}");
-
-            if (m_qnnFunctionPointers?.QnnInterface.BackendCreate == IntPtr.Zero)
-            {
-                Console.Error.WriteLine("QnnInterface pointer is null");
-                return StatusCode.FAILURE;
-            }
-
-            IntPtr backendCreatePtr = m_qnnFunctionPointers?.QnnInterface.BackendCreate ?? IntPtr.Zero;
-            if (backendCreatePtr == IntPtr.Zero)
-            {
-                Console.Error.WriteLine("Failed to get function pointer for QnnBackend_Create");
-                return StatusCode.FAILURE;
-            }
-
-            QnnBackend_CreateFn_t backendCreate = Marshal.GetDelegateForFunctionPointer<QnnBackend_CreateFn_t>(backendCreatePtr);
-
-            try
-            {
-                Qnn_ErrorHandle_t qnnStatus = backendCreate(m_logHandle, m_backendConfig, ref m_backendHandle);
-
-                if (qnnStatus != QNN_SUCCESS)
-                {
-                    Console.Error.WriteLine($"Could not initialize backend due to error = {qnnStatus}");
-                    return StatusCode.FAILURE;
-                }
-
-                Console.WriteLine($"Initialize Backend Returned Status = {qnnStatus}");
-                m_isBackendInitialized = true;
-                return StatusCode.SUCCESS;
-            }
-            catch (Exception ex)
-            {
-                Console.Error.WriteLine($"Exception occurred while calling backendCreate: {ex.Message}");
-                return StatusCode.FAILURE;
-            }
-        }
-
-
+      
         private static bool IsLogInitialized()
         {
             // Implement your logic to check if logging is initialized
@@ -436,68 +382,9 @@ namespace SampleCSharpApplication
             string message = Marshal.PtrToStringAnsi(msgPtr) ?? string.Empty;
             Console.WriteLine($"[{(LogLevel)level}] {message}");
         }
-        public StatusCode IsDevicePropertySupported()
-        {
-            if (m_qnnFunctionPointers?.QnnInterface.PropertyHasCapability == IntPtr.Zero)
-            {
-                Console.Error.WriteLine("PropertyHasCapability pointer is null");
-                return StatusCode.FAILURE;
-            }
-            IntPtr propertyHasCapabilityPtr = m_qnnFunctionPointers?.QnnInterface.PropertyHasCapability ?? IntPtr.Zero;
-
-            QnnProperty_HasCapabilityFn_t propertyHasCapability = Marshal.GetDelegateForFunctionPointer<QnnProperty_HasCapabilityFn_t>(propertyHasCapabilityPtr);
-            try
-            {
-                Qnn_ErrorHandle_t qnnStatus = propertyHasCapability(1501);
-
-                if (qnnStatus != QNN_SUCCESS)
-                {
-                    Console.Error.WriteLine($"Device property is not supported {qnnStatus}");
-                    return StatusCode.FAILURE;
-                }
-
-                Console.WriteLine($"Initialize Backend Returned Status = {qnnStatus}");
-                return StatusCode.SUCCESS;
-            }
-            catch (Exception ex)
-            {
-                Console.Error.WriteLine($"Exception occurred while calling QnnProperty_HasCapabilityFn_t: {ex.Message}");
-                return StatusCode.FAILURE;
-            }
-        }
-
+     
        
-        private StatusCode CreateDevice()
-        {
-            if (m_qnnFunctionPointers?.QnnInterface.DeviceCreate == IntPtr.Zero)
-            {
-                Console.Error.WriteLine("DeviceCreate pointer is null");
-                return StatusCode.FAILURE;
-            }
-            IntPtr deviceCreatePtr = m_qnnFunctionPointers?.QnnInterface.DeviceCreate ?? IntPtr.Zero;
-
-            QnnDevice_CreateFn_t deviceCreate = Marshal.GetDelegateForFunctionPointer<QnnDevice_CreateFn_t>(deviceCreatePtr);
-            try
-            {
-                Qnn_ErrorHandle_t qnnStatus = deviceCreate(m_logHandle,IntPtr.Zero, ref m_deviceHandle);
-
-                if (qnnStatus != QNN_SUCCESS)
-                {
-                    Console.Error.WriteLine($"Device property is not supported {qnnStatus}");
-                    return StatusCode.FAILURE;
-                }
-
-                Console.WriteLine($"Initialize Backend Returned Status = {qnnStatus}");
-                return StatusCode.SUCCESS;
-            }
-            catch (Exception ex)
-            {
-                Console.Error.WriteLine($"Exception occurred while calling QnnProperty_HasCapabilityFn_t: {ex.Message}");
-                return StatusCode.FAILURE;
-            }
-            // Implementation for device creation
-            
-        }
+       
 
         //private bool InitializeProfiling()
         //{
@@ -511,262 +398,78 @@ namespace SampleCSharpApplication
         //    return true;
         //}
 
-        private StatusCode CreateContext()
-        {
-            if (m_qnnFunctionPointers?.QnnInterface.ContextCreate == IntPtr.Zero)
-            {
-                Console.Error.WriteLine("ContextCreate pointer is null");
-                return StatusCode.FAILURE;
-            }
-            IntPtr contextCreatePtr = m_qnnFunctionPointers?.QnnInterface.ContextCreate ?? IntPtr.Zero;
+       
 
-            QnnContext_CreateFn_t contextCreate = Marshal.GetDelegateForFunctionPointer<QnnContext_CreateFn_t>(contextCreatePtr);
-            try
-            {
-                Qnn_ErrorHandle_t qnnStatus = contextCreate(m_backendHandle, m_deviceHandle, IntPtr.Zero, ref m_context);
+       
+        
+      
 
-                if (qnnStatus != QNN_SUCCESS)
-                {
-                    Console.Error.WriteLine($"contextCreate failed {qnnStatus}");
-                    return StatusCode.FAILURE;
-                }
+       
 
-                Console.WriteLine($"contextCreate Returned Status = {qnnStatus}");
-                m_isContextCreated = true;
-                return StatusCode.SUCCESS;
-            }
-            catch (Exception ex)
-            {
-                Console.Error.WriteLine($"Exception occurred while calling QnnContext_CreateFn_t: {ex.Message}");
-                return StatusCode.FAILURE;
-            }
-            // Implementation for device creation
-        }
+       
 
-        private StatusCode ComposeGraphs()
-        {
-            if (m_qnnFunctionPointers?.ComposeGraphsFnHandle == IntPtr.Zero)
-            {
-                Console.Error.WriteLine("ComposeGraphsFnHandle pointer is null");
-                return StatusCode.FAILURE;
-            }
-            IntPtr composeGraphsPtr = m_qnnFunctionPointers?.ComposeGraphsFnHandle ?? IntPtr.Zero;
+        //private StatusCode ExecuteGraphs(List<List<List<string>>> filePathsLists)
+        //{
+        //    var returnStatus = StatusCode.SUCCESS; // TODO
 
-            ComposeGraphsFnHandleType_t composeGraphs = Marshal.GetDelegateForFunctionPointer<ComposeGraphsFnHandleType_t>(composeGraphsPtr);
-            try
-            {  
-                uint graphConfigInfosCount = 0;
-               
-                QnnLog_Level_t log_level = QnnLog_Level_t.QNN_LOG_LEVEL_ERROR;
+        //    for (uint graphIdx = 0; graphIdx < m_graphInfoManager?.Count; graphIdx++)
+        //    {
+        //        if (graphIdx >= filePathsLists.Count)
+        //        {
+        //            Console.WriteLine($"No Inputs available for: {graphIdx}");
+        //            return StatusCode.FAILURE;
 
-                if (m_qnnFunctionPointers == null)
-                    return StatusCode.FAILURE;
+        //        }
 
-                ModelError_t qnnStatus;
-                fixed (QnnInterface_t* qnnInterfacePtr = &m_qnnFunctionPointers.QnnInterface)
-                {
-                    // Calculate the address of the PropertyHasCapability field
-                    IntPtr propertyHasCapabilityPtrAddress = (IntPtr)(&qnnInterfacePtr->PropertyHasCapability);
-                    qnnStatus = composeGraphs(m_backendHandle, propertyHasCapabilityPtrAddress, m_context, m_graphConfigsInfo, graphConfigInfosCount, out IntPtr graphsInfos, out uint graphsCount, false, m_logCallback, log_level);
-                    m_graphInfoManager = new GraphInfoManager(graphsInfos, graphsCount);
-                }  
-               
-                if (qnnStatus != QNN_SUCCESS)
-                {
-                    Console.Error.WriteLine($"composeGraphs failed {qnnStatus}");
-                    return StatusCode.FAILURE;
-                }
+        //        if (initializer.InitializeTensors(graphIdx, out Qnn_Tensor_t[] inputs, out Qnn_Tensor_t[] outputs, out GraphInfo_t graphInfo) == StatusCode.FAILURE)
+        //            return StatusCode.FAILURE;
 
-                Console.WriteLine($"composeGraphs Returned Status = {qnnStatus}");
-                return StatusCode.SUCCESS;
-            }
-            catch (Exception ex)
-            {
-                Console.Error.WriteLine($"Exception occurred while calling composeGraphs: {ex.Message}");
-                return StatusCode.FAILURE;
-            }
-        }
+        //        //populateInputTensors
+        //        var inputFileList = filePathsLists[(int)graphIdx];
 
-        private StatusCode FinalizeGraphs()
-        {
-            for (uint graphIdx = 0; graphIdx < m_graphInfoManager?.Count; graphIdx++)
-            {
-                if (m_qnnFunctionPointers?.QnnInterface.GraphFinalize == IntPtr.Zero)
-                {
-                    Console.Error.WriteLine("GraphFinalize pointer is null");
-                    return StatusCode.FAILURE;
-                }
-                IntPtr graphFinalizePtr = m_qnnFunctionPointers?.QnnInterface.GraphFinalize ?? IntPtr.Zero;
+        //        if (inputFileList.Any())
+        //        {
+        //            int totalCount = inputFileList[0].Count;
+        //            int inputFileIndexOffset = 0;
+        //            while (inputFileIndexOffset < totalCount)
+        //            {
+        //                var result = IOTensor.PopulateInputTensors(graphIdx, inputFileList, inputFileIndexOffset, false, readInputListsResult.InputNameToIndexMaps[(int)graphIdx], inputs, graphInfo, IOTensor.InputDataType.FLOAT);
 
-                QnnGraph_FinalizeFn_t graphFinalize = Marshal.GetDelegateForFunctionPointer<QnnGraph_FinalizeFn_t>(graphFinalizePtr);
-                try
-                {
-                    GraphInfo_t graphInfo = m_graphInfoManager[graphIdx];
+        //                if (result.Status != IOTensor.StatusCode.SUCCESS)
+        //                {
+        //                    returnStatus = StatusCode.FAILURE;
+        //                }
 
-                    Qnn_ErrorHandle_t qnnStatus = graphFinalize(graphInfo.graph, IntPtr.Zero,IntPtr.Zero);
+        //                if (returnStatus == StatusCode.SUCCESS)
+        //                {
+        //                    Console.WriteLine("Successfully populated input tensors for graphIdx: {graphIdx}");
+        //                    QnnGraph_Error_t executeStatus = ExecuteTensors(graphInfo, inputs, outputs, m_qnnFunctionPointers, duration);
 
-                    if (qnnStatus != QNN_SUCCESS)
-                    {
-                        Console.Error.WriteLine($"GraphFinalize failed {qnnStatus}");
-                        return StatusCode.FAILURE;
-                    }
-
-                    Console.WriteLine($"GraphFinalize Returned Status = {qnnStatus}");
-                }
-                catch (Exception ex)
-                {
-                    Console.Error.WriteLine($"Exception occurred while calling GraphFinalize: {ex.Message}");
-                    return StatusCode.FAILURE;
-                }
-               
-            }
-
-            return StatusCode.SUCCESS;
-        }
-        private StatusCode FreeContext()
-        {
-            if (!m_isContextCreated) return StatusCode.SUCCESS;
-
-            Console.WriteLine("Freeing context");
-            if (m_qnnFunctionPointers?.QnnInterface.ContextFree != IntPtr.Zero)
-            {
-                var contextFreeFn = Marshal.GetDelegateForFunctionPointer<QnnContext_FreeFn_t>(m_qnnFunctionPointers?.QnnInterface.ContextFree ?? IntPtr.Zero);
-                if (contextFreeFn(m_context, IntPtr.Zero) != QnnContextError.QNN_CONTEXT_NO_ERROR)
-                {
-                    Console.WriteLine("Could not free context");
-                    return StatusCode.FAILURE;
-                }
-            }
-            m_isContextCreated = false;
-            // Implementation for freeing context
-            return StatusCode.SUCCESS;
-        }
-
-        private StatusCode FreeDevice()
-        {
-            if (m_qnnFunctionPointers?.QnnInterface.DeviceFree == IntPtr.Zero)
-            {
-                Console.Error.WriteLine("DeviceFree pointer is null");
-                return StatusCode.FAILURE;
-            }
-            IntPtr deviceFreePtr = m_qnnFunctionPointers?.QnnInterface.DeviceFree ?? IntPtr.Zero;
-
-            QnnDevice_FreeFn_t deviceFree = Marshal.GetDelegateForFunctionPointer<QnnDevice_FreeFn_t>(deviceFreePtr);
-
-            Qnn_ErrorHandle_t qnnStatus =deviceFree(m_deviceHandle);
-
-            if (qnnStatus != QNN_SUCCESS && qnnStatus != (ulong)QnnCommon_Error_t.QNN_COMMON_ERROR_NOT_SUPPORTED) // TODO QNN_DEVICE_ERROR_UNSUPPORTED_FEATURE
-            {
-                Console.Error.WriteLine("Failed to free device");
-                return StatusCode.FAILURE;
-            }
-            // Implementation for freeing device
-            return StatusCode.SUCCESS;
-        }
-
-        private QnnGraph_Error_t ExecuteTensors(GraphInfo_t graphInfo, Qnn_Tensor_t[] inputs, Qnn_Tensor_t[] outputs, QnnFunctionPointers qnnFunctionPointers, int duration)
-        {
-            QnnGraph_Error_t returnStatus = QnnGraph_Error_t.QNN_GRAPH_NO_ERROR;
-         
-            IntPtr graphExecutePtr = qnnFunctionPointers.QnnInterface.GraphExecute;
-            if (graphExecutePtr == IntPtr.Zero)
-            {
-                Console.Error.WriteLine("Failed to get function pointer for GraphExecute");
-                return QnnGraph_Error_t.QNN_GRAPH_ERROR_UNSUPPORTED_FEATURE;
-            }
-
-            QnnGraphExecuteDelegate executeGraph = Marshal.GetDelegateForFunctionPointer<QnnGraphExecuteDelegate>(graphExecutePtr);
-
-            Stopwatch stopwatch = new(); 
-            stopwatch.Start();
-
-            while (stopwatch.Elapsed.TotalSeconds < duration)
-            {
-                returnStatus = executeGraph(graphInfo.graph, inputs, graphInfo.numInputTensors, outputs, graphInfo.numOutputTensors, IntPtr.Zero, IntPtr.Zero);
-
-                if (QnnGraph_Error_t.QNN_GRAPH_NO_ERROR != returnStatus)
-                {
-                    return returnStatus;
-                }
-            }
-
-            return returnStatus;
-        }
-
-        private StatusCode ExecuteGraphs(List<List<List<string>>> filePathsLists)
-        {
-            var returnStatus = StatusCode.SUCCESS; // TODO
-
-            for (uint graphIdx = 0; graphIdx < m_graphInfoManager?.Count; graphIdx++)
-            {
-                if (graphIdx >= filePathsLists.Count)
-                {
-                    Console.WriteLine($"No Inputs available for: {graphIdx}");
-                    return StatusCode.FAILURE;
-
-                }
-
-                if (InitializeTensors(graphIdx, out Qnn_Tensor_t[] inputs, out Qnn_Tensor_t[] outputs, out GraphInfo_t graphInfo) == StatusCode.FAILURE)
-                    return StatusCode.FAILURE;
-
-                //populateInputTensors
-                var inputFileList = filePathsLists[(int)graphIdx];
-
-                if (inputFileList.Any())
-                {
-                    int totalCount = inputFileList[0].Count;
-                    int inputFileIndexOffset = 0;
-                    while (inputFileIndexOffset < totalCount)
-                    {
-                        var result = IOTensor.PopulateInputTensors(graphIdx, inputFileList, inputFileIndexOffset, false, readInputListsResult.InputNameToIndexMaps[(int)graphIdx], inputs, graphInfo, IOTensor.InputDataType.FLOAT);
-
-                        if (result.Status != IOTensor.StatusCode.SUCCESS)
-                        {
-                            returnStatus = StatusCode.FAILURE;
-                        }
-
-                        if (returnStatus == StatusCode.SUCCESS)
-                        {
-                            Console.WriteLine("Successfully populated input tensors for graphIdx: {graphIdx}");
-                            QnnGraph_Error_t executeStatus = ExecuteTensors(graphInfo, inputs, outputs, m_qnnFunctionPointers, duration);
-
-                            if (executeStatus != QnnGraph_Error_t.QNN_GRAPH_NO_ERROR)
-                                returnStatus = StatusCode.FAILURE;
-                        }
-                        inputFileIndexOffset++;
+        //                    if (executeStatus != QnnGraph_Error_t.QNN_GRAPH_NO_ERROR)
+        //                        returnStatus = StatusCode.FAILURE;
+        //                }
+        //                inputFileIndexOffset++;
                       
-                        UnmanagedMemoryTracker.PrintMemoryUsage();
-                        for (int i = 0; i < inputs.Length; i++)
-                        {
-                            inputs[i].Dispose();
-                        }
-                        for (int i = 0; i < outputs.Length; i++)
-                        {
-                            outputs[i].Dispose();
-                        }
-                        UnmanagedMemoryTracker.PrintMemoryUsage();
-                        return StatusCode.SUCCESS;
-                    }
+        //                UnmanagedMemoryTracker.PrintMemoryUsage();
+        //                for (int i = 0; i < inputs.Length; i++)
+        //                {
+        //                    inputs[i].Dispose();
+        //                }
+        //                for (int i = 0; i < outputs.Length; i++)
+        //                {
+        //                    outputs[i].Dispose();
+        //                }
+        //                UnmanagedMemoryTracker.PrintMemoryUsage();
+        //                return StatusCode.SUCCESS;
+        //            }
 
-                }
-            }
+        //        }
+        //    }
 
-            return StatusCode.SUCCESS;
-        }
+        //    return StatusCode.SUCCESS;
+        //}
 
-        private StatusCode InitializeTensors(uint graphIdx, out Qnn_Tensor_t[] inputs, out Qnn_Tensor_t[] outputs, out GraphInfo_t graphInfo)
-        {
-            inputs = Array.Empty<Qnn_Tensor_t>();
-            outputs = Array.Empty<Qnn_Tensor_t>();
-            graphInfo = m_graphInfoManager?[graphIdx] ?? new();
-            if (m_iOTensor.SetupInputAndOutputTensors(out inputs, out outputs, graphInfo) != IOTensor.StatusCode.SUCCESS)
-            {
-                Console.WriteLine("Error in setting up Input and output Tensors for graphIdx: {graphIdx}");
-                return StatusCode.FAILURE;
-            }
-            return StatusCode.SUCCESS;
-        }
-
+       
         private bool disposed = false;
 
         public void Dispose()
@@ -797,11 +500,11 @@ namespace SampleCSharpApplication
                 }
 
                 // Free context if not already done
-                if (m_isContextCreated)
-                {
-                    FreeContext();             
-                }
-                m_isContextCreated = false;
+                //if (m_isContextCreated)
+                //{
+                //    FreeContext();             
+                //}
+                //m_isContextCreated = false;
 
                 // Terminate backend
                 if (m_isBackendInitialized && m_qnnFunctionPointers?.QnnInterface.BackendFree != IntPtr.Zero)
@@ -819,7 +522,7 @@ namespace SampleCSharpApplication
                 if (m_qnnFunctionPointers?.QnnInterface.LogFree != IntPtr.Zero && m_logHandle != IntPtr.Zero)
                 {
                     var logFreeFn = Marshal.GetDelegateForFunctionPointer<QnnLog_FreeFn_t>(m_qnnFunctionPointers?.QnnInterface.LogFree ?? IntPtr.Zero);
-                    if (logFreeFn(m_logHandle) != QNN_SUCCESS)
+                    if (logFreeFn(m_logHandle) != QnnConstants.QNN_SUCCESS)
                     {
                         Console.WriteLine("Unable to terminate logging in the backend.");
                     }
