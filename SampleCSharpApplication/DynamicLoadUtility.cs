@@ -81,14 +81,13 @@ namespace SampleCSharpApplication
                 IntPtr providerPtr = providerListPtr[i];
                 QnnInterface_t provider = Marshal.PtrToStructure<QnnInterface_t>(providerPtr);
 
+                var s = provider.ProviderNameString;
+
                 if (QNN_API_VERSION_MAJOR == provider.ApiVersion.CoreApiVersion.Major &&
                     QNN_API_VERSION_MINOR <= provider.ApiVersion.CoreApiVersion.Minor)
                 {
                     foundValidInterface = true;
                     qnnFunctionPointers.QnnInterface = Marshal.PtrToStructure<QnnInterface_t>(providerPtr);
-                    //qnnFunctionPointers.QnnInterface = (IntPtr**)Marshal.ReadIntPtr(providerPtr, 40);
-
-
                     break;
                 }
             }

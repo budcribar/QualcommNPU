@@ -24,10 +24,13 @@ namespace SampleCSharpApplication
             if (m_qnnFunctionPointers == null)
                 throw new Exception("Function Pointers is null");
 
+            if (!initialized || inputs.Length == 0 || outputs.Length == 0 || m_graphInfoManager.Count == 0)
+                throw new Exception("NPU has not been initialized");
+
             initializer?.ExecuteTensors(m_graphInfoManager[0], inputs, outputs, m_qnnFunctionPointers);
         }
 
-        public void SetupInference(string modelPath, string backendPath = "")
+        public void SetupInference(string modelPath, string backendPath)
         {
             if (!File.Exists(modelPath))
             {
@@ -53,6 +56,7 @@ namespace SampleCSharpApplication
             m_graphInfoManager = initializer.ComposeGraphs();
             initializer.FinalizeGraphs();
             initializer.InitializeTensors(0, out inputs, out outputs, out GraphInfo_t graphInfo);
+            initialized = true;
         }
 
         protected virtual void Dispose(bool disposing)
@@ -61,7 +65,12 @@ namespace SampleCSharpApplication
             {
                 if (disposing)
                 {
-                    // TODO: dispose managed state (managed objects)
+                    foreach (var input in inputs)
+                        input.Dispose(); 
+                    inputs = Array.Empty<Qnn_Tensor_t>();
+
+                    foreach (var output in outputs) output.Dispose();
+                    outputs = Array.Empty<Qnn_Tensor_t>();
                 }
 
                 initializer?.Unload();
@@ -71,13 +80,11 @@ namespace SampleCSharpApplication
 
         ~NPUInference()
         {
-            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
             Dispose(disposing: false);
         }
 
         public void Dispose()
         {
-            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
             Dispose(disposing: true);
             GC.SuppressFinalize(this);
         }

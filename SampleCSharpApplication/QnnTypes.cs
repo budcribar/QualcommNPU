@@ -31,7 +31,7 @@ namespace SampleCSharpApplication
         unsafe public IntPtr outputTensors;
         public uint numOutputTensors;
 
-        public string GraphNameString
+        public string GraphName
         {
             get
             {

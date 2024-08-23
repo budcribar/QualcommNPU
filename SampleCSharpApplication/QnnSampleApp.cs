@@ -18,14 +18,14 @@ namespace SampleCSharpApplication
         private Qnn_BackendHandle_t m_backendHandle;
         private Qnn_DeviceHandle_t m_deviceHandle = IntPtr.Zero;
         private Qnn_ContextHandle_t m_context = IntPtr.Zero;
-        private GraphInfoManager? m_graphInfoManager;
+        //private GraphInfoManager? m_graphInfoManager;
         private bool m_isBackendInitialized = false;
-        private readonly IntPtr m_backendConfig;
-        private readonly IntPtr[]? m_graphConfigsInfo;
+        //private readonly IntPtr m_backendConfig;
+        //private readonly IntPtr[]? m_graphConfigsInfo;
         private readonly IOTensor m_iOTensor = new();
         private ReadInputListsResult readInputListsResult = new();
         private Qnn_ProfileHandle_t m_profileBackendHandle = IntPtr.Zero;
-        private bool m_isContextCreated = false;
+        //private bool m_isContextCreated = false;
         private readonly string model;
         private readonly string backend;
         private readonly string inputList;

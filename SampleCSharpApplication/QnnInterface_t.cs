@@ -1,18 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using static SampleCSharpApplication.DynamicLoadUtil;
-using static SampleCSharpApplication.QnnDelegates;
+﻿using System.Runtime.InteropServices;
 
 namespace SampleCSharpApplication
 {
-    // Constants
-   
-
-   
     [StructLayout(LayoutKind.Sequential)]
     public struct QnnInterface_t
     {
@@ -20,7 +9,7 @@ namespace SampleCSharpApplication
         public uint pad;
         public IntPtr ProviderName;  // const char* in C++ becomes IntPtr in C# 
         public Qnn_ApiVersion_t ApiVersion;
-        //unsafe public IntPtr QNN_INTERFACE_VER_NAME;  // We'll treat the union as an IntPtr
+      
         public IntPtr PropertyHasCapability;
         public IntPtr BackendCreate;
         public IntPtr BackendSetConfig;
@@ -77,6 +66,16 @@ namespace SampleCSharpApplication
         public IntPtr GraphGetProperty;
         public IntPtr ContextValidateBinary;
         public IntPtr ContextCreateFromBinaryWithSignal;
+
+        public string ProviderNameString
+        {
+            get
+            {
+                if (ProviderName == IntPtr.Zero)
+                    return string.Empty;
+                return Marshal.PtrToStringAnsi(ProviderName) ?? string.Empty;
+            }
+        }
     }
     [StructLayout(LayoutKind.Sequential)]
     public struct Qnn_ApiVersion_t
